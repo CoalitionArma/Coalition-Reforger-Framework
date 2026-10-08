@@ -274,6 +274,25 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! AAR screen: join (recreating if needed) the caller's group voice channel
+	void RequestGroupVoiceChannel()
+	{
+		Rpc(RpcAsk_RequestGroupVoiceChannel);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestGroupVoiceChannel()
+	{
+		LogTelemetry("RpcAsk_RequestGroupVoiceChannel", 0);
+
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		CRF_AARManager.GetInstance().OpenGroupChannel(GetCallerPlayerId());
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! AAR screen: the local player's 1-5 rating of the round, forwarded to the website
 	void SubmitMissionRating(int rating)
 	{

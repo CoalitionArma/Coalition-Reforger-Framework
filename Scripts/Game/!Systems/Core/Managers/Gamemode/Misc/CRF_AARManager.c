@@ -53,6 +53,11 @@ class CRF_AARManager
 		if (s_Instance)
 			s_Instance.Cleanup();
 
+		// Side channels only exist for the AAR
+		COA_MenuManager menuManager = COA_MenuManager.GetInstance();
+		if (menuManager)
+			menuManager.RemoveFactionChannels();
+
 		s_Instance = null;
 	}
 
@@ -104,8 +109,9 @@ class CRF_AARManager
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
-	//! One channel per group, in slotting (ORBAT) order, each holding that group's connected players.
-	//! Unslotted players and spectators stay in Global.
+	//! One channel per group, in slotting (ORBAT) order, each holding that group's connected players,
+	//! plus an empty side channel per faction that had players (listed under Global, joinable only by
+	//! that faction). Unslotted players and spectators stay in Global.
 	protected void BuildGroupVoiceChannels()
 	{
 		COA_MenuManager menuManager = COA_MenuManager.GetInstance();
@@ -118,6 +124,7 @@ class CRF_AARManager
 
 		array<string> channelNames = {};
 		array<ref array<int>> channelPlayers = {};
+		array<FactionKey> sideChannelFactions = {};
 
 		array<string> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
 		foreach (string factionKey : factionKeys)
@@ -141,13 +148,58 @@ class CRF_AARManager
 				if (members.IsEmpty())
 					continue;
 
-				channelNames.Insert(string.Format("%1 - %2", factionKey, group.GetCustomNameWithOriginal()));
+				if (!sideChannelFactions.Contains(factionKey))
+					sideChannelFactions.Insert(factionKey);
+
+				channelNames.Insert(GetGroupChannelName(factionKey, group));
 				channelPlayers.Insert(members);
 			}
 		}
 
-		menuManager.SetAllChannels(channelNames, channelPlayers);
-		Print(string.Format("[CRF_AARManager] Created %1 AAR group voice channel(s)", channelNames.Count()), LogLevel.NORMAL);
+		menuManager.SetAllChannels(channelNames, channelPlayers, sideChannelFactions);
+		Print(string.Format("[CRF_AARManager] Created %1 AAR group voice channel(s) and %2 side channel(s)", channelNames.Count(), sideChannelFactions.Count()), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Name of a group's AAR voice channel, exactly as stored in COA_MenuManager.m_aVONChannels.
+	//! Also used by the AAR screen to tell whether the local player's group channel still exists.
+	static string GetGroupChannelName(FactionKey factionKey, SCR_AIGroup group)
+	{
+		return COA_MenuManager.SanitizeChannelName(string.Format("%1 - %2", factionKey, group.GetCustomNameWithOriginal()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: put a player in their group's AAR channel, recreating it if everyone had left (empty
+	//! channels are removed automatically). Players can only open their own group's channel.
+	void OpenGroupChannel(int playerId)
+	{
+		COA_MenuManager menuManager = COA_MenuManager.GetInstance();
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!menuManager || !slottingManager)
+			return;
+
+		Faction faction = slottingManager.GetPlayerSlotFaction(playerId, true);
+		SCR_AIGroup group = slottingManager.GetPlayerSlotGroup(playerId);
+		if (!faction || !group)
+			return;
+
+		string channelName = GetGroupChannelName(faction.GetFactionKey(), group);
+
+		// Someone may have reopened it already
+		foreach (int channelIndex, string channelData : menuManager.m_aVONChannels)
+		{
+			array<string> channelParts = {};
+			channelData.Split("|", channelParts, true);
+			if (channelParts.IsEmpty() || channelParts[0] != channelName)
+				continue;
+
+			if (menuManager.GetChannel(playerId) != channelIndex)
+				menuManager.AddPlayerToChannel(playerId, channelIndex, false);
+
+			return;
+		}
+
+		menuManager.CreateChannel(channelName, playerId);
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

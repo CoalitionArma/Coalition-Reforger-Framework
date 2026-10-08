@@ -14,6 +14,8 @@ class COA_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 	protected static const ResourceName STATS_LAYOUT = "{7CDA3F81B4920E56}UI/layouts/HUD/Intro/CRF_AARStats.layout";
 	protected static const ResourceName CHANNEL_PLAYER_LAYOUT = "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout";
+	// m_iChannelId of the "Open <group> channel" row, which recreates the player's group channel
+	protected static const int OPEN_GROUP_CHANNEL_ID = -2;
 	protected static const ResourceName RATING_LAYOUT = "{7C10B6E2A4F95D31}UI/layouts/HUD/AAR/CRF_AARRating.layout";
 	// Unselected rating button (linear colour, matches RateBG in the layout)
 	protected static const ref Color RATING_BUTTON_COLOR = new Color(0.0116, 0.0137, 0.0212, 1);
@@ -865,6 +867,39 @@ class COA_AARMenu: ChimeraMenuBase
 
 			AddChannelRows(channelIndex, channelNames[channelIndex], members, channelIndex == localChannel, playerManager);
 		}
+
+		AddOpenGroupChannelRow(channelNames);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Empty channels are removed as soon as the last person leaves, so a group that wandered off can
+	//! lose its channel. When the local player's group channel is gone, offer a row to reopen it.
+	protected void AddOpenGroupChannelRow(array<string> channelNames)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Faction faction = slottingManager.GetPlayerSlotFaction(localPlayerId, true);
+		SCR_AIGroup group = slottingManager.GetPlayerSlotGroup(localPlayerId);
+		if (!faction || !group)
+			return;
+
+		if (channelNames.Contains(CRF_AARManager.GetGroupChannelName(faction.GetFactionKey(), group)))
+			return;
+
+		int rowIndex = m_cChannelListBoxComponent.AddItemChannel(null, string.Format("+ Open %1 channel", group.GetCustomNameWithOriginal()));
+		COA_ListBoxElementComponent rowComponent = m_cChannelListBoxComponent.GetCRFElementComponent(rowIndex);
+		if (!rowComponent)
+			return;
+
+		rowComponent.m_iChannelId = OPEN_GROUP_CHANNEL_ID;
+		rowComponent.GetChannelButton().m_OnClicked.Insert(JoinSelectedChannelDelayed);
+
+		Widget rowRoot = rowComponent.GetRootWidget();
+		if (rowRoot)
+			COA_UIHoverEffect.Attach(rowRoot.FindAnyWidget("SlotButton"), rowRoot.FindAnyWidget("Image0"));
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -874,9 +909,14 @@ class COA_AARMenu: ChimeraMenuBase
 		if (isLocalChannel)
 			headerText = "> " + headerText;
 
+		// Another faction's side channel: shown, but only that faction (or staff) can join it
+		bool canJoin = CanJoinChannel(channelName);
+		if (!canJoin)
+			headerText += string.Format("  ·  %1 only", COA_MenuManager.GetFactionChannelOwner(channelName));
+
 		int headerIndex = m_cChannelListBoxComponent.AddItemChannel(null, headerText);
 		COA_ListBoxElementComponent channelComponent = m_cChannelListBoxComponent.GetCRFElementComponent(headerIndex);
-		if (channelComponent)
+		if (channelComponent && canJoin)
 		{
 			channelComponent.m_iChannelId = channelIndex;
 			channelComponent.GetChannelButton().m_OnClicked.Insert(JoinSelectedChannelDelayed);
@@ -906,6 +946,27 @@ class COA_AARMenu: ChimeraMenuBase
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Side channels are restricted to their faction (checked again by the server on join)
+	protected bool CanJoinChannel(string channelName)
+	{
+		FactionKey channelFaction = COA_MenuManager.GetFactionChannelOwner(channelName);
+		if (channelFaction.IsEmpty())
+			return true;
+
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		COA_PermissionManager permissionManager = COA_PermissionManager.GetInstance();
+		if (SCR_Global.IsAdmin(localPlayerId) || (permissionManager && permissionManager.IsModerator()))
+			return true;
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return false;
+
+		Faction localFaction = slottingManager.GetPlayerSlotFaction(localPlayerId, true);
+		return localFaction && localFaction.GetFactionKey() == channelFaction;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void JoinSelectedChannelDelayed()
 	{
 		GetGame().GetCallqueue().Call(JoinSelectedChannel);
@@ -929,6 +990,12 @@ class COA_AARMenu: ChimeraMenuBase
 
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		int channelId = selectedComponent.m_iChannelId;
+		if (channelId == OPEN_GROUP_CHANNEL_ID)
+		{
+			authorityManager.RequestGroupVoiceChannel();
+			return;
+		}
+
 		if (channelId < 0 || channelId >= m_MenuManager.m_aVONChannels.Count() || channelId == m_MenuManager.GetChannel(localPlayerId))
 			return;
 
