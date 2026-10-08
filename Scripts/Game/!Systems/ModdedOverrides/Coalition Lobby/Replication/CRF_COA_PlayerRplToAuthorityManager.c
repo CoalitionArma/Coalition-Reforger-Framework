@@ -251,7 +251,124 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestGlobalMarkerRefresh, SCR_PlayerController.GetLocalPlayerId());
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Sent when the AAR screen opens: the server replies with the website mission link and every
+	//! map marker of every faction (see CRF_AARManager.SendAARDataToPlayer)
+	void RequestAARData()
+	{
+		Rpc(RpcAsk_RequestAARData);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestAARData()
+	{
+		LogTelemetry("RpcAsk_RequestAARData", 0);
+
+		// Only once the round is actually over - this reveals every faction's map markers
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		CRF_AARManager.GetInstance().SendAARDataToPlayer(GetCallerPlayerId());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! AAR screen: the local player's 1-5 rating of the round, forwarded to the website
+	void SubmitMissionRating(int rating)
+	{
+		Rpc(RpcAsk_SubmitMissionRating, rating);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SubmitMissionRating(int rating)
+	{
+		LogTelemetry("RpcAsk_SubmitMissionRating", COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
+			return;
+
+		CRF_AARManager.GetInstance().SubmitRating(GetCallerPlayerId(), rating);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: move the caller's editor camera to a player the caller's client has
+	//! not streamed in (see CRF_ZeusPlayerList.FocusCameraOnPlayer)
+	void RequestZeusCameraToPlayer(int targetPlayerId)
+	{
+		Rpc(RpcAsk_RequestZeusCameraToPlayer, targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusCameraToPlayer(int targetPlayerId)
+	{
+		LogTelemetry("RpcAsk_RequestZeusCameraToPlayer", 4);
+
+		// This reveals where any player is
+		SCR_EditorModeEntity modeEntity = GetCallerZeusMode();
+		if (!modeEntity)
+			return;
+
+		IEntity target = GetGame().GetPlayerManager().GetPlayerControlledEntity(targetPlayerId);
+		if (!target)
+			return;
+
+		SCR_CameraEditorComponent cameraManager = SCR_CameraEditorComponent.Cast(modeEntity.FindComponent(SCR_CameraEditorComponent));
+		if (cameraManager)
+			cameraManager.TeleportEditorCamera(target.GetOrigin());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: which players have an open admin ticket, so their names can be
+	//! highlighted. Only the player IDs are sent - never the ticket messages.
+	void RequestZeusTicketHolders()
+	{
+		Rpc(RpcAsk_RequestZeusTicketHolders);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusTicketHolders()
+	{
+		LogTelemetry("RpcAsk_RequestZeusTicketHolders", 0);
+
+		if (!GetCallerZeusMode())
+			return;
+
+		COA_AdminMenuManager adminMenuManager = COA_AdminMenuManager.GetInstance();
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(GetCallerPlayerId());
+		if (!adminMenuManager || !ownerManager)
+			return;
+
+		ownerManager.ReceiveZeusTicketHolders(adminMenuManager.GetOpenTickets());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: the caller's current editor mode, if they have the editor open in Game Master (EDIT)
+	//! or admin mode - the permission check for the Game Master player list's requests
+	protected SCR_EditorModeEntity GetCallerZeusMode()
+	{
+		SCR_EditorManagerCore core = SCR_EditorManagerCore.Cast(SCR_EditorManagerCore.GetInstance(SCR_EditorManagerCore));
+		if (!core)
+			return null;
+
+		SCR_EditorManagerEntity editorManager = core.GetEditorManager(GetCallerPlayerId());
+		if (!editorManager || !editorManager.IsOpened())
+			return null;
+
+		SCR_EditorModeEntity modeEntity = editorManager.GetCurrentModeEntity();
+		if (!modeEntity || !modeEntity.IsOpened())
+			return null;
+
+		EEditorMode mode = modeEntity.GetModeType();
+		if (mode != EEditorMode.EDIT && mode != EEditorMode.ADMIN)
+			return null;
+
+		return modeEntity;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void RequestSupplyUpdate(RplId supplyArsenalId)
 	{
@@ -324,6 +441,9 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected override void RpcAsk_RequestAdvanceGamemodeState(bool overriden, string winningFaction)
 	{
+		if (!IsCallerAdmin())
+			return;
+
 		// Telemetry: bool
 		LogTelemetry("RpcAsk_RequestAdvanceGamemodeState", COA_BandwidthTelemetryManager.EstimateSize_Bool());
 		
@@ -495,6 +615,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReportBug(string data, int playerID)
 	{
+		playerID = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: string + int
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_String(data);
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_Int();
@@ -575,14 +697,18 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 			return;
 		}
 		
-		// If not viewing/supply update, is spawnvehicle request
-		depotComponent.SpawnVehicle(playerId, vehicleIndex);
+		// If not viewing/supply update, is spawnvehicle request - always for the sender,
+		// never a client-supplied player ID
+		depotComponent.SpawnVehicle(GetCallerPlayerId(), vehicleIndex);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RemoveItem(int playerId, RplId entityID, bool logAction)
 	{
+		if (!IsCallerSelfOrStaff(playerId))
+			return;
+
 		// Telemetry: int + RplId + bool
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_RplId();
@@ -620,6 +746,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ConvertItem(int playerId, RplId oldEntityId, string newPrefab, bool logAction)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int + RplId + string + bool
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_RplId();
@@ -692,6 +820,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReportSettingsViolation(int playerId, string violationType)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int + string
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_String(violationType);
@@ -715,6 +845,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: 2 ints + string
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int() * 2;
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_String(newResource);
@@ -875,7 +1007,7 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		GetGame().GetCallqueue().CallLater(InitializePlayerRadiosDelayed, 500, false, playerId);
 
-		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetInstance();
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(playerId);
 		if (ownerManager)
 			ownerManager.InitializeRadioFromServer();
 	}
@@ -884,6 +1016,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		if (!attachments || !magazines || !magazineCounts || magazines.Count() != magazineCounts.Count())
 			return;
 
@@ -1092,6 +1226,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SightArsenalRequestNewSight_Optimized(int playerId, int sightIndex, CRF_ESightType sightType)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int (4) + int as byte (1) + enum as byte (1) = ~6 bytes
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += 2; // sightIndex + sightType as bytes
@@ -1114,6 +1250,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SightArsenalRequestNewSight_Fallback(int playerId, string newResource, string type)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int + 2 strings (original bandwidth)
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_String(newResource);
@@ -1129,6 +1267,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SightArsenalRequestNewSight(int playerId, string newResource, string type)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int + 2 strings
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_String(newResource);
@@ -1278,6 +1418,9 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleVAARRecording()
 	{
+		if (!IsCallerStaff())
+			return;
+
 		// Telemetry: no parameters
 		LogTelemetry("RpcAsk_ToggleVAARRecording", 0);
 		
@@ -1486,6 +1629,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CacheHuntDestroyCache(RplId cacheId, int playerId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: RplId + int
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_RplId();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_Int();
@@ -1506,6 +1651,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestCTFFlagPickup(int playerId, RplId flagRplId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		// Telemetry: int + RplId
 		int bytes = COA_BandwidthTelemetryManager.EstimateSize_Int();
 		bytes += COA_BandwidthTelemetryManager.EstimateSize_RplId();
@@ -1599,6 +1746,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestJIPForwardDeploy(RplId groupId, int playerId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		LogTelemetry("RpcAsk_RequestJIPForwardDeploy", COA_BandwidthTelemetryManager.EstimateSize_Int() * 2);
 
 		if (!m_Gamemode || m_Gamemode.m_bLockUnusedSlots)
@@ -1644,6 +1793,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ShareMapMarkerGlobal(int markerUID, string factionKey, int playerId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		array<int> playerIds = {};
 		PlayerManager pm = GetGame().GetPlayerManager();
 		pm.GetPlayers(playerIds);
@@ -1692,6 +1843,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ShareMapMarkers(array<int> markerUIDs, int playerId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		PlayerManager pm = GetGame().GetPlayerManager();
 		IEntity playerEntity = pm.GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
@@ -1748,6 +1901,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestGlobalMarkerRefresh(int playerId)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		int bytes = m_TelemetryManager.EstimateSize_Int();
 		LogTelemetry("RpcAsk_RequestGlobalMarkerRefresh", bytes);
 		// Get the faction of the sharing player
@@ -1808,6 +1963,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RegisterPlayerForLottery(int playerId, string factionKey, string squadFilter)
 	{
+		playerId = GetCallerPlayerId(); // act on the sender, never a client-supplied ID
+
 		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
 		if (slotLottery)
 			slotLottery.RegisterPlayerForLottery_Server(playerId, factionKey, squadFilter);
@@ -1818,6 +1975,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RunSlotLottery(int requestingPlayerId)
 	{
+		requestingPlayerId = GetCallerPlayerId(); // the admin check downstream must see the real sender
+
 		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
 		if (slotLottery)
 			slotLottery.RunSlotLottery_Server(requestingPlayerId);
@@ -1827,6 +1986,8 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ClearSlotLottery(int requestingPlayerId)
 	{
+		requestingPlayerId = GetCallerPlayerId(); // the admin check downstream must see the real sender
+
 		CRF_SlotLottery slotLottery = CRF_SlotLottery.GetInstance();
 		if (slotLottery)
 			slotLottery.ClearSlotLottery_Server(requestingPlayerId);

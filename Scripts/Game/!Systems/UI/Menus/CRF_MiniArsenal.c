@@ -5,6 +5,9 @@ modded enum ChimeraMenuPreset
 
 class CRF_MiniArsenal: ChimeraMenuBase
 {
+	// Hover/press feedback and entrance animation - see COA_UIPolish
+	protected ref COA_MenuPolish m_UIPolish;
+
 	protected InputManager m_InputManager;
 	protected bool m_bFocused = true;
 	CameraBase m_Camera;
@@ -48,10 +51,16 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		
 		
 		SelectCategory(SCR_ButtonBaseComponent.Cast(m_Categories.GetChildren().FindHandler(SCR_ButtonBaseComponent)));
+
+		// Hover feedback on buttons without their own, and a quick staggered fade-in (COA_UIPolish)
+		m_UIPolish = new COA_MenuPolish(GetRootWidget(), true);
 	}
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		if (m_UIPolish)
+			m_UIPolish.Update(tDelta);
+
 		if (!m_SafeStart.GetSafestartStatus() && COA_PlayerController.IsGracePeriodOver())
 			Close();
 		if (m_fArsenalTimeout > 0)
@@ -402,6 +411,12 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuClose()
 	{
+		if (m_UIPolish)
+		{
+			m_UIPolish.Cleanup();
+			m_UIPolish = null;
+		}
+
 		super.OnMenuClose();
 		if (m_Light)
 			delete m_Light;

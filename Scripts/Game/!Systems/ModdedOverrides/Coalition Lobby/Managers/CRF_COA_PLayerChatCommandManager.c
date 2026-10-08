@@ -23,6 +23,12 @@ modded class COA_PlayerChatCommandManager
 
 		ChatCommandInvoker invoker11 = chatPanelManager.GetCommandInvoker("qa");
 		invoker11.Insert(OpenMissionQAMenu);
+
+		RegisterHelp("/bug <description>", "Report a bug to the developers");
+		RegisterHelp("/fd", "Reopen the forward deploy menu (also /forwarddeploy)");
+#ifdef WORKBENCH
+		RegisterHelp("/qa", "Open the mission QA menu", true);
+#endif
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================

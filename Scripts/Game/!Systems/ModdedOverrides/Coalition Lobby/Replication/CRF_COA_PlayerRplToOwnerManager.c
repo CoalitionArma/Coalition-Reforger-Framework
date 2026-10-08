@@ -233,4 +233,74 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 		if (pc)
 			pc.SetIsJoinInProgress(true);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Sends one map marker (of any faction) to this player's AAR map. Called by CRF_AARManager.
+	void ReceiveAARMarker(SCR_MapMarkerBase marker)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARMarker(marker);
+		else
+			Rpc(RpcDo_ReceiveAARMarker, marker);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARMarker(SCR_MapMarkerBase marker)
+	{
+		SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (markerManager)
+			markerManager.RevealAARMarker(marker);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tells this player's AAR screen which coalitiongroup.net/aar/<id> page belongs to this round
+	void ReceiveAARMissionLink(int missionId)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARMissionLink(missionId);
+		else
+			Rpc(RpcDo_ReceiveAARMissionLink, missionId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARMissionLink(int missionId)
+	{
+		CRF_AARSessionStats.SetMissionId(missionId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! AAR screen: whether the website accepted this player's mission rating
+	void ReceiveMissionRatingResult(int rating, bool saved)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveMissionRatingResult(rating, saved);
+		else
+			Rpc(RpcDo_ReceiveMissionRatingResult, rating, saved);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveMissionRatingResult(int rating, bool saved)
+	{
+		CRF_AARSessionStats.SetRatingResult(rating, saved);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: players with an open admin ticket (see RequestZeusTicketHolders)
+	void ReceiveZeusTicketHolders(array<int> playerIds)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveZeusTicketHolders(playerIds);
+		else
+			Rpc(RpcDo_ReceiveZeusTicketHolders, playerIds);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveZeusTicketHolders(array<int> playerIds)
+	{
+		CRF_ZeusPlayerList.SetTicketHolders(playerIds);
+	}
 };

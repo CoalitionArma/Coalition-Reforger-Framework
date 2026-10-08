@@ -64,6 +64,15 @@ class CRF_AreaTimerComponent : ScriptComponent
 	protected IEntity m_Owner;
 	protected ref array<SCR_ChimeraCharacter> m_aPlayersInZone = new array<SCR_ChimeraCharacter>();
 
+	// Last state sent to clients. BroadcastState only sends when something changed, plus a
+	// periodic resend so clients that join mid-mission still receive the zone label.
+	protected const int BROADCAST_RESEND_TICKS = 10;
+	protected bool m_bHasBroadcast;
+	protected CRF_EAreaTimerState m_eLastSentState;
+	protected int m_iLastSentCountdown;
+	protected string m_sLastSentFaction;
+	protected int m_iTicksSinceBroadcast;
+
 	//---------------------------------------------------------------------------------------------
 	// Singleton
 	//---------------------------------------------------------------------------------------------
@@ -265,9 +274,27 @@ class CRF_AreaTimerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void BroadcastState()
 	{
+		m_iTicksSinceBroadcast++;
+
+		bool changed = !m_bHasBroadcast
+			|| m_eState != m_eLastSentState
+			|| m_iCountdownRemaining != m_iLastSentCountdown
+			|| m_sControllingFaction != m_sLastSentFaction;
+
+		if (!changed && m_iTicksSinceBroadcast < BROADCAST_RESEND_TICKS)
+			return;
+
 		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
-		if (bm)
-			bm.BroadcastAreaTimerUpdate(m_eState, m_iCountdownRemaining, m_sControllingFaction, m_sZoneLabel);
+		if (!bm)
+			return;
+
+		bm.BroadcastAreaTimerUpdate(m_eState, m_iCountdownRemaining, m_sControllingFaction, m_sZoneLabel);
+
+		m_bHasBroadcast        = true;
+		m_eLastSentState       = m_eState;
+		m_iLastSentCountdown   = m_iCountdownRemaining;
+		m_sLastSentFaction     = m_sControllingFaction;
+		m_iTicksSinceBroadcast = 0;
 	}
 
 	//---------------------------------------------------------------------------------------------

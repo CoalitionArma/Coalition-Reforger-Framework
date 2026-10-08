@@ -289,7 +289,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		super.EOnFixedFrame(owner, timeSlice);
+		super.EOnFrame(owner, timeSlice);
 		if (m_fUpdateBuffer >= 1)
 		{
 			m_fUpdateBuffer = 0;
@@ -477,12 +477,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity zone3AlphaTrigger = GetGame().GetWorld().FindEntityByName("z3_alpha_trigger");
 		IEntity zone3BetaTrigger = GetGame().GetWorld().FindEntityByName("z3_beta_trigger");
 		
-		Print("[SpawnMCOMs] Configuration: " + m_iNumberOfZones + " zones, " + m_iMCOMsPerZone + " MCOMs per zone");
+		Print("[SpawnMCOMs] Configuration: " + m_iNumberOfZones + " zones, " + m_iMCOMsPerZone + " MCOMs per zone", LogLevel.DEBUG);
 		
 		// Spawn MCOMs using configuration-aware logic
 		if (zone1AlphaTrigger && m_iNumberOfZones >= 1 && m_iMCOMsPerZone >= 1)
 		{
-			Print("[SpawnMCOMs] Spawning MCOMA at zone1AlphaTrigger (Zone 1)");
+			Print("[SpawnMCOMs] Spawning MCOMA at zone1AlphaTrigger (Zone 1)", LogLevel.DEBUG);
 			SpawnMCOMAtPosition(zone1AlphaTrigger, "MCOMA");
 		}
 		
@@ -492,7 +492,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// 1 MCOM per zone: MCOMB goes to Zone 2 (zone2AlphaTrigger = mcom_b_trigger)
 			if (zone2AlphaTrigger && m_iNumberOfZones >= 2)
 			{
-				Print("[SpawnMCOMs] Spawning MCOMB at zone2AlphaTrigger (Zone 2) - 1 MCOM per zone config");
+				Print("[SpawnMCOMs] Spawning MCOMB at zone2AlphaTrigger (Zone 2) - 1 MCOM per zone config", LogLevel.DEBUG);
 				SpawnMCOMAtPosition(zone2AlphaTrigger, "MCOMB");
 			}
 		}
@@ -501,7 +501,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// 2 MCOMs per zone: MCOMB goes to Zone 1 Beta (zone1BetaTrigger = mcom_b_trigger)
 			if (zone1BetaTrigger && m_iNumberOfZones >= 1)
 			{
-				Print("[SpawnMCOMs] Spawning MCOMB at zone1BetaTrigger (Zone 1) - 2 MCOMs per zone config");
+				Print("[SpawnMCOMs] Spawning MCOMB at zone1BetaTrigger (Zone 1) - 2 MCOMs per zone config", LogLevel.DEBUG);
 				SpawnMCOMAtPosition(zone1BetaTrigger, "MCOMB");
 			}
 		}
@@ -512,7 +512,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// 1 MCOM per zone: MCOMC goes to Zone 3 (zone3AlphaTrigger = mcom_c_trigger)
 			if (zone3AlphaTrigger && m_iNumberOfZones >= 3)
 			{
-				Print("[SpawnMCOMs] Spawning MCOMC at zone3AlphaTrigger (Zone 3) - 1 MCOM per zone config");
+				Print("[SpawnMCOMs] Spawning MCOMC at zone3AlphaTrigger (Zone 3) - 1 MCOM per zone config", LogLevel.DEBUG);
 				SpawnMCOMAtPosition(zone3AlphaTrigger, "MCOMC");
 			}
 		}
@@ -521,7 +521,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// 2 MCOMs per zone: MCOMC goes to Zone 2 Alpha (zone2AlphaTrigger = mcom_c_trigger)
 			if (zone2AlphaTrigger && m_iNumberOfZones >= 2)
 			{
-				Print("[SpawnMCOMs] Spawning MCOMC at zone2AlphaTrigger (Zone 2) - 2 MCOMs per zone config");
+				Print("[SpawnMCOMs] Spawning MCOMC at zone2AlphaTrigger (Zone 2) - 2 MCOMs per zone config", LogLevel.DEBUG);
 				SpawnMCOMAtPosition(zone2AlphaTrigger, "MCOMC");
 			}
 		}
@@ -1109,12 +1109,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void RefreshMapMarkers()
 	{
-		Print("[CRF_RushGamemodeManager] Refreshing map markers...");
+		Print("[CRF_RushGamemodeManager] Refreshing map markers...", LogLevel.DEBUG);
 		
 		// Only refresh on clients and if markers are enabled
 		if (Replication.IsServer() || m_bHideMapMarkers)
 		{
-			Print("[CRF_RushGamemodeManager] Skipping marker refresh - server or markers hidden");
+			Print("[CRF_RushGamemodeManager] Skipping marker refresh - server or markers hidden", LogLevel.DEBUG);
 			return;
 		}
 		
@@ -1122,7 +1122,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		RemoveAllMCOMMarkers();
 		InitializeMapMarkers();
 		
-		Print("[CRF_RushGamemodeManager] Map markers refreshed");
+		Print("[CRF_RushGamemodeManager] Map markers refreshed", LogLevel.DEBUG);
 	}
 	
 	//===================================================================================
@@ -1375,7 +1375,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				// Start countdown
 				m_bCountdownActive = true;
 				m_sActiveMCOM = mcomIdentifier;
-				Print("[CRF_RushGamemodeManager] ===== COUNTDOWN STARTED ===== for MCOM: " + mcomIdentifier + " Timer: " + m_iMCOMTimer + " seconds");
+				Print("[CRF_RushGamemodeManager] ===== COUNTDOWN STARTED ===== for MCOM: " + mcomIdentifier + " Timer: " + m_iMCOMTimer + " seconds", LogLevel.NORMAL);
 				
 				// Always use full timer (no time saving)
 				m_iCountdownTimeRemaining = m_iMCOMTimer;
@@ -1533,7 +1533,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Check if time is up
 		if (m_iCountdownTimeRemaining <= 0) 
 		{
-			Print("[CRF_RushGamemodeManager] ===== COUNTDOWN TIMER EXPIRED ===== Calling MCOMDestroyed for: " + m_sActiveMCOM);
+			Print("[CRF_RushGamemodeManager] ===== COUNTDOWN TIMER EXPIRED ===== Calling MCOMDestroyed for: " + m_sActiveMCOM, LogLevel.NORMAL);
 			MCOMDestroyed(m_sActiveMCOM);
 			
 			// Stop countdown
@@ -1555,17 +1555,17 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
-		Print("[CRF_RushGamemodeManager] ===== MCOMDestroyed START ===== for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] ===== MCOMDestroyed START ===== for: " + mcomIdentifier, LogLevel.DEBUG);
 		
 		// DEBUG: Test entity lookup immediately
 		IEntity testEntity = GetMCOMEntity(mcomIdentifier);
 		if (testEntity)
 		{
-			Print("[CRF_RushGamemodeManager] DEBUG: Entity lookup successful - ID: " + testEntity.GetID());
+			Print("[CRF_RushGamemodeManager] DEBUG: Entity lookup successful - ID: " + testEntity.GetID(), LogLevel.DEBUG);
 		}
 		else
 		{
-			Print("[CRF_RushGamemodeManager] DEBUG: Entity lookup FAILED for identifier: " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] DEBUG: Entity lookup FAILED for identifier: " + mcomIdentifier, LogLevel.DEBUG);
 			
 			// Try all possible identifiers as debug
 			array<string> testIdentifiers = {"MCOMA", "MCOMB", "MCOMC", "MCOMD", "MCOME", "MCOMF", "Zone1Alpha", "Zone1Beta", "Zone2Alpha", "Zone2Beta", "Zone3Alpha", "Zone3Beta"};
@@ -1574,7 +1574,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				IEntity debugEntity = GetMCOMEntity(testIdentifiers[i]);
 				if (debugEntity)
 				{
-					Print("[CRF_RushGamemodeManager] DEBUG: Found entity for identifier: " + testIdentifiers[i] + " ID: " + debugEntity.GetID());
+					Print("[CRF_RushGamemodeManager] DEBUG: Found entity for identifier: " + testIdentifiers[i] + " ID: " + debugEntity.GetID(), LogLevel.DEBUG);
 				}
 			}
 		}
@@ -1592,7 +1592,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity mcomEntity = GetMCOMEntity(mcomIdentifier);
 		if (mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] Found MCOM entity to destroy: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
+			Print("[CRF_RushGamemodeManager] Found MCOM entity to destroy: " + mcomIdentifier + " ID: " + mcomEntity.GetID(), LogLevel.DEBUG);
 			
 			// Hide the 3D marker immediately
 			CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(mcomEntity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -1608,7 +1608,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Set replicated property to trigger client-side deletion via OnMCOMDestroyedReplicated
 		m_sReplicatedDestroyedMCOM = mcomIdentifier;
-		Print("[CRF_RushGamemodeManager] Set replicated property m_sReplicatedDestroyedMCOM = " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] Set replicated property m_sReplicatedDestroyedMCOM = " + mcomIdentifier, LogLevel.DEBUG);
 		
 		// Set legacy property for backward compatibility
 		m_sDestroyedMCOMString = mcomIdentifier;
@@ -1633,15 +1633,15 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Schedule server-side entity deletion with delay to ensure clients process effects first
 		if (mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] Scheduling server entity deletion for: " + mcomIdentifier + " in 3 seconds");
+			Print("[CRF_RushGamemodeManager] Scheduling server entity deletion for: " + mcomIdentifier + " in 3 seconds", LogLevel.DEBUG);
 			GetGame().GetCallqueue().CallLater(DeleteMCOMEntityServer, 3000, false, mcomIdentifier);
 		}
 		else
 		{
-			Print("[CRF_RushGamemodeManager] WARNING: Cannot schedule entity deletion - entity not found for: " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] WARNING: Cannot schedule entity deletion - entity not found for: " + mcomIdentifier, LogLevel.WARNING);
 		}
 		
-		Print("[CRF_RushGamemodeManager] ===== MCOMDestroyed END ===== for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] ===== MCOMDestroyed END ===== for: " + mcomIdentifier, LogLevel.DEBUG);
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -1651,12 +1651,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		if (m_sReplicatedDestroyedMCOM == "") return;
 		
-		Print(string.Format("[CRF_Rush_Game] OnMCOMDestroyedReplicated - Processing destruction of: %1 (Server: %2)", m_sReplicatedDestroyedMCOM, Replication.IsServer()));
+		Print(string.Format("[CRF_Rush_Game] OnMCOMDestroyedReplicated - Processing destruction of: %1 (Server: %2)", m_sReplicatedDestroyedMCOM, Replication.IsServer()), LogLevel.DEBUG);
 		
 		// Only process deletion on clients - server handles its own deletion
 		if (Replication.IsServer())
 		{
-			Print("[CRF_Rush_Game] OnMCOMDestroyedReplicated - Skipping on server");
+			Print("[CRF_Rush_Game] OnMCOMDestroyedReplicated - Skipping on server", LogLevel.DEBUG);
 			return;
 		}
 		
@@ -1670,14 +1670,14 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected void ProcessClientMCOMDeletion(string mcomIdentifier)
 	{
-		Print(string.Format("[CRF_Rush_Game] ProcessClientMCOMDeletion - Starting deletion process for: %1", mcomIdentifier));
-		Print(string.Format("[CRF_Rush_Game] ProcessClientMCOMDeletion - Running on client: %1", !Replication.IsServer()));
+		Print(string.Format("[CRF_Rush_Game] ProcessClientMCOMDeletion - Starting deletion process for: %1", mcomIdentifier), LogLevel.DEBUG);
+		Print(string.Format("[CRF_Rush_Game] ProcessClientMCOMDeletion - Running on client: %1", !Replication.IsServer()), LogLevel.DEBUG);
 		
 		// Find the entity using the proper MCOM entity lookup method
 		IEntity entity = GetMCOMEntity(mcomIdentifier);
 		if (entity)
 		{
-			Print(string.Format("[CRF_Rush_Game] Client found MCOM entity: %1 (ID: %2), hiding presentation...", mcomIdentifier, entity.GetID()));
+			Print(string.Format("[CRF_Rush_Game] Client found MCOM entity: %1 (ID: %2), hiding presentation...", mcomIdentifier, entity.GetID()), LogLevel.DEBUG);
 			
 			// Hide 3D marker first
 			CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(entity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -1686,7 +1686,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			
 			// Clean up references
 			CleanupMCOMReference(mcomIdentifier);
-			Print(string.Format("[CRF_Rush_Game] Client presentation cleaned for MCOM entity: %1", mcomIdentifier));
+			Print(string.Format("[CRF_Rush_Game] Client presentation cleaned for MCOM entity: %1", mcomIdentifier), LogLevel.DEBUG);
 		}
 		else
 		{
@@ -1697,16 +1697,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			
 			// Try alternative entity lookup methods as debugging
 			string entityName = GetMCOMEntityName(mcomIdentifier);
-			Print(string.Format("[CRF_Rush_Game] Tried entity name: %1", entityName));
+			Print(string.Format("[CRF_Rush_Game] Tried entity name: %1", entityName), LogLevel.DEBUG);
 			
 			IEntity altEntity = GetGame().GetWorld().FindEntityByName(entityName);
 			if (altEntity)
 			{
-				Print(string.Format("[CRF_Rush_Game] Found entity by name: %1 (ID: %2)", entityName, altEntity.GetID()));
+				Print(string.Format("[CRF_Rush_Game] Found entity by name: %1 (ID: %2)", entityName, altEntity.GetID()), LogLevel.DEBUG);
 			}
 			else
 			{
-				Print(string.Format("[CRF_Rush_Game] No entity found by name: %1", entityName));
+				Print(string.Format("[CRF_Rush_Game] No entity found by name: %1", entityName), LogLevel.DEBUG);
 			}
 		}
 	}
@@ -1730,15 +1730,15 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer START ===== for " + mcomIdentifier + " ID: " + mcomEntity.GetID());
+		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer START ===== for " + mcomIdentifier + " ID: " + mcomEntity.GetID(), LogLevel.DEBUG);
 		
 		// Send RPC to all clients to handle entity and marker deletion FIRST
 		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (broadcastManager)
 		{
-			Print("[CRF_RushGamemodeManager] Sending RPC to clients for MCOM deletion: " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] Sending RPC to clients for MCOM deletion: " + mcomIdentifier, LogLevel.DEBUG);
 			broadcastManager.DeleteRushMCOMEntity(mcomIdentifier);
-			Print("[CRF_RushGamemodeManager] RPC sent successfully to clients for MCOM deletion: " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] RPC sent successfully to clients for MCOM deletion: " + mcomIdentifier, LogLevel.DEBUG);
 		}
 		else
 		{
@@ -1748,16 +1748,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Set replicated property to trigger client-side deletion as backup
 		m_sReplicatedDestroyedMCOM = mcomIdentifier;
 		Replication.BumpMe(); // Force immediate replication
-		Print("[CRF_RushGamemodeManager] Set replicated property and forced replication for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] Set replicated property and forced replication for: " + mcomIdentifier, LogLevel.DEBUG);
 		
 		// Delay server entity deletion to give clients time to process RPC
 		// NOTE: Do NOT call CleanupMCOMReference here — GetMCOMEntity in DeleteMCOMEntityFinal
 		// relies on the stored reference since spawned entities are never named in the world,
 		// making FindEntityByName an unreliable fallback.
-		Print("[CRF_RushGamemodeManager] Scheduling final server entity deletion in 2 seconds for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] Scheduling final server entity deletion in 2 seconds for: " + mcomIdentifier, LogLevel.DEBUG);
 		GetGame().GetCallqueue().CallLater(DeleteMCOMEntityFinal, 2000, false, mcomIdentifier);
 
-		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer END ===== for " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] ===== DeleteMCOMEntityServer END ===== for " + mcomIdentifier, LogLevel.DEBUG);
 	}
 
 	//------------------------------------------------------------------------------------
@@ -1768,7 +1768,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity mcomEntity = GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityFinal: Entity already deleted for " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityFinal: Entity already deleted for " + mcomIdentifier, LogLevel.DEBUG);
 			CleanupMCOMReference(mcomIdentifier);
 			return;
 		}
@@ -1776,7 +1776,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
 		CleanupMCOMReference(mcomIdentifier);
 
-		Print("[CRF_RushGamemodeManager] Server entity deletion completed for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] Server entity deletion completed for: " + mcomIdentifier, LogLevel.DEBUG);
 	}
 
 	/**
@@ -1832,7 +1832,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	void SetMCOMDestroyedStatusFromRPC(string mcomIdentifier, bool isDestroyed)
 	{
 		SetMCOMDestroyedStatus(mcomIdentifier, isDestroyed);
-		Print("[CRF_RushGamemodeManager] SetMCOMDestroyedStatusFromRPC called for: " + mcomIdentifier + " destroyed: " + isDestroyed);
+		Print("[CRF_RushGamemodeManager] SetMCOMDestroyedStatusFromRPC called for: " + mcomIdentifier + " destroyed: " + isDestroyed, LogLevel.DEBUG);
 	}
 	
 	/**
@@ -1905,7 +1905,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			{
 				int oldZone = m_iCurrentZone;
 				m_iCurrentZone = zoneNumber + 1;
-				Print("[CheckZoneCleared] Zone transition: " + oldZone + " → " + m_iCurrentZone);
+				Print("[CheckZoneCleared] Zone transition: " + oldZone + " → " + m_iCurrentZone, LogLevel.NORMAL);
 				m_sMessageContent = string.Format("Zone %1 Cleared! Zone %2 is now unlocked.|20|Attackers advance!", zoneNumber, zoneNumber + 1);
 			}
 			else
@@ -1919,12 +1919,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// First teleport the flags if dynamic respawns enabled
 			if (m_bEnableDynamicRespawns && m_aZoneRespawnConfigs && !m_aZoneRespawnConfigs.IsEmpty())
 			{
-				Print(string.Format("[CRF_Rush] Zone %1 fully cleared, scheduling respawn point changes for zone %2", zoneNumber, zoneNumber));
+				Print(string.Format("[CRF_Rush] Zone %1 fully cleared, scheduling respawn point changes for zone %2", zoneNumber, zoneNumber), LogLevel.NORMAL);
 				GetGame().GetCallqueue().CallLater(EnableZoneRespawnPoints, 250, false, zoneNumber);
 			}
 			
 			// Update both map markers and 3D markers for new active zone
-			Print("[CheckZoneCleared] Updating markers for new active zone: " + m_iCurrentZone);
+			Print("[CheckZoneCleared] Updating markers for new active zone: " + m_iCurrentZone, LogLevel.DEBUG);
 			GetGame().GetCallqueue().CallLater(UpdateAllMCOMMarkers, 500, false);
 			
 			// Delay zone status update (respawn wave) until after teleport completes
@@ -2297,32 +2297,32 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] GetMCOMEntity found via legacy lookup: " + mcomIdentifier + " ID: " + mcomEntity.GetID());
+			Print("[CRF_RushGamemodeManager] GetMCOMEntity found via legacy lookup: " + mcomIdentifier + " ID: " + mcomEntity.GetID(), LogLevel.DEBUG);
 			return mcomEntity;
 		}
 		
 		// If still null, try to find by entity name
-		Print("[CRF_RushGamemodeManager] GetMCOMEntity trying FindEntityByName for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] GetMCOMEntity trying FindEntityByName for: " + mcomIdentifier, LogLevel.DEBUG);
 		if (!mcomEntity)
 		{
 			string entityName = GetMCOMEntityName(mcomIdentifier);
-			Print("[CRF_RushGamemodeManager] GetMCOMEntity searching for entity name: " + entityName);
+			Print("[CRF_RushGamemodeManager] GetMCOMEntity searching for entity name: " + entityName, LogLevel.DEBUG);
 			if (!entityName.IsEmpty())
 			{
 				mcomEntity = GetGame().GetWorld().FindEntityByName(entityName);
 				if (mcomEntity)
 				{
-					Print("[CRF_RushGamemodeManager] GetMCOMEntity found via FindEntityByName: " + entityName + " ID: " + mcomEntity.GetID());
+					Print("[CRF_RushGamemodeManager] GetMCOMEntity found via FindEntityByName: " + entityName + " ID: " + mcomEntity.GetID(), LogLevel.DEBUG);
 				}
 			}
 		}
 		
 		if (!mcomEntity)
 		{
-			Print("[CRF_RushGamemodeManager] GetMCOMEntity FAILED to find entity for: " + mcomIdentifier);
+			Print("[CRF_RushGamemodeManager] GetMCOMEntity FAILED to find entity for: " + mcomIdentifier, LogLevel.WARNING);
 			
 			// Debug all member variables
-			Print("[CRF_RushGamemodeManager] DEBUG member variables:");
+			Print("[CRF_RushGamemodeManager] DEBUG member variables:", LogLevel.DEBUG);
 			if (m_Zone1AlphaMCOM) Print("  m_Zone1AlphaMCOM = " + m_Zone1AlphaMCOM.GetID());
 			if (m_Zone1BetaMCOM) Print("  m_Zone1BetaMCOM = " + m_Zone1BetaMCOM.GetID());
 			if (m_Zone2AlphaMCOM) Print("  m_Zone2AlphaMCOM = " + m_Zone2AlphaMCOM.GetID());
@@ -3232,7 +3232,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void CleanupMCOMReference(string mcomIdentifier)
 	{
-		Print("[CRF_RushGamemodeManager] CleanupMCOMReference called for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] CleanupMCOMReference called for: " + mcomIdentifier, LogLevel.DEBUG);
 		
 		// Get the MCOM entity before clearing references for marker cleanup
 		IEntity mcomEntity = GetMCOMEntity(mcomIdentifier);
@@ -3255,37 +3255,37 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				m_Zone1AlphaMCOM = null;
 				// Hide marker visibility flags
 				m_bZone1AlphaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone1Alpha reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone1Alpha reference", LogLevel.DEBUG);
 				break;
 			case "MCOMB":
 			case "Zone1Beta":
 				m_Zone1BetaMCOM = null;
 				m_bZone1BetaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone1Beta reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone1Beta reference", LogLevel.DEBUG);
 				break;
 			case "MCOMC":
 			case "Zone2Alpha":
 				m_Zone2AlphaMCOM = null;
 				m_bZone2AlphaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone2Alpha reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone2Alpha reference", LogLevel.DEBUG);
 				break;
 			case "MCOMD":
 			case "Zone2Beta":
 				m_Zone2BetaMCOM = null;
 				m_bZone2BetaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone2Beta reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone2Beta reference", LogLevel.DEBUG);
 				break;
 			case "MCOME":
 			case "Zone3Alpha":
 				m_Zone3AlphaMCOM = null;
 				m_bZone3AlphaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone3Alpha reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone3Alpha reference", LogLevel.DEBUG);
 				break;
 			case "MCOMF":
 			case "Zone3Beta":
 				m_Zone3BetaMCOM = null;
 				m_bZone3BetaMarkerVisible = false;
-				Print("[CRF_RushGamemodeManager] Cleared Zone3Beta reference");
+				Print("[CRF_RushGamemodeManager] Cleared Zone3Beta reference", LogLevel.DEBUG);
 				break;
 		}
 		
@@ -3296,7 +3296,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (m_aMCOMEntities && zoneIndex < m_aMCOMEntities.Count() && mcomIndex < m_aMCOMEntities[zoneIndex].Count())
 			{
 				m_aMCOMEntities[zoneIndex][mcomIndex] = null;
-				Print(string.Format("[CRF_RushGamemodeManager] Cleared dynamic array reference at zone %1, mcom %2", zoneIndex, mcomIndex));
+				Print(string.Format("[CRF_RushGamemodeManager] Cleared dynamic array reference at zone %1, mcom %2", zoneIndex, mcomIndex), LogLevel.DEBUG);
 			}
 		}
 		
@@ -3307,11 +3307,11 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (!m_bHideMapMarkers)
 			{
 				GetGame().GetCallqueue().CallLater(RefreshMapMarkers, 500, false);
-				Print("[CRF_RushGamemodeManager] Scheduled map marker refresh for: " + mcomIdentifier);
+				Print("[CRF_RushGamemodeManager] Scheduled map marker refresh for: " + mcomIdentifier, LogLevel.DEBUG);
 			}
 		}
 		
-		Print("[CRF_RushGamemodeManager] CleanupMCOMReference completed for: " + mcomIdentifier);
+		Print("[CRF_RushGamemodeManager] CleanupMCOMReference completed for: " + mcomIdentifier, LogLevel.DEBUG);
 	}
 	
 	//===================================================================================
@@ -3406,7 +3406,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (m_aZonesClearedStatus[zoneIndex])
 		{
-			Print(string.Format("[CRF_Rush] Zone %1 already cleared, skipping respawn activation", zoneNumber));
+			Print(string.Format("[CRF_Rush] Zone %1 already cleared, skipping respawn activation", zoneNumber), LogLevel.DEBUG);
 			return;
 		}
 		
@@ -3427,7 +3427,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (configIndex < 0 || configIndex >= m_aZoneRespawnConfigs.Count())
 		{
-			Print(string.Format("[CRF_Rush] No respawn configuration at index %1 for Zone %2", configIndex, zoneNumber));
+			Print(string.Format("[CRF_Rush] No respawn configuration at index %1 for Zone %2", configIndex, zoneNumber), LogLevel.DEBUG);
 			return;
 		}
 		
@@ -3436,7 +3436,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Skip if no respawn points configured (optional)
 		if (!zoneConfig || !zoneConfig.m_aRespawnPoints || zoneConfig.m_aRespawnPoints.IsEmpty())
 		{
-			Print(string.Format("[CRF_Rush] Zone %1: No respawn flag movement configured (optional)", zoneNumber));
+			Print(string.Format("[CRF_Rush] Zone %1: No respawn flag movement configured (optional)", zoneNumber), LogLevel.DEBUG);
 			return;
 		}
 		
@@ -3448,7 +3448,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		Print(string.Format("[CRF_Rush] Zone %1: Moving %2 respawn flag(s) to new positions", zoneNumber, zoneConfig.m_aRespawnPoints.Count()));
+		Print(string.Format("[CRF_Rush] Zone %1: Moving %2 respawn flag(s) to new positions", zoneNumber, zoneConfig.m_aRespawnPoints.Count()), LogLevel.DEBUG);
 		
 		// Move each faction's respawn flag to its marker position
 		foreach (CRF_Rush_RespawnPointEntry entry : zoneConfig.m_aRespawnPoints)
@@ -3486,7 +3486,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			respawnFlagEnt.SetOrigin(markerPos);
 			respawnFlagEnt.SetAngles(markerAngles);
 			
-			Print(string.Format("[CRF_Rush] Teleported %1 respawn flag to zone %2 at %3", entry.m_eFaction, zoneNumber, markerPos));
+			Print(string.Format("[CRF_Rush] Teleported %1 respawn flag to zone %2 at %3", entry.m_eFaction, zoneNumber, markerPos), LogLevel.DEBUG);
 		}
 	}
 	

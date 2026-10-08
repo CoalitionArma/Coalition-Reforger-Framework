@@ -103,6 +103,9 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Cache: player ID -> rank track ("enlisted" / "warrant" / "officer"), empty = default enlisted
 	protected ref map<int, string> m_mTrackCache = new map<int, string>;
 
+	//! Cache: player ID -> rounds played as squad lead or above (-1 means no record)
+	protected ref map<int, int> m_mLeadCache = new map<int, int>;
+
 	//! Fired after both tags and XP are fetched and caches are populated
 	protected ref ScriptInvoker m_OnPlayerInfoUpdated = new ScriptInvoker;
 
@@ -248,6 +251,18 @@ class CRF_CommunityTagManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Returns how many rounds the player has led a squad, platoon or company (website ORBAT
+	//! history), or -1 if unknown. Shown to admins while slotting.
+	int GetPlayerLeadCount(int playerId)
+	{
+		int leads;
+		if (m_mLeadCache.Find(playerId, leads))
+			return leads;
+
+		return -1;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Fetches community tags and XP for all connected players in a single HTTP request.
 	//! Server-authoritative: the HTTP call only ever happens on the authority, so clients don't
 	//! independently hammer the backend. A client calling this instead asks the server to re-send
@@ -379,6 +394,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		m_mTagCache.Clear();
 		m_mXpCache.Clear();
 		m_mTrackCache.Clear();
+		m_mLeadCache.Clear();
 	}
 
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -444,6 +460,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		map<string, string> tagsByName = new map<string, string>;
 		map<string, int> xpByName = new map<string, int>;
 		map<string, string> trackByName = new map<string, string>;
+		map<string, int> leadsByName = new map<string, int>;
 
 		// --- Parse tags ---
 		int tagsObjStart = data.IndexOf("\"tags\":{");
@@ -491,54 +508,9 @@ class CRF_CommunityTagManager : ScriptComponent
 			}
 		}
 
-		// --- Parse XP ---
-		int xpObjStart = data.IndexOf("\"xp\":{");
-		if (xpObjStart >= 0)
-		{
-			int pos = xpObjStart + 6;
-			while (pos < data.Length())
-			{
-				int keyOpen = data.IndexOfFrom(pos, "\"");
-				if (keyOpen < 0)
-					break;
-				string between = data.Substring(pos, keyOpen - pos);
-				if (between.Contains("}"))
-					break;
-				int keyClose = data.IndexOfFrom(keyOpen + 1, "\"");
-				if (keyClose < 0)
-					break;
-				string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
-				playerName = DecodeNameFromResponse(playerName);
-				int colonPos = data.IndexOfFrom(keyClose + 1, ":");
-				if (colonPos < 0)
-					break;
-				int valueStart = colonPos + 1;
-				if (valueStart >= data.Length())
-					break;
-				int xp = -1;
-				if (data.ContainsAt("null", valueStart))
-				{
-					pos = valueStart + 4;
-				}
-				else
-				{
-					int numEnd = valueStart;
-					while (numEnd < data.Length())
-					{
-						string ch = data.Substring(numEnd, 1);
-						if (ch == "," || ch == "}")
-							break;
-						numEnd++;
-					}
-					xp = data.Substring(valueStart, numEnd - valueStart).ToInt();
-					pos = numEnd;
-				}
-				if (!playerName.IsEmpty())
-					xpByName.Set(playerName, xp);
-				if (pos < data.Length() && data.ContainsAt(",", pos))
-					pos++;
-			}
-		}
+		// --- Parse XP and leadership counts ---
+		ParseIntMap(data, "xp", xpByName);
+		ParseIntMap(data, "leads", leadsByName);
 
 		// --- Parse rank tracks ---
 		// Expected format: "rankTrack":{"PlayerName":"enlisted"|"warrant"|"officer"|null, ...}
@@ -597,6 +569,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		array<string> outTags = {};
 		array<int> outXp = {};
 		array<string> outTracks = {};
+		array<int> outLeads = {};
 
 		foreach (int playerId : allPlayerIds)
 		{
@@ -607,6 +580,7 @@ class CRF_CommunityTagManager : ScriptComponent
 			string tag = "";
 			int xp = -1;
 			string track = "enlisted";
+			int leads = -1;
 			bool hasAny = false;
 
 			if (tagsByName.Find(playerName, tag))
@@ -617,6 +591,8 @@ class CRF_CommunityTagManager : ScriptComponent
 				hasAny = true;
 			else
 				track = "enlisted";
+			if (leadsByName.Find(playerName, leads))
+				hasAny = true;
 
 			if (!hasAny)
 				continue;
@@ -625,13 +601,14 @@ class CRF_CommunityTagManager : ScriptComponent
 			outTags.Insert(tag);
 			outXp.Insert(xp);
 			outTracks.Insert(track);
+			outLeads.Insert(leads);
 		}
 
 		Print(string.Format("[CRF_CommunityTagManager] Resolved %1 of %2 connected player(s) to tag/xp/track data — broadcasting", outIds.Count(), allPlayerIds.Count()), LogLevel.NORMAL);
 
 		// Apply locally (covers dedicated + listen server) and replicate to every client.
-		RpcDo_PlayerInfoUpdated(outIds, outTags, outXp, outTracks);
-		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
+		RpcDo_PlayerInfoUpdated(outIds, outTags, outXp, outTracks, outLeads);
+		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks, outLeads);
 
 		if (bRetry)
 		{
@@ -640,6 +617,61 @@ class CRF_CommunityTagManager : ScriptComponent
 		}
 
 		ScheduleReconcileIfIncomplete();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Parses a name -> integer object from the response, e.g. "xp":{"Name":15000,"Other":null}.
+	//! Null values are stored as -1.
+	protected void ParseIntMap(string data, string key, notnull map<string, int> outByName)
+	{
+		string objectKey = "\"" + key + "\":{";
+		int objStart = data.IndexOf(objectKey);
+		if (objStart < 0)
+			return;
+
+		int pos = objStart + objectKey.Length();
+		while (pos < data.Length())
+		{
+			int keyOpen = data.IndexOfFrom(pos, "\"");
+			if (keyOpen < 0)
+				break;
+			string between = data.Substring(pos, keyOpen - pos);
+			if (between.Contains("}"))
+				break;
+			int keyClose = data.IndexOfFrom(keyOpen + 1, "\"");
+			if (keyClose < 0)
+				break;
+			string playerName = data.Substring(keyOpen + 1, keyClose - keyOpen - 1);
+			playerName = DecodeNameFromResponse(playerName);
+			int colonPos = data.IndexOfFrom(keyClose + 1, ":");
+			if (colonPos < 0)
+				break;
+			int valueStart = colonPos + 1;
+			if (valueStart >= data.Length())
+				break;
+			int value = -1;
+			if (data.ContainsAt("null", valueStart))
+			{
+				pos = valueStart + 4;
+			}
+			else
+			{
+				int numEnd = valueStart;
+				while (numEnd < data.Length())
+				{
+					string ch = data.Substring(numEnd, 1);
+					if (ch == "," || ch == "}")
+						break;
+					numEnd++;
+				}
+				value = data.Substring(valueStart, numEnd - valueStart).ToInt();
+				pos = numEnd;
+			}
+			if (!playerName.IsEmpty())
+				outByName.Set(playerName, value);
+			if (pos < data.Length() && data.ContainsAt(",", pos))
+				pos++;
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -694,6 +726,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		array<string> outTags = {};
 		array<int> outXp = {};
 		array<string> outTracks = {};
+		array<int> outLeads = {};
 
 		foreach (int playerId, string tag : m_mTagCache)
 		{
@@ -701,10 +734,11 @@ class CRF_CommunityTagManager : ScriptComponent
 			outTags.Insert(tag);
 			outXp.Insert(GetPlayerXp(playerId));
 			outTracks.Insert(GetPlayerRankTrack(playerId));
+			outLeads.Insert(GetPlayerLeadCount(playerId));
 		}
 
 		Print(string.Format("[CRF_CommunityTagManager][SERVER] Re-broadcasting cached info for %1 player(s)", outIds.Count()), LogLevel.NORMAL);
-		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks);
+		Rpc(RpcDo_PlayerInfoUpdated, outIds, outTags, outXp, outTracks, outLeads);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -762,7 +796,7 @@ class CRF_CommunityTagManager : ScriptComponent
 	//! Applies resolved player-info data to the local cache. Called directly on the server (so the
 	//! host's own cache updates even on a listen server) and via RPC on every client.
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_PlayerInfoUpdated(array<int> playerIds, array<string> tags, array<int> xp, array<string> tracks)
+	protected void RpcDo_PlayerInfoUpdated(array<int> playerIds, array<string> tags, array<int> xp, array<string> tracks, array<int> leads)
 	{
 		int count = playerIds.Count();
 		for (int i = 0; i < count; i++)
@@ -770,6 +804,7 @@ class CRF_CommunityTagManager : ScriptComponent
 			m_mTagCache.Set(playerIds[i], tags[i]);
 			m_mXpCache.Set(playerIds[i], xp[i]);
 			m_mTrackCache.Set(playerIds[i], tracks[i]);
+			m_mLeadCache.Set(playerIds[i], leads[i]);
 		}
 
 		string side = "CLIENT";
@@ -844,6 +879,7 @@ class CRF_CommunityTagManager : ScriptComponent
 		m_mTagCache.Remove(playerId);
 		m_mXpCache.Remove(playerId);
 		m_mTrackCache.Remove(playerId);
+		m_mLeadCache.Remove(playerId);
 
 		m_OnPlayerRosterChanged.Invoke();
 		// No re-fetch: remaining players' cached data is still valid.

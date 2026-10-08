@@ -1,56 +1,67 @@
+//------------------------------------------------------------------------------------------------
+// The cinematic outro plays for AAR_HANDOVER_TIME seconds, fades its text out, then hands over to
+// the AAR screen (COA_AARMenu), which fades in from the same black background. The personal stats
+// panel that used to appear here now lives on the AAR screen.
+//------------------------------------------------------------------------------------------------
 modded class COA_Outro
 {
-    protected ref CRF_AARStatsHUD m_pAARStatsHUD;
-    
+	// Seconds from the outro opening until the AAR screen takes over
+	protected static const float AAR_HANDOVER_TIME = 10.0;
+	// How long the title text takes to fade out, ending at the handover
+	protected static const float TEXT_FADE_OUT_TIME = 1.0;
+
+	protected float m_fOutroElapsed;
+	protected bool m_bHandedOver;
+
 	override void OnMenuOpen()
 	{
-        super.OnMenuOpen();
-        GetGame().GetCallqueue().CallLater(CreateStatsPanel, 5000, false);
-    }
+		super.OnMenuOpen();
 
-	override void OnMenuClose()
-	{
-		super.OnMenuClose();
-
-		GetGame().GetCallqueue().Remove(CreateStatsPanel);
-		if (m_pAARStatsHUD)
-		{
-			m_pAARStatsHUD.Cleanup();
-			m_pAARStatsHUD = null;
-		}
-		if (m_wAARStatsRoot)
-		{
-			m_wAARStatsRoot.RemoveFromHierarchy();
-			m_wAARStatsRoot = null;
-		}
+		m_fOutroElapsed = 0;
+		m_bHandedOver = false;
 	}
 
 	override void OnMenuUpdate(float tDelta)
 	{
 		AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
-		if (m_bFadingStats && m_wAARStatsRoot)
+
+		if (m_bHandedOver)
+			return;
+
+		m_fOutroElapsed += tDelta;
+
+		float fadeStart = AAR_HANDOVER_TIME - TEXT_FADE_OUT_TIME;
+		if (m_fOutroElapsed > fadeStart)
+			SetTitleOpacity(1 - Math.Clamp((m_fOutroElapsed - fadeStart) / TEXT_FADE_OUT_TIME, 0, 1));
+
+		if (m_fOutroElapsed >= AAR_HANDOVER_TIME)
 		{
-			m_fStatsFadeElapsed += tDelta;
-			float opacity = Math.Clamp(m_fStatsFadeElapsed / 2.0, 0.0, 1.0);
-			m_wAARStatsRoot.SetOpacity(opacity);
-			if (opacity >= 1.0)
-				m_bFadingStats = false;
+			m_bHandedOver = true;
+			m_bAllowClose = true;
+
+			// Not from inside this menu's own update
+			GetGame().GetCallqueue().Call(HandOverToAAR);
 		}
 	}
-	
-	protected void CreateStatsPanel()
+
+	protected void SetTitleOpacity(float opacity)
 	{
-		SCR_HUDManagerComponent hudManager = GetGame().GetHUDManager();
-		if (!hudManager)
+		Widget root = GetRootWidget();
+		if (!root)
 			return;
 
-		m_wAARStatsRoot = hudManager.CreateLayout(STATS_LAYOUT, EHudLayers.ALWAYS_TOP, 0);
-		if (!m_wAARStatsRoot)
-			return;
+		array<string> titleWidgets = {"TitleText", "TitleText1", "TitleText2", "TitleText3"};
+		foreach (string widgetName : titleWidgets)
+		{
+			Widget widget = root.FindAnyWidget(widgetName);
+			if (widget)
+				widget.SetOpacity(opacity);
+		}
+	}
 
-		m_wAARStatsRoot.SetOpacity(0);
-		m_pAARStatsHUD = new CRF_AARStatsHUD(m_wAARStatsRoot);
-		m_fStatsFadeElapsed = 0;
-		m_bFadingStats = true;
+	protected void HandOverToAAR()
+	{
+		Close();
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.COA_AARMenu);
 	}
 }

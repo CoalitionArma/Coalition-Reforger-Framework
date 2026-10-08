@@ -1,0 +1,221 @@
+FrameWidgetClass {
+ Name "ZeusPlayerList"
+ Slot FrameWidgetSlot "{C7A3E4D2000A0001}" {
+  Anchor 0 0.5 0 0.5
+  PositionX -280
+  OffsetLeft -280
+  PositionY -280
+  OffsetTop -280
+  SizeX 304
+  OffsetRight -24
+  SizeY 560
+  OffsetBottom -280
+ }
+ {
+  ImageWidgetClass "{C7A3E4D2000A0002}" {
+   Name "PanelBG"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0003}" {
+    Anchor 0 0 1 1
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX -24
+    OffsetRight 24
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.0033 0.0037 0.0052 0.97
+  }
+  ImageWidgetClass "{C7A3E4D2000A0004}" {
+   Name "AccentBar"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0005}" {
+    Anchor 0 0 1 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -24
+    OffsetRight 24
+    SizeY 3
+    OffsetBottom -3
+   }
+   Color 0.5841 0.0369 0.0369 1
+  }
+  TextWidgetClass "{C7A3E4D2000A0006}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0007}" {
+    Anchor 0 0 1 0
+    OffsetLeft 14
+    PositionY 10
+    OffsetTop 10
+    SizeX -108
+    OffsetRight 94
+    SizeY 28
+    OffsetBottom -38
+   }
+   Color 0.8632 0.8879 0.9301 1
+   Text "PLAYERS"
+   "Font Size" 22
+   "Min Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{C7A3E4D2000A0008}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+   }
+  }
+  TextWidgetClass "{C7A3E4D2000A0009}" {
+   Name "CountText"
+   Slot FrameWidgetSlot "{C7A3E4D2000A000A}" {
+    Anchor 1 0 1 0
+    PositionX -94
+    OffsetLeft -94
+    PositionY 10
+    OffsetTop 10
+    SizeX 56
+    OffsetRight 38
+    SizeY 28
+    OffsetBottom -38
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text "0"
+   "Font Size" 18
+   "Min Font Size" 12
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{C7A3E4D2000A000B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{C7A3E4D2000A000C}" {
+   Name "HintText"
+   Slot FrameWidgetSlot "{C7A3E4D2000A000D}" {
+    Anchor 0 0 1 0
+    OffsetLeft 14
+    PositionY 40
+    OffsetTop 40
+    SizeX -52
+    OffsetRight 38
+    SizeY 20
+    OffsetBottom -60
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text "Double-click a name to move the camera"
+   "Font Size" 14
+   "Min Font Size" 10
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{C7A3E4D2000A000E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ImageWidgetClass "{C7A3E4D2000A000F}" {
+   Name "Divider"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0010}" {
+    Anchor 0 0 1 0
+    OffsetLeft 10
+    PositionY 66
+    OffsetTop 66
+    SizeX -44
+    OffsetRight 34
+    SizeY 1
+    OffsetBottom -67
+   }
+   Color 1 1 1 0.016
+  }
+  ScrollLayoutWidgetClass "{C7A3E4D2000A0011}" {
+   Name "PlayerScroll"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0012}" {
+    Anchor 0 0 1 1
+    OffsetLeft 6
+    OffsetTop 72
+    SizeX -36
+    OffsetRight 30
+    SizeY -80
+    OffsetBottom 8
+   }
+   {
+    VerticalLayoutWidgetClass "{C7A3E4D2000A0013}" {
+     Name "PlayerRows"
+     Slot AlignableSlot "{C7A3E4D2000A0014}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{C7A3E4D2000A0015}" {
+   Name "TabBG"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0016}" {
+    Anchor 1 0 1 1
+    PositionX -24
+    OffsetLeft -24
+    OffsetTop 0
+    SizeX 24
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.0075 0.0086 0.0123 0.98
+  }
+  ImageWidgetClass "{C7A3E4D2000A0017}" {
+   Name "TabAccent"
+   Slot FrameWidgetSlot "{C7A3E4D2000A0018}" {
+    Anchor 1 0 1 1
+    PositionX -3
+    OffsetLeft -3
+    OffsetTop 0
+    SizeX 3
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.5841 0.0369 0.0369 1
+  }
+  TextWidgetClass "{C7A3E4D2000A0019}" {
+   Name "TabArrow"
+   Slot FrameWidgetSlot "{C7A3E4D2000A001A}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -24
+    OffsetLeft -24
+    PositionY -34
+    OffsetTop -34
+    SizeX 21
+    OffsetRight 3
+    SizeY 36
+    OffsetBottom -2
+   }
+   Color 0.8632 0.8879 0.9301 1
+   Text "›"
+   "Font Size" 30
+   "Min Font Size" 16
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{C7A3E4D2000A001B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+   }
+  }
+  TextWidgetClass "{C7A3E4D2000A001C}" {
+   Name "TabCount"
+   Slot FrameWidgetSlot "{C7A3E4D2000A001D}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -24
+    OffsetLeft -24
+    PositionY 4
+    OffsetTop 4
+    SizeX 21
+    OffsetRight 3
+    SizeY 24
+    OffsetBottom -28
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text "0"
+   "Font Size" 15
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{C7A3E4D2000A001E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+ }
+}

@@ -85,8 +85,59 @@ modded class SCR_MapMarkerManagerComponent
 		rplToOwnerManager.ShareMarker(markers);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! True during the AAR, when every marker of every faction is shown on clients
+	static bool IsAARRevealActive()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		return gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.AAR;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client: adds a marker for the AAR map even if it belongs to another faction (vanilla discards
+	//! those on arrival - see OnAddSynchedMarker), or reveals it if this client already has it.
+	//! Sent by CRF_AARManager via COA_PlayerRplToOwnerManager.ReceiveAARMarker.
+	void RevealAARMarker(SCR_MapMarkerBase marker)
+	{
+		if (!marker)
+			return;
+
+		SCR_MapMarkerBase existing = GetStaticMarkerByID(marker.GetMarkerID());
+		if (!existing)
+			existing = GetDisabledMarkerByID(marker.GetMarkerID());
+
+		if (existing)
+		{
+			existing.m_bIsShared = true;
+			existing.SetVisible(true);
+			return;
+		}
+
+		m_aStaticMarkers.Insert(marker);
+
+		if (marker.GetMarkerOwnerID() > -1) // player made marker
+			marker.RequestProfanityFilter();
+
+		// m_bIsShared must be set before SetVisible - see UpdateMarkerVisibility
+		marker.m_bIsShared = true;
+
+		SCR_MapEntity mapEnt = SCR_MapEntity.GetMapInstance();
+		if (mapEnt && mapEnt.IsOpen() && mapEnt.GetMapUIComponent(SCR_MapMarkersUI))
+			marker.OnCreateMarker(true);
+
+		marker.SetVisible(true);
+	}
+
 	override void OnAddSynchedMarker(SCR_MapMarkerBase marker)
 	{
+		// Markers placed during the AAR are shown to everyone, whatever their faction. The dedicated
+		// server keeps the vanilla path, which stores (and disables) every marker it receives.
+		if (!System.IsConsoleApp() && IsAARRevealActive())
+		{
+			RevealAARMarker(marker);
+			return;
+		}
+
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		if (pc && marker.GetMarkerOwnerID() == pc.GetPlayerId())
 		{
@@ -119,10 +170,18 @@ modded class SCR_MapMarkerManagerComponent
 		if (!marker)
 			return;
 			
+		// Every marker is shown during the AAR, shared or not
+		if (IsAARRevealActive())
+		{
+			marker.m_bIsShared = true;
+			marker.SetVisible(true);
+			return;
+		}
+
 		// Cache the local player ID to avoid repeated calls
 		if (m_iCachedLocalPlayerId == -1)
 			m_iCachedLocalPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		
+
 		// If shareable markers are disabled for this faction, all markers are visible (vanilla behaviour)
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		Faction localFaction = SCR_FactionManager.SGetLocalPlayerFaction();

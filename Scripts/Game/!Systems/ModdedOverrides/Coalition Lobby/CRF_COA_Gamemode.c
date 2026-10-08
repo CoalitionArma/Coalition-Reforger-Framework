@@ -74,6 +74,9 @@ modded class COA_Gamemode
 					CRF_ServerStatsManager statsManager = CRF_ServerStatsManager.GetInstance();
 					if (statsManager)
 						statsManager.ResetForNewRound();
+
+					// Drop last round's AAR state (mission link, marker sends)
+					CRF_AARManager.Reset();
 					break;
 				}
 				
@@ -107,6 +110,10 @@ modded class COA_Gamemode
 							winningFaction = loggingManager.GetWinningFaction();
 						rplBroadcastManager.BroadcastOutro(winningFaction);
 					}
+
+					// Group voice channels, website link lookup, and all-faction map markers for
+					// the AAR screen that follows the outro
+					CRF_AARManager.GetInstance().StartAAR();
 					break;
 				}
 			}

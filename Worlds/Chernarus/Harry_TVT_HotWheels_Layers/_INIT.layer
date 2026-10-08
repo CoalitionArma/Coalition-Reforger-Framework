@@ -9,6 +9,32 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bEndMissionOnVictory 0
    m_fNotifyIncrementPercent 25
   }
+  CRF_HighValueTargetGamemodeManager "{6A8B2B27AFBAF71F}" {
+   m_eTargetType VIP
+   m_bDisableDamage 1
+   m_aHVTEntries {
+    CRF_HVTEntry "{6A8B2B26BB0D989F}" {
+     m_hvtPrefab "{8C7093AF368F496A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1.et"
+     m_sTransponderEntityName "HVT1"
+    }
+    CRF_HVTEntry "{6A8B2B2537194FCA}" {
+     m_hvtPrefab "{DF7F8D5C05CC1AF6}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_2.et"
+     m_sTransponderEntityName "HVT2"
+    }
+    CRF_HVTEntry "{6A8B2B2503AB41A4}" {
+     m_hvtPrefab "{408B8BD5E3F09FF3}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_3.et"
+     m_sTransponderEntityName "HVT3"
+    }
+    CRF_HVTEntry "{6A8B2B250A2818B6}" {
+     m_hvtPrefab "{035F8F1CEF3B187F}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_4.et"
+     m_sTransponderEntityName "HVT4"
+    }
+    CRF_HVTEntry "{6A8B2B250A600E13}" {
+     m_hvtPrefab "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et"
+     m_sTransponderEntityName "HVT5"
+    }
+   }
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -36,7 +62,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A7CF1295BE94D85}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "NATO AND USSR forces search for intelligence in Chernarus."\
+   m_sTextData "NATO AND USSR forces search for informants in Chernarus."\
    ""\
    "BLUFOR Composition: Motorized Infantry"\
    "BLUFOR Assets: LAV-25, MAT"\
@@ -53,10 +79,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A7CF1295BE94128}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Gather a majority of the 5 intel folders in the AO at your spawn box, or complete the 90% attrition goal. "\
+   "Gather a majority of the 5 VIPs in the AO at your spawn, or complete the 90% attrition goal. "\
    ""\
    "INTENT"\
-   "The majority of the folders are in the central town. If you can get a majority of the folders, you get the advantage by being able to develop a defensive posture. "\
+   "The majority of the VIPs are in the central town. If you can get a majority of the informants, you get the advantage by being able to develop a defensive posture. "\
    ""\
    "EXECUTION"\
    "Weigh the benefits of completing the intel objective or if you try to attrite the enemy. "
@@ -68,10 +94,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6A7CF1295BE94069}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Gather a majority of the 5 intel folders in the AO at your spawn box, or complete the 90% attrition goal. "\
+   "Gather a majority of the 5 VIPs in the AO at your spawn, or complete the 90% attrition goal. "\
    ""\
    "INTENT"\
-   "The majority of the folders are in the central town. If you can get a majority of the folders, you get the advantage by being able to develop a defensive posture. "\
+   "The majority of the VIPs are in the central town. If you can get a majority of the informants, you get the advantage by being able to develop a defensive posture. "\
    ""\
    "EXECUTION"\
    "Weigh the benefits of completing the intel objective or if you try to attrite the enemy. "
@@ -90,7 +116,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6A7CF1295BE9472E}" {
    m_sTitle "Administration"
-   m_sTextData "Intel objective will be counted by admin based on whatever is in the spawn boxes."
+   m_sTextData "HVT markers update every 6 minutes."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"

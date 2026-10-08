@@ -1,0 +1,491 @@
+FrameWidgetClass {
+ Name "AARRatingRoot"
+ Slot FrameWidgetSlot "{7C10000000000001}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ "Ignore Cursor" 1
+ "Z Order" 20
+ {
+  OverlayWidgetClass "{7C10000000000002}" {
+   Name "RatingCard"
+   Slot FrameWidgetSlot "{7C10000000000003}" {
+    Anchor 1 0 1 0
+    PositionX -360
+    OffsetLeft -360
+    PositionY 124
+    OffsetTop 124
+    SizeX 340
+    OffsetRight 20
+    SizeY 150
+    OffsetBottom -274
+    SizeToContent 1
+   }
+   "Is Visible" 0
+   {
+    ImageWidgetClass "{7C10000000000004}" {
+     Name "RatingBG"
+     Slot OverlayWidgetSlot "{7C10000000000005}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0075 0.0086 0.0123 0.97
+    }
+    PanelWidgetClass "{7C10000000000006}" {
+     Name "RatingBorder"
+     Slot OverlayWidgetSlot "{7C10000000000007}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 1 1 1 0.013
+     style outline_2px
+    }
+    VerticalLayoutWidgetClass "{7C10000000000008}" {
+     Name "RatingContent"
+     Slot OverlayWidgetSlot "{7C10000000000009}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 18 14 18 14
+     }
+     {
+      TextWidgetClass "{7C1000000000000A}" {
+       Name "RatingTitle"
+       Slot LayoutSlot "{7C1000000000000B}" {
+        Padding 0 0 0 10
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "RATE THIS MISSION"
+       "Font Size" 16
+       "Min Font Size" 10
+       FontProperties FontProperties "{7C1000000000000C}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      HorizontalLayoutWidgetClass "{7C1000000000000D}" {
+       Name "RatingButtons"
+       Slot LayoutSlot "{7C1000000000000E}" {
+        Padding 0 0 0 10
+       }
+       {
+          SizeLayoutWidgetClass "{7C1000000000006E}" {
+           Name "RateSizer1"
+           Slot LayoutSlot "{7C1000000000006F}" {
+            Padding 0 0 8 0
+           }
+           WidthOverride 52
+           HeightOverride 44
+           AllowWidthOverride 1
+           AllowHeightOverride 1
+           {
+            FrameWidgetClass "{7C10000000000070}" {
+             Name "RateFrame1"
+             Slot AlignableSlot "{7C10000000000071}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             {
+              ImageWidgetClass "{7C10000000000072}" {
+               Name "RateBG1"
+               Slot FrameWidgetSlot "{7C10000000000073}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               Color 0.0116 0.0137 0.0212 1
+              }
+              ButtonWidgetClass "{7C10000000000074}" {
+               Name "Rate1"
+               Slot FrameWidgetSlot "{7C10000000000075}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               "Z Order" 1
+               Color 1 1 1 0
+               components {
+                ButtonComponent "{7C10000000000076}" {
+                 m_ColorButtonDefault 0.042 0.042 0.042 0
+                 m_ColorButtonHovered 1 1 1 0.012
+                 m_ColorButtonHoveredFocused 1 1 1 0.025
+                }
+                SCR_ButtonTextComponent "{7C10000000000077}" {
+                }
+               }
+               {
+                TextWidgetClass "{7C100000000002C6}" {
+                 Name "ButtonText"
+                 Slot ButtonWidgetSlot "{7C100000000002C7}" {
+                  HorizontalAlign 3
+                  VerticalAlign 3
+                 }
+                 Color 0.8632 0.8879 0.9301 1
+                 Text "1"
+                 "Font Size" 22
+                 "Min Font Size" 12
+                 "Horizontal Alignment" Center
+                 "Vertical Alignment" Center
+                 FontProperties FontProperties "{7C100000000002C8}" {
+                  Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          SizeLayoutWidgetClass "{7C10000000000078}" {
+           Name "RateSizer2"
+           Slot LayoutSlot "{7C10000000000079}" {
+            Padding 0 0 8 0
+           }
+           WidthOverride 52
+           HeightOverride 44
+           AllowWidthOverride 1
+           AllowHeightOverride 1
+           {
+            FrameWidgetClass "{7C1000000000007A}" {
+             Name "RateFrame2"
+             Slot AlignableSlot "{7C1000000000007B}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             {
+              ImageWidgetClass "{7C1000000000007C}" {
+               Name "RateBG2"
+               Slot FrameWidgetSlot "{7C1000000000007D}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               Color 0.0116 0.0137 0.0212 1
+              }
+              ButtonWidgetClass "{7C1000000000007E}" {
+               Name "Rate2"
+               Slot FrameWidgetSlot "{7C1000000000007F}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               "Z Order" 1
+               Color 1 1 1 0
+               components {
+                ButtonComponent "{7C10000000000080}" {
+                 m_ColorButtonDefault 0.042 0.042 0.042 0
+                 m_ColorButtonHovered 1 1 1 0.012
+                 m_ColorButtonHoveredFocused 1 1 1 0.025
+                }
+                SCR_ButtonTextComponent "{7C10000000000081}" {
+                }
+               }
+               {
+                TextWidgetClass "{7C100000000002D0}" {
+                 Name "ButtonText"
+                 Slot ButtonWidgetSlot "{7C100000000002D1}" {
+                  HorizontalAlign 3
+                  VerticalAlign 3
+                 }
+                 Color 0.8632 0.8879 0.9301 1
+                 Text "2"
+                 "Font Size" 22
+                 "Min Font Size" 12
+                 "Horizontal Alignment" Center
+                 "Vertical Alignment" Center
+                 FontProperties FontProperties "{7C100000000002D2}" {
+                  Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          SizeLayoutWidgetClass "{7C10000000000082}" {
+           Name "RateSizer3"
+           Slot LayoutSlot "{7C10000000000083}" {
+            Padding 0 0 8 0
+           }
+           WidthOverride 52
+           HeightOverride 44
+           AllowWidthOverride 1
+           AllowHeightOverride 1
+           {
+            FrameWidgetClass "{7C10000000000084}" {
+             Name "RateFrame3"
+             Slot AlignableSlot "{7C10000000000085}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             {
+              ImageWidgetClass "{7C10000000000086}" {
+               Name "RateBG3"
+               Slot FrameWidgetSlot "{7C10000000000087}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               Color 0.0116 0.0137 0.0212 1
+              }
+              ButtonWidgetClass "{7C10000000000088}" {
+               Name "Rate3"
+               Slot FrameWidgetSlot "{7C10000000000089}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               "Z Order" 1
+               Color 1 1 1 0
+               components {
+                ButtonComponent "{7C1000000000008A}" {
+                 m_ColorButtonDefault 0.042 0.042 0.042 0
+                 m_ColorButtonHovered 1 1 1 0.012
+                 m_ColorButtonHoveredFocused 1 1 1 0.025
+                }
+                SCR_ButtonTextComponent "{7C1000000000008B}" {
+                }
+               }
+               {
+                TextWidgetClass "{7C100000000002DA}" {
+                 Name "ButtonText"
+                 Slot ButtonWidgetSlot "{7C100000000002DB}" {
+                  HorizontalAlign 3
+                  VerticalAlign 3
+                 }
+                 Color 0.8632 0.8879 0.9301 1
+                 Text "3"
+                 "Font Size" 22
+                 "Min Font Size" 12
+                 "Horizontal Alignment" Center
+                 "Vertical Alignment" Center
+                 FontProperties FontProperties "{7C100000000002DC}" {
+                  Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          SizeLayoutWidgetClass "{7C1000000000008C}" {
+           Name "RateSizer4"
+           Slot LayoutSlot "{7C1000000000008D}" {
+            Padding 0 0 8 0
+           }
+           WidthOverride 52
+           HeightOverride 44
+           AllowWidthOverride 1
+           AllowHeightOverride 1
+           {
+            FrameWidgetClass "{7C1000000000008E}" {
+             Name "RateFrame4"
+             Slot AlignableSlot "{7C1000000000008F}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             {
+              ImageWidgetClass "{7C10000000000090}" {
+               Name "RateBG4"
+               Slot FrameWidgetSlot "{7C10000000000091}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               Color 0.0116 0.0137 0.0212 1
+              }
+              ButtonWidgetClass "{7C10000000000092}" {
+               Name "Rate4"
+               Slot FrameWidgetSlot "{7C10000000000093}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               "Z Order" 1
+               Color 1 1 1 0
+               components {
+                ButtonComponent "{7C10000000000094}" {
+                 m_ColorButtonDefault 0.042 0.042 0.042 0
+                 m_ColorButtonHovered 1 1 1 0.012
+                 m_ColorButtonHoveredFocused 1 1 1 0.025
+                }
+                SCR_ButtonTextComponent "{7C10000000000095}" {
+                }
+               }
+               {
+                TextWidgetClass "{7C100000000002E4}" {
+                 Name "ButtonText"
+                 Slot ButtonWidgetSlot "{7C100000000002E5}" {
+                  HorizontalAlign 3
+                  VerticalAlign 3
+                 }
+                 Color 0.8632 0.8879 0.9301 1
+                 Text "4"
+                 "Font Size" 22
+                 "Min Font Size" 12
+                 "Horizontal Alignment" Center
+                 "Vertical Alignment" Center
+                 FontProperties FontProperties "{7C100000000002E6}" {
+                  Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          SizeLayoutWidgetClass "{7C10000000000096}" {
+           Name "RateSizer5"
+           Slot LayoutSlot "{7C10000000000097}" {
+            Padding 0 0 8 0
+           }
+           WidthOverride 52
+           HeightOverride 44
+           AllowWidthOverride 1
+           AllowHeightOverride 1
+           {
+            FrameWidgetClass "{7C10000000000098}" {
+             Name "RateFrame5"
+             Slot AlignableSlot "{7C10000000000099}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             {
+              ImageWidgetClass "{7C1000000000009A}" {
+               Name "RateBG5"
+               Slot FrameWidgetSlot "{7C1000000000009B}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               Color 0.0116 0.0137 0.0212 1
+              }
+              ButtonWidgetClass "{7C1000000000009C}" {
+               Name "Rate5"
+               Slot FrameWidgetSlot "{7C1000000000009D}" {
+                Anchor 0 0 1 1
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX 0
+                OffsetRight 0
+                SizeY 0
+                OffsetBottom 0
+               }
+               "Z Order" 1
+               Color 1 1 1 0
+               components {
+                ButtonComponent "{7C1000000000009E}" {
+                 m_ColorButtonDefault 0.042 0.042 0.042 0
+                 m_ColorButtonHovered 1 1 1 0.012
+                 m_ColorButtonHoveredFocused 1 1 1 0.025
+                }
+                SCR_ButtonTextComponent "{7C1000000000009F}" {
+                }
+               }
+               {
+                TextWidgetClass "{7C100000000002EE}" {
+                 Name "ButtonText"
+                 Slot ButtonWidgetSlot "{7C100000000002EF}" {
+                  HorizontalAlign 3
+                  VerticalAlign 3
+                 }
+                 Color 0.8632 0.8879 0.9301 1
+                 Text "5"
+                 "Font Size" 22
+                 "Min Font Size" 12
+                 "Horizontal Alignment" Center
+                 "Vertical Alignment" Center
+                 FontProperties FontProperties "{7C100000000002F0}" {
+                  Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+       }
+      }
+      TextWidgetClass "{7C1000000000000F}" {
+       Name "RatingStatus"
+       Slot LayoutSlot "{7C10000000000010}" {
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "1 = poor  ·  5 = great"
+       "Font Size" 15
+       "Min Font Size" 10
+       FontProperties FontProperties "{7C10000000000011}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

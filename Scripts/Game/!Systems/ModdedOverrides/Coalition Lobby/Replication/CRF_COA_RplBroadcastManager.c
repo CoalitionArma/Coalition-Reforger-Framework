@@ -278,7 +278,7 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Area Timer: push current state to all clients every server tick
+	//! Area Timer: push current state to all clients (sent on change, plus a periodic resend for late joiners)
 	void BroadcastAreaTimerUpdate(CRF_EAreaTimerState state, int countdown, string faction, string zoneLabel)
 	{
 		int bytes = 8; // state + countdown ints

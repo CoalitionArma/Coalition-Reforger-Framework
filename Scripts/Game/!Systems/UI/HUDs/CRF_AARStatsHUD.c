@@ -24,6 +24,33 @@ class CRF_AARSessionStats
 	static bool s_bStatsReceived = false;
 	static ref ScriptInvoker s_OnStatsReceived = new ScriptInvoker();
 
+	// coalitiongroup.net/aar/<id> page for this round (0 = unknown), sent by CRF_AARManager
+	static int s_iMissionId;
+	static ref ScriptInvoker s_OnMissionIdReceived = new ScriptInvoker();
+
+	// This player's 1-5 rating of the round as last confirmed by the server (0 = none yet), and
+	// whether the website accepted it. s_OnRatingResult fires on every server answer.
+	static int s_iRating;
+	static bool s_bRatingSaved;
+	static ref ScriptInvoker s_OnRatingResult = new ScriptInvoker();
+
+	//------------------------------------------------------------------------------------------------
+	static void SetMissionId(int missionId)
+	{
+		s_iMissionId = missionId;
+		s_OnMissionIdReceived.Invoke();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static void SetRatingResult(int rating, bool saved)
+	{
+		if (saved)
+			s_iRating = rating;
+
+		s_bRatingSaved = saved;
+		s_OnRatingResult.Invoke();
+	}
+
 	//------------------------------------------------------------------------------------------------
 	static void SetData(array<string> kills, string killedBy)
 	{
@@ -63,6 +90,9 @@ class CRF_AARSessionStats
 		s_nFriendlyKills = 0;
 		s_nXP            = 0;
 		s_bStatsReceived = false;
+		s_iMissionId     = 0;
+		s_iRating        = 0;
+		s_bRatingSaved   = false;
 	}
 }
 

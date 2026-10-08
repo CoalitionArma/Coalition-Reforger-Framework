@@ -2,6 +2,11 @@ modded class Bacon_PlaySoundComponent
 {
 	SoundComponent m_SoundComp;
 	override void OnPostInit(IEntity owner) {
+		// Dedicated servers and headless clients play no audio, so skip the per-frame
+		// IsPlaying()/SoundEvent loop there entirely.
+		if (System.IsConsoleApp())
+			return;
+
 		owner.SetFlags(EntityFlags.ACTIVE, false);
 		SetEventMask(owner, EntityEvent.INIT | EntityEvent.FRAME);
 	};
