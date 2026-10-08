@@ -1,0 +1,76 @@
+ButtonWidgetClass {
+ Name "RowButton"
+ Slot AlignableSlot "{C7A3E4D2000B0001}" {
+  HorizontalAlign 3
+ }
+ Color 0.09 0.1 0.13 0.75
+ components {
+  CRF_ZeusPlayerRowButton "{C7A3E4D2000B0004}" {
+  }
+ }
+ {
+  SizeLayoutWidgetClass "{C7A3E4D2000B0002}" {
+   Name "RowSize"
+   Slot ButtonWidgetSlot "{C7A3E4D2000B0003}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 30
+   {
+    OverlayWidgetClass "{C7A3E4D2000B000D}" {
+     Name "RowOverlay"
+     Slot AlignableSlot "{C7A3E4D2000B000E}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     {
+      ImageWidgetClass "{C7A3E4D2000B0005}" {
+       Name "FactionStripe"
+       Slot OverlayWidgetSlot "{C7A3E4D2000B0006}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+       }
+       Color 1 1 1 1
+       Size 4 30
+      }
+      TextWidgetClass "{C7A3E4D2000B0007}" {
+       Name "NameText"
+       Slot OverlayWidgetSlot "{C7A3E4D2000B0008}" {
+        HorizontalAlign 3
+        VerticalAlign 1
+        Padding 12 0 72 0
+       }
+       Color 0.94 0.95 0.97 1
+       Text "Player Name"
+       "Font Size" 17
+       "Min Font Size" 11
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{C7A3E4D2000B0009}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      TextWidgetClass "{C7A3E4D2000B000A}" {
+       Name "StatusText"
+       Slot OverlayWidgetSlot "{C7A3E4D2000B000B}" {
+        HorizontalAlign 2
+        VerticalAlign 1
+        Padding 0 0 8 0
+       }
+       Color 0.72 0.77 0.87 1
+       Text ""
+       "Font Size" 14
+       "Min Font Size" 10
+       "Horizontal Alignment" Right
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{C7A3E4D2000B000C}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

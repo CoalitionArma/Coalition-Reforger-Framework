@@ -269,4 +269,21 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	{
 		CRF_AARSessionStats.SetMissionId(missionId);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: players with an open admin ticket (see RequestZeusTicketHolders)
+	void ReceiveZeusTicketHolders(array<int> playerIds)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveZeusTicketHolders(playerIds);
+		else
+			Rpc(RpcDo_ReceiveZeusTicketHolders, playerIds);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveZeusTicketHolders(array<int> playerIds)
+	{
+		CRF_ZeusPlayerList.SetTicketHolders(playerIds);
+	}
 };

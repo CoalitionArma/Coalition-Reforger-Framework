@@ -274,6 +274,83 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: move the caller's editor camera to a player the caller's client has
+	//! not streamed in (see CRF_ZeusPlayerList.FocusCameraOnPlayer)
+	void RequestZeusCameraToPlayer(int targetPlayerId)
+	{
+		Rpc(RpcAsk_RequestZeusCameraToPlayer, targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusCameraToPlayer(int targetPlayerId)
+	{
+		LogTelemetry("RpcAsk_RequestZeusCameraToPlayer", 4);
+
+		// This reveals where any player is
+		SCR_EditorModeEntity modeEntity = GetCallerZeusMode();
+		if (!modeEntity)
+			return;
+
+		IEntity target = GetGame().GetPlayerManager().GetPlayerControlledEntity(targetPlayerId);
+		if (!target)
+			return;
+
+		SCR_CameraEditorComponent cameraManager = SCR_CameraEditorComponent.Cast(modeEntity.FindComponent(SCR_CameraEditorComponent));
+		if (cameraManager)
+			cameraManager.TeleportEditorCamera(target.GetOrigin());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list: which players have an open admin ticket, so their names can be
+	//! highlighted. Only the player IDs are sent - never the ticket messages.
+	void RequestZeusTicketHolders()
+	{
+		Rpc(RpcAsk_RequestZeusTicketHolders);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusTicketHolders()
+	{
+		LogTelemetry("RpcAsk_RequestZeusTicketHolders", 0);
+
+		if (!GetCallerZeusMode())
+			return;
+
+		COA_AdminMenuManager adminMenuManager = COA_AdminMenuManager.GetInstance();
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(GetCallerPlayerId());
+		if (!adminMenuManager || !ownerManager)
+			return;
+
+		ownerManager.ReceiveZeusTicketHolders(adminMenuManager.GetOpenTickets());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: the caller's current editor mode, if they have the editor open in Game Master (EDIT)
+	//! or admin mode - the permission check for the Game Master player list's requests
+	protected SCR_EditorModeEntity GetCallerZeusMode()
+	{
+		SCR_EditorManagerCore core = SCR_EditorManagerCore.Cast(SCR_EditorManagerCore.GetInstance(SCR_EditorManagerCore));
+		if (!core)
+			return null;
+
+		SCR_EditorManagerEntity editorManager = core.GetEditorManager(GetCallerPlayerId());
+		if (!editorManager || !editorManager.IsOpened())
+			return null;
+
+		SCR_EditorModeEntity modeEntity = editorManager.GetCurrentModeEntity();
+		if (!modeEntity || !modeEntity.IsOpened())
+			return null;
+
+		EEditorMode mode = modeEntity.GetModeType();
+		if (mode != EEditorMode.EDIT && mode != EEditorMode.ADMIN)
+			return null;
+
+		return modeEntity;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void RequestSupplyUpdate(RplId supplyArsenalId)
 	{
 		Rpc(RpcDo_RequestSupplyUpdate, supplyArsenalId);
