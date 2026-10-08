@@ -101,6 +101,7 @@ class CRF_PropHuntTransformMenu
 	protected TextWidget                       m_wPreviewName;
 	protected ItemPreviewManagerEntity         m_PreviewMgr;
 	protected IEntity                          m_PreviewEntity; // local-only entity used for the side preview
+	protected ref COA_MenuPolish               m_UIPolish;      // hover feedback + entrance, see COA_UIPolish
 
 	//------------------------------------------------------------
 	// Singleton accessor
@@ -185,6 +186,10 @@ class CRF_PropHuntTransformMenu
 
 		PopulateList(nearbyEntities);
 
+		// Hover feedback on the prop entries and Cancel, and a quick staggered fade-in. The list is
+		// built once, so no rescans are needed (COA_MenuPolish.Update is never called here).
+		m_UIPolish = new COA_MenuPolish(m_wRoot, true);
+
 		// Activate input contexts every frame (delay 0 = per-frame) so the cursor is
 		// visible and button-click events fire on every tick, matching the cadence of
 		// DialogUI.OnMenuUpdate which also activates these contexts every frame.
@@ -198,6 +203,12 @@ class CRF_PropHuntTransformMenu
 	{
 		GetGame().GetCallqueue().Remove(KeepCursorActive);
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, ActionCancel);
+
+		if (m_UIPolish)
+		{
+			m_UIPolish.Cleanup();
+			m_UIPolish = null;
+		}
 
 		if (m_CharCtrl)
 		{

@@ -21,11 +21,29 @@ class COA_AARMenu: ChimeraMenuBase
 	// Seconds between refreshes of the time/weather/player count header
 	protected static const float INFO_REFRESH_INTERVAL = 1.0;
 
-	// Faction sidebar slide positions (LeftFaction PositionX in AAR.layout) and ease-out rate -
-	// higher is snappier; 12 settles in about a quarter of a second
+	// Faction sidebar slide positions (LeftFaction PositionX in AAR.layout)
 	protected static const float SIDEBAR_CLOSED_X = -671;
 	protected static const float SIDEBAR_OPEN_X = -14;
-	protected static const float SIDEBAR_SLIDE_SPEED = 12;
+
+	// Stats drawer slide positions (StatsHolder PositionY in AAR.layout, measured up from the bottom
+	// edge). Closed leaves just the panel's "MISSION STATISTICS" header showing as a tab.
+	protected static const float STATS_CLOSED_Y = -52;
+	protected static const float STATS_OPEN_Y = -400;
+
+	// Ease-out rate for the sidebar's per-frame slide - higher is snappier; 12 settles in about a
+	// quarter of a second
+	protected static const float DRAWER_SLIDE_SPEED = 12;
+
+	// AnimateWidget speeds are progress per second (1 / duration)
+	protected static const float DRAWER_ANIMATION_SPEED = 4;	// stats drawer: 0.25 s
+	protected static const float REVEAL_SPEED = 2.2;			// entrance per panel: ~0.45 s
+	protected static const float REVEAL_SLIDE = 40;				// entrance slide distance (layout units)
+	protected static const float STATS_HIDDEN_Y = 20;			// stats tab starts just below the screen
+
+	// WCAG relative luminance of the header background (AAR.layout HeaderBG 0.044 0.048 0.062), and
+	// the WCAG AA minimum contrast for text - see ReadableOnHeader
+	protected static const float HEADER_LUMINANCE = 0.0039;
+	protected static const float MIN_TEXT_CONTRAST = 4.5;
 
 	//----------------------------------------
 	// UI Widget References
@@ -34,6 +52,8 @@ class COA_AARMenu: ChimeraMenuBase
 	protected Widget m_wLeftFaction;
 	protected Widget m_wSidebarHitArea; // "FactionSelector": covers the sidebar's visible content
 	protected bool m_bSidebarOpen;
+	protected Widget m_wStatsHolder;
+	protected bool m_bStatsOpen;
 	protected Widget m_wFadeOverlay;
 	protected Widget m_wStatsRoot;
 	protected TextWidget m_wResultText;
@@ -59,7 +79,7 @@ class COA_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 	protected Faction m_fSelectedFaction;
 	protected ref array<ref COA_MissionDescriptor> m_aActiveDescriptors = {};
-	protected float m_fFadeElapsed;
+	protected ref array<Widget> m_aAnimatedWidgets = {}; // see TrackAnimation
 	protected float m_fInfoRefreshTimer;
 	protected int m_iShownChannelChanges = -1;
 
@@ -119,8 +139,9 @@ class COA_AARMenu: ChimeraMenuBase
 		SetupFactionFlags();
 		SetupFactionColors();
 		SetupFactionButtons();
+		SetupHoverEffects();
 		CreateStatsPanel();
-		StartFadeIn();
+		PlayEntrance();
 
 		if (m_MapEntity)
 			GetGame().GetCallqueue().Call(OpenMap);
@@ -168,6 +189,14 @@ class COA_AARMenu: ChimeraMenuBase
 			m_MenuManager.GetOnPlayerChannelChanged().Remove(OnPlayerChannelChanged);
 
 		CRF_AARSessionStats.s_OnMissionIdReceived.Remove(UpdateLinkText);
+
+		// Don't leave entrance/drawer animations running against widgets that are going away
+		foreach (Widget animatedWidget : m_aAnimatedWidgets)
+		{
+			if (animatedWidget)
+				AnimateWidget.StopAnimation(animatedWidget, WidgetAnimationBase);
+		}
+		m_aAnimatedWidgets.Clear();
 
 		// Give the game world its sound back (if the AAR reopens itself it mutes it again)
 		AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
@@ -221,7 +250,6 @@ class COA_AARMenu: ChimeraMenuBase
 		if (m_MapEntity)
 			GetGame().GetInputManager().ActivateContext("MapContext");
 
-		UpdateFadeIn(tDelta);
 
 		// Cheap int compare; the list is only rebuilt when the channels actually change
 		if (m_MenuManager && m_MenuManager.m_iChannelChanges != m_iShownChannelChanges)
@@ -238,6 +266,7 @@ class COA_AARMenu: ChimeraMenuBase
 			m_ChatPanel.OnUpdateChat(tDelta);
 
 		AnimateSidebar(tDelta);
+		AnimateStatsDrawer();
 	}
 
 	//----------------------------------------
@@ -318,7 +347,7 @@ class COA_AARMenu: ChimeraMenuBase
 			if (faction)
 			{
 				m_wResultText.SetText(GetOutcomeText(winningFaction));
-				m_wResultText.SetColor(faction.GetFactionColor());
+				m_wResultText.SetColor(ReadableOnHeader(faction.GetFactionColor()));
 			}
 			else
 			{
@@ -329,6 +358,40 @@ class COA_AARMenu: ChimeraMenuBase
 		// The mission ID can arrive after the menu opens (the server looks it up when the AAR starts)
 		CRF_AARSessionStats.s_OnMissionIdReceived.Insert(UpdateLinkText);
 		UpdateLinkText();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Faction colours come from mission config and can be too dark to read on the header. Lightens
+	//! the colour towards white just enough to reach WCAG AA contrast (4.5:1) against the header
+	//! background (AAR.layout HeaderBG, 0.044 0.048 0.062); readable colours are returned unchanged.
+	protected Color ReadableOnHeader(Color color)
+	{
+		Color readable = new Color(color.R(), color.G(), color.B(), 1);
+		for (int step = 0; step < 12; step++)
+		{
+			if ((RelativeLuminance(readable) + 0.05) / (HEADER_LUMINANCE + 0.05) >= MIN_TEXT_CONTRAST)
+				break;
+
+			readable.Lerp(Color.White, 0.15);
+		}
+
+		return readable;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! WCAG relative luminance of an sRGB colour
+	protected static float RelativeLuminance(Color color)
+	{
+		return 0.2126 * LinearChannel(color.R()) + 0.7152 * LinearChannel(color.G()) + 0.0722 * LinearChannel(color.B());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected static float LinearChannel(float value)
+	{
+		if (value <= 0.04045)
+			return value / 12.92;
+
+		return Math.Pow((value + 0.055) / 1.055, 2.4);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -366,6 +429,11 @@ class COA_AARMenu: ChimeraMenuBase
 			Print("[COA_AARMenu] StatsHolder widget missing from the AAR layout - no stats panel", LogLevel.WARNING);
 			return;
 		}
+
+		// Starts closed, as a tab on the bottom edge - see AnimateStatsDrawer
+		m_wStatsHolder = statsHolder;
+		m_bStatsOpen = false;
+		FrameSlot.SetPosY(m_wStatsHolder, STATS_CLOSED_Y);
 
 		m_wStatsRoot = GetGame().GetWorkspace().CreateWidgets(STATS_LAYOUT, statsHolder);
 		if (!m_wStatsRoot)
@@ -478,28 +546,98 @@ class COA_AARMenu: ChimeraMenuBase
 	//----------------------------------------
 
 	//------------------------------------------------------------------------------------------------
-	protected void StartFadeIn()
+	//! Fade up from the outro's black, with the panels appearing one after another as it lifts rather
+	//! than all at once. Uses vanilla AnimateWidget, so every step is eased and runs off the menu's
+	//! own update.
+	protected void PlayEntrance()
 	{
-		m_fFadeElapsed = 0;
-		if (!m_wFadeOverlay)
-			return;
+		if (m_wFadeOverlay)
+		{
+			m_wFadeOverlay.SetVisible(true);
+			m_wFadeOverlay.SetOpacity(1);
 
-		m_wFadeOverlay.SetVisible(true);
-		m_wFadeOverlay.SetOpacity(1);
+			WidgetAnimationOpacity fade = AnimateWidget.Opacity(m_wFadeOverlay, 0, 1 / FADE_IN_TIME, true);
+			if (fade)
+				TrackAnimation(fade, m_wFadeOverlay, 0, EAnimationCurve.EASE_IN_OUT_SINE);
+			else
+				m_wFadeOverlay.SetVisible(false);
+		}
+
+		// Delays are seconds after the menu opens. Only widgets anchored to a point on both axes
+		// slide - the others stretch on one axis, which a position animation would disturb.
+		RevealWidget("Header", 0.8, 0, 0);
+		RevealWidget("TimeWeather", 1.1, REVEAL_SLIDE, 0);
+		RevealWidget("PlayerListTextBG", 1.3, 0, 0);
+		RevealWidget("PlayerListText", 1.3, 0, 0);
+		RevealWidget("PlayerList", 1.4, 0, 0);
+		RevealWidget("LeftFaction", 1.6, 0, 0);
+		if (m_wStatsHolder)
+			RevealWidget("StatsHolder", 1.8, 0, STATS_HIDDEN_Y - STATS_CLOSED_Y);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void UpdateFadeIn(float tDelta)
+	//! Fade a widget in after a delay, optionally sliding it into place from an offset
+	protected void RevealWidget(string widgetName, float delay, float slideX, float slideY)
 	{
-		if (!m_wFadeOverlay || !m_wFadeOverlay.IsVisible())
+		Widget widget = m_wRoot.FindAnyWidget(widgetName);
+		if (!widget)
 			return;
 
-		m_fFadeElapsed += tDelta;
-		float opacity = 1 - Math.Clamp(m_fFadeElapsed / FADE_IN_TIME, 0, 1);
-		m_wFadeOverlay.SetOpacity(opacity);
+		widget.SetOpacity(0);
+		WidgetAnimationOpacity fade = AnimateWidget.Opacity(widget, 1, REVEAL_SPEED);
+		if (!fade)
+		{
+			// Animation system unavailable - just show it
+			widget.SetOpacity(1);
+			return;
+		}
 
-		if (opacity <= 0)
-			m_wFadeOverlay.SetVisible(false);
+		TrackAnimation(fade, widget, delay, EAnimationCurve.EASE_OUT_CUBIC);
+
+		if (slideX == 0 && slideY == 0)
+			return;
+
+		float restingPosition[2];
+		restingPosition[0] = FrameSlot.GetPosX(widget);
+		restingPosition[1] = FrameSlot.GetPosY(widget);
+
+		FrameSlot.SetPos(widget, restingPosition[0] + slideX, restingPosition[1] + slideY);
+		WidgetAnimationPosition slide = AnimateWidget.Position(widget, restingPosition, REVEAL_SPEED);
+		if (slide)
+			TrackAnimation(slide, widget, delay, EAnimationCurve.EASE_OUT_CUBIC);
+		else
+			FrameSlot.SetPos(widget, restingPosition[0], restingPosition[1]);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Apply curve/delay, and remember the widget so its animations are stopped when the menu closes
+	protected void TrackAnimation(WidgetAnimationBase animation, Widget widget, float delay, EAnimationCurve curve)
+	{
+		animation.SetCurve(curve);
+		if (delay > 0)
+			animation.SetDelay(delay);
+
+		if (!m_aAnimatedWidgets.Contains(widget))
+			m_aAnimatedWidgets.Insert(widget);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Hover, pressed and focus feedback on everything clickable (see COA_UIHoverEffect). The channel
+	//! headers get theirs as the list is built, in AddChannelRows.
+	protected void SetupHoverEffects()
+	{
+		// Faction tabs: the tile's background lights up. Attached explicitly - their buttons carry a
+		// ButtonComponent, so the generic pass below would skip them.
+		array<string> factionButtons = {"ButtonBlufor", "ButtonOpfor", "ButtonIndfor", "ButtonCiv"};
+		foreach (string buttonName : factionButtons)
+		{
+			Widget button = m_wRoot.FindAnyWidget(buttonName);
+			if (button && button.GetParent())
+				COA_UIHoverEffect.Attach(button, button.GetParent().FindAnyWidget("FactionBG"));
+		}
+
+		// Everything else (e.g. the description's "Back" button)
+		COA_UIPolish.AttachHoverEffects(m_wRoot);
 	}
 
 	//----------------------------------------
@@ -621,11 +759,22 @@ class COA_AARMenu: ChimeraMenuBase
 		{
 			channelComponent.m_iChannelId = channelIndex;
 			channelComponent.GetChannelButton().m_OnClicked.Insert(JoinSelectedChannelDelayed);
+
+			// Header rows are clickable (join), so they react to hover/press/focus
+			Widget headerRoot = channelComponent.GetRootWidget();
+			if (headerRoot)
+				COA_UIHoverEffect.Attach(headerRoot.FindAnyWidget("SlotButton"), headerRoot.FindAnyWidget("Image0"));
 		}
 
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		foreach (int playerId : members)
 		{
-			int rowIndex = m_cChannelListBoxComponent.AddItem(playerManager.GetPlayerName(playerId), null, CHANNEL_PLAYER_LAYOUT);
+			// Mark yourself in words as well as with the header's ">" - not by colour alone
+			string rowText = playerManager.GetPlayerName(playerId);
+			if (playerId == localPlayerId)
+				rowText += " (you)";
+
+			int rowIndex = m_cChannelListBoxComponent.AddItem(rowText, null, CHANNEL_PLAYER_LAYOUT);
 			COA_ListBoxElementComponent playerComponent = m_cChannelListBoxComponent.GetCRFElementComponent(rowIndex);
 			if (playerComponent)
 			{
@@ -685,48 +834,105 @@ class COA_AARMenu: ChimeraMenuBase
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Slide the faction sidebar open while the cursor is over it.
-	//! Hover is decided from the sidebar's rectangle rather than the widget under the cursor (which
-	//! changes as different child widgets slide past, making it flicker open/closed), with hysteresis:
-	//! it opens when the cursor touches the visible part, and stays open while the cursor is anywhere
-	//! the fully-open panel covers - even mid-animation.
+	//! Slide the faction sidebar open while the cursor is over it (see IsDrawerHovered)
 	protected void AnimateSidebar(float tDelta)
 	{
 		if (!m_wLeftFaction || !m_wSidebarHitArea)
 			return;
 
 		float currentX = FrameSlot.GetPosX(m_wLeftFaction);
-
-		int mouseX, mouseY;
-		WidgetManager.GetMousePos(mouseX, mouseY);
-
-		float hitX, hitY, hitWidth, hitHeight;
-		m_wSidebarHitArea.GetScreenPos(hitX, hitY);
-		m_wSidebarHitArea.GetScreenSize(hitWidth, hitHeight);
-
-		if (m_bSidebarOpen)
-		{
-			// Where the panel will sit once fully open, in screen pixels
-			float openOffset = GetGame().GetWorkspace().DPIScale(SIDEBAR_OPEN_X - currentX);
-			float openLeft = hitX + openOffset;
-			m_bSidebarOpen = mouseX >= openLeft && mouseX <= openLeft + hitWidth && mouseY >= hitY && mouseY <= hitY + hitHeight;
-		}
-		else
-		{
-			// Only the part currently on screen can be hovered to open it
-			m_bSidebarOpen = mouseX >= Math.Max(hitX, 0) && mouseX <= hitX + hitWidth && mouseY >= hitY && mouseY <= hitY + hitHeight;
-		}
+		m_bSidebarOpen = IsDrawerHovered(m_wSidebarHitArea, m_bSidebarOpen, SIDEBAR_OPEN_X - currentX, 0);
 
 		float targetX = SIDEBAR_CLOSED_X;
 		if (m_bSidebarOpen)
 			targetX = SIDEBAR_OPEN_X;
 
-		// Ease out towards the target; snap once it's close enough not to matter
-		float newX = currentX + (targetX - currentX) * (1 - Math.Pow(2.71828, -SIDEBAR_SLIDE_SPEED * tDelta));
-		if (Math.AbsFloat(targetX - newX) < 0.5)
-			newX = targetX;
+		FrameSlot.SetPosX(m_wLeftFaction, EaseTowards(currentX, targetX, tDelta));
+	}
 
-		FrameSlot.SetPosX(m_wLeftFaction, newX);
+	//------------------------------------------------------------------------------------------------
+	//! Slide the stats panel up from the bottom edge while the cursor is over it. Closed, only its
+	//! "MISSION STATISTICS" header shows as a tab.
+	protected void AnimateStatsDrawer()
+	{
+		if (!m_wStatsHolder)
+			return;
+
+		float currentY = FrameSlot.GetPosY(m_wStatsHolder);
+		bool open = IsDrawerHovered(m_wStatsHolder, m_bStatsOpen, 0, STATS_OPEN_Y - currentY);
+		if (open == m_bStatsOpen)
+			return;
+
+		// Only (re)start the slide when the state changes - AnimateWidget then eases it from wherever
+		// it currently is, so reversing mid-slide is smooth
+		m_bStatsOpen = open;
+
+		float target[2];
+		target[0] = FrameSlot.GetPosX(m_wStatsHolder);
+		target[1] = STATS_CLOSED_Y;
+		if (open)
+			target[1] = STATS_OPEN_Y;
+
+		WidgetAnimationPosition slide = AnimateWidget.Position(m_wStatsHolder, target, DRAWER_ANIMATION_SPEED);
+		if (slide)
+			TrackAnimation(slide, m_wStatsHolder, 0, EAnimationCurve.EASE_OUT_CUBIC);
+		else
+			FrameSlot.SetPos(m_wStatsHolder, target[0], target[1]);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Hover test for a sliding drawer, by rectangle rather than the widget under the cursor (which
+	//! changes as different child widgets slide past, making a drawer flicker open/closed), with
+	//! hysteresis: a closed drawer opens when the cursor touches the part currently on screen, and an
+	//! open one stays open while the cursor is anywhere the fully-open drawer covers - even mid-slide.
+	//! \param[in] hitArea widget covering the drawer's content
+	//! \param[in] isOpen whether the drawer is currently open (or opening)
+	//! \param[in] toOpenX,toOpenY layout-unit distance from the drawer's current to its open position
+	protected bool IsDrawerHovered(Widget hitArea, bool isOpen, float toOpenX, float toOpenY)
+	{
+		int mouseX, mouseY;
+		WidgetManager.GetMousePos(mouseX, mouseY);
+
+		float left, top, width, height;
+		hitArea.GetScreenPos(left, top);
+		hitArea.GetScreenSize(width, height);
+		float right = left + width;
+		float bottom = top + height;
+
+		if (isOpen)
+		{
+			// Where the drawer will sit once fully open, in screen pixels
+			WorkspaceWidget workspace = GetGame().GetWorkspace();
+			float shiftX = workspace.DPIScale(toOpenX);
+			float shiftY = workspace.DPIScale(toOpenY);
+			left += shiftX;
+			right += shiftX;
+			top += shiftY;
+			bottom += shiftY;
+		}
+		else
+		{
+			// Only the part actually on screen can be hovered to open it
+			float screenWidth, screenHeight;
+			m_wRoot.GetScreenSize(screenWidth, screenHeight);
+			left = Math.Max(left, 0);
+			top = Math.Max(top, 0);
+			right = Math.Min(right, screenWidth);
+			bottom = Math.Min(bottom, screenHeight);
+		}
+
+		return mouseX >= left && mouseX <= right && mouseY >= top && mouseY <= bottom;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Ease-out step towards target; snaps once close enough not to matter
+	protected float EaseTowards(float current, float target, float tDelta)
+	{
+		float next = current + (target - current) * (1 - Math.Pow(2.71828, -DRAWER_SLIDE_SPEED * tDelta));
+		if (Math.AbsFloat(target - next) < 0.5)
+			return target;
+
+		return next;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -778,7 +984,8 @@ class COA_AARMenu: ChimeraMenuBase
 
 		m_cSlotListBoxComponent.Clear();
 
-		PanelWidget.Cast(m_wRoot.FindAnyWidget("PlayerBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
+		// Only the roster's border follows the selected faction - the voice channel list keeps the
+		// neutral panel border so it doesn't change colour when browsing factions
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("RoleBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
 
 		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();

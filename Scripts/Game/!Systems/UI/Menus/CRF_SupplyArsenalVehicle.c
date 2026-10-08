@@ -5,6 +5,9 @@ modded enum ChimeraMenuPreset
 
 class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 {
+	// Hover/press feedback and entrance animation - see COA_UIPolish
+	protected ref COA_MenuPolish m_UIPolish;
+
 	VerticalLayoutWidget m_Items;
 	SCR_ButtonComponent m_SelectedButton;
 	IEntity m_Truck;
@@ -41,10 +44,16 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 		refreshButton.m_OnClicked.Insert(InitMenu);
 		GetGame().GetCallqueue().CallLater(InitMenu, 100, false);
 		
+
+		// Hover feedback on buttons without their own, and a quick staggered fade-in (COA_UIPolish)
+		m_UIPolish = new COA_MenuPolish(GetRootWidget(), true);
 	}
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		if (m_UIPolish)
+			m_UIPolish.Update(tDelta);
+
 		super.OnMenuUpdate(tDelta);
 		array<Widget> notificationsToDelete = {};
 		foreach (Widget notification: m_aNotifications)
@@ -377,6 +386,12 @@ class CRF_SupplyArsenalVehicle: ChimeraMenuBase
 
 	override void OnMenuClose()
 	{
+		if (m_UIPolish)
+		{
+			m_UIPolish.Cleanup();
+			m_UIPolish = null;
+		}
+
 		if (GetGame())
 		{
 			GetGame().GetCallqueue().Remove(InitMenu);

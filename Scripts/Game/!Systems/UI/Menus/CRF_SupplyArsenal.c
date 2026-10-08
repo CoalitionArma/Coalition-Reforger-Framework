@@ -5,6 +5,9 @@ modded enum ChimeraMenuPreset
 
 class CRF_SupplyArsenal: ChimeraMenuBase
 {
+	// Hover/press feedback and entrance animation - see COA_UIPolish
+	protected ref COA_MenuPolish m_UIPolish;
+
 	Widget m_wRoot;
 	COA_GearScriptContainer m_GearScriptContainer;
 	CRF_SupplyArsenalComponent m_SupplyArsnealComponent;
@@ -47,6 +50,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		m_AddItem.m_OnClicked.Insert(SpawnItem);
 		PopulateCategories();
 		GetGame().GetCallqueue().CallLater(UpdateArsenal, 500, false);
+
+		// Hover feedback on buttons without their own, and a quick staggered fade-in (COA_UIPolish)
+		m_UIPolish = new COA_MenuPolish(GetRootWidget(), true);
 	}
 	
 	void UpdateArsenal()
@@ -67,6 +73,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		if (m_UIPolish)
+			m_UIPolish.Update(tDelta);
+
 		super.OnMenuUpdate(tDelta);
 		array<Widget> notificationsToDelete = {};
 		foreach (Widget notification: m_aNotifications)
@@ -875,6 +884,12 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 
 	override void OnMenuClose()
 	{
+		if (m_UIPolish)
+		{
+			m_UIPolish.Cleanup();
+			m_UIPolish = null;
+		}
+
 		if (GetGame())
 			GetGame().GetCallqueue().Remove(UpdateArsenal);
 

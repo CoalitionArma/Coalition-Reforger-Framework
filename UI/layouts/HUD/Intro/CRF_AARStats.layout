@@ -16,7 +16,7 @@ FrameWidgetClass {
    }
    "Is Enabled" 0
    Opacity 0
-   Color 0.04 0.04 0.04 0.88
+   Color 0.044 0.048 0.062 0.94
   }
   TextWidgetClass "{7CDA3F8200000003}" {
    Name "StatsHeaderLeft"
@@ -32,7 +32,7 @@ FrameWidgetClass {
     OffsetBottom -47
    }
    Text "MISSION STATISTICS"
-   "Font Size" 18
+   "Font Size" 20
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -54,7 +54,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "KILLS"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -75,7 +75,7 @@ FrameWidgetClass {
     OffsetBottom -82
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -97,7 +97,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "DEATHS"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -118,7 +118,7 @@ FrameWidgetClass {
     OffsetBottom -109
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -140,7 +140,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "SHOTS FIRED"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -161,7 +161,7 @@ FrameWidgetClass {
     OffsetBottom -136
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -183,7 +183,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "GRENADES THROWN"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -204,7 +204,7 @@ FrameWidgetClass {
     OffsetBottom -163
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -226,7 +226,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "BANDAGES APPLIED"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -247,7 +247,7 @@ FrameWidgetClass {
     OffsetBottom -190
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -269,7 +269,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "DISTANCE TRAVELED"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -290,7 +290,7 @@ FrameWidgetClass {
     OffsetBottom -217
    }
    Text "0 km"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -312,7 +312,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "FRIENDLY KILLS"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -333,7 +333,7 @@ FrameWidgetClass {
     OffsetBottom -244
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -355,7 +355,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "XP GAINED"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -376,7 +376,7 @@ FrameWidgetClass {
     OffsetBottom -271
    }
    Text "0"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -412,7 +412,7 @@ FrameWidgetClass {
     OffsetBottom -47
    }
    Text "COMBAT LOG"
-   "Font Size" 18
+   "Font Size" 20
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -434,7 +434,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "YOU KILLED"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -455,7 +455,7 @@ FrameWidgetClass {
     OffsetBottom -242
    }
    Text "—"
-   "Font Size" 15
+   "Font Size" 17
    "Horizontal Alignment" Left
    "Vertical Alignment" Top
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -477,7 +477,7 @@ FrameWidgetClass {
    }
    Color 0.7 0.7 0.7 1
    Text "KILLED BY"
-   "Font Size" 14
+   "Font Size" 16
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {
@@ -498,7 +498,7 @@ FrameWidgetClass {
     OffsetBottom -335
    }
    Text "—"
-   "Font Size" 16
+   "Font Size" 18
    "Horizontal Alignment" Left
    "Vertical Alignment" Center
    FontProperties FontProperties "{7CDA3F82F0000001}" {

@@ -12,6 +12,9 @@
 //! from outside Workbench, so keeping them independent keeps each one's blast radius contained.
 class CRF_MissionQAMenu: ChimeraMenuBase
 {
+	// Hover/press feedback and entrance animation - see COA_UIPolish
+	protected ref COA_MenuPolish m_UIPolish;
+
 	protected Widget m_wRoot;
 	protected OverlayWidget m_wRoleListRoot;
 	protected SCR_ListBoxComponent m_wRoleListBox;
@@ -88,6 +91,9 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 
 		Refresh();
+
+		// Hover feedback on buttons without their own, and a quick staggered fade-in (COA_UIPolish)
+		m_UIPolish = new COA_MenuPolish(GetRootWidget(), true);
 #else
 		Close();
 #endif
@@ -96,6 +102,12 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	override void OnMenuClose()
 	{
+		if (m_UIPolish)
+		{
+			m_UIPolish.Cleanup();
+			m_UIPolish = null;
+		}
+
 		super.OnMenuClose();
 
 		if (GetGame())
@@ -1215,6 +1227,15 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		array<string> lines = {};
 		AppendSpecWeaponAmmoIssues(lines, weapon.m_Weapon, weapon.m_MagazineArray);
 		return lines.Count();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+
+		if (m_UIPolish)
+			m_UIPolish.Update(tDelta);
 	}
 }
 
