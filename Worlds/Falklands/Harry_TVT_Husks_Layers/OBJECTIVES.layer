@@ -1,0 +1,30 @@
+GenericEntity barricade1 : "{2A27606856B8A914}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{5CC6A59B73EB695E}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_SlotCompositionComponent "{52CAE30B655050CF}" {
+   m_bOrientChildrenToTerrain 0
+  }
+ }
+ coords 3854.756 7.5 1969.026
+ angles 0 114.046 0
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A barricade has been destroyed!\", duration: 10);"\
+ "		"\
+ "		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();"\
+ "		if (!respawnManager)"\
+ "			return;"\
+ ""\
+ "		// Trigger respawn waves for both attacking and defending sides"\
+ "		respawnManager.RespawnSide(\"BLUFOR\");"\
+ "		respawnManager.RespawnSide(\"OPFOR\");"\
+ "	"
+}
+COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ coords 3194.864 9.043 3125.179
+ angles 0 -100.938 0
+ m_MarkerColor 0 0.125 0.502 1
+ m_sQuadName "arrow-large-2"
+ m_fWorldSize 180
+}
