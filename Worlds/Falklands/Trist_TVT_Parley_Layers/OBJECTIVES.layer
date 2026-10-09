@@ -1,0 +1,65 @@
+$grp GameEntity {
+ intel1 {
+  coords 11723.527 9.035 10827.412
+ }
+ intel2 {
+  coords 11730.038 8.169 10668.949
+ }
+ intel3 {
+  coords 11907.237 4.939 10541.189
+ }
+ hvt1 {
+  coords 11900.021 3.979 10545.271
+ }
+ hvt2 {
+  coords 11726.865 8.13 10830.793
+ }
+ hvt3 {
+  coords 11725.626 7.021 10667.878
+ }
+ phvt1 {
+  coords 11741.174 6.781 10682.235
+ }
+ phvt2 {
+  coords 11738.907 6.781 10682.52
+ }
+}
+COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ coords 11732.187 7.309 11281.729
+ angles 0 100.509 0
+ m_rVehicle "{6C9E196676394DE2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered_closed.et"
+ m_iRespawnTimer 9999
+ m_OverridedVehicleLoadout CRF_VehicleGearScriptLoadout "{6A921A83531508A7}" {
+  m_iAmountOfRepairKits 3
+ }
+ m_aVehicleGearscriptOverrides {
+  CRF_VehicleGearscriptOverride "{6A921A82AF9C42A2}" {
+   m_VehicleAmmoType AT
+  }
+  CRF_VehicleGearscriptOverride "{6A921A82A36D3E38}" {
+   m_VehicleAmmoType HEGrenade
+  }
+  CRF_VehicleGearscriptOverride "{6A921A82A7E664E5}" {
+   m_VehicleAmmoType SmokeGrenade
+  }
+  CRF_VehicleGearscriptOverride "{6A921A821DDD9161}" {
+  }
+  CRF_VehicleGearscriptOverride "{6A921A821F8909B7}" {
+   m_VehicleAmmoType Carbine
+  }
+  CRF_VehicleGearscriptOverride "{6A921A8210794764}" {
+  }
+ }
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A921A829D94BD5D}" {
+   m_Prefab "{B60F1184164B96D9}Prefabs/Weapons/Rifles/M4A1/Variants/ION/Rifle_M4A1_BLOCK_II_FSP_ION.et"
+   m_iAmountOfItemSupplyTruck 20
+   m_iAmountOfItemRegularVehicle 20
+  }
+  CRF_VehicleGearScriptAdditionalItem "{6A921A828369F905}" {
+   m_Prefab "{A0554460C6C95EA8}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_HP_B_30rnd_M855A1_last5tracer.et"
+   m_iAmountOfItemSupplyTruck 70
+   m_iAmountOfItemRegularVehicle 70
+  }
+ }
+}

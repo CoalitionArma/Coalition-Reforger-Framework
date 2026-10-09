@@ -1,0 +1,49 @@
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 11721.117 14.53 10832.218
+  m_MarkerColor 0.502 0 0 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_fWorldSizeX 30
+  m_fWorldSizeY 30
+ }
+ {
+  coords 11722.543 19.028 10665.776
+  m_MarkerColor 0.502 0 0 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_fWorldSizeX 30
+  m_fWorldSizeY 30
+ }
+ {
+  coords 11896.672 10.019 10539.71
+  m_MarkerColor 0.502 0 0 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_fWorldSizeX 30
+  m_fWorldSizeY 30
+ }
+}
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 11781.982 7.322 11296.161
+  angles 0 -90 0
+  m_sQuadName "arrow-large"
+  m_sDescription "Escape"
+ }
+ {
+  coords 11948.441 7.322 11296.161
+  angles 0 -90 0
+  m_sQuadName "arrow-large"
+  m_sDescription "Escape"
+ }
+ {
+  coords 11597.805 7.322 11296.161
+  angles 0 -90 0
+  m_sQuadName "arrow-large"
+  m_sDescription "Escape"
+ }
+}
