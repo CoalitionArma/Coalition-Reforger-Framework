@@ -1,0 +1,58 @@
+ButtonWidgetClass {
+ Name "ActionButton"
+ Slot AlignableSlot "{6A65000000000101}" {
+  HorizontalAlign 3
+ }
+ Color 1 1 1 0
+ components {
+  CRF_ZeusActionButton "{6A65000000000102}" {
+  }
+ }
+ {
+  SizeLayoutWidgetClass "{6A65000000000103}" {
+   Name "ActionSize"
+   Slot ButtonWidgetSlot "{6A65000000000104}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 36
+   {
+    OverlayWidgetClass "{6A65000000000105}" {
+     Name "ActionOverlay"
+     Slot AlignableSlot "{6A65000000000106}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     {
+      ImageWidgetClass "{6A65000000000107}" {
+       Name "ActionBG"
+       Slot OverlayWidgetSlot "{6A65000000000108}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.0075 0.0086 0.0123 0
+      }
+      TextWidgetClass "{6A65000000000109}" {
+       Name "ActionText"
+       Slot OverlayWidgetSlot "{6A6500000000010A}" {
+        HorizontalAlign 3
+        VerticalAlign 1
+        Padding 14 0 12 0
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text "Action"
+       "Font Size" 17
+       "Min Font Size" 11
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A6500000000010B}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

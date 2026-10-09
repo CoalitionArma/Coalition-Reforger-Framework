@@ -314,6 +314,34 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	{
 		Rpc(RpcDo_ShowPlayerHint, playerId, message, title, duration);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: move a player on foot to a world position. Runs on the player's own client, like
+	//! COA_RplBroadcastManager.TeleportPlayers, so their character moves without a correction jump.
+	//! Players in vehicles are moved server-side by the caller instead (see
+	//! CRF_COA_PlayerRplToAuthorityManager.RpcAsk_RequestZeusTeleportPlayer).
+	void TeleportPlayerToPosition(int playerId, vector position)
+	{
+		LogTelemetry("TeleportPlayerToPosition", COA_BandwidthTelemetryManager.EstimateSize_Int() + COA_BandwidthTelemetryManager.EstimateSize_Vector());
+
+		#ifdef WORKBENCH
+		RpcDo_TeleportPlayerToPosition(playerId, position);
+		#else
+		Rpc(RpcDo_TeleportPlayerToPosition, playerId, position);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_TeleportPlayerToPosition(int playerId, vector position)
+	{
+		if (!IsLocalPlayer(playerId))
+			return;
+
+		vector safePosition = position;
+		SCR_WorldTools.FindEmptyTerrainPosition(safePosition, position, 3);
+		SCR_Global.TeleportLocalPlayer(safePosition, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
+	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS

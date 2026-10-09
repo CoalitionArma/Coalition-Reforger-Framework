@@ -1,0 +1,121 @@
+FrameWidgetClass {
+ Name "ZeusPlayerActions"
+ Slot FrameWidgetSlot "{6A65000000000001}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ {
+  ButtonWidgetClass "{6A65000000000002}" {
+   Name "Backdrop"
+   Slot FrameWidgetSlot "{6A65000000000003}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0 0 0 0
+   components {
+    CRF_ZeusActionButton "{6A65000000000004}" {
+     m_iAction -1
+    }
+   }
+  }
+  FrameWidgetClass "{6A65000000000005}" {
+   Name "Menu"
+   Slot FrameWidgetSlot "{6A65000000000006}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 240
+    OffsetRight -240
+    SizeY 60
+    OffsetBottom -60
+   }
+   "Z Order" 1
+   {
+    ImageWidgetClass "{6A65000000000007}" {
+     Name "MenuBG"
+     Slot FrameWidgetSlot "{6A65000000000008}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.0033 0.0037 0.0052 0.985
+    }
+    ImageWidgetClass "{6A65000000000009}" {
+     Name "MenuAccent"
+     Slot FrameWidgetSlot "{6A6500000000000A}" {
+      Anchor 0 0 0 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 3
+      OffsetRight -3
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.5841 0.0369 0.0369 1
+    }
+    TextWidgetClass "{6A6500000000000B}" {
+     Name "MenuTitle"
+     Slot FrameWidgetSlot "{6A6500000000000C}" {
+      Anchor 0 0 1 0
+      PositionX 14
+      OffsetLeft 14
+      PositionY 8
+      OffsetTop 8
+      SizeX -26
+      OffsetRight 12
+      SizeY 24
+      OffsetBottom -32
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "PLAYER"
+     "Font Size" 14
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6500000000000D}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    VerticalLayoutWidgetClass "{6A6500000000000E}" {
+     Name "Actions"
+     Slot FrameWidgetSlot "{6A6500000000000F}" {
+      Anchor 0 0 1 0
+      PositionX 3
+      OffsetLeft 3
+      PositionY 36
+      OffsetTop 36
+      SizeX -3
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom -36
+      SizeToContent 1
+     }
+    }
+   }
+  }
+ }
+}

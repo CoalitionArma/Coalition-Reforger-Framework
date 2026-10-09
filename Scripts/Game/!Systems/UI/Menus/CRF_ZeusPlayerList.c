@@ -21,6 +21,7 @@ class CRF_ZeusPlayerRowButton : ScriptedWidgetComponent
 	int m_iPlayerId;
 
 	ref ScriptInvoker m_OnDoubleClicked = new ScriptInvoker(); // (int playerId)
+	ref ScriptInvoker m_OnContextMenu = new ScriptInvoker(); // (int playerId, int screenX, int screenY)
 
 	//------------------------------------------------------------------------------------------------
 	override bool OnDoubleClick(Widget w, int x, int y, int button)
@@ -29,6 +30,51 @@ class CRF_ZeusPlayerRowButton : ScriptedWidgetComponent
 			m_OnDoubleClicked.Invoke(m_iPlayerId);
 
 		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Right click: quick actions for this player
+	override bool OnMouseButtonDown(Widget w, int x, int y, int button)
+	{
+		if (button == 1 && m_iPlayerId > 0)
+		{
+			m_OnContextMenu.Invoke(m_iPlayerId, x, y);
+			return true;
+		}
+
+		return false;
+	}
+}
+
+//------------------------------------------------------------------------------------------------
+//! Quick actions offered on a player row's right-click menu
+enum CRF_EZeusPlayerAction
+{
+	CLOSE = -1,
+	MOVE_CAMERA = 0,
+	TELEPORT_TO_CAMERA,
+	HEAL,
+	SEND_TO_SPECTATOR,
+	OPEN_TICKET,
+}
+
+//------------------------------------------------------------------------------------------------
+//! Button in the quick actions menu - attached in CRF_ZeusPlayerActions.layout (the backdrop, which
+//! closes the menu) and CRF_ZeusPlayerActionRow.layout (one per action)
+class CRF_ZeusActionButton : ScriptedWidgetComponent
+{
+	[Attribute("0", desc: "CRF_EZeusPlayerAction this button performs; -1 closes the menu")]
+	int m_iAction;
+
+	ref ScriptInvoker m_OnClicked = new ScriptInvoker(); // (int action)
+
+	//------------------------------------------------------------------------------------------------
+	override bool OnClick(Widget w, int x, int y, int button)
+	{
+		if (button == 0)
+			m_OnClicked.Invoke(m_iAction);
+
+		return true;
 	}
 }
 
@@ -98,6 +144,16 @@ class CRF_ZeusPlayerList
 	protected Widget m_wTabAccent;
 
 	protected SCR_PingEditorComponent m_PingManager;
+
+	// Right-click quick actions menu (CRF_ZeusPlayerActions.layout), one at a time
+	protected static const ResourceName ACTIONS_LAYOUT = "{6A6512AB7E3C9D01}UI/layouts/Editor/CRF_ZeusPlayerActions.layout";
+	protected static const ResourceName ACTION_ROW_LAYOUT = "{6A6512AB7E3C9D02}UI/layouts/Editor/CRF_ZeusPlayerActionRow.layout";
+	protected static const float ACTIONS_MENU_WIDTH = 240;
+	protected static const float ACTIONS_MENU_HEADER = 36;
+	protected static const float ACTIONS_ROW_HEIGHT = 36;
+	protected static const float ACTIONS_MENU_PADDING = 6;
+	protected Widget m_wActionsMenu;
+	protected int m_iActionsPlayerId;
 
 	protected string m_sSignature;
 	protected float m_fRefreshTimer;
@@ -171,10 +227,18 @@ class CRF_ZeusPlayerList
 				RequestTicketHolders();
 				Refresh(true);
 			}
+			else
+			{
+				CloseActionsMenu();
+			}
 		}
 
 		if (!show)
 			return;
+
+		// The menu's player left or the list rebuilt under it
+		if (m_wActionsMenu && !GetGame().GetPlayerManager().IsPlayerConnected(m_iActionsPlayerId))
+			CloseActionsMenu();
 
 		AnimateDrawer(tDelta);
 
@@ -315,6 +379,8 @@ class CRF_ZeusPlayerList
 			m_PingManager.GetOnPingReceive().Remove(OnPing);
 			m_PingManager = null;
 		}
+
+		CloseActionsMenu();
 
 		if (m_wRoot)
 			m_wRoot.RemoveFromHierarchy();
@@ -672,6 +738,7 @@ class CRF_ZeusPlayerList
 		{
 			rowButton.m_iPlayerId = entry.m_iPlayerId;
 			rowButton.m_OnDoubleClicked.Insert(FocusCameraOnPlayer);
+			rowButton.m_OnContextMenu.Insert(OpenActionsMenu);
 		}
 		else
 		{
@@ -679,6 +746,174 @@ class CRF_ZeusPlayerList
 		}
 
 		COA_UIHoverEffect.AttachAuto(row);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Right-click menu for a player row, at the cursor
+	protected void OpenActionsMenu(int playerId, int screenX, int screenY)
+	{
+		CloseActionsMenu();
+
+		WorkspaceWidget workspace = GetGame().GetWorkspace();
+		Widget parent = m_wRoot.GetParent();
+		if (!workspace || !parent)
+			return;
+
+		m_wActionsMenu = workspace.CreateWidgets(ACTIONS_LAYOUT, parent);
+		if (!m_wActionsMenu)
+		{
+			Print("[CRF_ZeusPlayerList] Failed to create " + ACTIONS_LAYOUT, LogLevel.WARNING);
+			return;
+		}
+
+		m_iActionsPlayerId = playerId;
+		m_wActionsMenu.SetZOrder(300);
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		TextWidget title = TextWidget.Cast(m_wActionsMenu.FindAnyWidget("MenuTitle"));
+		if (title)
+		{
+			string name = playerManager.GetPlayerName(playerId);
+			name.ToUpper();
+			title.SetText(name);
+		}
+
+		CRF_ZeusActionButton backdrop = CRF_ZeusActionButton.Cast(m_wActionsMenu.FindAnyWidget("Backdrop").FindHandler(CRF_ZeusActionButton));
+		if (backdrop)
+			backdrop.m_OnClicked.Insert(OnActionClicked);
+
+		// Which actions apply to this player right now
+		IEntity target = playerManager.GetPlayerControlledEntity(playerId);
+		bool hasBody = target && !COA_EntityHelper.IsSpectator(target);
+		bool isStaff = SCR_Global.IsAdmin() || (COA_PermissionManager.GetInstance() && COA_PermissionManager.GetInstance().IsModerator());
+
+		int rows;
+		rows += AddAction("Move camera to player", CRF_EZeusPlayerAction.MOVE_CAMERA);
+		if (hasBody)
+		{
+			rows += AddAction("Teleport player to camera", CRF_EZeusPlayerAction.TELEPORT_TO_CAMERA);
+			rows += AddAction("Heal", CRF_EZeusPlayerAction.HEAL);
+			if (!SCR_Global.IsAdmin(playerId))
+				rows += AddAction("Send to spectator", CRF_EZeusPlayerAction.SEND_TO_SPECTATOR);
+		}
+		if (isStaff && s_aTicketHolders.Contains(playerId))
+			rows += AddAction("Open ticket", CRF_EZeusPlayerAction.OPEN_TICKET);
+
+		// Size to the rows and keep the menu on screen
+		Widget menu = m_wActionsMenu.FindAnyWidget("Menu");
+		if (!menu)
+			return;
+
+		float height = ACTIONS_MENU_HEADER + rows * ACTIONS_ROW_HEIGHT + ACTIONS_MENU_PADDING;
+		float x = workspace.DPIUnscale(screenX);
+		float y = workspace.DPIUnscale(screenY);
+
+		float screenWidth, screenHeight;
+		parent.GetScreenSize(screenWidth, screenHeight);
+		x = Math.Clamp(x, 0, Math.Max(0, workspace.DPIUnscale(screenWidth) - ACTIONS_MENU_WIDTH));
+		y = Math.Clamp(y, 0, Math.Max(0, workspace.DPIUnscale(screenHeight) - height));
+
+		FrameSlot.SetSize(menu, ACTIONS_MENU_WIDTH, height);
+		FrameSlot.SetPos(menu, x, y);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return 1 if the row was added (for sizing), else 0
+	protected int AddAction(string label, CRF_EZeusPlayerAction action)
+	{
+		Widget list = m_wActionsMenu.FindAnyWidget("Actions");
+		if (!list)
+			return 0;
+
+		Widget row = GetGame().GetWorkspace().CreateWidgets(ACTION_ROW_LAYOUT, list);
+		if (!row)
+			return 0;
+
+		TextWidget text = TextWidget.Cast(row.FindAnyWidget("ActionText"));
+		if (text)
+			text.SetText(label);
+
+		CRF_ZeusActionButton button = CRF_ZeusActionButton.Cast(row.FindHandler(CRF_ZeusActionButton));
+		if (button)
+		{
+			button.m_iAction = action;
+			button.m_OnClicked.Insert(OnActionClicked);
+		}
+
+		// ActionBG starts fully transparent, so brighten by overlaying rather than lightening it
+		COA_UIHoverEffect.Attach(row, row.FindAnyWidget("ActionBG"), COA_EHoverStyle.OVERLAY);
+		return 1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnActionClicked(int action)
+	{
+		int playerId = m_iActionsPlayerId;
+		CloseActionsMenu();
+
+		if (playerId <= 0)
+			return;
+
+		COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+
+		switch (action)
+		{
+			case CRF_EZeusPlayerAction.MOVE_CAMERA:
+			{
+				FocusCameraOnPlayer(playerId);
+				break;
+			}
+			case CRF_EZeusPlayerAction.TELEPORT_TO_CAMERA:
+			{
+				vector cameraPosition;
+				if (authorityManager && GetEditorCameraPosition(cameraPosition))
+					authorityManager.RequestZeusTeleportPlayer(playerId, cameraPosition);
+				break;
+			}
+			case CRF_EZeusPlayerAction.HEAL:
+			{
+				if (authorityManager)
+					authorityManager.RequestZeusHeal(playerId);
+				break;
+			}
+			case CRF_EZeusPlayerAction.SEND_TO_SPECTATOR:
+			{
+				if (authorityManager)
+					authorityManager.RequestZeusSendToSpectator(playerId);
+				break;
+			}
+			case CRF_EZeusPlayerAction.OPEN_TICKET:
+			{
+				COA_AdminMenu.OpenTicketFor(playerId);
+				break;
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void CloseActionsMenu()
+	{
+		if (m_wActionsMenu)
+			m_wActionsMenu.RemoveFromHierarchy();
+
+		m_wActionsMenu = null;
+		m_iActionsPlayerId = 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where the Game Master's camera is, for "teleport player to camera"
+	protected bool GetEditorCameraPosition(out vector position)
+	{
+		SCR_CameraEditorComponent cameraManager = SCR_CameraEditorComponent.Cast(SCR_CameraEditorComponent.GetInstance(SCR_CameraEditorComponent));
+		if (!cameraManager)
+			return false;
+
+		SCR_ManualCamera camera = cameraManager.GetCamera();
+		if (!camera)
+			return false;
+
+		position = camera.GetOrigin();
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------

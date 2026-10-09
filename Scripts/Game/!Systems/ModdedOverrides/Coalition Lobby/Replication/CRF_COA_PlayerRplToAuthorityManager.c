@@ -365,6 +365,112 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Game Master player list quick action: move a player to the Game Master's camera position
+	void RequestZeusTeleportPlayer(int targetPlayerId, vector position)
+	{
+		Rpc(RpcAsk_RequestZeusTeleportPlayer, targetPlayerId, position);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusTeleportPlayer(int targetPlayerId, vector position)
+	{
+		LogTelemetry("RpcAsk_RequestZeusTeleportPlayer", COA_BandwidthTelemetryManager.EstimateSize_Int() + COA_BandwidthTelemetryManager.EstimateSize_Vector());
+
+		if (!GetCallerZeusMode() || !SCR_Global.IsPositionWithinTerrainBounds(position))
+			return;
+
+		IEntity target = GetGame().GetPlayerManager().GetPlayerControlledEntity(targetPlayerId);
+		if (!target || COA_EntityHelper.IsSpectator(target))
+			return;
+
+		// In a vehicle the whole vehicle moves, which only the server can do; on foot the player's
+		// own client moves the character (same split as the vanilla editor's player teleport)
+		if (target.GetRootParent() != target)
+			SCR_Global.TeleportPlayer(targetPlayerId, position, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
+		else
+			m_RplBroadcastManager.TeleportPlayerToPosition(targetPlayerId, position);
+
+		LogZeusAction(string.Format("%1 teleported %2 to their camera", GetCallerName(), GetGame().GetPlayerManager().GetPlayerName(targetPlayerId)), targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list quick action: fully heal a player
+	void RequestZeusHeal(int targetPlayerId)
+	{
+		Rpc(RpcAsk_RequestZeusHeal, targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusHeal(int targetPlayerId)
+	{
+		LogTelemetry("RpcAsk_RequestZeusHeal", COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		if (!GetCallerZeusMode())
+			return;
+
+		IEntity target = GetGame().GetPlayerManager().GetPlayerControlledEntity(targetPlayerId);
+		if (!target)
+			return;
+
+		SCR_DamageManagerComponent damageComponent = SCR_DamageManagerComponent.Cast(target.FindComponent(SCR_DamageManagerComponent));
+		if (!damageComponent)
+			return;
+
+		damageComponent.FullHeal();
+		damageComponent.SetHealthScaled(1);
+
+		LogZeusAction(string.Format("%1 healed %2", GetCallerName(), GetGame().GetPlayerManager().GetPlayerName(targetPlayerId)), targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Game Master player list quick action: take a player out of their slot and put them in
+	//! spectator. Their body is removed and the slot opens up again.
+	void RequestZeusSendToSpectator(int targetPlayerId)
+	{
+		Rpc(RpcAsk_RequestZeusSendToSpectator, targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestZeusSendToSpectator(int targetPlayerId)
+	{
+		LogTelemetry("RpcAsk_RequestZeusSendToSpectator", COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		if (!GetCallerZeusMode() || !m_SlottingManager || !m_Gamemode)
+			return;
+
+		// Not for other Game Masters / admins
+		if (SCR_Global.IsAdmin(targetPlayerId))
+			return;
+
+		int slotId = m_SlottingManager.GetPlayerSlotID(targetPlayerId);
+		if (slotId < 0)
+			return;
+
+		// Vacating the slot deletes its character (COA_SlotData.SetSlotCurrentPlayerId -> CleanupCharacterFromSlot)
+		m_SlottingManager.UpdateSlotPlayerID(slotId, 0);
+		m_Gamemode.QueuePlayerInitialization(targetPlayerId, false);
+
+		m_RplBroadcastManager.SendHint("A Game Master has moved you to spectator.", targetPlayerId);
+		LogZeusAction(string.Format("%1 sent %2 to spectator", GetCallerName(), GetGame().GetPlayerManager().GetPlayerName(targetPlayerId)), targetPlayerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetCallerName()
+	{
+		return GetGame().GetPlayerManager().GetPlayerName(GetCallerPlayerId());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void LogZeusAction(string message, int targetPlayerId)
+	{
+		if (m_RplBroadcastManager)
+			m_RplBroadcastManager.LogAdminAction(message, targetPlayerId, false, COA_EAdminLogLevel.Medium);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Server: the caller's current editor mode, if they have the editor open in Game Master (EDIT)
 	//! or admin mode - the permission check for the Game Master player list's requests
 	protected SCR_EditorModeEntity GetCallerZeusMode()

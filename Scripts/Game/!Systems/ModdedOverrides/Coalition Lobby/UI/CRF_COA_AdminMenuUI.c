@@ -1,5 +1,39 @@
 modded class COA_AdminMenu
 {
+	// Player whose ticket to select once the Tickets tab has loaded (set by OpenTicketFor)
+	protected static int s_iPendingTicketPlayerId;
+
+	//------------------------------------------------------------------------------------------------
+	//! Open the admin menu on the Tickets tab with this player's ticket selected - used by the
+	//! Game Master player list. The menu opens on Tickets by default (DelayedMenuInitialization), so
+	//! only the selection needs doing once the list arrives (PopulateOpenTicketList).
+	static void OpenTicketFor(int playerId)
+	{
+		s_iPendingTicketPlayerId = playerId;
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.COA_AdminMenu);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void PopulateOpenTicketList(array<int> tickets)
+	{
+		super.PopulateOpenTicketList(tickets);
+
+		if (s_iPendingTicketPlayerId <= 0)
+			return;
+
+		int pendingPlayerId = s_iPendingTicketPlayerId;
+		s_iPendingTicketPlayerId = 0;
+
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+
+		// Rows are added in the order of the tickets array
+		int index = tickets.Find(pendingPlayerId);
+		if (index >= 0 && index < playerList.GetItemCount())
+			playerList.SetItemSelected(index, true, true);
+	}
+
     //------------------------------------------------------------------------------------------------
     override void InitializeGamemodeMenu()
 	{
