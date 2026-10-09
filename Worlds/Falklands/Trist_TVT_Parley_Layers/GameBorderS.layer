@@ -1,0 +1,50 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 11732.501 10.637 11261.638
+ Points {
+  ShapePoint "{6A9118A85DDEEAB6}" {
+   Position -596.144 -89.056 -1025.705
+  }
+  ShapePoint "{6A9118D7B9C71D17}" {
+   Position -596.144 -24.262 84.638
+  }
+  ShapePoint "{6A9275CB14B49F51}" {
+   Position -135.018 5.153 85.444
+  }
+  ShapePoint "{6A9275CB17DE184D}" {
+   Position -97.646 32.181 113.546
+  }
+  ShapePoint "{6A9275CB16B6A583}" {
+   Position -29.168 39.602 144.76
+  }
+  ShapePoint "{6A9275CB092B41CB}" {
+   Position 34.679 29.869 147.461
+  }
+  ShapePoint "{6A9275CB042CAAAD}" {
+   Position 71.84 21.502 142.974
+  }
+  ShapePoint "{6A9275CB2ABC7925}" {
+   Position 90.521 4.857 99.164
+  }
+  ShapePoint "{6A9275CB7A0CC8FB}" {
+   Position 180.481 11.716 83.075
+  }
+  ShapePoint "{6A9275CB2DB703F5}" {
+   Position 245.415 14.64 94.552
+  }
+  ShapePoint "{6A9275CB2C658722}" {
+   Position 325.911 11.082 141.833
+  }
+  ShapePoint "{6A9118D7BB862A2D}" {
+   Position 698.021 -24.262 143.327
+  }
+  ShapePoint "{6A9118D7BAA863B0}" {
+   Position 698.02 -129.006 -1025.705
+  }
+ }
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "INDFOR"
+  "CIV"
+  "SPEC"
+ }
+}
