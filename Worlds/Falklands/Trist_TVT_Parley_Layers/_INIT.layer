@@ -1,0 +1,518 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 6321.652 67.498 6411.966
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_HighValueTargetGamemodeManager "{6A921ABED00B2D52}" {
+   m_bEnableTransponderMarker 0
+   m_eTargetType VIP
+   m_eAIHVTState SURRENDERED
+   m_aHVTEntries {
+    CRF_HVTEntry "{6A921ABE366ACBE4}" {
+     m_hvtPrefab "{C97B985FCFC3E4D6}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_2.et"
+     m_eFaction CIV
+     m_sTransponderEntityName "hvt1"
+    }
+    CRF_HVTEntry "{6A921ABE778C1632}" {
+     m_hvtPrefab "{C97B985FCFC3E4D6}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_2.et"
+     m_eFaction CIV
+     m_sTransponderEntityName "hvt2"
+    }
+    CRF_HVTEntry "{6A921ABE76D78B2E}" {
+     m_hvtPrefab "{C97B985FCFC3E4D6}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_2.et"
+     m_eFaction CIV
+     m_sTransponderEntityName "hvt3"
+    }
+    CRF_HVTEntry "{6A921ABE4B310F9E}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{421E220F53811D41}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_VIP.et"
+     m_eFaction CIV
+     m_sTransponderEntityName "phvt1"
+    }
+    CRF_HVTEntry "{6A921ABE41E60F6A}" {
+     m_eEntryType PLAYER
+     m_hvtPrefab "{421E220F53811D41}Prefabs/!Systems/!Characters/GS_Characters/Special/COA_VIP.et"
+     m_eFaction CIV
+     m_sTransponderEntityName "phvt2"
+    }
+   }
+  }
+  CRF_TaskCreatorComponent "{6A921ABD0A6CE1B9}" {
+   m_aTaskEntries {
+    CRF_TaskCreatorEntry "{6A921ABC139822DF}" {
+     m_sTaskLabel "intel1"
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "intel1"
+     m_eNotifySide OPFOR
+     m_sNotificationText "Valuables have been found."
+     m_bCreateMarker 0
+    }
+    CRF_TaskCreatorEntry "{6A921ABC49FA10E6}" {
+     m_sTaskLabel "intel2"
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "intel2"
+     m_eNotifySide OPFOR
+     m_sNotificationText "Valuables have been found."
+     m_bCreateMarker 0
+    }
+    CRF_TaskCreatorEntry "{6A921ABF60A927AD}" {
+     m_sTaskLabel "intel3"
+     m_eAssignedSide OPFOR
+     m_sSpawnEntityName "intel3"
+     m_eNotifySide OPFOR
+     m_sNotificationText "Valuables have been found."
+     m_bCreateMarker 0
+    }
+   }
+   m_CollectIntel CRF_TaskHandler_CollectIntel "{6A921ABCA7D7BF7E}" {
+    m_sPrefab "{8466F5CA29E8313A}PrefabsMissionMaking/Systems/TaskCreator/CRF_Task_Intel.et"
+    m_sActionName "Collect Valuables"
+   }
+   m_eWinCondition SET_AMOUNT_PER_SIDE
+   m_iTasksRequiredForWin 3
+   m_sSideWinText "OPFOR has raided all valuables from the port."
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 3
+     m_iStartingMinutes 15
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6A921A88618235FD}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Inexperienced upstart locals have decided to seek fortune looting an industrial port for valuables, cash, and ledgers. BLUFOR SWAT has been tasked with apprehending/neutralizing percieved threats while attempting to save any dock employees taken hostage."\
+   ""\
+   "VIPs: (3 AI VIPs + 2 Player VIPS (Opt.))"\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: - Armored Transports/Unarmored Transports"\
+   "- Supplies"\
+   ""\
+   "OPFOR Composition: Poor Ragtag Infantry"\
+   ""\
+   "Time: 0320"\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6A921A88618206B8}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "- BLUFOR is to prioritize the lives of hostages within reason while also attempting to prevent OPFOR from escaping North of the Island."\
+   "- Negotiations possible; Supplies+Vehicles for negotations are granted for either use OR negotiation"\
+   ""
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A921A8861821BA3}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "- OPFOR must acquire all intel (within the red circles) before escaping north of the island past the ESCAPE markers. (BLUFOR has a game boundary that OPFOR does not). "\
+   "- Prioritize planning/escaping with most of your force."\
+   ""\
+   "- Use hostages wisely to stay BLUFOR advance or negotiate for supplies/weapons/land vehicles. You do NOT want to kill all hostages."\
+   ""\
+   "SURRENDER RULE: If you are caught alone, you must vocally and loudly attempt to surrender if retreat to friendlies is not achievable. OPFOR is to value their lives over dying for fortune."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A921A8861821CD1}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A921A886182116F}" {
+   m_sTitle "Administration"
+   m_sTextData "OPFOR is not constricted by any game border, BLUFOR is. "
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A921A886183EA2D}" {
+   m_sTitle "!IMPORTANT!:"
+   m_sTextData "OPFOR is meant to not die recklessly nor needlessly kill innocents."\
+   "BLUFOR is meant to value lives of hostages/surrendered OPFOR."\
+   "The NORTHERN part of the island is inaccessible to BLUFOR, but is to OPFOR, and counts as escaping."\
+   ""\
+   "Both sides hold means that deter the other. Mental games encouraged."\
+   "TOTAL DRAW: All hostages dead."\
+   "TOTAL VICTORY: Side(s) Eliminated/Surrendered/Escaped"\
+   "Anything else results in a draw."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6A921A8A56F76CC6}" {
+   m_sTitle "HOSTAGE Briefing"
+   m_sTextData "Hide ONLY in buildings until found. Be entertaining and listen to the guys with guns. :^)"
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 3
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A9283B72ECCBB5F}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    COMPANY_COMMANDER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECCB78B}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC892B}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC8222}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC8727}" {
+   m_sCallsign "Recon"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    SNIPER
+    SPOTTER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A9283B72ECC922B}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    MEDIC
+    MEDIC
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC9727}" {
+   m_sCallsign "Cell 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC6822}" {
+   m_sCallsign "Cell 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC63CC}" {
+   m_sCallsign "Cell 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC642C}" {
+   m_sCallsign "Cell 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC7900}" {
+   m_sCallsign "Cell 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC7255}" {
+   m_sCallsign "Cell 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6A9283B72ECC7765}" {
+   m_sCallsign "Cell 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_CIVSlots {
+  COA_SlottingGroup "{6A9283B72ECC48B5}" {
+   m_sCallsign "Dock Workers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VIP
+    VIP
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{5A993EEFBC3E295D}Configs/Gearscripts/Custom/Trist/COA_GS_SWAT.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{15B1F931353613E7}Configs/Gearscripts/Custom/Trist/COA_GS_EuroInsPoors.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{48FC68EDD40CF4AD}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LittlePiggies_Piggies.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{48FC68EDD40CF4AD}Configs/Gearscripts/Custom/Trist/ForFun/COA_GS_LittlePiggies_Piggies.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A9275CBDF12ADB3" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+     }
+    }
+   }
+  }
+ }
+}
+COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 11630.778 6.781 10861.412
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4D5B91B8E5}" {
+  m_iSpawnPointRadius 12
+ }
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 11695.457 7.468 11265.387
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 11697.073 7.502 11261.29
+ Points {
+  ShapePoint "{6A921A8A81385836}" {
+   Position -75.99 0.25 -32.584
+  }
+  ShapePoint "{6A921A8A81426373}" {
+   Position -76.093 0.104 37.066
+  }
+  ShapePoint "{6A921A8A8078A880}" {
+   Position 58.022 0.138 35.106
+  }
+  ShapePoint "{6A921A8A80C860D0}" {
+   Position 54.38 5.127 -30.802
+  }
+ }
+}
+COA_StaticSpawnPoint CIVILIAN_Spawn1 : "{91AC884B31EDEE23}PrefabsMissionMaking/SpawnPoints/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 11739.807 6.781 10684.71
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4D22A22580}" {
+  m_iSpawnPointRadius 5
+ }
+}
+GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLUFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F0F94232BA}" {
+   m_eSpawnPattern LINE
+   m_fSpawnSpacing 13.5
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F0F94232A9}" {
+     m_sVehicleName "Unarmed GAZ"
+     m_sVehiclePrefab "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+    CRF_VehicleDepotVehicle "{6A921A83FD6C05CE}" {
+     m_sVehicleName "Transport Ural"
+     m_sVehiclePrefab "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+     m_eCostType USES
+     m_iCost 2
+    }
+   }
+  }
+ }
+ coords 11730.124 7.252 11272.188
+ angles 0 -83.349 0
+}
+COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 11632.429 6.781 10862.219
+ Points {
+  ShapePoint "{6A921AA659912D1C}" {
+   Position 87.124 2.182 117.117
+  }
+  ShapePoint "{6A921AA65876591F}" {
+   Position 151.994 0.002 60.204
+  }
+  ShapePoint "{6A921AA65B761F67}" {
+   Position -59.948 0 -119.846
+  }
+  ShapePoint "{6A921AA65BFF17A6}" {
+   Position -104.813 7.107 -38.638
+  }
+ }
+}
