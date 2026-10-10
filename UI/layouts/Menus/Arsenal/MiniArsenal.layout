@@ -1,70 +1,322 @@
 FrameWidgetClass {
  Name "rootFrame"
  {
-  ImageWidgetClass "{66872908811FA180}" {
-   Name "CategoryBG"
-   Slot FrameWidgetSlot "{66872908811FA1A0}" {
-    OffsetLeft 0
-    OffsetTop 0
-    SizeX 80
-    OffsetRight -80
-    SizeY 1080
-    OffsetBottom -1080
-   }
-   Color 0.0494 0.0494 0.0494 0.425
-  }
-  VerticalLayoutWidgetClass "{6687290BF5351561}" {
-   Name "CategoryButtons"
-   Slot FrameWidgetSlot "{6687290BF53515AB}" {
+  ImageWidgetClass "{6A6C0F000000012C}" {
+   Name "PanelBG"
+   Slot FrameWidgetSlot "{6A6C0F000000012B}" {
+    Anchor 0 0 0 1
     PositionX 0
     OffsetLeft 0
     PositionY 0
     OffsetTop 0
-    SizeX 80
-    OffsetRight -80
-    SizeY 1080
-    OffsetBottom -1080
+    SizeX 560
+    OffsetRight -560
+    SizeY 0
+    OffsetBottom 0
    }
+   Color 0.0033 0.0037 0.0052 0.94
   }
-  ScrollLayoutWidgetClass "{668835907AB2454E}" {
-   Name "ScrollLayout0"
-   Slot FrameWidgetSlot "{668835907AB24567}" {
-    PositionX 80
-    OffsetLeft 80
+  ImageWidgetClass "{6A6C0F000000012E}" {
+   Name "PanelFade"
+   Slot FrameWidgetSlot "{6A6C0F000000012D}" {
+    Anchor 0 0 0 1
+    PositionX 560
+    OffsetLeft 560
     PositionY 0
     OffsetTop 0
-    SizeX 350
-    OffsetRight -430
-    SizeY 1080
-    OffsetBottom -1080
+    SizeX 240
+    OffsetRight -800
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.0033 0.0037 0.0052 0.94
+   Texture "{95C893319DCF22D1}UI/Textures/Common/gradient_transparent_white_linear_photoshop_mirrored.edds"
+   Size 256 256
+  }
+  ImageWidgetClass "{6A6C0F0000000130}" {
+   Name "RailBG"
+   Slot FrameWidgetSlot "{6A6C0F000000012F}" {
+    Anchor 0 0 0 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 104
+    OffsetRight -104
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.0075 0.0086 0.0123 1
+  }
+  ImageWidgetClass "{6A6C0F0000000132}" {
+   Name "RailDivider"
+   Slot FrameWidgetSlot "{6A6C0F0000000131}" {
+    Anchor 0 0 0 1
+    PositionX 104
+    OffsetLeft 104
+    PositionY 0
+    OffsetTop 0
+    SizeX 1
+    OffsetRight -105
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 1 1 1 0.013
+  }
+  ImageWidgetClass "{6A6C0F0000000134}" {
+   Name "PanelAccent"
+   Slot FrameWidgetSlot "{6A6C0F0000000133}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 36
+    OffsetTop 36
+    SizeX 36
+    OffsetRight -164
+    SizeY 3
+    OffsetBottom -39
+   }
+   Color 0.5841 0.0369 0.0369 1
+  }
+  ScrollLayoutWidgetClass "{6A6C0F0000000138}" {
+   Name "CategoryScroll"
+   Slot FrameWidgetSlot "{6A6C0F0000000135}" {
+    Anchor 0 0 0 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 24
+    OffsetTop 24
+    SizeX 104
+    OffsetRight -104
+    SizeY -48
+    OffsetBottom 24
    }
    {
-    VerticalLayoutWidgetClass "{6687290864A52BE6}" {
-     Name "ItemButtons"
-     Slot AlignableSlot "{6688359051EFF57B}" {
+    VerticalLayoutWidgetClass "{6A6C0F0000000137}" {
+     Name "CategoryButtons"
+     Slot AlignableSlot "{6A6C0F0000000136}" {
       HorizontalAlign 3
       VerticalAlign 3
      }
     }
    }
   }
-  ImageWidgetClass "{66872908F3BBC349}" {
-   Name "ItemsBG"
-   Slot FrameWidgetSlot "{66872908811FA1A0}" {
-    PositionX 80
-    OffsetLeft 80
-    PositionY 0
-    OffsetTop 0
-    SizeX 350
-    OffsetRight -430
-    SizeY 1080
-    OffsetBottom -1080
+  TextWidgetClass "{6A6C0F000000013A}" {
+   Name "Eyebrow"
+   Slot FrameWidgetSlot "{6A6C0F0000000139}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 48
+    OffsetTop 48
+    SizeX 408
+    OffsetRight -536
+    SizeY 16
+    OffsetBottom -64
    }
-   Color 0.006 0.006 0.006 0.425
+   Color 0.3968 0.4564 0.6038 1
+   Text "LOADOUT"
+   "Font Size" 13
+   "Min Font Size" 10
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F000000013B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
   }
-  FrameWidgetClass "{668D3AB71FAA7F0E}" {
+  TextWidgetClass "{6A6C0F000000013D}" {
+   Name "Title"
+   Slot FrameWidgetSlot "{6A6C0F000000013C}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 64
+    OffsetTop 64
+    SizeX 408
+    OffsetRight -536
+    SizeY 34
+    OffsetBottom -98
+   }
+   Color 0.8632 0.8879 0.9301 1
+   Text "MINI ARSENAL"
+   "Font Size" 30
+   "Min Font Size" 24
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F000000013E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{6A6C0F0000000140}" {
+   Name "Hint"
+   Slot FrameWidgetSlot "{6A6C0F000000013F}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 100
+    OffsetTop 100
+    SizeX 408
+    OffsetRight -536
+    SizeY 18
+    OffsetBottom -118
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text "Changes apply instantly during safe start"
+   "Font Size" 14
+   "Min Font Size" 10
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F0000000141}" {
+    Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+   }
+  }
+  ImageWidgetClass "{6A6C0F0000000143}" {
+   Name "HeaderDivider"
+   Slot FrameWidgetSlot "{6A6C0F0000000142}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 134
+    OffsetTop 134
+    SizeX 408
+    OffsetRight -536
+    SizeY 1
+    OffsetBottom -135
+   }
+   Color 1 1 1 0.013
+  }
+  TextWidgetClass "{6A6C0F0000000145}" {
+   Name "CategoryTitle"
+   Slot FrameWidgetSlot "{6A6C0F0000000144}" {
+    Anchor 0 0 0 0
+    PositionX 128
+    OffsetLeft 128
+    PositionY 150
+    OffsetTop 150
+    SizeX 268
+    OffsetRight -396
+    SizeY 28
+    OffsetBottom -178
+   }
+   Color 0.8632 0.8879 0.9301 1
+   Text ""
+   "Font Size" 20
+   "Min Font Size" 14
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F0000000146}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{6A6C0F0000000148}" {
+   Name "CategoryCount"
+   Slot FrameWidgetSlot "{6A6C0F0000000147}" {
+    Anchor 0 0 0 0
+    PositionX 396
+    OffsetLeft 396
+    PositionY 154
+    OffsetTop 154
+    SizeX 140
+    OffsetRight -536
+    SizeY 22
+    OffsetBottom -176
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text ""
+   "Font Size" 13
+   "Min Font Size" 10
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F0000000149}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ScrollLayoutWidgetClass "{6A6C0F000000014D}" {
+   Name "ScrollLayout0"
+   Slot FrameWidgetSlot "{6A6C0F000000014A}" {
+    Anchor 0 0 0 1
+    PositionX 128
+    OffsetLeft 128
+    PositionY 192
+    OffsetTop 192
+    SizeX 408
+    OffsetRight -536
+    SizeY -296
+    OffsetBottom 104
+   }
+   {
+    VerticalLayoutWidgetClass "{6A6C0F000000014C}" {
+     Name "ItemButtons"
+     Slot AlignableSlot "{6A6C0F000000014B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{6A6C0F0000000153}" {
+   Name "DoneButton"
+   Slot FrameWidgetSlot "{6A6C0F0000000151}" {
+    Anchor 0 1 0 1
+    PositionX 128
+    OffsetLeft 128
+    PositionY -80
+    OffsetTop -80
+    SizeX 408
+    OffsetRight -536
+    SizeY 48
+    OffsetBottom 32
+   }
+   Color 0.5841 0.0369 0.0369 1
+   components {
+    SCR_ButtonComponent "{6A6C0F0000000152}" {
+    }
+   }
+   {
+    TextWidgetClass "{6A6C0F000000014F}" {
+     Name "DoneText"
+     Slot ButtonWidgetSlot "{6A6C0F000000014E}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "DONE"
+     "Font Size" 17
+     "Min Font Size" 11
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6C0F0000000150}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+  TextWidgetClass "{6A6C0F0000000155}" {
+   Name "DoneHint"
+   Slot FrameWidgetSlot "{6A6C0F0000000154}" {
+    Anchor 0 1 0 1
+    PositionX 128
+    OffsetLeft 128
+    PositionY -26
+    OffsetTop -26
+    SizeX 408
+    OffsetRight -536
+    SizeY 16
+    OffsetBottom 10
+   }
+   Color 0.3968 0.4564 0.6038 1
+   Text "Closes automatically when safe start ends"
+   "Font Size" 12
+   "Min Font Size" 10
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6A6C0F0000000156}" {
+    Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+   }
+  }
+  FrameWidgetClass "{6A70130000000101}" : "{7A376F90E18453C4}UI/layouts/HUD/Notifications/Notifications_Log.layout" {
    Name "NotificationsLog"
-   Slot FrameWidgetSlot "{5D44B7C56EBEFDB6}" {
+   Slot FrameWidgetSlot "{6A70130000000102}" {
     Anchor 0 0 1 1
     PositionX 0
     OffsetLeft 0
@@ -74,480 +326,6 @@ FrameWidgetClass {
     OffsetRight 0
     SizeY 0
     OffsetBottom 0
-   }
-   Color 1 1 1 1
-   components {
-    SCR_FadeUIComponent "{5878BB6DAB80F026}" {
-     m_fFadeInAnimationSpeed 4
-     m_fFadeOutAnimationSpeed 4
-    }
-    SCR_NotificationsLogComponent "{5D7C85B7BFBEF81E}" {
-     m_fNotificationDisplayTime 10
-    }
-   }
-   {
-    VerticalLayoutWidgetClass "{668D3AB71FAA7F31}" {
-     Name "VerticalLayout0"
-     Slot FrameWidgetSlot "{586AB611D4E07572}" {
-      Anchor 1 1 1 1
-      PositionX -8
-      OffsetLeft -8
-      OffsetTop 0
-      SizeX 200
-      OffsetRight -192
-      SizeY 324
-      OffsetBottom -324
-      Alignment 1 1
-      SizeToContent 1
-     }
-     {
-      VerticalLayoutWidgetClass "{668D3AB71FAA7F30}" {
-       Name "NotificationHolder"
-       Slot LayoutSlot "{586AB611D48FD660}" {
-        Padding 0 0 0 0
-       }
-       Color 1 1 1 1
-       "Fill Origin" Bottom
-      }
-      VerticalLayoutWidgetClass "{668D3AB71FAA7F37}" {
-       Name "PriorityNotificationHolder"
-       Slot LayoutSlot "{5D54BD019B7217AB}" {
-       }
-       "Fill Origin" Bottom
-      }
-      ButtonWidgetClass "{668D3AB71FAA7F36}" : "{4FCC876707BAE376}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_GroupInvite.layout" {
-       Name "GroupInvite"
-       Slot LayoutSlot "{55D2800B3BCEEB11}" {
-       }
-       "Is Visible" 0
-       components {
-        SCR_GroupInviteStickyNotificationUIComponent "{5872CE48646F6381}" {
-         m_bInfluenceNotificationListSize 0
-        }
-       }
-       {
-        SizeLayoutWidgetClass "{586AB61182DC9F66}" {
-         Prefab "{586AB61182DC9F66}"
-         AllowMaxDesiredWidth 0
-         MaxDesiredWidth 0
-         {
-          HorizontalLayoutWidgetClass "{586AB61182DC9F7B}" {
-           Prefab "{586AB61182DC9F7B}"
-           {
-            SizeLayoutWidgetClass "{586AB61182DC9F7D}" {
-             Prefab "{586AB61182DC9F7D}"
-             {
-              VerticalLayoutWidgetClass "{56EC82F1EA080BEE}" {
-               Prefab "{56EC82F1EA080BEE}"
-               {
-                ImageWidgetClass "{56EC82F1EA080BEF}" {
-                 Prefab "{56EC82F1EA080BEF}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE0}" {
-                 Prefab "{56EC82F1EA080BE0}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE1}" {
-                 Prefab "{56EC82F1EA080BE1}"
-                }
-               }
-              }
-             }
-            }
-            OverlayWidgetClass "{586AB61182DC9F7F}" {
-             Prefab "{586AB61182DC9F7F}"
-             {
-              BlurWidgetClass "{586AB61182DC9F70}" {
-               Prefab "{586AB61182DC9F70}"
-              }
-              ImageWidgetClass "{586AB61182DC9F72}" {
-               Prefab "{586AB61182DC9F72}"
-              }
-              VerticalLayoutWidgetClass "{5ACE9519C36E3E7F}" {
-               Prefab "{5ACE9519C36E3E7F}"
-               {
-                HorizontalLayoutWidgetClass "{586AB61182DC9F74}" {
-                 Prefab "{586AB61182DC9F74}"
-                 {
-                  TextWidgetClass "{586AB61182DC9F76}" {
-                   Prefab "{586AB61182DC9F76}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F77}" {
-                   Prefab "{586AB61182DC9F77}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F49}" {
-                   Prefab "{586AB61182DC9F49}"
-                  }
-                  ImageWidgetClass "{586AB61476F64D38}" {
-                   Prefab "{586AB61476F64D38}"
-                  }
-                 }
-                }
-                SizeLayoutWidgetClass "{589302D74C741C62}" {
-                 Prefab "{589302D74C741C62}"
-                 {
-                  OverlayWidgetClass "{589302D7471FA155}" {
-                   Prefab "{589302D7471FA155}"
-                   {
-                    RichTextWidgetClass "{586AB61182DC9F41}" {
-                     Prefab "{586AB61182DC9F41}"
-                    }
-                    RichTextWidgetClass "{586AB613B354421A}" {
-                     Prefab "{586AB613B354421A}"
-                    }
-                   }
-                  }
-                 }
-                }
-                HorizontalLayoutWidgetClass "{5ACE9519E6E7CD7A}" {
-                 Prefab "{5ACE9519E6E7CD7A}"
-                 {
-                  TextWidgetClass "{5ACE9519E6E7CD7F}" {
-                   Prefab "{5ACE9519E6E7CD7F}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7D}" {
-                   Prefab "{5ACE9519E6E7CD7D}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7C}" {
-                   Prefab "{5ACE9519E6E7CD7C}"
-                  }
-                  ImageWidgetClass "{5ACE9519E6E7CD62}" {
-                   Prefab "{5ACE9519E6E7CD62}"
-                  }
-                  SizeLayoutWidgetClass "{5ACE9519E6E7CD61}" {
-                   Prefab "{5ACE9519E6E7CD61}"
-                   {
-                    OverlayWidgetClass "{5ACE9519E6E7CD66}" {
-                     Prefab "{5ACE9519E6E7CD66}"
-                     {
-                      RichTextWidgetClass "{5ACE9519E6E7CD65}" {
-                       Prefab "{5ACE9519E6E7CD65}"
-                      }
-                      RichTextWidgetClass "{5ACE9519E6E7CD6B}" {
-                       Prefab "{5ACE9519E6E7CD6B}"
-                      }
-                     }
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-      ButtonWidgetClass "{668D3AB71FAA7F3A}" : "{79B40E157008F1FB}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_VotePlayer.layout" {
-       Name "VotingPlayerInProgress"
-       Slot LayoutSlot "{55D2800B3BCEEB11}" {
-       }
-       "Is Visible" 0
-       components {
-        SCR_VotingStickyNotificationUIComponent "{5872CE486FF7916F}" {
-         m_bInfluenceNotificationListSize 0
-        }
-       }
-       {
-        SizeLayoutWidgetClass "{586AB61182DC9F66}" {
-         Prefab "{586AB61182DC9F66}"
-         {
-          HorizontalLayoutWidgetClass "{586AB61182DC9F7B}" {
-           Prefab "{586AB61182DC9F7B}"
-           {
-            SizeLayoutWidgetClass "{586AB61182DC9F7D}" {
-             Prefab "{586AB61182DC9F7D}"
-             {
-              VerticalLayoutWidgetClass "{56EC82F1EA080BEE}" {
-               Prefab "{56EC82F1EA080BEE}"
-               {
-                ImageWidgetClass "{56EC82F1EA080BEF}" {
-                 Prefab "{56EC82F1EA080BEF}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE0}" {
-                 Prefab "{56EC82F1EA080BE0}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE1}" {
-                 Prefab "{56EC82F1EA080BE1}"
-                }
-               }
-              }
-             }
-            }
-            OverlayWidgetClass "{586AB61182DC9F7F}" {
-             Prefab "{586AB61182DC9F7F}"
-             {
-              BlurWidgetClass "{586AB61182DC9F70}" {
-               Prefab "{586AB61182DC9F70}"
-              }
-              ImageWidgetClass "{586AB61182DC9F72}" {
-               Prefab "{586AB61182DC9F72}"
-              }
-              VerticalLayoutWidgetClass "{5ACE9519C36E3E7F}" {
-               Prefab "{5ACE9519C36E3E7F}"
-               {
-                HorizontalLayoutWidgetClass "{5DDAC5B192296972}" {
-                 Prefab "{5DDAC5B192296972}"
-                 {
-                  RichTextWidgetClass "{5DDACA6F8B850425}" {
-                   Prefab "{5DDACA6F8B850425}"
-                  }
-                  HorizontalLayoutWidgetClass "{657C92DC6C553E3F}" {
-                   Prefab "{657C92DC6C553E3F}"
-                   {
-                    ImageWidgetClass "{5DDACA6F99063F1B}" {
-                     Prefab "{5DDACA6F99063F1B}"
-                    }
-                    SizeLayoutWidgetClass "{5DDAC5B192296975}" {
-                     Prefab "{5DDAC5B192296975}"
-                     {
-                      OverlayWidgetClass "{5DDAC5B192296977}" {
-                       Prefab "{5DDAC5B192296977}"
-                       {
-                        RichTextWidgetClass "{5DDAC5B192296948}" {
-                         Prefab "{5DDAC5B192296948}"
-                        }
-                        RichTextWidgetClass "{5DDAC5B192296949}" {
-                         Prefab "{5DDAC5B192296949}"
-                        }
-                       }
-                      }
-                     }
-                    }
-                    RichTextWidgetClass "{5DDAC5B192296974}" {
-                     Prefab "{5DDAC5B192296974}"
-                    }
-                    ImageWidgetClass "{5DDACA67F6C9A8B1}" {
-                     Prefab "{5DDACA67F6C9A8B1}"
-                    }
-                    SizeLayoutWidgetClass "{5DDAC5B19229694B}" {
-                     Prefab "{5DDAC5B19229694B}"
-                     {
-                      OverlayWidgetClass "{5DDAC5B19229694D}" {
-                       Prefab "{5DDAC5B19229694D}"
-                       {
-                        RichTextWidgetClass "{5DDAC5B19229694E}" {
-                         Prefab "{5DDAC5B19229694E}"
-                        }
-                        RichTextWidgetClass "{5DDAC5B19229694F}" {
-                         Prefab "{5DDAC5B19229694F}"
-                        }
-                       }
-                      }
-                     }
-                    }
-                    RichTextWidgetClass "{5DDAC5B19229694A}" {
-                     Prefab "{5DDAC5B19229694A}"
-                    }
-                   }
-                  }
-                 }
-                }
-                HorizontalLayoutWidgetClass "{586AB61182DC9F74}" {
-                 Prefab "{586AB61182DC9F74}"
-                 {
-                  TextWidgetClass "{586AB61182DC9F76}" {
-                   Prefab "{586AB61182DC9F76}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F77}" {
-                   Prefab "{586AB61182DC9F77}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F49}" {
-                   Prefab "{586AB61182DC9F49}"
-                  }
-                  ImageWidgetClass "{586AB61476F64D38}" {
-                   Prefab "{586AB61476F64D38}"
-                  }
-                 }
-                }
-                SizeLayoutWidgetClass "{589302D74C741C62}" {
-                 Prefab "{589302D74C741C62}"
-                 {
-                  OverlayWidgetClass "{589302D7471FA155}" {
-                   Prefab "{589302D7471FA155}"
-                   {
-                    RichTextWidgetClass "{586AB61182DC9F41}" {
-                     Prefab "{586AB61182DC9F41}"
-                    }
-                    RichTextWidgetClass "{586AB613B354421A}" {
-                     Prefab "{586AB613B354421A}"
-                    }
-                   }
-                  }
-                 }
-                }
-                HorizontalLayoutWidgetClass "{5ACE9519E6E7CD7A}" {
-                 Prefab "{5ACE9519E6E7CD7A}"
-                 {
-                  TextWidgetClass "{5ACE9519E6E7CD7F}" {
-                   Prefab "{5ACE9519E6E7CD7F}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7D}" {
-                   Prefab "{5ACE9519E6E7CD7D}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7C}" {
-                   Prefab "{5ACE9519E6E7CD7C}"
-                  }
-                  ImageWidgetClass "{5ACE9519E6E7CD62}" {
-                   Prefab "{5ACE9519E6E7CD62}"
-                  }
-                  SizeLayoutWidgetClass "{5ACE9519E6E7CD61}" {
-                   Prefab "{5ACE9519E6E7CD61}"
-                   {
-                    OverlayWidgetClass "{5ACE9519E6E7CD66}" {
-                     Prefab "{5ACE9519E6E7CD66}"
-                     {
-                      RichTextWidgetClass "{5ACE9519E6E7CD65}" {
-                       Prefab "{5ACE9519E6E7CD65}"
-                      }
-                      RichTextWidgetClass "{5ACE9519E6E7CD6B}" {
-                       Prefab "{5ACE9519E6E7CD6B}"
-                      }
-                     }
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-      ButtonWidgetClass "{668D3AB71FAA7F3F}" : "{9075BAAB89E243DE}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_NoGM.layout" {
-       Name "NoGameMaster"
-       Slot LayoutSlot "{55D2800B3BCEEB11}" {
-       }
-       "Is Visible" 0
-       components {
-        SCR_NoGameMasterStickyNotificationUIComponent "{5874A1F43B4B31F5}" {
-         m_bInfluenceNotificationListSize 0
-        }
-       }
-       {
-        SizeLayoutWidgetClass "{586AB61182DC9F66}" {
-         Prefab "{586AB61182DC9F66}"
-         {
-          HorizontalLayoutWidgetClass "{586AB61182DC9F7B}" {
-           Prefab "{586AB61182DC9F7B}"
-           {
-            SizeLayoutWidgetClass "{586AB61182DC9F7D}" {
-             Prefab "{586AB61182DC9F7D}"
-             {
-              VerticalLayoutWidgetClass "{56EC82F1EA080BEE}" {
-               Prefab "{56EC82F1EA080BEE}"
-               {
-                ImageWidgetClass "{56EC82F1EA080BEF}" {
-                 Prefab "{56EC82F1EA080BEF}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE0}" {
-                 Prefab "{56EC82F1EA080BE0}"
-                }
-                ImageWidgetClass "{56EC82F1EA080BE1}" {
-                 Prefab "{56EC82F1EA080BE1}"
-                }
-               }
-              }
-             }
-            }
-            OverlayWidgetClass "{586AB61182DC9F7F}" {
-             Prefab "{586AB61182DC9F7F}"
-             {
-              BlurWidgetClass "{586AB61182DC9F70}" {
-               Prefab "{586AB61182DC9F70}"
-              }
-              ImageWidgetClass "{586AB61182DC9F72}" {
-               Prefab "{586AB61182DC9F72}"
-              }
-              VerticalLayoutWidgetClass "{5ACE9519C36E3E7F}" {
-               Prefab "{5ACE9519C36E3E7F}"
-               {
-                HorizontalLayoutWidgetClass "{586AB61182DC9F74}" {
-                 Prefab "{586AB61182DC9F74}"
-                 {
-                  TextWidgetClass "{586AB61182DC9F76}" {
-                   Prefab "{586AB61182DC9F76}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F77}" {
-                   Prefab "{586AB61182DC9F77}"
-                  }
-                  RichTextWidgetClass "{586AB61182DC9F49}" {
-                   Prefab "{586AB61182DC9F49}"
-                  }
-                  ImageWidgetClass "{586AB61476F64D38}" {
-                   Prefab "{586AB61476F64D38}"
-                  }
-                 }
-                }
-                SizeLayoutWidgetClass "{589302D74C741C62}" {
-                 Prefab "{589302D74C741C62}"
-                 {
-                  OverlayWidgetClass "{589302D7471FA155}" {
-                   Prefab "{589302D7471FA155}"
-                   {
-                    RichTextWidgetClass "{586AB61182DC9F41}" {
-                     Prefab "{586AB61182DC9F41}"
-                    }
-                    RichTextWidgetClass "{586AB613B354421A}" {
-                     Prefab "{586AB613B354421A}"
-                    }
-                   }
-                  }
-                 }
-                }
-                HorizontalLayoutWidgetClass "{5ACE9519E6E7CD7A}" {
-                 Prefab "{5ACE9519E6E7CD7A}"
-                 {
-                  TextWidgetClass "{5ACE9519E6E7CD7F}" {
-                   Prefab "{5ACE9519E6E7CD7F}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7D}" {
-                   Prefab "{5ACE9519E6E7CD7D}"
-                  }
-                  RichTextWidgetClass "{5ACE9519E6E7CD7C}" {
-                   Prefab "{5ACE9519E6E7CD7C}"
-                  }
-                  ImageWidgetClass "{5ACE9519E6E7CD62}" {
-                   Prefab "{5ACE9519E6E7CD62}"
-                  }
-                  SizeLayoutWidgetClass "{5ACE9519E6E7CD61}" {
-                   Prefab "{5ACE9519E6E7CD61}"
-                   {
-                    OverlayWidgetClass "{5ACE9519E6E7CD66}" {
-                     Prefab "{5ACE9519E6E7CD66}"
-                     {
-                      RichTextWidgetClass "{5ACE9519E6E7CD65}" {
-                       Prefab "{5ACE9519E6E7CD65}"
-                      }
-                      RichTextWidgetClass "{5ACE9519E6E7CD6B}" {
-                       Prefab "{5ACE9519E6E7CD6B}"
-                      }
-                     }
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-     }
-    }
    }
   }
  }

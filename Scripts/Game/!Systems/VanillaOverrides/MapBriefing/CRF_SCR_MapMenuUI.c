@@ -62,6 +62,10 @@ modded class SCR_MapMenuUI
 		// Starts tucked away; slides out while the cursor is over it
 		m_BriefingDrawer = new COA_HoverDrawer(missionDescriptionWidget, BRIEFING_DRAWER_CLOSED_X, BRIEFING_DRAWER_OPEN_X);
 		m_BriefingDrawer.m_OnOpenChanged.Insert(OnBriefingDrawerChanged);
+
+		// Open only from the tab: the drawer runs almost the full screen height, and its edge would
+		// otherwise catch the cursor over the mission timer / tickets drawer in the bottom-right corner
+		m_BriefingDrawer.SetClosedHitArea(missionDescriptionWidget.FindAnyWidget("BriefingTabBG"));
 		OnBriefingDrawerChanged(false);
 	}
 

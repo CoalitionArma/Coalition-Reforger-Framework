@@ -1,0 +1,146 @@
+ButtonWidgetClass {
+ Name "ArsenalItemButton"
+ Slot AlignableSlot "{6A6C0F000000012A}" {
+  HorizontalAlign 3
+  Padding 0 0 0 6
+ }
+ Color 1 1 1 0
+ components {
+  CRF_MiniArsenalItemButton "{6A6C0F0000000129}" {
+   m_BackgroundDefault 0.0075 0.0086 0.0123 0.97
+   m_BackgroundHovered 0.011 0.0137 0.0212 1
+   m_BackgroundSelected 0.011 0.0137 0.0212 1
+   m_BackgroundSelectedHovered 0.011 0.0137 0.0212 1
+   m_BackgroundClicked 0.0144 0.0168 0.0262 1
+  }
+ }
+ {
+  SizeLayoutWidgetClass "{6A6C0F0000000128}" {
+   Name "ItemSize"
+   Slot ButtonWidgetSlot "{6A6C0F0000000125}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 80
+   {
+    OverlayWidgetClass "{6A6C0F0000000127}" {
+     Name "ItemLayers"
+     Slot AlignableSlot "{6A6C0F0000000126}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     {
+      ImageWidgetClass "{6A6C0F000000011D}" {
+       Name "Background"
+       Slot OverlayWidgetSlot "{6A6C0F000000011C}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.0075 0.0086 0.0123 0.97
+      }
+      ImageWidgetClass "{6A6C0F000000011F}" {
+       Name "ItemAccent"
+       Slot OverlayWidgetSlot "{6A6C0F000000011E}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+       }
+       Color 0.5841 0.0369 0.0369 0
+       Size 3 80
+      }
+      ImageWidgetClass "{6A6C0F0000000121}" {
+       Name "PreviewBG"
+       Slot OverlayWidgetSlot "{6A6C0F0000000120}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 12 0 0 0
+       }
+       Color 0.0033 0.0037 0.0052 1
+       Size 64 64
+      }
+      SizeLayoutWidgetClass "{6A6C0F0000000113}" {
+       Name "PreviewSize"
+       Slot OverlayWidgetSlot "{6A6C0F0000000110}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 12 0 0 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 64
+       AllowHeightOverride 1
+       HeightOverride 64
+       {
+        ItemPreviewWidgetClass "{6A6C0F0000000112}" {
+         Name "ArsenalItemPreview"
+         Slot AlignableSlot "{6A6C0F0000000111}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{6A6C0F000000011B}" {
+       Name "TextColumn"
+       Slot OverlayWidgetSlot "{6A6C0F0000000114}" {
+        HorizontalAlign 3
+        VerticalAlign 1
+        Padding 92 0 14 0
+       }
+       {
+        TextWidgetClass "{6A6C0F0000000116}" {
+         Name "ArsenalItemText"
+         Slot AlignableSlot "{6A6C0F0000000115}" {
+          HorizontalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "Item"
+         "Font Size" 17
+         "Min Font Size" 11
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A6C0F0000000117}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6A6C0F0000000119}" {
+         Name "ArsenalItemSub"
+         Slot AlignableSlot "{6A6C0F0000000118}" {
+          HorizontalAlign 3
+          Padding 0 2 0 0
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text ""
+         "Font Size" 12
+         "Min Font Size" 10
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A6C0F000000011A}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+      TextWidgetClass "{6A6C0F0000000123}" {
+       Name "EquippedTag"
+       Slot OverlayWidgetSlot "{6A6C0F0000000122}" {
+        HorizontalAlign 2
+        VerticalAlign 0
+        Padding 0 8 12 0
+       }
+       Color 0.9046 0.1170 0.1170 1
+       Text "EQUIPPED"
+       "Font Size" 11
+       "Min Font Size" 10
+       "Horizontal Alignment" Right
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A6C0F0000000124}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+       "Is Visible" 0
+      }
+     }
+    }
+   }
+  }
+ }
+}

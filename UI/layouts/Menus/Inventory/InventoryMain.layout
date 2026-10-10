@@ -4246,29 +4246,112 @@ FrameWidgetClass {
   ButtonWidgetClass "{668729090E73E5E1}" {
    Name "MiniArsenal"
    Slot FrameWidgetSlot "{668729090E73E418}" {
-    PositionX 1659
-    OffsetLeft 1659
-    PositionY 16.869
-    OffsetTop 16.869
-    SizeX 154.18
-    OffsetRight -1813.18
-    SizeY 30
-    OffsetBottom -46.869
+    Anchor 1 0 1 0
+    PositionX -252
+    OffsetLeft -252
+    PositionY 16
+    OffsetTop 16
+    SizeX 228
+    OffsetRight 24
+    SizeY 48
+    OffsetBottom -64
    }
    "Z Order" 99
-   Color 0.0953 0.0953 0.0953 0.6437
+   Color 1 1 1 0
    components {
     SCR_ButtonComponent "{6687290EBC68F5A1}" {
+     m_BackgroundDefault 0.5841 0.0369 0.0369 1
+     m_BackgroundHovered 0.7011 0.0545 0.0545 1
+     m_BackgroundSelected 0.5841 0.0369 0.0369 1
+     m_BackgroundSelectedHovered 0.7011 0.0545 0.0545 1
+     m_BackgroundClicked 0.4397 0.0262 0.0262 1
+     m_bShowBorderOnFocus 0
     }
    }
    {
-    TextWidgetClass "{6687290952A13910}" {
-     Name "Text0"
-     Slot ButtonWidgetSlot "{6687290952A13933}" {
+    OverlayWidgetClass "{6A6F120000000001}" {
+     Name "MiniArsenalLayers"
+     Slot ButtonWidgetSlot "{6A6F120000000002}" {
+      HorizontalAlign 3
+      VerticalAlign 3
      }
-     Text "Open Mini Arsenal"
-     "Font Size" 19
-     "Min Font Size" 19
+     {
+      SmartPanelWidgetClass "{6A6F120000000003}" {
+       Name "Background"
+       Slot OverlayWidgetSlot "{6A6F120000000004}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.5841 0.0369 0.0369 1
+       style rounded_6px
+      }
+      ImageWidgetClass "{6A6F120000000005}" {
+       Name "MiniArsenalIcon"
+       Slot OverlayWidgetSlot "{6A6F120000000006}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 14 0 0 0
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Texture "{71648F15B3984B87}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_AssaultRifles.edds"
+       Size 26 26
+      }
+      VerticalLayoutWidgetClass "{6A6F120000000007}" {
+       Name "MiniArsenalTexts"
+       Slot OverlayWidgetSlot "{6A6F120000000008}" {
+        HorizontalAlign 3
+        VerticalAlign 1
+        Padding 52 0 12 0
+       }
+       {
+        TextWidgetClass "{6687290952A13910}" {
+         Name "Text0"
+         Slot LayoutSlot "{6687290952A13933}" {
+          HorizontalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "MINI ARSENAL"
+         "Font Size" 17
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A6F120000000009}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6A6F12000000000A}" {
+         Name "MiniArsenalHint"
+         Slot LayoutSlot "{6A6F12000000000B}" {
+          HorizontalAlign 3
+         }
+         Color 0.9046 0.6795 0.6795 1
+         Text "Safe start only"
+         "Font Size" 12
+         "Min Font Size" 9
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A6F12000000000C}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+      TextWidgetClass "{6A6F12000000000D}" {
+       Name "MiniArsenalChevron"
+       Slot OverlayWidgetSlot "{6A6F12000000000E}" {
+        HorizontalAlign 2
+        VerticalAlign 1
+        Padding 0 0 14 0
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text "›"
+       "Font Size" 26
+       "Min Font Size" 14
+       FontProperties FontProperties "{6A6F12000000000F}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
     }
    }
   }

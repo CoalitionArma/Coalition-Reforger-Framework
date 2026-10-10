@@ -191,6 +191,8 @@ class COA_AARMenu: ChimeraMenuBase
 	{
 		super.OnMenuClose();
 
+		SetMapWheelBlocked(false);
+
 		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		if (slottingManager)
 		{
@@ -203,6 +205,8 @@ class COA_AARMenu: ChimeraMenuBase
 
 		CRF_AARSessionStats.s_OnMissionIdReceived.Remove(UpdateLinkText);
 		CRF_AARSessionStats.s_OnRatingResult.Remove(OnRatingResult);
+		CRF_AARReviewSession.s_OnSubmitResult.Remove(OnReviewSubmitResult);
+		CRF_AARReviewSession.s_OnFormReceived.Remove(UpdateRatingCard);
 
 		// Don't leave entrance/drawer animations running against widgets that are going away
 		foreach (Widget animatedWidget : m_aAnimatedWidgets)
@@ -250,9 +254,70 @@ class COA_AARMenu: ChimeraMenuBase
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	//! Lists drawn over the map whose mouse wheel scrolling shouldn't zoom it
+	protected static const ref array<string> MAP_WHEEL_BLOCKERS = {"PlayerList", "RoleFrame"};
+	protected bool m_bMapWheelBlocked;
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateMapWheelBlock()
+	{
+		bool block = false;
+		foreach (string name : MAP_WHEEL_BLOCKERS)
+		{
+			if (IsCursorOver(m_wRoot.FindAnyWidget(name)))
+			{
+				block = true;
+				break;
+			}
+		}
+
+		SetMapWheelBlocked(block);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Wheel zoom on/off via SCR_MapCursorModule's journal flag - the only thing that flag gates is
+	//! mouse wheel zoom (the AAR map has no journal). Modding SCR_MapCursorModule instead breaks it:
+	//! the map config can then no longer create the module ("Unknown class").
+	protected void SetMapWheelBlocked(bool blocked)
+	{
+		if (blocked == m_bMapWheelBlocked)
+			return;
+
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		if (!mapEntity)
+			return;
+
+		SCR_MapCursorModule cursorModule = SCR_MapCursorModule.Cast(mapEntity.GetMapModule(SCR_MapCursorModule));
+		if (!cursorModule)
+			return;
+
+		cursorModule.SetJournalVisibility(blocked);
+		m_bMapWheelBlocked = blocked;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsCursorOver(Widget widget)
+	{
+		if (!widget || !widget.IsVisibleInHierarchy())
+			return false;
+
+		int mouseX, mouseY;
+		WidgetManager.GetMousePos(mouseX, mouseY);
+
+		float left, top, width, height;
+		widget.GetScreenPos(left, top);
+		widget.GetScreenSize(width, height);
+		return mouseX >= left && mouseX <= left + width && mouseY >= top && mouseY <= top + height;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
+
+		// Scrolling the voice channels or the roster must not also zoom the map underneath
+		UpdateMapWheelBlock();
 
 		if (m_Gamemode && m_Gamemode.m_GamemodeState != COA_EGamemodeState.AAR)
 			m_bAllowClose = true;
@@ -470,7 +535,33 @@ class COA_AARMenu: ChimeraMenuBase
 				buttonComponent.m_OnClicked.Insert(OnRateClicked);
 		}
 
+		// "Write full AAR": the website's review form, in game (CRF_AARReviewMenu)
+		Widget writeButton = m_wRatingRoot.FindAnyWidget("WriteAARButton");
+		if (writeButton)
+		{
+			SCR_ButtonTextComponent writeComponent = SCR_ButtonTextComponent.Cast(writeButton.FindHandler(SCR_ButtonTextComponent));
+			if (writeComponent)
+				writeComponent.m_OnClicked.Insert(OnWriteAARClicked);
+		}
+
+		CRF_AARReviewSession.s_OnSubmitResult.Insert(OnReviewSubmitResult);
+		CRF_AARReviewSession.s_OnFormReceived.Insert(UpdateRatingCard);
 		CRF_AARSessionStats.s_OnRatingResult.Insert(OnRatingResult);
+		UpdateRatingCard();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnWriteAARClicked(SCR_ButtonBaseComponent button)
+	{
+		if (CRF_AARSessionStats.s_iMissionId <= 0)
+			return;
+
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARReviewMenu);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnReviewSubmitResult(bool saved, string message)
+	{
 		UpdateRatingCard();
 	}
 
@@ -511,6 +602,29 @@ class COA_AARMenu: ChimeraMenuBase
 			return;
 
 		m_wRatingCard.SetVisible(CRF_AARSessionStats.s_iMissionId > 0);
+
+		Widget writeFrame = m_wRatingRoot.FindAnyWidget("WriteAARFrame");
+		if (writeFrame)
+		{
+			TextWidget writeText = TextWidget.Cast(writeFrame.FindAnyWidget("ButtonText"));
+			CRF_AARReviewSession.SyncMission();
+
+			// Ask once per round whether this player already wrote an AAR, so the label is right
+			if (CRF_AARSessionStats.s_iMissionId > 0 && !CRF_AARReviewSession.s_bFormRequested)
+			{
+				COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+				if (authorityManager)
+				{
+					CRF_AARReviewSession.s_bFormRequested = true;
+					authorityManager.RequestAARReviewForm();
+				}
+			}
+
+			if (writeText && CRF_AARReviewSession.s_bHasReview)
+				writeText.SetText("EDIT YOUR AAR  ›");
+			else if (writeText)
+				writeText.SetText("WRITE FULL AAR  ›");
+		}
 
 		int shownRating = CRF_AARSessionStats.s_iRating;
 		if (m_iPendingRating > 0)

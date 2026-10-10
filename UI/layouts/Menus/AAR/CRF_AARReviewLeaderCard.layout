@@ -1,0 +1,670 @@
+OverlayWidgetClass {
+ Name "LeaderCardRoot"
+ Slot LayoutSlot "{6A6D1000000001BE}" {
+  HorizontalAlign 3
+  Padding 0 0 0 14
+ }
+ {
+  ImageWidgetClass "{6A6D1000000001C0}" {
+   Name "CardBG"
+   Slot OverlayWidgetSlot "{6A6D1000000001BF}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   Color 0.0033 0.0037 0.0052 0.92
+  }
+  ImageWidgetClass "{6A6D1000000001BD}" {
+   Name "CardAccent"
+   Slot OverlayWidgetSlot "{6A6D1000000001BC}" {
+    HorizontalAlign 0
+    VerticalAlign 3
+   }
+   Color 0.5841 0.0369 0.0369 1
+   Size 3 10
+  }
+  VerticalLayoutWidgetClass "{6A6D1000000001BB}" {
+   Name "CardContent"
+   Slot OverlayWidgetSlot "{6A6D1000000001A9}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+    Padding 18 14 18 16
+   }
+   {
+    SizeLayoutWidgetClass "{6A6D100000000182}" {
+     Name "HeaderSize"
+     Slot LayoutSlot "{6A6D10000000017F}" {
+      HorizontalAlign 3
+     }
+     AllowHeightOverride 1
+     HeightOverride 40
+     {
+      HorizontalLayoutWidgetClass "{6A6D100000000181}" {
+       Name "LeaderHeader"
+       Slot AlignableSlot "{6A6D100000000180}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       {
+        OverlayWidgetClass "{6A6D100000000152}" {
+         Name "NameLayers"
+         Slot LayoutSlot "{6A6D10000000014F}" {
+          FillWeight 1
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D100000000151}" {
+           Name "NameBG"
+           Slot OverlayWidgetSlot "{6A6D100000000150}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          EditBoxWidgetClass "{6A6D10000000014D}" {
+           Name "LeaderName"
+           Slot OverlayWidgetSlot "{6A6D10000000014C}" {
+            HorizontalAlign 3
+            VerticalAlign 1
+            Padding 12 0 0 0
+           }
+           Color 0.8632 0.8879 0.9301 1
+           "Font Size" 17
+           "Use placeholder text" 1
+           "Placeholder text" "Leader callsign / name"
+           FontProperties FontProperties "{6A6D10000000014E}" {
+            Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D10000000015F}" {
+         Name "PrevLeaderSize"
+         Slot LayoutSlot "{6A6D100000000153}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+         }
+         AllowWidthOverride 1
+         WidthOverride 36
+         AllowHeightOverride 1
+         HeightOverride 36
+         {
+          FrameWidgetClass "{6A6D10000000015E}" {
+           Name "PrevLeaderFrame"
+           Slot AlignableSlot "{6A6D100000000154}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            ImageWidgetClass "{6A6D10000000015D}" {
+             Name "PrevLeaderBG"
+             Slot FrameWidgetSlot "{6A6D10000000015C}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.011 0.0137 0.0212 1
+            }
+            ButtonWidgetClass "{6A6D10000000015B}" {
+             Name "PrevLeader"
+             Slot FrameWidgetSlot "{6A6D100000000155}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             "Z Order" 1
+             Color 1 1 1 0
+             components {
+              ButtonComponent "{6A6D100000000156}" {
+               m_ColorButtonDefault 0 0 0 0
+               m_ColorButtonHovered 1 1 1 0.012
+               m_ColorButtonHoveredFocused 1 1 1 0.025
+              }
+              SCR_ButtonTextComponent "{6A6D100000000157}" {
+              }
+             }
+             {
+              TextWidgetClass "{6A6D100000000159}" {
+               Name "ButtonText"
+               Slot ButtonWidgetSlot "{6A6D100000000158}" {
+                HorizontalAlign 3
+                VerticalAlign 3
+               }
+               Color 0.8632 0.8879 0.9301 1
+               Text "‹"
+               "Font Size" 20
+               "Min Font Size" 14
+               "Horizontal Alignment" Center
+               "Vertical Alignment" Center
+               FontProperties FontProperties "{6A6D10000000015A}" {
+                Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D10000000016C}" {
+         Name "NextLeaderSize"
+         Slot LayoutSlot "{6A6D100000000160}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 4 0 0 0
+         }
+         AllowWidthOverride 1
+         WidthOverride 36
+         AllowHeightOverride 1
+         HeightOverride 36
+         {
+          FrameWidgetClass "{6A6D10000000016B}" {
+           Name "NextLeaderFrame"
+           Slot AlignableSlot "{6A6D100000000161}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            ImageWidgetClass "{6A6D10000000016A}" {
+             Name "NextLeaderBG"
+             Slot FrameWidgetSlot "{6A6D100000000169}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.011 0.0137 0.0212 1
+            }
+            ButtonWidgetClass "{6A6D100000000168}" {
+             Name "NextLeader"
+             Slot FrameWidgetSlot "{6A6D100000000162}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             "Z Order" 1
+             Color 1 1 1 0
+             components {
+              ButtonComponent "{6A6D100000000163}" {
+               m_ColorButtonDefault 0 0 0 0
+               m_ColorButtonHovered 1 1 1 0.012
+               m_ColorButtonHoveredFocused 1 1 1 0.025
+              }
+              SCR_ButtonTextComponent "{6A6D100000000164}" {
+              }
+             }
+             {
+              TextWidgetClass "{6A6D100000000166}" {
+               Name "ButtonText"
+               Slot ButtonWidgetSlot "{6A6D100000000165}" {
+                HorizontalAlign 3
+                VerticalAlign 3
+               }
+               Color 0.8632 0.8879 0.9301 1
+               Text "›"
+               "Font Size" 20
+               "Min Font Size" 14
+               "Horizontal Alignment" Center
+               "Vertical Alignment" Center
+               FontProperties FontProperties "{6A6D100000000167}" {
+                Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D100000000171}" {
+         Name "OverallSize"
+         Slot LayoutSlot "{6A6D10000000016D}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+         }
+         AllowWidthOverride 1
+         WidthOverride 76
+         AllowHeightOverride 1
+         HeightOverride 36
+         {
+          TextWidgetClass "{6A6D10000000016F}" {
+           Name "LeaderOverall"
+           Slot AlignableSlot "{6A6D10000000016E}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 0.3968 0.4564 0.6038 1
+           Text "–"
+           "Font Size" 18
+           "Min Font Size" 12
+           "Horizontal Alignment" Center
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{6A6D100000000170}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D10000000017E}" {
+         Name "RemoveLeaderSize"
+         Slot LayoutSlot "{6A6D100000000172}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 4 0 0 0
+         }
+         AllowWidthOverride 1
+         WidthOverride 104
+         AllowHeightOverride 1
+         HeightOverride 32
+         {
+          FrameWidgetClass "{6A6D10000000017D}" {
+           Name "RemoveLeaderFrame"
+           Slot AlignableSlot "{6A6D100000000173}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            ImageWidgetClass "{6A6D10000000017C}" {
+             Name "RemoveLeaderBG"
+             Slot FrameWidgetSlot "{6A6D10000000017B}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.011 0.0137 0.0212 1
+            }
+            ButtonWidgetClass "{6A6D10000000017A}" {
+             Name "RemoveLeader"
+             Slot FrameWidgetSlot "{6A6D100000000174}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             "Z Order" 1
+             Color 1 1 1 0
+             components {
+              ButtonComponent "{6A6D100000000175}" {
+               m_ColorButtonDefault 0 0 0 0
+               m_ColorButtonHovered 1 1 1 0.012
+               m_ColorButtonHoveredFocused 1 1 1 0.025
+              }
+              SCR_ButtonTextComponent "{6A6D100000000176}" {
+              }
+             }
+             {
+              TextWidgetClass "{6A6D100000000178}" {
+               Name "ButtonText"
+               Slot ButtonWidgetSlot "{6A6D100000000177}" {
+                HorizontalAlign 3
+                VerticalAlign 3
+               }
+               Color 0.8632 0.8879 0.9301 1
+               Text "REMOVE"
+               "Font Size" 13
+               "Min Font Size" 10
+               "Horizontal Alignment" Center
+               "Vertical Alignment" Center
+               FontProperties FontProperties "{6A6D100000000179}" {
+                Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    TextWidgetClass "{6A6D1000000001AB}" {
+     Name "PickHint"
+     Slot LayoutSlot "{6A6D1000000001AA}" {
+      HorizontalAlign 3
+      Padding 0 6 0 0
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "Use ‹ › to pick from this round's leaders, or type a name"
+     "Font Size" 12
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6D1000000001AC}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+     Wrap 1
+    }
+    VerticalLayoutWidgetClass "{6A6D1000000001AE}" {
+     Name "LeaderRatings"
+     Slot LayoutSlot "{6A6D1000000001AD}" {
+      HorizontalAlign 3
+      Padding 0 10 0 4
+     }
+    }
+    TextWidgetClass "{6A6D1000000001B0}" {
+     Name "ReasonLabel"
+     Slot LayoutSlot "{6A6D1000000001AF}" {
+      HorizontalAlign 3
+      Padding 0 6 0 6
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "WHY DID THIS LEADER RECEIVE THIS RATING? (OPTIONAL)"
+     "Font Size" 13
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6D1000000001B1}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    SizeLayoutWidgetClass "{6A6D1000000001BA}" {
+     Name "LeaderReasonField"
+     Slot LayoutSlot "{6A6D1000000001B2}" {
+      HorizontalAlign 3
+     }
+     AllowHeightOverride 1
+     HeightOverride 64
+     {
+      OverlayWidgetClass "{6A6D1000000001B9}" {
+       Name "LeaderReasonLayers"
+       Slot AlignableSlot "{6A6D1000000001B6}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       {
+        ImageWidgetClass "{6A6D1000000001B8}" {
+         Name "LeaderReasonBG"
+         Slot OverlayWidgetSlot "{6A6D1000000001B7}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.011 0.0137 0.0212 1
+        }
+        MultilineEditBoxWidgetClass "{6A6D1000000001B4}" {
+         Name "LeaderReason"
+         Slot OverlayWidgetSlot "{6A6D1000000001B3}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          Padding 12 10 12 10
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text ""
+         "Font Size" 16
+         "Min Font Size" 12
+         FontProperties FontProperties "{6A6D1000000001B5}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+    SizeLayoutWidgetClass "{6A6D1000000001A8}" {
+     Name "KarmaSize"
+     Slot LayoutSlot "{6A6D100000000183}" {
+      HorizontalAlign 3
+      Padding 0 10 0 0
+     }
+     AllowHeightOverride 1
+     HeightOverride 32
+     {
+      HorizontalLayoutWidgetClass "{6A6D1000000001A7}" {
+       Name "KarmaRow"
+       Slot AlignableSlot "{6A6D100000000184}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       {
+        SizeLayoutWidgetClass "{6A6D100000000189}" {
+         Name "KarmaLabelSize"
+         Slot LayoutSlot "{6A6D100000000185}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+         }
+         AllowWidthOverride 1
+         WidthOverride 70
+         AllowHeightOverride 1
+         HeightOverride 32
+         {
+          TextWidgetClass "{6A6D100000000187}" {
+           Name "KarmaLabel"
+           Slot AlignableSlot "{6A6D100000000186}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 0.3968 0.4564 0.6038 1
+           Text "KARMA"
+           "Font Size" 12
+           "Min Font Size" 10
+           "Horizontal Alignment" Left
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{6A6D100000000188}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D100000000196}" {
+         Name "KarmaUpSize"
+         Slot LayoutSlot "{6A6D10000000018A}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+         }
+         AllowWidthOverride 1
+         WidthOverride 56
+         AllowHeightOverride 1
+         HeightOverride 30
+         {
+          FrameWidgetClass "{6A6D100000000195}" {
+           Name "KarmaUpFrame"
+           Slot AlignableSlot "{6A6D10000000018B}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            ImageWidgetClass "{6A6D100000000194}" {
+             Name "KarmaUpBG"
+             Slot FrameWidgetSlot "{6A6D100000000193}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.011 0.0137 0.0212 1
+            }
+            ButtonWidgetClass "{6A6D100000000192}" {
+             Name "KarmaUp"
+             Slot FrameWidgetSlot "{6A6D10000000018C}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             "Z Order" 1
+             Color 1 1 1 0
+             components {
+              ButtonComponent "{6A6D10000000018D}" {
+               m_ColorButtonDefault 0 0 0 0
+               m_ColorButtonHovered 1 1 1 0.012
+               m_ColorButtonHoveredFocused 1 1 1 0.025
+              }
+              SCR_ButtonTextComponent "{6A6D10000000018E}" {
+              }
+             }
+             {
+              TextWidgetClass "{6A6D100000000190}" {
+               Name "ButtonText"
+               Slot ButtonWidgetSlot "{6A6D10000000018F}" {
+                HorizontalAlign 3
+                VerticalAlign 3
+               }
+               Color 0.8632 0.8879 0.9301 1
+               Text "+1"
+               "Font Size" 15
+               "Min Font Size" 10
+               "Horizontal Alignment" Center
+               "Vertical Alignment" Center
+               FontProperties FontProperties "{6A6D100000000191}" {
+                Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{6A6D1000000001A3}" {
+         Name "KarmaDownSize"
+         Slot LayoutSlot "{6A6D100000000197}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 6 0 0 0
+         }
+         AllowWidthOverride 1
+         WidthOverride 56
+         AllowHeightOverride 1
+         HeightOverride 30
+         {
+          FrameWidgetClass "{6A6D1000000001A2}" {
+           Name "KarmaDownFrame"
+           Slot AlignableSlot "{6A6D100000000198}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            ImageWidgetClass "{6A6D1000000001A1}" {
+             Name "KarmaDownBG"
+             Slot FrameWidgetSlot "{6A6D1000000001A0}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             Color 0.011 0.0137 0.0212 1
+            }
+            ButtonWidgetClass "{6A6D10000000019F}" {
+             Name "KarmaDown"
+             Slot FrameWidgetSlot "{6A6D100000000199}" {
+              Anchor 0 0 1 1
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 0
+              OffsetRight 0
+              SizeY 0
+              OffsetBottom 0
+             }
+             "Z Order" 1
+             Color 1 1 1 0
+             components {
+              ButtonComponent "{6A6D10000000019A}" {
+               m_ColorButtonDefault 0 0 0 0
+               m_ColorButtonHovered 1 1 1 0.012
+               m_ColorButtonHoveredFocused 1 1 1 0.025
+              }
+              SCR_ButtonTextComponent "{6A6D10000000019B}" {
+              }
+             }
+             {
+              TextWidgetClass "{6A6D10000000019D}" {
+               Name "ButtonText"
+               Slot ButtonWidgetSlot "{6A6D10000000019C}" {
+                HorizontalAlign 3
+                VerticalAlign 3
+               }
+               Color 0.8632 0.8879 0.9301 1
+               Text "−1"
+               "Font Size" 15
+               "Min Font Size" 10
+               "Horizontal Alignment" Center
+               "Vertical Alignment" Center
+               FontProperties FontProperties "{6A6D10000000019E}" {
+                Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        TextWidgetClass "{6A6D1000000001A5}" {
+         Name "KarmaHint"
+         Slot LayoutSlot "{6A6D1000000001A4}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 12 0 0 0
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "One +1 and one −1 allowed per mission"
+         "Font Size" 12
+         "Min Font Size" 10
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A6D1000000001A6}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

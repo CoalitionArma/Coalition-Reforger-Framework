@@ -2,18 +2,95 @@ FrameWidgetClass {
  {
   FrameWidgetClass "{6A1D312FC0641B6C}" {
    Name "VAAR"
-   Slot FrameWidgetSlot "{6A1D312FC0641B46}" {
+   Slot FrameWidgetSlot "{6A6E1100000003B9}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -792
-    OffsetLeft -792
-    PositionY 132
-    OffsetTop 132
-    SizeX 360
-    OffsetRight 432
-    SizeY 80
-    OffsetBottom -212
+    PositionX -744
+    OffsetLeft -744
+    PositionY 262
+    OffsetTop 262
+    SizeX 520
+    OffsetRight 224
+    SizeY 96
+    OffsetBottom -358
    }
    {
+    SmartPanelWidgetClass "{6A6E1100000003AC}" {
+     Name "VAARCard"
+     Slot FrameWidgetSlot "{6A6E1100000003AB}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 520
+      OffsetRight -520
+      SizeY 96
+      OffsetBottom -96
+     }
+     Color 0.0075 0.0086 0.0123 1
+     style rounded_6px
+    }
+    ImageWidgetClass "{6A6E1100000003AE}" {
+     Name "VAARCardPill"
+     Slot FrameWidgetSlot "{6A6E1100000003AD}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 15
+      OffsetTop 15
+      SizeX 3
+      OffsetRight -3
+      SizeY 14
+      OffsetBottom -29
+     }
+     Color 0.5841 0.0369 0.0369 1
+    }
+    TextWidgetClass "{6A6E1100000003B0}" {
+     Name "VAARCardTitle"
+     Slot FrameWidgetSlot "{6A6E1100000003AF}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 12
+      OffsetTop 12
+      SizeX 488
+      OffsetRight -504
+      SizeY 20
+      OffsetBottom -32
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "VIRTUAL AAR"
+     "Font Size" 13
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6E1100000003B1}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{6A6E1100000003B3}" {
+     Name "VAARCardHint"
+     Slot FrameWidgetSlot "{6A6E1100000003B2}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 12
+      OffsetTop 12
+      SizeX 488
+      OffsetRight -504
+      SizeY 20
+      OffsetBottom -32
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "Replay recording for the website"
+     "Font Size" 12
+     "Min Font Size" 10
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6E1100000003B4}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
     TextWidgetClass "{6A1D312FC37DE52E}" {
      Name "VAARTitle"
      Slot FrameWidgetSlot "{6A1D312FC37DE509}" {
@@ -31,21 +108,40 @@ FrameWidgetClass {
      "Min Font Size" 10
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
+     "Is Visible" 0
+    }
+    SmartPanelWidgetClass "{6A6E1100000003B8}" {
+     Name "ToggleVAARButtonBG"
+     Slot FrameWidgetSlot "{6A6E1100000003B7}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 44
+      OffsetTop 44
+      SizeX 488
+      OffsetRight -504
+      SizeY 36
+      OffsetBottom -80
+     }
+     "Z Order" 1
+     Color 0.011 0.0137 0.0212 1
+     style rounded_4px
     }
     ButtonWidgetClass "{6A1D312FEEA56FEB}" {
      Name "ToggleVAARButton"
-     Slot FrameWidgetSlot "{6A1D312FEEA56FD0}" {
-      PositionX 8
-      OffsetLeft 8
-      PositionY 40
-      OffsetTop 40
-      SizeX 192
-      OffsetRight -200
-      SizeY 30
-      OffsetBottom -70
+     Slot FrameWidgetSlot "{6A6E1100000003B5}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 44
+      OffsetTop 44
+      SizeX 488
+      OffsetRight -504
+      SizeY 36
+      OffsetBottom -80
      }
-     "Z Order" 5
-     Color 0.013 0.0152 0.0176 1
+     Color 1 1 1 0
+     "Z Order" 2
      components {
       SCR_ButtonTextComponent "{6A1D375F485AC76B}" {
        m_bCanBeToggled 1
@@ -56,21 +152,16 @@ FrameWidgetClass {
        Name "ActionButtonText"
        Slot ButtonWidgetSlot "{6A1D312F9AD713FC}" {
        }
-       Text "Toggle Recording"
+       Text "Toggle recording"
        "Font Size" 15
-       "Min Font Size" 15
+       "Min Font Size" 11
+       Color 0.8632 0.8879 0.9301 1
+       FontProperties FontProperties "{6A6E1100000003B6}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
       }
      }
     }
-   }
-  }
-  FrameWidgetClass "{659CDD56628B68FC}" {
-   Prefab "{659CDD56628B68FC}"
-   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
-    OffsetLeft -817
-    OffsetTop -485
-    OffsetRight -311
-    OffsetBottom -443
    }
   }
  }

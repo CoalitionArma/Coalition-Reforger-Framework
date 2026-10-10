@@ -271,6 +271,40 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! AAR form: the player's saved review (if any) and the leaders they can rate
+	void ReceiveAARReviewForm(bool linked, bool hasReview, array<string> strings, array<int> ints, array<string> leaderOptions)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARReviewForm(linked, hasReview, strings, ints, leaderOptions);
+		else
+			Rpc(RpcDo_ReceiveAARReviewForm, linked, hasReview, strings, ints, leaderOptions);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARReviewForm(bool linked, bool hasReview, array<string> strings, array<int> ints, array<string> leaderOptions)
+	{
+		CRF_AARReviewSession.ReceiveForm(linked, hasReview, strings, ints, leaderOptions);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! AAR form: whether the website saved the player's review, and why not
+	void ReceiveAARReviewResult(bool saved, string message)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveAARReviewResult(saved, message);
+		else
+			Rpc(RpcDo_ReceiveAARReviewResult, saved, message);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveAARReviewResult(bool saved, string message)
+	{
+		CRF_AARReviewSession.ReceiveResult(saved, message);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! AAR screen: whether the website accepted this player's mission rating
 	void ReceiveMissionRatingResult(int rating, bool saved)
 	{

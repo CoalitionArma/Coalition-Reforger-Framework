@@ -1,0 +1,85 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{6A6C0F000000010F}" {
+  HorizontalAlign 3
+  Padding 8 4 8 0
+ }
+ Color 1 1 1 0
+ components {
+  CRF_MiniArsenalCategoryButton "{6A6C0F000000010E}" {
+   m_bCanBeToggled 1
+   m_BackgroundDefault 0.011 0.0137 0.0212 0
+   m_BackgroundHovered 0.011 0.0137 0.0212 0.6
+   m_BackgroundSelected 0.011 0.0137 0.0212 1
+   m_BackgroundSelectedHovered 0.011 0.0137 0.0212 1
+   m_BackgroundClicked 0.011 0.0137 0.0212 1
+  }
+ }
+ {
+  SizeLayoutWidgetClass "{6A6C0F000000010D}" {
+   Name "CategorySize"
+   Slot ButtonWidgetSlot "{6A6C0F000000010A}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 64
+   {
+    OverlayWidgetClass "{6A6C0F000000010C}" {
+     Name "CategoryLayers"
+     Slot AlignableSlot "{6A6C0F000000010B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     {
+      ImageWidgetClass "{6A6C0F0000000102}" {
+       Name "Background"
+       Slot OverlayWidgetSlot "{6A6C0F0000000101}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.011 0.0137 0.0212 0
+      }
+      ImageWidgetClass "{6A6C0F0000000104}" {
+       Name "CategoryAccent"
+       Slot OverlayWidgetSlot "{6A6C0F0000000103}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+       }
+       Color 0.5841 0.0369 0.0369 0
+       Size 3 64
+      }
+      ImageWidgetClass "{6A6C0F0000000106}" {
+       Name "CategoryIcon"
+       Slot OverlayWidgetSlot "{6A6C0F0000000105}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+        Padding 0 10 0 0
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Texture "{92245C15E122EDB2}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_Jackets.edds"
+       Size 26 26
+      }
+      TextWidgetClass "{6A6C0F0000000108}" {
+       Name "CategoryLabel"
+       Slot OverlayWidgetSlot "{6A6C0F0000000107}" {
+        HorizontalAlign 3
+        VerticalAlign 2
+        Padding 2 0 2 8
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "Category"
+       "Font Size" 11
+       "Min Font Size" 10
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A6C0F0000000109}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

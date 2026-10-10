@@ -1,0 +1,460 @@
+SizeLayoutWidgetClass {
+ Name "StarRowRoot"
+ Slot LayoutSlot "{6A6D100000000149}" {
+  HorizontalAlign 3
+  Padding 0 0 0 6
+ }
+ AllowHeightOverride 1
+ HeightOverride 38
+ {
+  OverlayWidgetClass "{6A6D10000000014B}" {
+   Name "StarRowLayers"
+   Slot AlignableSlot "{6A6D10000000014A}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    ImageWidgetClass "{6A6D100000000143}" {
+     Name "RowBG"
+     Slot OverlayWidgetSlot "{6A6D100000000142}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0033 0.0037 0.0052 0.55
+    }
+    TextWidgetClass "{6A6D100000000145}" {
+     Name "StarLabel"
+     Slot OverlayWidgetSlot "{6A6D100000000144}" {
+      HorizontalAlign 3
+      VerticalAlign 1
+      Padding 14 0 260 0
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "Category"
+     "Font Size" 15
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{6A6D100000000146}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    HorizontalLayoutWidgetClass "{6A6D100000000148}" {
+     Name "Pips"
+     Slot OverlayWidgetSlot "{6A6D100000000147}" {
+      HorizontalAlign 2
+      VerticalAlign 1
+      Padding 0 0 4 0
+     }
+     {
+      SizeLayoutWidgetClass "{6A6D10000000010D}" {
+       Name "PipSize1"
+       Slot LayoutSlot "{6A6D10000000010C}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 0 0 6 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 40
+       AllowHeightOverride 1
+       HeightOverride 28
+       {
+        FrameWidgetClass "{6A6D10000000010B}" {
+         Name "PipFrame1"
+         Slot AlignableSlot "{6A6D100000000101}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D10000000010A}" {
+           Name "PipBG1"
+           Slot FrameWidgetSlot "{6A6D100000000109}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          ButtonWidgetClass "{6A6D100000000108}" {
+           Name "Pip1"
+           Slot FrameWidgetSlot "{6A6D100000000102}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{6A6D100000000103}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+            SCR_ButtonTextComponent "{6A6D100000000104}" {
+            }
+           }
+           {
+            TextWidgetClass "{6A6D100000000106}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{6A6D100000000105}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "1"
+             "Font Size" 15
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6A6D100000000107}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{6A6D10000000011A}" {
+       Name "PipSize2"
+       Slot LayoutSlot "{6A6D100000000119}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 0 0 6 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 40
+       AllowHeightOverride 1
+       HeightOverride 28
+       {
+        FrameWidgetClass "{6A6D100000000118}" {
+         Name "PipFrame2"
+         Slot AlignableSlot "{6A6D10000000010E}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D100000000117}" {
+           Name "PipBG2"
+           Slot FrameWidgetSlot "{6A6D100000000116}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          ButtonWidgetClass "{6A6D100000000115}" {
+           Name "Pip2"
+           Slot FrameWidgetSlot "{6A6D10000000010F}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{6A6D100000000110}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+            SCR_ButtonTextComponent "{6A6D100000000111}" {
+            }
+           }
+           {
+            TextWidgetClass "{6A6D100000000113}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{6A6D100000000112}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "2"
+             "Font Size" 15
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6A6D100000000114}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{6A6D100000000127}" {
+       Name "PipSize3"
+       Slot LayoutSlot "{6A6D100000000126}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 0 0 6 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 40
+       AllowHeightOverride 1
+       HeightOverride 28
+       {
+        FrameWidgetClass "{6A6D100000000125}" {
+         Name "PipFrame3"
+         Slot AlignableSlot "{6A6D10000000011B}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D100000000124}" {
+           Name "PipBG3"
+           Slot FrameWidgetSlot "{6A6D100000000123}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          ButtonWidgetClass "{6A6D100000000122}" {
+           Name "Pip3"
+           Slot FrameWidgetSlot "{6A6D10000000011C}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{6A6D10000000011D}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+            SCR_ButtonTextComponent "{6A6D10000000011E}" {
+            }
+           }
+           {
+            TextWidgetClass "{6A6D100000000120}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{6A6D10000000011F}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "3"
+             "Font Size" 15
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6A6D100000000121}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{6A6D100000000134}" {
+       Name "PipSize4"
+       Slot LayoutSlot "{6A6D100000000133}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 0 0 6 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 40
+       AllowHeightOverride 1
+       HeightOverride 28
+       {
+        FrameWidgetClass "{6A6D100000000132}" {
+         Name "PipFrame4"
+         Slot AlignableSlot "{6A6D100000000128}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D100000000131}" {
+           Name "PipBG4"
+           Slot FrameWidgetSlot "{6A6D100000000130}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          ButtonWidgetClass "{6A6D10000000012F}" {
+           Name "Pip4"
+           Slot FrameWidgetSlot "{6A6D100000000129}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{6A6D10000000012A}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+            SCR_ButtonTextComponent "{6A6D10000000012B}" {
+            }
+           }
+           {
+            TextWidgetClass "{6A6D10000000012D}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{6A6D10000000012C}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "4"
+             "Font Size" 15
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6A6D10000000012E}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{6A6D100000000141}" {
+       Name "PipSize5"
+       Slot LayoutSlot "{6A6D100000000140}" {
+        HorizontalAlign 0
+        VerticalAlign 1
+        Padding 0 0 6 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 40
+       AllowHeightOverride 1
+       HeightOverride 28
+       {
+        FrameWidgetClass "{6A6D10000000013F}" {
+         Name "PipFrame5"
+         Slot AlignableSlot "{6A6D100000000135}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A6D10000000013E}" {
+           Name "PipBG5"
+           Slot FrameWidgetSlot "{6A6D10000000013D}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.011 0.0137 0.0212 1
+          }
+          ButtonWidgetClass "{6A6D10000000013C}" {
+           Name "Pip5"
+           Slot FrameWidgetSlot "{6A6D100000000136}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{6A6D100000000137}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+            SCR_ButtonTextComponent "{6A6D100000000138}" {
+            }
+           }
+           {
+            TextWidgetClass "{6A6D10000000013A}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{6A6D100000000139}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "5"
+             "Font Size" 15
+             "Min Font Size" 10
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6A6D10000000013B}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
