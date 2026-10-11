@@ -1,0 +1,45 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ HQ {
+  coords 2893.958 156.74 9776.415
+  m_sDescription "HQ"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ SUPPLIES {
+  coords 2961.901 156.126 9827.763
+  m_fWorldSize 100
+  m_sDescription "SUPPLY POINT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ attack {
+  coords 970.725 145.974 9798.14
+  angles 0 102.857 0
+  m_MarkerColor 0.465 0.013 0.061 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 80
+  m_sDescription "SUPPLY POINT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ attack2 {
+  coords 667.983 153.105 9367.076
+  angles 0 97.284 0
+  m_MarkerColor 0.465 0.013 0.061 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 80
+  m_sDescription "SUPPLY POINT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ attack3 {
+  coords 841.745 153.013 8440.172
+  angles 0 40.994 0
+  m_MarkerColor 0.465 0.013 0.061 1
+  m_sQuadName "arrow-large-3"
+  m_fWorldSize 80
+  m_sDescription "SUPPLY POINT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
