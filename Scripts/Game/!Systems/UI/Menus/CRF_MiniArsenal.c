@@ -44,6 +44,16 @@ class CRF_MiniArsenal: ChimeraMenuBase
 
 	float m_fArsenalTimeout = 0;
 
+	// The safe-start mission card (COA_SafeStartInfoDisplay) sits top-left, under this panel. It's parked
+	// top-right while the arsenal is open and put back on close; COA_SafeStartDisplay's timer card docks
+	// under it by screen position, so it follows.
+	protected static const float SAFESTART_INFO_MARGIN = 20;
+	protected Widget m_wSafeStartInfo;
+	protected vector m_vSafeStartInfoAnchorMin;
+	protected vector m_vSafeStartInfoAnchorMax;
+	protected vector m_vSafeStartInfoAlignment;
+	protected vector m_vSafeStartInfoPos;
+
 	//------------------------------------------------------------------------------------------------
 	override void OnMenuOpen()
 	{
@@ -57,6 +67,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
 		m_wCategoryTitle = TextWidget.Cast(m_wRoot.FindAnyWidget("CategoryTitle"));
 		m_wCategoryCount = TextWidget.Cast(m_wRoot.FindAnyWidget("CategoryCount"));
+		ParkSafeStartInfo();
 
 		Widget doneButton = m_wRoot.FindAnyWidget("DoneButton");
 		if (doneButton)
@@ -103,6 +114,10 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	{
 		if (m_UIPolish)
 			m_UIPolish.Update(tDelta);
+
+		// The HUD may not have built the card yet when the menu opened
+		if (!m_wSafeStartInfo)
+			ParkSafeStartInfo();
 
 		if (m_SafeStart && !m_SafeStart.GetSafestartStatus() && COA_PlayerController.IsGracePeriodOver())
 			Close();
@@ -474,6 +489,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	{
 		GetGame().GetCallqueue().Remove(RefreshEquipped);
 		GetGame().GetCallqueue().Remove(ClearPendingAndRefresh);
+		RestoreSafeStartInfo();
 
 		if (m_UIPolish)
 		{
@@ -488,6 +504,38 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		if (m_Camera)
 			delete m_Camera;
 		GetGame().GetCameraManager().SetCamera(m_OldCamera);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Move the safe-start mission card to the top-right corner, remembering where it was
+	protected void ParkSafeStartInfo()
+	{
+		m_wSafeStartInfo = GetGame().GetWorkspace().FindAnyWidget("SafeStartInfoPanel");
+		if (!m_wSafeStartInfo)
+			return;
+
+		m_vSafeStartInfoAnchorMin = FrameSlot.GetAnchorMin(m_wSafeStartInfo);
+		m_vSafeStartInfoAnchorMax = FrameSlot.GetAnchorMax(m_wSafeStartInfo);
+		m_vSafeStartInfoAlignment = FrameSlot.GetAlignment(m_wSafeStartInfo);
+		m_vSafeStartInfoPos = FrameSlot.GetPos(m_wSafeStartInfo);
+
+		// Anchor and align to the right edge so the card's width (it sizes to content) doesn't matter
+		FrameSlot.SetAnchor(m_wSafeStartInfo, 1, m_vSafeStartInfoAnchorMin[1]);
+		FrameSlot.SetAlignment(m_wSafeStartInfo, 1, m_vSafeStartInfoAlignment[1]);
+		FrameSlot.SetPos(m_wSafeStartInfo, -SAFESTART_INFO_MARGIN, m_vSafeStartInfoPos[1]);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void RestoreSafeStartInfo()
+	{
+		if (!m_wSafeStartInfo)
+			return;
+
+		FrameSlot.SetAnchorMin(m_wSafeStartInfo, m_vSafeStartInfoAnchorMin[0], m_vSafeStartInfoAnchorMin[1]);
+		FrameSlot.SetAnchorMax(m_wSafeStartInfo, m_vSafeStartInfoAnchorMax[0], m_vSafeStartInfoAnchorMax[1]);
+		FrameSlot.SetAlignment(m_wSafeStartInfo, m_vSafeStartInfoAlignment[0], m_vSafeStartInfoAlignment[1]);
+		FrameSlot.SetPos(m_wSafeStartInfo, m_vSafeStartInfoPos[0], m_vSafeStartInfoPos[1]);
+		m_wSafeStartInfo = null;
 	}
 
 	//------------------------------------------------------------------------------------------------
