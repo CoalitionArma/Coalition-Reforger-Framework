@@ -1,4 +1,4 @@
-modded class NightVisionThermalComponent
+/*modded class NightVisionThermalComponent
 {
 	//------------------------------------------------------------------------------------------------
 	// Fixes a crash reported when activating the commander turret thermal sight on the bmp2.
@@ -21,4 +21,4 @@ modded class NightVisionThermalComponent
 
 		return super.ApplyThermalMaterialTuning(materialName, verbose);
 	}
-}
+}*/
