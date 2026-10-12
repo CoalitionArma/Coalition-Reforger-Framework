@@ -178,6 +178,77 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (gamemode)
 			gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
+
+		// Staff session report: admin log, tickets and /incident (raised by the Lobby, see COA_SessionLog)
+		COA_SessionLog.GetOnAdminAction().Insert(LogSessionAdminAction);
+		COA_SessionLog.GetOnTicket().Insert(LogSessionTicket);
+		COA_SessionLog.GetOnIncident().Insert(LogSessionIncident);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! World time as HH:MM:SS, the same clock kill lines use
+	protected string SessionTime()
+	{
+		if (!m_World)
+			return string.Empty;
+		int totalSeconds = m_World.GetWorldTime() / 1000;
+		return SCR_FormatHelper.FormatTime(totalSeconds);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Names go in the middle of a CSV line, so they can't keep their commas
+	protected string CsvName(string name)
+	{
+		string clean = name;
+		clean.Replace(SEPARATOR, " ");
+		return clean.Trim();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! admin_action,<low|medium|high>,<time>,<text>
+	protected void LogSessionAdminAction(string text, COA_EAdminLogLevel level)
+	{
+		if (!m_LogFileHandle)
+			return;
+
+		string levelName = "low";
+		if (level == COA_EAdminLogLevel.Medium)
+			levelName = "medium";
+		else if (level == COA_EAdminLogLevel.High)
+			levelName = "high";
+
+		// Free text is last, so its commas survive; line breaks would split the line
+		string clean = text;
+		clean.Replace("\n", " ");
+		m_LogFileHandle.WriteLine("admin_action" + SEPARATOR + levelName + SEPARATOR + SessionTime() + SEPARATOR + clean);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! ticket,<open|assigned|closed>,<time>,<player>,<admin>
+	protected void LogSessionTicket(string eventName, string playerName, string adminName)
+	{
+		if (!m_LogFileHandle)
+			return;
+
+		m_LogFileHandle.WriteLine("ticket" + SEPARATOR + eventName + SEPARATOR + SessionTime() + SEPARATOR + CsvName(playerName) + SEPARATOR + CsvName(adminName));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! incident,<vaar frame or -1>,<time>,<admin>,<note>
+	protected void LogSessionIncident(string adminName, string note)
+	{
+		if (!m_LogFileHandle)
+			return;
+
+		// The playback frame lets the AAR timeline place the incident exactly
+		int frame = -1;
+		CRF_VAAR_GamemodeComponent vaar = CRF_VAAR_GamemodeComponent.GetInstance();
+		if (vaar)
+			frame = vaar.GetCurrentFrame();
+
+		string clean = note;
+		clean.Replace("\n", " ");
+		m_LogFileHandle.WriteLine("incident" + SEPARATOR + frame.ToString() + SEPARATOR + SessionTime() + SEPARATOR + CsvName(adminName) + SEPARATOR + clean);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -300,6 +371,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
+		// The invokers are static and outlive this component
+		COA_SessionLog.GetOnAdminAction().Remove(LogSessionAdminAction);
+		COA_SessionLog.GetOnTicket().Remove(LogSessionTicket);
+		COA_SessionLog.GetOnIncident().Remove(LogSessionIncident);
+
 		if (m_LogFileHandle)
 		{
 			m_LogFileHandle.Close();

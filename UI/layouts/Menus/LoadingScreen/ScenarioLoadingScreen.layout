@@ -1,0 +1,688 @@
+FrameWidgetClass {
+ Name "LoadingScreenRoot"
+ {
+  OverlayWidgetClass "{6A78180000000104}" {
+   Name "m_wBackground"
+   Slot FrameWidgetSlot "{6A78180000000101}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
+    ImageWidgetClass "{6A78180000000103}" {
+     Name "BackgroundFill"
+     Slot OverlayWidgetSlot "{6A78180000000102}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0033 0.0037 0.0052 1
+    }
+   }
+  }
+  FrameWidgetClass "{6A7818000000016D}" {
+   Name "FullHDFrame"
+   Slot FrameWidgetSlot "{6A78180000000105}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
+    ScaleWidgetClass "{6A78180000000111}" {
+     Name "m_wPreloadContent"
+     Slot FrameWidgetSlot "{6A78180000000110}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -260
+      OffsetLeft -260
+      PositionY -190
+      OffsetTop -190
+      SizeX 520
+      OffsetRight -260
+      SizeY 340
+      OffsetBottom -150
+     }
+     {
+      VerticalLayoutWidgetClass "{6A7818000000010F}" {
+       Name "PreloadColumn"
+       Slot AlignableSlot "{6A78180000000106}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+       }
+       {
+        ImageWidgetClass "{6A78180000000108}" {
+         Name "PreloadLogo"
+         Slot LayoutSlot "{6A78180000000107}" {
+          HorizontalAlign 1
+          VerticalAlign 0
+          SizeMode Auto
+         }
+         Color 1 1 1 1
+         Texture "{56B63D9413011A75}UI/Images/Coalition/Coalition.edds"
+         Size 150 150
+        }
+        TextWidgetClass "{6A7818000000010A}" {
+         Name "PreloadName"
+         Slot LayoutSlot "{6A78180000000109}" {
+          HorizontalAlign 1
+          VerticalAlign 0
+          Padding 0 18 0 0
+          SizeMode Auto
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "COALITION"
+         "Font Size" 34
+         "Min Font Size" 34
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A7818000000010B}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6A7818000000010D}" {
+         Name "PreloadStatus"
+         Slot LayoutSlot "{6A7818000000010C}" {
+          HorizontalAlign 1
+          VerticalAlign 0
+          Padding 0 4 0 0
+          SizeMode Auto
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "Preparing mission"
+         "Font Size" 16
+         "Min Font Size" 16
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A7818000000010E}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{6A7818000000016C}" {
+     Name "m_wContent"
+     Slot FrameWidgetSlot "{6A7818000000016B}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      OverlayWidgetClass "{6A78180000000119}" {
+       Name "COA_Backdrop"
+       Slot OverlayWidgetSlot "{6A78180000000112}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       {
+        ImageWidgetClass "{6A78180000000114}" {
+         Name "COA_BackdropImage"
+         Slot OverlayWidgetSlot "{6A78180000000113}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         "Is Visible" 0
+         Opacity 0.2
+         Color 1 1 1 1
+        }
+        ImageWidgetClass "{6A78180000000116}" {
+         Name "COA_BackdropShade"
+         Slot OverlayWidgetSlot "{6A78180000000115}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.0033 0.0037 0.0052 0.45
+        }
+        ImageWidgetClass "{6A78180000000118}" {
+         Name "COA_BackdropFade"
+         Slot OverlayWidgetSlot "{6A78180000000117}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.0033 0.0037 0.0052 0.95
+         Texture "{95C893319DCF22D1}UI/Textures/Common/gradient_transparent_white_linear_photoshop_mirrored.edds"
+        }
+       }
+      }
+      ImageWidgetClass "{6A7818000000011B}" {
+       Name "m_wReforgerLogo"
+       Slot OverlayWidgetSlot "{6A7818000000011A}" {
+        HorizontalAlign 0
+        VerticalAlign 0
+        Padding 112 64 0 0
+       }
+       Color 1 1 1 1
+       Texture "{56B63D9413011A75}UI/Images/Coalition/Coalition.edds"
+       Size 60 60
+      }
+      TextWidgetClass "{6A7818000000011D}" {
+       Name "COA_Wordmark"
+       Slot OverlayWidgetSlot "{6A7818000000011C}" {
+        HorizontalAlign 0
+        VerticalAlign 0
+        Padding 188 70 0 0
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text "COALITION"
+       "Font Size" 24
+       "Min Font Size" 24
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A7818000000011E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      TextWidgetClass "{6A78180000000120}" {
+       Name "COA_WordmarkSub"
+       Slot OverlayWidgetSlot "{6A7818000000011F}" {
+        HorizontalAlign 0
+        VerticalAlign 0
+        Padding 188 100 0 0
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "discord.gg/the-coalition"
+       "Font Size" 15
+       "Min Font Size" 15
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6A78180000000121}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      VerticalLayoutWidgetClass "{6A78180000000133}" {
+       Name "m_wTextGroup"
+       Slot OverlayWidgetSlot "{6A78180000000122}" {
+        HorizontalAlign 3
+        VerticalAlign 1
+        Padding 112 0 968 60
+       }
+       {
+        ImageWidgetClass "{6A78180000000124}" {
+         Name "COA_AccentBar"
+         Slot LayoutSlot "{6A78180000000123}" {
+          HorizontalAlign 0
+          VerticalAlign 0
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 32 3
+        }
+        TextWidgetClass "{6A78180000000126}" {
+         Name "COA_Eyebrow"
+         Slot LayoutSlot "{6A78180000000125}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 0 14 0 0
+          SizeMode Auto
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "LOADING MISSION"
+         "Font Size" 14
+         "Min Font Size" 14
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A78180000000127}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6A78180000000129}" {
+         Name "m_wTitle"
+         Slot LayoutSlot "{6A78180000000128}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 0 6 0 0
+          SizeMode Auto
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text ""
+         "Font Size" 56
+         "Min Font Size" 34
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         Wrap 1
+         FontProperties FontProperties "{6A7818000000012A}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6A7818000000012C}" {
+         Name "m_wAuthor"
+         Slot LayoutSlot "{6A7818000000012B}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 0 6 0 0
+          SizeMode Auto
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text ""
+         "Font Size" 19
+         "Min Font Size" 14
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A7818000000012D}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+        ImageWidgetClass "{6A7818000000012F}" {
+         Name "COA_TextDivider"
+         Slot LayoutSlot "{6A7818000000012E}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 0 22 0 20
+          SizeMode Auto
+         }
+         Color 1 1 1 0.013
+         Size 1 1
+        }
+        RichTextWidgetClass "{6A78180000000131}" {
+         Name "m_wDescription"
+         Slot LayoutSlot "{6A78180000000130}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          SizeMode Auto
+         }
+         Color 0.5841 0.6376 0.7605 1
+         Text ""
+         "Font Size" 17
+         "Min Font Size" 13
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Top
+         Wrap 1
+         FontProperties FontProperties "{6A78180000000132}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+      FrameWidgetClass "{6A7818000000013F}" {
+       Name "m_wPhotoGroup"
+       Slot OverlayWidgetSlot "{6A7818000000013E}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       {
+        OverlayWidgetClass "{6A7818000000013D}" {
+         Name "Photo"
+         Slot FrameWidgetSlot "{6A78180000000134}" {
+          Anchor 1 0.5 1 0.5
+          PositionX -872
+          OffsetLeft -872
+          PositionY -254
+          OffsetTop -254
+          SizeX 760
+          OffsetRight 112
+          SizeY 428
+          OffsetBottom -174
+         }
+         {
+          SmartPanelWidgetClass "{6A78180000000136}" {
+           Name "COA_PhotoBG"
+           Slot OverlayWidgetSlot "{6A78180000000135}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 0.011 0.0137 0.0212 1
+           style rounded_12px
+          }
+          SizeLayoutWidgetClass "{6A7818000000013A}" {
+           Name "Scale0"
+           Slot OverlayWidgetSlot "{6A78180000000137}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+            Padding 6 6 6 6
+           }
+           AllowWidthOverride 1
+           WidthOverride 748
+           AllowHeightOverride 1
+           HeightOverride 416
+           {
+            ImageWidgetClass "{6A78180000000139}" {
+             Name "m_wLoadingImage"
+             Slot AlignableSlot "{6A78180000000138}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 1 1 1 1
+             Size 1920 1080
+            }
+           }
+          }
+          SmartPanelWidgetClass "{6A7818000000013C}" {
+           Name "COA_PhotoOutline"
+           Slot OverlayWidgetSlot "{6A7818000000013B}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 1 1 1 0.06
+           style outline_rounded_12px
+          }
+         }
+        }
+       }
+      }
+      HorizontalLayoutWidgetClass "{6A78180000000149}" {
+       Name "m_wHintGroup"
+       Slot OverlayWidgetSlot "{6A78180000000140}" {
+        HorizontalAlign 3
+        VerticalAlign 2
+        Padding 112 0 672 124
+       }
+       {
+        ImageWidgetClass "{6A78180000000142}" {
+         Name "COA_TipTick"
+         Slot LayoutSlot "{6A78180000000141}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 3 16
+        }
+        TextWidgetClass "{6A78180000000144}" {
+         Name "COA_TipLabel"
+         Slot LayoutSlot "{6A78180000000143}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 10 0 14 0
+          SizeMode Auto
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "TIP"
+         "Font Size" 14
+         "Min Font Size" 14
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6A78180000000145}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        RichTextWidgetClass "{6A78180000000147}" {
+         Name "m_wHintText"
+         Slot LayoutSlot "{6A78180000000146}" {
+          HorizontalAlign 3
+          VerticalAlign 1
+          SizeMode Fill
+          FillWeight 1
+         }
+         Color 0.5841 0.6376 0.7605 1
+         Text ""
+         "Font Size" 16
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         Wrap 1
+         FontProperties FontProperties "{6A78180000000148}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+      HorizontalLayoutWidgetClass "{6A78180000000160}" {
+       Name "m_wSpinnerGroup"
+       Slot OverlayWidgetSlot "{6A7818000000015F}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 1368 936 112 104
+       }
+       {
+        FrameWidgetClass "{6A78180000000159}" {
+         Name "m_wCrossplayWarning"
+         Slot LayoutSlot "{6A78180000000155}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          SizeMode Fill
+          FillWeight 1
+         }
+         {
+          TextWidgetClass "{6A78180000000157}" {
+           Name "COA_CrossplayText"
+           Slot FrameWidgetSlot "{6A78180000000156}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX -18
+            OffsetRight 18
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.3968 0.4564 0.6038 1
+           Text "CROSSPLAY"
+           "Font Size" 13
+           "Min Font Size" 13
+           "Horizontal Alignment" Right
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{6A78180000000158}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+         }
+        }
+        FrameWidgetClass "{6A7818000000015E}" {
+         Name "m_wModdedWarning"
+         Slot LayoutSlot "{6A7818000000015A}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          SizeMode Fill
+          FillWeight 1
+         }
+         {
+          TextWidgetClass "{6A7818000000015C}" {
+           Name "COA_ModdedText"
+           Slot FrameWidgetSlot "{6A7818000000015B}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX -18
+            OffsetRight 18
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.3968 0.4564 0.6038 1
+           Text "MODDED"
+           "Font Size" 13
+           "Min Font Size" 13
+           "Horizontal Alignment" Right
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{6A7818000000015D}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+         }
+        }
+        FrameWidgetClass "{6A78180000000154}" {
+         Name "m_wSpinner"
+         Slot LayoutSlot "{6A78180000000150}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          SizeMode Fill
+          FillWeight 1
+         }
+         {
+          TextWidgetClass "{6A78180000000152}" {
+           Name "COA_LoadingLabel"
+           Slot FrameWidgetSlot "{6A78180000000151}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX -52
+            OffsetRight 52
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.3968 0.4564 0.6038 1
+           Text "LOADING"
+           "Font Size" 14
+           "Min Font Size" 14
+           "Horizontal Alignment" Right
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{6A78180000000153}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+          SmartPanelWidgetClass "{6A7818000000014B}" {
+           Name "COA_Dot0"
+           Slot FrameWidgetSlot "{6A7818000000014A}" {
+            Anchor 1 0.5 1 0.5
+            PositionX -40
+            OffsetLeft -40
+            PositionY -4
+            OffsetTop -4
+            SizeX 8
+            OffsetRight 32
+            SizeY 8
+            OffsetBottom -4
+           }
+           Color 0.5841 0.0369 0.0369 1
+           style rounded_2px
+          }
+          SmartPanelWidgetClass "{6A7818000000014D}" {
+           Name "COA_Dot1"
+           Slot FrameWidgetSlot "{6A7818000000014C}" {
+            Anchor 1 0.5 1 0.5
+            PositionX -24
+            OffsetLeft -24
+            PositionY -4
+            OffsetTop -4
+            SizeX 8
+            OffsetRight 16
+            SizeY 8
+            OffsetBottom -4
+           }
+           Color 0.5841 0.0369 0.0369 1
+           style rounded_2px
+          }
+          SmartPanelWidgetClass "{6A7818000000014F}" {
+           Name "COA_Dot2"
+           Slot FrameWidgetSlot "{6A7818000000014E}" {
+            Anchor 1 0.5 1 0.5
+            PositionX -8
+            OffsetLeft -8
+            PositionY -4
+            OffsetTop -4
+            SizeX 8
+            OffsetRight 0
+            SizeY 8
+            OffsetBottom -4
+           }
+           Color 0.5841 0.0369 0.0369 1
+           style rounded_2px
+          }
+         }
+        }
+       }
+      }
+      OverlayWidgetClass "{6A7818000000016A}" {
+       Name "m_wProgressGroup"
+       Slot OverlayWidgetSlot "{6A78180000000161}" {
+        HorizontalAlign 3
+        VerticalAlign 2
+        Padding 112 0 112 84
+       }
+       {
+        ImageWidgetClass "{6A78180000000163}" {
+         Name "COA_ProgressTrack"
+         Slot OverlayWidgetSlot "{6A78180000000162}" {
+          HorizontalAlign 3
+          VerticalAlign 1
+         }
+         Color 0.011 0.0137 0.0212 1
+         Size 4 4
+        }
+        HorizontalLayoutWidgetClass "{6A78180000000169}" {
+         Name "HorizontalLayout0"
+         Slot OverlayWidgetSlot "{6A78180000000164}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          ImageWidgetClass "{6A78180000000166}" {
+           Name "m_wProgressBarFill"
+           Slot LayoutSlot "{6A78180000000165}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+            SizeMode Fill
+            FillWeight 0
+           }
+           Color 0.5841 0.0369 0.0369 1
+           Size 4 4
+          }
+          FrameWidgetClass "{6A78180000000168}" {
+           Name "m_wProgressBarSpace"
+           Slot LayoutSlot "{6A78180000000167}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+            SizeMode Fill
+            FillWeight 1
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  OverlayWidgetClass "{6A78180000000171}" {
+   Name "m_wContentOverlay"
+   Slot FrameWidgetSlot "{6A7818000000016E}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
+    ImageWidgetClass "{6A78180000000170}" {
+     Name "ContentOverlayFill"
+     Slot OverlayWidgetSlot "{6A7818000000016F}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0033 0.0037 0.0052 1
+    }
+   }
+  }
+  ImageWidgetClass "{6A78180000000173}" {
+   Name "m_wBlackOverlay"
+   Slot FrameWidgetSlot "{6A78180000000172}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+  }
+ }
+}

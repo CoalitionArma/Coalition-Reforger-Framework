@@ -83,6 +83,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			m_sInstance = null;
 	}
 
+	//! Frame being recorded (0.5 s each), or -1 when not recording - lets incident markers point into the playback
+	int GetCurrentFrame()
+	{
+		if (!m_bRecording)
+			return -1;
+		return m_iCurrentFrame;
+	}
+
+	//------------------------------------------------------------------------------------
 	static CRF_VAAR_GamemodeComponent GetInstance()
     {
         return m_sInstance;
