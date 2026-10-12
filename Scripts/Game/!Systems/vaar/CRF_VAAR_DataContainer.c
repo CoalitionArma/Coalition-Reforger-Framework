@@ -1,112 +1,199 @@
-// ── Key naming: single-letter short keys to minimise JSON file size ──────────
-// Positions stored as int ×10 (10cm precision). Viewer divides by 10.
-// Angle stored as int ×1000 (degrees). Viewer divides by 1000.
-// Y-coordinate omitted — the playback viewer is 2D only.
+// ── VAAR playback format v2 (header "v": 2) ──────────────────────────────────
+// Single-letter keys keep the JSON small.
+// Positions are int ×10 (10 cm precision), angles int ×1000 (degrees). The viewer divides them back.
+// Y is omitted (the viewer is 2D) except an aircraft's height above the ground.
+// IDs: player ID for players, RplId for AI and vehicles - the same ID everywhere it appears (snapshots,
+// shots, kills, vehicle occupants).
+// Names, roles and factions are written once per unit in the frame's roster (r / vr) when it is first
+// seen or changes; snapshots only carry what changes every frame.
 
-// Lower level Structure
+//! Character snapshot flags (CRF_VAAR_CharacterSnapshot.s)
+enum CRF_EVAARCharacterState
+{
+	UNCONSCIOUS = 1,
+	IN_VEHICLE = 2
+}
+
+//! Vehicle categories (CRF_VAAR_VehicleInfo.t). 1-5 keep their v1 values.
+enum CRF_EVAARVehicleType
+{
+	UNKNOWN = 0,
+	APC = 1,
+	CAR = 2,
+	TRUCK = 3,
+	TANK = 4,
+	MORTAR = 5,
+	HELICOPTER = 6,
+	PLANE = 7,
+	BOAT = 8,
+	SUPPORT = 9		// fuel, supply, repair, comms and arsenal trucks
+}
+
+//! Seat a vehicle occupant is in (CRF_VAAR_VehicleSnapshot.os)
+enum CRF_EVAARSeat
+{
+	DRIVER = 0,		// driver or pilot
+	GUNNER = 1,
+	PASSENGER = 2
+}
+
+//! What hit (CRF_VAAR_ShotEvent.k)
+enum CRF_EVAARShotKind
+{
+	BULLET = 0,
+	GRENADE = 1,
+	SHELL = 2,		// mortar / artillery
+	ROCKET = 3
+}
+
+// Roster entries
+//------------------------------------------------------------------------------------
+[BaseContainerProps()]
+class CRF_VAAR_CharacterInfo : Managed
+{
+	int i;			// ID
+	string n;		// name ("AI" for AI)
+	int r;			// COA_EGearRole
+	int f;			// faction (0 unknown, 1 BLUFOR, 2 OPFOR, 3 INDFOR, 4 CIV)
+	int p;			// 1 = player
+
+	void CRF_VAAR_CharacterInfo(int id, string name, int role, int faction, bool isPlayer)
+	{
+		i = id;
+		n = name;
+		r = role;
+		f = faction;
+		if (isPlayer)
+			p = 1;
+	}
+}
+
+[BaseContainerProps()]
+class CRF_VAAR_VehicleInfo : Managed
+{
+	int i;			// ID
+	string n;		// display name
+	int t;			// CRF_EVAARVehicleType
+
+	void CRF_VAAR_VehicleInfo(int id, string name, int type)
+	{
+		i = id;
+		n = name;
+		t = type;
+	}
+}
+
+// Per-frame snapshots
 //------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_VAAR_CharacterSnapshot : Managed
 {
-	RplId i;       // characterID
-	string n;      // characterName
-	int r;      // characterrole
-	int x;         // characterposX ×10
-	int z;         // characterposZ ×10
-	int a;         // characteryaw ×1000
-	int f;  // characterFaction
+	int i;			// ID
+	int x;			// pos X ×10
+	int z;			// pos Z ×10
+	int a;			// aim yaw ×1000
+	int s;			// CRF_EVAARCharacterState flags
 
-	void CRF_VAAR_CharacterSnapshot(RplId id, string name, vector pos, vector aim, int role, int faction)
+	void CRF_VAAR_CharacterSnapshot(int id, vector pos, vector aim, int state)
 	{
 		i = id;
-		n = name;
 		x = (int)Math.Round(pos[0] * 10);
 		z = (int)Math.Round(pos[2] * 10);
 		float yawDeg = 0;
 		if (Math.AbsFloat(aim[0]) > 0.0001 || Math.AbsFloat(aim[2]) > 0.0001)
 			yawDeg = Math.Atan2(aim[0], aim[2]) * Math.RAD2DEG;
 		a = (int)Math.Round(yawDeg * 1000);
-		r = role;
-		f = faction;
+		s = state;
 	}
 }
 
-// This represents a single Vehicle
 [BaseContainerProps()]
 class CRF_VAAR_VehicleSnapshot : Managed
 {
-	RplId i;             // vehicleID
-	string n;            // vehicleName
-	int t;            // vehicleType
-	int x;               // vehicleposX ×10
-	int z;               // vehicleposZ ×10
-	int a;               // vehicleyaw ×1000
-	int f;        // vehicleFaction
-	ref array<string> oc = {};  // vehicleOccupants
+	int i;			// ID
+	int x;			// pos X ×10
+	int z;			// pos Z ×10
+	int a;			// yaw ×1000
+	int f;			// faction (changes with the crew)
+	int h;			// health 0-100, 0 = destroyed
+	int y;			// aircraft height above the ground in metres, 0 for everything else
+	ref array<int> oc = {};		// occupant IDs
+	ref array<int> os = {};		// occupant seats (CRF_EVAARSeat), same order as oc
 
-	void CRF_VAAR_VehicleSnapshot(RplId id, string name, vector pos, vector angles, int type, int faction, array<string> occupants)
+	void CRF_VAAR_VehicleSnapshot(int id, vector pos, vector angles, int faction, int health, int altitude)
 	{
 		i = id;
-		n = name;
 		x = (int)Math.Round(pos[0] * 10);
 		z = (int)Math.Round(pos[2] * 10);
 		a = (int)Math.Round(angles[0] * 1000);
-		t = type;
 		f = faction;
-
-		foreach(string occupant : occupants)
-		{
-			oc.Insert(occupant);
-		}
+		h = health;
+		y = altitude;
 	}
 }
 
-// This represents a shot fired by a player or AI
+// Events
+//------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_VAAR_ShotEvent : Managed
 {
-	RplId si;  // shooterID
-	int sx;    // startX ×10
-	int sz;    // startZ ×10
-	int hx;    // shotHitX ×10
-	int hz;    // shotHitZ ×10
+	int si;			// shooter ID
+	int sx;			// start X ×10
+	int sz;			// start Z ×10
+	int hx;			// hit X ×10
+	int hz;			// hit Z ×10
+	int k;			// CRF_EVAARShotKind
 
-	void CRF_VAAR_ShotEvent(RplId id, vector start, float hitX, float hitZ)
+	void CRF_VAAR_ShotEvent(int shooterId, vector start, float hitX, float hitZ, int kind)
 	{
-		si = id;
+		si = shooterId;
 		sx = (int)Math.Round(start[0] * 10);
 		sz = (int)Math.Round(start[2] * 10);
 		hx = (int)Math.Round(hitX * 10);
 		hz = (int)Math.Round(hitZ * 10);
+		k = kind;
 	}
 }
 
-// This represents a kill
 [BaseContainerProps()]
 class CRF_VAAR_KillEvent : Managed
 {
-	string tn;  // targetName
-	string kn;  // killerName
-	int tf;  // targetFaction
-	int kf;  // killerFaction
+	int ki;			// killer ID (0 = none / environment)
+	int ti;			// victim ID
+	string kn;		// killer name (kept so name-only readers still work)
+	string tn;		// victim name
+	int kf;			// killer faction
+	int tf;			// victim faction
+	string w;		// weapon, or the vehicle the killer was in
+	int d;			// distance in metres, -1 when unknown
+	int x;			// victim pos X ×10
+	int z;			// victim pos Z ×10
 
-	void CRF_VAAR_KillEvent(string tName, string kName, int tFaction, int kFaction)
+	void CRF_VAAR_KillEvent(int killerId, int targetId, string killerName, string targetName, int killerFaction, int targetFaction, string weapon, int distance, vector targetPos)
 	{
-		tn = tName;
-		tf = tFaction;
-		kn = kName;
-		kf = kFaction;
+		ki = killerId;
+		ti = targetId;
+		kn = killerName;
+		tn = targetName;
+		kf = killerFaction;
+		tf = targetFaction;
+		w = weapon;
+		d = distance;
+		x = (int)Math.Round(targetPos[0] * 10);
+		z = (int)Math.Round(targetPos[2] * 10);
 	}
 }
 
-// Top level Structure — Characters & Vehicles live directly on the frame
+// Top level structure
 //------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_VAAR_Frame : Managed
 {
-	float ts;  // Timestamp
-	ref array<ref CRF_VAAR_CharacterSnapshot> c = {};  // Characters
-	ref array<ref CRF_VAAR_VehicleSnapshot>   v = {};  // Vehicles
-	ref array<ref CRF_VAAR_ShotEvent>         s = {};  // Shots
-	ref array<ref CRF_VAAR_KillEvent>         k = {};  // Kills
+	float ts;		// frame index (seconds = ts × header interval)
+	ref array<ref CRF_VAAR_CharacterInfo>     r = {};   // character roster changes
+	ref array<ref CRF_VAAR_VehicleInfo>       vr = {};  // vehicle roster changes
+	ref array<ref CRF_VAAR_CharacterSnapshot> c = {};   // characters
+	ref array<ref CRF_VAAR_VehicleSnapshot>   v = {};   // vehicles
+	ref array<ref CRF_VAAR_ShotEvent>         s = {};   // shots
+	ref array<ref CRF_VAAR_KillEvent>         k = {};   // kills
 }
