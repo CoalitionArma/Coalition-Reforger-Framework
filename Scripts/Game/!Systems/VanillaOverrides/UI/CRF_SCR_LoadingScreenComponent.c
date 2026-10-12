@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
-//! COALITION mission loading screen extras, for the CRF override of
-//! UI/layouts/Menus/LoadingScreen/ScenarioLoadingScreen.layout:
+//! COALITION mission loading screen extras, for UI/layouts/Menus/LoadingScreen/CRF_ScenarioLoadingScreen.layout
+//! (created by CRF_ArmaReforgerLoadingAnim):
 //!  - the mission's loading image is also shown faded full-screen behind the content
 //!  - the three loading dots pulse in sequence
 //! The vanilla radar spinner (SCR_LoadingSpinner) isn't used - the layout has no "Spinner" widget, so

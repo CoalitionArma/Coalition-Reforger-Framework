@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4C8B29889444BDA3}UI/layouts/Menus/LoadingScreen/ScenarioLoadingScreen.layout"
+ Name "{61628EB200B908A1}UI/layouts/Menus/LoadingScreen/CRF_ScenarioLoadingScreen.layout"
  Configurations {
   LayoutResourceClass PC {
   }
