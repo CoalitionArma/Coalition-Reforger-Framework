@@ -7,6 +7,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
    ActionsManagerComponent "{645A0008F3808301}" {
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      ActionTitle "Teleport to Forward Deploy"
       m_sObjectNameToTeleportTo "OPFORforwarddeploy"
      }
     }
@@ -19,6 +20,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
    ActionsManagerComponent "{645A0008F3808301}" {
     additionalActions {
      CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      ActionTitle "Teleport to Spawn"
       m_sObjectNameToTeleportTo "OPFORspawn"
      }
     }
