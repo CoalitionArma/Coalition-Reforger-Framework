@@ -1,0 +1,428 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 2050.008 6.003 4421.837
+  angles 0 -99.616 0
+  m_MarkerColor 0.572 0.015 0.045 1
+  m_sQuadName "arrow-medium"
+  m_sDescription ""
+ }
+ {
+  coords 2644.402 44.479 2691.585
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2557.274 44.602 2678.937
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2495.877 46.953 2665.634
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2440.171 49.846 2649.87
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2390.455 48.719 2640.058
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2356.181 67.287 2616.548
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2294.077 56.638 2605.672
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2242.404 48.719 2593.712
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2190.445 50.01 2574.885
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2145.359 48.719 2556.902
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2107.96 53.657 2540.508
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2060.777 48.719 2533.105
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 2024.158 55.846 2516.598
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1972.518 48.719 2501.396
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1927.407 48.687 2478.921
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1883.829 48.575 2452.998
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1842.703 47.236 2425.709
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1807.193 43.156 2409.208
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1774.463 37.292 2393.674
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1747.785 45.172 2365.324
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1719.784 45.318 2344.241
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1666.428 30.45 2335.441
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1636.9 32.612 2312.106
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1607.95 33.615 2295.411
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1592.542 50.635 2269.653
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1550.786 44.532 2248.51
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1479.522 23.568 2227.086
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1434.798 19.48 2204.479
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1390.781 14.361 2194.755
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1346.294 26.845 2172.769
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1313.316 30.574 2165.064
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1262.587 10.105 2184.538
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1226.833 12.85 2174.771
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1183.925 7.149 2177.662
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1148.499 5.897 2176.982
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1101.802 5.124 2178.036
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1063.602 4.802 2176.854
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 1026.308 4.781 2171.807
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 981.943 4.781 2167.685
+  angles 0 14.987 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 931.061 4.313 2171.445
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 884.003 4.667 2173.458
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 834.503 4.577 2173.225
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 789.478 4.782 2167.385
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 727.356 4.979 2158.235
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 689.475 5.774 2158.256
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 652.601 6.452 2155.047
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 623.044 19.887 2148.05
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 577.34 6.996 2149.238
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+ {
+  coords 543.805 18.002 2144.99
+  angles 0 0 0
+  m_MarkerColor 0.463 0.26 0.005 1
+  m_sQuadName "dot"
+  m_sDescription ""
+ }
+}
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 1246.876 33.043 3493.514
+ Points {
+  ShapePoint "{6A9B2094C618C3E6}" {
+   Position -1094.089 0 1095.574
+  }
+  ShapePoint "{6A9B2094FB730B96}" {
+   Position 1338.95 0 1050.322
+  }
+  ShapePoint "{6A9B2094F190F4D6}" {
+   Position 1482.873 0 -1673.237
+  }
+  ShapePoint "{6A9B2094F6993502}" {
+   Position -637.449 0 -1758.7
+  }
+ }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 1369.684 52.489 3206.102
+ Points {
+  ShapePoint "{6A9B2096BC3E1BD3}" {
+   Position -49.591 0 46.417
+  }
+  ShapePoint "{6A9B2096BCBCB1A8}" {
+   Position 52.256 0 18.184
+  }
+  ShapePoint "{6A9B2096B3CF10CF}" {
+   Position 59.871 0 -101.652
+  }
+  ShapePoint "{6A9B2096B2BB2ED3}" {
+   Position -68.798 0 -75.607
+  }
+ }
+}
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 2477.251 45.711 2376.856
+  m_sDescription "EXTRACT"
+ }
+ {
+  coords 354.813 11.994 4088.652
+  m_sDescription "START"
+ }
+ {
+  coords 1723.66 48.719 3263.994
+  m_sQuadName "mark-question"
+  m_sDescription ""
+ }
+ {
+  coords 2279.137 48.799 3181.195
+  m_sQuadName "mark-question"
+  m_sDescription ""
+ }
+ {
+  coords 567.232 11.178 3246.166
+  m_sQuadName "mark-question"
+  m_sDescription ""
+ }
+}
+COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 345.094 11.868 4094.055
+ Points {
+  ShapePoint "{6A9B2096AB923F54}" {
+   Position -65.426 0 42.383
+  }
+  ShapePoint "{6A9B2096AA17F7A1}" {
+   Position 31.382 0 67.658
+  }
+  ShapePoint "{6A9B2096A94C0E64}" {
+   Position 61.084 -0 -41.998
+  }
+  ShapePoint "{6A9B2096A989EA68}" {
+   Position -50.755 -0 -57.732
+  }
+ }
+}
