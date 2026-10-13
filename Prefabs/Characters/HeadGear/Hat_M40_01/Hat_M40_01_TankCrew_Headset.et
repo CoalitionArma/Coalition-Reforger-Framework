@@ -1,0 +1,25 @@
+GameEntity : "{D6A21035CE207A5E}Prefabs/Characters/HeadGear/Hat_M40_01/Hat_M40_01_base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  SCR_HeadgearInventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{5244E4431DA56D64}" {
+    ItemDisplayName UIInfo "{5244E443130B31B9}" {
+     Name "#FH-Headgear_M40_TankCrew_Name"
+     Description "#FH-Headgear_M40_TankCrew_Description"
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{6A8762F0129FBDC0}" {
+   components {
+    SCR_EquipmentStorageComponent "{6A8762F156BDEB66}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot Headset {
+       Prefab "{8FE50B3CD5F26667}Prefabs/Items/Equipment/Headset/Headset_HEER/Headset_HEER_01.et"
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 72.111 1 1219.189
+}
