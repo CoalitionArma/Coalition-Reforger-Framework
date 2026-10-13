@@ -12,7 +12,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     }
    }
   }
-  coords 1151.438 2.295 3545.749
+  coords 1477.689 3.276 3137.405
  }
  OPFORforwarddeploy {
   components {
@@ -24,7 +24,7 @@ $grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/
     }
    }
   }
-  coords 1109.584 1.631 3143.311
+  coords 1115.148 1.633 3164.089
  }
  BLUFORspawn {
   components {
@@ -49,6 +49,10 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Gr
  {
   coords 1075.974 41.611 2307.166
  }
+}
+COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ coords 1116.443 1.565 3162.207
+ m_sDescription "OPFOR Forward Deploy"
 }
 $grp GenericEntity : "{D7F69BF7D2DCA0A8}Prefabs/Props/Industrial/Pallets/Pallet_01.et" {
  {
