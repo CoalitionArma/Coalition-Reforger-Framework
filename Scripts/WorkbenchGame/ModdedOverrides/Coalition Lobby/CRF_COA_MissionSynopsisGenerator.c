@@ -35,6 +35,10 @@ modded class COA_MissionSynopsisGenerator
 			activeComponents.Insert("Prop Hunt");
 		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_SupplyExtractionGamemodeManager) >= 0)
 			activeComponents.Insert("Supply Extraction");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_RadioDFGamemodeComponent) >= 0)
+			activeComponents.Insert("Radio Direction Finding");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_PatrolGamemodeComponent) >= 0)
+			activeComponents.Insert("Patrol & Ambush");
 	}
 }
 #endif
