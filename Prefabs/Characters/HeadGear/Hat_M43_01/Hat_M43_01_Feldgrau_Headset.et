@@ -1,0 +1,16 @@
+GameEntity : "{CB89D54C82D92DDA}Prefabs/Characters/HeadGear/Hat_M43_01/Hat_M43_01_base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  SCR_UniversalInventoryStorageComponent "{6A861DAC9B4A4DFA}" {
+   components {
+    SCR_EquipmentStorageComponent "{6A861DAC2BCD304B}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot Headset {
+       Prefab "{8FE50B3CD5F26667}Prefabs/Items/Equipment/Headset/Headset_HEER/Headset_HEER_01.et"
+      }
+     }
+    }
+   }
+  }
+ }
+}
