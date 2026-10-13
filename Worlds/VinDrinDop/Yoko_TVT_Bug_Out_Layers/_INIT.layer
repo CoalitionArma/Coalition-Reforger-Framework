@@ -35,17 +35,17 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6A9AEDBE1961308B}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "USMC has put comms arrays (MCOMs) around the AO, VC forces want these arrays destroyed."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "BLUFOR Assets:"\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: 1x HMG"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "OPFOR Assets:"\
+   "OPFOR Composition: Infantry Company"\
+   "OPFOR Assets: None"\
    ""\
-   "Time:"\
+   "Time: 12:00pm"\
    ""\
-   "Weather:"
+   "Weather: Rainy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
