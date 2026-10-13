@@ -1,0 +1,48 @@
+GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployable_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+   "Turned on" 1
+  }
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{1F2390C7C31666DE}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_frame.xob"
+  }
+  SCR_DeployableInventoryItemInventoryComponent "{5222EB4D0C73006B}" {
+   Enabled 0
+  }
+  SCR_FactionAffiliationComponent "{6A9B51F427C38E5B}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_sReplacementPrefab "{B5A9B78EE58D9C76}Prefabs/Systems/DeployableRadios/DeployableItemRadioReplacemenUS.et"
+   m_FactionKey "BLUFOR"
+  }
+  SCR_UniversalInventoryStorageComponent "{605C4718D6D0AEAC}" {
+   Attributes SCR_ItemAttributeCollection "{6A9B51F364EC71B8}" {
+    ItemDisplayName UIInfo "{6A9B51F363461535}" {
+     Name "#FH-Item_SCR300_Name"
+     Description "#FH-Item_SCR300_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6A9B51F37B8C438A}" {
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 100
+  }
+  BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
+   Slots {
+    LoadoutSlotInfo Radio {
+     PivotID "Spine5"
+     Offset 0 -0.0162 -0.2286
+     Angles -6.5014 0 0
+     Prefab "{4BDF41C8A5325732}Prefabs/Items/Equipment/Radios/Radio_SCR300/Radio_SCR300_Object.et"
+    }
+   }
+   WornModel "{1F2390C7C31666DE}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_frame.xob"
+   ItemModel "{9AC0BBEED8F6417C}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_frame_item.xob"
+   DeflatedModel "{1F2390C7C31666DE}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_frame.xob"
+  }
+ }
+}

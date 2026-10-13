@@ -14,4 +14,6 @@ modded enum COA_EGamemode
 	KOTH,
 	ATTRITION,
 	CTF,
+	DIRECTIONFINDING,
+	PATROLAMBUSH,
 }
