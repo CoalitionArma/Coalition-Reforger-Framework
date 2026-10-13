@@ -1,0 +1,62 @@
+GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployable_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+   "Turned on" 1
+  }
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{518A95342557BC80}Assets/Items/Equipment/Radios/Radio_R107M/Radio_R107M_01.xob"
+  }
+  SCR_DeployableInventoryItemInventoryComponent "{5222EB4D0C73006B}" {
+   Enabled 0
+  }
+  SCR_FactionAffiliationComponent "{6A9B51F3850464AF}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_sReplacementPrefab "{B5A9B78EE58D9C76}Prefabs/Systems/DeployableRadios/DeployableItemRadioReplacemenUS.et"
+   m_FactionKey "BLUFOR"
+  }
+  SCR_UniversalInventoryStorageComponent "{605C4718D6D0AEAC}" {
+   Attributes SCR_ItemAttributeCollection "{6A9B51F385046452}" {
+    ItemDisplayName UIInfo "{6A9B51F385046455}" {
+     Name "#FH-Item_SCR300_Name"
+     Description "#FH-Item_SCR300_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6A9B51F385046457}" {
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 30150
+   m_fMaxWeight 100
+  }
+  BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
+   Slots {
+    LoadoutSlotInfo Radio {
+     PivotID "Spine5"
+     Offset 0 0 -0.1903
+     Angles 0 180 0
+     Prefab "{F4B9B6CD22042952}Prefabs/Items/Core/Radio_Feldfunksprecher.et"
+    }
+    LoadoutSlotInfo Headset {
+     PivotID "Head"
+     Offset 0 0.0714 0
+     Angles -5.6765 0 0
+     Enabled 0
+     Prefab "{8FE50B3CD5F26667}Prefabs/Items/Equipment/Headset/Headset_HEER/Headset_HEER_01.et"
+    }
+   }
+   WornModel "{518A95342557BC80}Assets/Items/Equipment/Radios/Radio_R107M/Radio_R107M_01.xob"
+   WornMaterialsOverride {
+    "{D4E576AF9188B73F}Assets/InvisBS.emat"
+   }
+   ItemModel "{77C9FCF3FB1246E9}Assets/Items/Equipment/Radios/Radio_R107M/Radio_R107M_01_item.xob"
+   ItemMaterialsOverride {
+    "{D4E576AF9188B73F}Assets/InvisBS.emat"
+   }
+   DebugWornModel 1
+   DeflatedModel "{518A95342557BC80}Assets/Items/Equipment/Radios/Radio_R107M/Radio_R107M_01.xob"
+  }
+ }
+}
