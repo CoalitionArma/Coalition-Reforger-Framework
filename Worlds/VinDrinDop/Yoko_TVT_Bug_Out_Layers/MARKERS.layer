@@ -1,0 +1,23 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 1404.357 19.797 3080.332
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large-2"
+  m_sDescription "OPFOR AOA"
+ }
+ {
+  coords 1024.139 22.643 3008.95
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large-2"
+  m_sDescription "OPFOR AOA"
+ }
+ {
+  coords 1217.377 1.962 3060.88
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large-2"
+  m_sDescription "OPFOR AOA"
+ }
+}
