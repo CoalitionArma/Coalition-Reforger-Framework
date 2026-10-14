@@ -1,5 +1,16 @@
 FrameWidgetClass {
  Name "LoadingScreenRoot"
+ Slot FrameWidgetSlot "{6A781800000001F0}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
  {
   OverlayWidgetClass "{6A78180000000104}" {
    Name "m_wBackground"
