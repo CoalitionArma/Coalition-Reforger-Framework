@@ -1,0 +1,60 @@
+$grp GameEntity {
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6A9B4E7A3B770816}" {
+    m_sCheckpointName "Checkpoint A"
+   }
+  }
+  coords 315.157 6.642 940.972
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6A9B4E7A3B770816}" {
+    m_iOrder 2
+    m_sCheckpointName "Checkpoint B"
+   }
+  }
+  coords 611.42 6.829 1394.197
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6A9B4E7A3B770816}" {
+    m_iOrder 3
+    m_sCheckpointName "Checkpoint C"
+   }
+  }
+  coords 1089.176 3.494 877.972
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6A9B4E7A3B770816}" {
+    m_iOrder 4
+    m_sCheckpointName "Checkpoint D"
+   }
+  }
+  coords 1013.687 5.088 496.674
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6A9B4E7A3B770816}" {
+    m_iOrder 5
+    m_sCheckpointName "Return"
+   }
+  }
+  coords 433.864 1 313.213
+ }
+}
+$grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
+ {
+  coords 315.299 5.785 938.943
+ }
+ {
+  coords 620.139 6.595 1399.036
+ }
+ {
+  coords 1088.775 3.489 877.411
+ }
+ {
+  coords 1013.538 5.087 496.664
+ }
+}
