@@ -34,13 +34,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected ref map<int, string> m_mCharacterRoster = new map<int, string>();
 	protected ref map<int, string> m_mVehicleRoster = new map<int, string>();
 
-	// Thrown grenades: every character the recorder sees gets an OnGrenadeThrown listener, and each
-	// thrown grenade is followed until it explodes, its smoke runs out or it times out
-	protected static const float GRENADE_EXPLOSIVE_LIFETIME_MS = 20000;
-	protected static const float GRENADE_SMOKE_LIFETIME_MS = 120000;
-	protected static const int GRENADE_LISTENER_PRUNE_FRAMES = 120;
-
-	protected ref map<EntityID, ref CRF_VAAR_GrenadeListener> m_mGrenadeListeners = new map<EntityID, ref CRF_VAAR_GrenadeListener>();
+	// Thrown grenades, reported by the Lobby's COA_GrenadeTracker; each is followed until it explodes,
+	// its smoke runs out or it times out
 	protected ref array<ref CRF_VAAR_TrackedGrenade> m_aGrenades = {};
 	protected ref array<ref CRF_VAAR_GrenadeThrowEvent> m_aGrenadeThrowsBuffer = {};
 	protected int m_iNextGrenadeId = 1;
@@ -53,6 +48,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			return;
 
 		SetEventMask(owner, EntityEvent.FRAME);
+		COA_GrenadeTracker.GetOnGrenadeThrown().Insert(OnGrenadeThrown);
 
 		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 	}
@@ -116,12 +112,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			s_aTrackedVehicles.Clear();
 		}
 
-		// Characters that outlive the recorder must not call back into it
-		foreach (EntityID characterId, CRF_VAAR_GrenadeListener listener : m_mGrenadeListeners)
-		{
-			if (listener)
-				listener.Unhook();
-		}
+		COA_GrenadeTracker.GetOnGrenadeThrown().Remove(OnGrenadeThrown);
 	}
 
 	//! Frame being recorded (0.5 s each), or -1 when not recording - lets incident markers point into the playback
@@ -244,9 +235,6 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 		m_aGrenadeThrowsBuffer.Clear();
 
-		if (m_iCurrentFrame % GRENADE_LISTENER_PRUNE_FRAMES == 0)
-			PruneGrenadeListeners();
-
 		// Characters
 		foreach (AIAgent agent : agents)
 		{
@@ -263,8 +251,6 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			SCR_ChimeraCharacter chimeraCharacter = SCR_ChimeraCharacter.Cast(character);
 			if (!chimeraCharacter)
 				continue;
-
-			HookGrenadeEvents(character);
 
 			int characterID = GetID(character);
 			string characterName = GetCharacterName(character);
@@ -729,49 +715,10 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			GetKillWeapon(killerEntity), distance, targetPos));
 	}
 	//------------------------------------------------------------------------------------
-	//! Listen for this character throwing grenades (players and AI). Called for every character
-	//! each frame - cheap once hooked.
-	protected void HookGrenadeEvents(IEntity character)
+	//! COA_GrenadeTracker: a character threw a grenade - follow it on the playback until it's gone
+	protected void OnGrenadeThrown(IEntity thrower, IEntity grenade, int grenadeType)
 	{
-		EntityID characterId = character.GetID();
-		if (m_mGrenadeListeners.Contains(characterId))
-			return;
-
-		// Kept even if the character has no event handler, so it isn't looked up again every frame
-		CRF_VAAR_GrenadeListener listener = new CRF_VAAR_GrenadeListener(character, this);
-		listener.Hook();
-		m_mGrenadeListeners.Insert(characterId, listener);
-	}
-
-	//------------------------------------------------------------------------------------
-	//! Forget listeners of characters that have been deleted (dead bodies cleaned up, respawns)
-	protected void PruneGrenadeListeners()
-	{
-		array<EntityID> stale = {};
-		foreach (EntityID characterId, CRF_VAAR_GrenadeListener listener : m_mGrenadeListeners)
-		{
-			if (!listener || !listener.m_Character)
-				stale.Insert(characterId);
-		}
-
-		foreach (EntityID staleId : stale)
-		{
-			m_mGrenadeListeners.Remove(staleId);
-		}
-	}
-
-	//------------------------------------------------------------------------------------
-	//! A character threw a grenade: follow it on the playback until it's gone
-	void RegisterGrenade(IEntity thrower, BaseWeaponComponent weapon, IEntity thrownEntity)
-	{
-		if (!m_bRecording || !weapon)
-			return;
-
-		// The event hands over the thrown grenade; fall back to the grenade weapon's own entity
-		IEntity grenade = thrownEntity;
-		if (!grenade || grenade == thrower)
-			grenade = weapon.GetOwner();
-		if (!grenade)
+		if (!m_bRecording || !grenade)
 			return;
 
 		foreach (CRF_VAAR_TrackedGrenade tracked : m_aGrenades)
@@ -780,22 +727,22 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				return;
 		}
 
-		int grenadeType = CRF_EVAARGrenadeType.EXPLOSIVE;
-		float lifetime = GRENADE_EXPLOSIVE_LIFETIME_MS;
-		if (weapon.GetWeaponType() == EWeaponType.WT_SMOKEGRENADE)
+		int recordedType = CRF_EVAARGrenadeType.EXPLOSIVE;
+		float lifetime = COA_GrenadeTracker.EXPLOSIVE_LIFETIME_MS;
+		if (grenadeType == COA_EGrenadeType.SMOKE)
 		{
-			grenadeType = CRF_EVAARGrenadeType.SMOKE;
-			lifetime = GRENADE_SMOKE_LIFETIME_MS;
+			recordedType = CRF_EVAARGrenadeType.SMOKE;
+			lifetime = COA_GrenadeTracker.SMOKE_LIFETIME_MS;
 		}
 
 		CRF_VAAR_TrackedGrenade newGrenade = new CRF_VAAR_TrackedGrenade();
 		newGrenade.m_Entity = grenade;
 		newGrenade.m_iId = m_iNextGrenadeId;
-		newGrenade.m_iType = grenadeType;
+		newGrenade.m_iType = recordedType;
 		newGrenade.m_fExpireAt = GetGame().GetWorld().GetWorldTime() + lifetime;
 		m_aGrenades.Insert(newGrenade);
 
-		m_aGrenadeThrowsBuffer.Insert(new CRF_VAAR_GrenadeThrowEvent(m_iNextGrenadeId, GetID(thrower), grenadeType));
+		m_aGrenadeThrowsBuffer.Insert(new CRF_VAAR_GrenadeThrowEvent(m_iNextGrenadeId, GetID(thrower), recordedType));
 		m_iNextGrenadeId++;
 	}
 
@@ -824,52 +771,4 @@ class CRF_VAAR_TrackedGrenade
 	int m_iId;
 	int m_iType;			// CRF_EVAARGrenadeType
 	float m_fExpireAt;		// world time (ms) to stop following it regardless
-}
-
-//------------------------------------------------------------------------------------
-//! Forwards one character's OnGrenadeThrown event to the recorder. The event's arguments don't say
-//! who threw, so each character gets its own listener.
-class CRF_VAAR_GrenadeListener
-{
-	IEntity m_Character;	// weak: null once the character is deleted
-	protected CRF_VAAR_GamemodeComponent m_Recorder;
-
-	//------------------------------------------------------------------------------------
-	void CRF_VAAR_GrenadeListener(IEntity character, CRF_VAAR_GamemodeComponent recorder)
-	{
-		m_Character = character;
-		m_Recorder = recorder;
-	}
-
-	//------------------------------------------------------------------------------------
-	void Hook()
-	{
-		EventHandlerManagerComponent eventHandler = GetEventHandler();
-		if (eventHandler)
-			eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-	}
-
-	//------------------------------------------------------------------------------------
-	void Unhook()
-	{
-		EventHandlerManagerComponent eventHandler = GetEventHandler();
-		if (eventHandler)
-			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-	}
-
-	//------------------------------------------------------------------------------------
-	protected EventHandlerManagerComponent GetEventHandler()
-	{
-		if (!m_Character)
-			return null;
-
-		return EventHandlerManagerComponent.Cast(m_Character.FindComponent(EventHandlerManagerComponent));
-	}
-
-	//------------------------------------------------------------------------------------
-	protected void OnGrenadeThrown(int playerID, BaseWeaponComponent weapon, IEntity entity)
-	{
-		if (m_Recorder)
-			m_Recorder.RegisterGrenade(m_Character, weapon, entity);
-	}
 }
