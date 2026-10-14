@@ -46,6 +46,13 @@ enum CRF_EVAARShotKind
 	ROCKET = 3
 }
 
+//! Thrown grenade type (CRF_VAAR_GrenadeSnapshot.t / CRF_VAAR_GrenadeThrowEvent.t)
+enum CRF_EVAARGrenadeType
+{
+	EXPLOSIVE = 0,
+	SMOKE = 1
+}
+
 // Roster entries
 //------------------------------------------------------------------------------------
 [BaseContainerProps()]
@@ -132,8 +139,42 @@ class CRF_VAAR_VehicleSnapshot : Managed
 	}
 }
 
+//! A thrown grenade, every frame from the throw until it explodes or its smoke runs out
+[BaseContainerProps()]
+class CRF_VAAR_GrenadeSnapshot : Managed
+{
+	int i;			// grenade ID (numbered per recording, see CRF_VAAR_GrenadeThrowEvent)
+	int x;			// pos X ×10
+	int z;			// pos Z ×10
+	int t;			// CRF_EVAARGrenadeType
+
+	void CRF_VAAR_GrenadeSnapshot(int id, vector pos, int type)
+	{
+		i = id;
+		x = (int)Math.Round(pos[0] * 10);
+		z = (int)Math.Round(pos[2] * 10);
+		t = type;
+	}
+}
+
 // Events
 //------------------------------------------------------------------------------------
+//! Written once, in the frame a grenade is thrown
+[BaseContainerProps()]
+class CRF_VAAR_GrenadeThrowEvent : Managed
+{
+	int i;			// grenade ID
+	int ti;			// thrower ID
+	int t;			// CRF_EVAARGrenadeType
+
+	void CRF_VAAR_GrenadeThrowEvent(int grenadeId, int throwerId, int type)
+	{
+		i = grenadeId;
+		ti = throwerId;
+		t = type;
+	}
+}
+
 [BaseContainerProps()]
 class CRF_VAAR_ShotEvent : Managed
 {
@@ -196,4 +237,6 @@ class CRF_VAAR_Frame : Managed
 	ref array<ref CRF_VAAR_VehicleSnapshot>   v = {};   // vehicles
 	ref array<ref CRF_VAAR_ShotEvent>         s = {};   // shots
 	ref array<ref CRF_VAAR_KillEvent>         k = {};   // kills
+	ref array<ref CRF_VAAR_GrenadeSnapshot>   g = {};   // thrown grenades in the world
+	ref array<ref CRF_VAAR_GrenadeThrowEvent> gt = {};  // grenades thrown since the last frame
 }

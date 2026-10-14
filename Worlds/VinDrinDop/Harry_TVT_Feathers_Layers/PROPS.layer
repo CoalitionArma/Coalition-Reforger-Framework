@@ -1,0 +1,113 @@
+GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 1
+   m_fSpawnSpacing 3
+   m_fVehicleFacingOffset 95
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "BTR-40"
+     m_sVehiclePrefab "{B691953D0FC63609}Vehicles/BTR40/BTR40new.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+    CRF_VehicleDepotVehicle "{6A9CFE239CD76CA1}" {
+     m_sVehicleName "Ambulance"
+     m_sVehiclePrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+     m_eCostType USES
+     m_iCost 3
+    }
+    CRF_VehicleDepotVehicle "{6A9CFE239F19704F}" {
+     m_sVehicleName "UAZ"
+     m_sVehiclePrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+     m_eCostType USES
+     m_iCost -1
+    }
+   }
+  }
+ }
+ coords 853.628 2.945 2956.479
+ angles 0 -2.725 0
+}
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 2647.249 80.687 543.581
+ }
+ {
+  coords 2605.143 80.116 543.014
+ }
+ {
+  coords 2564.626 80.116 544.02
+ }
+ {
+  coords 2694.051 80.117 543.156
+ }
+ {
+  coords 2524.971 80.117 543.645
+ }
+}
+$grp GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_Conflict_US_01.et" {
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 2627.493 80.688 542.264
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 2585.387 80.117 541.696
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 2544.87 80.117 542.702
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 2674.295 80.118 541.838
+ }
+ {
+  components {
+   FactionAffiliationComponent "{65A6D31400C9C7FA}" {
+    "faction affiliation" "BLUFOR"
+   }
+  }
+  coords 2505.215 80.117 542.327
+ }
+}
+$grp Tree : "{BDDB9F1226C5C7C9}Prefabs/Trees/Mangrove1.et" {
+ {
+  components {
+   RigidBody "{633D604A05A41914}" {
+    SimState Collision
+   }
+  }
+  coords 337.288 2.42 2617.12
+  scale 0.8
+  DestroyAtNoHealth 0
+ }
+ {
+  components {
+   RigidBody "{633D604A05A41914}" {
+    SimState Collision
+   }
+  }
+  coords 348.817 2.718 2610.308
+  scale 0.8
+  DestroyAtNoHealth 0
+ }
+}

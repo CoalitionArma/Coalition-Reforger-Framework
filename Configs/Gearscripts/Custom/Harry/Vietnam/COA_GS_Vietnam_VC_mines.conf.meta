@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{758DB420EB473C39}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_VC_mines.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

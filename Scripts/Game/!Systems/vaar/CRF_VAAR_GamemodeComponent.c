@@ -34,6 +34,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected ref map<int, string> m_mCharacterRoster = new map<int, string>();
 	protected ref map<int, string> m_mVehicleRoster = new map<int, string>();
 
+	// Thrown grenades, reported by the Lobby's COA_GrenadeTracker; each is followed until it explodes,
+	// its smoke runs out or it times out
+	protected ref array<ref CRF_VAAR_TrackedGrenade> m_aGrenades = {};
+	protected ref array<ref CRF_VAAR_GrenadeThrowEvent> m_aGrenadeThrowsBuffer = {};
+	protected int m_iNextGrenadeId = 1;
+
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -42,6 +48,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			return;
 
 		SetEventMask(owner, EntityEvent.FRAME);
+		COA_GrenadeTracker.GetOnGrenadeThrown().Insert(OnGrenadeThrown);
 
 		GetGame().GetCallqueue().CallLater(InitilizeAAR, 8000, false);
 	}
@@ -104,6 +111,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			m_sInstance = null;
 			s_aTrackedVehicles.Clear();
 		}
+
+		COA_GrenadeTracker.GetOnGrenadeThrown().Remove(OnGrenadeThrown);
 	}
 
 	//! Frame being recorded (0.5 s each), or -1 when not recording - lets incident markers point into the playback
@@ -182,6 +191,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_bWroteFrame = false;
 		m_mCharacterRoster.Clear();
 		m_mVehicleRoster.Clear();
+		m_aGrenades.Clear();
+		m_aGrenadeThrowsBuffer.Clear();
+		m_iNextGrenadeId = 1;
 		return true;
 	}
 
@@ -216,6 +228,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			frame.k.Insert(killEvent);
 		}
 		m_aKillsBuffer.Clear();
+
+		foreach (CRF_VAAR_GrenadeThrowEvent grenadeThrow : m_aGrenadeThrowsBuffer)
+		{
+			frame.gt.Insert(grenadeThrow);
+		}
+		m_aGrenadeThrowsBuffer.Clear();
 
 		// Characters
 		foreach (AIAgent agent : agents)
@@ -305,6 +323,27 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehiclePos, vehicle.GetYawPitchRoll(), GetFaction(vehicle), GetHealth(vehicle), altitude);
 			GetVehicleOccupants(vehicle, vehicleSnapshot.oc, vehicleSnapshot.os);
 			frame.v.Insert(vehicleSnapshot);
+		}
+
+		// Thrown grenades
+		if (world)
+		{
+			float now = world.GetWorldTime();
+			for (int grenadeIndex = m_aGrenades.Count() - 1; grenadeIndex >= 0; grenadeIndex--)
+			{
+				CRF_VAAR_TrackedGrenade tracked = m_aGrenades[grenadeIndex];
+				if (!tracked.m_Entity || now > tracked.m_fExpireAt)
+				{
+					m_aGrenades.Remove(grenadeIndex);
+					continue;
+				}
+
+				// Still in someone's hand (or inventory) - not on the map yet
+				if (tracked.m_Entity.GetRootParent() != tracked.m_Entity)
+					continue;
+
+				frame.g.Insert(new CRF_VAAR_GrenadeSnapshot(tracked.m_iId, tracked.m_Entity.GetOrigin(), tracked.m_iType));
+			}
 		}
 
 		JsonSaveContext jsonHelper = new JsonSaveContext();
@@ -676,6 +715,38 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			GetKillWeapon(killerEntity), distance, targetPos));
 	}
 	//------------------------------------------------------------------------------------
+	//! COA_GrenadeTracker: a character threw a grenade - follow it on the playback until it's gone
+	protected void OnGrenadeThrown(IEntity thrower, IEntity grenade, int grenadeType)
+	{
+		if (!m_bRecording || !grenade)
+			return;
+
+		foreach (CRF_VAAR_TrackedGrenade tracked : m_aGrenades)
+		{
+			if (tracked.m_Entity == grenade)
+				return;
+		}
+
+		int recordedType = CRF_EVAARGrenadeType.EXPLOSIVE;
+		float lifetime = COA_GrenadeTracker.EXPLOSIVE_LIFETIME_MS;
+		if (grenadeType == COA_EGrenadeType.SMOKE)
+		{
+			recordedType = CRF_EVAARGrenadeType.SMOKE;
+			lifetime = COA_GrenadeTracker.SMOKE_LIFETIME_MS;
+		}
+
+		CRF_VAAR_TrackedGrenade newGrenade = new CRF_VAAR_TrackedGrenade();
+		newGrenade.m_Entity = grenade;
+		newGrenade.m_iId = m_iNextGrenadeId;
+		newGrenade.m_iType = recordedType;
+		newGrenade.m_fExpireAt = GetGame().GetWorld().GetWorldTime() + lifetime;
+		m_aGrenades.Insert(newGrenade);
+
+		m_aGrenadeThrowsBuffer.Insert(new CRF_VAAR_GrenadeThrowEvent(m_iNextGrenadeId, GetID(thrower), recordedType));
+		m_iNextGrenadeId++;
+	}
+
+	//------------------------------------------------------------------------------------
 	void ToggleRecording()
 	{
 		// Frames appended after the closing "] }" would make the whole file unreadable
@@ -690,4 +761,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		Replication.BumpMe();
 	}
+}
+
+//------------------------------------------------------------------------------------
+//! A thrown grenade the recorder is following
+class CRF_VAAR_TrackedGrenade
+{
+	IEntity m_Entity;		// weak: null once the grenade is deleted (exploded, smoke finished)
+	int m_iId;
+	int m_iType;			// CRF_EVAARGrenadeType
+	float m_fExpireAt;		// world time (ms) to stop following it regardless
 }
