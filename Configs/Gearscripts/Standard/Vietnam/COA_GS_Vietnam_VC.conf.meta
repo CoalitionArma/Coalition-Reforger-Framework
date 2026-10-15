@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3B8AE53D6F452A7A}Configs/Gearscripts/vietnam/COA_GS_Vietnam_VC.conf"
+ Name "{3B8AE53D6F452A7A}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_VC.conf"
  Configurations {
   CONFResourceClass PC {
   }
