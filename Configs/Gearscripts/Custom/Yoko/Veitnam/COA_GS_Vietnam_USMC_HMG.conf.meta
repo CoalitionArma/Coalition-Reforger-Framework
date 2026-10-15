@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4E9A99ABA3AC9342}Configs/Gearscripts/vietnam/COA_GS_Vietnam_USMC_HMG.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

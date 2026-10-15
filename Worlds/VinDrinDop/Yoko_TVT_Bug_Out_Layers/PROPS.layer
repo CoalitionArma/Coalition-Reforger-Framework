@@ -1,0 +1,56 @@
+$grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Granite/GraniteRock_01.et" {
+ {
+  coords 1003.054 42.636 2364.108
+ }
+ {
+  coords 1014.648 37.408 2241.436
+ }
+ {
+  coords 1075.974 41.611 2307.166
+ }
+}
+$grp GenericEntity : "{D7F69BF7D2DCA0A8}Prefabs/Props/Industrial/Pallets/Pallet_01.et" {
+ {
+  coords 980.307 44.5 2283.911
+  angles 0 0 0
+ }
+ {
+  coords 981.081 44.5 2283.911
+  angles 0 0 0
+ }
+ {
+  coords 981.081 44.5 2282.712
+  angles 0 0 0
+ }
+ {
+  coords 980.307 44.5 2282.712
+  angles 0 0 0
+ }
+}
+GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6A9B2D7343064B3B}" {
+     SlotTemplate InventoryStorageSlot gun {
+      Prefab "{9B625CAE6DEE1DAB}Prefabs/Items/Equipment/Tripods/M2/Part_M2_Gun.et"
+     }
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{6A9B2D73613FC41C}" {
+     SlotTemplate InventoryStorageSlot tripod {
+      Prefab "{6A3EF260029FE220}Prefabs/Items/Equipment/Tripods/M2/Part_M3_Tripod.et"
+     }
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{6A9B2D7311D5A7FB}" {
+     SlotTemplate InventoryStorageSlot ammo {
+      Prefab "{C820846B0521423B}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_4AP_1APIT.et"
+     }
+     NumSlots 25
+    }
+   }
+  }
+ }
+ coords 932.281 44.298 2295.223
+}
