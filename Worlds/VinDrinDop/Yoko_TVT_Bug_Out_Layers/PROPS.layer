@@ -1,46 +1,3 @@
-GameEntity MCOMb {
- coords 1005.466 2.375 2859.321
-}
-$grp GenericEntity : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
- OPFORspawn {
-  components {
-   ActionsManagerComponent "{645A0008F3808301}" {
-    additionalActions {
-     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      ActionTitle "Teleport to Forward Deploy"
-      m_sObjectNameToTeleportTo "OPFORforwarddeploy"
-     }
-    }
-   }
-  }
-  coords 1477.689 3.276 3137.405
- }
- OPFORforwarddeploy {
-  components {
-   ActionsManagerComponent "{645A0008F3808301}" {
-    additionalActions {
-     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      ActionTitle "Teleport to Spawn"
-      m_sObjectNameToTeleportTo "OPFORspawn"
-     }
-    }
-   }
-  }
-  coords 1115.148 1.633 3164.089
- }
- BLUFORspawn {
-  components {
-   ActionsManagerComponent "{645A0008F3808301}" {
-    additionalActions {
-     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      m_sObjectNameToTeleportTo "MCOMb"
-     }
-    }
-   }
-  }
-  coords 933.429 44.689 2288.833
- }
-}
 $grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Granite/GraniteRock_01.et" {
  {
   coords 1003.054 42.636 2364.108
@@ -51,10 +8,6 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{9633134198F3AB1A}Prefabs/Rocks/Gr
  {
   coords 1075.974 41.611 2307.166
  }
-}
-COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
- coords 1116.443 1.565 3162.207
- m_sDescription "OPFOR Forward Deploy"
 }
 $grp GenericEntity : "{D7F69BF7D2DCA0A8}Prefabs/Props/Industrial/Pallets/Pallet_01.et" {
  {

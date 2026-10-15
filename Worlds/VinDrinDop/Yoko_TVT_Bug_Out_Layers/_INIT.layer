@@ -6,6 +6,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   CRF_RushGamemodeManager "{6A9AEDB9EF356100}" {
    m_AttackingSide "OPFOR"
    m_DefendingSide "BLUFOR"
+   m_iNumberOfZones 2
    m_iMCOMsPerZone 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -320,7 +321,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{3B8AE53D6F452A7A}Configs/Gearscripts/vietnam/COA_GS_Vietnam_VC.conf"
+  m_rGearScript "{3B8AE53D6F452A7A}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_VC.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0

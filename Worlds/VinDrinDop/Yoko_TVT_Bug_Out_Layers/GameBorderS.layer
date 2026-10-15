@@ -16,18 +16,6 @@ COA_ForwardDeployBorder : "{19D5747507E8906B}PrefabsMissionMaking/GameBorders/Fo
   ShapePoint "{6A9A018DC26F7AAF}" {
    Position 123.856 0 658.728
   }
-  ShapePoint "{6A9AEDB94CFBBC85}" {
-   Position 230.094 -0 741.187
-  }
-  ShapePoint "{6A9AEDB94EF3D819}" {
-   Position 297.6 -0 744.691
-  }
-  ShapePoint "{6A9A018FD63C60B0}" {
-   Position 363.438 -0.016 776.928
-  }
-  ShapePoint "{6A9A018FD817DFBB}" {
-   Position 463.152 -0.245 671.994
-  }
   ShapePoint "{6A9A018DC7C91333}" {
    Position 231.228 -6.237 413.363
   }
