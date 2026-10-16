@@ -37,10 +37,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   CRF_LooterGamemodeComponent "{6A9F174F4E4740C5}" {
    m_fGlobalSpawnChance 0.4
    m_iTotalSpawnPoints 3559
-   m_bDebugCalcItemChances 1
    m_aWeaponEntries {
     CRF_WeaponLootEntry "{6A9F56127F903935}" {
-     m_fWeight 0.2
+     m_fWeight 0.4
      m_sPrimaryPrefab "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et"
      m_sMagazinePrefab "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et"
      m_iMagazineCount 5
@@ -74,7 +73,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
      m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
     }
     CRF_MiscLootEntry "{6AA00D877FC9B1B6}" {
-     m_fWeight 0.2
+     m_fWeight 0.1
      m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
      m_aExtraItems {
       CRF_MiscItem "{6AA00D8744921D51}" {
@@ -108,6 +107,74 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AA0F7D7B79B3DDA}" {
+   m_sTitle "GET BANANAS, PLACE THEM IN YOUR DEPOSIT AREA"
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3221}" {
+   m_sTitle "WATCH OUT FOR THE BANANA FREAK AND ANYONE HE TURNS"
+   m_sTextData ""
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B314F}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3081}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B37DB}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B371D}" {
+   m_sTitle "BANANA FREAK"
+   m_sTextData "Kill the intruders, and you'll spawn more banana freaks."
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3665}" {
+   m_sTitle "Administration"
+   m_sTextData "There's a collector on the deposit areas."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"

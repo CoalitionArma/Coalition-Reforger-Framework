@@ -25,6 +25,7 @@ $grp GenericEntity : "{6F4F1D6FF1A11ED0}PrefabsMissionMaking/Systems/SimpleColle
    CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
     m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
     m_sItemName "BANANA"
+    m_iWinAmount 100
     m_fCollectionInterval 12.8
     m_eAssignedSide INDFOR
     m_vAreaSize 3 5 3
@@ -47,6 +48,7 @@ $grp GenericEntity : "{6F4F1D6FF1A11ED0}PrefabsMissionMaking/Systems/SimpleColle
    CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
     m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
     m_sItemName "BANANA"
+    m_iWinAmount 100
     m_fCollectionInterval 12.4
     m_eAssignedSide OPFOR
     m_vAreaSize 3 5 3
@@ -69,6 +71,7 @@ $grp GenericEntity : "{6F4F1D6FF1A11ED0}PrefabsMissionMaking/Systems/SimpleColle
    CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
     m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
     m_sItemName "BANANA"
+    m_iWinAmount 100
     m_fCollectionInterval 12.6
     m_eAssignedSide BLUFOR
     m_vAreaSize 3 5 3
