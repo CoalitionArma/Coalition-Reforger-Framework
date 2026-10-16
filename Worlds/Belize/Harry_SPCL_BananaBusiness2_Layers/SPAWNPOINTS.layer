@@ -7,22 +7,22 @@ COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/Spa
 COA_StaticSpawnPoint CIVILIAN_Spawn1 : "{91AC884B31EDEE23}PrefabsMissionMaking/SpawnPoints/SpawnPoints/CIVILIAN_Spawn.et" {
  components {
   MeshObject "{645911A168BE4336}" {
-   Materials {
-    MaterialAssignClass "{6A9F5613B1F01311}" {
-     SourceMaterial "Flagpole_01"
-     AssignedMaterial "{0A94C84B94134E73}Assets/Materials/Invisibility/InvisibiltyGoesSoHard.emat"
-    }
-   }
   }
   SlotManagerComponent "{645911A168BE4321}" {
    Slots {
     EntitySlotInfo Flag {
-     Prefab ""
     }
    }
   }
  }
- coords 802.709 4.601 585.586
+ coords 802.709 -1.869 585.586
+ {
+  COA_ManualMarker {
+   ID "68682AC1B261B1FF"
+   coords -470.833 0 261.075
+   angles 0 -86.55 0
+  }
+ }
 }
 COA_StaticSpawnPoint INDFOR_Spawn1 : "{A8C13E34C9597EA4}PrefabsMissionMaking/SpawnPoints/SpawnPoints/INDFOR_Spawn.et" {
  coords 308.05 1 232.408

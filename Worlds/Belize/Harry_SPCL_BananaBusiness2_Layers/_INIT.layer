@@ -35,12 +35,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sFlipToFactionKey "CIV"
   }
   CRF_LooterGamemodeComponent "{6A9F174F4E4740C5}" {
-   m_fGlobalSpawnChance 0.5
-   m_iTotalSpawnPoints 2208
+   m_fGlobalSpawnChance 0.4
+   m_iTotalSpawnPoints 3559
    m_bDebugCalcItemChances 1
    m_aWeaponEntries {
     CRF_WeaponLootEntry "{6A9F56127F903935}" {
-     m_fWeight 0.05
+     m_fWeight 0.2
      m_sPrimaryPrefab "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et"
      m_sMagazinePrefab "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et"
      m_iMagazineCount 5
@@ -71,7 +71,16 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_aMiscEntries {
     CRF_MiscLootEntry "{6A9F5612233C2ACD}" {
      m_fWeight 1
-     m_sPrimaryPrefab "{181B4ADA65725D59}Prefabs/Items/Core/ACE_Banana.et"
+     m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+    }
+    CRF_MiscLootEntry "{6AA00D877FC9B1B6}" {
+     m_fWeight 0.2
+     m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+     m_aExtraItems {
+      CRF_MiscItem "{6AA00D8744921D51}" {
+       m_sPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+      }
+     }
     }
    }
   }

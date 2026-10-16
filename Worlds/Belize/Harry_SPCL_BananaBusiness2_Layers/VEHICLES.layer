@@ -1,5 +1,0 @@
-SCR_VehicleSpawn {
- coords 798.171 4.521 582.571
- angles 0 -81.015 0
- m_rnPrefab "{9796A3F1A6B767B8}Vehicles/ATV/ATV2pWZNP.et"
-}

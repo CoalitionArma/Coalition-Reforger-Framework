@@ -1,0 +1,7 @@
+MatPBRBasic {
+ Emissive 0.502 0.376 0 1
+ EmissiveLV 2.123
+ ApplyAlbedoToEmissive 1
+ BCRMap "{8F253C81FFC15E42}Assets/Items/Food/ACE_Banana_BCR.edds"
+ NMOMap "{B7FD871326B60CDC}Assets/Items/Food/ACE_Banana_NMO.edds"
+}
