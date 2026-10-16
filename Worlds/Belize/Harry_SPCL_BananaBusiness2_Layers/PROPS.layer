@@ -162,3 +162,114 @@ $grp GenericEntity : "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et
   angles 16.941 118.608 -0.812
  }
 }
+$grp SCR_DestructibleEntity : "{D37A9CAC7152CA07}Prefabs/Structures/Walls/Wooden/WoodenFenceOld_01/WoodenFenceOld_01_2m.et" {
+ {
+  coords 285.1 0 227.569
+  angles 0 -90 0
+  Enabled 0
+  {
+   $grp SCR_DestructibleEntity : "{D37A9CAC7152CA07}Prefabs/Structures/Walls/Wooden/WoodenFenceOld_01/WoodenFenceOld_01_2m.et" {
+    {
+     coords 3.297 0 0.206
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 3.297 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 0.108
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 1.202 0 0.001
+     Enabled 0
+    }
+   }
+  }
+ }
+ {
+  coords 285.598 0 286.805
+  angles 0 -90 0
+  Enabled 0
+  {
+   $grp SCR_DestructibleEntity : "{D37A9CAC7152CA07}Prefabs/Structures/Walls/Wooden/WoodenFenceOld_01/WoodenFenceOld_01_2m.et" {
+    {
+     coords 3.297 0 0.206
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 3.297 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 0.108
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 1.202 0 0.001
+     Enabled 0
+    }
+   }
+  }
+ }
+ {
+  coords 285.447 0 256.603
+  angles 0 -90 0
+  Enabled 0
+  {
+   $grp SCR_DestructibleEntity : "{D37A9CAC7152CA07}Prefabs/Structures/Walls/Wooden/WoodenFenceOld_01/WoodenFenceOld_01_2m.et" {
+    {
+     coords 3.297 0 0.206
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 3.297 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 -1.324
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords -0.252 0 0.108
+     angles 0 90 0
+     Enabled 0
+    }
+    {
+     coords 1.202 0 0.001
+     Enabled 0
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
+ {
+  coords 287.16 1 241.804
+  angles 0 -75.061 0
+ }
+ {
+  coords 286.236 1 274.196
+  angles 0 -106.694 0
+ }
+}

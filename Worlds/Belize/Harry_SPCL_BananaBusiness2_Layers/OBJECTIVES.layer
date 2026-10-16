@@ -1,0 +1,89 @@
+$grp GenericEntity : "{6B0010136E4CDFEE}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V2_USSR.et" {
+ {
+  coords 282.243 1.135 258.143
+ }
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{DB52C2D4463AA0A0}Assets/Props/Fabric/Flags/Data/Flag_2_3_Blue.emat"
+   }
+  }
+  coords 282.379 1.129 288.069
+ }
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{4A53EF08996B2AA7}Assets/Props/Fabric/Flags/Data/Flag_2_3_Green.emat"
+   }
+  }
+  coords 282.214 1.137 229.303
+ }
+}
+$grp GenericEntity : "{6F4F1D6FF1A11ED0}PrefabsMissionMaking/Systems/SimpleCollector/CRF_SimpleCollector.et" {
+ {
+  components {
+   CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
+    m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+    m_sItemName "BANANA"
+    m_fCollectionInterval 12.8
+    m_eAssignedSide INDFOR
+    m_vAreaSize 3 5 3
+    m_sCollectionText "%SIDE% HAS COLLECTED %COLLECTEDNUMBER% %OBJECT%S"
+    m_fCollectionDuration 4
+    m_sWinText "%SIDE% WINS!"
+    m_sWinSubtext "%WINNUMBER% %OBJECT%S HAVE BEEN COLLECTED"
+    m_fWinDuration 15
+    m_sWinSound "{7B685B3B92DBA01E}Sounds/Destruction/Multiphase/Samples/Piano/Destruction_Multiphase_Piano_Break_02.wav"
+    m_eMarkerVisibleToSide INDFOR
+    m_sMarkerLabel "BANANA DROPOFF"
+    m_sMarkerIcon "{EE312397B069C6C8}UI/Textures/Editor/Highlights/Highlight_NoTasks.edds"
+   }
+  }
+  coords 286.819 0.999 229.175
+  angles 0 90.54 0
+ }
+ {
+  components {
+   CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
+    m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+    m_sItemName "BANANA"
+    m_fCollectionInterval 12.4
+    m_eAssignedSide OPFOR
+    m_vAreaSize 3 5 3
+    m_sCollectionText "%SIDE% HAS COLLECTED %COLLECTEDNUMBER% %OBJECT%S"
+    m_fCollectionDuration 4
+    m_sWinText "%SIDE% WINS!"
+    m_sWinSubtext "%WINNUMBER% %OBJECT%S HAVE BEEN COLLECTED"
+    m_fWinDuration 15
+    m_sWinSound "{7B685B3B92DBA01E}Sounds/Destruction/Multiphase/Samples/Piano/Destruction_Multiphase_Piano_Break_02.wav"
+    m_eMarkerVisibleToSide OPFOR
+    m_sMarkerLabel "BANANA DROPOFF"
+    m_sMarkerIcon "{EE312397B069C6C8}UI/Textures/Editor/Highlights/Highlight_NoTasks.edds"
+   }
+  }
+  coords 287.092 0.999 258.178
+  angles 0 90.54 0
+ }
+ {
+  components {
+   CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
+    m_sCollectPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+    m_sItemName "BANANA"
+    m_fCollectionInterval 12.6
+    m_eAssignedSide BLUFOR
+    m_vAreaSize 3 5 3
+    m_sCollectionText "%SIDE% HAS COLLECTED %COLLECTEDNUMBER% %OBJECT%S"
+    m_fCollectionDuration 4
+    m_sWinText "%SIDE% WINS!"
+    m_sWinSubtext "%WINNUMBER% %OBJECT%S HAVE BEEN COLLECTED"
+    m_fWinDuration 15
+    m_sWinSound "{7B685B3B92DBA01E}Sounds/Destruction/Multiphase/Samples/Piano/Destruction_Multiphase_Piano_Break_02.wav"
+    m_eMarkerVisibleToSide BLUFOR
+    m_sMarkerLabel "BANANA DROPOFF"
+    m_sMarkerIcon "{EE312397B069C6C8}UI/Textures/Editor/Highlights/Highlight_NoTasks.edds"
+   }
+  }
+  coords 287.377 0.999 288.399
+  angles 0 90.54 0
+ }
+}
