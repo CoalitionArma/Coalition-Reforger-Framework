@@ -1,0 +1,10 @@
+$grp GenericEntity : "{BA80DD7144145924}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_FIA_01_V1.et" {
+ {
+  coords 422.657 47.563 2174.835
+  angles 0 107.051 0
+ }
+ {
+  coords 1300.854 2.188 2475.347
+  angles 0 107.051 0
+ }
+}

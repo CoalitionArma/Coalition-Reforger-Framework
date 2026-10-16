@@ -1,0 +1,31 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 1600.92 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1606.896 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1611.66 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1616.788 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1622.249 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1627.719 0 533.961
+  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+ }
+ {
+  coords 1622.415 6.541 481.975
+  angles 0 -91.961 0
+  m_rVehicle "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et"
+ }
+}

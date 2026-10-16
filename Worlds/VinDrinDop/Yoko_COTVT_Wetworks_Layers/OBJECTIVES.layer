@@ -1,0 +1,11 @@
+$grp GameEntity {
+ cache1 {
+  coords 1299.874 2.188 2475.383
+ }
+ cache2 {
+  coords 422.945 47.563 2174.637
+ }
+ cache3 {
+  coords 1871.669 67.117 2261.917
+ }
+}
