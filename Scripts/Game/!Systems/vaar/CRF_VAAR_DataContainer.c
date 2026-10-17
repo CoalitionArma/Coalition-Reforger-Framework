@@ -6,6 +6,8 @@
 // shots, kills, vehicle occupants).
 // Names, roles and factions are written once per unit in the frame's roster (r / vr) when it is first
 // seen or changes; snapshots only carry what changes every frame.
+// Map markers (m, Oct 2026 on) are events: a marker is written once when it appears, then once when it is
+// removed or (CRF shareable markers) first shared. The first frame lists every marker already placed.
 
 //! Character snapshot flags (CRF_VAAR_CharacterSnapshot.s)
 enum CRF_EVAARCharacterState
@@ -51,6 +53,22 @@ enum CRF_EVAARGrenadeType
 {
 	EXPLOSIVE = 0,
 	SMOKE = 1
+}
+
+//! Map marker event kind (CRF_VAAR_MarkerEvent.e)
+enum CRF_EVAARMarkerEvent
+{
+	PLACED = 0,
+	REMOVED = 1,
+	SHARED = 2		// a CRF shareable marker reached its teammates
+}
+
+//! Map marker kind (CRF_VAAR_MarkerEvent.t)
+enum CRF_EVAARMarkerKind
+{
+	CUSTOM = 0,		// icon, colour and text picked by the player
+	MILITARY = 1,	// NATO symbol
+	OTHER = 2		// any other synced marker type
 }
 
 // Roster entries
@@ -175,6 +193,34 @@ class CRF_VAAR_GrenadeThrowEvent : Managed
 	}
 }
 
+//! A map marker placed, removed or shared since the last frame. Removed and shared events only carry e and i.
+[BaseContainerProps()]
+class CRF_VAAR_MarkerEvent : Managed
+{
+	int e;			// CRF_EVAARMarkerEvent
+	int i;			// marker ID
+	int x;			// pos X ×10
+	int z;			// pos Z ×10
+	int t;			// CRF_EVAARMarkerKind
+	int f;			// faction that can see it (0 = everyone / unknown, 1 BLUFOR, 2 OPFOR, 3 INDFOR, 4 CIV)
+	int o;			// placed by (player ID, -1 = the mission or server)
+	string on;		// placed by, name
+	int c;			// colour 0xRRGGBB (sRGB)
+	string ic;		// custom marker icon (imageset quad name)
+	string n;		// text
+	int r;			// rotation in degrees
+	int s;			// 1 = visible to its whole faction already (not an unshared CRF marker)
+	int mi;			// military symbol identity (EMilitarySymbolIdentity)
+	string ml;		// military symbol label, e.g. "Land - Infantry"
+
+	void CRF_VAAR_MarkerEvent(int eventKind, int markerId)
+	{
+		e = eventKind;
+		i = markerId;
+		o = -1;
+	}
+}
+
 [BaseContainerProps()]
 class CRF_VAAR_ShotEvent : Managed
 {
@@ -239,4 +285,5 @@ class CRF_VAAR_Frame : Managed
 	ref array<ref CRF_VAAR_KillEvent>         k = {};   // kills
 	ref array<ref CRF_VAAR_GrenadeSnapshot>   g = {};   // thrown grenades in the world
 	ref array<ref CRF_VAAR_GrenadeThrowEvent> gt = {};  // grenades thrown since the last frame
+	ref array<ref CRF_VAAR_MarkerEvent>       m = {};   // map markers placed, removed or shared since the last frame
 }

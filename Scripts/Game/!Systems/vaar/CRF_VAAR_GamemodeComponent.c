@@ -40,6 +40,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected ref array<ref CRF_VAAR_GrenadeThrowEvent> m_aGrenadeThrowsBuffer = {};
 	protected int m_iNextGrenadeId = 1;
 
+	// Map markers already written to the file: marker ID -> whether it was visible to its faction (shared)
+	protected ref map<int, bool> m_mRecordedMarkers = new map<int, bool>();
+
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -194,6 +197,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_aGrenades.Clear();
 		m_aGrenadeThrowsBuffer.Clear();
 		m_iNextGrenadeId = 1;
+		m_mRecordedMarkers.Clear();
 		return true;
 	}
 
@@ -234,6 +238,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			frame.gt.Insert(grenadeThrow);
 		}
 		m_aGrenadeThrowsBuffer.Clear();
+
+		RecordMarkerChanges(frame.m);
 
 		// Characters
 		foreach (AIAgent agent : agents)
@@ -391,6 +397,272 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		Print("[CRF_VAAR] Recording Saved");
 		COA_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
+	}
+
+	// MAP MARKERS
+	//------------------------------------------------------------------------------------
+	//! Compares the server's map markers with the ones already written and records what changed. The server
+	//! holds every marker a player places as public (CRF shareable markers included, shared or not) and the
+	//! mission's own; private markers never leave the player's machine, so they can't be recorded.
+	protected void RecordMarkerChanges(notnull array<ref CRF_VAAR_MarkerEvent> events)
+	{
+		SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!markerManager)
+			return;
+
+		map<int, SCR_MapMarkerBase> current = new map<int, SCR_MapMarkerBase>();
+		foreach (SCR_MapMarkerBase marker : markerManager.GetStaticMarkers())
+		{
+			if (marker && marker.GetMarkerID() != -1)
+				current.Set(marker.GetMarkerID(), marker);
+		}
+		foreach (SCR_MapMarkerBase marker : markerManager.GetDisabledMarkers())
+		{
+			if (marker && marker.GetMarkerID() != -1)
+				current.Set(marker.GetMarkerID(), marker);
+		}
+
+		// Removed
+		array<int> removed = {};
+		foreach (int markerId, bool wasShared : m_mRecordedMarkers)
+		{
+			if (!current.Contains(markerId))
+				removed.Insert(markerId);
+		}
+		foreach (int markerId : removed)
+		{
+			m_mRecordedMarkers.Remove(markerId);
+			events.Insert(new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.REMOVED, markerId));
+		}
+
+		// Shared state is only worked out when some marker could still change it
+		set<int> sharedIds;
+		foreach (int markerId, SCR_MapMarkerBase marker : current)
+		{
+			bool known;
+			if (!m_mRecordedMarkers.Find(markerId, known) || !known)
+			{
+				sharedIds = GetSharedMarkerIds(markerManager);
+				break;
+			}
+		}
+
+		// Placed, or shared since the last frame
+		foreach (int markerId, SCR_MapMarkerBase marker : current)
+		{
+			bool wasShared;
+			bool recorded = m_mRecordedMarkers.Find(markerId, wasShared);
+			if (recorded && wasShared)
+				continue;
+
+			bool isShared = IsMarkerShared(marker, sharedIds);
+			if (!recorded)
+			{
+				m_mRecordedMarkers.Set(markerId, isShared);
+				events.Insert(CreateMarkerPlacedEvent(marker, markerManager, isShared));
+				continue;
+			}
+
+			if (isShared)
+			{
+				m_mRecordedMarkers.Set(markerId, true);
+				events.Insert(new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.SHARED, markerId));
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Markers a player has shared with teammates (CRF shareable markers): shared to the whole faction during
+	//! safestart, or handed to the players standing nearby
+	protected set<int> GetSharedMarkerIds(SCR_MapMarkerManagerComponent markerManager)
+	{
+		set<int> sharedIds = new set<int>();
+		foreach (int markerId, string factionKey : markerManager.m_aGlobalMarkers)
+		{
+			sharedIds.Insert(markerId);
+		}
+		foreach (int playerId, array<int> received : markerManager.m_MarkersSharedReference)
+		{
+			if (!received)
+				continue;
+			foreach (int markerId : received)
+			{
+				sharedIds.Insert(markerId);
+			}
+		}
+		return sharedIds;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Whether a marker's whole faction can see it. Only player markers of a faction with shareable markers
+	//! start out hidden from teammates.
+	protected bool IsMarkerShared(SCR_MapMarkerBase marker, set<int> sharedIds)
+	{
+		if (marker.GetMarkerOwnerID() <= 0)
+			return true;
+
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		Faction ownerFaction = SCR_FactionManager.SGetPlayerFaction(marker.GetMarkerOwnerID());
+		if (!gamemode || !ownerFaction || !gamemode.DoesFactionShareMarker(ownerFaction.GetFactionKey()))
+			return true;
+
+		return sharedIds && sharedIds.Contains(marker.GetMarkerID());
+	}
+
+	//------------------------------------------------------------------------------------
+	protected CRF_VAAR_MarkerEvent CreateMarkerPlacedEvent(SCR_MapMarkerBase marker, SCR_MapMarkerManagerComponent markerManager, bool isShared)
+	{
+		CRF_VAAR_MarkerEvent markerEvent = new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.PLACED, marker.GetMarkerID());
+
+		int pos[2];
+		marker.GetWorldPos(pos);
+		markerEvent.x = pos[0] * 10;
+		markerEvent.z = pos[1] * 10;
+		markerEvent.r = marker.GetRotation();
+		markerEvent.n = marker.GetCustomText();
+		markerEvent.f = GetMarkerFaction(marker);
+		if (isShared)
+			markerEvent.s = 1;
+
+		int ownerId = marker.GetMarkerOwnerID();
+		if (ownerId > 0)
+		{
+			markerEvent.o = ownerId;
+			markerEvent.on = GetGame().GetPlayerManager().GetPlayerName(ownerId);
+		}
+
+		markerEvent.t = CRF_EVAARMarkerKind.OTHER;
+		markerEvent.c = 0xFFFFFF;
+
+		SCR_MapMarkerConfig config = markerManager.GetMarkerConfig();
+		if (!config)
+			return markerEvent;
+
+		SCR_EMapMarkerType markerType = marker.GetType();
+		if (markerType == SCR_EMapMarkerType.PLACED_CUSTOM)
+		{
+			markerEvent.t = CRF_EVAARMarkerKind.CUSTOM;
+			SCR_MapMarkerEntryPlaced placedConfig = SCR_MapMarkerEntryPlaced.Cast(config.GetMarkerEntryConfigByType(SCR_EMapMarkerType.PLACED_CUSTOM));
+			if (placedConfig)
+			{
+				markerEvent.c = ColorToSRGBInt(placedConfig.GetColorEntry(marker.GetColorEntry()));
+				ResourceName imageset, imagesetGlow;
+				string quad;
+				if (placedConfig.GetIconEntry(marker.GetIconEntry(), imageset, imagesetGlow, quad))
+					markerEvent.ic = quad;
+			}
+		}
+		else if (markerType == SCR_EMapMarkerType.PLACED_MILITARY)
+		{
+			markerEvent.t = CRF_EVAARMarkerKind.MILITARY;
+			FillMilitarySymbol(markerEvent, marker, SCR_MapMarkerEntryMilitary.Cast(config.GetMarkerEntryConfigByType(SCR_EMapMarkerType.PLACED_MILITARY)));
+		}
+
+		return markerEvent;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Identity, colour and "Dimension - Type" label of a NATO symbol marker, read the way
+	//! SCR_MapMarkerEntryMilitary.InitClientSettings does
+	protected void FillMilitarySymbol(CRF_VAAR_MarkerEvent markerEvent, SCR_MapMarkerBase marker, SCR_MapMarkerEntryMilitary militaryConfig)
+	{
+		if (!militaryConfig)
+			return;
+
+		int configId = marker.GetMarkerConfigID();
+		SCR_MarkerMilitaryFactionEntry factionEntry = militaryConfig.GetFactionEntry(configId % SCR_MapMarkerEntryMilitary.FACTION_DETERMINATOR);
+		if (factionEntry)
+		{
+			markerEvent.mi = factionEntry.GetFactionIdentity();
+			markerEvent.c = ColorToSRGBInt(factionEntry.GetColor());
+		}
+
+		array<string> labels = {};
+		SCR_MarkerMilitaryDimension dimension = militaryConfig.GetDimensionEntry(configId / SCR_MapMarkerEntryMilitary.FACTION_DETERMINATOR);
+		if (dimension)
+			labels.Insert(WidgetManager.Translate(dimension.GetTranslation()));
+
+		int typeFlags = marker.GetFlags();
+		array<ref SCR_MarkerMilitaryType> types = militaryConfig.GetMilitaryTypes();
+		if (typeFlags != 0 && types)
+		{
+			foreach (SCR_MarkerMilitaryType type : types)
+			{
+				if (typeFlags & type.GetType())
+					labels.Insert(WidgetManager.Translate(type.GetTranslation()));
+			}
+		}
+
+		string label;
+		foreach (string part : labels)
+		{
+			if (part.IsEmpty())
+				continue;
+			if (!label.IsEmpty())
+				label += " - ";
+			label += part;
+		}
+		markerEvent.ml = label;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Faction a marker is restricted to, else its author's faction (0 for mission markers everyone sees)
+	protected int GetMarkerFaction(SCR_MapMarkerBase marker)
+	{
+		FactionManager factionManager = GetGame().GetFactionManager();
+		if (factionManager && marker.GetMarkerFactionFlags() != 0)
+		{
+			array<Faction> factions = {};
+			factionManager.GetFactionsList(factions);
+			foreach (Faction faction : factions)
+			{
+				if (marker.IsFaction(factionManager.GetFactionIndex(faction)))
+					return FactionKeyToCode(faction.GetFactionKey());
+			}
+		}
+
+		if (marker.GetMarkerOwnerID() > 0)
+		{
+			Faction ownerFaction = SCR_FactionManager.SGetPlayerFaction(marker.GetMarkerOwnerID());
+			if (ownerFaction)
+				return FactionKeyToCode(ownerFaction.GetFactionKey());
+		}
+
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------
+	protected int FactionKeyToCode(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : {return 1;}
+			case "OPFOR" : {return 2;}
+			case "INDFOR" : {return 3;}
+			case "CIV" : {return 4;}
+		}
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Marker configs hold linear colours; the website draws sRGB
+	protected int ColorToSRGBInt(Color color)
+	{
+		if (!color)
+			return 0xFFFFFF;
+		return (LinearToSRGBByte(color.R()) << 16) | (LinearToSRGBByte(color.G()) << 8) | LinearToSRGBByte(color.B());
+	}
+
+	//------------------------------------------------------------------------------------
+	protected int LinearToSRGBByte(float linear)
+	{
+		linear = Math.Clamp(linear, 0, 1);
+		float srgb;
+		if (linear <= 0.0031308)
+			srgb = linear * 12.92;
+		else
+			srgb = 1.055 * Math.Pow(linear, 1 / 2.4) - 0.055;
+		return (int)Math.Clamp(Math.Round(srgb * 255), 0, 255);
 	}
 
 	// HELPERS
