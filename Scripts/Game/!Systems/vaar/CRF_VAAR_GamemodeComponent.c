@@ -43,6 +43,12 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected ref array<ref CRF_VAAR_GrenadeThrowEvent> m_aGrenadeThrowsBuffer = {};
 	protected int m_iNextGrenadeId = 1;
 
+	// How long a thrown grenade stays on the playback: smoke while it smokes; explosive ones until they
+	// explode (seen through RegisterShot, else the end of the fuse) - the exploded entity lingers
+	protected static const float SMOKE_GRENADE_LIFETIME_MS = 40000;
+	protected static const float EXPLOSIVE_GRENADE_LIFETIME_MS = 8000;	// no timer fuse (impact fuzes)
+	protected static const float GRENADE_FUSE_MARGIN_MS = 250;
+
 	// Map markers already written to the file: marker ID -> whether it was visible to its faction (shared)
 	protected ref map<int, bool> m_mRecordedMarkers = new map<int, bool>();
 
@@ -971,6 +977,17 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 
 		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ, GetShotKind(projectile)));
+
+		// A thrown grenade going off - take it off the playback now
+		if (projectile && !m_aGrenades.IsEmpty())
+		{
+			IEntity projectileRoot = projectile.GetRootParent();
+			foreach (CRF_VAAR_TrackedGrenade tracked : m_aGrenades)
+			{
+				if (tracked.m_iType == CRF_EVAARGrenadeType.EXPLOSIVE && tracked.m_Entity && (tracked.m_Entity == projectile || tracked.m_Entity == projectileRoot))
+					tracked.m_fExpireAt = 0;
+			}
+		}
 	}
 	//------------------------------------------------------------------------------------
 	void RegisterCharacterDeath(notnull SCR_InstigatorContextData instigatorContextData)
@@ -1012,11 +1029,18 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 
 		int recordedType = CRF_EVAARGrenadeType.EXPLOSIVE;
-		float lifetime = COA_GrenadeTracker.EXPLOSIVE_LIFETIME_MS;
+		float lifetime = EXPLOSIVE_GRENADE_LIFETIME_MS;
 		if (grenadeType == COA_EGrenadeType.SMOKE)
 		{
 			recordedType = CRF_EVAARGrenadeType.SMOKE;
-			lifetime = COA_GrenadeTracker.SMOKE_LIFETIME_MS;
+			lifetime = SMOKE_GRENADE_LIFETIME_MS;
+		}
+		else
+		{
+			// Thrown as it leaves the hand, so it goes off by the end of its fuse
+			TimerTriggerComponent fuse = TimerTriggerComponent.Cast(grenade.FindComponent(TimerTriggerComponent));
+			if (fuse && fuse.GetTimer() > 0)
+				lifetime = fuse.GetTimer() * 1000 + GRENADE_FUSE_MARGIN_MS;
 		}
 
 		CRF_VAAR_TrackedGrenade newGrenade = new CRF_VAAR_TrackedGrenade();
