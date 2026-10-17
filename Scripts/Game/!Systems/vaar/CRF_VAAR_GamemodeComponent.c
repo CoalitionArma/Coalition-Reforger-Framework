@@ -7,6 +7,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 {
 	//! Playback file format written by this component (see CRF_VAAR_DataContainer.c)
 	static const int FORMAT_VERSION = 2;
+	//! Header "sk": shot kinds are reliable. Recordings from 12-16 Oct 2026 lack it - they marked every bullet
+	//! as a shell (bullets use ShellMoveComponent too), and the viewer corrects them.
+	static const int SHOT_KIND_REVISION = 1;
 
 	protected static CRF_VAAR_GamemodeComponent m_sInstance;
 
@@ -188,8 +191,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		world.Replace("\"", "'");
 		world.Replace("\\", "/");
 
-		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"frames\": [",
-			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world));
+		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"frames\": [",
+			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION));
 
 		m_bWroteFrame = false;
 		m_mCharacterRoster.Clear();
@@ -845,7 +848,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------
-	//! What a shot or kill came from, by the projectile's movement component
+	//! What a shot came from, by the projectile's movement component. Bullets move with ShellMoveComponent
+	//! too; what sets shells (mortar, cannon HE) apart is a trigger component that sets off their warhead -
+	//! a bullet's hit effects live in its move component instead.
 	protected int GetShotKind(IEntity projectile)
 	{
 		if (!projectile)
@@ -857,6 +862,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (root && root != projectile)
 			parts.Insert(root);
 
+		bool isShell;
+		bool hasTrigger;
 		foreach (IEntity part : parts)
 		{
 			if (part.FindComponent(GrenadeMoveComponent))
@@ -864,8 +871,13 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (part.FindComponent(MissileMoveComponent))
 				return CRF_EVAARShotKind.ROCKET;
 			if (part.FindComponent(ShellMoveComponent))
-				return CRF_EVAARShotKind.SHELL;
+				isShell = true;
+			if (part.FindComponent(BaseTriggerComponent))
+				hasTrigger = true;
 		}
+
+		if (isShell && hasTrigger)
+			return CRF_EVAARShotKind.SHELL;
 
 		return CRF_EVAARShotKind.BULLET;
 	}

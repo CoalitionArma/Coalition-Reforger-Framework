@@ -116,7 +116,7 @@ class CRF_VAAR_CharacterSnapshot : Managed
 	int i;			// ID
 	int x;			// pos X ×10
 	int z;			// pos Z ×10
-	int a;			// aim yaw ×1000
+	int a;			// aim yaw ×1000 - counter-clockwise from north (the opposite way to a vehicle's)
 	int s;			// CRF_EVAARCharacterState flags
 
 	void CRF_VAAR_CharacterSnapshot(int id, vector pos, vector aim, int state)
@@ -138,7 +138,7 @@ class CRF_VAAR_VehicleSnapshot : Managed
 	int i;			// ID
 	int x;			// pos X ×10
 	int z;			// pos Z ×10
-	int a;			// yaw ×1000
+	int a;			// yaw ×1000 - clockwise from north, the same way the map is drawn
 	int f;			// faction (changes with the crew)
 	int h;			// health 0-100, 0 = destroyed
 	int y;			// aircraft height above the ground in metres, 0 for everything else
