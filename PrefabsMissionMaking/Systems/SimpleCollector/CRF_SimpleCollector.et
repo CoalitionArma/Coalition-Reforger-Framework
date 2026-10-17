@@ -1,0 +1,38 @@
+GenericEntity {
+ ID "486DC6930545DF0A"
+ components {
+  CRF_SimpleCollectorComponent "{915384F6C0D9300B}" {
+   m_sItemName "ITEM"
+   m_iWinAmount 20
+   m_fCollectionInterval 5
+   m_eAssignedSide ALL
+   m_vAreaSize 10 5 10
+   m_bDrawAreaInWorkbench 1
+   m_bSendCollectionNotification 1
+   m_sCollectionText "%COLLECTEDNUMBER% %OBJECT%S HAVE BEEN COLLECTED"
+   m_sCollectionSubtext "%COLLECTEDNUMBER% out of %WINNUMBER% Needed"
+   m_fCollectionDuration 5
+   m_sCollectionSound "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav"
+   m_bSendWinNotification 1
+   m_sWinText "%WINNUMBER% %OBJECT%S HAVE BEEN COLLECTED"
+   m_sWinSubtext "%SIDE% WINS!"
+   m_fWinDuration 8
+   m_sWinSound "{3D7F63CCD32B2F17}Sounds/Intro/outroCrescendo.wav"
+   m_bCreateMarker 1
+   m_eMarkerVisibleToSide ALL
+   m_sMarkerLabel "Collection Point"
+  }
+  MeshObject "{486DC6930545DF10}" {
+   Object "{A5B43FE12B863CFB}Assets/Structures/Signs/Military/SignRectangle_01_75x45_double.xob"
+  }
+  RigidBody "{486DC6930545DF11}" {
+   ResponseIndex "MediumDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  RplComponent "{BC101A6BB54DD6DB}" {
+   Streamable Disabled
+  }
+ }
+ coords 0 0 0
+}

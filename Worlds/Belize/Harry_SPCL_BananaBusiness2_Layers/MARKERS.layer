@@ -1,0 +1,5 @@
+COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ coords 870.635 8.292 811.268
+ angles 0 0 0
+ m_sDescription "Da Big Bunch"
+}

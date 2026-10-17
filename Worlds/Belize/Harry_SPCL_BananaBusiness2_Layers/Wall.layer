@@ -1,0 +1,116 @@
+$grp SCR_IndestructibleEnvironmentalEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 345.637 -17.994 38.655
+  scale 10
+ }
+ {
+  coords 107.551 -22.562 38.655
+  scale 10
+ }
+ {
+  coords 811.593 -17.465 38.655
+  scale 10
+ }
+ {
+  coords 573.507 -17.231 38.655
+  scale 10
+ }
+ {
+  coords 1211.126 -16.735 38.655
+  scale 10
+ }
+ {
+  coords 973.04 -15.638 38.655
+  scale 10
+ }
+ {
+  coords 1010.018 -12.261 328.398
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 1014.559 -18.401 90.355
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 1001.13 -16.362 794.269
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 1005.672 -20.648 556.226
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 993.509 -18.638 1193.73
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 998.051 -17.204 955.687
+  angles 0 -91.093 0
+  scale 10
+ }
+ {
+  coords 726.083 -19.271 964.972
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords 964.111 -17.204 959.709
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords 260.241 -20.821 975.271
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords 498.27 -18.106 970.009
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords -139.195 -12.607 984.102
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords 98.833 -21.605 978.84
+  angles 0 -178.734 0
+  scale 10
+ }
+ {
+  coords 45.161 -25.157 644.072
+  angles 0 90.602 0
+  scale 10
+ }
+ {
+  coords 47.664 -18.421 882.145
+  angles 0 90.602 0
+  scale 10
+ }
+ {
+  coords 40.265 -18.852 178.142
+  angles 0 90.602 0
+  scale 10
+ }
+ {
+  coords 42.766 -20.665 416.216
+  angles 0 90.602 0
+  scale 10
+ }
+ {
+  coords 36.066 -12.607 -221.37
+  angles 0 90.602 0
+  scale 10
+ }
+ {
+  coords 38.567 -31.198 16.703
+  angles 0 90.602 0
+  scale 10
+ }
+}
