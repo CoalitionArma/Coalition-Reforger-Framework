@@ -1,0 +1,9 @@
+CRF_ReplayGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
+ ID "B56763A7209D141A"
+ components {
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic CRF_ReplaySpawnLogic "{4FAFDEF8B8BCF056}" {
+   }
+  }
+ }
+}

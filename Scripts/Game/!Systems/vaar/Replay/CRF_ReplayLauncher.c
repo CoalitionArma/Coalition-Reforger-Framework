@@ -1,23 +1,20 @@
 //------------------------------------------------------------------------------------------------
-//! Starts a downloaded replay: loads the mission's terrain as a local game (no mission, no game mode)
-//! and leaves the file to play in GameSessionStorage, which survives the world change. When the terrain
-//! has loaded, the game's world post-process (below) starts CRF_ReplayPlayer on it.
+//! Starts a downloaded replay: loads the replay world for the mission's terrain (CRF_ReplayWorlds - the
+//! terrain plus CRF_ReplayGameMode, nothing of the mission) as a local game, and leaves the file to play in
+//! GameSessionStorage, which survives the world change. CRF_ReplayGameMode picks it up when it starts.
 class CRF_ReplayLauncher
 {
 	//------------------------------------------------------------------------------------------------
-	//! \return an error to show, or empty when the terrain is loading
+	//! \return an error to show, or empty when the world is loading
 	static string Launch(int missionId)
 	{
 		CRF_ReplayMeta meta = CRF_ReplayLibrary.LoadMeta(missionId);
 		if (!meta || !CRF_ReplayLibrary.IsComplete(missionId))
 			return "Download this replay first";
 
-		string world = CRF_Replay.GetTerrainWorld(meta.terrainKey);
+		string world = CRF_ReplayWorlds.Get(meta.terrainKey);
 		if (world.IsEmpty())
-			world = WorldFromHeader(CRF_Replay.ReplayPath(missionId));
-
-		if (world.IsEmpty())
-			return string.Format("No terrain known for \"%1\" - add it to CRF_Replay.GetTerrainWorld", meta.terrainKey);
+			return string.Format("No replay world for the terrain \"%1\" yet (CRF_ReplayWorlds)", meta.terrainKey);
 
 		Resource resource = Resource.Load(world);
 		if (!resource || !resource.IsValid())
@@ -34,39 +31,6 @@ class CRF_ReplayLauncher
 		}
 
 		GetGame().GetMenuManager().CloseAllMenus();
-		return "";
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! Recordings from format v3 list the mission's world and its parent terrain under "scenes"
-	protected static string WorldFromHeader(string path)
-	{
-		FileHandle file = FileIO.OpenFile(path, FileMode.READ);
-		if (!file)
-			return "";
-
-		string header;
-		file.ReadLine(header);
-		file.Close();
-
-		header = header.Trim();
-		if (header.EndsWith("["))
-			header += "]}";
-
-		JsonLoadContext context = new JsonLoadContext(false);
-		array<string> scenes = {};
-		if (!context.LoadFromString(header) || !context.ReadValue("scenes", scenes))
-			return "";
-
-		// Any scene but the mission's own world (which would bring its game mode along) is the terrain
-		string missionWorld;
-		context.ReadValue("world", missionWorld);
-		foreach (string scene : scenes)
-		{
-			if (scene.StartsWith("{") && WorldPath(scene) != WorldPath(missionWorld))
-				return scene;
-		}
-
 		return "";
 	}
 
@@ -100,32 +64,105 @@ class CRF_ReplayLauncher
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Called when a world has loaded: starts the replay if this is the terrain one was launched on
-	static void OnWorldLoaded()
+	//! A replay world has started (CRF_ReplayGameMode): play what the launcher asked for
+	static void OnReplayWorldStarted()
 	{
-		string file, world, title;
-		if (!GameSessionStorage.s_Data.Find(CRF_Replay.STORAGE_FILE, file))
+		if (CRF_ReplayPlayer.GetInstance())
 			return;
 
-		GameSessionStorage.s_Data.Find(CRF_Replay.STORAGE_WORLD, world);
-		GameSessionStorage.s_Data.Find(CRF_Replay.STORAGE_TITLE, title);
-		ClearPending();
+		string file, title;
+		if (GameSessionStorage.s_Data.Find(CRF_Replay.STORAGE_FILE, file))
+		{
+			GameSessionStorage.s_Data.Find(CRF_Replay.STORAGE_TITLE, title);
+			ClearPending();
 
-		// Any other world (the main menu, a server) - the replay was abandoned
-		if (WorldPath(GetGame().GetWorldFile()) != WorldPath(world))
+			// Straight away: until the replay's camera exists the game has nothing to show
+			CRF_ReplayPlayer.Start(file, title);
 			return;
+		}
 
-		// Let the world finish initialising before spawning into it
-		GetGame().GetCallqueue().CallLater(CRF_ReplayPlayer.Start, 500, false, file, title);
+#ifdef WORKBENCH
+		WorkbenchAutoplay();
+#else
+		Print("[CRF_Replay] A replay world loaded without a replay to play - back to the main menu", LogLevel.WARNING);
+		GetGame().GetCallqueue().CallLater(Exit, 1000);
+#endif
 	}
 
+#ifdef WORKBENCH
 	//------------------------------------------------------------------------------------------------
-	//! "{GUID}worlds/Eden/Eden.ent" and "worlds/eden/eden.ent" compare equal
+	//! Workbench test session: play a replay world (Worlds/Replay/CRF_Replay_<terrain>.ent) and the newest
+	//! downloaded replay recorded on that terrain starts by itself. A mission ID in
+	//! $profile:vaar/replays/autoplay.txt picks a particular one.
+	protected static void WorkbenchAutoplay()
+	{
+		string loadedWorld = WorldPath(GetGame().GetWorldFile());
+		CRF_ReplayMeta chosen;
+
+		string autoplayPath = CRF_Replay.DIR + "/autoplay.txt";
+		if (FileIO.FileExists(autoplayPath))
+		{
+			FileHandle file = FileIO.OpenFile(autoplayPath, FileMode.READ);
+			string line;
+			if (file)
+			{
+				file.ReadLine(line);
+				file.Close();
+			}
+
+			line = line.Trim();
+			chosen = CRF_ReplayLibrary.LoadMeta(line.ToInt());
+			if (!chosen)
+			{
+				Print(string.Format("[CRF_Replay] autoplay.txt names mission \"%1\" but there's no %2 - delete autoplay.txt to pick by terrain", line, CRF_Replay.MetaPath(line.ToInt())), LogLevel.WARNING);
+				return;
+			}
+		}
+		else
+		{
+			foreach (CRF_ReplayMeta meta : CRF_ReplayLibrary.ListLocal())
+			{
+				if (meta.complete && WorldPath(CRF_ReplayWorlds.Get(meta.terrainKey)) == loadedWorld)
+				{
+					chosen = meta;
+					break;
+				}
+			}
+
+			if (!chosen)
+			{
+				Print("[CRF_Replay] Workbench autoplay: no downloaded replay in " + CRF_Replay.DIR + " was recorded on this terrain (" + loadedWorld + ")", LogLevel.WARNING);
+				return;
+			}
+		}
+
+		string world = CRF_ReplayWorlds.Get(chosen.terrainKey);
+		if (WorldPath(world) != loadedWorld)
+		{
+			Print(string.Format("[CRF_Replay] Replay %1 (%2) was recorded on %3 - play %4 instead", chosen.id, chosen.name, chosen.terrainKey, world), LogLevel.WARNING);
+			return;
+		}
+
+		Print(string.Format("[CRF_Replay] Workbench autoplay: replay %1 - %2", chosen.id, chosen.name), LogLevel.NORMAL);
+		CRF_ReplayPlayer.Start(CRF_Replay.ReplayPath(chosen.id), chosen.name);
+	}
+#endif
+
+	//------------------------------------------------------------------------------------------------
+	//! "{GUID}Worlds/Replay/X.ent", "$COALITIONFramework:Worlds/Replay/X.ent" (GetWorldFile) and
+	//! "worlds/replay/x.ent" compare equal
 	protected static string WorldPath(string world)
 	{
 		int brace = world.IndexOf("}");
 		if (brace >= 0)
 			world = world.Substring(brace + 1, world.Length() - brace - 1);
+
+		if (world.StartsWith("$"))
+		{
+			int colon = world.IndexOf(":");
+			if (colon >= 0)
+				world = world.Substring(colon + 1, world.Length() - colon - 1);
+		}
 
 		world.ToLower();
 		world.Replace("\\", "/");
@@ -146,10 +183,11 @@ class CRF_ReplayLauncher
 modded class ArmaReforgerScripted
 {
 	//------------------------------------------------------------------------------------------------
-	protected override void OnWorldPostProcess(World world)
+	//! Workbench keeps script statics between plays
+	override void OnGameEnd()
 	{
-		super.OnWorldPostProcess(world);
-		CRF_ReplayLauncher.OnWorldLoaded();
+		CRF_ReplayPlayer.Stop();
+		super.OnGameEnd();
 	}
 }
 

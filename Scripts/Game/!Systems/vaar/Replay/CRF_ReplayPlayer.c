@@ -91,6 +91,7 @@ class CRF_ReplayPlayer
 	protected ref map<int, ref CRF_ReplayCharInfo> m_mCharInfo = new map<int, ref CRF_ReplayCharInfo>();
 	protected ref map<int, ref CRF_ReplayVehInfo> m_mVehicleInfo = new map<int, ref CRF_ReplayVehInfo>();
 	protected ref map<int, ref array<int>> m_mDeathFrames = new map<int, ref array<int>>();	// a player's ID comes back after a respawn
+	protected ref map<string, ref array<int>> m_mDeathFramesByName = new map<string, ref array<int>>();	// v1 kills carry no IDs
 	protected ref array<ref CRF_ReplayKillEntry> m_aKills = {};
 
 	protected ref map<int, ref CRF_ReplayFrame> m_mFrameCache = new map<int, ref CRF_ReplayFrame>();
@@ -157,9 +158,51 @@ class CRF_ReplayPlayer
 			ReadHeader(header);
 		}
 
+		// A camera straight away - the game shows nothing (the loading screen stays up) until it has one
+		vector focus = PeekFocus();
+		SetupCamera(focus);
+		Print(string.Format("[CRF_Replay] Started %1 (v%2, %3 s a frame) - camera over %4", file, m_iVersion, m_fInterval, focus), LogLevel.NORMAL);
+
 		m_iLastTick = System.GetTickCount();
 		GetGame().GetCallqueue().CallLater(Tick, 0, true);
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_ReplayHUD);
+		MenuBase hud = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_ReplayHUD);
+		if (!hud)
+			Print("[CRF_Replay] Couldn't open the replay HUD (CRF_ReplayHUD in chimeraMenus.conf - restart Workbench after config changes)", LogLevel.ERROR);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where the people are in the first frames, read ahead without moving the file on
+	protected vector PeekFocus()
+	{
+		if (!m_File)
+			return vector.Zero;
+
+		int start = m_File.GetPos();
+		vector focus = vector.Zero;
+		string line;
+		for (int n = 0; n < 60 && m_File.ReadLine(line) >= 0; n++)
+		{
+			line = line.Trim();
+			if (!line.StartsWith("{") && !line.StartsWith(","))
+				continue;
+
+			CRF_ReplayFrame frame = ParseLine(line);
+			if (!frame || !frame.c || frame.c.IsEmpty())
+				continue;
+
+			float sx, sz;
+			foreach (CRF_ReplayChar c : frame.c)
+			{
+				sx += c.x / 10.0;
+				sz += c.z / 10.0;
+			}
+
+			focus = Vector(sx / frame.c.Count(), 0, sz / frame.c.Count());
+			break;
+		}
+
+		m_File.Seek(start);
+		return focus;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -312,6 +355,23 @@ class CRF_ReplayPlayer
 			}
 		}
 
+		// v1: names and factions ride on every character and vehicle
+		if (frame.c)
+		{
+			foreach (CRF_ReplayChar character : frame.c)
+			{
+				LearnCharacter(character);
+			}
+		}
+
+		if (frame.v)
+		{
+			foreach (CRF_ReplayVeh vehicle : frame.v)
+			{
+				LearnVehicle(vehicle);
+			}
+		}
+
 		if (frame.k)
 		{
 			foreach (CRF_ReplayKill kill : frame.k)
@@ -320,19 +380,57 @@ class CRF_ReplayPlayer
 				entry.m_iFrame = frameIndex;
 				entry.m_Kill = kill;
 				m_aKills.Insert(entry);
-				if (kill.ti == 0)
-					continue;
-
-				array<int> deaths = m_mDeathFrames.Get(kill.ti);
-				if (!deaths)
+				if (kill.ti != 0)
 				{
-					deaths = {};
-					m_mDeathFrames.Set(kill.ti, deaths);
-				}
+					array<int> deaths = m_mDeathFrames.Get(kill.ti);
+					if (!deaths)
+					{
+						deaths = {};
+						m_mDeathFrames.Set(kill.ti, deaths);
+					}
 
-				deaths.Insert(frameIndex);
+					deaths.Insert(frameIndex);
+				}
+				else if (!kill.tn.IsEmpty())
+				{
+					array<int> namedDeaths = m_mDeathFramesByName.Get(kill.tn);
+					if (!namedDeaths)
+					{
+						namedDeaths = {};
+						m_mDeathFramesByName.Set(kill.tn, namedDeaths);
+					}
+
+					namedDeaths.Insert(frameIndex);
+				}
 			}
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void LearnCharacter(CRF_ReplayChar character)
+	{
+		if (character.n.IsEmpty() || m_mCharInfo.Contains(character.i))
+			return;
+
+		CRF_ReplayCharInfo info = new CRF_ReplayCharInfo();
+		info.i = character.i;
+		info.n = character.n;
+		info.r = character.r;
+		info.f = character.f;
+		m_mCharInfo.Set(info.i, info);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void LearnVehicle(CRF_ReplayVeh vehicle)
+	{
+		if (vehicle.n.IsEmpty() || m_mVehicleInfo.Contains(vehicle.i))
+			return;
+
+		CRF_ReplayVehInfo info = new CRF_ReplayVehInfo();
+		info.i = vehicle.i;
+		info.n = vehicle.n;
+		info.t = vehicle.t;
+		m_mVehicleInfo.Set(info.i, info);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -344,26 +442,7 @@ class CRF_ReplayPlayer
 			return;
 		}
 
-		// Start the camera over the first frame with people in it
-		vector focus = vector.Zero;
-		for (int i = 0; i < Math.Min(40, m_aOffsets.Count()); i++)
-		{
-			CRF_ReplayFrame frame = GetFrame(i);
-			if (frame && frame.c && !frame.c.IsEmpty())
-			{
-				float sx, sz;
-				foreach (CRF_ReplayChar c : frame.c)
-				{
-					sx += c.x / 10.0;
-					sz += c.z / 10.0;
-				}
-
-				focus = Vector(sx / frame.c.Count(), 0, sz / frame.c.Count());
-				break;
-			}
-		}
-
-		SetupCamera(focus);
+		Print(string.Format("[CRF_Replay] Indexed %1 frames, %2 kills, %3 soldiers, %4 vehicles", m_aOffsets.Count(), m_aKills.Count(), m_mCharInfo.Count(), m_mVehicleInfo.Count()), LogLevel.NORMAL);
 		m_fTime = 0;
 		m_bPlaying = true;
 	}
@@ -500,6 +579,7 @@ class CRF_ReplayPlayer
 				if (b)
 					yaw = LerpAngle(yaw, -b.a / 1000.0, alpha);
 
+				LearnCharacter(c);
 				CRF_ReplayCharProxy proxy = m_mChars.Get(c.i);
 				int diedAt = LatestDeath(c.i, index);
 				if (proxy && proxy.m_bKilled)
@@ -623,6 +703,7 @@ class CRF_ReplayPlayer
 					roll = Math.Lerp(roll, b.ro / 10.0, alpha);
 				}
 
+				LearnVehicle(v);
 				CRF_ReplayVehicleProxy proxy = m_mVehicles.Get(v.i);
 				if (proxy && proxy.m_bWrecked && v.h > 0)
 				{
@@ -853,6 +934,13 @@ class CRF_ReplayPlayer
 	{
 		array<int> deaths = m_mDeathFrames.Get(id);
 		if (!deaths)
+		{
+			CRF_ReplayCharInfo info = m_mCharInfo.Get(id);
+			if (info && !info.n.IsEmpty())
+				deaths = m_mDeathFramesByName.Get(info.n);
+		}
+
+		if (!deaths)
 			return -1;
 
 		for (int i = deaths.Count() - 1; i >= 0; i--)
@@ -1045,8 +1133,13 @@ class CRF_ReplayPlayer
 		m_Camera = GetGame().SpawnEntityPrefab(Resource.Load(COA_EntityHelper.GetSpectatorCameraResource()), world, params);
 
 		CameraManager cameraManager = GetGame().GetCameraManager();
-		if (cameraManager && m_Camera)
-			cameraManager.SetCamera(CameraBase.Cast(m_Camera));
+		if (!m_Camera || !cameraManager)
+		{
+			Print(string.Format("[CRF_Replay] No camera (spectator camera %1, camera manager %2)", m_Camera, cameraManager), LogLevel.ERROR);
+			return;
+		}
+
+		cameraManager.SetCamera(CameraBase.Cast(m_Camera));
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -4,7 +4,8 @@
 //!
 //!  CRF_ReplayBrowserMenu   main menu > REPLAYS: missions on this PC and on coalitiongroup.net
 //!  CRF_ReplayDownloader    fetches a recording from the website, a minute of frames per request
-//!  CRF_ReplayLauncher      loads the mission's terrain as a local game and starts the player in it
+//!  CRF_ReplayLauncher      loads the replay world for the mission's terrain (CRF_ReplayWorlds) as a local game
+//!  CRF_ReplayGameMode      the replay worlds' game mode: nobody spawns, it starts the player
 //!  CRF_ReplayPlayer        reads the recording a frame at a time and puts the battle back together
 //!  CRF_ReplayHUDMenu       timeline, speed, follow, kill feed
 //!
@@ -20,8 +21,6 @@ class CRF_Replay
 	static const string STORAGE_WORLD = "CRF_Replay_World";
 	static const string STORAGE_TITLE = "CRF_Replay_Title";
 
-	protected static ref map<string, string> s_mTerrainWorlds;
-
 	//------------------------------------------------------------------------------------------------
 	static string ReplayPath(int missionId)
 	{
@@ -32,40 +31,6 @@ class CRF_Replay
 	static string MetaPath(int missionId)
 	{
 		return string.Format("%1/replay_%2.meta.json", DIR, missionId);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! The terrain world a map key (the website's mission terrain, lower case) loads. Mission worlds are
-	//! sub-scenes of these; the replay loads the bare terrain so none of the mission's own entities run.
-	//! Read from the parents of the mission worlds in this mod - add a line here for a new map.
-	static string GetTerrainWorld(string terrainKey)
-	{
-		if (!s_mTerrainWorlds)
-		{
-			s_mTerrainWorlds = new map<string, string>();
-			s_mTerrainWorlds.Set("arland", "{A9806AF617972E97}worlds/Arland/Arland.ent");
-			s_mTerrainWorlds.Set("eden", "{853E92315D1D9EFE}worlds/Eden/Eden.ent");
-			s_mTerrainWorlds.Set("everon", "{853E92315D1D9EFE}worlds/Eden/Eden.ent");
-			s_mTerrainWorlds.Set("kolguyev", "{1EA95DAE3230BEB0}worlds/Cain/Cain.ent");
-			s_mTerrainWorlds.Set("chernarus", "{F513898A573B9C3F}Worlds/ChernarusMinusBeta.ent");
-			s_mTerrainWorlds.Set("belleauwood", "{340ED3C1F743457E}Worlds/BelleauWood/BelleauWood.ent");
-			s_mTerrainWorlds.Set("belize", "{D225252FA26D6D54}Worlds/UKSFO_S_Belize.ent");
-			s_mTerrainWorlds.Set("falklands", "{B3AC4C35D795749C}Worlds/BritMapProject/BritMapProject.ent");
-			s_mTerrainWorlds.Set("kunar", "{B70B908EF90E5F3A}Worlds/Kunar.ent");
-			s_mTerrainWorlds.Set("kupyansk", "{9194858F3102F45C}worlds/KupyanskWorld.ent");
-			s_mTerrainWorlds.Set("mogadishu", "{BCD52EA0F63F6EB3}Worlds/Mogadishu/mogadishu.ent");
-			s_mTerrainWorlds.Set("normandy", "{55B6E6A52487C726}Worlds/TESTIsland.ent");
-			s_mTerrainWorlds.Set("serhiivka", "{BC070CAEF616045B}Worlds/Serhiivka.ent");
-			s_mTerrainWorlds.Set("vindrindop", "{1BE6FFB423CA6165}Worlds/VinDrinDop.ent");
-			s_mTerrainWorlds.Set("wakeisland", "{2C7D70186FB9981F}Project Tropic.ent");
-			s_mTerrainWorlds.Set("yeonpyeong", "{9D726E3A65816832}Yeonpyeong.ent");
-		}
-
-		string key = terrainKey;
-		key.ToLower();
-		key.Replace(" ", "");
-		key.Replace("'", "");
-		return s_mTerrainWorlds.Get(key);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -137,7 +102,9 @@ class CRF_ReplayInfo
 }
 
 //------------------------------------------------------------------------------------------------
-// Recording frames, the shape CRF_VAAR_DataContainer writes (short names on purpose - they're the JSON keys)
+// Recording frames, the shape CRF_VAAR_DataContainer writes (short names on purpose - they're the JSON keys).
+// Each reads its own fields with defaults: every format version leaves some out (v1 has no IDs on kills,
+// no vehicle health, names inline on every character), and v1's occupant list holds strings.
 //------------------------------------------------------------------------------------------------
 class CRF_ReplayCharInfo
 {
@@ -148,6 +115,19 @@ class CRF_ReplayCharInfo
 	int p;			// 1 = player
 	string pf;		// prefab (v3)
 	string w;		// weapon in hand (v3)
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(i, 0);
+		context.ReadDefault(n, "");
+		context.ReadDefault(r, 0);
+		context.ReadDefault(f, 0);
+		context.ReadDefault(p, 0);
+		context.ReadDefault(pf, "");
+		context.ReadDefault(w, "");
+		return true;
+	}
 }
 
 class CRF_ReplayVehInfo
@@ -156,6 +136,16 @@ class CRF_ReplayVehInfo
 	string n;
 	int t;			// CRF_EVAARVehicleType
 	string pf;		// prefab (v3)
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(i, 0);
+		context.ReadDefault(n, "");
+		context.ReadDefault(t, 0);
+		context.ReadDefault(pf, "");
+		return true;
+	}
 }
 
 class CRF_ReplayChar
@@ -168,6 +158,26 @@ class CRF_ReplayChar
 	int y;			// height ×10 (v3)
 	int p;			// aim pitch ×10 (v3)
 	int t;			// stance (v3)
+	string n;		// v1: name, role and faction on every character (later versions use the roster)
+	int r;
+	int f;
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(i, 0);
+		context.ReadDefault(x, 0);
+		context.ReadDefault(z, 0);
+		context.ReadDefault(a, 0);
+		context.ReadDefault(s, 0);
+		context.ReadDefault(y, 0);
+		context.ReadDefault(p, 0);
+		context.ReadDefault(t, 0);
+		context.ReadDefault(n, "");
+		context.ReadDefault(r, 0);
+		context.ReadDefault(f, 0);
+		return true;
+	}
 }
 
 class CRF_ReplayVeh
@@ -177,13 +187,31 @@ class CRF_ReplayVeh
 	int z;
 	int a;			// yaw ×1000, clockwise from north
 	int f;
-	int h;			// health 0-100
+	int h;			// health 0-100 (v1 has none: 100)
 	int y;			// aircraft altitude above ground [m]
 	int wy;			// height ×10 (v3)
 	int pi;			// pitch ×10 (v3)
 	int ro;			// roll ×10 (v3)
-	ref array<int> oc;
-	ref array<int> os;
+	string n;		// v1: name and type on every vehicle
+	int t;
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(i, 0);
+		context.ReadDefault(x, 0);
+		context.ReadDefault(z, 0);
+		context.ReadDefault(a, 0);
+		context.ReadDefault(f, 0);
+		context.ReadDefault(h, 100);
+		context.ReadDefault(y, 0);
+		context.ReadDefault(wy, 0);
+		context.ReadDefault(pi, 0);
+		context.ReadDefault(ro, 0);
+		context.ReadDefault(n, "");
+		context.ReadDefault(t, 0);
+		return true;
+	}
 }
 
 class CRF_ReplayShot
@@ -196,11 +224,25 @@ class CRF_ReplayShot
 	int k;			// CRF_EVAARShotKind
 	int sy;			// v3
 	int hy;			// v3
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(si, 0);
+		context.ReadDefault(sx, 0);
+		context.ReadDefault(sz, 0);
+		context.ReadDefault(hx, 0);
+		context.ReadDefault(hz, 0);
+		context.ReadDefault(k, 0);
+		context.ReadDefault(sy, 0);
+		context.ReadDefault(hy, 0);
+		return true;
+	}
 }
 
 class CRF_ReplayKill
 {
-	int ki;
+	int ki;			// IDs (none in v1 - match by name)
 	int ti;
 	string kn;
 	string tn;
@@ -210,6 +252,22 @@ class CRF_ReplayKill
 	int d;
 	int x;
 	int z;
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(ki, 0);
+		context.ReadDefault(ti, 0);
+		context.ReadDefault(kn, "");
+		context.ReadDefault(tn, "");
+		context.ReadDefault(kf, 0);
+		context.ReadDefault(tf, 0);
+		context.ReadDefault(w, "");
+		context.ReadDefault(d, 0);
+		context.ReadDefault(x, 0);
+		context.ReadDefault(z, 0);
+		return true;
+	}
 }
 
 class CRF_ReplayGrenade
@@ -219,16 +277,56 @@ class CRF_ReplayGrenade
 	int z;
 	int t;			// CRF_EVAARGrenadeType
 	int y;			// v3
+
+	//------------------------------------------------------------------------------------------------
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(i, 0);
+		context.ReadDefault(x, 0);
+		context.ReadDefault(z, 0);
+		context.ReadDefault(t, 0);
+		context.ReadDefault(y, 0);
+		return true;
+	}
 }
 
 class CRF_ReplayFrame
 {
 	int ts;
-	ref array<ref CRF_ReplayCharInfo> r;
-	ref array<ref CRF_ReplayVehInfo> vr;
-	ref array<ref CRF_ReplayChar> c;
-	ref array<ref CRF_ReplayVeh> v;
-	ref array<ref CRF_ReplayShot> s;
-	ref array<ref CRF_ReplayKill> k;
-	ref array<ref CRF_ReplayGrenade> g;
+	ref array<ref CRF_ReplayCharInfo> r = {};
+	ref array<ref CRF_ReplayVehInfo> vr = {};
+	ref array<ref CRF_ReplayChar> c = {};
+	ref array<ref CRF_ReplayVeh> v = {};
+	ref array<ref CRF_ReplayShot> s = {};
+	ref array<ref CRF_ReplayKill> k = {};
+	ref array<ref CRF_ReplayGrenade> g = {};
+
+	//------------------------------------------------------------------------------------------------
+	//! Every list is optional - older formats and quiet frames leave them out
+	bool SerializationLoad(LoadContext context)
+	{
+		context.ReadDefault(ts, 0);
+		if (context.DoesKeyExist("r"))
+			context.Read(r);
+
+		if (context.DoesKeyExist("vr"))
+			context.Read(vr);
+
+		if (context.DoesKeyExist("c"))
+			context.Read(c);
+
+		if (context.DoesKeyExist("v"))
+			context.Read(v);
+
+		if (context.DoesKeyExist("s"))
+			context.Read(s);
+
+		if (context.DoesKeyExist("k"))
+			context.Read(k);
+
+		if (context.DoesKeyExist("g"))
+			context.Read(g);
+
+		return true;
+	}
 }
