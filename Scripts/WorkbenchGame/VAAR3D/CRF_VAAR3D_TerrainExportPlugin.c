@@ -42,6 +42,9 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 	[Attribute("0 0 0", desc: "...to here (X, -, Z)")]
 	protected vector m_vAreaMax;
 
+	[Attribute("0", desc: "Export all terrains: also redo terrains that already have an export")]
+	protected bool m_bOverwrite;
+
 	protected static const string PLUGIN_NAME = "CRF VAAR 3D Terrain Export";
 	protected static const float TILE_SIZE = 1024;
 	protected static const float HEIGHT_OFFSET = 100;
@@ -64,6 +67,25 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 	protected int m_iObjectTotal;
 	protected int m_iTreeTotal;
 
+	//! Export all terrains: viewer terrain key and the terrain world (the parent of CRF's mission worlds)
+	protected static const ref array<string> ALL_TERRAINS = {
+		"arland", "{A9806AF617972E97}worlds/Arland/Arland.ent",
+		"eden", "{853E92315D1D9EFE}worlds/Eden/Eden.ent",
+		"kolguyev", "{1EA95DAE3230BEB0}worlds/Cain/Cain.ent",
+		"chernarus", "{F513898A573B9C3F}Worlds/ChernarusMinusBeta.ent",
+		"belleauwood", "{340ED3C1F743457E}Worlds/BelleauWood/BelleauWood.ent",
+		"belize", "{D225252FA26D6D54}Worlds/UKSFO_S_Belize.ent",
+		"falklands", "{B3AC4C35D795749C}Worlds/BritMapProject/BritMapProject.ent",
+		"kunar", "{B70B908EF90E5F3A}Worlds/Kunar.ent",
+		"kupyansk", "{9194858F3102F45C}worlds/KupyanskWorld.ent",
+		"mogadishu", "{BCD52EA0F63F6EB3}Worlds/Mogadishu/mogadishu.ent",
+		"normandy", "{55B6E6A52487C726}Worlds/TESTIsland.ent",
+		"serhiivka", "{BC070CAEF616045B}Worlds/Serhiivka.ent",
+		"vindrindop", "{1BE6FFB423CA6165}Worlds/VinDrinDop.ent",
+		"wakeisland", "{2C7D70186FB9981F}Project Tropic.ent",
+		"yeonpyeong", "{9D726E3A65816832}Yeonpyeong.ent"
+	};
+
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
@@ -75,8 +97,15 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 			return;
 		}
 
-		if (Workbench.ScriptDialog(PLUGIN_NAME, "Exports terrain heights and object shapes for the 3D AAR.\nUpload the output folder to /map-viewer/terrains/<terrain key>/3d/ on the server.", this) == 0)
+		int choice = Workbench.ScriptDialog(PLUGIN_NAME, "Exports terrain heights and object shapes for the 3D AAR.\nUpload the output folder to /map-viewer/terrains/<terrain key>/3d/ on the server.\n\nExport all terrains opens every COALITION map in turn (save your work first) - the terrain key and area are ignored.", this);
+		if (choice == 0)
 			return;
+
+		if (choice == 2)
+		{
+			ExportAll(worldEditor);
+			return;
+		}
 
 		m_sTerrainKey = m_sTerrainKey.Trim();
 		m_sTerrainKey.ToLower();
@@ -86,20 +115,75 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 			return;
 		}
 
-		Export(worldEditor);
+		string result = Export(worldEditor);
+		Workbench.Dialog(PLUGIN_NAME, result);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void Export(WorldEditor worldEditor)
+	//! Every terrain in ALL_TERRAINS whose mod is loaded, one after another
+	protected void ExportAll(WorldEditor worldEditor)
+	{
+		m_vAreaMin = vector.Zero;
+		m_vAreaMax = vector.Zero;
+		array<string> report = {};
+		for (int i = 0; i < ALL_TERRAINS.Count(); i += 2)
+		{
+			string key = ALL_TERRAINS[i];
+			string world = ALL_TERRAINS[i + 1];
+			if (!m_bOverwrite && FileIO.FileExists(m_sOutputDir + "/" + key + "/meta.json"))
+			{
+				report.Insert(key + ": already exported");
+				continue;
+			}
+
+			Resource resource = Resource.Load(world);
+			if (!resource || !resource.IsValid())
+			{
+				report.Insert(key + ": skipped - its mod isn't loaded");
+				continue;
+			}
+
+			Print("[CRF_VAAR3D] Opening " + world, LogLevel.NORMAL);
+			if (!worldEditor.SetOpenedResource(world))
+			{
+				report.Insert(key + ": couldn't open " + world);
+				continue;
+			}
+
+			Sleep(500);
+			m_Api = worldEditor.GetApi();
+			if (!m_Api || !m_Api.GetWorld())
+			{
+				report.Insert(key + ": the world didn't load");
+				continue;
+			}
+
+			m_sTerrainKey = key;
+			m_iObjectTotal = 0;
+			m_iTreeTotal = 0;
+			string result = Export(worldEditor);
+			Print("[CRF_VAAR3D] " + key + ": " + result, LogLevel.NORMAL);
+			report.Insert(key + ": " + result);
+		}
+
+		string summary;
+		foreach (string line : report)
+		{
+			summary += line + "\n";
+		}
+
+		Workbench.Dialog(PLUGIN_NAME, "Export all terrains\n\n" + summary);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return what happened, for the dialog
+	protected string Export(WorldEditor worldEditor)
 	{
 		float unit = m_Api.GetTerrainUnitScale();
 		float sizeX = m_Api.GetTerrainResolutionX() * unit;
 		float sizeZ = m_Api.GetTerrainResolutionY() * unit;
 		if (sizeX <= 0 || sizeZ <= 0)
-		{
-			Workbench.Dialog(PLUGIN_NAME, "This world has no terrain to export.");
-			return;
-		}
+			return "This world has no terrain to export.";
 
 		m_sDir = m_sOutputDir + "/" + m_sTerrainKey;
 		FileIO.MakeDirectory(m_sOutputDir);
@@ -113,10 +197,7 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 		int coarseW = Math.Ceil(sizeX / m_fCoarseSpacing) + 1;
 		int coarseH = Math.Ceil(sizeZ / m_fCoarseSpacing) + 1;
 		if (!WriteGrid(m_sDir + "/coarse.bin", 0, 0, m_fCoarseSpacing, coarseW, coarseH))
-		{
-			Workbench.Dialog(PLUGIN_NAME, "Could not write to " + m_sDir);
-			return;
-		}
+			return "Could not write to " + m_sDir;
 
 		// Fine tiles
 		int cols = Math.Ceil(sizeX / TILE_SIZE);
@@ -171,9 +252,9 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 			meta.Close();
 		}
 
-		Debug.EndTimeMeasure("[CRF_VAAR3D] Export");
-		Workbench.Dialog(PLUGIN_NAME, string.Format("Exported %1 tiles, %2 structures and %3 trees to\n%4\n\nUpload that folder to /map-viewer/terrains/%5/3d/ on the server.",
-			written.Count(), m_iObjectTotal, m_iTreeTotal, m_sDir, m_sTerrainKey));
+		Debug.EndTimeMeasure("[CRF_VAAR3D] Export " + m_sTerrainKey);
+		return string.Format("Exported %1 tiles, %2 structures and %3 trees to %4 - upload that folder to /map-viewer/terrains/%5/3d/ on the server.",
+			written.Count(), m_iObjectTotal, m_iTreeTotal, m_sDir, m_sTerrainKey);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -334,16 +415,16 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 	//------------------------------------------------------------------------------------------------
 	protected string JoinStrings(array<string> parts)
 	{
-		string out;
+		string joined;
 		foreach (int i, string part : parts)
 		{
 			if (i > 0)
-				out += ",";
+				joined += ",";
 
-			out += part;
+			joined += part;
 		}
 
-		return out;
+		return joined;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -351,6 +432,13 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 	protected int ButtonExport()
 	{
 		return 1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[ButtonAttribute("Export all terrains")]
+	protected int ButtonExportAll()
+	{
+		return 2;
 	}
 
 	//------------------------------------------------------------------------------------------------
