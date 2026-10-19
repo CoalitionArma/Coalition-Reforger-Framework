@@ -6,7 +6,9 @@ class CRF_VAAR_GamemodeComponentClass: SCR_BaseGameModeComponentClass
 class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 {
 	//! Playback file format written by this component (see CRF_VAAR_DataContainer.c)
-	static const int FORMAT_VERSION = 2;
+	//! v3 adds heights (characters, vehicles, grenades, shot start/hit), aim pitch, stance and vehicle
+	//! pitch/roll for the 3D playback; the 2D viewer reads it like v2
+	static const int FORMAT_VERSION = 3;
 	//! Header "sk": shot kinds are reliable. Recordings from 12-16 Oct 2026 lack it - they marked every bullet
 	//! as a shell (bullets use ShellMoveComponent too), and the viewer corrects them.
 	static const int SHOT_KIND_REVISION = 1;
@@ -197,8 +199,26 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		world.Replace("\"", "'");
 		world.Replace("\\", "/");
 
-		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"frames\": [",
-			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION));
+		// The world's scenes (a mission world is a sub-scene of its terrain): the in-game replay loads the
+		// terrain itself, without the mission's entities
+		string scenes;
+		BaseWorld baseWorld = GetGame().GetWorld();
+		if (baseWorld)
+		{
+			for (int sceneIndex = 0, sceneCount = baseWorld.GetNumSubScenes(); sceneIndex < sceneCount; sceneIndex++)
+			{
+				string scene = baseWorld.GetSubSceneName(sceneIndex);
+				scene.Replace("\"", "'");
+				scene.Replace("\\", "/");
+				if (!scenes.IsEmpty())
+					scenes += ", ";
+
+				scenes += "\"" + scene + "\"";
+			}
+		}
+
+		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"scenes\": [%7], \"frames\": [",
+			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes));
 
 		m_bWroteFrame = false;
 		m_mCharacterRoster.Clear();
@@ -273,12 +293,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			int characterFaction = GetFaction(character);
 			bool isPlayer = GetPlayerID(character) != 0;
 
-			string rosterKey = string.Format("%1|%2|%3", characterName, characterRole, characterFaction);
+			string characterPrefab = GetPrefabName(character);
+			string heldWeapon = GetHeldWeaponPrefab(chimeraCharacter);
+			string rosterKey = string.Format("%1|%2|%3|%4|%5", characterName, characterRole, characterFaction, characterPrefab, heldWeapon);
 			string knownKey;
 			if (!m_mCharacterRoster.Find(characterID, knownKey) || knownKey != rosterKey)
 			{
 				m_mCharacterRoster.Set(characterID, rosterKey);
-				frame.r.Insert(new CRF_VAAR_CharacterInfo(characterID, characterName, characterRole, characterFaction, isPlayer));
+				frame.r.Insert(new CRF_VAAR_CharacterInfo(characterID, characterName, characterRole, characterFaction, isPlayer, characterPrefab, heldWeapon));
 			}
 
 			int state = 0;
@@ -295,13 +317,17 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (controller && controller.IsUnconscious())
 				state |= CRF_EVAARCharacterState.UNCONSCIOUS;
 
+			int stance = ECharacterStance.STAND;
+			if (controller)
+				stance = controller.GetStance();
+
 			// Direction the character is looking
 			vector characterAim = vector.Forward;
 			AimingComponent headAiming = chimeraCharacter.GetHeadAimingComponent();
 			if (headAiming)
 				characterAim = headAiming.GetAimingDirectionWorld();
 
-			frame.c.Insert(new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state));
+			frame.c.Insert(new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state, stance));
 		}
 
 		// Vehicles
@@ -320,7 +346,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (!m_mVehicleRoster.Find(vehicleID, knownVehicleKey) || knownVehicleKey != vehicleKey)
 			{
 				m_mVehicleRoster.Set(vehicleID, vehicleKey);
-				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType));
+				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType, GetPrefabName(vehicle)));
 			}
 
 			vector vehiclePos = vehicle.GetOrigin();
@@ -937,6 +963,61 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		return entity.GetOrigin();
 	}
 
+	//------------------------------------------------------------------------------------
+	//! Resource name of the prefab an entity was spawned from ("" when it has none)
+	protected string GetPrefabName(IEntity entity)
+	{
+		if (!entity)
+			return "";
+
+		EntityPrefabData prefabData = entity.GetPrefabData();
+		if (!prefabData)
+			return "";
+
+		string name = prefabData.GetPrefabName();
+		name.Replace("\"", "'");
+		return name;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Prefab of the weapon a character has in hand, "" for none
+	protected string GetHeldWeaponPrefab(SCR_ChimeraCharacter character)
+	{
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller)
+			return "";
+
+		BaseWeaponManagerComponent weaponManager = controller.GetWeaponManagerComponent();
+		if (!weaponManager)
+			return "";
+
+		BaseWeaponComponent weapon = weaponManager.GetCurrentWeapon();
+		if (!weapon)
+			return "";
+
+		return GetPrefabName(weapon.GetOwner());
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Where a shot starts for the 3D playback: a character's eyes, a vehicle's origin raised to roughly
+	//! its weapon (map position as before for X/Z)
+	protected vector GetShotStart(IEntity shooter)
+	{
+		IEntity vehicle = CompartmentAccessComponent.GetVehicleIn(shooter);
+		if (vehicle)
+			return vehicle.GetOrigin() + Vector(0, 2, 0);
+
+		ChimeraCharacter character = ChimeraCharacter.Cast(shooter);
+		if (character)
+		{
+			vector eyes = character.EyePosition();
+			vector origin = character.GetOrigin();
+			return Vector(origin[0], eyes[1], origin[2]);
+		}
+
+		return shooter.GetOrigin();
+	}
+
 	// GETTERS
 	//------------------------------------------------------------------------------------
 	bool IsRecording()
@@ -957,17 +1038,17 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		s_aTrackedVehicles.RemoveItem(vehicle);
 	}
 	//------------------------------------------------------------------------------------
-	void RegisterShot(IEntity shooter, IEntity projectile, float hitX, float hitZ)
+	void RegisterShot(IEntity shooter, IEntity projectile, vector hit)
 	{
-		vector start = GetMapPosition(shooter);
+		vector start = GetShotStart(shooter);
 		int shooterID = GetID(shooter);
 
 		// Deduplicate: OnEffect can fire twice per bullet (e.g. two effects on weapon).
 		// Skip if the last buffered shot has identical scaled integer coordinates.
 		int newSx = (int)Math.Round(start[0] * 10);
 		int newSz = (int)Math.Round(start[2] * 10);
-		int newHx = (int)Math.Round(hitX * 10);
-		int newHz = (int)Math.Round(hitZ * 10);
+		int newHx = (int)Math.Round(hit[0] * 10);
+		int newHz = (int)Math.Round(hit[2] * 10);
 
 		if (!m_aShotsBuffer.IsEmpty())
 		{
@@ -976,7 +1057,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				return;
 		}
 
-		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ, GetShotKind(projectile)));
+		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hit, GetShotKind(projectile)));
 
 		// A thrown grenade going off - take it off the playback now
 		if (projectile && !m_aGrenades.IsEmpty())

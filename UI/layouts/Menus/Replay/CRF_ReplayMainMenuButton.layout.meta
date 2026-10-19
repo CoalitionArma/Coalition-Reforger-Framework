@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{6A7E2B0000000004}UI/layouts/Menus/Replay/CRF_ReplayMainMenuButton.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

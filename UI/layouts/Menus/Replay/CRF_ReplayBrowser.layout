@@ -1,0 +1,356 @@
+FrameWidgetClass {
+ Name "ReplayBrowserRoot"
+ {
+  BlurWidgetClass "{7D544593B6859D93}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{AB7F5B742F76051D}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" -5
+   "Inherit Color" 1
+   Intensity 0.6
+  }
+  ImageWidgetClass "{F9E7F549D74A582A}" {
+   Name "Dim"
+   Slot FrameWidgetSlot "{9C3C67654525272D}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" -4
+   Color 0.0033 0.0037 0.0052 0.82
+  }
+  FrameWidgetClass "{AB888F8A7024AB04}" {
+   Name "Card"
+   Slot FrameWidgetSlot "{9288AFA9BF55067E}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -620
+    OffsetLeft -620
+    PositionY -440
+    OffsetTop -440
+    SizeX 1240
+    OffsetRight -620
+    SizeY 880
+    OffsetBottom -440
+   }
+   {
+    ImageWidgetClass "{5FED413CBE9C7C79}" {
+     Name "CardBG"
+     Slot FrameWidgetSlot "{7CB5BE4E5D2A9F2E}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.011 0.0137 0.0212 1
+    }
+    ImageWidgetClass "{50AD69D1168B6B84}" {
+     Name "Accent"
+     Slot FrameWidgetSlot "{D18524C9D0141327}" {
+      Anchor 0 0 0 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 4
+      OffsetRight -4
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.5841 0.0369 0.0369 1
+    }
+    TextWidgetClass "{82B625BE5AA69AD5}" {
+     Name "Kicker"
+     Slot FrameWidgetSlot "{861E31F2BC9A6EB1}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 26
+      OffsetTop 26
+      SizeX -64
+      OffsetRight 32
+      SizeY 20
+      OffsetBottom -46
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "COALITION  /  AFTER ACTION"
+     "Font Size" 13
+     "Min Font Size" 9
+     FontProperties FontProperties "{67355941A3751546}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{CB1999526BA5F99F}" {
+     Name "Heading"
+     Slot FrameWidgetSlot "{01980A86ED3CB3DD}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 44
+      OffsetTop 44
+      SizeX -64
+      OffsetRight 32
+      SizeY 48
+      OffsetBottom -92
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "Replays"
+     "Font Size" 34
+     "Min Font Size" 30
+     FontProperties FontProperties "{F515705E430124CD}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4C464E41B9044887}" {
+     Name "Subheading"
+     Slot FrameWidgetSlot "{511E6F90C556CCEC}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 92
+      OffsetTop 92
+      SizeX -64
+      OffsetRight 32
+      SizeY 24
+      OffsetBottom -116
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "Watch a recorded mission back on its own terrain, with the real soldiers and vehicles."
+     "Font Size" 15
+     "Min Font Size" 11
+     FontProperties FontProperties "{E021CEDCA00591BC}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
+    ImageWidgetClass "{343EA770D2A32ECD}" {
+     Name "Divider"
+     Slot FrameWidgetSlot "{2BDEC71D9FAC905E}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 126
+      OffsetTop 126
+      SizeX -64
+      OffsetRight 32
+      SizeY 1
+      OffsetBottom -127
+     }
+     Color 1 1 1 0.06
+    }
+    ScrollLayoutWidgetClass "{E49DA2090521E774}" {
+     Name "ListScroll"
+     Slot FrameWidgetSlot "{644A566F0D4F2FE3}" {
+      Anchor 0 0 1 1
+      PositionX 32
+      OffsetLeft 32
+      PositionY 140
+      OffsetTop 140
+      SizeX -50
+      OffsetRight 18
+      SizeY -232
+      OffsetBottom 92
+     }
+     {
+      VerticalLayoutWidgetClass "{513CEA90B2CFD928}" {
+       Name "ReplayList"
+       Slot AlignableSlot "{6005C804D71BB454}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 0 14 0
+       }
+      }
+     }
+    }
+    TextWidgetClass "{A368CAE0945D6B67}" {
+     Name "Status"
+     Slot FrameWidgetSlot "{BBB01D65DA279171}" {
+      Anchor 0 1 1 1
+      PositionX 32
+      OffsetLeft 32
+      PositionY -76
+      OffsetTop -76
+      SizeX -432
+      OffsetRight 400
+      SizeY 48
+      OffsetBottom 28
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text ""
+     "Font Size" 14
+     "Min Font Size" 10
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{1D19D90F7C89F1FA}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
+    FrameWidgetClass "{D148E6985203764B}" {
+     Name "RefreshButtonFrame"
+     Slot FrameWidgetSlot "{4FACD99DFBD949F7}" {
+      Anchor 1 1 1 1
+      PositionX -368
+      OffsetLeft -368
+      PositionY -76
+      OffsetTop -76
+      SizeX 168
+      OffsetRight 200
+      SizeY 48
+      OffsetBottom 28
+     }
+     {
+      ImageWidgetClass "{462CFBA620759CA5}" {
+       Name "RefreshButtonBG"
+       Slot FrameWidgetSlot "{95B8E212852F9B13}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.0261 0.0319 0.0482 1
+      }
+      ButtonWidgetClass "{249C2C3D3929DD4B}" {
+       Name "RefreshButton"
+       Slot FrameWidgetSlot "{BC5A8A72E3ABB901}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 1
+       Color 1 1 1 0
+       components {
+        ButtonComponent "{C58D3643D0572C3C}" {
+         m_ColorButtonDefault 0 0 0 0
+         m_ColorButtonHovered 1 1 1 0.04
+         m_ColorButtonHoveredFocused 1 1 1 0.07
+        }
+        SCR_ButtonTextComponent "{B13C05145D70D914}" {
+        }
+       }
+       {
+        TextWidgetClass "{9299B2FB9859C394}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{5B572BEAA7C9EE74}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "REFRESH"
+         "Font Size" 15
+         "Min Font Size" 11
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{F48045E5A5FF634D}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{58B943725A5E1F85}" {
+     Name "CloseButtonFrame"
+     Slot FrameWidgetSlot "{5B3AE80E67315321}" {
+      Anchor 1 1 1 1
+      PositionX -192
+      OffsetLeft -192
+      PositionY -76
+      OffsetTop -76
+      SizeX 160
+      OffsetRight 32
+      SizeY 48
+      OffsetBottom 28
+     }
+     {
+      ImageWidgetClass "{17A5021F3624B27A}" {
+       Name "CloseButtonBG"
+       Slot FrameWidgetSlot "{3F3280F5827F17C2}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.5841 0.0369 0.0369 1
+      }
+      ButtonWidgetClass "{FC19BB6BBB6ED1F1}" {
+       Name "CloseButton"
+       Slot FrameWidgetSlot "{CB2137634E0A30A1}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 1
+       Color 1 1 1 0
+       components {
+        ButtonComponent "{44FB4F9090066656}" {
+         m_ColorButtonDefault 0 0 0 0
+         m_ColorButtonHovered 1 1 1 0.04
+         m_ColorButtonHoveredFocused 1 1 1 0.07
+        }
+        SCR_ButtonTextComponent "{0CA2694E4307B01C}" {
+        }
+       }
+       {
+        TextWidgetClass "{32308DFC47CC847A}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{0D3F94F73F079BB9}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "BACK"
+         "Font Size" 15
+         "Min Font Size" 11
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{C409BC4504E8EBD3}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
