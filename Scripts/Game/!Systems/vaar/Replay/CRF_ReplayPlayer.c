@@ -8,6 +8,8 @@ class CRF_ReplayCharProxy
 	int m_iKilledAt = -1;	// the death frame this body is from
 	int m_iStance = -1;
 	bool m_bUnconscious;	// as recorded (the posed body is never really unconscious)
+	float m_fMoveSpeed = -1;	// movement last given to the controller (Walk / StopWalking)
+
 	// Firing the recorded shots (AimAndFire)
 	int m_iPendingShots;
 	vector m_vShotTarget;
@@ -80,6 +82,10 @@ class CRF_ReplayPlayer
 	protected static const int MAX_PENDING_SHOTS = 8;		// a soldier's real shots queued at most - more in a frame just show as tracers
 	protected static const float RAISED_SECONDS = 2.5;		// the weapon stays up this long after the last shot
 	protected static const float MAX_FIRING_SPEED = 2;		// faster playback: tracers only
+	protected static const float MAX_WALK_PLAYBACK = 2;		// faster playback: soldiers are placed, not walked
+	protected static const float WALK_SNAP_DISTANCE = 3;	// metres off the recorded path before a walking soldier is put back
+	protected static const float WALK_SNAP_HEIGHT = 2.5;
+	protected static const float WALK_CATCH_UP = 1.5;		// per second: how hard a walking soldier is steered back onto the path
 	protected static const ref array<float> SPEEDS = {0.25, 0.5, 1, 2, 5, 10, 20};
 
 	protected static const ResourceName CAMERA_MANAGER = "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et";
@@ -673,11 +679,13 @@ class CRF_ReplayPlayer
 				bool inVehicle = (c.s & CRF_EVAARCharacterState.IN_VEHICLE) != 0;
 				SetHidden(proxy, inVehicle);
 				proxy.m_bUnconscious = (c.s & CRF_EVAARCharacterState.UNCONSCIOUS) != 0;
-				Pose(proxy.m_Entity, Vector(x, y, z), Vector(yaw, 0, 0));
+				vector target = Vector(x, y, z);
 
 				// Killed this frame but still listed
 				if (diedAt >= 0 && index - diedAt <= LINGER_FRAMES && proxy.m_iKilledAt != diedAt)
 				{
+					StopWalking(proxy);
+					Pose(proxy.m_Entity, target, Vector(yaw, 0, 0));
 					KillProxy(proxy, diedAt);
 					continue;
 				}
@@ -690,6 +698,21 @@ class CRF_ReplayPlayer
 					stance = ECharacterStance.PRONE;
 
 				ApplyStance(proxy, stance);
+
+				// On foot at walking pace the controller walks them, so the walk / run / crawl cycles play; otherwise
+				// (in a vehicle, unconscious, paused, fast playback, too far off the path) they're placed exactly
+				bool walked;
+				if (b && !inVehicle && !proxy.m_bUnconscious && m_bPlaying && GetSpeed() <= MAX_WALK_PLAYBACK)
+				{
+					vector velocity = Vector(b.x - c.x, 0, b.z - c.z) * (0.1 / m_fInterval * GetSpeed());
+					walked = Walk(proxy, target, velocity, stance);
+				}
+
+				if (!walked)
+				{
+					StopWalking(proxy);
+					Pose(proxy.m_Entity, target, Vector(yaw, 0, 0));
+				}
 
 				float pitch;
 				if (m_iVersion >= 3)
@@ -1112,6 +1135,104 @@ class CRF_ReplayPlayer
 		DamageManagerComponent damage = DamageManagerComponent.Cast(entity.FindComponent(DamageManagerComponent));
 		if (damage)
 			damage.EnableDamageHandling(damageable);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Walk a soldier along the recording with their own controller, as vanilla's cinematic character track
+	//! drives characters: movement input every frame - the recorded velocity plus a pull back onto the path -
+	//! and the controller moves them and plays the walk / run / crawl cycle. Teleporting every frame (Pose)
+	//! resets the controller, so they idled while sliding.
+	//! \param[in] velocity recorded ground velocity at the playback speed, m/s
+	//! \return false when they're too far off the path - the caller places them
+	protected bool Walk(CRF_ReplayCharProxy proxy, vector target, vector velocity, int stance)
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(proxy.m_Entity);
+		if (!character)
+			return false;
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller)
+			return false;
+
+		vector offset = target - character.GetOrigin();
+		float rise = Math.AbsFloat(offset[1]);
+		offset[1] = 0;
+		float drift = offset.Length();
+		if (drift > WALK_SNAP_DISTANCE || rise > WALK_SNAP_HEIGHT)
+			return false;
+
+		vector wanted = velocity + offset * WALK_CATCH_UP;
+		float wantedSpeed = wanted.Length();
+		float moveSpeed = MovementSpeed(wantedSpeed, stance);
+		vector localDir = vector.Forward;
+		if (moveSpeed > 0)
+		{
+			// Relative to where they face (AimAndFire keeps the heading on the recorded aim): sideways strafes
+			vector transform[4];
+			character.GetWorldTransform(transform);
+			vector worldDir = wanted.Normalized();
+			localDir = Vector(vector.Dot(worldDir, transform[0]), 0, vector.Dot(worldDir, transform[2]));
+			localDir.Normalize();
+		}
+
+		controller.SetMovement(moveSpeed, localDir);
+		proxy.m_fMoveSpeed = moveSpeed;
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Back to standing before a soldier is placed (once - the controller keeps the last movement)
+	protected void StopWalking(CRF_ReplayCharProxy proxy)
+	{
+		if (proxy.m_fMoveSpeed == 0)
+			return;
+
+		proxy.m_fMoveSpeed = 0;
+		ChimeraCharacter character = ChimeraCharacter.Cast(proxy.m_Entity);
+		if (!character)
+			return;
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (controller)
+			controller.SetMovement(0, vector.Forward);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Ground speed (m/s) to the controller's movement speed: 0 standing, 1 walk, 2 run, 3 sprint. Crouched
+	//! and prone soldiers cover less ground for the same gait and can't sprint.
+	protected static float MovementSpeed(float metresPerSecond, int stance)
+	{
+		float walk = 1.6;
+		float run = 3.6;
+		float sprint = 5.5;
+		float top = 3;
+		if (stance == ECharacterStance.CROUCH)
+		{
+			walk = 1.1;
+			run = 2.6;
+			top = 2;
+		}
+		else if (stance == ECharacterStance.PRONE)
+		{
+			walk = 0.5;
+			run = 1.0;
+			top = 2;
+		}
+
+		// Standing still, or a recording's jitter
+		if (metresPerSecond < walk * 0.2)
+			return 0;
+
+		float speed;
+		if (metresPerSecond <= walk)
+			speed = metresPerSecond / walk;
+		else if (metresPerSecond <= run)
+			speed = 1 + (metresPerSecond - walk) / (run - walk);
+		else
+			speed = 2 + (metresPerSecond - run) / (sprint - run);
+
+		// Gaits blend badly below half a walk (see CharacterCinematicTrack)
+		return Math.Clamp(speed, 0.5, top);
 	}
 
 	//------------------------------------------------------------------------------------------------
