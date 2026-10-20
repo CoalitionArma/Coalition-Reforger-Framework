@@ -1,0 +1,271 @@
+SizeLayoutWidgetClass {
+ Name "ReplayRowRoot"
+ Slot LayoutSlot "{46318C4FAB6F0C1C}" {
+  HorizontalAlign 3
+  Padding 0 0 0 6
+ }
+ AllowHeightOverride 1
+ HeightOverride 68
+ {
+  OverlayWidgetClass "{DBAAF92B15D9C730}" {
+   Name "RowLayers"
+   Slot AlignableSlot "{7D2739EDC324C746}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    SmartPanelWidgetClass "{357D66D095D87276}" {
+     Name "RowBG"
+     Slot OverlayWidgetSlot "{3991308672899E95}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.011 0.0137 0.0212 1
+     style rounded_4px
+    }
+    FrameWidgetClass "{624C3027D0FFE4BE}" {
+     Name "ProgressTrack"
+     Slot OverlayWidgetSlot "{158489C9F507491E}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     "Z Order" 1
+     {
+      SmartPanelWidgetClass "{18E912E96191C0E8}" {
+       Name "ProgressFill"
+       Slot FrameWidgetSlot "{29596A3E627CA2FC}" {
+        Anchor 0 1 0 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY -3
+        OffsetTop -3
+        SizeX 0
+        OffsetRight 0
+        SizeY 3
+        OffsetBottom 0
+       }
+       Color 0.5841 0.0369 0.0369 1
+       style rounded_4px
+      }
+     }
+    }
+    HorizontalLayoutWidgetClass "{8045BD90BCB6C5D5}" {
+     Name "RowContent"
+     Slot OverlayWidgetSlot "{8AD8990925B4F71F}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 18 0 14 0
+     }
+     "Z Order" 2
+     {
+      VerticalLayoutWidgetClass "{A53A4D595153AD3E}" {
+       Name "RowText"
+       Slot LayoutSlot "{CDE7556B31C43DE6}" {
+        SizeMode Fill
+        VerticalAlign 1
+       }
+       {
+        TextWidgetClass "{67D5B8E7F5F25694}" {
+         Name "Name"
+         Slot LayoutSlot "{A16EA7BB41E8E954}" {
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "Mission"
+         "Font Size" 18
+         "Min Font Size" 14
+         FontProperties FontProperties "{0AF5639F62012A3E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{C31545C49282BCC0}" {
+         Name "Detail"
+         Slot LayoutSlot "{1D40AF4DE2089195}" {
+          Padding 0 2 0 0
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text ""
+         "Font Size" 13
+         "Min Font Size" 9
+         FontProperties FontProperties "{43FAE2AE6565D416}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+      TextWidgetClass "{51764E435DFA04DD}" {
+       Name "RowStatus"
+       Slot LayoutSlot "{6B3DAA8518AF84E9}" {
+        VerticalAlign 1
+        Padding 12 0 16 0
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text ""
+       "Font Size" 12
+       "Min Font Size" 8
+       "Horizontal Alignment" Right
+       FontProperties FontProperties "{F907366FC073066A}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      SizeLayoutWidgetClass "{4E2A39DC127C0E27}" {
+       Name "DeleteButtonSize"
+       Slot LayoutSlot "{D07D25C4BD7203A9}" {
+        VerticalAlign 1
+        Padding 0 0 8 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 92
+       AllowHeightOverride 1
+       HeightOverride 40
+       {
+        FrameWidgetClass "{6F1CD8D9D554E2A1}" {
+         Name "DeleteButtonFrame"
+         Slot AlignableSlot "{0E294F574058F4C5}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          SmartPanelWidgetClass "{97D385AE3528B637}" {
+           Name "DeleteButtonBG"
+           Slot FrameWidgetSlot "{D3310DA89CFC3B14}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 0.011 0.0137 0.0212 1
+           style rounded_4px
+          }
+          ButtonWidgetClass "{233AC25A55601C55}" {
+           Name "DeleteButton"
+           Slot FrameWidgetSlot "{8794385626FFB6F7}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 2
+           Color 1 1 1 0
+           components {
+            SCR_ButtonTextComponent "{3BEB60697C98DC97}" {
+             m_sTextWidgetName ""
+            }
+           }
+           {
+            TextWidgetClass "{54DB0B7650E55BE2}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{86C401397391DAB7}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "DELETE"
+             "Font Size" 15
+             "Min Font Size" 11
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{B286E081E2A83CB9}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{62F0BE98319BCA6B}" {
+       Name "PrimaryButtonSize"
+       Slot LayoutSlot "{621FBAFD2F82F3F5}" {
+        VerticalAlign 1
+        Padding 0 0 0 0
+       }
+       AllowWidthOverride 1
+       WidthOverride 128
+       AllowHeightOverride 1
+       HeightOverride 40
+       {
+        FrameWidgetClass "{3E3A5AA132A94117}" {
+         Name "PrimaryButtonFrame"
+         Slot AlignableSlot "{014BF2004A6D14E6}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          SmartPanelWidgetClass "{F59031BC2A8D7B5B}" {
+           Name "PrimaryButtonBG"
+           Slot FrameWidgetSlot "{F5599433816AEF60}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 1
+           Color 0.5841 0.0369 0.0369 1
+           style rounded_4px
+          }
+          ButtonWidgetClass "{5E8A8145B2B33C47}" {
+           Name "PrimaryButton"
+           Slot FrameWidgetSlot "{A82B8970D662E071}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           "Z Order" 2
+           Color 1 1 1 0
+           components {
+            SCR_ButtonTextComponent "{31916BA3ED768E20}" {
+             m_sTextWidgetName ""
+            }
+           }
+           {
+            TextWidgetClass "{5B10E69A806822E9}" {
+             Name "ButtonText"
+             Slot ButtonWidgetSlot "{E5EC4AC8CFC657E1}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 0.8632 0.8879 0.9301 1
+             Text "DOWNLOAD"
+             "Font Size" 15
+             "Min Font Size" 11
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{D97A533E0E3BF576}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
