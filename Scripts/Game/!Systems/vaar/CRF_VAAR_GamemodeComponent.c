@@ -28,6 +28,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected int m_iCurrentFrame = 0;
 	protected bool m_bWroteFrame;
 	protected bool m_bClosed;		// file finished - nothing more may be appended
+	protected bool m_bRecord3D = true;	// the game mode's "AAR Recording" setting; off writes a v2 (2D) file
 
 	[Attribute("0.5", "auto", "Seconds between recorded frames", category: "CRF Virtual AAR System")]
     protected float m_iRecordIntervals = 0.5;
@@ -155,7 +156,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()
 	{
-		if (COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME || COA_SafestartManager.GetInstance().GetSafestartStatus())
+		// Switched off in the game mode's "AAR Recording" settings - an admin can still start it by hand
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (gamemode && !gamemode.m_bAARRecordingEnabled)
+		{
+			Print("[CRF_VAAR] AAR recording is switched off for this mission (game mode > AAR Recording)");
+			return;
+		}
+
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME || COA_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			m_iAARInitAttempts++;
 			if (m_iAARInitAttempts < MAX_AAR_INIT_RETRIES)
@@ -217,8 +226,16 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			}
 		}
 
+		// Without the 3D data it's a v2 file: every reader then takes heights from the terrain and skips the rest
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		m_bRecord3D = !gamemode || gamemode.m_bAAR3DRecordingEnabled;
+		int version = FORMAT_VERSION;
+		if (!m_bRecord3D)
+			version = 2;
+
 		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"scenes\": [%7], \"frames\": [",
-			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes));
+			version, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes));
+		Print(string.Format("[CRF_VAAR] Recording format v%1 (3D data %2)", version, m_bRecord3D));
 
 		m_bWroteFrame = false;
 		m_mCharacterRoster.Clear();
@@ -252,6 +269,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		foreach (CRF_VAAR_ShotEvent shot : m_aShotsBuffer)
 		{
+			if (!m_bRecord3D)
+				shot.Strip3D();
+
 			frame.s.Insert(shot);
 		}
 		m_aShotsBuffer.Clear();
@@ -293,8 +313,14 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			int characterFaction = GetFaction(character);
 			bool isPlayer = GetPlayerID(character) != 0;
 
-			string characterPrefab = GetPrefabName(character);
-			string heldWeapon = GetHeldWeaponPrefab(chimeraCharacter);
+			// 3D data: the in-game replay spawns the prefab and the 3D viewer draws the weapon
+			string characterPrefab;
+			string heldWeapon;
+			if (m_bRecord3D)
+			{
+				characterPrefab = GetPrefabName(character);
+				heldWeapon = GetHeldWeaponPrefab(chimeraCharacter);
+			}
 			string rosterKey = string.Format("%1|%2|%3|%4|%5", characterName, characterRole, characterFaction, characterPrefab, heldWeapon);
 			string knownKey;
 			if (!m_mCharacterRoster.Find(characterID, knownKey) || knownKey != rosterKey)
@@ -327,7 +353,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (headAiming)
 				characterAim = headAiming.GetAimingDirectionWorld();
 
-			frame.c.Insert(new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state, stance));
+			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state, stance);
+			if (!m_bRecord3D)
+				characterSnapshot.Strip3D();
+
+			frame.c.Insert(characterSnapshot);
 		}
 
 		// Vehicles
@@ -346,7 +376,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (!m_mVehicleRoster.Find(vehicleID, knownVehicleKey) || knownVehicleKey != vehicleKey)
 			{
 				m_mVehicleRoster.Set(vehicleID, vehicleKey);
-				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType, GetPrefabName(vehicle)));
+				string vehiclePrefab;
+				if (m_bRecord3D)
+					vehiclePrefab = GetPrefabName(vehicle);
+
+				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType, vehiclePrefab));
 			}
 
 			vector vehiclePos = vehicle.GetOrigin();
@@ -363,6 +397,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehiclePos, vehicle.GetYawPitchRoll(), GetFaction(vehicle), GetHealth(vehicle), altitude);
 			GetVehicleOccupants(vehicle, vehicleSnapshot.oc, vehicleSnapshot.os);
+			if (!m_bRecord3D)
+				vehicleSnapshot.Strip3D();
+
 			frame.v.Insert(vehicleSnapshot);
 		}
 
@@ -383,7 +420,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				if (tracked.m_Entity.GetRootParent() != tracked.m_Entity)
 					continue;
 
-				frame.g.Insert(new CRF_VAAR_GrenadeSnapshot(tracked.m_iId, tracked.m_Entity.GetOrigin(), tracked.m_iType));
+				CRF_VAAR_GrenadeSnapshot grenadeSnapshot = new CRF_VAAR_GrenadeSnapshot(tracked.m_iId, tracked.m_Entity.GetOrigin(), tracked.m_iType);
+				if (!m_bRecord3D)
+					grenadeSnapshot.Strip3D();
+
+				frame.g.Insert(grenadeSnapshot);
 			}
 		}
 

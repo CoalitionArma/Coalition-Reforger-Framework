@@ -143,6 +143,14 @@ class CRF_VAAR_CharacterSnapshot : Managed
 		s = state;
 		t = stance;
 	}
+
+	//! 3D data off (game mode > AAR Recording): a v2 file, the 3D fields left at 0
+	void Strip3D()
+	{
+		y = 0;
+		p = 0;
+		t = 0;
+	}
 }
 
 [BaseContainerProps()]
@@ -174,6 +182,14 @@ class CRF_VAAR_VehicleSnapshot : Managed
 		h = health;
 		y = altitude;
 	}
+
+	//! 3D data off (game mode > AAR Recording): a v2 file, the 3D fields left at 0
+	void Strip3D()
+	{
+		wy = 0;
+		pi = 0;
+		ro = 0;
+	}
 }
 
 //! A thrown grenade, every frame from the throw until it explodes or its smoke runs out
@@ -193,6 +209,12 @@ class CRF_VAAR_GrenadeSnapshot : Managed
 		z = (int)Math.Round(pos[2] * 10);
 		y = (int)Math.Round(pos[1] * 10);
 		t = type;
+	}
+
+	//! 3D data off (game mode > AAR Recording): a v2 file, the 3D fields left at 0
+	void Strip3D()
+	{
+		y = 0;
 	}
 }
 
@@ -264,6 +286,13 @@ class CRF_VAAR_ShotEvent : Managed
 		hz = (int)Math.Round(hit[2] * 10);
 		hy = (int)Math.Round(hit[1] * 10);
 		k = kind;
+	}
+
+	//! 3D data off (game mode > AAR Recording): a v2 file, the 3D fields left at 0
+	void Strip3D()
+	{
+		sy = 0;
+		hy = 0;
 	}
 }
 

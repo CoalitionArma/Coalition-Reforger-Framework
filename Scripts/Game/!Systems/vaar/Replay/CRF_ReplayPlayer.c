@@ -7,6 +7,13 @@ class CRF_ReplayCharProxy
 	bool m_bHidden;			// riding in a vehicle
 	int m_iKilledAt = -1;	// the death frame this body is from
 	int m_iStance = -1;
+	bool m_bUnconscious;	// as recorded (the posed body is never really unconscious)
+	// Firing the recorded shots (AimAndFire)
+	int m_iPendingShots;
+	vector m_vShotTarget;
+	float m_fRaisedUntil;	// m_fClock
+	bool m_bTriggerDown;
+	bool m_bWeaponRaised;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -15,6 +22,7 @@ class CRF_ReplayVehicleProxy
 	int m_iId;
 	IEntity m_Entity;
 	bool m_bWrecked;
+	int m_iHealth = 100;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -34,8 +42,18 @@ class CRF_ReplayEffect
 }
 
 //------------------------------------------------------------------------------------------------
+//! Following a soldier: the spectator's three cameras
+enum CRF_EReplayCameraMode
+{
+	HELMET,		// first person, just off the head
+	EYE,		// first person, exactly what they saw
+	ORBIT		// third person, RMB to look around
+}
+
+//------------------------------------------------------------------------------------------------
 class CRF_ReplayKillEntry
 {
+	int m_iIndex;		// in the recording's kill list
 	int m_iFrame;
 	ref CRF_ReplayKill m_Kill;
 }
@@ -59,10 +77,14 @@ class CRF_ReplayPlayer
 	protected static const float BLAST_SECONDS = 8;
 	protected static const int LINGER_FRAMES = 2;			// a dead character can stay listed this long
 	protected static const int BODY_FRAMES = 600;			// bodies stay this long after the death
+	protected static const int MAX_PENDING_SHOTS = 8;		// a soldier's real shots queued at most - more in a frame just show as tracers
+	protected static const float RAISED_SECONDS = 2.5;		// the weapon stays up this long after the last shot
+	protected static const float MAX_FIRING_SPEED = 2;		// faster playback: tracers only
 	protected static const ref array<float> SPEEDS = {0.25, 0.5, 1, 2, 5, 10, 20};
 
 	protected static const ResourceName CAMERA_MANAGER = "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et";
 	protected static const ResourceName FACTION_MANAGER = "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et";
+	protected static const ResourceName MAP_ENTITY = "{731564B66F91B107}Prefabs/World/Game/MapEntity.et";
 	protected static const ResourceName EXPLOSION_SHELL = "{318510C6FB1633D9}Particles/Weapon/Explosion_Mortar_Base.ptc";
 	protected static const ResourceName EXPLOSION_GRENADE = "{5592BC9B67C60D16}Particles/Weapon/Explosion_RGD5.ptc";
 	protected static const ResourceName SMOKE_GRENADE = "{F9D8383CC3FD7ECA}Particles/Weapon/Smoke_grenade_RDG-2.ptc";
@@ -80,7 +102,7 @@ class CRF_ReplayPlayer
 	// Recording
 	protected string m_sFile;
 	protected string m_sTitle;
-	protected FileHandle m_File;
+	protected ref FileHandle m_File;		// ref: a FileHandle is managed - without one it's freed straight away
 	protected int m_iVersion = 2;
 	protected float m_fInterval = 0.5;
 	protected ref array<int> m_aOffsets = {};
@@ -112,7 +134,13 @@ class CRF_ReplayPlayer
 	protected ref set<int> m_SmokeSpawned = new set<int>();
 
 	protected IEntity m_Camera;
+
+	// Start-up diagnostics (first Workbench tests)
+	protected int m_iLinesRead;
+	protected bool m_bTicked;
+	protected bool m_bReportedParseFailure;
 	protected int m_iFollowedId;
+	protected CRF_EReplayCameraMode m_eCameraMode = CRF_EReplayCameraMode.ORBIT;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_ReplayPlayer GetInstance()
@@ -180,7 +208,8 @@ class CRF_ReplayPlayer
 		int start = m_File.GetPos();
 		vector focus = vector.Zero;
 		string line;
-		for (int n = 0; n < 60 && m_File.ReadLine(line) >= 0; n++)
+		int n = 0;
+		for (; n < 60 && m_File.ReadLine(line) >= 0; n++)
 		{
 			line = line.Trim();
 			if (!line.StartsWith("{") && !line.StartsWith(","))
@@ -202,6 +231,9 @@ class CRF_ReplayPlayer
 		}
 
 		m_File.Seek(start);
+		if (focus == vector.Zero)
+			Print(string.Format("[CRF_Replay] No soldiers in the first frames - read %1 lines from position %2", n, start), LogLevel.WARNING);
+
 		return focus;
 	}
 
@@ -263,6 +295,10 @@ class CRF_ReplayPlayer
 
 		if (!GetGame().GetFactionManager())
 			GetGame().SpawnEntityPrefab(Resource.Load(FACTION_MANAGER), world, params);
+
+		// The map (HUD map key): terrain worlds leave it to their missions
+		if (!SCR_MapEntity.GetMapInstance())
+			GetGame().SpawnEntityPrefab(Resource.Load(MAP_ENTITY), world, params);
 	}
 
 	// ── Loop ─────────────────────────────────────────────────────────────────────────────────────
@@ -273,6 +309,12 @@ class CRF_ReplayPlayer
 		float dt = Math.Clamp((now - m_iLastTick) / 1000.0, 0, 0.25);
 		m_iLastTick = now;
 		m_fClock += dt;
+
+		if (!m_bTicked)
+		{
+			m_bTicked = true;
+			Print(string.Format("[CRF_Replay] Playback loop running (file open: %1)", m_File != null), LogLevel.NORMAL);
+		}
 
 		if (!m_File)
 			return;
@@ -317,6 +359,7 @@ class CRF_ReplayPlayer
 				return;
 			}
 
+			m_iLinesRead++;
 			line = line.Trim();
 			if (!line.StartsWith("{") && !line.StartsWith(","))
 				continue;
@@ -379,6 +422,7 @@ class CRF_ReplayPlayer
 				CRF_ReplayKillEntry entry = new CRF_ReplayKillEntry();
 				entry.m_iFrame = frameIndex;
 				entry.m_Kill = kill;
+				entry.m_iIndex = m_aKills.Count();
 				m_aKills.Insert(entry);
 				if (kill.ti != 0)
 				{
@@ -439,6 +483,7 @@ class CRF_ReplayPlayer
 		if (m_aOffsets.IsEmpty())
 		{
 			m_sError = "This recording has no frames";
+			Print(string.Format("[CRF_Replay] No frames found - read %1 lines after the header", m_iLinesRead), LogLevel.ERROR);
 			return;
 		}
 
@@ -455,13 +500,33 @@ class CRF_ReplayPlayer
 
 		JsonLoadContext context = new JsonLoadContext(false);
 		if (!context.LoadFromString(line))
+		{
+			ReportParseFailure("not valid JSON", line);
 			return null;
+		}
 
 		CRF_ReplayFrame frame = new CRF_ReplayFrame();
 		if (!context.ReadValue("frame", frame))
+		{
+			ReportParseFailure("no readable \"frame\"", line);
 			return null;
+		}
 
 		return frame;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ReportParseFailure(string reason, string line)
+	{
+		if (m_bReportedParseFailure)
+			return;
+
+		m_bReportedParseFailure = true;
+		string start = line;
+		if (start.Length() > 160)
+			start = start.Substring(0, 160);
+
+		Print(string.Format("[CRF_Replay] Couldn't read a frame (%1) - line of %2 characters: %3", reason, line.Length(), start), LogLevel.ERROR);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -518,6 +583,10 @@ class CRF_ReplayPlayer
 		// back removes the effects that hadn't happened yet
 		if (m_iLastRendered >= 0 && index < m_iLastRendered)
 			RemoveEffectsAfter(index);
+
+		// Back in time, or a jump: no shots from another moment
+		if (m_iLastRendered >= 0 && (index < m_iLastRendered || index - m_iLastRendered > EFFECT_JUMP_FRAMES))
+			ClearShots();
 
 		if (index > m_iLastRendered && index - m_iLastRendered <= EFFECT_JUMP_FRAMES)
 		{
@@ -603,6 +672,7 @@ class CRF_ReplayPlayer
 
 				bool inVehicle = (c.s & CRF_EVAARCharacterState.IN_VEHICLE) != 0;
 				SetHidden(proxy, inVehicle);
+				proxy.m_bUnconscious = (c.s & CRF_EVAARCharacterState.UNCONSCIOUS) != 0;
 				Pose(proxy.m_Entity, Vector(x, y, z), Vector(yaw, 0, 0));
 
 				// Killed this frame but still listed
@@ -620,6 +690,17 @@ class CRF_ReplayPlayer
 					stance = ECharacterStance.PRONE;
 
 				ApplyStance(proxy, stance);
+
+				float pitch;
+				if (m_iVersion >= 3)
+				{
+					pitch = c.p / 10.0;
+					if (b)
+						pitch = Math.Lerp(pitch, b.p / 10.0, alpha);
+				}
+
+				if (!inVehicle)
+					AimAndFire(proxy, stance, yaw, pitch);
 			}
 		}
 
@@ -720,6 +801,7 @@ class CRF_ReplayPlayer
 						continue;
 				}
 
+				proxy.m_iHealth = v.h;
 				if (v.h == 0 && !proxy.m_bWrecked)
 				{
 					proxy.m_bWrecked = true;
@@ -769,6 +851,7 @@ class CRF_ReplayPlayer
 		if (!entity)
 			return null;
 
+		SetDamageable(entity, false);
 		CRF_ReplayCharProxy proxy = new CRF_ReplayCharProxy();
 		proxy.m_iId = id;
 		proxy.m_Entity = entity;
@@ -807,6 +890,7 @@ class CRF_ReplayPlayer
 		if (physics)
 			physics.ChangeSimulationState(SimulationState.COLLISION);
 
+		SetDamageable(entity, false);
 		CRF_ReplayVehicleProxy proxy = new CRF_ReplayVehicleProxy();
 		proxy.m_iId = id;
 		proxy.m_Entity = entity;
@@ -907,6 +991,130 @@ class CRF_ReplayPlayer
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! The weapon on the recorded aim - or on the target of the shots being fired - and the trigger: each
+	//! recorded bullet (QueueShot) pulls it once, the next tick lets go, so semi-automatics fire too. Real
+	//! shots - muzzle flash, sound, recoil, brass - from a full magazine; replay soldiers take no damage
+	//! (SetDamageable), so they hit nobody.
+	//! \param[in] yaw / pitch the pose's heading and the recorded aim pitch, degrees
+	protected void AimAndFire(CRF_ReplayCharProxy proxy, int stance, float yaw, float pitch)
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(proxy.m_Entity);
+		if (!character)
+			return;
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller)
+			return;
+
+		// The controller turns the body to its own heading - keep it on the pose's
+		controller.SetHeadingAngle(yaw * Math.DEG2RAD);
+
+		bool shooting = m_fClock < proxy.m_fRaisedUntil;
+		vector aim = Vector(yaw * Math.DEG2RAD, pitch * Math.DEG2RAD, 0);
+		if (shooting)
+			aim = AimAt(character, stance, proxy.m_vShotTarget);
+
+		CharacterInputContext input = controller.GetInputContext();
+		if (input)
+			input.SetAimingAngles(aim);
+
+		if (shooting != proxy.m_bWeaponRaised)
+		{
+			proxy.m_bWeaponRaised = shooting;
+			controller.SetWeaponRaised(shooting);
+		}
+
+		if (proxy.m_bTriggerDown)
+		{
+			proxy.m_bTriggerDown = false;
+			controller.SetFireWeaponWanted(false);
+			return;
+		}
+
+		if (proxy.m_iPendingShots <= 0)
+			return;
+
+		proxy.m_iPendingShots--;
+		RefillMagazine(controller);
+		proxy.m_bTriggerDown = true;
+		controller.SetFireWeaponWanted(true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A recorded bullet from this soldier: fire one at where it hit
+	protected void QueueShot(int shooterId, vector hit)
+	{
+		CRF_ReplayCharProxy proxy = m_mChars.Get(shooterId);
+		if (!proxy || !proxy.m_Entity || proxy.m_bKilled || proxy.m_bHidden)
+			return;
+
+		proxy.m_iPendingShots = Math.Min(proxy.m_iPendingShots + 1, MAX_PENDING_SHOTS);
+		proxy.m_vShotTarget = hit;
+		proxy.m_fRaisedUntil = m_fClock + RAISED_SECONDS;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A seek: nobody fires shots from another moment
+	protected void ClearShots()
+	{
+		foreach (int id, CRF_ReplayCharProxy proxy : m_mChars)
+		{
+			proxy.m_iPendingShots = 0;
+			proxy.m_fRaisedUntil = 0;
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Aiming angles (radians, the controller's) from the soldier's eyes to a point - as vanilla's cinematic track aims
+	protected static vector AimAt(ChimeraCharacter character, int stance, vector target)
+	{
+		float eyes = 1.6;
+		if (stance == ECharacterStance.CROUCH)
+			eyes = 1.0;
+		else if (stance == ECharacterStance.PRONE)
+			eyes = 0.3;
+
+		vector from = character.GetOrigin() + Vector(0, eyes, 0);
+		vector characterTransform[4], aimTransform[4], aimRotation[3];
+		character.GetWorldTransform(characterTransform);
+		Math3D.DirectionAndUpMatrix(vector.Direction(from, target), characterTransform[1], aimTransform);
+		aimRotation[0] = aimTransform[0];
+		aimRotation[1] = aimTransform[1];
+		aimRotation[2] = aimTransform[2];
+		vector angles = Math3D.MatrixToAngles(aimRotation);
+		return Vector(angles[0] * Math.DEG2RAD, angles[1] * Math.DEG2RAD, 0);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Never run dry: the recording fired, so the replay fires
+	protected static void RefillMagazine(CharacterControllerComponent controller)
+	{
+		BaseWeaponManagerComponent weaponManager = controller.GetWeaponManagerComponent();
+		if (!weaponManager)
+			return;
+
+		BaseWeaponComponent weapon = weaponManager.GetCurrentWeapon();
+		if (!weapon)
+			return;
+
+		BaseMagazineComponent magazine = weapon.GetCurrentMagazine();
+		if (magazine)
+			magazine.SetAmmoCount(magazine.GetMaxAmmoCount());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Replay entities only die, wreck or get hit when the recording says so - the shots they fire are real
+	protected static void SetDamageable(IEntity entity, bool damageable)
+	{
+		if (!entity)
+			return;
+
+		DamageManagerComponent damage = DamageManagerComponent.Cast(entity.FindComponent(DamageManagerComponent));
+		if (damage)
+			damage.EnableDamageHandling(damageable);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void SetHidden(CRF_ReplayCharProxy proxy, bool hidden)
 	{
 		if (proxy.m_bHidden == hidden || !proxy.m_Entity)
@@ -959,8 +1167,11 @@ class CRF_ReplayPlayer
 			return;
 
 		SCR_DamageManagerComponent damage = SCR_DamageManagerComponent.Cast(entity.FindComponent(SCR_DamageManagerComponent));
-		if (damage)
-			damage.Kill(Instigator.CreateInstigatorGM());
+		if (!damage)
+			return;
+
+		damage.EnableDamageHandling(true);
+		damage.Kill(Instigator.CreateInstigatorGM());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -997,7 +1208,11 @@ class CRF_ReplayPlayer
 				else if (shot.k == CRF_EVAARShotKind.GRENADE)
 					SpawnEffect(EXPLOSION_GRENADE, hit, frameIndex, BLAST_SECONDS);
 				else
+				{
 					AddTracer(Vector(sx, sy, sz), hit, ShooterColor(shot.si));
+					if (shot.k == CRF_EVAARShotKind.BULLET && GetSpeed() <= MAX_FIRING_SPEED)
+						QueueShot(shot.si, hit);
+				}
 			}
 		}
 
@@ -1151,7 +1366,17 @@ class CRF_ReplayPlayer
 			return;
 
 		m_iFollowedId = characterId;
-		camera.SetOnRailsEntity(proxy.m_Entity, true);
+		switch (m_eCameraMode)
+		{
+			case CRF_EReplayCameraMode.HELMET:
+				camera.SetOnRailsEntity(proxy.m_Entity, false);
+				break;
+			case CRF_EReplayCameraMode.EYE:
+				camera.SetOnRailsEntityEyeMode(proxy.m_Entity);
+				break;
+			default:
+				camera.SetOnRailsEntity(proxy.m_Entity, true);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1159,8 +1384,62 @@ class CRF_ReplayPlayer
 	{
 		m_iFollowedId = 0;
 		COA_SpectatorCamera camera = COA_SpectatorCamera.Cast(m_Camera);
-		if (camera)
-			camera.ClearOnRails();
+		if (!camera)
+			return;
+
+		camera.ClearOnRails();
+
+		// Level again after the helmet / eye cam (the spectator does the same)
+		vector angles = camera.GetAngles();
+		camera.SetAngles(Vector(angles[0], angles[1], 0));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Helmet cam -> eye cam -> orbit, like the spectator's camera key; the followed soldier switches over
+	CRF_EReplayCameraMode CycleCameraMode()
+	{
+		switch (m_eCameraMode)
+		{
+			case CRF_EReplayCameraMode.HELMET: SetCameraMode(CRF_EReplayCameraMode.EYE); break;
+			case CRF_EReplayCameraMode.EYE: SetCameraMode(CRF_EReplayCameraMode.ORBIT); break;
+			default: SetCameraMode(CRF_EReplayCameraMode.HELMET);
+		}
+
+		return m_eCameraMode;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetCameraMode(CRF_EReplayCameraMode mode)
+	{
+		m_eCameraMode = mode;
+		if (m_iFollowedId != 0)
+			Follow(m_iFollowedId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_EReplayCameraMode GetCameraMode()
+	{
+		return m_eCameraMode;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	int GetFollowedId()
+	{
+		return m_iFollowedId;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Free camera over a point (the spectator's teleport: default distance and angle)
+	void MoveCameraTo(vector position)
+	{
+		Unfollow();
+		SCR_ManualCamera camera = SCR_ManualCamera.Cast(m_Camera);
+		if (!camera)
+			return;
+
+		SCR_TeleportToCursorManualCameraComponent teleport = SCR_TeleportToCursorManualCameraComponent.Cast(camera.FindCameraComponent(SCR_TeleportToCursorManualCameraComponent));
+		if (teleport)
+			teleport.TeleportCamera(position, true, false);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1309,6 +1588,89 @@ class CRF_ReplayPlayer
 
 			kills.Insert(entry);
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The kill that put this soldier down most recently, at or before the current frame (null if alive)
+	CRF_ReplayKill GetDeathOf(int id)
+	{
+		int frame = LatestDeath(id, GetFrameIndex());
+		if (frame < 0)
+			return null;
+
+		CRF_ReplayCharInfo info = m_mCharInfo.Get(id);
+		foreach (CRF_ReplayKillEntry entry : m_aKills)
+		{
+			if (entry.m_iFrame != frame)
+				continue;
+
+			CRF_ReplayKill kill = entry.m_Kill;
+			if (kill.ti == id || (kill.ti == 0 && info && kill.tn == info.n))
+				return kill;
+		}
+
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where the latest kill at or before the current frame happened (recordings before kill positions have none)
+	bool GetLastKillPosition(out vector position)
+	{
+		int index = GetFrameIndex();
+		for (int i = m_aKills.Count() - 1; i >= 0; i--)
+		{
+			CRF_ReplayKillEntry entry = m_aKills[i];
+			if (entry.m_iFrame > index)
+				continue;
+
+			CRF_ReplayKill kill = entry.m_Kill;
+			if (kill.x == 0 && kill.z == 0)
+				continue;
+
+			float x = kill.x / 10.0, z = kill.z / 10.0;
+			position = Vector(x, GetGame().GetWorld().GetSurfaceY(x, z), z);
+			return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The soldiers in the world now, by recording ID (bodies too, m_bKilled)
+	map<int, ref CRF_ReplayCharProxy> GetCharacters()
+	{
+		return m_mChars;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	map<int, ref CRF_ReplayVehicleProxy> GetVehicles()
+	{
+		return m_mVehicles;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_ReplayCharInfo GetCharInfo(int id)
+	{
+		return m_mCharInfo.Get(id);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_ReplayVehInfo GetVehicleInfo(int id)
+	{
+		return m_mVehicleInfo.Get(id);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	int GetFrameIndex()
+	{
+		return Math.Clamp(Math.Floor(m_fTime), 0, GetLastFrame());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Seconds between recorded frames
+	float GetFrameInterval()
+	{
+		return m_fInterval;
 	}
 
 	//------------------------------------------------------------------------------------------------

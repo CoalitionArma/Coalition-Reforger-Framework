@@ -1,13 +1,15 @@
 //------------------------------------------------------------------------------------------------
-//! In-game replays: players open recorded missions (CRF_VAAR_GamemodeComponent logs) from the main menu
-//! and watch them locally, with the real soldiers, vehicles and effects on the real terrain.
+//! In-game replays: players open recorded missions (CRF_VAAR_GamemodeComponent logs) from Scenarios >
+//! COALITION Replays (Missions/Replay/CRF_Replays.conf - mods don't run in Reforger's main menu) and watch
+//! them locally, with the real soldiers, vehicles and effects on the real terrain.
 //!
-//!  CRF_ReplayBrowserMenu   main menu > REPLAYS: missions on this PC and on coalitiongroup.net
+//!  CRF_ReplayBrowserMenu   missions on this PC and on coalitiongroup.net
 //!  CRF_ReplayDownloader    fetches a recording from the website, a minute of frames per request
 //!  CRF_ReplayLauncher      loads the replay world for the mission's terrain (CRF_ReplayWorlds) as a local game
 //!  CRF_ReplayGameMode      the replay worlds' game mode: nobody spawns, it starts the player
 //!  CRF_ReplayPlayer        reads the recording a frame at a time and puts the battle back together
-//!  CRF_ReplayHUDMenu       timeline, speed, follow, kill feed
+//!  CRF_ReplayHUDMenu       timeline, speed, follow, kill feed, and the spectator's camera keys
+//!  CRF_ReplayOverlay       the spectator's name tags, vehicle and kill markers and hover card over the replay
 //!
 //! Recordings live in $profile:vaar/replays as replay_<missionId>.json (the recorder's own format: a
 //! header line, then one {"frame":{...}} per line) with a replay_<missionId>.meta.json next to them.

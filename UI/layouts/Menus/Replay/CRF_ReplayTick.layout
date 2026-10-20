@@ -1,0 +1,20 @@
+FrameWidgetClass {
+ Name "ReplayTickRoot"
+ {
+  ImageWidgetClass "{272657EEE666891B}" {
+   Name "Tick"
+   Slot FrameWidgetSlot "{EE4F5B51B33480E6}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.8632 0.8879 0.9301 0.55
+  }
+ }
+}

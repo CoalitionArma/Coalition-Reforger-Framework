@@ -78,17 +78,28 @@ class CRF_ReplayRow
 			m_wProgressFill.SetVisible(progress > 0 && !complete);
 		}
 
-		if (m_wStatus && !downloading)
-		{
-			if (complete)
-				m_wStatus.SetText("ON THIS PC");
-			else if (m_Meta && m_Meta.chunksDone > 0)
-				m_wStatus.SetText(((int)(progress * 100)).ToString() + "% DOWNLOADED");
-			else if (m_Remote)
-				m_wStatus.SetText(CRF_Replay.SizeLabel(m_Remote.sizeBytes));
-			else
-				m_wStatus.SetText("");
-		}
+		if (!m_wStatus)
+			return;
+
+		// Ready green, under way amber, otherwise just the size
+		if (complete)
+			m_wStatus.SetColor(Color.FromSRGBA(92, 196, 128, 255));
+		else if (downloading || (m_Meta && m_Meta.chunksDone > 0))
+			m_wStatus.SetColor(Color.FromSRGBA(232, 170, 72, 255));
+		else
+			m_wStatus.SetColor(Color.FromSRGBA(169, 180, 204, 255));
+
+		if (downloading)
+			return;
+
+		if (complete)
+			m_wStatus.SetText("ON THIS PC");
+		else if (m_Meta && m_Meta.chunksDone > 0)
+			m_wStatus.SetText(((int)(progress * 100)).ToString() + "% DOWNLOADED");
+		else if (m_Remote)
+			m_wStatus.SetText(CRF_Replay.SizeLabel(m_Remote.sizeBytes));
+		else
+			m_wStatus.SetText("");
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -114,16 +125,21 @@ class CRF_ReplayRow
 }
 
 //------------------------------------------------------------------------------------------------
-//! Main menu > REPLAYS: missions recorded on COALITION servers, downloaded ones first. Download one,
+//! Scenarios > COALITION Replays: missions recorded on COALITION servers, downloaded ones first. Download one,
 //! then WATCH loads its terrain and plays it back locally.
 class CRF_ReplayBrowserMenu : ChimeraMenuBase
 {
+	//! Opened by the COALITION Replays scenario (CRF_ReplayLauncher.OpenHub) rather than over another menu
+	static bool s_bInHub;
+
 	protected static const ResourceName ROW_LAYOUT = "{6A7E2B0000000003}UI/layouts/Menus/Replay/CRF_ReplayRow.layout";
 
 	protected Widget m_wRoot;
 	protected Widget m_wList;
+	protected Widget m_wEmpty;
 	protected TextWidget m_wStatus;
 	protected InputManager m_InputManager;
+	protected ref COA_MenuPolish m_UIPolish;
 
 	protected ref array<ref CRF_ReplayRow> m_aRows = {};
 	protected ref map<int, CRF_ReplayRow> m_mRowsById = new map<int, CRF_ReplayRow>();
@@ -136,6 +152,7 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 		super.OnMenuOpen();
 		m_wRoot = GetRootWidget();
 		m_wList = m_wRoot.FindAnyWidget("ReplayList");
+		m_wEmpty = m_wRoot.FindAnyWidget("EmptyText");
 		m_wStatus = TextWidget.Cast(m_wRoot.FindAnyWidget("Status"));
 		m_InputManager = GetGame().GetInputManager();
 
@@ -150,11 +167,25 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 
 		Rebuild();
 		FetchList();
+
+		// Hover / pressed states and a quick fade-in, as in the Lobby's menus
+		m_UIPolish = new COA_MenuPolish(m_wRoot, true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+		if (m_UIPolish)
+			m_UIPolish.Update(tDelta);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override void OnMenuClose()
 	{
+		if (m_UIPolish)
+			m_UIPolish.Cleanup();
+
 		CRF_ReplayDownloader downloader = CRF_ReplayDownloader.Get();
 		downloader.m_OnList.Remove(OnList);
 		downloader.m_OnProgress.Remove(OnProgress);
@@ -169,6 +200,14 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void OnBack()
 	{
+		// Opened by the COALITION Replays scenario: there's nothing behind it, so back means the main menu
+		if (s_bInHub)
+		{
+			s_bInHub = false;
+			CRF_ReplayLauncher.Exit();
+			return;
+		}
+
 		GetGame().GetCallqueue().CallLater(Close, 0);
 	}
 
@@ -230,6 +269,10 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 			row.m_sName = entry.name;
 			row.m_sDetail = Detail(entry.terrain, entry.terrainKey, entry.playedAt, entry.author);
 
+			// Before v3, or recorded with the game mode's 3D data off: heights from the terrain, stand-in soldiers
+			if (entry.version > 0 && entry.version < 3)
+				row.m_sDetail += "  ·  2D recording";
+
 			// Fill in what an older download didn't save
 			if (row.m_Meta && (row.m_Meta.playedAt.IsEmpty() || row.m_Meta.terrain.IsEmpty()))
 			{
@@ -239,8 +282,8 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 			}
 		}
 
-		if (m_aRows.IsEmpty())
-			SetStatus("No recordings yet");
+		if (m_wEmpty)
+			m_wEmpty.SetVisible(m_aRows.IsEmpty());
 
 		foreach (CRF_ReplayRow row : m_aRows)
 		{
@@ -253,6 +296,7 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 
 			row.Bind(widget, this);
 			row.Refresh();
+			COA_UIPolish.AttachHoverEffects(widget);	// now rather than on the next rescan
 		}
 	}
 
@@ -385,41 +429,5 @@ class CRF_ReplayBrowserMenu : ChimeraMenuBase
 	{
 		if (m_wStatus)
 			m_wStatus.SetText(text);
-	}
-}
-
-//------------------------------------------------------------------------------------------------
-//! A REPLAYS button on the main menu
-modded class MainMenuUI
-{
-	protected static const ResourceName CRF_REPLAY_BUTTON_LAYOUT = "{6A7E2B0000000004}UI/layouts/Menus/Replay/CRF_ReplayMainMenuButton.layout";
-	protected Widget m_wCRF_ReplayButton;
-
-	//------------------------------------------------------------------------------------------------
-	protected override void OnMenuOpen()
-	{
-		super.OnMenuOpen();
-
-		Widget root = GetRootWidget();
-		if (!root)
-			return;
-
-		m_wCRF_ReplayButton = GetGame().GetWorkspace().CreateWidgets(CRF_REPLAY_BUTTON_LAYOUT, root);
-		if (!m_wCRF_ReplayButton)
-			return;
-
-		// Fill the menu so the button's own anchors place it
-		FrameSlot.SetAnchorMin(m_wCRF_ReplayButton, 0, 0);
-		FrameSlot.SetAnchorMax(m_wCRF_ReplayButton, 1, 1);
-		FrameSlot.SetOffsets(m_wCRF_ReplayButton, 0, 0, 0, 0);
-		m_wCRF_ReplayButton.SetZOrder(100);
-
-		CRF_ReplayHUDMenu.GetButtonClick(m_wCRF_ReplayButton, "ReplaysButton").Insert(CRF_OnReplaysClicked);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void CRF_OnReplaysClicked()
-	{
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_ReplayBrowser);
 	}
 }
