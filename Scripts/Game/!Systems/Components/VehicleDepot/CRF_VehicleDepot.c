@@ -65,8 +65,14 @@ class CRF_VehicleDepot : ScriptComponent
 	[Attribute("0", UIWidgets.Slider, "Vehicle facing direction offset (degrees)", "-180 180 5", category: "Spawn Configuration")]
 	protected float m_fVehicleFacingOffset;
 	
-	[Attribute("1.0", UIWidgets.Slider, "Spawn Collision detection radius (meters) /n This radius determines how close players must be to the depot to trigger vehicle spawning", "1.0 10.0 0.1", category: "Spawn Configuration")]
-	protected float m_fCollisionRadius;
+	[Attribute("1.0", UIWidgets.Slider, "Spawn clearance scale - grows the vehicle sized box checked for obstructions at each slot. 1.0 fits a truck. Scales every axis except downward, so the box never sinks into the ground.", "0.5 3.0 0.1", category: "Spawn Configuration")]
+	protected float m_fClearanceScale;
+	
+	[Attribute("0", UIWidgets.CheckBox, "Spawn vehicles level with the depot instead of snapping them to the terrain height under each slot. For pads, decks and bridges where the terrain sits well below the depot.", category: "Spawn Configuration")]
+	protected bool m_bDisableTerrainSnapping;
+	
+	[Attribute("0", UIWidgets.CheckBox, "Skip the spawn clearance check and spawn regardless of what is in the slot.", category: "Spawn Configuration")]
+	protected bool m_bDisableSpawnCollision;
 	
 	// Grid Pattern Configuration (only applies when GRID pattern is selected)
 	[Attribute("3", UIWidgets.SpinBox, "Grid spawn pattern columns (vehicles per row)", "1 10 1", category: "Spawn Configuration")]
@@ -102,8 +108,12 @@ class CRF_VehicleDepot : ScriptComponent
 	protected COA_RespawnManager m_RespawnManager;
 	protected COA_SlottingManager m_SlottingManager;
 	
-	// Collision detection helper
-	protected bool m_bCollisionDetected = false;
+	// Debug/Collision Bounding Box Shape Size
+	protected static const vector CLEARANCE_MINS = "-1.9 0.15 -3.5";
+	protected static const vector CLEARANCE_MAXS = "1.9 2.6 3.5";
+	
+	//! Slots cache ground-anchored, so lift on spawn and let it settle
+	protected static const float SPAWN_HEIGHT_OFFSET = 1.0;
 	
 	// Performance optimization caches
 	protected ref array<vector> m_aCachedSpawnPositions;
@@ -811,52 +821,11 @@ class CRF_VehicleDepot : ScriptComponent
 			return false;
 		}
 		
+		// Same transform the test and preview used, lifted clear of the ground
 		EntitySpawnParams spawnParams = EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = spawnPos;
-		
-		// Set the vehicle orientation to be level but facing the depot's direction with optional offset
-		// Get depot's transform matrix for proper directional vectors
-		vector depotTransform[4];
-		GetOwner().GetWorldTransform(depotTransform);
-		
-		// Create a level orientation using only the depot's yaw direction
-		vector forwardDir = depotTransform[2]; // Forward direction
-		vector rightDir = depotTransform[0];   // Right direction
-		
-		// Force the forward direction to be level (remove any pitch)
-		forwardDir[1] = 0; // Remove Y component to make it level
-		forwardDir = forwardDir.Normalized(); // Normalize after modification
-		
-		// Apply vehicle facing direction offset
-		if (m_fVehicleFacingOffset != 0)
-		{
-			// Convert offset to radians
-			float offsetRadians = m_fVehicleFacingOffset * Math.DEG2RAD;
-			
-			// Rotate the forward direction by the offset angle around the Y axis
-			float cosOffset = Math.Cos(offsetRadians);
-			float sinOffset = Math.Sin(offsetRadians);
-			
-			// Apply rotation matrix for Y-axis rotation
-			vector newForwardDir;
-			newForwardDir[0] = forwardDir[0] * cosOffset + forwardDir[2] * sinOffset;
-			newForwardDir[1] = forwardDir[1]; // Y stays the same
-			newForwardDir[2] = -forwardDir[0] * sinOffset + forwardDir[2] * cosOffset;
-			
-			forwardDir = newForwardDir.Normalized();
-		}
-		
-		// Calculate right direction perpendicular to level forward
-		vector upDir = "0 1 0"; // World up
-		rightDir = upDir * forwardDir; // Cross product for right direction
-		rightDir = rightDir.Normalized();
-		
-		// Rebuild the transform matrix with level orientation
-		spawnParams.Transform[0] = rightDir;   // Right vector
-		spawnParams.Transform[1] = upDir;      // Up vector (always world up)
-		spawnParams.Transform[2] = forwardDir; // Forward vector (level)
-		spawnParams.Transform[3] = spawnPos;   // Position
+		BuildSlotTransform(spawnPos, spawnParams.Transform);
+		spawnParams.Transform[3] = spawnPos + Vector(0, GetSpawnLift(), 0);
 		
 		IEntity spawnedVehicle = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!spawnedVehicle)
@@ -892,9 +861,9 @@ class CRF_VehicleDepot : ScriptComponent
 		for (int i = 0; i < m_aCachedSpawnPositions.Count(); i++)
 		{
 			vector testPos = m_aCachedSpawnPositions[i];
-			
-			// Check if position is clear
-			if (IsPositionClear(testPos, m_fCollisionRadius))
+	
+			// Room for a vehicle? Protection off takes the first slot regardless
+			if (m_bDisableSpawnCollision || IsSlotClear(testPos))
 			{
 				#ifdef WORKBENCH
 				string patternName;
@@ -935,7 +904,7 @@ class CRF_VehicleDepot : ScriptComponent
 	{
 		// Array should already be initialized in OnPostInit, just clear it
 		m_aCachedSpawnPositions.Clear();
-		
+	
 		vector depotPos = GetOwner().GetOrigin();
 		vector depotAngles = GetOwner().GetAngles();
 		
@@ -952,16 +921,8 @@ class CRF_VehicleDepot : ScriptComponent
 		{
 			vector spawnPos = CalculateSpawnPosition(depotPos, forwardDir, rightDir, i);
 			
-			// Properly calculate ground height and adjust for vehicle
-			if (world)
-			{
-				float surfaceY = world.GetSurfaceY(spawnPos[0], spawnPos[2]);
-				spawnPos[1] = surfaceY + 1.5; // 1.5m elevation should prevent most clipping
-			}
-			else
-			{
-				spawnPos[1] = depotPos[1] + 1.5; // Fallback to depot height + 1.5m
-			}
+			// Ground-anchored so test, preview and spawn share this position
+			spawnPos[1] = GetSlotHeight(spawnPos, depotPos, world);
 			
 			m_aCachedSpawnPositions.Insert(spawnPos);
 		}
@@ -1055,74 +1016,125 @@ class CRF_VehicleDepot : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected bool IsPositionClear(vector pos, float radius)
+	//! Slot height, depot level when terrain snapping is off
+	protected float GetSlotHeight(vector slotPos, vector depotPos, BaseWorld world)
 	{
-		// Reset collision detection flag
-		m_bCollisionDetected = false;
+		if (m_bDisableTerrainSnapping || !world)
+			return depotPos[1];
 		
-		// Use physics to check for overlapping objects
-		World world = GetGame().GetWorld();
-		
-		// Query entities in the area using our callback
-		world.QueryEntitiesBySphere(pos, radius, CheckEntityCallback, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT);
-		
-		// Return the result based on whether collision was detected
-		return !m_bCollisionDetected;
+		return world.GetSurfaceY(slotPos[0], slotPos[2]);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/**
-	 * Callback function for sphere query to check entities
-	 */
-	protected bool CheckEntityCallback(IEntity entity)
+	//! No lift when placing level with the depot, the slot is already where it should sit
+	protected float GetSpawnLift()
 	{
-		// Skip the depot itself
-		if (entity == GetOwner())
-			return true; // Continue searching
-			
-		// Check for vehicles
-		VehicleControllerComponent vehicleController = VehicleControllerComponent.Cast(entity.FindComponent(VehicleControllerComponent));
-		if (vehicleController)
-		{
-			#ifdef WORKBENCH
-			DebugPrint("Position blocked by vehicle");
-			#endif
-			m_bCollisionDetected = true;
-			return false; // Stop searching - position is blocked
-		}
+		if (m_bDisableTerrainSnapping)
+			return 0;
 		
-		// Check for characters
-		CharacterControllerComponent characterController = CharacterControllerComponent.Cast(entity.FindComponent(CharacterControllerComponent));
-		if (characterController)
-		{
-			#ifdef WORKBENCH
-			DebugPrint("Position blocked by character");
-			#endif
-			m_bCollisionDetected = true;
-			return false; // Stop searching - position is blocked
-		}
-		
-		// Check for large static objects that might block spawning
-		Physics physics = entity.GetPhysics();
-		if (physics && physics.IsDynamic() == false)
-		{
-			// Check if it's a significant object (has collision and reasonable size)
-			vector min, max;
-			entity.GetBounds(min, max);
-			vector size = max - min;
-			if (size.Length() > 2.0) // Objects larger than 2m might block spawning
-			{
-				#ifdef WORKBENCH
-				DebugPrint(string.Format("Position blocked by static object: %1", entity.GetPrefabData().GetPrefabName()));
-				#endif
-				m_bCollisionDetected = true;
-				return false; // Stop searching - position is blocked
-			}
-		}
-		
-		return true; // Continue searching
+		return SPAWN_HEIGHT_OFFSET;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Ground-anchored slot transform, depot yaw levelled plus the facing offset
+	//! Shared by the test, the spawn and the preview so they can't disagree
+	protected void BuildSlotTransform(vector groundPos, out vector mat[4])
+	{
+		vector depotTransform[4];
+		GetOwner().GetWorldTransform(depotTransform);
+		
+		// Strip pitch off the placed depot
+		vector forwardDir = depotTransform[2];
+		forwardDir[1] = 0;
+		forwardDir = forwardDir.Normalized();
+		
+		// Facing offset around world up
+		if (m_fVehicleFacingOffset != 0)
+		{
+			float offsetRadians = m_fVehicleFacingOffset * Math.DEG2RAD;
+			float cosOffset = Math.Cos(offsetRadians);
+			float sinOffset = Math.Sin(offsetRadians);
+			
+			vector rotatedForward;
+			rotatedForward[0] = forwardDir[0] * cosOffset + forwardDir[2] * sinOffset;
+			rotatedForward[1] = forwardDir[1];
+			rotatedForward[2] = -forwardDir[0] * sinOffset + forwardDir[2] * cosOffset;
+			
+			forwardDir = rotatedForward.Normalized();
+		}
+		
+		vector upDir = "0 1 0";
+		vector rightDir = upDir * forwardDir; // Cross product for right direction
+		rightDir = rightDir.Normalized();
+	
+		mat[0] = rightDir;
+		mat[1] = upDir;
+		mat[2] = forwardDir;
+		mat[3] = groundPos;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Uses TraceOBB (perf difference unknown), same as vanilla's vehicle slots
+	//! See SCR_EntitySpawnerSlotComponent.IsOccupied and SCR_ItemPlacementComponent for implementation in vanilla 
+	//! Hits collision geometry not render bounds, so a trunk blocks but its canopy doesn't
+	protected bool IsSlotClear(vector groundPos)
+	{
+		IEntity owner = GetOwner();
+		if (!owner)
+			return false;
+		
+		BaseWorld world = owner.GetWorld();
+		if (!world)
+			return false;
+		
+		vector slotTransform[4];
+		BuildSlotTransform(groundPos, slotTransform);
+		
+		vector mins, maxs;
+		GetClearanceBounds(mins, maxs);
+		
+		TraceOBB trace = new TraceOBB();
+		trace.Mat[0] = slotTransform[0];
+		trace.Mat[1] = slotTransform[1];
+		trace.Mat[2] = slotTransform[2];
+		trace.Start = groundPos;
+		trace.Mins = mins;
+		trace.Maxs = maxs;
+		trace.Flags = TraceFlags.ENTS; // Entities only, terrain height comes from GetSurfaceY
+		trace.LayerMask = EPhysicsLayerPresets.Projectile;
+		trace.Exclude = owner; // Depot carries its own static collision
+		
+		world.TracePosition(trace, ClearanceTraceFilter);
 
+		if (m_bEnableDebugLogging && trace.TraceEnt)
+			DebugPrint(string.Format("Slot at %1 blocked by %2", groundPos, trace.TraceEnt));
+
+		return trace.TraceEnt == null;
+	}
+	
+	protected void GetClearanceBounds(out vector mins, out vector maxs)
+	{
+		float scale = m_fClearanceScale;
+		if (scale <= 0)
+			scale = 1.0;
+		
+		mins = Vector(CLEARANCE_MINS[0] * scale, CLEARANCE_MINS[1], CLEARANCE_MINS[2] * scale);
+		maxs = Vector(CLEARANCE_MAXS[0] * scale, CLEARANCE_MAXS[1] * scale, CLEARANCE_MAXS[2] * scale);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Filter to ignore certain entities (inventory items mainly)
+	protected bool ClearanceTraceFilter(IEntity ent)
+	{
+		// Vehicles and characters always block, whatever else they carry
+		// Vehicles hold an InventoryItemComponent, so the check below would drop them
+		if (ent.IsInherited(Vehicle) || ent.IsInherited(ChimeraCharacter))
+			return true;
+
+		// Inventory item components ignored by collision trace
+		return !ent.FindComponent(InventoryItemComponent);
+	}
+	
 	//================================================================================================
 	// UI AND INTERACTION FUNCTIONS - Action Text, Notifications
 	//================================================================================================
@@ -1301,7 +1313,7 @@ class CRF_VehicleDepot : ScriptComponent
 	
 	#ifdef WORKBENCH
 	//------------------------------------------------------------------------------------------------
-	//! Workbench debug visualization - shows spawn points as red spheres only in editor
+	//! Draws spawn debug visuals
 	override void _WB_AfterWorldUpdate(IEntity owner, float timeSlice)
 	{
 		// Only draw if debug visuals are enabled
@@ -1311,12 +1323,11 @@ class CRF_VehicleDepot : ScriptComponent
 		if (!owner)
 			return;
 		
-
 		CreateDebugShapes(owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Create persistent debug shapes (called once)
+	//! Rebuild the shapes for every slot
 	protected void CreateDebugShapes(IEntity owner)
 	{
 		m_aDebugShapes.Clear();
@@ -1327,62 +1338,47 @@ class CRF_VehicleDepot : ScriptComponent
 		vector forwardDir = transform[2]; // Forward direction (Z-axis)
 		vector rightDir = transform[0];   // Right direction (X-axis)
 		
-		// Calculate vehicle facing direction with offset for orientation line
-		vector vehicleForwardDir = forwardDir;
-		vehicleForwardDir[1] = 0; // Make level
-		vehicleForwardDir = vehicleForwardDir.Normalized();
-		
-		// Apply vehicle facing direction offset
-		if (m_fVehicleFacingOffset != 0)
-		{
-			// Convert offset to radians
-			float offsetRadians = m_fVehicleFacingOffset * Math.DEG2RAD;
-			
-			// Rotate the forward direction by the offset angle around the Y axis
-			float cosOffset = Math.Cos(offsetRadians);
-			float sinOffset = Math.Sin(offsetRadians);
-			
-			// Apply rotation matrix for Y-axis rotation
-			vector newForwardDir;
-			newForwardDir[0] = vehicleForwardDir[0] * cosOffset + vehicleForwardDir[2] * sinOffset;
-			newForwardDir[1] = vehicleForwardDir[1]; // Y stays the same
-			newForwardDir[2] = -vehicleForwardDir[0] * sinOffset + vehicleForwardDir[2] * cosOffset;
-			
-			vehicleForwardDir = newForwardDir.Normalized();
-		}
-		
-		// Use the proper world reference and coordinate handling like COA_PolyZoneMeshComponent
-		BaseWorld world = owner.GetWorld(); // Use owner.GetWorld() instead of GetGame().GetWorld()
+		BaseWorld world = owner.GetWorld();
 		
 		// Shape flags for consistent rendering
-		const ShapeFlags spawnSphereFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER | ShapeFlags.NOOUTLINE;
-		const ShapeFlags collisionSphereFlags = ShapeFlags.TRANSP | ShapeFlags.VISIBLE | ShapeFlags.NOOUTLINE | ShapeFlags.NOZBUFFER;
+		const ShapeFlags slotMarkerFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER | ShapeFlags.NOOUTLINE;
+		const ShapeFlags clearanceBoxFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER | ShapeFlags.WIREFRAME | ShapeFlags.DOUBLESIDE;
 		const ShapeFlags arrowFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER;
 		
 		for (int i = 0; i < m_iSpawnPointCount; i++)
 		{
-			// Calculate spawn position using same logic as cache
-			vector spawnPos = CalculateSpawnPosition(depotPos, forwardDir, rightDir, i);
+			// Same position logic as the cache
+			vector slotPos = CalculateSpawnPosition(depotPos, forwardDir, rightDir, i);
 			
-			if (world)
-			{
-				float surfaceY = world.GetSurfaceY(spawnPos[0], spawnPos[2]);
-				spawnPos[1] = surfaceY + 0.1; // Slightly above ground
-			}
+			slotPos[1] = GetSlotHeight(slotPos, depotPos, world);
+			
+			// Exact transform and volume the test runs on
+			vector slotTransform[4];
+			BuildSlotTransform(slotPos, slotTransform);
+			
+			vector mins, maxs;
+			GetClearanceBounds(mins, maxs);
+			
+			// Visual feedback for spawn slots
+			int boxColor;
+			if (m_bDisableSpawnCollision)
+				boxColor = ARGB(255, 170, 170, 170); // Grey, protection off
+			else if (IsSlotClear(slotPos))
+				boxColor = ARGB(255, 0, 220, 60); // Green, fits
 			else
-			{
-				spawnPos[1] = depotPos[1] + 0.1; // Small fallback offset
-			}
+				boxColor = ARGB(255, 230, 30, 30); // Red, blocked
 			
-			// Red sphere for spawn position
-			m_aDebugShapes.Insert(Shape.CreateSphere(ARGB(255, 255, 0, 0), spawnSphereFlags, spawnPos, 0.2));
+			// Insert first so the array holds the ref, then orient in place
+			m_aDebugShapes.Insert(Shape.Create(ShapeType.BBOX, boxColor, clearanceBoxFlags, mins, maxs));
+			Shape clearanceBox = m_aDebugShapes[m_aDebugShapes.Count() - 1];
+			if (clearanceBox)
+				clearanceBox.SetMatrix(slotTransform);
 			
-			// Blue wireframe sphere for collision radius
-			m_aDebugShapes.Insert(Shape.CreateSphere(ARGB(100, 0, 150, 255), collisionSphereFlags, spawnPos, m_fCollisionRadius));
-
-			// Green arrow showing vehicle orientation
-			vector lineEnd = spawnPos + (vehicleForwardDir * 4.0); // 4 meter line
-			m_aDebugShapes.Insert(Shape.CreateArrow(spawnPos, lineEnd, 0.3, ARGB(255, 0, 255, 0), arrowFlags));
+			// Facing arrow & spawn position sphere
+			vector arrowStart = slotPos + Vector(0, GetSpawnLift(), 0);
+			vector arrowEnd = arrowStart + (slotTransform[2] * 4.0); // 4 meter line
+			m_aDebugShapes.Insert(Shape.CreateSphere(boxColor, slotMarkerFlags, arrowStart, 0.2));
+			m_aDebugShapes.Insert(Shape.CreateArrow(arrowStart, arrowEnd, 0.3, ARGB(255, 0, 255, 0), arrowFlags));
 		}
 	}
 	
@@ -1390,11 +1386,9 @@ class CRF_VehicleDepot : ScriptComponent
 	//! Clear all debug shapes
 	protected void ClearDebugShapes()
 	{
-
 		if (m_aDebugShapes)
-		{
 			m_aDebugShapes.Clear();
-		}
+		
 		m_bDebugShapesCreated = false;
 	}
 	
@@ -1403,10 +1397,7 @@ class CRF_VehicleDepot : ScriptComponent
 	void RefreshDebugShapes()
 	{
 		if (m_bEnableSpawnVisuals && GetOwner())
-		{
 			ClearDebugShapes();
-			m_bDebugShapesCreated = false;
-		}
 	}
 	#endif
 }

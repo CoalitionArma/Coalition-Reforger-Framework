@@ -9,12 +9,14 @@
  * Version   Date        Author        Description
  * --------------------------------------------------------------------------------------
  * 1.0       12/21/24    Harry         Initial creation.
+ * 1.1       10/16/26    Harry         Removed obsolete PS/Rush references; linked current mode guides.
  * 
  * Notes:
  * The code below is typically in the script section of an object.
- * This does not cover game modes covered in the wiki.
  * Do not expect to copy, and paste this code into your script without modifying it.
- * As Reforger is rapidly developing, sections here may be out of date.
+ * Verify engine API calls and vanilla prefab resources in the current Workbench build.
+ * Current game mode guides are in !Docs/MissionMaking/Gamemodes; CTF and Rush guides
+ * are in Scripts/Game/GameMode/CTF/README.md and Scripts/Game/GameMode/Rush/README.md.
  ****************************************************************************************/
 
 /****************************************************************************************
@@ -25,9 +27,8 @@
  * Accessing a component
  * Object Presence Inside Control Trigger
  * Action on Vehicle Destruction
- * Setting an objective complete
  * Randomizing Spawns
- * Rush objective destructor
+ * Current game mode documentation
 ****************************************************************************************/
 
 
@@ -159,7 +160,7 @@ delete bridge_Control;
  * 2. Once the safe start has ended, it begins the timer by CallLater on setTimer. 
 ****************************************************************************************/
 
-class ammo_Class: PS_ManualMarker 
+class ammo_Class: SCR_BaseTriggerEntity
 {
 	// user script
 	string ammo = "{6250070685EC5A0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/FIA_ammo_box.et";
@@ -304,19 +305,6 @@ class engiTruck_Class: Vehicle
 	}
 
 };
-
-
-
-
-
-/****************************************************************************************
- * --------------Setting an objective complete--------------
- * This is not really necessary as whoever is running the session can simply toggle 
- * objective completion, but if you want to, this is how you set it via script.
-****************************************************************************************/
-
-PS_Objective bluObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName("BluObj_1"));
-bluObjective.SetCompleted(true);
 
 
 
@@ -500,41 +488,21 @@ class weaponSpawnTrigger_Class: SCR_BaseTriggerEntity
 };
 
 /****************************************************************************************
- * --------------Rush objective destructor--------------
- * A new implementation of the rush gamemode, this is the destructor for the generator
- * objective. It sends a message about the objective, finds the generator near it and 
- * destroys it, removes the appropriate area markers, and then if both objectives in 
- * the zone are destroyed respawns players at their flag.
+ * --------------Current game mode documentation--------------
+ * Mission setup details live with the maintained game mode implementations:
+ *
+ * Attrition:       !Docs/MissionMaking/Gamemodes/CRF_ATTRITION_MISSION_MAKERS_GUIDE.md
+ * Cache Hunt:      !Docs/MissionMaking/Gamemodes/CRF_CACHEHUNT_MISSION_MAKERS_GUIDE.md
+ * CTF:             Scripts/Game/GameMode/CTF/README.md
+ * Frontline:       !Docs/MissionMaking/Gamemodes/CRF_FRONTLINE_MISSION_MAKERS_GUIDE.md
+ * HVT:             !Docs/MissionMaking/Gamemodes/CRF_HVT_MISSION_MAKERS_GUIDE.md
+ * Insurgency:      !Docs/MissionMaking/Gamemodes/CRF_INSURGENCY_MISSION_MAKERS_GUIDE.md
+ * Radio Warfare:   !Docs/MissionMaking/Gamemodes/CRF_RADIO_WARFARE_MISSION_MAKERS_GUIDE.md
+ * Raid:            !Docs/MissionMaking/Gamemodes/CRF_RAID_MISSION_MAKERS_GUIDE.md
+ * Rush:            Scripts/Game/GameMode/Rush/README.md
+ * Search & Destroy:!Docs/MissionMaking/Gamemodes/CRF_SEARCH_AND_DESTROY_MISSION_MAKERS_GUIDE.md
+ *
+ * Use the current Rush component and guide instead of the retired destructor example.
+ * Objective completion is specific to the objective component used by a mission; this
+ * library no longer references the external PS_Objective type.
 ****************************************************************************************/
-class z1s1_Class: GenericEntity 
-{
-	void ~z1s1_Class()
-	{
-		SCR_PopUpNotification.GetInstance().PopupMsg("Alpha MCOM destroyed", duration: 10);
-		
-		// TODO: Get the parent and delete everything
-		// Delete actual mcom/generator
-		IEntity mcom = GetGame().GetWorld().FindEntityByName("z1s1gen");
-		delete mcom;
-		// Delete markers
-		IEntity mcomMarker = GetGame().GetWorld().FindEntityByName("alphamarker");
-		delete mcomMarker;
-		
-		// Check if both sites are destroyed, if so, delete the zone marker line
-		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName("z1s2gen");
-		
-		if (!sisterMcom) {
-			IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName("zone1markers");
-			SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);
-			SCR_PopUpNotification.GetInstance().PopupMsg("Zone 2 is now unlocked", duration: 10);
-			
-			//respawn the players
-			if (RplSession.Mode() == RplMode.Dedicated) {
-				COA_Gamemode gm = COA_Gamemode.GetInstance();
-				gm.RushRespawnPlayers();
-			}
-		}
-	}
-
-};
-

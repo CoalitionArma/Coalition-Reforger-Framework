@@ -1,0 +1,22 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 2672.973 80.723 541.414
+  m_rnPrefab "{D4E66D4D55D62B8A}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_more_ammo.et"
+ }
+ {
+  coords 2584.33 80.688 541.075
+  m_rnPrefab "{D4E66D4D55D62B8A}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_more_ammo.et"
+ }
+ {
+  coords 2626.384 81.285 541.604
+  m_rnPrefab "{D4E66D4D55D62B8A}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_more_ammo.et"
+ }
+ {
+  coords 2543.426 80.724 542.293
+  m_rnPrefab "{D4E66D4D55D62B8A}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_more_ammo.et"
+ }
+ {
+  coords 2503.928 80.722 541.872
+  m_rnPrefab "{D4E66D4D55D62B8A}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_more_ammo.et"
+ }
+}
