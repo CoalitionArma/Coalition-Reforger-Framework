@@ -1,0 +1,522 @@
+ImageSetClass {
+ RefSize 4096 2048
+ Textures {
+  ImageSetTextureClass "{6B3E1A0C5D7F2E93}" {
+   screenSize FHD
+   size 4096 2048
+   path "{6B3E1A0C5D7F2E91}UI/Images/Emblems/CRF_EmblemShapes.edds"
+  }
+ }
+ Images {
+   ImageSetDefClass circle {
+    Pos 0 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass ring {
+    Pos 256 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass ring_thin {
+    Pos 512 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass square {
+    Pos 768 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass square_outline {
+    Pos 1024 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass rounded_square {
+    Pos 1280 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass diamond {
+    Pos 1536 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass triangle {
+    Pos 1792 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass triangle_outline {
+    Pos 2048 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass pentagon {
+    Pos 2304 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass hexagon {
+    Pos 2560 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass hexagon_outline {
+    Pos 2816 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass octagon {
+    Pos 3072 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass half_circle {
+    Pos 3328 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass quarter_circle {
+    Pos 3584 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass crescent {
+    Pos 3840 0
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass arc {
+    Pos 0 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass bar {
+    Pos 256 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass bar_thin {
+    Pos 512 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass stripes {
+    Pos 768 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star4 {
+    Pos 1024 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star5 {
+    Pos 1280 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star5_outline {
+    Pos 1536 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star6 {
+    Pos 1792 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star8 {
+    Pos 2048 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass burst {
+    Pos 2304 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass sparkle {
+    Pos 2560 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass compass_rose {
+    Pos 2816 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass shield {
+    Pos 3072 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass shield_outline {
+    Pos 3328 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass shield_heater {
+    Pos 3584 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass chevron {
+    Pos 3840 256
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass chevron_double {
+    Pos 0 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass chevron_triple {
+    Pos 256 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass rocker {
+    Pos 512 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass cross {
+    Pos 768 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass cross_x {
+    Pos 1024 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass cross_pattee {
+    Pos 1280 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass crosshair {
+    Pos 1536 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass target {
+    Pos 1792 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass bullet {
+    Pos 2048 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass sword {
+    Pos 2304 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass dagger {
+    Pos 2560 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass crossed_swords {
+    Pos 2816 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass arrow {
+    Pos 3072 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass arrowhead {
+    Pos 3328 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass spearhead {
+    Pos 3584 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass lightning {
+    Pos 3840 512
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass flame {
+    Pos 0 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass skull {
+    Pos 256 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass wing {
+    Pos 512 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass wings {
+    Pos 768 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass crown {
+    Pos 1024 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass anchor {
+    Pos 1280 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass laurel {
+    Pos 1536 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass laurel_wreath {
+    Pos 1792 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass banner {
+    Pos 2048 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass parachute {
+    Pos 2304 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass star_badge {
+    Pos 2560 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass heart {
+    Pos 2816 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass spade {
+    Pos 3072 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass eye {
+    Pos 3328 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass gear {
+    Pos 3584 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass drop {
+    Pos 3840 768
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass moon {
+    Pos 0 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass fleur {
+    Pos 256 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_a {
+    Pos 512 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_b {
+    Pos 768 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_c {
+    Pos 1024 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_d {
+    Pos 1280 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_e {
+    Pos 1536 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_f {
+    Pos 1792 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_g {
+    Pos 2048 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_h {
+    Pos 2304 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_i {
+    Pos 2560 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_j {
+    Pos 2816 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_k {
+    Pos 3072 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_l {
+    Pos 3328 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_m {
+    Pos 3584 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_n {
+    Pos 3840 1024
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_o {
+    Pos 0 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_p {
+    Pos 256 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_q {
+    Pos 512 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_r {
+    Pos 768 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_s {
+    Pos 1024 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_t {
+    Pos 1280 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_u {
+    Pos 1536 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_v {
+    Pos 1792 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_w {
+    Pos 2048 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_x {
+    Pos 2304 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_y {
+    Pos 2560 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass letter_z {
+    Pos 2816 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_0 {
+    Pos 3072 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_1 {
+    Pos 3328 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_2 {
+    Pos 3584 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_3 {
+    Pos 3840 1280
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_4 {
+    Pos 0 1536
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_5 {
+    Pos 256 1536
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_6 {
+    Pos 512 1536
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_7 {
+    Pos 768 1536
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_8 {
+    Pos 1024 1536
+    Size 256 256
+    Flags 0 0
+   }
+   ImageSetDefClass num_9 {
+    Pos 1280 1536
+    Size 256 256
+    Flags 0 0
+   }
+ }
+}
