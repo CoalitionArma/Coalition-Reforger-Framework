@@ -1,19 +1,22 @@
-Mission Pull Request Template
-PR NAME:
-New Mission | *Author* *MODE**PLAYERCOUNT* *name*
+<!--
+Mission Pull Request
 
-This Pull Request will:
+The title, the Automated Checks and the Mission Synopsis are filled in for you from your mission
+files every time you push, by the "Mission PR" check. Don't edit inside those two blocks; push a
+fix to the mission instead.
 
-Add the mission <mission name!> made by <author name!> to the repository.
+You only fill in the sections below that the files can't tell us: factions and assets, objectives,
+the briefing screenshot and your notes. The Discord AAR post is built from them, so keep each
+faction line in its "SIDE dash faction" format.
+-->
 
 **Mission Creation Checklist:**
-- [ ] Mission File
-- [ ] Gearscripts Tested
-- [ ] Ingame Play Area Markers
-- [ ] Ingame Briefings to all players
-- [ ] Side-based briefings  
-- [ ] Mission .conf file
-- [ ] PR Contains enough information for an [AAR Post](https://discord.com/channels/237991125523103747/1489488919081779240/1489489341305847890)
+- [ ] Gearscripts tested in game
+- [ ] Faction(s), Objectives and the briefing screenshot below are filled in (they make the [AAR Post](https://discord.com/channels/237991125523103747/1489488919081779240/1489489341305847890))
+
+**Automated Checks:**
+
+<!-- Filled in automatically on every push -->
 
 **Faction(s):**
 
@@ -53,4 +56,4 @@ CIV Assets:
 
 **Mission Synopsis:**
 
-<Run "6 | Generate Config File" in Workbench, then paste the clipboard contents here as-is (it includes its own CRF_SYNOPSIS_START/END markers - don't edit them, the AAR bot uses them to find this block)>
+<!-- Filled in automatically on every push -->

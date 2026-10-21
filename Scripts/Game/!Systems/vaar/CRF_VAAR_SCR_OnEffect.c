@@ -17,6 +17,6 @@ class CRF_VAAR_BaseProjectileEffect: BaseProjectileEffect
 		if (!aarGamemodeComponent.IsRecording())
 			return;
 		
-		aarGamemodeComponent.RegisterShot(shooter, damageSource, outMat[0][0], outMat[0][2]);
+		aarGamemodeComponent.RegisterShot(shooter, damageSource, outMat[0]);
 	}
 }
