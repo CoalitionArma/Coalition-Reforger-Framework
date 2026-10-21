@@ -89,6 +89,16 @@ $grp GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLar
   coords 2505.215 80.117 542.327
  }
 }
+$grp GenericEntity : "{B8BADFA9530C38F4}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_US.et" {
+ {
+  coords 2227.833 76.979 429.329
+  angles 0 -17.344 0
+ }
+ {
+  coords 2215.148 76.979 424.863
+  angles 0 -17.344 0
+ }
+}
 $grp Tree : "{BDDB9F1226C5C7C9}Prefabs/Trees/Mangrove1.et" {
  {
   components {
