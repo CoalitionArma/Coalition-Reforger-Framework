@@ -57,7 +57,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Defend each MCOM"\
    ""\
    "INTENT"\
-   " You also have a stack of green box with you HMGs and Ammo for them in the box. Set up defense accoringly be wary of your flanks, your enemy is unpredicable"\
+   " You also have a stack of green box with you HMGs and Ammo for them in the box. Set up defense accordingly, be wary of your flanks, your enemy is unpredicable."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -72,7 +72,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destroy each MCOM"\
    ""\
    "INTENT"\
-   ""\
+   "Be un predictable, use the flanks to attack your enemy."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
