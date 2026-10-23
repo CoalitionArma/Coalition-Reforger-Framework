@@ -1,0 +1,20 @@
+Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
+ ID "5DB688595BAB2FD7"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{6A9CFB27BFF54094}" {
+     SourceMaterial "UH_1H_Body01_6224CA051369DE45"
+     AssignedMaterial "{8021569541331760}Assets/Vehicles/Helicopters/UH1H/Data/UH_1H_Body01-BlackNose.emat"
+    }
+   }
+  }
+ }
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{6A9CFE21ABDEA5AD}" {
+   m_Prefab "{423D78F865E8AF8A}Prefabs/Weapons/Magazines/Box_762x51_M60_500rnd_2Ball_1Tracer.et"
+   m_iAmountOfItemSupplyTruck 4
+   m_iAmountOfItemRegularVehicle 4
+  }
+ }
+}

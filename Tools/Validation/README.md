@@ -67,8 +67,40 @@ fields in `Setup`, not at declaration.
 The suite loads `CRF_FrameworkTestSuite.TEST_WORLD` before any case runs. Point
 it at a different world to validate that one instead.
 
+## Mission pull requests — `mission_synopsis.py`
+
+`.github/workflows/mission-pr.yml` keeps every mission pull request's description
+up to date from the committed files, on every push:
+
+- **Mission Synopsis** (`CRF_SYNOPSIS_START/END`): the same text the Lobby's
+  "6 | Generate Config File" plugin copies to the clipboard. Coalition_Bot builds
+  the Discord AAR thread from it when the PR merges, and the website's weekly
+  missions page reads it, so its format must keep matching
+  `COA_MissionSynopsisGenerator.c` (and CRF's `CRF_COA_MissionSynopsisGenerator.c`)
+  exactly. If either changes, change `build_synopsis()` to match.
+- **Automated Checks** (`CRF_CHECKS_START/END`): mission file, mission .conf,
+  play area and markers, briefings, ticked from the files.
+- **Title**: PRs that add a world get `New Mission | Author MODEnn Name`, from the
+  mission .conf and the current slot count. The AAR bot only acts on that prefix
+  and links the thread to the played mission by the name in it.
+
+It also removes the template's untouched faction lines for sides the mission has
+no slots for, which the bot would otherwise post. Everything else in the
+description is the mission maker's and is left alone.
+
+Values resolve like Workbench resolves them on the placed entity: the mission's
+own override, then CRF's `COA_Lobby.et`, then the Lobby's, then the script
+`[Attribute]` default. Defaults and enums are read from the Lobby's scripts at
+run time.
+
+```bash
+# Preview the synopsis, title and checks for a world
+python3 Tools/Validation/mission_synopsis.py --project ../COALITION-Lobby --world Worlds/Arland/Tanaka_TVT_ThePatrol.ent
+```
+
 ## CI wiring
 
-`.github/workflows/validate.yml` runs layer 1 only. Layer 2 needs a runner with
+`.github/workflows/validate.yml` runs layer 1 only. `.github/workflows/mission-pr.yml`
+updates mission pull requests (above). Layer 2 needs a runner with
 Arma Reforger installed; if you stand up a self-hosted runner, add a job that
 invokes `-autotest CRF_FrameworkTestSuite` and fails on a non-zero exit.

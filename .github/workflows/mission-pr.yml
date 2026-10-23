@@ -1,0 +1,84 @@
+name: Mission PR
+
+# Keeps a mission pull request's description up to date from the committed mission files, on
+# every push:
+#   - the Mission Synopsis block (CRF_SYNOPSIS_START/END) - the same text the "6 | Generate Config
+#     File" Workbench plugin copies to the clipboard. Coalition_Bot turns it into the Discord AAR
+#     thread when the PR is merged, and the website's weekly missions page reads it.
+#   - the Automated Checks block (CRF_CHECKS_START/END): mission file, .conf, play area/markers,
+#     briefings, ticked from the files.
+#   - the "New Mission | Author MODEnn Name" title, for PRs that add a world. The AAR bot only acts
+#     on PRs titled that way, and links the AAR thread to the played mission by the name in it.
+#
+# The mission maker only writes what can't be read from the files: factions/assets, objectives and
+# the briefing screenshot (see .github/PULL_REQUEST_TEMPLATE.md).
+#
+# Edits made with the workflow's own token don't trigger workflows, so updating the PR here can't
+# loop through the 'edited' trigger.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+    branches: [release]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: mission-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    name: Mission synopsis and checks
+    runs-on: ubuntu-latest
+    # Pull requests from forks get a read-only token and can't be updated; mission branches live
+    # in this repository
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - name: Checkout framework
+        uses: actions/checkout@v4
+        with:
+          path: Coalition-Reforger-Framework
+          fetch-depth: 0 # full history - needed to diff against release
+
+      - name: Checkout lobby
+        uses: actions/checkout@v4
+        with:
+          repository: CoalitionArma/COALITION-Lobby
+          ref: release
+          path: COALITION-Lobby
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build synopsis and checks
+        working-directory: Coalition-Reforger-Framework
+        run: |
+          git fetch origin release
+          # A fresh copy of the PR rather than the event payload: an earlier run, or the mission
+          # maker, may have changed it since this event fired
+          gh pr view "$PR_NUMBER" --json title,body,author > "$RUNNER_TEMP/pr.json"
+          python Tools/Validation/mission_synopsis.py --project ../COALITION-Lobby \
+            --base-ref origin/release --pr-json "$RUNNER_TEMP/pr.json" --out-dir "$RUNNER_TEMP/out"
+          if [ -f "$RUNNER_TEMP/out/summary.md" ]; then
+            cat "$RUNNER_TEMP/out/summary.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Update pull request
+        run: |
+          if [ -f "$RUNNER_TEMP/out/body.md" ]; then
+            gh pr edit "$PR_NUMBER" --body-file "$RUNNER_TEMP/out/body.md"
+            echo "Updated the description."
+          fi
+          if [ -f "$RUNNER_TEMP/out/title.txt" ]; then
+            gh pr edit "$PR_NUMBER" --title "$(cat "$RUNNER_TEMP/out/title.txt")"
+            echo "Set the title to: $(cat "$RUNNER_TEMP/out/title.txt")"
+          fi
