@@ -1,5 +1,9 @@
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  Quack_chaosControlGameComponent "{6AAE01911D98F643}" {
+   m_iSeconds 5
+   m_iMinutes 0
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {

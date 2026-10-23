@@ -28,7 +28,3 @@ $grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/Generator
   angles 0 166.835 0
  }
 }
-GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
- coords 2459.78 89.394 1479.083
- angles -45 -100.764 0
-}
