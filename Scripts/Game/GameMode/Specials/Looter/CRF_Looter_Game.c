@@ -187,13 +187,20 @@ class CRF_SpawnHelper
 {
 	// Standard height offset for all items (prevents ground clipping)
 	static const float HEIGHT_OFFSET = 0.05;
-	
+
+	// Shared resource cache, didnt cache originally so it re iterate prefabs for every spawn point...
+	protected static ref COA_ResourceCache m_ResourceCache = new COA_ResourceCache();
+
 	// Single item spawn with standardized flags
 	static void SpawnItem(ResourceName prefab, EntitySpawnParams spawnParams, bool isFlat = false, bool hasSpread = false, float spreadRadius = 0.3)
 	{
 		if (prefab == "")
 			return;
-			
+
+		Resource resource = m_ResourceCache.GetCachedResource(prefab);
+		if (!resource || !resource.IsValid())
+			return;
+
 		vector finalPos = spawnParams.Transform[3];
 		if (hasSpread)
 		{
@@ -205,24 +212,22 @@ class CRF_SpawnHelper
 		}
 		
 		EntitySpawnParams newParams = new EntitySpawnParams();
-		newParams.Transform[3] = finalPos;
 		newParams.TransformMode = ETransformMode.WORLD;
-		
-		IEntity entity = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), newParams);
-		
-		if (entity)
+
+		// Offset and rotation are baked into the spawn transform instead of applied afterwards, saves operaitons
+		if (isFlat)
 		{
-			// Apply standard height offset
-			vector currentPos = entity.GetOrigin();
-			entity.SetOrigin(currentPos + Vector(0, HEIGHT_OFFSET, 0));
-			
-			// Apply flat rotation if needed
-			if (isFlat)
-			{
-				float randomYaw = Math.RandomInt(0, 360);
-				entity.SetYawPitchRoll(Vector(randomYaw, 0, 90));
-			}
+			// Roll 90 lays the item flat on the ground; random yaw
+			vector rotation[3];
+			Math3D.AnglesToMatrix(Vector(Math.RandomFloat(0, 360), 0, 90), rotation);
+			newParams.Transform[0] = rotation[0];
+			newParams.Transform[1] = rotation[1];
+			newParams.Transform[2] = rotation[2];
 		}
+
+		newParams.Transform[3] = finalPos + Vector(0, HEIGHT_OFFSET, 0);
+
+		GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), newParams);
 	}
 	
 	// Multiple item spawn with spread
@@ -279,6 +284,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	bool m_bEnableIndividualBFT;
 	
 	protected bool m_bSpawnLootBatch = false;
+	protected bool m_bLootPassStarted = false;
+	protected COA_Gamemode m_Gamemode;
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -289,16 +296,47 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 			return;
 		
 		//This was spawning loot, or atleast trying to on the client as well :/
-		#ifdef WORKBENCH
-		#else
-		if (!System.IsConsoleApp())
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
 			return;
 		#endif
-		
+
 		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 
-		GetGame().GetCallqueue().CallLater(SpawnLoot, 3000, false);
-		Print("CRF_LooterGamemodeComponent: Spawning loot...");
+		m_Gamemode = COA_Gamemode.Cast(owner);
+		if (m_Gamemode && m_Gamemode.GetOnStateChanged())
+			m_Gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		if (m_Gamemode && m_Gamemode.GetOnStateChanged())
+			m_Gamemode.GetOnStateChanged().Remove(OnGamemodeStateChanged);
+
+		super.OnDelete(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Primary trigger, originally was OnGameModeStart, but suspect somewhere between initialization skipped spawns
+	protected void OnGamemodeStateChanged()
+	{
+		if (m_Gamemode && m_Gamemode.m_GamemodeState >= COA_EGamemodeState.SLOTTING)
+			SpawnLoot();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Fallback for missions that never reach SLOTTING. 
+	override void OnGameModeStart()
+	{
+		super.OnGameModeStart();
+
+		#ifndef WORKBENCH
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		#endif
+
+		SpawnLoot();
 	}
 	
 	float m_fUpdateBuffer = 0;
@@ -330,6 +368,10 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 	//! Main spawning function - builds combined loot pool and starts paced spawning
 	protected void SpawnLoot()
 	{
+		// Reachable from both the SLOTTING hook and OnGameModeStart
+		if (m_bLootPassStarted)
+			return;
+
 		// Build combined loot pool from all categories
 		m_aAllLootEntries = {};
 		
@@ -361,8 +403,10 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		// Start paced spawning
+		m_bLootPassStarted = true;
 		m_iCurrentSpawnIndex = 1;
 		m_bSpawnLootBatch = true;
+		Print("CRF_LooterGamemodeComponent: Spawning loot...");
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -401,6 +445,7 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_iCurrentSpawnIndex > m_iTotalSpawnPoints)
 		{
 			m_bSpawnLootBatch = false;
+			ClearEventMask(GetOwner(), EntityEvent.FIXEDFRAME);
 			Print("CRF_LooterGamemodeComponent: Loot spawning completed.");
 		}
 	}
@@ -417,7 +462,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 			if (roll <= cumulative)
 				return i;
 		}
-		return -1;
+		// Insure against rounding errors
+		return weights.Count() - 1;
 	}
 
 	//------------------------------------------------------------------------------------------------
