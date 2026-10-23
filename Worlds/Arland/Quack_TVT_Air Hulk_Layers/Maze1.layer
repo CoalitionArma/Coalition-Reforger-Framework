@@ -1,0 +1,1214 @@
+SCR_DestructibleBuildingEntity : "{0281C8310F67BD81}Prefabs/Structures/Houses/Village/House_Village_E_1I08/House_Village_E_1I08_Base.et" {
+ coords 616.447 132.369 470.268
+ angles 0 180 0
+}
+$grp SCR_DestructibleBuildingEntity : "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et" {
+ {
+  coords 601.751 132.749 470.785
+  angles 0 90 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 616.089 130.644 487.568
+  angles 0 -179.301 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{A9BD0F3A7B7CFF9A}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_blue.et" {
+ coords 569.707 135.079 469.882
+ {
+  Building {
+   ID "59B85D930A3DC8AA"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8AB"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8AF"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B2"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B4"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B6"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8BA"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC883"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC887"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC88B"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC88C"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC890"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "57228D78139753B7"
+   coords 0.367 4.192 1.556
+  }
+  GenericEntity {
+   ID "59B85D930A3DC85B"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "56FCE4356CE6EC0C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "56FCE4356CE6EC77"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A6"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A4"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A7"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D64B29FDD3F65E2"
+   coords 0 0 0.025
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8B9"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BC"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BD"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BE"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC895"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "572285DFAB51AAE1"
+     coords 0.18 0.37 -10.655
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A0"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A4"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8D2"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A5"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "59B85D930A3D0BB9"
+   coords 0 0 0
+  }
+  SCR_DestructibleBuildingEntity {
+   ID "5D62A9B5292AC4AA"
+   coords 0 0 0
+   {
+    GameEnvironmentProbeEntity {
+     ID "5D62A9B50BDFBA76"
+     coords 0.377 -2.935 -3.766
+    }
+   }
+  }
+ }
+}
+$grp SCR_DestructibleEntity : "{AAAF45FD8D585128}Prefabs/Structures/Walls/Brick/BrickWall_02/BrickWall_02_8m.et" {
+ {
+  coords 559.342 154.579 487.446
+  angles 0 7.536 0
+ }
+ {
+  coords 559.024 154.759 484.746
+  angles 0 2.384 0
+ }
+ {
+  coords 559.342 157.854 487.446
+  angles 0 7.536 0
+ }
+ {
+  coords 559.024 158.216 484.746
+  angles 0 2.384 0
+ }
+}
+$grp SCR_DestructibleEntity : "{BBFFD4DA9684BFB9}Prefabs/Structures/Walls/Brick/BrickWall_04/BrickWall_USSR_04_4m_decorative.et" {
+ {
+  coords 610.654 134.126 465.298
+ }
+ {
+  coords 622.566 130.73 492.543
+ }
+}
+SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_camo_v2.et" {
+ coords 627.557 129.906 478.518
+ angles 0 -90 0
+}
+SCR_DestructibleBuildingEntity : "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01.et" {
+ coords 595.255 131.799 497.774
+ angles 0 -90 0
+ {
+  Building {
+   ID "555CDCE34C25171B"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C251724"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C251731"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C25178F"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2517A1"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2517CE"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2517D5"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2517E1"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C25175E"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C251768"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C251771"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2516C9"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C2516E3"
+   coords 0 0 0
+  }
+  Building {
+   ID "555CDCE34C251687"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "52185CF735E760C8"
+   coords 2.655 2.289 4.876
+  }
+  GenericEntity {
+   ID "5B18E407FC5587AB"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "555CDCE34C25100E"
+   coords 0 0 -0.102
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "555CDCE34C251020"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "58588855C157DDD7"
+   coords 0 0 -0.021
+   {
+    GenericEntity {
+     ID "56C4DE5B46FE790F"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5690E48C117926FA"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568279007B95913E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5690E48E37C4741B"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5682790023B8AF6E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EB4B2F982BA80B8"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "56C4DE5A7BA1CC00"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "58588855286FDBC5"
+   coords 0 0 -0.02
+   {
+    GenericEntity {
+     ID "56C4DE5A30EED764"
+     coords 0 0 0
+    }
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{D217E566992B77F4}Prefabs/Structures/Services/Government/MunicipalOffice_E_01/MunicipalOffice_E_01_school_v2.et" {
+ coords 555.789 156.605 480.808
+ angles 0 -175 0
+ {
+  Building {
+   ID "59DC7BF37AA1A54F"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A579"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A500"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A505"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A506"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A50B"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A50D"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A50E"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A510"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A515"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A516"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A518"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A51D"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A51E"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A520"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A522"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A527"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A528"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A52A"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A52F"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A533"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A535"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A539"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A53A"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A53F"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A6D0"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A6D2"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A6C7"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A6CD"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A603"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A604"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A609"
+   coords 0 0 0
+  }
+  Building {
+   ID "59DC7BF37AA1A60A"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "5E649B4C307A18F3"
+   coords -4.255 5.838 4.306
+  }
+  GenericEntity {
+   ID "5EB2B5BD99E42770"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "55649319921183B4"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EB2B5BD9A7D3A04"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "55649319921183B4"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A566"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "59A880F6A7AFF090"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "59A880F6A7AFF093"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A57E"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "59A880F6A7AFF090"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "59A880F6A7AFF093"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6C0"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6C3"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6D9"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6DA"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6DD"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6DE"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6DF"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6F0"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4E08EDA116"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6F3"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4E08EDA116"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF37AA1A6F5"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4E08EDA116"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59DC7BF282FE586B"
+   coords 0 0 0
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m.et" {
+ coords 617.182 28.261 478.738
+}
+SCR_DestructibleBuildingEntity : "{DE43119351D125AC}Prefabs/Structures/Houses/Village/House_Village_E_1L02/House_Village_E_1L02t.et" {
+ coords 582.002 132.969 486.141
+ angles 0 -90 0
+ {
+  Building {
+   ID "55868127901DAE69"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "56B2C848447A76F5"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "56B2C848447A776A"
+     coords 0 0 0
+    }
+   }
+  }
+  Building {
+   ID "55868127901DAE14"
+   coords 0 0 0
+  }
+  Building {
+   ID "55868127901DAECF"
+   coords 0 0 0
+  }
+  Building {
+   ID "55868127901DAED5"
+   coords 0 0 0
+  }
+  Building {
+   ID "55868127901DAEE1"
+   coords 0 0 0
+  }
+  Building {
+   ID "55868127901DAE70"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "5216BBB8A7BEAFC0"
+   coords 6.837 1.93 -0.958
+  }
+  GenericEntity {
+   ID "5B1A94656668E89C"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "55868127901DAF30"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5564931B76D833CD"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DAF5E"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5564931B76D833CD"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DADED"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA574F378BD0"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "568ABA574F378BED"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DAE84"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DAE90"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DAEBF"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DADAE"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA5B8E4CDCD1"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "568ABA5B8E4CDCEC"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "55868127901DADC6"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA5B8E4CDCD1"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "568ABA5B8E4CDCEC"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "58C8A4CA6BA8D86E"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5564931ADBF597B6"
+     coords 0 0 0
+    }
+   }
+  }
+ }
+}
+$grp SCR_DestructibleEntity : "{F64EEE9BF8A98121}Prefabs/Structures/Walls/Brick/BrickWall_04/BrickWall_USSR_04_2m_1976.et" {
+ {
+  coords 607.967 134.463 465.483
+ }
+ {
+  coords 625.221 131.577 466.26
+ }
+}
+SCR_DestructibleBuildingEntity : "{F874C1A05BB6FE2D}Prefabs/Structures/Houses/Village/House_Village_E_1I04/House_Village_E_1I04t_green.et" {
+ coords 592.075 132.574 485.739
+ angles 0 90 0
+ {
+  Building {
+   ID "59C887D77934411E"
+   coords 0 0 0
+  }
+  Building {
+   ID "59C887D779344125"
+   coords 0 0 0
+  }
+  Building {
+   ID "59C887D77934415C"
+   coords 0 0 0
+  }
+  Building {
+   ID "59C887D779344172"
+   coords 0 0 0
+  }
+  Building {
+   ID "59C887D7793441C0"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "5E669082F474492F"
+   coords -7.655 2.006 0.912
+  }
+  GenericEntity {
+   ID "59C887D77934404A"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568279071FAD28C4"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59C887D77934407C"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "566A72C534DB0844"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59C887D779344052"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "55649319921183B4"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EB091C42F8DA123"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "59BD0C97FFBD1393"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EB26627D57C077F"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "59BD0C97FFBD1393"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EB091C358D887CF"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5668D20503330112"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59C887D77934434D"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA5A4A570191"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "568ABA5A4A5701AD"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5C56E4AA47B0599C"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "59C887D779344355"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA5AF0C339B3"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "568ABA5AF0C339C4"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59C887D7793441A3"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5564931ADBF597B6"
+     coords 0 0 0
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "59C887D779344083"
+   coords 0 0 0
+  }
+  StaticModelEntity {
+   ID "59C887D779344092"
+   coords 0 0 0
+  }
+ }
+}

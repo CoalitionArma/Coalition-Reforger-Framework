@@ -1,0 +1,34 @@
+$grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFloodlight_US_01.et" {
+ Floodlight1 {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_aLightData {
+     SCR_BaseLightData "{58CF01D19C208FF6}" {
+      m_vLightColor 0.5 0 1
+     }
+    }
+    m_eInitialLightState LIT
+   }
+  }
+  coords 2451.732 89.593 1456.138
+  angles 0 15.443 0
+ }
+ Floodlight2 {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_aLightData {
+     SCR_BaseLightData "{58CF01D19C208FF6}" {
+      m_vLightColor 0.5 0 1
+     }
+    }
+    m_eInitialLightState LIT
+   }
+  }
+  coords 2292.916 89.98 1257.336
+  angles 0 166.835 0
+ }
+}
+GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+ coords 2459.78 89.394 1479.083
+ angles -45 -100.764 0
+}

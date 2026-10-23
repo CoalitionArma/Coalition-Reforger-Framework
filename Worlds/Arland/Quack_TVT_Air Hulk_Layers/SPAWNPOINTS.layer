@@ -1,0 +1,67 @@
+LightEntity moon {
+ components {
+  RplComponent "{69580816FFEA382B}" {
+  }
+  Hierarchy "{69580816FCB5F123}" {
+  }
+ }
+ coords 569.668 33.501 467
+ Color 0.502 0 0 1
+ LV 8.73
+ ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+ ClipEV -10
+ Radius 6
+ NearPlane 0.31
+ SpotAngle 80
+ ShowSource 1
+ VolLightScale 0.071
+ LensFlareScale 0.39
+}
+COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 2387.466 1.553 3277.005
+ angles 0 20.109 0
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 2305.224 89.731 1314.828
+}
+GenericEntity sun : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
+ components {
+  MeshObject "{645A0008C015AC45}" {
+   Object "{13499D378CACC1F8}Assets/Props/Forest/DeerSkull_01/DeerSkull_01.xob"
+  }
+  SCR_BaseInteractiveLightComponent "{6AAE0182BC1BD0CA}" {
+   m_aLightData {
+    SCR_BaseLightData "{6AAE0182B34966E0}" {
+     m_eLightType POINT
+     m_vLightColor 1 0 0
+     m_fConeAngle 120
+     m_fRadius 20
+     m_fIntensityClipEV -5
+     m_eFlareType Disabled
+     m_eLightFlags 3
+    }
+   }
+   m_fLV 7
+   m_fDistanceAttenuation 1.1
+  }
+  ActionsManagerComponent "{645A0008F3808301}" {
+   ActionContexts {
+    UserActionContext "{64672208733A071F}" {
+     Position PointInfo "{646722087C87E39D}" {
+      Offset 0 -0.0994 -0.3554
+     }
+    }
+   }
+   additionalActions {
+    CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+     UIInfo UIInfo "{645A000816F0F771}" {
+      Name "Teleport To Vorm’ghul-Zha"
+     }
+     m_sObjectNameToTeleportTo "moon"
+    }
+   }
+  }
+ }
+ coords 2395.16 1.627 3292.203
+ angles 0 10.6 0
+}
