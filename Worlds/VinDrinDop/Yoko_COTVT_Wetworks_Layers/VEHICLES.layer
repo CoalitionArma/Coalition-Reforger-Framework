@@ -1,31 +1,27 @@
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 1600.92 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+  coords 2582.477 80.688 662.373
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
  }
  {
-  coords 1606.896 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+  coords 2585.331 80.688 666.859
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
  }
  {
-  coords 1611.66 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+  coords 2589.708 80.688 673.739
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
  }
  {
-  coords 1616.788 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
+  coords 2578.523 80.688 656.159
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
  }
  {
-  coords 1622.249 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
- }
- {
-  coords 1627.719 0 533.961
-  m_rVehicle "{FD1D1533946F4303}Vehicles/RiverRunner/RiverRunner_armed_ZDF.et"
- }
- {
-  coords 1622.415 6.541 481.975
-  angles 0 -91.961 0
+  coords 2524.676 80.689 616.39
+  angles 0 -57.535 0
   m_rVehicle "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et"
  }
 }

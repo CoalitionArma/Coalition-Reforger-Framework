@@ -1,11 +1,55 @@
 $grp GameEntity {
  cache1 {
-  coords 1299.874 2.188 2475.383
+  coords 4413.306 49.595 1622.77
  }
  cache2 {
-  coords 422.945 47.563 2174.637
+  coords 3384.038 148.352 2464.6
  }
  cache3 {
-  coords 1871.669 67.117 2261.917
+  coords 2522.685 81.836 1701.437
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6AB0F1AC6BE0C495}" {
+    m_sCheckpointName "Alpha"
+   }
+  }
+  coords 2849.525 79.763 1450.268
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6AB0F1AC6BE0C495}" {
+    m_iOrder 2
+    m_sCheckpointName "Bravo"
+   }
+  }
+  coords 3026.585 85.36 1857.189
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6AB0F1AC6BE0C495}" {
+    m_iOrder 3
+    m_sCheckpointName "Charlie"
+   }
+  }
+  coords 3708.008 259.907 1924.481
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6AB0F1AC6BE0C495}" {
+    m_iOrder 4
+    m_sCheckpointName "Delta"
+   }
+  }
+  coords 4089.923 8.122 792.036
+ }
+ {
+  components {
+   CRF_PatrolCheckpointComponent "{6AB0F1AC6BE0C495}" {
+    m_iOrder 5
+    m_sCheckpointName "Echo"
+   }
+  }
+  coords 3255.693 80.903 501.566
  }
 }

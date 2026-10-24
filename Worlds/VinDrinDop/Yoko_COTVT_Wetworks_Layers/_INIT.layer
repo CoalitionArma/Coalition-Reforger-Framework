@@ -27,6 +27,14 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
   CRF_CacheHuntGamemodeManager "{6AA10A02A89EF411}" {
+   m_aCacheSpawnPointNames {
+    "cache1"
+    "cache2"
+    "cache3"
+   }
+  }
+  CRF_PatrolGamemodeComponent "{6AB0F1AC979BF8DA}" {
+   m_bEndMissionOnVictory 0
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -52,12 +60,87 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AB0F1A9E1A1193F}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "US Forces are tasked with destroying caches and reconnecting the comms network"\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x "\
+   ""\
+   "OPFOR Composition: Unknown"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time: 12:00"\
+   ""\
+   "Weather: Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AB0F1A9E1A11EBE}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "1. Destory all Caches"\
+   "2. Reconnect the comms network (Radio in on PLT when near antenna)"\
+   ""\
+   "INTENT"\
+   "Patrol around and complete your objectives, be prepared for ambushes and gurreilla tactics from the enemy."\
+   ""\
+   "EXECUTION"\
+   "commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AB0F1A9E1A11F34}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Defend your caches and ambush the enemy at their partol points"\
+   ""\
+   "INTENT"\
+   "Set up ambushes and use gurreilla tactics to overwhelm your enemy"\
+   ""\
+   "EXECUTION"\
+   "commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AB0F1A9E1A11FBF}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AB0F1A9E1A11022}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6AA10A05352FE0AE}" {
+  COA_SlottingGroup "{6AB0FD2495306CD9}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -67,59 +150,75 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE277}" {
+  COA_SlottingGroup "{6AB0FD2495306DE1}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     RADIO_TELEPHONE_OPERATOR
     MEDIC
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE29B}" {
+  COA_SlottingGroup "{6AB0FD2495306E38}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     RADIO_TELEPHONE_OPERATOR
     MEDIC
-    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE310}" {
+  COA_SlottingGroup "{6AB0FD2495306EB8}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     RADIO_TELEPHONE_OPERATOR
     MEDIC
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE38B}" {
+  COA_SlottingGroup "{6AB0FD2495306F36}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     RADIO_TELEPHONE_OPERATOR
     MEDIC
-    GRENADIER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE415}" {
+  COA_SlottingGroup "{6AB0FD2495306FAC}" {
    m_sCallsign "Angel 1"
    m_FlagType HELICOPER
    m_aSlots {
@@ -130,7 +229,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6AA10A05352FE4AA}" {
+  COA_SlottingGroup "{6AB0FD24953060C3}" {
    m_sCallsign "ZEUS"
    m_FlagType SIGNAL
    m_aSlots {
@@ -140,7 +239,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AA10A05352FE525}" {
+  COA_SlottingGroup "{6AB0FD2495306155}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -153,8 +252,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
  }
- m_iBLUFORTickets 30
- m_iOPFORTickets 15
+ m_iBLUFORTickets 55
+ m_iOPFORTickets 25
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_fMissionTimeScale 1
@@ -187,7 +286,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6AB0F1ACF9B98C96" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
