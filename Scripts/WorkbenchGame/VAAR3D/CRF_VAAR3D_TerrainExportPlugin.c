@@ -73,6 +73,8 @@ class CRF_VAAR3D_TerrainExportPlugin : WorkbenchPlugin
 		"eden", "{853E92315D1D9EFE}worlds/Eden/Eden.ent",
 		"kolguyev", "{1EA95DAE3230BEB0}worlds/Cain/Cain.ent",
 		"chernarus", "{F513898A573B9C3F}Worlds/ChernarusMinusBeta.ent",
+		"denali", "{4169A24B95DEC173}worlds/Denali/denali_world.ent",
+		"novobahkmutivka", "{DB3EFA29AE277708}Novobakhmutivka.ent",
 		"belleauwood", "{340ED3C1F743457E}Worlds/BelleauWood/BelleauWood.ent",
 		"belize", "{D225252FA26D6D54}Worlds/UKSFO_S_Belize.ent",
 		"falklands", "{B3AC4C35D795749C}Worlds/BritMapProject/BritMapProject.ent",
