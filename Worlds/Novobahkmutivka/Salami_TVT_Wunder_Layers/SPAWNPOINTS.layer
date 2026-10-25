@@ -1,0 +1,27 @@
+COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ components {
+  SlotManagerComponent "{645911A160C1D2C6}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{CB81BF6576E682D3}Prefabs/Props/Fabric/Flags/Flag_1_2_USSR_01.et"
+    }
+   }
+  }
+ }
+ coords 217.417 115.537 4942.227
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ components {
+  SlotManagerComponent "{645911BAB1D66B16}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{ADA49F7BEE56BB4B}Prefabs/Props/Fabric/Flags/Gearscript Factions/GERMAN_FLAG.et"
+    }
+   }
+  }
+ }
+ coords 1888.581 100.74 3570.966
+}
+GenericEntity : "{6543141E2B6EA9AF}Prefabs/Systems/Sound/sound_backgroundcombat.et" {
+ coords 5878.221 98.221 4764.771
+}

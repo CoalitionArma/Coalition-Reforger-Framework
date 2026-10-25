@@ -1,3 +1,20 @@
+$grp Tree : "{00C9C289A467E096}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_carpinus_betulus_2f.et" {
+ {
+  coords 850.062 0 2933.638
+  angles 2.518 -121.765 -2.049
+  scale 1.144
+ }
+ {
+  coords 862.676 0 2936.588
+  angles 2.518 -121.765 -2.049
+  scale 1.144
+ }
+ {
+  coords 845.882 0 2920.101
+  angles 2.518 -121.765 -2.049
+  scale 1.144
+ }
+}
 GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
  components {
   CRF_VehicleDepot "{664C7C2465880153}" {
@@ -46,6 +63,14 @@ $grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSma
  {
   coords 2524.971 80.117 543.645
  }
+ {
+  coords 2231.855 76 420.152
+  angles 0 -12.428 0
+ }
+ {
+  coords 2217.93 76 416.648
+  angles 0 -12.552 0
+ }
 }
 $grp GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_Conflict_US_01.et" {
  {
@@ -89,6 +114,16 @@ $grp GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLar
   coords 2505.215 80.117 542.327
  }
 }
+$grp GenericEntity : "{B8BADFA9530C38F4}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_US.et" {
+ {
+  coords 2227.833 76.979 429.329
+  angles 0 -17.344 0
+ }
+ {
+  coords 2215.148 76.979 424.863
+  angles 0 -17.344 0
+ }
+}
 $grp Tree : "{BDDB9F1226C5C7C9}Prefabs/Trees/Mangrove1.et" {
  {
   components {
@@ -109,5 +144,22 @@ $grp Tree : "{BDDB9F1226C5C7C9}Prefabs/Trees/Mangrove1.et" {
   coords 348.817 2.718 2610.308
   scale 0.8
   DestroyAtNoHealth 0
+ }
+}
+$grp Tree : "{F2E366B002080516}Prefabs/Trees/Palm_Tree2.et" {
+ {
+  coords 414.613 35.465 3738.017
+  angles 0 -121.458 0
+  scale 0.795
+ }
+ {
+  coords 418.826 29.861 3748.002
+  angles 0 -121.458 0
+  scale 0.795
+ }
+ {
+  coords 1031.175 1.875 3125.693
+  angles 0 -121.458 0
+  scale 0.795
  }
 }

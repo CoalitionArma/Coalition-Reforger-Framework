@@ -6,7 +6,12 @@ class CRF_VAAR_GamemodeComponentClass: SCR_BaseGameModeComponentClass
 class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 {
 	//! Playback file format written by this component (see CRF_VAAR_DataContainer.c)
-	static const int FORMAT_VERSION = 2;
+	//! v3 adds heights (characters, vehicles, grenades, shot start/hit), aim pitch, stance and vehicle
+	//! pitch/roll for the 3D playback; the 2D viewer reads it like v2
+	static const int FORMAT_VERSION = 3;
+	//! Header "sk": shot kinds are reliable. Recordings from 12-16 Oct 2026 lack it - they marked every bullet
+	//! as a shell (bullets use ShellMoveComponent too), and the viewer corrects them.
+	static const int SHOT_KIND_REVISION = 1;
 
 	protected static CRF_VAAR_GamemodeComponent m_sInstance;
 
@@ -23,6 +28,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected int m_iCurrentFrame = 0;
 	protected bool m_bWroteFrame;
 	protected bool m_bClosed;		// file finished - nothing more may be appended
+	protected bool m_bRecord3D = true;	// the game mode's "AAR Recording" setting; off writes a v2 (2D) file
 
 	[Attribute("0.5", "auto", "Seconds between recorded frames", category: "CRF Virtual AAR System")]
     protected float m_iRecordIntervals = 0.5;
@@ -39,6 +45,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	protected ref array<ref CRF_VAAR_TrackedGrenade> m_aGrenades = {};
 	protected ref array<ref CRF_VAAR_GrenadeThrowEvent> m_aGrenadeThrowsBuffer = {};
 	protected int m_iNextGrenadeId = 1;
+
+	// How long a thrown grenade stays on the playback: smoke while it smokes; explosive ones until they
+	// explode (seen through RegisterShot, else the end of the fuse) - the exploded entity lingers
+	protected static const float SMOKE_GRENADE_LIFETIME_MS = 40000;
+	protected static const float EXPLOSIVE_GRENADE_LIFETIME_MS = 8000;	// no timer fuse (impact fuzes)
+	protected static const float GRENADE_FUSE_MARGIN_MS = 250;
+
+	// Map markers already written to the file: marker ID -> whether it was visible to its faction (shared)
+	protected ref map<int, bool> m_mRecordedMarkers = new map<int, bool>();
 
 	override void OnPostInit(IEntity owner)
 	{
@@ -141,7 +156,15 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------
 	protected void InitilizeAAR()
 	{
-		if (COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME || COA_SafestartManager.GetInstance().GetSafestartStatus())
+		// Switched off in the game mode's "AAR Recording" settings - an admin can still start it by hand
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (gamemode && !gamemode.m_bAARRecordingEnabled)
+		{
+			Print("[CRF_VAAR] AAR recording is switched off for this mission (game mode > AAR Recording)");
+			return;
+		}
+
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME || COA_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			m_iAARInitAttempts++;
 			if (m_iAARInitAttempts < MAX_AAR_INIT_RETRIES)
@@ -185,8 +208,34 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		world.Replace("\"", "'");
 		world.Replace("\\", "/");
 
-		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"frames\": [",
-			FORMAT_VERSION, mission, m_iRecordIntervals, System.GetUnixTime(), world));
+		// The world's scenes (a mission world is a sub-scene of its terrain): the in-game replay loads the
+		// terrain itself, without the mission's entities
+		string scenes;
+		BaseWorld baseWorld = GetGame().GetWorld();
+		if (baseWorld)
+		{
+			for (int sceneIndex = 0, sceneCount = baseWorld.GetNumSubScenes(); sceneIndex < sceneCount; sceneIndex++)
+			{
+				string scene = baseWorld.GetSubSceneName(sceneIndex);
+				scene.Replace("\"", "'");
+				scene.Replace("\\", "/");
+				if (!scenes.IsEmpty())
+					scenes += ", ";
+
+				scenes += "\"" + scene + "\"";
+			}
+		}
+
+		// Without the 3D data it's a v2 file: every reader then takes heights from the terrain and skips the rest
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		m_bRecord3D = !gamemode || gamemode.m_bAAR3DRecordingEnabled;
+		int version = FORMAT_VERSION;
+		if (!m_bRecord3D)
+			version = 2;
+
+		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"scenes\": [%7], \"frames\": [",
+			version, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes));
+		Print(string.Format("[CRF_VAAR] Recording format v%1 (3D data %2)", version, m_bRecord3D));
 
 		m_bWroteFrame = false;
 		m_mCharacterRoster.Clear();
@@ -194,6 +243,7 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		m_aGrenades.Clear();
 		m_aGrenadeThrowsBuffer.Clear();
 		m_iNextGrenadeId = 1;
+		m_mRecordedMarkers.Clear();
 		return true;
 	}
 
@@ -219,6 +269,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		foreach (CRF_VAAR_ShotEvent shot : m_aShotsBuffer)
 		{
+			if (!m_bRecord3D)
+				shot.Strip3D();
+
 			frame.s.Insert(shot);
 		}
 		m_aShotsBuffer.Clear();
@@ -234,6 +287,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			frame.gt.Insert(grenadeThrow);
 		}
 		m_aGrenadeThrowsBuffer.Clear();
+
+		RecordMarkerChanges(frame.m);
 
 		// Characters
 		foreach (AIAgent agent : agents)
@@ -258,12 +313,20 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			int characterFaction = GetFaction(character);
 			bool isPlayer = GetPlayerID(character) != 0;
 
-			string rosterKey = string.Format("%1|%2|%3", characterName, characterRole, characterFaction);
+			// 3D data: the in-game replay spawns the prefab and the 3D viewer draws the weapon
+			string characterPrefab;
+			string heldWeapon;
+			if (m_bRecord3D)
+			{
+				characterPrefab = GetPrefabName(character);
+				heldWeapon = GetHeldWeaponPrefab(chimeraCharacter);
+			}
+			string rosterKey = string.Format("%1|%2|%3|%4|%5", characterName, characterRole, characterFaction, characterPrefab, heldWeapon);
 			string knownKey;
 			if (!m_mCharacterRoster.Find(characterID, knownKey) || knownKey != rosterKey)
 			{
 				m_mCharacterRoster.Set(characterID, rosterKey);
-				frame.r.Insert(new CRF_VAAR_CharacterInfo(characterID, characterName, characterRole, characterFaction, isPlayer));
+				frame.r.Insert(new CRF_VAAR_CharacterInfo(characterID, characterName, characterRole, characterFaction, isPlayer, characterPrefab, heldWeapon));
 			}
 
 			int state = 0;
@@ -280,13 +343,21 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (controller && controller.IsUnconscious())
 				state |= CRF_EVAARCharacterState.UNCONSCIOUS;
 
+			int stance = ECharacterStance.STAND;
+			if (controller)
+				stance = controller.GetStance();
+
 			// Direction the character is looking
 			vector characterAim = vector.Forward;
 			AimingComponent headAiming = chimeraCharacter.GetHeadAimingComponent();
 			if (headAiming)
 				characterAim = headAiming.GetAimingDirectionWorld();
 
-			frame.c.Insert(new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state));
+			CRF_VAAR_CharacterSnapshot characterSnapshot = new CRF_VAAR_CharacterSnapshot(characterID, characterPos, characterAim, state, stance);
+			if (!m_bRecord3D)
+				characterSnapshot.Strip3D();
+
+			frame.c.Insert(characterSnapshot);
 		}
 
 		// Vehicles
@@ -305,7 +376,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (!m_mVehicleRoster.Find(vehicleID, knownVehicleKey) || knownVehicleKey != vehicleKey)
 			{
 				m_mVehicleRoster.Set(vehicleID, vehicleKey);
-				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType));
+				string vehiclePrefab;
+				if (m_bRecord3D)
+					vehiclePrefab = GetPrefabName(vehicle);
+
+				frame.vr.Insert(new CRF_VAAR_VehicleInfo(vehicleID, vehicleName, vehicleType, vehiclePrefab));
 			}
 
 			vector vehiclePos = vehicle.GetOrigin();
@@ -322,6 +397,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 			CRF_VAAR_VehicleSnapshot vehicleSnapshot = new CRF_VAAR_VehicleSnapshot(vehicleID, vehiclePos, vehicle.GetYawPitchRoll(), GetFaction(vehicle), GetHealth(vehicle), altitude);
 			GetVehicleOccupants(vehicle, vehicleSnapshot.oc, vehicleSnapshot.os);
+			if (!m_bRecord3D)
+				vehicleSnapshot.Strip3D();
+
 			frame.v.Insert(vehicleSnapshot);
 		}
 
@@ -342,7 +420,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				if (tracked.m_Entity.GetRootParent() != tracked.m_Entity)
 					continue;
 
-				frame.g.Insert(new CRF_VAAR_GrenadeSnapshot(tracked.m_iId, tracked.m_Entity.GetOrigin(), tracked.m_iType));
+				CRF_VAAR_GrenadeSnapshot grenadeSnapshot = new CRF_VAAR_GrenadeSnapshot(tracked.m_iId, tracked.m_Entity.GetOrigin(), tracked.m_iType);
+				if (!m_bRecord3D)
+					grenadeSnapshot.Strip3D();
+
+				frame.g.Insert(grenadeSnapshot);
 			}
 		}
 
@@ -391,6 +473,272 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 
 		Print("[CRF_VAAR] Recording Saved");
 		COA_RplBroadcastManager.GetInstance().BroadcastAdminChatMessage("[CRF_VAAR] Recording Saved");
+	}
+
+	// MAP MARKERS
+	//------------------------------------------------------------------------------------
+	//! Compares the server's map markers with the ones already written and records what changed. The server
+	//! holds every marker a player places as public (CRF shareable markers included, shared or not) and the
+	//! mission's own; private markers never leave the player's machine, so they can't be recorded.
+	protected void RecordMarkerChanges(notnull array<ref CRF_VAAR_MarkerEvent> events)
+	{
+		SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!markerManager)
+			return;
+
+		map<int, SCR_MapMarkerBase> current = new map<int, SCR_MapMarkerBase>();
+		foreach (SCR_MapMarkerBase marker : markerManager.GetStaticMarkers())
+		{
+			if (marker && marker.GetMarkerID() != -1)
+				current.Set(marker.GetMarkerID(), marker);
+		}
+		foreach (SCR_MapMarkerBase marker : markerManager.GetDisabledMarkers())
+		{
+			if (marker && marker.GetMarkerID() != -1)
+				current.Set(marker.GetMarkerID(), marker);
+		}
+
+		// Removed
+		array<int> removed = {};
+		foreach (int markerId, bool wasShared : m_mRecordedMarkers)
+		{
+			if (!current.Contains(markerId))
+				removed.Insert(markerId);
+		}
+		foreach (int markerId : removed)
+		{
+			m_mRecordedMarkers.Remove(markerId);
+			events.Insert(new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.REMOVED, markerId));
+		}
+
+		// Shared state is only worked out when some marker could still change it
+		set<int> sharedIds;
+		foreach (int markerId, SCR_MapMarkerBase marker : current)
+		{
+			bool known;
+			if (!m_mRecordedMarkers.Find(markerId, known) || !known)
+			{
+				sharedIds = GetSharedMarkerIds(markerManager);
+				break;
+			}
+		}
+
+		// Placed, or shared since the last frame
+		foreach (int markerId, SCR_MapMarkerBase marker : current)
+		{
+			bool wasShared;
+			bool recorded = m_mRecordedMarkers.Find(markerId, wasShared);
+			if (recorded && wasShared)
+				continue;
+
+			bool isShared = IsMarkerShared(marker, sharedIds);
+			if (!recorded)
+			{
+				m_mRecordedMarkers.Set(markerId, isShared);
+				events.Insert(CreateMarkerPlacedEvent(marker, markerManager, isShared));
+				continue;
+			}
+
+			if (isShared)
+			{
+				m_mRecordedMarkers.Set(markerId, true);
+				events.Insert(new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.SHARED, markerId));
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Markers a player has shared with teammates (CRF shareable markers): shared to the whole faction during
+	//! safestart, or handed to the players standing nearby
+	protected set<int> GetSharedMarkerIds(SCR_MapMarkerManagerComponent markerManager)
+	{
+		set<int> sharedIds = new set<int>();
+		foreach (int markerId, string factionKey : markerManager.m_aGlobalMarkers)
+		{
+			sharedIds.Insert(markerId);
+		}
+		foreach (int playerId, array<int> received : markerManager.m_MarkersSharedReference)
+		{
+			if (!received)
+				continue;
+			foreach (int markerId : received)
+			{
+				sharedIds.Insert(markerId);
+			}
+		}
+		return sharedIds;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Whether a marker's whole faction can see it. Only player markers of a faction with shareable markers
+	//! start out hidden from teammates.
+	protected bool IsMarkerShared(SCR_MapMarkerBase marker, set<int> sharedIds)
+	{
+		if (marker.GetMarkerOwnerID() <= 0)
+			return true;
+
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		Faction ownerFaction = SCR_FactionManager.SGetPlayerFaction(marker.GetMarkerOwnerID());
+		if (!gamemode || !ownerFaction || !gamemode.DoesFactionShareMarker(ownerFaction.GetFactionKey()))
+			return true;
+
+		return sharedIds && sharedIds.Contains(marker.GetMarkerID());
+	}
+
+	//------------------------------------------------------------------------------------
+	protected CRF_VAAR_MarkerEvent CreateMarkerPlacedEvent(SCR_MapMarkerBase marker, SCR_MapMarkerManagerComponent markerManager, bool isShared)
+	{
+		CRF_VAAR_MarkerEvent markerEvent = new CRF_VAAR_MarkerEvent(CRF_EVAARMarkerEvent.PLACED, marker.GetMarkerID());
+
+		int pos[2];
+		marker.GetWorldPos(pos);
+		markerEvent.x = pos[0] * 10;
+		markerEvent.z = pos[1] * 10;
+		markerEvent.r = marker.GetRotation();
+		markerEvent.n = marker.GetCustomText();
+		markerEvent.f = GetMarkerFaction(marker);
+		if (isShared)
+			markerEvent.s = 1;
+
+		int ownerId = marker.GetMarkerOwnerID();
+		if (ownerId > 0)
+		{
+			markerEvent.o = ownerId;
+			markerEvent.on = GetGame().GetPlayerManager().GetPlayerName(ownerId);
+		}
+
+		markerEvent.t = CRF_EVAARMarkerKind.OTHER;
+		markerEvent.c = 0xFFFFFF;
+
+		SCR_MapMarkerConfig config = markerManager.GetMarkerConfig();
+		if (!config)
+			return markerEvent;
+
+		SCR_EMapMarkerType markerType = marker.GetType();
+		if (markerType == SCR_EMapMarkerType.PLACED_CUSTOM)
+		{
+			markerEvent.t = CRF_EVAARMarkerKind.CUSTOM;
+			SCR_MapMarkerEntryPlaced placedConfig = SCR_MapMarkerEntryPlaced.Cast(config.GetMarkerEntryConfigByType(SCR_EMapMarkerType.PLACED_CUSTOM));
+			if (placedConfig)
+			{
+				markerEvent.c = ColorToSRGBInt(placedConfig.GetColorEntry(marker.GetColorEntry()));
+				ResourceName imageset, imagesetGlow;
+				string quad;
+				if (placedConfig.GetIconEntry(marker.GetIconEntry(), imageset, imagesetGlow, quad))
+					markerEvent.ic = quad;
+			}
+		}
+		else if (markerType == SCR_EMapMarkerType.PLACED_MILITARY)
+		{
+			markerEvent.t = CRF_EVAARMarkerKind.MILITARY;
+			FillMilitarySymbol(markerEvent, marker, SCR_MapMarkerEntryMilitary.Cast(config.GetMarkerEntryConfigByType(SCR_EMapMarkerType.PLACED_MILITARY)));
+		}
+
+		return markerEvent;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Identity, colour and "Dimension - Type" label of a NATO symbol marker, read the way
+	//! SCR_MapMarkerEntryMilitary.InitClientSettings does
+	protected void FillMilitarySymbol(CRF_VAAR_MarkerEvent markerEvent, SCR_MapMarkerBase marker, SCR_MapMarkerEntryMilitary militaryConfig)
+	{
+		if (!militaryConfig)
+			return;
+
+		int configId = marker.GetMarkerConfigID();
+		SCR_MarkerMilitaryFactionEntry factionEntry = militaryConfig.GetFactionEntry(configId % SCR_MapMarkerEntryMilitary.FACTION_DETERMINATOR);
+		if (factionEntry)
+		{
+			markerEvent.mi = factionEntry.GetFactionIdentity();
+			markerEvent.c = ColorToSRGBInt(factionEntry.GetColor());
+		}
+
+		array<string> labels = {};
+		SCR_MarkerMilitaryDimension dimension = militaryConfig.GetDimensionEntry(configId / SCR_MapMarkerEntryMilitary.FACTION_DETERMINATOR);
+		if (dimension)
+			labels.Insert(WidgetManager.Translate(dimension.GetTranslation()));
+
+		int typeFlags = marker.GetFlags();
+		array<ref SCR_MarkerMilitaryType> types = militaryConfig.GetMilitaryTypes();
+		if (typeFlags != 0 && types)
+		{
+			foreach (SCR_MarkerMilitaryType type : types)
+			{
+				if (typeFlags & type.GetType())
+					labels.Insert(WidgetManager.Translate(type.GetTranslation()));
+			}
+		}
+
+		string label;
+		foreach (string part : labels)
+		{
+			if (part.IsEmpty())
+				continue;
+			if (!label.IsEmpty())
+				label += " - ";
+			label += part;
+		}
+		markerEvent.ml = label;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Faction a marker is restricted to, else its author's faction (0 for mission markers everyone sees)
+	protected int GetMarkerFaction(SCR_MapMarkerBase marker)
+	{
+		FactionManager factionManager = GetGame().GetFactionManager();
+		if (factionManager && marker.GetMarkerFactionFlags() != 0)
+		{
+			array<Faction> factions = {};
+			factionManager.GetFactionsList(factions);
+			foreach (Faction faction : factions)
+			{
+				if (marker.IsFaction(factionManager.GetFactionIndex(faction)))
+					return FactionKeyToCode(faction.GetFactionKey());
+			}
+		}
+
+		if (marker.GetMarkerOwnerID() > 0)
+		{
+			Faction ownerFaction = SCR_FactionManager.SGetPlayerFaction(marker.GetMarkerOwnerID());
+			if (ownerFaction)
+				return FactionKeyToCode(ownerFaction.GetFactionKey());
+		}
+
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------
+	protected int FactionKeyToCode(string factionKey)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : {return 1;}
+			case "OPFOR" : {return 2;}
+			case "INDFOR" : {return 3;}
+			case "CIV" : {return 4;}
+		}
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Marker configs hold linear colours; the website draws sRGB
+	protected int ColorToSRGBInt(Color color)
+	{
+		if (!color)
+			return 0xFFFFFF;
+		return (LinearToSRGBByte(color.R()) << 16) | (LinearToSRGBByte(color.G()) << 8) | LinearToSRGBByte(color.B());
+	}
+
+	//------------------------------------------------------------------------------------
+	protected int LinearToSRGBByte(float linear)
+	{
+		linear = Math.Clamp(linear, 0, 1);
+		float srgb;
+		if (linear <= 0.0031308)
+			srgb = linear * 12.92;
+		else
+			srgb = 1.055 * Math.Pow(linear, 1 / 2.4) - 0.055;
+		return (int)Math.Clamp(Math.Round(srgb * 255), 0, 255);
 	}
 
 	// HELPERS
@@ -573,7 +921,9 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------
-	//! What a shot or kill came from, by the projectile's movement component
+	//! What a shot came from, by the projectile's movement component. Bullets move with ShellMoveComponent
+	//! too; what sets shells (mortar, cannon HE) apart is a trigger component that sets off their warhead -
+	//! a bullet's hit effects live in its move component instead.
 	protected int GetShotKind(IEntity projectile)
 	{
 		if (!projectile)
@@ -585,6 +935,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (root && root != projectile)
 			parts.Insert(root);
 
+		bool isShell;
+		bool hasTrigger;
 		foreach (IEntity part : parts)
 		{
 			if (part.FindComponent(GrenadeMoveComponent))
@@ -592,8 +944,13 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 			if (part.FindComponent(MissileMoveComponent))
 				return CRF_EVAARShotKind.ROCKET;
 			if (part.FindComponent(ShellMoveComponent))
-				return CRF_EVAARShotKind.SHELL;
+				isShell = true;
+			if (part.FindComponent(BaseTriggerComponent))
+				hasTrigger = true;
 		}
+
+		if (isShell && hasTrigger)
+			return CRF_EVAARShotKind.SHELL;
 
 		return CRF_EVAARShotKind.BULLET;
 	}
@@ -647,6 +1004,61 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		return entity.GetOrigin();
 	}
 
+	//------------------------------------------------------------------------------------
+	//! Resource name of the prefab an entity was spawned from ("" when it has none)
+	protected string GetPrefabName(IEntity entity)
+	{
+		if (!entity)
+			return "";
+
+		EntityPrefabData prefabData = entity.GetPrefabData();
+		if (!prefabData)
+			return "";
+
+		string name = prefabData.GetPrefabName();
+		name.Replace("\"", "'");
+		return name;
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Prefab of the weapon a character has in hand, "" for none
+	protected string GetHeldWeaponPrefab(SCR_ChimeraCharacter character)
+	{
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller)
+			return "";
+
+		BaseWeaponManagerComponent weaponManager = controller.GetWeaponManagerComponent();
+		if (!weaponManager)
+			return "";
+
+		BaseWeaponComponent weapon = weaponManager.GetCurrentWeapon();
+		if (!weapon)
+			return "";
+
+		return GetPrefabName(weapon.GetOwner());
+	}
+
+	//------------------------------------------------------------------------------------
+	//! Where a shot starts for the 3D playback: a character's eyes, a vehicle's origin raised to roughly
+	//! its weapon (map position as before for X/Z)
+	protected vector GetShotStart(IEntity shooter)
+	{
+		IEntity vehicle = CompartmentAccessComponent.GetVehicleIn(shooter);
+		if (vehicle)
+			return vehicle.GetOrigin() + Vector(0, 2, 0);
+
+		ChimeraCharacter character = ChimeraCharacter.Cast(shooter);
+		if (character)
+		{
+			vector eyes = character.EyePosition();
+			vector origin = character.GetOrigin();
+			return Vector(origin[0], eyes[1], origin[2]);
+		}
+
+		return shooter.GetOrigin();
+	}
+
 	// GETTERS
 	//------------------------------------------------------------------------------------
 	bool IsRecording()
@@ -667,17 +1079,17 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		s_aTrackedVehicles.RemoveItem(vehicle);
 	}
 	//------------------------------------------------------------------------------------
-	void RegisterShot(IEntity shooter, IEntity projectile, float hitX, float hitZ)
+	void RegisterShot(IEntity shooter, IEntity projectile, vector hit)
 	{
-		vector start = GetMapPosition(shooter);
+		vector start = GetShotStart(shooter);
 		int shooterID = GetID(shooter);
 
 		// Deduplicate: OnEffect can fire twice per bullet (e.g. two effects on weapon).
 		// Skip if the last buffered shot has identical scaled integer coordinates.
 		int newSx = (int)Math.Round(start[0] * 10);
 		int newSz = (int)Math.Round(start[2] * 10);
-		int newHx = (int)Math.Round(hitX * 10);
-		int newHz = (int)Math.Round(hitZ * 10);
+		int newHx = (int)Math.Round(hit[0] * 10);
+		int newHz = (int)Math.Round(hit[2] * 10);
 
 		if (!m_aShotsBuffer.IsEmpty())
 		{
@@ -686,7 +1098,18 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 				return;
 		}
 
-		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hitX, hitZ, GetShotKind(projectile)));
+		m_aShotsBuffer.Insert(new CRF_VAAR_ShotEvent(shooterID, start, hit, GetShotKind(projectile)));
+
+		// A thrown grenade going off - take it off the playback now
+		if (projectile && !m_aGrenades.IsEmpty())
+		{
+			IEntity projectileRoot = projectile.GetRootParent();
+			foreach (CRF_VAAR_TrackedGrenade tracked : m_aGrenades)
+			{
+				if (tracked.m_iType == CRF_EVAARGrenadeType.EXPLOSIVE && tracked.m_Entity && (tracked.m_Entity == projectile || tracked.m_Entity == projectileRoot))
+					tracked.m_fExpireAt = 0;
+			}
+		}
 	}
 	//------------------------------------------------------------------------------------
 	void RegisterCharacterDeath(notnull SCR_InstigatorContextData instigatorContextData)
@@ -728,11 +1151,18 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		}
 
 		int recordedType = CRF_EVAARGrenadeType.EXPLOSIVE;
-		float lifetime = COA_GrenadeTracker.EXPLOSIVE_LIFETIME_MS;
+		float lifetime = EXPLOSIVE_GRENADE_LIFETIME_MS;
 		if (grenadeType == COA_EGrenadeType.SMOKE)
 		{
 			recordedType = CRF_EVAARGrenadeType.SMOKE;
-			lifetime = COA_GrenadeTracker.SMOKE_LIFETIME_MS;
+			lifetime = SMOKE_GRENADE_LIFETIME_MS;
+		}
+		else
+		{
+			// Thrown as it leaves the hand, so it goes off by the end of its fuse
+			TimerTriggerComponent fuse = TimerTriggerComponent.Cast(grenade.FindComponent(TimerTriggerComponent));
+			if (fuse && fuse.GetTimer() > 0)
+				lifetime = fuse.GetTimer() * 1000 + GRENADE_FUSE_MARGIN_MS;
 		}
 
 		CRF_VAAR_TrackedGrenade newGrenade = new CRF_VAAR_TrackedGrenade();
