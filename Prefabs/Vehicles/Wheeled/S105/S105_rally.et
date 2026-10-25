@@ -28,27 +28,47 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
      RpmMaxTorque 7700
      Steepness 18
      Friction 95
+     RpmIdle 1000
+     RpmRedline 9300
      RpmMax 9500
     }
     Clutch Clutch Clutch {
-     MaxClutchTorque 550
+     MaxClutchTorque 750
     }
     Gearbox Gearbox Gearbox {
      Forward {
-      3.5 2.2 1.56 1.19 0.95
+      2.92 2.14 1.7 1.42 1.24 1.1
      }
-     Reverse 3.67
+     Reverse 3.2
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {
       Suspension Suspension "{4D8B26DFF8859A7B}" {
        SpringRate 40
+       MaxTravelDown 0.04
+      }
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       BrakeTorque 2200
+      }
+      Tyre Tyre "{4D8B26DFFD85E58F}" : "{8CFE8D5085FA6145}Prefabs/Vehicles/Wheeled/S105/Configs/VehicleSimulationTire_S105_rally.conf" {
+       LongitudinalFriction 1.35
       }
      }
      Axle "{4D8B26DF8CF2F3D8}" {
+      Differential Differential Diff_02 {
+       Type LSD
+       Strength 0.6
+       Ratio 3.9
+      }
       Suspension Suspension "{4D8B26DF2B10AE05}" {
        SpringRate 45
-       MaxTravelDown 0.02
+       MaxTravelDown 0.06
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       BrakeTorque 1300
+      }
+      Tyre Tyre "{4D8B26DF33F76974}" : "{8CFE8D5085FA6145}Prefabs/Vehicles/Wheeled/S105/Configs/VehicleSimulationTire_S105_rally.conf" {
+       LongitudinalFriction 1.35
       }
      }
     }
@@ -57,15 +77,15 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     }
     Pacejka Pacejka "{54D561D473F27BA1}" {
      Longitudinal PacejkaLongitudinal "{51DAB4E5E89185CD}" {
-      b0 1.65
+      b0 1.45
       b1 -80
       b2 2200
       b3 18
       b4 310
       b5 0.06
-      b6 0
-      b7 0.055
-      b8 -0.024
+      b6 0.02
+      b7 0.1
+      b8 0
       b9 0.014
       b10 0.28
      }
@@ -76,7 +96,7 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
       a3 2100
       a4 7.5
       a5 0.014
-      a6 -0.22
+      a6 -0.15
       a7 1
       a8 -0.03
       a9 -0.001
@@ -112,9 +132,19 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
    components {
     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ThrottleCurve {
+      8800 0.8 9300 0.5 9500 0
+     }
+     ReverseCurve {
+      950 0.8 1025 0.5 1100 0
+     }
      ClutchUncoupleTime 0.1
      ClutchCoupleTime 0.1
+     ClutchUncoupleRpm 3300
+     ClutchCoupleRpm 4400
      Latency 0.1
+     UpShiftRpm 3800
+     DownShiftRpm 3300
     }
    }
   }

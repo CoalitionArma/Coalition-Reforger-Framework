@@ -1,0 +1,137 @@
+GenericEntity : "{0AF1C4C9C7EF05F2}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_US_01.et" {
+ coords 3341.137 425.125 4552.941
+}
+GenericEntity : "{114DE81321786CD9}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01_PKM.et" {
+ coords 3322.887 428.03 4583.296
+ angles 0 -81.999 0
+}
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 3355.089 425.125 4530.197
+ }
+ {
+  coords 3370.038 425.126 4573.595
+  angles 0 52 0
+ }
+}
+GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
+ coords 3309.446 426.62 4561.485
+ angles 4.686 -95.917 -6.733
+}
+GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ coords 3337.521 425.65 4511.369
+}
+GenericEntity : "{7C20041DA3207191}Prefabs/Compositions/Slotted/SlotFlatSmall/AmmoStorage_S_USSR_01.et" {
+ coords 3354.927 426.614 4552.971
+}
+$grp GenericEntity : "{DFBF655559915333}Prefabs/Compositions/Slotted/SlotFlatSmall/GuardTower_S_USSR_01.et" {
+ {
+  coords 3308.444 425.112 4529.395
+  angles 0 -95.953 0
+ }
+ {
+  coords 3336.406 423.046 4475.789
+  angles 0 -147.865 0
+ }
+ {
+  coords 3392.819 420.464 4467.481
+  angles 0 174.958 0
+ }
+ {
+  coords 3439.575 421.949 4507.729
+  angles 0 119.303 0
+ }
+ {
+  coords 3439.686 424.508 4568.957
+  angles 0 61.595 0
+ }
+ {
+  coords 3386.552 425.685 4615.157
+  angles 0 0.276 0
+ }
+}
+$grp Vehicle : "{F203E2146C425605}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
+ Ural4320_ZU1 {
+  coords 3419.011 425.061 4537.843
+  angles 0 98.628 0
+  {
+   $grp GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+    {
+     coords 3.559 0.04 0.039
+     angles 0 -89.628 0
+    }
+    {
+     coords -2.495 -0.037 0.226
+     angles 0 -89.628 0
+    }
+    {
+     coords 0.509 -0.163 3.943
+     angles 0 -0.628 0
+    }
+   }
+  }
+ }
+ Ural4320_ZU2 {
+  coords 3365.576 425.125 4494.045
+  angles 0 -170.707 0
+  {
+   $grp GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+    {
+     coords 3.559 0.04 0.039
+     angles 0 -89.628 0
+    }
+    {
+     coords -2.495 -0.037 0.226
+     angles 0 -89.628 0
+    }
+    {
+     coords 0.509 -0.163 3.943
+     angles 0 -0.628 0
+    }
+   }
+  }
+ }
+ Ural4320_ZU3 {
+  coords 3401.009 425.125 4584.731
+  angles 0 53.665 0
+  {
+   $grp GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+    {
+     coords 3.559 0.04 0.039
+     angles 0 -89.628 0
+    }
+    {
+     coords -2.495 -0.037 0.226
+     angles 0 -89.628 0
+    }
+    {
+     coords 0.509 -0.163 3.943
+     angles 0 -0.628 0
+    }
+   }
+  }
+ }
+ Ural4320_ZU4 {
+  coords 3404.443 424.985 4499.042
+  angles 0 144.199 0
+  {
+   $grp GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+    {
+     coords 3.559 0.04 0.039
+     angles 0 -89.628 0
+    }
+    {
+     coords -2.495 -0.037 0.226
+     angles 0 -89.628 0
+    }
+    {
+     coords 0.509 -0.163 3.943
+     angles 0 -0.628 0
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{F68F3B7247F6E810}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et" {
+ coords 3384.128 425.261 4537.097
+}
