@@ -1,3 +1,6 @@
+SCR_MapEntity MapEntity_DenaliEmpty1 : "{D53FDCF54F2A8973}Prefabs/Map/MapEntity_DenaliEmpty.et" {
+ coords 573.057 223.509 369.631
+}
 SCR_AIWorld : "{0E73737564F88B7E}Prefabs/AI/SCR_AIWorld_DenaliEmpty.et" {
  coords 3835.14 299.459 2982.888
 }
