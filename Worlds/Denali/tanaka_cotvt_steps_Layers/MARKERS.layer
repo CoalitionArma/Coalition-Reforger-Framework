@@ -1,0 +1,39 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 3377.265 425.125 4529.796
+  m_MarkerColor 0.558 0.086 0.07 1
+  m_sDescription "AAA Site"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3843.983 298.039 3009.521
+  m_MarkerColor 0.558 0.086 0.07 1
+  m_sDescription "OBJ: Ridgeway Station"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5148.611 397.343 1740.324
+  m_MarkerColor 0.558 0.086 0.07 1
+  m_sDescription "QRF"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 578.924 220.031 419.064
+  m_MarkerColor 0.033 0.055 0.538 1
+  m_sQuadName "dot"
+  m_sDescription "US 101st ABN"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4297.624 400.238 5442.866
+  m_MarkerColor 0.033 0.055 0.538 1
+  m_sQuadName "dot"
+  m_sDescription "MARSOC Raiders"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
