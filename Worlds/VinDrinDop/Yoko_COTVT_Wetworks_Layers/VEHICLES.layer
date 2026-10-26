@@ -1,0 +1,27 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 2582.477 80.688 662.373
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 2585.331 80.688 666.859
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 2589.708 80.688 673.739
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 2578.523 80.688 656.159
+  angles 0 -57.535 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 2524.676 80.689 616.39
+  angles 0 -57.535 0
+  m_rVehicle "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et"
+ }
+}

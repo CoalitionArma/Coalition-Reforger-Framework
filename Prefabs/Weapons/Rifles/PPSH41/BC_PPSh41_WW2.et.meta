@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1E5C43655FBA89EF}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_fab250_4bombs.et"
+ Name "{994B3AC680126AA0}Prefabs/Weapons/Rifles/PPSH41/BC_PPSh41_WW2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

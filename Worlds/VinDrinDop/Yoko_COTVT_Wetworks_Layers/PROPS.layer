@@ -1,0 +1,36 @@
+$grp GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
+ {
+  coords 2848.947 79.729 1451.51
+  angles 0 -134.519 0
+ }
+ {
+  coords 3026.58 85.352 1856.613
+  angles 0 -103.943 0
+ }
+ {
+  coords 3706.905 259.907 1925.971
+  angles 0 145.626 0
+ }
+ {
+  coords 4089.864 8.119 791.901
+  angles 0 36.924 0
+ }
+ {
+  coords 3255.812 80.688 501.387
+  angles 0 36.924 0
+ }
+}
+$grp GenericEntity : "{BA80DD7144145924}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_FIA_01_V1.et" {
+ {
+  coords 3383.468 148.378 2465.944
+  angles 0 -119.549 0
+ }
+ {
+  coords 2520.306 81.845 1702.31
+  angles 0 107.051 0
+ }
+ {
+  coords 4415.028 49.595 1623.51
+  angles 0 -97.951 0
+ }
+}
