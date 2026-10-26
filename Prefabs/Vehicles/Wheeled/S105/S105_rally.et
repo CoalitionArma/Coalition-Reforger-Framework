@@ -37,7 +37,7 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     }
     Gearbox Gearbox Gearbox {
      Forward {
-      2.92 2.14 1.7 1.42 1.24 1.1
+      2.55 1.92 1.53 1.29 1.13 1.01
      }
      Reverse 3.2
     }
@@ -58,7 +58,7 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
       Differential Differential Diff_02 {
        Type LSD
        Strength 0.6
-       Ratio 3.9
+       Ratio 3.6
       }
       Suspension Suspension "{4D8B26DF2B10AE05}" {
        SpringRate 45
