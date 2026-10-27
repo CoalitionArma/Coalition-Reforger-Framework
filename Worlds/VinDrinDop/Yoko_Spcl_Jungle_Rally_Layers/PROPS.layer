@@ -1,0 +1,197 @@
+$grp SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Base.et" {
+ {
+  coords 736.464 0.753 1346.753
+  angles 0.067 3.965 -30.49
+ }
+ {
+  coords 942.1 24.21 2790.312
+  angles 2.564 -79.004 -10.489
+ }
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ coords 1144.626 8.339 2067.033
+ angles 0 -167.755 0
+}
+$grp GenericEntity : "{520626A206926F47}Prefabs/Props/Agriculture/Farm/Haystack_01.et" {
+ {
+  coords 739.932 0.864 1336.683
+  angles 0 0 0
+  scale 4.8
+ }
+ {
+  coords 739.932 0.864 1356.206
+  angles 0 0 0
+  scale 4.8
+ }
+ {
+  coords 739.932 0.864 1363.934
+  angles 0 0 0
+  scale 4.8
+ }
+}
+$grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+ {
+  coords 1151.224 9.336 2071.817
+  angles 0 31.644 0
+ }
+ {
+  coords 967.314 4.142 2894.836
+  angles 0 -22.723 0
+ }
+ {
+  coords 935.554 6.848 2963.031
+  angles 0 -119.168 0
+ }
+ {
+  coords 578.529 16.123 2886.345
+  angles -89.839 -42.755 -180
+ }
+ {
+  coords 334.382 7.57 2393.032
+  angles 0 -102.68 0
+ }
+ {
+  coords 599.288 3.226 1745.691
+  angles 0 -116.6 0
+ }
+ {
+  coords 733.766 5.886 1354.459
+  angles 0 146.664 0
+ }
+ {
+  coords 732.791 6.047 1339.275
+  angles 0 40.294 0
+ }
+ {
+  coords 921.393 48.893 2267.819
+  angles 0 9.561 0
+ }
+ {
+  coords 985.832 21.606 2784.635
+  angles 0 6.769 0
+ }
+}
+$grp GenericEntity : "{FD426896698B4615}Prefabs/Compositions/Misc/FreeRoamBuilding/Dragonsteeth_S_US_01.et" {
+ {
+  coords 963.086 2.528 2869.974
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 1.446 0 0
+   }
+  }
+ }
+ {
+  coords 963.036 2.469 2874.845
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 1.387 0 0
+   }
+  }
+ }
+ {
+  coords 964.617 2.322 2878.969
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 0.601 0 0.267
+   }
+  }
+ }
+ {
+  coords 965.17 2.306 2884.128
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 0.434 0 0.02
+    angles 0 29.425 0
+   }
+  }
+ }
+ {
+  coords 969.689 2.306 2886.927
+  scale 3.2
+ }
+ {
+  coords 942.868 2.56 2965.721
+  scale 3.2
+ }
+ {
+  coords 413.565 -0.005 1264.463
+  scale 3.2
+ }
+ {
+  coords 408.823 -0.005 1268.786
+  scale 3.2
+ }
+ {
+  coords 420.691 -0.001 1261.39
+  scale 3.2
+ }
+ {
+  coords 605.518 0 1768.016
+  angles 0 -42.348 0
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords -1.084 0 0
+   }
+  }
+ }
+ {
+  coords 601.909 0 1771.976
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 609.337 0 1763.826
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1674.723 4.62 1936.367
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1680.126 4.644 1935.21
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1685.167 4.516 1933.979
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2014.003 6.181 1873.854
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2018.941 6.124 1872.641
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2025.224 5.125 1872.288
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1388.456 6.298 1927.717
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1382.974 6 1928.161
+  angles 0 -42.348 0
+  scale 3.2
+ }
+}

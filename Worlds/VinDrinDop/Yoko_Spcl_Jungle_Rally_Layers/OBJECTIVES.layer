@@ -1,9 +1,78 @@
 $grp GameEntity {
- Rally_start {
+ rally_start {
   coords 2903.76 80.73 537.025
  }
- Rally_end {
-  coords 737.605 0.854 1348.12
+ rally_end {
+  coords 751.147 0.854 1345.628
   angles 0 81.6 0
+ }
+ rally_cp1 {
+  coords 2573.442 80.688 665.544
+ }
+ rally_cp2 {
+  coords 2790.705 79.482 1399.314
+ }
+ rally_cp3 {
+  coords 2273.921 85.814 1607.79
+ }
+ rally_cp4 {
+  coords 2015.118 6.511 1883.469
+ }
+ rally_cp5 {
+  coords 1676.917 4.177 1925.58
+ }
+ rally_cp6 {
+  coords 1425.952 1.357 1932.005
+ }
+ rally_cp7 {
+  coords 1157.216 7.541 2068.418
+ }
+ rally_cp8 {
+  coords 1117.225 35.695 2263.201
+ }
+ rally_cp9 {
+  coords 937.499 44.379 2344.539
+ }
+ rally_cp10 {
+  coords 978.778 38.158 2446.913
+ }
+ rally_cp11 {
+  coords 957.671 2.405 2882.341
+ }
+ rally_cp19 {
+  coords 250.945 3.224 2113.784
+ }
+ rally_cp20 {
+  coords 593.431 0 1759.048
+ }
+ rally_cp14 {
+  coords 552.254 2.424 2826.193
+ }
+ rally_cp18 {
+  coords 148.355 2.425 2246.821
+ }
+ rally_cp17 {
+  coords 331.947 2.424 2401.476
+ }
+ rally_cp13 {
+  coords 637.782 6.948 2946.618
+ }
+ rally_cp16 {
+  coords 337.102 2.424 2547.018
+ }
+ rally_cp15 {
+  coords 423.727 2.424 2661.864
+ }
+ rally_cp12 {
+  coords 785.74 2.343 2952.387
+ }
+ rally_cp22 {
+  coords 455.197 0.375 1263.304
+ }
+ rally_cp21 {
+  coords 405.457 0.73 1411.824
+ }
+ rally_cp23 {
+  coords 618.747 0.669 1300.117
  }
 }
