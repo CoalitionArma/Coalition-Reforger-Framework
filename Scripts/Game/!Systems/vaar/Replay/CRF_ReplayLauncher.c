@@ -16,10 +16,8 @@ class CRF_ReplayLauncher
 		if (world.IsEmpty())
 			return string.Format("No replay world for the terrain \"%1\" yet (CRF_ReplayWorlds)", meta.terrainKey);
 
-		Resource resource = Resource.Load(world);
-		if (!resource || !resource.IsValid())
-			return "The terrain for this replay isn't installed (" + world + ")";
-
+		// No Resource.Load check here: a world .ent isn't a loadable resource, so it failed for every terrain.
+		// Like vanilla, the scenario change below is the check - it refuses a world it can't start.
 		GameSessionStorage.s_Data.Set(CRF_Replay.STORAGE_FILE, CRF_Replay.ReplayPath(missionId));
 		GameSessionStorage.s_Data.Set(CRF_Replay.STORAGE_WORLD, world);
 		GameSessionStorage.s_Data.Set(CRF_Replay.STORAGE_TITLE, meta.name);
@@ -29,7 +27,7 @@ class CRF_ReplayLauncher
 		if (!GameStateTransitions.RequestScenarioChangeTransition(world, ResourceName.Empty, GetAddonList()))
 		{
 			ClearPending();
-			return "The game refused to load " + world;
+			return "The game couldn't load this replay's terrain - make sure its terrain mod is downloaded and enabled (" + world + ")";
 		}
 
 		GetGame().GetMenuManager().CloseAllMenus();

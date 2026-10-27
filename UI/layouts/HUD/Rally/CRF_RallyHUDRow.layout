@@ -1,0 +1,95 @@
+SizeLayoutWidgetClass {
+ Name "RallyRow"
+ Slot AlignableSlot "{4CBBF00D5B6E1B10}" {
+  HorizontalAlign 3
+ }
+ AllowHeightOverride 1
+ HeightOverride 24
+ {
+  OverlayWidgetClass "{4CBBF00D5B6E1B11}" {
+   Name "RowOverlay"
+   Slot AlignableSlot "{4CBBF00D5B6E1B12}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    ImageWidgetClass "{4CBBF00D5B6E1B13}" {
+     Name "Highlight"
+     Slot OverlayWidgetSlot "{4CBBF00D5B6E1B14}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 1 0.78 0 0
+    }
+    TextWidgetClass "{4CBBF00D5B6E1B15}" {
+     Name "PosText"
+     Slot OverlayWidgetSlot "{4CBBF00D5B6E1B16}" {
+      HorizontalAlign 0
+      VerticalAlign 1
+      Padding 10 0 0 0
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "1"
+     "Font Size" 13
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1B17}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1B18}" {
+     Name "NameText"
+     Slot OverlayWidgetSlot "{4CBBF00D5B6E1B19}" {
+      HorizontalAlign 3
+      VerticalAlign 1
+      Padding 34 0 118 0
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "Player"
+     "Font Size" 14
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1B1A}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1B1B}" {
+     Name "StatusText"
+     Slot OverlayWidgetSlot "{4CBBF00D5B6E1B1C}" {
+      HorizontalAlign 2
+      VerticalAlign 1
+      Padding 0 0 84 0
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text ""
+     "Font Size" 11
+     "Min Font Size" 9
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1B1D}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1B1E}" {
+     Name "TimeText"
+     Slot OverlayWidgetSlot "{4CBBF00D5B6E1B1F}" {
+      HorizontalAlign 2
+      VerticalAlign 1
+      Padding 0 0 10 0
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text ""
+     "Font Size" 14
+     "Min Font Size" 10
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1B20}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+ }
+}

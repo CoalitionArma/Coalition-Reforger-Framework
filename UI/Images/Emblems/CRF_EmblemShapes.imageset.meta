@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{6B3E1A0C5D7F2E92}UI/Images/Emblems/CRF_EmblemShapes.imageset"
+ Configurations {
+  ImageSetResourceClass PC {
+  }
+  ImageSetResourceClass XBOX_ONE : PC {
+  }
+  ImageSetResourceClass XBOX_SERIES : PC {
+  }
+  ImageSetResourceClass PS4 : PC {
+  }
+  ImageSetResourceClass HEADLESS : PC {
+  }
+  ImageSetResourceClass PS5 : PC {
+  }
+ }
+}
