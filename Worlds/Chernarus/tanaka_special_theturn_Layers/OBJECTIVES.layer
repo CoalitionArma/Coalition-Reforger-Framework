@@ -1,0 +1,39 @@
+GenericEntity turn_lz {
+ coords 6700.000 297.000 7950.000
+}
+GenericEntity turn_zombies_01 {
+ coords 5450.000 300.000 7750.000
+}
+GenericEntity turn_zombies_02 {
+ coords 5600.000 300.000 8350.000
+}
+GenericEntity turn_zombies_03 {
+ coords 5600.000 300.000 7150.000
+}
+GenericEntity turn_zombies_04 {
+ coords 6200.000 300.000 8500.000
+}
+GenericEntity turn_zombies_05 {
+ coords 6200.000 300.000 6950.000
+}
+GenericEntity turn_zombies_06 {
+ coords 6700.000 300.000 8600.000
+}
+GenericEntity turn_zombies_07 {
+ coords 6700.000 300.000 7050.000
+}
+GenericEntity turn_zombies_08 {
+ coords 7150.000 300.000 8450.000
+}
+GenericEntity turn_zombies_09 {
+ coords 7150.000 300.000 6950.000
+}
+GenericEntity turn_zombies_10 {
+ coords 7950.000 300.000 7700.000
+}
+GenericEntity turn_zombies_11 {
+ coords 7850.000 300.000 8250.000
+}
+GenericEntity turn_zombies_12 {
+ coords 7850.000 300.000 7100.000
+}
