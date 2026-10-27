@@ -1,0 +1,140 @@
+$grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+ RitSkull1 {
+  components {
+   SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+    m_aLightData {
+     SCR_BaseLightData "{6AAE0193F94F2233}" {
+      m_eLightType POINT
+      m_vLightOffset 0 0.061 -0.339
+      m_vLightColor 0.85 0.13 0.13
+      m_fRadius 15
+      m_eFlareType Disabled
+      m_eLightFlags 17
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 5.5
+    m_eInitialLightState OFF
+   }
+   ActionsManagerComponent "{6AB6356E000A367A}" {
+    ActionContexts {
+     UserActionContext "{6AB6356CE8FFEB2E}" {
+      ContextName "Default"
+      Position PointInfo "{6AB6356CFB85B3BF}" {
+      }
+     }
+    }
+    additionalActions {
+     Quack_RitualUserAction "{6AB6356C8C0E15D8}" {
+      ParentContextList {
+       "Default"
+      }
+      UIInfo UIInfo "{6AB6356C9AEDC55E}" {
+       Name "Conduct ritual"
+       Description "Will increase ritual by 1"
+      }
+      ActionTitle "Chant"
+      Duration 60
+     }
+    }
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 2319.664 90.573 1325.459
+  angles -45 57.643 0
+ }
+ RitSkull2 {
+  components {
+   SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+    m_aLightData {
+     SCR_BaseLightData "{6AAE0193F94F2233}" {
+      m_eLightType POINT
+      m_vLightOffset 0 0.061 -0.339
+      m_vLightColor 0.85 0.13 0.13
+      m_fRadius 15
+      m_eFlareType Disabled
+      m_eLightFlags 17
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 5.5
+    m_eInitialLightState OFF
+   }
+   ActionsManagerComponent "{6AB6356E000A367A}" {
+    ActionContexts {
+     UserActionContext "{6AB6356CE8FFEB2E}" {
+      ContextName "Default"
+      Position PointInfo "{6AB6356CFB85B3BF}" {
+      }
+     }
+    }
+    additionalActions {
+     Quack_RitualUserAction "{6AB6356C8C0E15D8}" {
+      ParentContextList {
+       "Default"
+      }
+      UIInfo UIInfo "{6AB6356C9AEDC55E}" {
+       Name "Conduct ritual"
+       Description "Will increase ritual by 1"
+      }
+      ActionTitle "Chant"
+      Duration 60
+     }
+    }
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 614.002 33.723 409.625
+  angles 0 180 0
+ }
+ RitSkull3 {
+  components {
+   SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+    m_aLightData {
+     SCR_BaseLightData "{6AAE0193F94F2233}" {
+      m_eLightType POINT
+      m_vLightOffset 0 0.061 -0.339
+      m_vLightColor 0.85 0.13 0.13
+      m_fRadius 15
+      m_eFlareType Disabled
+      m_eLightFlags 17
+     }
+    }
+    m_bGradualLightning 1
+    m_fLV 5.5
+    m_eInitialLightState OFF
+   }
+   ActionsManagerComponent "{6AB6356E000A367A}" {
+    ActionContexts {
+     UserActionContext "{6AB6356CE8FFEB2E}" {
+      ContextName "Default"
+      Position PointInfo "{6AB6356CFB85B3BF}" {
+      }
+     }
+    }
+    additionalActions {
+     Quack_RitualUserAction "{6AB6356C8C0E15D8}" {
+      ParentContextList {
+       "Default"
+      }
+      UIInfo UIInfo "{6AB6356C9AEDC55E}" {
+       Name "Conduct ritual"
+       Description "Will increase ritual by 1"
+      }
+      ActionTitle "Chant"
+      Duration 60
+     }
+    }
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 550.54 66.873 435.92
+  angles 0 -90 0
+ }
+}

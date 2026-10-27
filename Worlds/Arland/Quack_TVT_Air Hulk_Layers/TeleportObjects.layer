@@ -1,29 +1,60 @@
-LightEntity moon {
- components {
-  RplComponent "{69580816FFEA382B}" {
+$grp LightEntity {
+ moon {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
   }
-  Hierarchy "{69580816FCB5F123}" {
-  }
+  coords 569.668 33.501 467
+  Color 0.502 0 0 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
  }
- coords 569.668 33.501 467
- Color 0.502 0 0 1
- LV 8.73
- ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
- ClipEV -10
- Radius 6
- NearPlane 0.31
- SpotAngle 80
- ShowSource 1
- VolLightScale 0.071
- LensFlareScale 0.39
+ Comet1 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 615.834 33.931 448.521
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
 }
-SCR_BaseTriggerEntity TeleportSphere1 {
- coords 2473.95 89.475 1449.365
- TriggerShapeType Sphere
- SphereRadius 14.6
- DrawShape 1
- ShapeColor 0.3921 0.1569 0.6235 1
- TriggerActivationType "All changes"
+$grp SCR_BaseTriggerEntity {
+ TeleportSphere1 {
+  coords 2473.95 89.475 1449.365
+  TriggerShapeType Sphere
+  SphereRadius 14.6
+  DrawShape 1
+  ShapeColor 0.3921 0.1569 0.6235 1
+  TriggerActivationType "All changes"
+ }
+ TeleportSphere2 {
+  coords 2266.904 89.984 1184.079
+  TriggerShapeType Sphere
+  SphereRadius 14.6
+  DrawShape 1
+  ShapeColor 0.3921 0.1569 0.6235 1
+  TriggerActivationType "All changes"
+ }
 }
 GenericEntity sun : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
  components {

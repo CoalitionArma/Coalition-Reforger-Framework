@@ -100,11 +100,27 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	void addnumber()
 	{
 		RitualSitesActivations ++;
-		if(RitualSitesActivations < 7)
+		if (RitualSitesActivations < 2)
+		{
+			SCR_PopUpNotification.GetInstance().PopupMsg(
+			string.Format("The cult has completed %1 ritual out of %2", RitualSitesActivations, 8), 5);
+		}
+		
+		else if (RitualSitesActivations <= 7)
+		{
+			SCR_PopUpNotification.GetInstance().PopupMsg(
+			string.Format("The cult has completed %1 rituals out of %2", RitualSitesActivations, 8), 5);
+		}
+		
+		else if(RitualSitesActivations > 7)
 		{
 			SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-			gamemode.SetGameState(COA_EGamemodeState.AAR);
+			SCR_PopUpNotification.GetInstance().PopupMsg("The ritual is complete!", 5, "The elder gods have awoken!");
+			// Play ending music here.
+			// gamemode.SetGameState(COA_EGamemodeState.AAR);
 		}
+		
+		Print(RitualSitesActivations);
 	}
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -134,9 +150,7 @@ class Quack_TriggerStormUserAction : ScriptedUserAction
 		// teleport player
 	}
 	
-	void Movetriggers()
-	{
-	}
+	//Activate triggers with flags
 	
 }
 
@@ -149,5 +163,12 @@ class Quack_RitualUserAction : ScriptedUserAction
 		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
 		Quack_chaosControlGameComponent GameComp = Quack_chaosControlGameComponent.Cast(gamemode.FindComponent(Quack_chaosControlGameComponent));
 		GameComp.addnumber();
+		
+		SCR_BaseInteractiveLightComponent ritlight = SCR_BaseInteractiveLightComponent.Cast(pOwnerEntity.FindComponent(SCR_BaseInteractiveLightComponent));
+		if(ritlight)
+		ritlight.ToggleLight(!ritlight.IsOn());
+		
+		//SCR_EntityHelper.DeleteEntityAndChildren(pOwnerEntity);
+		
 	}
 }

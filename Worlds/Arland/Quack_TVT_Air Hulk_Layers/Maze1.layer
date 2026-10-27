@@ -2,6 +2,19 @@ SCR_DestructibleBuildingEntity : "{0281C8310F67BD81}Prefabs/Structures/Houses/Vi
  coords 616.447 132.369 470.268
  angles 0 180 0
 }
+SCR_DestructibleBuildingEntity : "{04457EB8415A90F9}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_USSR_01_Office.et" {
+ coords 659.996 129.423 451.36
+ angles 0 -90 0
+}
+$grp SCR_DestructibleBuildingEntity : "{0628C52DA626BE08}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_white_tutorial.et" {
+ {
+  coords 639.006 133.182 438.308
+  angles 0 90 0
+ }
+ {
+  coords 554.985 158.603 458.498
+ }
+}
 $grp SCR_DestructibleBuildingEntity : "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et" {
  {
   coords 601.751 132.749 470.785
@@ -449,20 +462,16 @@ SCR_DestructibleBuildingEntity : "{A9BD0F3A7B7CFF9A}Prefabs/Structures/Cultural/
 }
 $grp SCR_DestructibleEntity : "{AAAF45FD8D585128}Prefabs/Structures/Walls/Brick/BrickWall_02/BrickWall_02_8m.et" {
  {
-  coords 559.342 154.579 487.446
-  angles 0 7.536 0
+  coords 559.342 154.658 486.434
  }
  {
-  coords 559.024 154.759 484.746
-  angles 0 2.384 0
+  coords 559.042 154.748 484.15
  }
  {
-  coords 559.342 157.854 487.446
-  angles 0 7.536 0
+  coords 559.342 157.854 486.434
  }
  {
-  coords 559.024 158.216 484.746
-  angles 0 2.384 0
+  coords 559.024 158.212 484.15
  }
 }
 $grp SCR_DestructibleEntity : "{BBFFD4DA9684BFB9}Prefabs/Structures/Walls/Brick/BrickWall_04/BrickWall_USSR_04_4m_decorative.et" {
@@ -472,10 +481,65 @@ $grp SCR_DestructibleEntity : "{BBFFD4DA9684BFB9}Prefabs/Structures/Walls/Brick/
  {
   coords 622.566 130.73 492.543
  }
+ {
+  coords 652.93 130.54 458.502
+  angles 0 90 0
+ }
+ {
+  coords 567.886 159.506 442.099
+ }
+}
+SCR_DestructibleBuildingEntity : "{BE8A5FE302E617B6}Prefabs/Structures/Military/Houses/Cafeteria_E_01/Cafeteria_E_01_camo.et" {
+ coords 616.97 134.491 432.21
+ angles 0 90 0
 }
 SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_camo_v2.et" {
  coords 627.557 129.906 478.518
  angles 0 -90 0
+ {
+  GameEntity {
+   ID "5886F6E0EC0B367D"
+   {
+    LightEntity {
+     ID "5886F6E0EC0B40ED"
+     components {
+      StreetLampComponent "{55A0954A909C9109}" {
+       Enabled 0
+      }
+     }
+    }
+   }
+  }
+  GameEntity {
+   ID "5886F6E0EC0B40B8"
+   {
+    LightEntity {
+     ID "5886F6E0EC0A880E"
+     components {
+      StreetLampComponent "{55A0954A909C9109}" {
+       Enabled 0
+      }
+     }
+    }
+   }
+  }
+  GameEntity {
+   ID "5886F6E0EC0BE84F"
+   {
+    LightEntity {
+     ID "5886F6E0EC0B3652"
+     components {
+      StreetLampComponent "{55A0954A909C9109}" {
+       Enabled 0
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{CAAF73FB98E22FE4}Prefabs/Structures/Military/Houses/ApartmentBuilding_3I01/ApartmentBuilding_USSR_3I01.et" {
+ coords 562.185 160.107 435.892
 }
 SCR_DestructibleBuildingEntity : "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01.et" {
  coords 595.255 131.799 497.774
@@ -618,8 +682,8 @@ SCR_DestructibleBuildingEntity : "{CD370ECB385DE67A}Prefabs/Structures/Houses/Fa
  }
 }
 SCR_DestructibleBuildingEntity : "{D217E566992B77F4}Prefabs/Structures/Services/Government/MunicipalOffice_E_01/MunicipalOffice_E_01_school_v2.et" {
- coords 555.789 156.605 480.808
- angles 0 -175 0
+ coords 555.997 156.85 479.69
+ angles 0 -180 0
  {
   Building {
    ID "59DC7BF37AA1A54F"
