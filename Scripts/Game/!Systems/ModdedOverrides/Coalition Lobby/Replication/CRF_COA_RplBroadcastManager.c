@@ -137,6 +137,20 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Every player hears a sound file (a .wav, not an .acp event), non-positional - e.g. a distant siren
+	//! whose distance is baked into the recording
+	void PlaySoundForEveryone(string soundFile)
+	{
+		LogTelemetry("PlaySoundForEveryone", COA_BandwidthTelemetryManager.EstimateSize_String(soundFile));
+
+		#ifdef WORKBENCH
+		RpcDo_PlaySoundForEveryone(soundFile);
+		#else
+		Rpc(RpcDo_PlaySoundForEveryone, soundFile);
+		#endif
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void StopPositionalSound(string soundEvent)
 	{
 		LogTelemetry("StopPositionalSound", COA_BandwidthTelemetryManager.EstimateSize_String(soundEvent));
@@ -498,6 +512,16 @@ modded class COA_RplBroadcastManager : ScriptComponent
 		m_mSoundHandles.Set(soundEvent, AudioSystem.PlayEvent(resource, soundEvent, soundTransform));
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_PlaySoundForEveryone(string soundFile)
+	{
+		// Restart rather than layer a second copy if it is still playing
+		if (m_mSoundHandles.Contains(soundFile))
+			AudioSystem.TerminateSound(m_mSoundHandles.Get(soundFile));
+		m_mSoundHandles.Set(soundFile, AudioSystem.PlaySound(soundFile));
+	}
+
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_StopPositionalSound(string soundEvent)

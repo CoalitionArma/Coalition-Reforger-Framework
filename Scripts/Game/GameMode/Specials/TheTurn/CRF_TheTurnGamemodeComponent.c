@@ -140,6 +140,9 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", UIWidgets.ResourcePickerThumbnail, "Map marker icon for the LZ.", params: "edds", category: "The Turn - Map")]
 	protected ResourceName m_sMarkerIcon;
 
+	[Attribute("{7C1AE1F2A3B4C800}Sounds/Halloween/CRF_DistantSiren.wav", UIWidgets.ResourceNamePicker, "Sound file everyone hears at the outbreak and when the helicopter is called - a far-off civil defence siren by default. Empty = none.", params: "wav", category: "The Turn - Story")]
+	protected ResourceName m_sSirenSound;
+
 	//===================================================================================
 	// STATE
 	//===================================================================================
@@ -466,6 +469,19 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", "OUTBREAK",
 			string.Format("They're coming from every direction. The fight doesn't matter any more - stay alive. A helicopter will be called in %1 minutes, and it won't have room for everyone.", Math.Round(m_fExtractionCallMinutes)), 15);
+		SoundSiren();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A far-off siren everyone hears
+	protected void SoundSiren()
+	{
+		if (m_sSirenSound.IsEmpty())
+			return;
+
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.PlaySoundForEveryone(m_sSirenSound);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -719,6 +735,7 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", "A helicopter is coming",
 			string.Format("It lands in %1 with %2 seats - not enough for everyone.%3 Whoever gets aboard gets out.", CRF_SpecialsHelper.FormatSeconds(m_iInboundSeconds), m_iSeats, grid), 15);
+		SoundSiren();
 	}
 
 	//------------------------------------------------------------------------------------------------
