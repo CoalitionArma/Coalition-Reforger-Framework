@@ -1,0 +1,82 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 4760.005 339.89 10271.443
+  m_MarkerColor 0.1 0.65 0.2 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 60
+  m_sDescription "Antidote"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4625.658 340.72 10489.53
+  m_MarkerColor 0.1 0.65 0.2 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 60
+  m_sDescription "Antidote"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 4133.933 327.406 10707.21
+  m_MarkerColor 0.85 0.5 0.05 1
+  m_sDescription "Search: fuel and repair kits"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 160
+  m_fWorldSizeY 160
+ }
+ {
+  coords 4642.641 327.411 10374.318
+  m_MarkerColor 0.85 0.5 0.05 1
+  m_sDescription "Search: fuel and repair kits"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 200
+  m_fWorldSizeY 200
+ }
+ {
+  coords 4866.017 327.411 10110.083
+  m_MarkerColor 0.85 0.5 0.05 1
+  m_sDescription "Search: fuel"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 160
+  m_fWorldSizeY 160
+ }
+ {
+  coords 4497.395 339.001 10749.305
+  m_MarkerColor 0.85 0.5 0.05 1
+  m_sDescription "Search: fuel"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 160
+  m_fWorldSizeY 160
+ }
+ {
+  coords 4295.354 338.999 10415.501
+  m_MarkerColor 0.85 0.5 0.05 1
+  m_sDescription "Search: fuel"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 160
+  m_fWorldSizeY 160
+ }
+}

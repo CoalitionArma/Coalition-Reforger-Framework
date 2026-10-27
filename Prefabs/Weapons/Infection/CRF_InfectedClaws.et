@@ -1,0 +1,21 @@
+GenericEntity : "{162B148542B5A5F4}622120A5448725E3/Prefabs/Weapons/Handgun_Melee_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB0701437228}" {
+     Name "Claws"
+     Description "Switch to your sidearm and use melee to strike. A hit can infect a survivor."
+    }
+    m_bVisible 1
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "Claws"
+    Description "Switch to your sidearm and use melee to strike. A hit can infect a survivor."
+    Icon ""
+   }
+  }
+ }
+}

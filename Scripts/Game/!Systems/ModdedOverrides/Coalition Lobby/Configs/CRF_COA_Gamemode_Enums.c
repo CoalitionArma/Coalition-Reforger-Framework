@@ -16,4 +16,5 @@ modded enum COA_EGamemode
 	CTF,
 	DIRECTIONFINDING,
 	PATROLAMBUSH,
+	INFECTION,
 }

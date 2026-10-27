@@ -17,6 +17,17 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 			return;
 		}
 
+		// Infection special: the infected never tire
+		if (pDrain > 0)
+		{
+			CRF_InfectionGamemodeComponent infection = CRF_InfectionGamemodeComponent.GetInstance();
+			if (infection && infection.IsTirelessInfected(GetOwner()))
+			{
+				AddStamina(pDrain);
+				return;
+			}
+		}
+
 		if (pDrain <= 0)
 		{
 			// Recovery event — cancel proportionally to lone-wolf penalty intensity
