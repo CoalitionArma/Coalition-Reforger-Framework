@@ -19,7 +19,9 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	protected bool key2;
 	int RitualSitesActivations = 0;
 	// Need an array of locations, perferably 8 to randomly teleport players to; as well as two known locations. 
+	
 	//------------------------------------------------------------------------------------------------	
+	// Wait for the safe start to end before starting the countdown.
 	protected void WaitGameStart(IEntity owner)
 	{
 		float TotalDuration = (m_iSeconds * 1000) + (m_iMinutes * 60000);
@@ -60,6 +62,9 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	protected bool isGameRunning()
 	{
 		SCR_BaseGameMode checker = SCR_BaseGameMode.Cast(GetGame().GetGameMode());;
+		if (!checker)
+			return false;
+		
 		return checker.IsRunning();
 	}
 	
@@ -91,12 +96,10 @@ class Quack_chaosControlGameComponent : ScriptComponent
 
 		key1 = true;
 		key2 = true;
-		 
-//		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-//		gamemode.SetGameState(COA_EGamemodeState.AAR);
 	}
 		
 	//------------------------------------------------------------------------------------------------
+	// Increases the number of ritual sites completed and spits out a message depending on how the game is going.
 	void addnumber()
 	{
 		RitualSitesActivations ++;
@@ -115,7 +118,7 @@ class Quack_chaosControlGameComponent : ScriptComponent
 		else if(RitualSitesActivations > 7)
 		{
 			SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-			SCR_PopUpNotification.GetInstance().PopupMsg("The ritual is complete!", 5, "The elder gods have awoken!");
+			SCR_PopUpNotification.GetInstance().PopupMsg("The Awakening Ritual is complete!", 5, "The Elder Gods have awoken!");
 			// Play ending music here.
 			// gamemode.SetGameState(COA_EGamemodeState.AAR);
 		}
@@ -156,19 +159,68 @@ class Quack_TriggerStormUserAction : ScriptedUserAction
 
 class Quack_RitualUserAction : ScriptedUserAction
 {
+	bool ActivationSwitch = 1;
 	//------------------------------------------------------------------------------------------------
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		//Add 1 token to ritual activations then check if the win conditions have been met 
+		// Add 1 token to ritual activations then check if the win conditions have been met 
 		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
 		Quack_chaosControlGameComponent GameComp = Quack_chaosControlGameComponent.Cast(gamemode.FindComponent(Quack_chaosControlGameComponent));
 		GameComp.addnumber();
-		
+		// Add a glow to the skull by calling the SCR_BaseInteractiveLightComponent toggle light method. 
 		SCR_BaseInteractiveLightComponent ritlight = SCR_BaseInteractiveLightComponent.Cast(pOwnerEntity.FindComponent(SCR_BaseInteractiveLightComponent));
 		if(ritlight)
 		ritlight.ToggleLight(!ritlight.IsOn());
+		// Prevent characters from conducting the ritual again.
+		ActivationSwitch = 0;
 		
-		//SCR_EntityHelper.DeleteEntityAndChildren(pOwnerEntity);
-		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Determines if a character has the ability to conduct the ritual by checking for the wrench (ritual totem) or if the ritual has been completed on this site before.
+	override bool CanBeShownScript(IEntity user) 
+	{ 
+		if(!CharacterHasWrench(user) || (ActivationSwitch == 0))
+		{	
+			return false;
+		}
+		return true;
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	// Only characters that have the ritual "totem" may conduct the ritual.
+	// This method checks the character's inventory for the wrench (which will be our stand in for the totem).
+	bool CharacterHasWrench(IEntity characterEntity)
+	{
+	    if (!characterEntity)
+	        return false;
+	
+	    SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(characterEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+	    if (!inventoryManager)
+	        return false;
+	
+	    ResourceName targetPrefab = "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et";
+		// Do I need the ref keyword here?
+	    array<IEntity> items = new array<IEntity>();
+	    inventoryManager.GetItems(items);
+	
+	    // Iterate through the character's inventory until we find the wrench.
+		foreach (IEntity item : items)
+	    {
+	        if (!item)
+	            continue;
+	
+	        EntityPrefabData prefabData = item.GetPrefabData();
+	        if (prefabData)
+	        {
+	            ResourceName itemPrefabName = prefabData.GetPrefabName();
+	            if (itemPrefabName == targetPrefab)
+	            {
+					return true;
+	            }
+	        }
+	    }
+	
+	    return false;
 	}
 }

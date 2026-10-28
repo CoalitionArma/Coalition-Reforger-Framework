@@ -28,3 +28,11 @@ $grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/Generator
   angles 0 166.835 0
  }
 }
+$grp GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et" {
+ {
+  coords 2315.236 90.245 1319.928
+ }
+ {
+  coords 2446.248 90.951 1430.184
+ }
+}

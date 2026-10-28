@@ -1,3 +1,18 @@
+Quack_GenericTriggerTeleporterEntity {
+ coords 2478.553 88.546 1422.865
+ TriggerShapeType Sphere
+ SphereRadius 15
+ DrawShape 1
+ ShapeColor 0.0706 0.1922 0.5608 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 2
+ ClassesFilter {
+  "SCR_ChimeraCharacter"
+ }
+ m_coords 2446.248 89.107 1430.184
+ m_bUseExactCoordinates 0
+}
 SCR_DestructibleBuildingEntity : "{0281C8310F67BD81}Prefabs/Structures/Houses/Village/House_Village_E_1I08/House_Village_E_1I08_Base.et" {
  coords 616.447 132.369 470.268
  angles 0 180 0
