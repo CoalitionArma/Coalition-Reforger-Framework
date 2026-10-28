@@ -1,169 +1,227 @@
 FrameWidgetClass {
  Name "rallyHUDFrame"
  {
-  ImageWidgetClass "{4CBBF00D5B6E1A25}" {
-   Name "Background"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2A}" {
+  FrameWidgetClass "{4CBBF00D5B6E1A50}" {
+   Name "RallyPanel"
+   Slot FrameWidgetSlot "{4CBBF00D5B6E1A51}" {
     Anchor 1 0 1 0
-    PositionX -272
-    OffsetLeft -272
-    PositionY 161
-    OffsetTop 161
-    SizeX 270
-    OffsetRight 2
-    SizeY 272
-    OffsetBottom -433
+    PositionX -316
+    OffsetLeft -316
+    PositionY 150
+    OffsetTop 150
+    SizeX 300
+    OffsetRight 16
+    SizeY 140
+    OffsetBottom -290
    }
-   Color 0 0 0 0.65
-   "Shadow Offset" 0.5 0.5
-  }
-  TextWidgetClass "{4CBBF00D5B6E1A29}" {
-   Name "HeaderText"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2B}" {
-    Anchor 1 0 1 0
-    PositionX -272
-    OffsetLeft -272
-    PositionY 163
-    OffsetTop 163
-    SizeX 270
-    OffsetRight 2
-    SizeY 18
-    OffsetBottom -181
+   {
+    ImageWidgetClass "{4CBBF00D5B6E1A25}" {
+     Name "Background"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A2A}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.0041 0.005 0.0084 0.88
+    }
+    ImageWidgetClass "{4CBBF00D5B6E1A52}" {
+     Name "Accent"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A53}" {
+      Anchor 0 0 0 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 3
+      OffsetRight -3
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 1 0.78 0 1
+    }
+    TextWidgetClass "{4CBBF00D5B6E1A26}" {
+     Name "PositionText"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A2C}" {
+      Anchor 0 0 0 0
+      PositionX 14
+      OffsetLeft 14
+      PositionY 6
+      OffsetTop 6
+      SizeX 100
+      OffsetRight -114
+      SizeY 44
+      OffsetBottom -50
+     }
+     Color 1 1 1 1
+     Text "P--"
+     "Font Size" 36
+     "Min Font Size" 24
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1A2D}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      ShadowSize 2
+      ShadowOffset 0.8 0.8
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1A54}" {
+     Name "PositionTotalText"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A55}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 48
+      OffsetTop 48
+      SizeX 100
+      OffsetRight -116
+      SizeY 16
+      OffsetBottom -64
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text ""
+     "Font Size" 12
+     "Min Font Size" 10
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1A56}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1A57}" {
+     Name "LapTimeLabel"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A58}" {
+      Anchor 1 0 1 0
+      PositionX -174
+      OffsetLeft -174
+      PositionY 12
+      OffsetTop 12
+      SizeX 160
+      OffsetRight 14
+      SizeY 14
+      OffsetBottom -26
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "LAP TIME"
+     "Font Size" 11
+     "Min Font Size" 10
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1A59}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1A28}" {
+     Name "LapTimeText"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A2E}" {
+      Anchor 1 0 1 0
+      PositionX -194
+      OffsetLeft -194
+      PositionY 26
+      OffsetTop 26
+      SizeX 180
+      OffsetRight 14
+      SizeY 32
+      OffsetBottom -58
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "--:--.---"
+     "Font Size" 26
+     "Min Font Size" 18
+     "Horizontal Alignment" Right
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1A2F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      ShadowSize 2
+      ShadowOffset 0.8 0.8
+     }
+    }
+    TextWidgetClass "{4CBBF00D5B6E1A29}" {
+     Name "HeaderText"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A2B}" {
+      Anchor 0 0 1 0
+      PositionX 14
+      OffsetLeft 14
+      PositionY 70
+      OffsetTop 70
+      SizeX -28
+      OffsetRight 14
+      SizeY 18
+      OffsetBottom -88
+     }
+     Color 1 0.78 0 1
+     Text "RALLY"
+     "Font Size" 13
+     "Min Font Size" 11
+     "Horizontal Alignment" Left
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{4CBBF00D5B6E1A35}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    ImageWidgetClass "{4CBBF00D5B6E1A5A}" {
+     Name "ProgressTrack"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A5B}" {
+      Anchor 0 0 1 0
+      PositionX 14
+      OffsetLeft 14
+      PositionY 92
+      OffsetTop 92
+      SizeX -28
+      OffsetRight 14
+      SizeY 3
+      OffsetBottom -95
+     }
+     Color 0.3968 0.4564 0.6038 0.3
+    }
+    ImageWidgetClass "{4CBBF00D5B6E1A5C}" {
+     Name "ProgressFill"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A5D}" {
+      Anchor 0 0 0 0
+      PositionX 14
+      OffsetLeft 14
+      PositionY 92
+      OffsetTop 92
+      SizeX 0
+      OffsetRight -14
+      SizeY 3
+      OffsetBottom -95
+     }
+     Color 1 0.78 0 1
+    }
+    VerticalLayoutWidgetClass "{4CBBF00D5B6E1A27}" {
+     Name "Rows"
+     Slot FrameWidgetSlot "{4CBBF00D5B6E1A30}" {
+      Anchor 0 0 1 0
+      PositionX 4
+      OffsetLeft 4
+      PositionY 104
+      OffsetTop 104
+      SizeX -8
+      OffsetRight 4
+      SizeY 400
+      OffsetBottom -504
+     }
+    }
    }
-   Color 1 0.78 0 1
-   Text "RALLY"
-   "Font Size" 13
-   "Min Font Size" 12
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{4CBBF00D5B6E1A35}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  TextWidgetClass "{4CBBF00D5B6E1A26}" {
-   Name "PositionText"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2C}" {
-    Anchor 1 0 1 0
-    PositionX -272
-    OffsetLeft -272
-    PositionY 181
-    OffsetTop 181
-    SizeX 462
-    OffsetRight -190
-    SizeY 50
-    OffsetBottom -231
-   }
-   Color 1 1 1 1
-   Text "P--"
-   "Font Size" 34
-   "Min Font Size" 28
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{4CBBF00D5B6E1A2D}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    Bold 1
-    OutlineSize 2
-    ShadowSize 3
-    ShadowOffset 0.8 0.8
-   }
-  }
-  TextWidgetClass "{4CBBF00D5B6E1A28}" {
-   Name "LapTimeText"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A2E}" {
-    Anchor 1 0 1 0
-    PositionX -204
-    OffsetLeft -204
-    PositionY 185
-    OffsetTop 185
-    SizeX 202
-    OffsetRight 2
-    SizeY 42
-    OffsetBottom -227
-   }
-   Color 0.9 0.95 1 1
-   Text "--:--.---"
-   "Font Size" 22
-   "Min Font Size" 18
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{4CBBF00D5B6E1A2F}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  ImageWidgetClass "{4CBBF00D5B6E1A32}" {
-   Name "Divider"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A33}" {
-    Anchor 1 0 1 0
-    PositionX -270
-    OffsetLeft -270
-    PositionY 230
-    OffsetTop 230
-    SizeX 270
-    OffsetRight 0
-    SizeY 1
-    OffsetBottom -231
-   }
-   Color 1 0.78 0 0.4
-  }
-  TextWidgetClass "{4CBBF00D5B6E1A27}" {
-   Name "StandingsText"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A30}" {
-    Anchor 1 0 1 0
-    PositionX -272
-    OffsetLeft -272
-    PositionY 234
-    OffsetTop 234
-    SizeX 270
-    OffsetRight 2
-    SizeY 150
-    OffsetBottom -384
-   }
-   Color 0.85 0.85 0.85 1
-   Text ""
-   "Font Size" 10
-   "Min Font Size" 10
-   "Horizontal Alignment" Left
-   "Vertical Alignment" Top
-   FontProperties FontProperties "{4CBBF00D5B6E1A31}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 0
-    ShadowSize 1
-    ShadowOffset 0.5 0.5
-   }
-  }
-  ImageWidgetClass "{4CBBF00D5B6E1A36}" {
-   Name "Divider2"
-   Slot FrameWidgetSlot "{4CBBF00D5B6E1A37}" {
-    Anchor 1 0 1 0
-    PositionX -270
-    OffsetLeft -270
-    PositionY 385
-    OffsetTop 385
-    SizeX 270
-    OffsetRight 0
-    SizeY 1
-    OffsetBottom -386
-   }
-   Color 1 0.78 0 0.4
   }
   ImageWidgetClass "{4CBBF00D5B6E1A38}" {
    Name "CPArrowWidget"
    Slot FrameWidgetSlot "{4CBBF00D5B6E1A39}" {
-    Anchor 1 0 1 0
-    PositionX -1031
-    OffsetLeft -1031
-    PositionY 163
-    OffsetTop 163
-    SizeX 107
-    OffsetRight 924
-    SizeY 87
-    OffsetBottom -250
+    Anchor 0.5 0 0.5 0
+    PositionX -28
+    OffsetLeft -28
+    PositionY 96
+    OffsetTop 96
+    SizeX 56
+    OffsetRight -28
+    SizeY 46
+    OffsetBottom -142
    }
    Color 1 0.78 0 1
    Texture "{85914613C4644831}UI/Textures/RadialMenu/GroupIndicationArrow.edds"
@@ -172,26 +230,27 @@ FrameWidgetClass {
   TextWidgetClass "{4CBBF00D5B6E1A3A}" {
    Name "CPDistanceText"
    Slot FrameWidgetSlot "{4CBBF00D5B6E1A3B}" {
-    Anchor 1 0 1 0
-    PositionX -1097
-    OffsetLeft -1097
-    PositionY 234
-    OffsetTop 234
-    SizeX 232
-    OffsetRight 865
+    Anchor 0.5 0 0.5 0
+    PositionX -120
+    OffsetLeft -120
+    PositionY 146
+    OffsetTop 146
+    SizeX 240
+    OffsetRight -120
     SizeY 24
-    OffsetBottom -258
+    OffsetBottom -170
    }
-   Color 0.9 0.95 1 1
+   Color 0.8632 0.8879 0.9301 1
    Text ""
-   "Font Size" 12
-   "Min Font Size" 10
+   "Font Size" 16
+   "Min Font Size" 12
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{4CBBF00D5B6E1A3C}" {
     Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
     OutlineSize 1
-    ShadowOffset 0.5 0.5
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
    }
   }
  }

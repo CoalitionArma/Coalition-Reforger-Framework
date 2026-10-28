@@ -1,0 +1,9 @@
+CRF_ReplayGameMode GameMode : "{53E7DB3EAD58A0EE}Prefabs/Systems/Replay/CRF_ReplayGameMode.et" {
+ coords 100 0 100
+}
+SCR_CameraManager CameraManager : "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et" {
+ coords 110 0 100
+}
+SCR_FactionManager FactionManager : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+ coords 120 0 100
+}

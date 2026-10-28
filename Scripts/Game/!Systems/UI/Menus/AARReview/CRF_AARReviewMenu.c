@@ -34,6 +34,10 @@ class CRF_AARReviewMenu : ChimeraMenuBase
 	protected bool m_bSubmitting;
 	protected bool m_bAppliedSaved;		// the saved review (or a draft) is already in the form
 
+	// The server always answers a submission (CRF_AARManager retries once, with a watchdog on each
+	// attempt - about 40 s at worst); past this the answer is taken as lost so the form unlocks
+	protected static const int SUBMIT_TIMEOUT_MS = 50000;
+
 	//------------------------------------------------------------------------------------------------
 	override void OnMenuOpen()
 	{
@@ -121,6 +125,7 @@ class CRF_AARReviewMenu : ChimeraMenuBase
 
 		CRF_AARReviewSession.s_OnFormReceived.Remove(OnFormReceived);
 		CRF_AARReviewSession.s_OnSubmitResult.Remove(OnSubmitResult);
+		GetGame().GetCallqueue().Remove(OnSubmitTimedOut);
 		if (m_InputManager)
 			m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, OnBack);
 
@@ -648,6 +653,7 @@ class CRF_AARReviewMenu : ChimeraMenuBase
 	//------------------------------------------------------------------------------------------------
 	protected void OnSubmitResult(bool saved, string message)
 	{
+		GetGame().GetCallqueue().Remove(OnSubmitTimedOut);
 		m_bSubmitting = false;
 
 		if (saved)
@@ -698,6 +704,17 @@ class CRF_AARReviewMenu : ChimeraMenuBase
 		m_bSubmitting = true;
 		SetStatus("Sending your AAR to coalitiongroup.net...", false);
 		RefreshSubmitLabel();
+
+		GetGame().GetCallqueue().Remove(OnSubmitTimedOut);
+		GetGame().GetCallqueue().CallLater(OnSubmitTimedOut, SUBMIT_TIMEOUT_MS, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! No answer came back (the round left the AAR, or the reply was lost) - unlock the form
+	protected void OnSubmitTimedOut()
+	{
+		if (m_bSubmitting)
+			OnSubmitResult(false, "No answer from coalitiongroup.net - try again in a moment.");
 	}
 
 	//------------------------------------------------------------------------------------------------

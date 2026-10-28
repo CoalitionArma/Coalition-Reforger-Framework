@@ -23,6 +23,12 @@
 // 3. Set m_fCheckpointRadius to match how wide the checkpoint zone should be
 // 4. Set m_iLapsToComplete (1 for point-to-point, 2+ for circuit)
 // 5. For circuits the rally_end entity should be adjacent to rally_start so players loop back
+// 6. Optional: place an entity named "<checkpoint name>_smoke" (e.g. rally_cp3_smoke) to put that
+//    checkpoint's smoke exactly there. Otherwise the smoke goes beside the nearest road, past its
+//    edge, on the downwind side so it drifts away from the racing line.
+//
+// Crossings only count while the round is live (COA_EGamemodeState.GAME), and are checked along the
+// path travelled since the last poll, so fast vehicles can't skip a checkpoint between polls.
 //------------------------------------------------------------------------------------
 
 
@@ -41,6 +47,8 @@ class CRF_RallyPlayerEntry
 	bool m_bFinished;
 	bool m_bDead;
 	int m_iDeathTimeMs;          // GetWorldTime() in ms when this player died (0 = not dead)
+	vector m_vLastPos;           // Tracked position at the previous poll, for the swept crossing check
+	bool m_bHasLastPos;
 
 	void CRF_RallyPlayerEntry(int playerId)
 	{
@@ -61,6 +69,33 @@ class CRF_RallyPlayerEntry
 	int GetProgress(int totalCheckpoints)
 	{
 		return m_iLapsCompleted * totalCheckpoints + m_iNextCheckpoint;
+	}
+}
+
+
+//------------------------------------------------------------------------------------------------
+// One standings row as the client HUD reads it from the replicated standings string
+class CRF_RallyHUDRow
+{
+	int m_iPlayerId;
+	int m_iLaps;
+	int m_iNextCP;
+	int m_iLapStartMs;   // server world time; 0 = not started
+	bool m_bFinished;
+	int m_iGroupId;
+	bool m_bDead;
+	int m_iDeathMs;      // server world time
+	string m_sName;      // display name (set by BuildDisplayRows)
+	bool m_bLocal;       // the local player, or their team
+	ref array<string> m_aExtra = {}; // a variant's extra fields (GetExtraStandingFields)
+
+	//! An extra field as an int, or fallback when it isn't there
+	int GetExtraInt(int index, int fallback = 0)
+	{
+		if (!m_aExtra.IsIndexValid(index))
+			return fallback;
+
+		return m_aExtra[index].ToInt();
 	}
 }
 
@@ -129,8 +164,14 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<vector> m_aCheckpointPositions = {};
 	protected bool m_bRaceInitialised = false;
 
-	// Smoke entities spawned at each checkpoint (server-managed, replicated via world state)
+	// Smoke entities spawned at each checkpoint (server-managed, replicated via world state). The
+	// previous cycle's smokes are kept a few seconds after a refresh so the markers never blink out.
 	protected ref array<IEntity> m_aSmokeEntities = {};
+	protected ref array<IEntity> m_aOldSmokeEntities = {};
+	// Where each checkpoint's smoke goes - worked out once at race start (road lookup is not free)
+	protected ref array<vector> m_aSmokePositions = {};
+	// Checkpoint entity names, in course order, for the "<name>_smoke" overrides
+	protected ref array<string> m_aCheckpointNames = {};
 
 	// Map markers created for each checkpoint at race start
 	protected ref array<ref SCR_MapMarkerBase> m_aCheckpointMarkers = {};
@@ -145,8 +186,21 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	static const ResourceName SMOKE_CP_A   = "{1D8922C3FE426E4E}Prefabs/Systems/Smoke/Wrapper_Smoke_Yellow.et";
 	static const ResourceName SMOKE_CP_B   = "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et";
 
-	[Attribute("5", UIWidgets.EditBox, "Distance in metres to offset smoke markers sideways from the checkpoint centre, to keep them off the road.")]
+	[Attribute("8", UIWidgets.EditBox, "How far past the edge of the road (metres) the checkpoint smoke is placed. Without a road nearby, the distance from the checkpoint centre.", category: "Rally - Smoke")]
 	protected float m_fSmokeOffsetDistance;
+
+	[Attribute("true", UIWidgets.CheckBox, "Put the smoke on the downwind side of the road so it drifts away from the racing line", category: "Rally - Smoke")]
+	protected bool m_bSmokeDownwind;
+
+	[Attribute("30", UIWidgets.EditBox, "A road further than this (metres) from a checkpoint is ignored when placing its smoke", category: "Rally - Smoke")]
+	protected float m_fSmokeRoadSearchRadius;
+
+	// Smoke lasts ~60 s; refreshed before then, with the old smoke kept briefly so it never blinks out
+	protected static const int SMOKE_REFRESH_MS = 50000;
+	protected static const int SMOKE_OVERLAP_MS = 8000;
+
+	// A tracked position further than this from the previous poll is a respawn or teleport, not driving
+	protected static const float MAX_SWEEP_DISTANCE = 150;
 
 	//===================================================================================
 	// REPLICATED STATE
@@ -160,6 +214,13 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	[RplProp(onRplName: "OnRaceActiveChanged")]
 	protected bool m_bRaceActive = false;
 
+	// The server's world time (ms), sent with every standings update. The lap start times in the
+	// standings are server world times, and a client's own world clock started when it loaded the
+	// world, so clients time laps against this instead (see GetServerNowMs).
+	[RplProp(onRplName: "OnServerClockReceived")]
+	protected int m_iServerClockMs = 0;
+	protected int m_iServerClockReceivedAtMs = -1; // client world time when m_iServerClockMs arrived
+
 	// Guard to ensure results are only triggered once
 	protected bool m_bResultsTriggered = false;
 
@@ -167,10 +228,26 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	// CLIENT-SIDE HUD STATE
 	//===================================================================================
 
+	// CRF_RallyHUD.layout: a panel (position, lap time, what to do next, a course progress bar, then
+	// one CRF_RallyHUDRow.layout row per racer shown) sized to its rows, and a checkpoint arrow
+	protected static const ResourceName HUD_LAYOUT = "{4CBBF00D5B6E1A24}UI/layouts/HUD/Rally/CRF_RallyHUD.layout";
+	protected static const ResourceName HUD_ROW_LAYOUT = "{4CBBF00D5B6E1B01}UI/layouts/HUD/Rally/CRF_RallyHUDRow.layout";
+	protected static const float HUD_PANEL_WIDTH = 300;
+	protected static const float HUD_ROWS_TOP = 104;		// "Rows" in the layout
+	protected static const float HUD_ROW_HEIGHT = 24;		// RallyRow's height override
+	protected static const float HUD_PANEL_PADDING = 8;
+	protected static const float HUD_PROGRESS_INSET = 14;	// ProgressTrack's left/right offset
+
 	protected Widget m_wHUD = null;
+	protected Widget m_wPanel = null;
+	protected TextWidget m_wHeaderText = null;    // what to do next: head to start / next CP / finish
 	protected TextWidget m_wPositionText = null;
+	protected TextWidget m_wPositionTotalText = null;
 	protected TextWidget m_wLapTimeText = null;
-	protected TextWidget m_wStandingsText = null;
+	protected TextWidget m_wLapTimeLabel = null;
+	protected Widget m_wProgressFill = null;
+	protected Widget m_wRows = null;
+	protected ref array<Widget> m_aRowWidgets = {};
 	protected ImageWidget m_wCPArrow = null;
 	protected TextWidget m_wCPDistanceText = null;
 
@@ -220,9 +297,31 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 		{
 			GetGame().GetCallqueue().Remove(SpawnCheckpointSmokes);
+			GetGame().GetCallqueue().Remove(DeleteOldSmokes);
+			GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
 			ClearCheckpointSmokes();
 			ClearCheckpointMarkers();
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnServerClockReceived()
+	{
+		m_iServerClockReceivedAtMs = GetGame().GetWorld().GetWorldTime();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The server's current world time in ms (estimated on clients), or -1 before the first update
+	protected int GetServerNowMs()
+	{
+		int localNow = GetGame().GetWorld().GetWorldTime();
+		if (Replication.IsServer())
+			return localNow;
+
+		if (m_iServerClockReceivedAtMs < 0)
+			return -1;
+
+		return m_iServerClockMs + (localNow - m_iServerClockReceivedAtMs);
 	}
 
 	//===================================================================================
@@ -242,19 +341,17 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_iLapsToComplete < 1)
 			m_iLapsToComplete = 1;
 
-		// Pre-register currently slotted players
-		array<int> playerIds = {};
-		GetGame().GetPlayerManager().GetPlayers(playerIds);
-		foreach (int pid : playerIds)
-			GetOrCreateEntry(pid);
+		// Racers are registered by PollAllPlayerCheckpoints once they have a body, so players still
+		// in slotting or spectating never show up in the standings
 
 		m_bRaceInitialised = true;
 		m_bRaceActive      = true;
 		Replication.BumpMe();
 
-		// Spawn smoke at each checkpoint and re-spawn every 50s (smoke TTL ~60s)
+		// Spawn smoke at each checkpoint and refresh it before it burns out (smoke TTL ~60s)
+		ComputeSmokePositions();
 		SpawnCheckpointSmokes();
-		GetGame().GetCallqueue().CallLater(SpawnCheckpointSmokes, 50000, true);
+		GetGame().GetCallqueue().CallLater(SpawnCheckpointSmokes, SMOKE_REFRESH_MS, true);
 
 		// Place persistent map markers for each checkpoint
 		SpawnCheckpointMarkers();
@@ -266,43 +363,180 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	protected void CacheCheckpointPositions()
 	{
 		m_aCheckpointPositions.Clear();
+		m_aCheckpointNames.Clear();
 
 		// Start line
-		IEntity startEnt = GetGame().GetWorld().FindEntityByName("rally_start");
-		if (!startEnt)
+		if (!AddCheckpoint("rally_start"))
 		{
 			Print("[CRF_Rally] ERROR: 'rally_start' entity not found in the world!", LogLevel.ERROR);
 			return;
 		}
-		m_aCheckpointPositions.Insert(startEnt.GetOrigin());
 
 		// Intermediate checkpoints — rally_cp1, rally_cp2, ... (stop at first gap)
 		int cpIndex = 1;
-		while (true)
+		while (AddCheckpoint(string.Format("rally_cp%1", cpIndex)))
 		{
-			IEntity cpEnt = GetGame().GetWorld().FindEntityByName(string.Format("rally_cp%1", cpIndex));
-			if (!cpEnt)
-				break;
-			m_aCheckpointPositions.Insert(cpEnt.GetOrigin());
 			cpIndex++;
 		}
 
 		// Finish line
-		IEntity endEnt = GetGame().GetWorld().FindEntityByName("rally_end");
-		if (!endEnt)
-		{
+		if (!AddCheckpoint("rally_end"))
 			Print("[CRF_Rally] ERROR: 'rally_end' entity not found in the world!", LogLevel.ERROR);
-			return;
-		}
-		m_aCheckpointPositions.Insert(endEnt.GetOrigin());
 	}
 
-	// Spawns (or re-spawns) colored smoke at every checkpoint position.
-	// Called once at race start then every 50 s to replenish expiring smokes.
+	//! \return false if there's no entity with this name
+	protected bool AddCheckpoint(string entityName)
+	{
+		IEntity checkpoint = GetGame().GetWorld().FindEntityByName(entityName);
+		if (!checkpoint)
+			return false;
+
+		m_aCheckpointPositions.Insert(checkpoint.GetOrigin());
+		m_aCheckpointNames.Insert(entityName);
+		return true;
+	}
+
+	// Works out where every checkpoint's smoke goes (see ComputeSmokePosition)
+	protected void ComputeSmokePositions()
+	{
+		m_aSmokePositions.Clear();
+		foreach (int i, vector cpPos : m_aCheckpointPositions)
+		{
+			m_aSmokePositions.Insert(ComputeSmokePosition(i));
+		}
+	}
+
+	// Beside the road rather than on it, where it would blind drivers:
+	//  1. an entity named "<checkpoint name>_smoke", if the mission maker placed one
+	//  2. else past the edge of the nearest road, on the downwind side (m_bSmokeDownwind) so the plume
+	//     drifts away from the racing line
+	//  3. else (no road nearby) beside the course, perpendicular to its direction through the checkpoint
+	protected vector ComputeSmokePosition(int index)
+	{
+		vector cpPos = m_aCheckpointPositions[index];
+
+		IEntity overrideEnt = GetGame().GetWorld().FindEntityByName(m_aCheckpointNames[index] + "_smoke");
+		if (overrideEnt)
+			return overrideEnt.GetOrigin();
+
+		vector roadCentre;
+		vector roadDir;
+		float roadHalfWidth;
+		vector basePos = cpPos;
+		vector forward;
+		float clearance = m_fSmokeOffsetDistance;
+		if (FindRoadAt(cpPos, roadCentre, roadDir, roadHalfWidth))
+		{
+			basePos = roadCentre;
+			forward = roadDir;
+			clearance = roadHalfWidth + m_fSmokeOffsetDistance;
+		}
+		else
+		{
+			forward = GetCourseDirection(index);
+		}
+
+		// Horizontal perpendicular to the road/course: (z, 0, -x)
+		vector side = Vector(forward[2], 0, -forward[0]).Normalized();
+		if (side == vector.Zero)
+			side = "1 0 0";
+
+		if (m_bSmokeDownwind && vector.DotXZ(side, GetDownwindDirection()) < 0)
+			side = side * -1;
+
+		vector smokePos = basePos + side * clearance;
+		smokePos[1] = GetGame().GetWorld().GetSurfaceY(smokePos[0], smokePos[2]);
+		return smokePos;
+	}
+
+	// The road nearest the checkpoint (within m_fSmokeRoadSearchRadius): the closest point on its
+	// centreline, the road's direction there, and half its width
+	protected bool FindRoadAt(vector pos, out vector centre, out vector direction, out float halfWidth)
+	{
+		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		if (!aiWorld)
+			return false;
+
+		RoadNetworkManager roadManager = aiWorld.GetRoadNetworkManager();
+		if (!roadManager)
+			return false;
+
+		BaseRoad road;
+		float distance;
+		roadManager.GetClosestRoad(pos, road, distance);
+		if (!road || distance > m_fSmokeRoadSearchRadius)
+			return false;
+
+		array<vector> points = {};
+		road.GetPoints(points);
+		if (points.Count() < 2)
+			return false;
+
+		// Closest centreline segment to the checkpoint (horizontal distance)
+		float bestDistSq = 1e10;
+		for (int i = 0; i < points.Count() - 1; i++)
+		{
+			vector a = points[i];
+			vector b = points[i + 1];
+			vector closest = ClosestPointOnSegment2D(pos, a, b);
+			float distSq = vector.DistanceSqXZ(pos, closest);
+			if (distSq >= bestDistSq)
+				continue;
+
+			bestDistSq = distSq;
+			centre = closest;
+			direction = Vector(b[0] - a[0], 0, b[2] - a[2]).Normalized();
+		}
+
+		if (direction == vector.Zero)
+			return false;
+
+		halfWidth = Math.Max(road.GetWidth() * 0.5, 2);
+		return true;
+	}
+
+	// Direction of the course through a checkpoint: the average of the way in and the way out
+	protected vector GetCourseDirection(int index)
+	{
+		int last = m_aCheckpointPositions.Count() - 1;
+		vector cpPos = m_aCheckpointPositions[index];
+		vector dir;
+		if (index > 0)
+			dir += (cpPos - m_aCheckpointPositions[index - 1]).Normalized();
+		if (index < last)
+			dir += (m_aCheckpointPositions[index + 1] - cpPos).Normalized();
+
+		dir[1] = 0;
+		return dir.Normalized();
+	}
+
+	// Horizontal direction the wind blows towards. GetWindDirection is where it comes from (the map's
+	// weather display turns it 180° to draw the arrow), clockwise from north.
+	protected vector GetDownwindDirection()
+	{
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!world)
+			return vector.Zero;
+
+		TimeAndWeatherManagerEntity weather = world.GetTimeAndWeatherManager();
+		if (!weather)
+			return vector.Zero;
+
+		float towards = (weather.GetWindDirection() + 180) * Math.DEG2RAD;
+		return Vector(Math.Sin(towards), 0, Math.Cos(towards));
+	}
+
+	// Spawns colored smoke at every checkpoint. Called at race start, then every SMOKE_REFRESH_MS
+	// before the previous smoke burns out; the old smokes are removed SMOKE_OVERLAP_MS later.
 	protected void SpawnCheckpointSmokes()
 	{
-		// Delete any previous smoke entities from the prior cycle
-		ClearCheckpointSmokes();
+		DeleteOldSmokes();
+		foreach (IEntity smokeEnt : m_aSmokeEntities)
+			m_aOldSmokeEntities.Insert(smokeEnt);
+		m_aSmokeEntities.Clear();
+
+		if (m_aSmokePositions.Count() != m_aCheckpointPositions.Count())
+			ComputeSmokePositions();
 
 		int last = m_aCheckpointPositions.Count() - 1;
 		for (int i = 0; i <= last; i++)
@@ -317,38 +551,67 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			else
 				prefab = SMOKE_CP_B;         // purple — even intermediate CPs
 
-			// Compute a world-space side offset so the smoke sits beside the road.
-			// Direction is derived from the course heading at this checkpoint:
-			// use the vector toward the next checkpoint (or from the previous one at the finish).
-			vector cpPos = m_aCheckpointPositions[i];
-			vector heading;
-			if (i < last)
-				heading = (m_aCheckpointPositions[i + 1] - cpPos).Normalized();
-			else
-				heading = (cpPos - m_aCheckpointPositions[i - 1]).Normalized();
-
-			// Right-hand perpendicular in the horizontal plane: (z, 0, -x)
-			vector sideways = Vector(heading[2], 0, -heading[0]).Normalized();
-			vector smokePos = cpPos + sideways * m_fSmokeOffsetDistance;
-
 			EntitySpawnParams params = new EntitySpawnParams();
 			Math3D.MatrixIdentity4(params.Transform);
-			params.Transform[3] = smokePos;
+			params.Transform[3] = m_aSmokePositions[i];
 
-			IEntity smoke = GetGame().SpawnEntityPrefab(Resource.Load(prefab), null, params);
+			Resource resource = Resource.Load(prefab); // kept alive for the spawn
+			if (!resource || !resource.IsValid())
+				continue;
+
+			IEntity smoke = GetGame().SpawnEntityPrefab(resource, null, params);
 			if (smoke)
 				m_aSmokeEntities.Insert(smoke);
 		}
+
+		GetGame().GetCallqueue().Remove(DeleteOldSmokes);
+		GetGame().GetCallqueue().CallLater(DeleteOldSmokes, SMOKE_OVERLAP_MS, false);
+	}
+
+	protected void DeleteOldSmokes()
+	{
+		foreach (IEntity ent : m_aOldSmokeEntities)
+		{
+			if (ent)
+				SCR_EntityHelper.DeleteEntityAndChildren(ent);
+		}
+		m_aOldSmokeEntities.Clear();
 	}
 
 	protected void ClearCheckpointSmokes()
 	{
+		DeleteOldSmokes();
 		foreach (IEntity ent : m_aSmokeEntities)
 		{
 			if (ent)
 				SCR_EntityHelper.DeleteEntityAndChildren(ent);
 		}
 		m_aSmokeEntities.Clear();
+	}
+
+	// Closest point to p on segment a-b, ignoring height (the result takes the segment's height there)
+	protected static vector ClosestPointOnSegment2D(vector p, vector a, vector b)
+	{
+		float abX = b[0] - a[0];
+		float abZ = b[2] - a[2];
+		float lengthSq = abX * abX + abZ * abZ;
+		if (lengthSq <= 0.0001)
+			return a;
+
+		float t = Math.Clamp(((p[0] - a[0]) * abX + (p[2] - a[2]) * abZ) / lengthSq, 0, 1);
+		return a + (b - a) * t;
+	}
+
+	// Shortest distance from p to segment a-b, in 3D
+	protected static float DistanceToSegment(vector p, vector a, vector b)
+	{
+		vector ab = b - a;
+		float lengthSq = ab.LengthSq();
+		if (lengthSq <= 0.0001)
+			return vector.Distance(p, a);
+
+		float t = Math.Clamp(vector.Dot(p - a, ab) / lengthSq, 0, 1);
+		return vector.Distance(p, a + ab * t);
 	}
 
 	// Places a labelled map marker at every checkpoint position.
@@ -431,13 +694,6 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		return null;
 	}
 
-	override void OnPlayerConnected(int playerId)
-	{
-		super.OnPlayerConnected(playerId);
-		if (m_bRaceInitialised && Replication.IsServer())
-			GetOrCreateEntry(playerId);
-	}
-
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
@@ -503,40 +759,55 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void PollAllPlayerCheckpoints()
 	{
+		// Nothing counts before the round is live (briefing, slotting, safestart)
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		bool live = gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.GAME;
+
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
 
 		foreach (int pid : playerIds)
 		{
+			IEntity playerEnt = GetGame().GetPlayerManager().GetPlayerControlledEntity(pid);
+
+			// Only players with a body race - slotting, spectating and dead players aren't registered
+			if (!playerEnt || COA_EntityHelper.IsSpectator(playerEnt))
+				continue;
+
 			CRF_RallyPlayerEntry entry = GetOrCreateEntry(pid);
 			if (entry.m_bFinished)
 				continue;
 
-			IEntity playerEnt = GetGame().GetPlayerManager().GetPlayerControlledEntity(pid);
-			if (!playerEnt)
-				continue;
+			// Track from the vehicle position when seated, otherwise from the character
+			IEntity trackEnt = playerEnt;
+			if (playerEnt.GetParent())
+				trackEnt = playerEnt.GetParent();
+
+			vector pos = trackEnt.GetOrigin();
+			vector lastPos = pos;
+			if (entry.m_bHasLastPos && vector.Distance(entry.m_vLastPos, pos) <= MAX_SWEEP_DISTANCE)
+				lastPos = entry.m_vLastPos;
+
+			entry.m_vLastPos = pos;
+			entry.m_bHasLastPos = true;
 
 			// Optional vehicle requirement: character must be seated in a vehicle
-			if (m_bRequireVehicle && !playerEnt.GetParent())
+			if (!live || (m_bRequireVehicle && !playerEnt.GetParent()))
 				continue;
 
-			CheckCheckpointCrossing(entry, playerEnt);
+			CheckCheckpointCrossing(entry, lastPos, pos);
 		}
 	}
 
-	protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, notnull IEntity playerEnt)
+	// Checks the path travelled since the last poll (lastPos to pos), not just where the player is now:
+	// at 4 Hz a fast car covers 10+ m between polls and could otherwise clip past a checkpoint unseen
+	protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, vector lastPos, vector pos)
 	{
 		int cpIndex = entry.m_iNextCheckpoint;
 		if (cpIndex >= m_aCheckpointPositions.Count())
 			return;
 
-		// Track from the vehicle position when seated, otherwise from the character
-		IEntity trackEnt = playerEnt;
-		if (playerEnt.GetParent())
-			trackEnt = playerEnt.GetParent();
-
-		float dist = vector.Distance(trackEnt.GetOrigin(), m_aCheckpointPositions[cpIndex]);
-		if (dist > m_fCheckpointRadius)
+		if (DistanceToSegment(m_aCheckpointPositions[cpIndex], lastPos, pos) > m_fCheckpointRadius)
 			return;
 
 		OnCheckpointCrossed(entry, cpIndex);
@@ -591,8 +862,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				BuildAndReplicateStandings(); // immediate update for accurate finish position
 				int finishPos = GetPlayerStandingPosition(pid);
 
+				// Total race time, not the last lap (they only differ on multi-lap races)
 				string finisherName = GetGame().GetPlayerManager().GetPlayerName(pid);
-				Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] %1 finished %2 in %3!", finisherName, PositionLabel(finishPos), FormatTime(lapTimeSecs)));
+				Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] %1 finished %2 in %3!", finisherName, PositionLabel(finishPos), FormatTime(entry.m_fFinishTimeSecs)));
 
 				Rpc(RpcDo_FinishNotify, pid, lapTimeSecs, entry.m_iLapsCompleted, finishPos);
 
@@ -622,10 +894,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			entry.m_iNextCheckpoint = cpIndex + 1;
 			entry.m_iLastCPTimeMs   = worldTimeMs;
 
-			// cpIndex 1 is the first real CP after start; adjust the label for display
+			// cpIndex 1 is the first real CP after start; adjust the label for display.
+			// Only the racer is told - a chat line per checkpoint per racer flooded chat for everyone.
 			string cpLabel = string.Format("Checkpoint %1 / %2", cpIndex, totalCPs - 2);
-			string cpPlayerName = GetGame().GetPlayerManager().GetPlayerName(pid);
-			Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] %1 passed %2.", cpPlayerName, cpLabel));
 			Rpc(RpcDo_CheckpointNotify, pid, cpLabel);
 		}
 	}
@@ -671,13 +942,20 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				groupId,
 				deadInt,
 				e.m_iDeathTimeMs);
+			packed += GetExtraStandingFields(e);
 		}
 
-		if (packed == m_sReplicatedStandings)
-			return;
-
+		// The clock goes out with every update (once a second) so client lap timers stay in step
 		m_sReplicatedStandings = packed;
+		m_iServerClockMs = GetGame().GetWorld().GetWorldTime();
 		Replication.BumpMe();
+	}
+
+	// Extra standings fields for a variant to send to its HUD (each starting with ";"), read back from
+	// CRF_RallyHUDRow.m_aExtra. See CRF_RallyStageGamemodeComponent.
+	protected string GetExtraStandingFields(CRF_RallyPlayerEntry e)
+	{
+		return "";
 	}
 
 	// Returns entries sorted best → worst by (progress desc, then lastCPTime asc)
@@ -773,8 +1051,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				continue;
 
 			IEntity ent = GetGame().GetPlayerManager().GetPlayerControlledEntity(entry.m_iPlayerId);
-			if (!ent)
-				continue; // no controlled entity = disconnected or already dead
+			if (!ent || COA_EntityHelper.IsSpectator(ent))
+				continue; // no body = disconnected, dead or spectating
 
 			DamageManagerComponent dmg = DamageManagerComponent.Cast(ent.FindComponent(DamageManagerComponent));
 			if (dmg && !dmg.IsDestroyed())
@@ -817,6 +1095,11 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			entry.m_bDead        = true;
 			entry.m_iDeathTimeMs = GetGame().GetWorld().GetWorldTime();
 			BuildAndReplicateStandings();
+
+			// The last racer out ends the race too - before, the check only ran after someone
+			// finished, so a race where the remaining racers all died never showed its results
+			GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
+			GetGame().GetCallqueue().CallLater(CheckAllRacersFinishedOrDead, 5000, false);
 		}
 
 		if (m_iFirstDeathPlayerId >= 0)
@@ -887,7 +1170,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 						if (seenGroupIds.Contains(groupId))
 							continue;
 						seenGroupIds.Insert(groupId);
-						displayName = "Team " + grp.GetCustomName();
+						displayName = "Team " + grp.GetCustomNameWithOriginal();
 					}
 				}
 			}
@@ -918,7 +1201,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 						if (seenGroupIds.Contains(groupId))
 							continue;
 						seenGroupIds.Insert(groupId);
-						displayName = "Team " + grp.GetCustomName();
+						displayName = "Team " + grp.GetCustomNameWithOriginal();
 					}
 				}
 			}
@@ -1093,18 +1376,24 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		if (!SCR_PlayerController.GetLocalControlledEntity())
 			return;
 
-		m_wHUD = GetGame().GetWorkspace().CreateWidgets("{4CBBF00D5B6E1A24}UI/layouts/HUD/Rally/CRF_RallyHUD.layout");
+		m_wHUD = GetGame().GetWorkspace().CreateWidgets(HUD_LAYOUT);
 		if (!m_wHUD)
 		{
 			Print("[CRF_Rally] WARNING: Could not load CRF_RallyHUD.layout — HUD will not be shown.", LogLevel.WARNING);
 			return;
 		}
 
-		m_wPositionText  = TextWidget.Cast(m_wHUD.FindAnyWidget("PositionText"));
-		m_wLapTimeText   = TextWidget.Cast(m_wHUD.FindAnyWidget("LapTimeText"));
-		m_wStandingsText = TextWidget.Cast(m_wHUD.FindAnyWidget("StandingsText"));
-		m_wCPArrow       = ImageWidget.Cast(m_wHUD.FindAnyWidget("CPArrowWidget"));
-		m_wCPDistanceText = TextWidget.Cast(m_wHUD.FindAnyWidget("CPDistanceText"));
+		m_wPanel             = m_wHUD.FindAnyWidget("RallyPanel");
+		m_wHeaderText        = TextWidget.Cast(m_wHUD.FindAnyWidget("HeaderText"));
+		m_wPositionText      = TextWidget.Cast(m_wHUD.FindAnyWidget("PositionText"));
+		m_wPositionTotalText = TextWidget.Cast(m_wHUD.FindAnyWidget("PositionTotalText"));
+		m_wLapTimeText       = TextWidget.Cast(m_wHUD.FindAnyWidget("LapTimeText"));
+		m_wLapTimeLabel      = TextWidget.Cast(m_wHUD.FindAnyWidget("LapTimeLabel"));
+		m_wProgressFill      = m_wHUD.FindAnyWidget("ProgressFill");
+		m_wRows              = m_wHUD.FindAnyWidget("Rows");
+		m_wCPArrow           = ImageWidget.Cast(m_wHUD.FindAnyWidget("CPArrowWidget"));
+		m_wCPDistanceText    = TextWidget.Cast(m_wHUD.FindAnyWidget("CPDistanceText"));
+		m_aRowWidgets.Clear();
 	}
 
 	protected void DestroyHUD()
@@ -1113,12 +1402,289 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			m_wHUD.RemoveFromHierarchy();
 			m_wHUD = null;
-			m_wPositionText   = null;
-			m_wLapTimeText    = null;
-			m_wStandingsText  = null;
-			m_wCPArrow        = null;
-			m_wCPDistanceText = null;
+			m_wPanel             = null;
+			m_wHeaderText        = null;
+			m_wPositionText      = null;
+			m_wPositionTotalText = null;
+			m_wLapTimeText       = null;
+			m_wLapTimeLabel      = null;
+			m_wProgressFill      = null;
+			m_wRows              = null;
+			m_wCPArrow           = null;
+			m_wCPDistanceText    = null;
+			m_aRowWidgets.Clear();
 		}
+	}
+
+	// Exactly count row widgets in the standings list (rows are reused between updates)
+	protected void SetRowWidgetCount(int count)
+	{
+		if (!m_wRows)
+			return;
+
+		while (m_aRowWidgets.Count() > count)
+		{
+			Widget extra = m_aRowWidgets[m_aRowWidgets.Count() - 1];
+			m_aRowWidgets.Remove(m_aRowWidgets.Count() - 1);
+			if (extra)
+				extra.RemoveFromHierarchy();
+		}
+
+		while (m_aRowWidgets.Count() < count)
+		{
+			Widget row = GetGame().GetWorkspace().CreateWidgets(HUD_ROW_LAYOUT, m_wRows);
+			if (!row)
+				return;
+
+			m_aRowWidgets.Insert(row);
+		}
+	}
+
+	// A standings row's state (lap / FIN / KIA / WAIT), its colour, and the time shown
+	protected void DescribeRow(CRF_RallyHUDRow row, int serverNowMs, out string status, out Color statusColor, out string time)
+	{
+		status = "";
+		statusColor = Color.FromSRGBA(168, 178, 204, 255);
+		time = FormatTime(GetRowTimeSecs(row, serverNowMs));
+		if (row.m_bFinished)
+		{
+			status = "FIN";
+			statusColor = Color.FromSRGBA(92, 196, 128, 255);
+			time = "";
+		}
+		else if (row.m_bDead)
+		{
+			status = "KIA";
+			statusColor = Color.FromSRGBA(232, 96, 96, 255);
+		}
+		else if (row.m_iLapStartMs == 0)
+		{
+			status = "WAIT";
+			time = "";
+		}
+		else if (m_iLapsToComplete > 1)
+		{
+			status = string.Format("L%1", row.m_iLaps + 1);
+		}
+	}
+
+	// The big timer for the local player's row
+	protected string GetLapTimeText(CRF_RallyHUDRow row, int serverNowMs)
+	{
+		if (!row)
+			return "--:--.---";
+
+		if (row.m_bFinished)
+			return "DONE";
+
+		return FormatTime(GetRowTimeSecs(row, serverNowMs));
+	}
+
+	// The label above the big timer
+	protected string GetLapTimeLabel()
+	{
+		return "LAP TIME";
+	}
+
+	// Fills one standings row: position, name, state and time (see DescribeRow)
+	protected void FillRowWidget(Widget rowWidget, CRF_RallyHUDRow row, int position, int serverNowMs)
+	{
+		TextWidget posText = TextWidget.Cast(rowWidget.FindAnyWidget("PosText"));
+		TextWidget nameText = TextWidget.Cast(rowWidget.FindAnyWidget("NameText"));
+		TextWidget statusText = TextWidget.Cast(rowWidget.FindAnyWidget("StatusText"));
+		TextWidget timeText = TextWidget.Cast(rowWidget.FindAnyWidget("TimeText"));
+		Widget highlight = rowWidget.FindAnyWidget("Highlight");
+
+		string status;
+		Color statusColor;
+		string time;
+		DescribeRow(row, serverNowMs, status, statusColor, time);
+
+		if (posText)
+			posText.SetText(position.ToString());
+
+		if (nameText)
+			nameText.SetText(row.m_sName);
+
+		if (statusText)
+		{
+			statusText.SetText(status);
+			statusText.SetColor(statusColor);
+		}
+
+		if (timeText)
+			timeText.SetText(time);
+
+		// The local player's (or team's) row stands out
+		if (highlight)
+			highlight.SetOpacity(0);
+		if (highlight && row.m_bLocal)
+		{
+			highlight.SetColor(Color.FromSRGBA(255, 200, 0, 36));
+			highlight.SetOpacity(1);
+		}
+	}
+
+	// How far through the whole race the player is, 0-1 (each lap is start, checkpoints, finish)
+	protected float GetRaceProgress(CRF_RallyHUDRow own)
+	{
+		if (!own || own.m_iLapStartMs == 0)
+			return 0;
+
+		if (own.m_bFinished)
+			return 1;
+
+		int legsPerLap = Math.Max(1, m_aCheckpointPositions.Count() - 1);
+		int legsDone = own.m_iLaps * legsPerLap + Math.Max(0, own.m_iNextCP - 1);
+		float legsTotal = legsPerLap * Math.Max(1, m_iLapsToComplete);
+		return Math.Clamp(legsDone / legsTotal, 0, 1);
+	}
+
+	// What the arrow points at: "START", "CP 3" or "FINISH"
+	protected string GetCheckpointLabel(int index)
+	{
+		if (index <= 0)
+			return "START";
+
+		if (index >= m_aCheckpointPositions.Count() - 1)
+			return "FINISH";
+
+		return string.Format("CP %1", index);
+	}
+
+	// The replicated standings, in standings order
+	protected array<ref CRF_RallyHUDRow> ParseStandings()
+	{
+		array<ref CRF_RallyHUDRow> rows = {};
+		array<string> entries = {};
+		m_sReplicatedStandings.Split("|", entries, true);
+
+		foreach (string entryText : entries)
+		{
+			// playerId;lapsCompleted;nextCP;lapStartMs;finished;groupId;dead;deathMs
+			array<string> fields = {};
+			entryText.Split(";", fields, true);
+			if (fields.Count() < 5)
+				continue;
+
+			CRF_RallyHUDRow row = new CRF_RallyHUDRow();
+			row.m_iPlayerId   = fields[0].ToInt();
+			row.m_iLaps       = fields[1].ToInt();
+			row.m_iNextCP     = fields[2].ToInt();
+			row.m_iLapStartMs = fields[3].ToInt();
+			row.m_bFinished   = fields[4].ToInt() == 1;
+			if (fields.Count() >= 6)
+				row.m_iGroupId = fields[5].ToInt();
+			row.m_bDead = fields.Count() >= 7 && fields[6].ToInt() == 1;
+			if (fields.Count() >= 8)
+				row.m_iDeathMs = fields[7].ToInt();
+
+			for (int extra = 8; extra < fields.Count(); extra++)
+			{
+				row.m_aExtra.Insert(fields[extra]);
+			}
+
+			rows.Insert(row);
+		}
+
+		return rows;
+	}
+
+	// The standings as shown: one row per racer, or in team mode one per group (its furthest-ahead
+	// member, since the standings are already sorted), with display names and the local row marked
+	protected array<ref CRF_RallyHUDRow> BuildDisplayRows(array<ref CRF_RallyHUDRow> standings, int localPlayerId)
+	{
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		int localGroupId = 0;
+		if (m_bTeamMode && groupsManager)
+		{
+			SCR_AIGroup localGroup = groupsManager.GetPlayerGroup(localPlayerId);
+			if (localGroup)
+				localGroupId = localGroup.GetID();
+		}
+
+		array<ref CRF_RallyHUDRow> rows = {};
+		array<int> seenGroupIds = {};
+		foreach (CRF_RallyHUDRow row : standings)
+		{
+			bool asTeam = m_bTeamMode && row.m_iGroupId > 0;
+			if (asTeam)
+			{
+				if (seenGroupIds.Contains(row.m_iGroupId))
+					continue;
+
+				seenGroupIds.Insert(row.m_iGroupId);
+			}
+
+			row.m_sName = "";
+			if (asTeam && groupsManager)
+			{
+				SCR_AIGroup group = groupsManager.GetPlayerGroup(row.m_iPlayerId);
+				if (group)
+					row.m_sName = "Team " + group.GetCustomNameWithOriginal();
+			}
+			if (row.m_sName.IsEmpty())
+				row.m_sName = GetGame().GetPlayerManager().GetPlayerName(row.m_iPlayerId);
+			if (row.m_sName.Length() > 14)
+				row.m_sName = row.m_sName.Substring(0, 14);
+
+			row.m_bLocal = row.m_iPlayerId == localPlayerId || (asTeam && row.m_iGroupId == localGroupId);
+			rows.Insert(row);
+		}
+
+		return rows;
+	}
+
+	// The running time shown for a row: the lap so far, frozen at death; -1 when there's none
+	protected float GetRowTimeSecs(CRF_RallyHUDRow row, int serverNowMs)
+	{
+		if (row.m_bFinished || row.m_iLapStartMs <= 0)
+			return -1;
+
+		if (row.m_bDead)
+		{
+			if (row.m_iDeathMs > 0)
+				return (row.m_iDeathMs - row.m_iLapStartMs) * 0.001;
+
+			return -1;
+		}
+
+		if (serverNowMs < 0)
+			return -1;
+
+		return Math.Max(0, serverNowMs - row.m_iLapStartMs) * 0.001;
+	}
+
+	// What the local player should do next, for the HUD header
+	protected string GetProgressText(CRF_RallyHUDRow own)
+	{
+		if (!own)
+			return "RALLY";
+
+		if (own.m_bFinished)
+			return "FINISHED";
+
+		if (own.m_bDead)
+			return "OUT OF THE RACE";
+
+		if (own.m_iLapStartMs == 0)
+			return "HEAD TO THE START";
+
+		int totalCPs = m_aCheckpointPositions.Count();
+		int intermediates = Math.Max(0, totalCPs - 2);
+
+		string next;
+		if (own.m_iNextCP >= totalCPs - 1)
+			next = "NEXT: FINISH";
+		else if (own.m_iNextCP <= 0)
+			next = "NEXT: START";
+		else
+			next = string.Format("NEXT: CP %1/%2", own.m_iNextCP, intermediates);
+
+		if (m_iLapsToComplete > 1)
+			return string.Format("LAP %1/%2  -  %3", Math.Min(own.m_iLaps + 1, m_iLapsToComplete), m_iLapsToComplete, next);
+
+		return next;
 	}
 
 	protected void UpdateHUD()
@@ -1150,243 +1716,92 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			CacheCheckpointPositions();
 
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		int worldTimeMs   = GetGame().GetWorld().GetWorldTime();
+		int serverNowMs   = GetServerNowMs();
 
-		array<string> entries = {};
-		m_sReplicatedStandings.Split("|", entries, true);
+		array<ref CRF_RallyHUDRow> standings = ParseStandings();
 
-		string standingsLines = "";
-		int    localPosition  = -1;
-		int    localLapStart  = 0;
-		bool   localFinished  = false;
-		bool   localDead      = false;
-		int    localDeathTime = 0;
-		int    localNextCP    = -1;
-
-		// Pre-scan to find this client's own next checkpoint (used for the CP arrow)
-		for (int k = 0; k < entries.Count(); k++)
+		// The local player's own entry - their next checkpoint drives the arrow even in team mode
+		CRF_RallyHUDRow own;
+		foreach (CRF_RallyHUDRow standing : standings)
 		{
-			array<string> pf = {};
-			entries[k].Split(";", pf, true);
-			if (pf.Count() >= 3 && pf[0].ToInt() == localPlayerId)
+			if (standing.m_iPlayerId == localPlayerId)
 			{
-				localNextCP = pf[2].ToInt();
+				own = standing;
 				break;
 			}
 		}
 
-		if (m_bTeamMode)
+		array<ref CRF_RallyHUDRow> rows = BuildDisplayRows(standings, localPlayerId);
+		int localIndex = -1;
+		foreach (int rowIndex, CRF_RallyHUDRow row : rows)
 		{
-			SCR_GroupsManagerComponent gMgr = SCR_GroupsManagerComponent.GetInstance();
-
-			// Look up local player's group once
-			int localGroupId = 0;
-			if (gMgr)
+			if (row.m_bLocal)
 			{
-				SCR_AIGroup localGrp = gMgr.GetPlayerGroup(localPlayerId);
-				if (localGrp)
-					localGroupId = localGrp.GetID();
+				localIndex = rowIndex;
+				break;
 			}
-
-			// Pre-count unique teams/solos for the overflow indicator
-			ref array<int> countSeen = {};
-			int totalTeams = 0;
-			for (int i = 0; i < entries.Count(); i++)
-			{
-				array<string> cf = {};
-				entries[i].Split(";", cf, true);
-				if (cf.Count() < 5)
-					continue;
-				int gId = 0;
-				if (cf.Count() >= 6)
-					gId = cf[5].ToInt();
-				if (gId > 0 && countSeen.Contains(gId))
-					continue;
-				if (gId > 0)
-					countSeen.Insert(gId);
-				totalTeams++;
-			}
-
-			ref array<int> seenGroupIds = {};
-			int teamRank = 0;
-
-			for (int i = 0; i < entries.Count() && teamRank < m_iMaxStandingsRows; i++)
-			{
-				array<string> fields = {};
-				entries[i].Split(";", fields, true);
-				if (fields.Count() < 5)
-					continue;
-
-				int  pid       = fields[0].ToInt();
-				int  laps      = fields[1].ToInt();
-				int  lapStart  = fields[3].ToInt();
-				bool finished  = fields[4].ToInt() == 1;
-				int  groupId   = 0;
-				if (fields.Count() >= 6)
-					groupId = fields[5].ToInt();
-				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
-				int  deathTime = 0;
-				if (fields.Count() >= 8)
-					deathTime = fields[7].ToInt();
-
-				if (groupId > 0 && seenGroupIds.Contains(groupId))
-					continue;
-				if (groupId > 0)
-					seenGroupIds.Insert(groupId);
-
-				teamRank++;
-
-				// Get display name: "Team <groupname>" for groups, player name for solos
-				string displayName = "";
-				if (groupId > 0 && gMgr)
-				{
-					SCR_AIGroup grp = gMgr.GetPlayerGroup(pid);
-					if (grp)
-						displayName = "Team " + grp.GetCustomName();
-				}
-				if (displayName.IsEmpty())
-					displayName = GetGame().GetPlayerManager().GetPlayerName(pid);
-				if (displayName.Length() > 14)
-					displayName = displayName.Substring(0, 14);
-
-				bool isLocalTeam = (pid == localPlayerId) || (groupId > 0 && groupId == localGroupId);
-				if (isLocalTeam)
-				{
-					localPosition = teamRank;
-					localLapStart = lapStart;
-					localFinished = finished;
-					localDead     = dead;
-					localDeathTime = deathTime;
-				}
-
-				string lapTag;
-				if (finished)
-					lapTag = "FIN";
-				else if (dead)
-					lapTag = "KIA";
-				else if (lapStart == 0)
-					lapTag = "WAIT";
-				else
-					lapTag = string.Format("L%1", laps + 1);
-
-				string timeStr;
-				if (finished)
-					timeStr = "---";
-				else if (dead && deathTime > 0 && lapStart > 0)
-					timeStr = FormatTime((deathTime - lapStart) * 0.001);
-				else if (lapStart == 0)
-					timeStr = "--:--.---";
-				else
-					timeStr = FormatTime((worldTimeMs - lapStart) * 0.001);
-
-				string marker = " ";
-				if (isLocalTeam)
-					marker = ">";
-
-				string line = string.Format("%1P%2 %3  %4  %5", marker, teamRank, displayName, lapTag, timeStr);
-				if (!standingsLines.IsEmpty())
-					standingsLines += "\n";
-				standingsLines += line;
-			}
-
-			if (totalTeams > m_iMaxStandingsRows)
-				standingsLines += string.Format("\n  ... +%1 more", totalTeams - m_iMaxStandingsRows);
-		}
-		else
-		{
-			int rowsToShow = Math.Min(entries.Count(), m_iMaxStandingsRows);
-
-			for (int i = 0; i < rowsToShow; i++)
-			{
-				array<string> fields = {};
-				entries[i].Split(";", fields, true);
-				if (fields.Count() < 5)
-					continue;
-
-				int  pid       = fields[0].ToInt();
-				int  laps      = fields[1].ToInt();
-				int  lapStart  = fields[3].ToInt();
-				bool finished  = fields[4].ToInt() == 1;
-				bool dead      = fields.Count() >= 7 && fields[6].ToInt() == 1;
-				int  deathTime = 0;
-				if (fields.Count() >= 8)
-					deathTime = fields[7].ToInt();
-
-				string playerName = GetGame().GetPlayerManager().GetPlayerName(pid);
-				if (playerName.Length() > 14)
-					playerName = playerName.Substring(0, 14);
-
-				string lapTag;
-				if (finished)
-					lapTag = "FIN";
-				else if (dead)
-					lapTag = "KIA";
-				else if (lapStart == 0)
-					lapTag = "WAIT";
-				else
-					lapTag = string.Format("L%1", laps + 1);
-
-				string timeStr;
-				if (finished)
-					timeStr = "---";
-				else if (dead && deathTime > 0 && lapStart > 0)
-					timeStr = FormatTime((deathTime - lapStart) * 0.001);
-				else if (lapStart == 0)
-					timeStr = "--:--.---";
-				else
-					timeStr = FormatTime((worldTimeMs - lapStart) * 0.001);
-
-				string marker = " ";
-				if (pid == localPlayerId)
-					marker = ">";
-
-				string line = string.Format("%1P%2 %3  %4  %5", marker, i + 1, playerName, lapTag, timeStr);
-				if (!standingsLines.IsEmpty())
-					standingsLines += "\n";
-				standingsLines += line;
-
-				if (pid == localPlayerId)
-				{
-					localPosition  = i + 1;
-					localLapStart  = lapStart;
-					localFinished  = finished;
-					localDead      = dead;
-					localDeathTime = deathTime;
-				}
-			}
-
-			if (entries.Count() > rowsToShow)
-				standingsLines += string.Format("\n  ... +%1 more", entries.Count() - rowsToShow);
 		}
 
-		if (m_wStandingsText)
-			m_wStandingsText.SetText(standingsLines);
+		// Top rows, plus the local row underneath when it's further down than that (its position
+		// number shows the gap)
+		array<int> shownIndexes = {};
+		for (int i = 0; i < rows.Count() && i < m_iMaxStandingsRows; i++)
+		{
+			shownIndexes.Insert(i);
+		}
+		if (localIndex >= m_iMaxStandingsRows)
+			shownIndexes.Insert(localIndex);
+
+		SetRowWidgetCount(shownIndexes.Count());
+		foreach (int slot, int index : shownIndexes)
+		{
+			if (slot < m_aRowWidgets.Count())
+				FillRowWidget(m_aRowWidgets[slot], rows[index], index + 1, serverNowMs);
+		}
+
+		// The panel ends under its last row
+		if (m_wPanel)
+			FrameSlot.SetSize(m_wPanel, HUD_PANEL_WIDTH, HUD_ROWS_TOP + m_aRowWidgets.Count() * HUD_ROW_HEIGHT + HUD_PANEL_PADDING);
+
+		if (m_wProgressFill)
+			FrameSlot.SetSize(m_wProgressFill, (HUD_PANEL_WIDTH - 2 * HUD_PROGRESS_INSET) * GetRaceProgress(own), 3);
+
+		if (m_wHeaderText)
+			m_wHeaderText.SetText(GetProgressText(own));
 
 		if (m_wPositionText)
 		{
-			if (localPosition > 0)
-				m_wPositionText.SetText(string.Format("P%1", localPosition));
+			if (localIndex >= 0)
+				m_wPositionText.SetText(string.Format("P%1", localIndex + 1));
 			else
 				m_wPositionText.SetText("--");
 		}
 
-		if (m_wLapTimeText)
+		if (m_wPositionTotalText)
 		{
-			if (localFinished)
-				m_wLapTimeText.SetText("DONE");
-			else if (localDead && localDeathTime > 0 && localLapStart > 0)
-				m_wLapTimeText.SetText(FormatTime((localDeathTime - localLapStart) * 0.001));
-			else if (localLapStart > 0)
-				m_wLapTimeText.SetText(FormatTime((worldTimeMs - localLapStart) * 0.001));
+			if (localIndex >= 0)
+				m_wPositionTotalText.SetText(string.Format("OF %1", rows.Count()));
 			else
-				m_wLapTimeText.SetText("--:--.---");
+				m_wPositionTotalText.SetText("");
 		}
 
-		// CP arrow — rotate toward the next checkpoint relative to the player/vehicle heading
+		if (m_wLapTimeText)
+		{
+			CRF_RallyHUDRow localRow;
+			if (localIndex >= 0)
+				localRow = rows[localIndex];
+			m_wLapTimeText.SetText(GetLapTimeText(localRow, serverNowMs));
+		}
+
+		if (m_wLapTimeLabel)
+			m_wLapTimeLabel.SetText(GetLapTimeLabel());
+
+		// CP arrow - towards the next checkpoint (the start line before the race), relative to the
+		// player/vehicle heading. Hidden for spectators, the dead and finishers.
 		SCR_CharacterControllerComponent charCtrl = SCR_CharacterControllerComponent.Cast(localEnt.FindComponent(SCR_CharacterControllerComponent));
-		bool isPlayerAlive = !charCtrl || !charCtrl.IsDead();
-		bool showArrow = isPlayerAlive && !localFinished && localLapStart > 0
-			&& localNextCP >= 0 && localNextCP < m_aCheckpointPositions.Count();
+		bool isPlayerAlive = !COA_EntityHelper.IsSpectator(localEnt) && (!charCtrl || !charCtrl.IsDead());
+		bool showArrow = isPlayerAlive && own && !own.m_bFinished && !own.m_bDead
+			&& own.m_iNextCP >= 0 && own.m_iNextCP < m_aCheckpointPositions.Count();
 
 		if (showArrow)
 		{
@@ -1396,7 +1811,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				trackEnt = localEnt.GetParent();
 
 			vector playerPos = trackEnt.GetOrigin();
-			vector cpPos     = m_aCheckpointPositions[localNextCP];
+			vector cpPos     = m_aCheckpointPositions[own.m_iNextCP];
 			vector delta     = cpPos - playerPos;
 
 			// World bearing to CP: atan2(East, North) in Arma's XYZ coordinate space
@@ -1415,10 +1830,10 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				int distInt = vector.Distance(playerPos, cpPos);
 				string distStr;
 				if (distInt >= 1000)
-					distStr = string.Format("%1.%2km", distInt / 1000, (distInt % 1000) / 100);
+					distStr = string.Format("%1.%2 km", distInt / 1000, (distInt % 1000) / 100);
 				else
-					distStr = string.Format("%1m", distInt);
-				m_wCPDistanceText.SetText(distStr);
+					distStr = string.Format("%1 m", distInt);
+				m_wCPDistanceText.SetText(string.Format("%1  ·  %2", GetCheckpointLabel(own.m_iNextCP), distStr));
 			}
 		}
 		else
@@ -1429,6 +1844,7 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				m_wCPDistanceText.SetText("");
 		}
 	}
+
 
 	//===================================================================================
 	// UTILITIES

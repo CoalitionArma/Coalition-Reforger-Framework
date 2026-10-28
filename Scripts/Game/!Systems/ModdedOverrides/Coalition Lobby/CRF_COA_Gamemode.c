@@ -17,7 +17,15 @@ modded class COA_Gamemode
 
 	[Attribute("true", UIWidgets.CheckBox, desc: "Enable vehicle gearscript for CIV vehicles", category: "Gearscript Settings - Advanced")]
 	bool m_bCIVILIANVehicleGearscriptEnabled;
-	
+
+	// AAR recording (CRF_VAAR_GamemodeComponent)
+	//------------------------------------------------------------------------------------
+	[Attribute("true", UIWidgets.CheckBox, desc: "Record the mission for the AAR (the website's 2D and 3D viewers and in-game replays all play this one recording). Off: nothing is recorded unless an admin starts it from the admin menu", category: "AAR Recording")]
+	bool m_bAARRecordingEnabled;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Record the 3D data with it - heights, aim pitch, stance, vehicle pitch/roll, unit and vehicle prefabs, weapons in hand. The 3D viewer and in-game replays need it; off, the recording is 2D only (smaller, a little cheaper to write)", category: "AAR Recording")]
+	bool m_bAAR3DRecordingEnabled;
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 RUNTIME VARIABLES
 //=============================================================================================================================================================================================================================================================================================================================================================

@@ -1,0 +1,110 @@
+Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_red.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 1750
+   CenterOfMass 0 0.68 0.153
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "UAZ-469 Rally"
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     Inertia 0.22
+     MaxPower 220
+     MaxTorque 450
+     RpmMaxPower 5500
+     RpmMaxTorque 3800
+     Steepness 6
+     Friction 55
+     RpmIdle 900
+     RpmRedline 6200
+     RpmMax 6500
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 650
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      3.4 2.2 1.55 1.15 0.88
+     }
+     Reverse 4
+    }
+    Differentials {
+     Differential Diff_C {
+      Type LSD
+      Ratio 1.47
+      Strength 0.5
+     }
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Differential Differential Diff_01 {
+       Ratio 4.24
+       Strength 0.3
+      }
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       SpringRate 55
+       CompressionDamper 3400
+       RelaxationDamper 4200
+       MaxTravelUp 0.16
+       MaxTravelDown 0.14
+       MaxSteeringAngle 32
+      }
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       BrakeTorque 2800
+      }
+      Tyre Tyre "{4D8B26DFFD85E58F}" {
+       LongitudinalFriction 1.55
+       LateralFriction 1.3
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Differential Differential Diff_02 {
+       Type LSD
+       Ratio 4.24
+       Strength 0.6
+      }
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+       SpringRate 52
+       CompressionDamper 3300
+       RelaxationDamper 4100
+       MaxTravelUp 0.16
+       MaxTravelDown 0.14
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       BrakeTorque 2200
+       HandbrakeTorqueFactor 2.5
+      }
+      Tyre Tyre "{4D8B26DF33F76974}" {
+       LongitudinalFriction 1.55
+       LateralFriction 1.3
+      }
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ThrottleCurve {
+      5900 0.8 6200 0.5 6500 0
+     }
+     ClutchUncoupleTime 0.15
+     ClutchCoupleTime 0.2
+     ClutchFeedbackRpm 1800
+     ClutchUncoupleRpm 1500
+     ClutchCoupleRpm 2800
+     Latency 0.15
+     UpShiftFactor 1.3
+     UpShiftRpm 4200
+     DownShiftFactor 1
+     DownShiftRpm 2800
+    }
+   }
+  }
+ }
+}

@@ -42,4 +42,12 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
  }
+ Frontline {
+  coords 2237.692 165.944 9427.426
+  m_MarkerColor 0.598 0.49 0.038 1
+  m_sQuadName "point-of-interest-2"
+  m_sDescription "Frontline"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
 }

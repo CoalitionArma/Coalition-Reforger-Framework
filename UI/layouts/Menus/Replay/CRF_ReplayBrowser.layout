@@ -1,0 +1,378 @@
+FrameWidgetClass {
+ Name "ReplayBrowserRoot"
+ {
+  BlurWidgetClass "{49274B836D2E8E9B}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{5E3E4AD8DE520540}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Z Order" -5
+   "Inherit Color" 1
+   Intensity 0.6
+  }
+  ImageWidgetClass "{55DF711E1D2E354A}" {
+   Name "Dim"
+   Slot FrameWidgetSlot "{17096644C32BC39C}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.0033 0.0037 0.0052 0.7
+   "Z Order" -4
+  }
+  FrameWidgetClass "{8188526FE4F8282C}" {
+   Name "Card"
+   Slot FrameWidgetSlot "{96671109E4558A17}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -620
+    OffsetLeft -620
+    PositionY -440
+    OffsetTop -440
+    SizeX 1240
+    OffsetRight -620
+    SizeY 880
+    OffsetBottom -440
+   }
+   {
+    SmartPanelWidgetClass "{DCDB0FFBA16AD895}" {
+     Name "CardBG"
+     Slot FrameWidgetSlot "{3A691D11D2614841}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 0.0075 0.0086 0.0123 1
+     style rounded_6px
+    }
+    ImageWidgetClass "{5E9BBA61EFDFC042}" {
+     Name "TitlePill"
+     Slot FrameWidgetSlot "{D6FD93300A997492}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 33
+      OffsetTop 33
+      SizeX 3
+      OffsetRight -35
+      SizeY 14
+      OffsetBottom -47
+     }
+     Color 0.5841 0.0369 0.0369 1
+    }
+    TextWidgetClass "{729DF51C55CABC52}" {
+     Name "TitleKicker"
+     Slot FrameWidgetSlot "{32793E73F530BC0C}" {
+      Anchor 0 0 1 0
+      PositionX 44
+      OffsetLeft 44
+      PositionY 30
+      OffsetTop 30
+      SizeX -60
+      OffsetRight 16
+      SizeY 20
+      OffsetBottom -50
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "COALITION  /  AFTER ACTION"
+     "Font Size" 13
+     "Min Font Size" 9
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{BED8B68A31B1F57D}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{FAC403F1AC284DFB}" {
+     Name "Heading"
+     Slot FrameWidgetSlot "{5864AAEDC8948681}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 52
+      OffsetTop 52
+      SizeX -64
+      OffsetRight 32
+      SizeY 46
+      OffsetBottom -98
+     }
+     Color 0.8632 0.8879 0.9301 1
+     Text "Replays"
+     "Font Size" 34
+     "Min Font Size" 30
+     FontProperties FontProperties "{8A4FFAC90FD07A51}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+    TextWidgetClass "{05DC0D49940C2433}" {
+     Name "Subheading"
+     Slot FrameWidgetSlot "{BE445866101BFACC}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 98
+      OffsetTop 98
+      SizeX -64
+      OffsetRight 32
+      SizeY 22
+      OffsetBottom -120
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "Watch a recorded mission back on its own terrain, with the real soldiers, vehicles and effects."
+     "Font Size" 15
+     "Min Font Size" 11
+     FontProperties FontProperties "{F5A9E989DA8A3FDD}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
+    SmartPanelWidgetClass "{47EA83B4CF4C1902}" {
+     Name "ListBG"
+     Slot FrameWidgetSlot "{806FFEE352598123}" {
+      Anchor 0 0 1 1
+      PositionX 32
+      OffsetLeft 32
+      PositionY 136
+      OffsetTop 136
+      SizeX -64
+      OffsetRight 32
+      SizeY -228
+      OffsetBottom 92
+     }
+     Color 0.0033 0.0037 0.0052 1
+     style rounded_6px
+    }
+    TextWidgetClass "{6D86D102AA677CAF}" {
+     Name "EmptyText"
+     Slot FrameWidgetSlot "{D6002EE6EDC05396}" {
+      Anchor 0 0 1 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 176
+      OffsetTop 176
+      SizeX -64
+      OffsetRight 32
+      SizeY 24
+      OffsetBottom -200
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text "No recordings yet"
+     "Font Size" 15
+     "Min Font Size" 11
+     "Is Visible" 0
+     "Horizontal Alignment" Center
+     FontProperties FontProperties "{85001B71AF97ED9A}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
+    ScrollLayoutWidgetClass "{137C5D7E67A27347}" {
+     Name "ListScroll"
+     Slot FrameWidgetSlot "{53A7553188ABF8DF}" {
+      Anchor 0 0 1 1
+      PositionX 42
+      OffsetLeft 42
+      PositionY 146
+      OffsetTop 146
+      SizeX -68
+      OffsetRight 26
+      SizeY -248
+      OffsetBottom 102
+     }
+     {
+      VerticalLayoutWidgetClass "{61502065571F081E}" {
+       Name "ReplayList"
+       Slot AlignableSlot "{9E65EA8F1C1EB3A0}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 0 12 0
+       }
+      }
+     }
+    }
+    TextWidgetClass "{148CD91861380F63}" {
+     Name "Status"
+     Slot FrameWidgetSlot "{26C8737595056BE2}" {
+      Anchor 0 1 1 1
+      PositionX 32
+      OffsetLeft 32
+      PositionY -72
+      OffsetTop -72
+      SizeX -452
+      OffsetRight 420
+      SizeY 40
+      OffsetBottom 32
+     }
+     Color 0.3968 0.4564 0.6038 1
+     Text ""
+     "Font Size" 14
+     "Min Font Size" 10
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{84B014A11BD2BFFD}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+     }
+    }
+    FrameWidgetClass "{19D38DB00FF91E27}" {
+     Name "RefreshButtonFrame"
+     Slot FrameWidgetSlot "{B24FEAF5DDAE5C97}" {
+      Anchor 1 1 1 1
+      PositionX -360
+      OffsetLeft -360
+      PositionY -72
+      OffsetTop -72
+      SizeX 160
+      OffsetRight 200
+      SizeY 40
+      OffsetBottom 32
+     }
+     {
+      SmartPanelWidgetClass "{942D8B396C40D3E7}" {
+       Name "RefreshButtonBG"
+       Slot FrameWidgetSlot "{11D2BEC4ACDA7377}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 1
+       Color 0.011 0.0137 0.0212 1
+       style rounded_4px
+      }
+      ButtonWidgetClass "{60118729BFB58B30}" {
+       Name "RefreshButton"
+       Slot FrameWidgetSlot "{8A0DD6BD3AD5A0DD}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 2
+       Color 1 1 1 0
+       components {
+        SCR_ButtonTextComponent "{41D9164C56D67440}" {
+         m_sTextWidgetName ""
+        }
+       }
+       {
+        TextWidgetClass "{5E0CBE69DD370BF4}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{E6D5A573261CF7B1}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "REFRESH"
+         "Font Size" 15
+         "Min Font Size" 11
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{F472377D02BC32D7}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{11C9B0A82F5E8486}" {
+     Name "CloseButtonFrame"
+     Slot FrameWidgetSlot "{833A15A669D4E443}" {
+      Anchor 1 1 1 1
+      PositionX -192
+      OffsetLeft -192
+      PositionY -72
+      OffsetTop -72
+      SizeX 160
+      OffsetRight 32
+      SizeY 40
+      OffsetBottom 32
+     }
+     {
+      SmartPanelWidgetClass "{2F270C2A069C6F41}" {
+       Name "CloseButtonBG"
+       Slot FrameWidgetSlot "{334C019803D940BA}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 1
+       Color 0.5841 0.0369 0.0369 1
+       style rounded_4px
+      }
+      ButtonWidgetClass "{5268EEB6937984BA}" {
+       Name "CloseButton"
+       Slot FrameWidgetSlot "{E75F046AAF76B644}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       "Z Order" 2
+       Color 1 1 1 0
+       components {
+        SCR_ButtonTextComponent "{ADE1E7080444289E}" {
+         m_sTextWidgetName ""
+        }
+       }
+       {
+        TextWidgetClass "{82682456A12F3E10}" {
+         Name "ButtonText"
+         Slot ButtonWidgetSlot "{C56071EB27331627}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text "BACK"
+         "Font Size" 15
+         "Min Font Size" 11
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{588B3D56D1F9DBA6}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

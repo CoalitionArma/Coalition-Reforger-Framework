@@ -1,20 +1,3 @@
-$grp Tree : "{00C9C289A467E096}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_carpinus_betulus_2f.et" {
- {
-  coords 850.062 0 2933.638
-  angles 2.518 -121.765 -2.049
-  scale 1.144
- }
- {
-  coords 862.676 0 2936.588
-  angles 2.518 -121.765 -2.049
-  scale 1.144
- }
- {
-  coords 845.882 0 2920.101
-  angles 2.518 -121.765 -2.049
-  scale 1.144
- }
-}
 COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
  coords 852.199 3.04 2934.932
 }
@@ -23,21 +6,4 @@ GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHu
 }
 COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
  coords 2559.015 80.688 654.272
-}
-$grp Tree : "{F2E366B002080516}Prefabs/Trees/Palm_Tree2.et" {
- {
-  coords 414.613 35.465 3738.017
-  angles 0 -121.458 0
-  scale 0.795
- }
- {
-  coords 418.826 29.861 3748.002
-  angles 0 -121.458 0
-  scale 0.795
- }
- {
-  coords 1031.175 1.875 3125.693
-  angles 0 -121.458 0
-  scale 0.795
- }
 }
