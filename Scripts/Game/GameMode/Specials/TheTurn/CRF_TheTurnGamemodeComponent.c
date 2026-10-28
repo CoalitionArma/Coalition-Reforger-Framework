@@ -143,6 +143,18 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("{7C1AE1F2A3B4C800}Sounds/Halloween/CRF_DistantSiren.wav", UIWidgets.ResourceNamePicker, "Sound file everyone hears at the outbreak and when the helicopter is called - a far-off civil defence siren by default. Empty = none.", params: "wav", category: "The Turn - Story")]
 	protected ResourceName m_sSirenSound;
 
+	[Attribute("", UIWidgets.Auto, "Names of entities where an abandoned civilian vehicle is left, nearly out of fuel. Only their position on the map matters: the vehicle is put on the ground at a clear spot within 15 m.", category: "The Turn - Civilian Vehicles")]
+	protected ref array<string> m_aCivilianVehicleSpotNames;
+
+	[Attribute("", UIWidgets.ResourceNamePicker, "Vehicles to pick from at random (list one several times to make it more common). Empty = vanilla civilian cars, vans, UAZs and the odd Ural.", params: "et", category: "The Turn - Civilian Vehicles")]
+	protected ref array<ResourceName> m_aCivilianVehiclePrefabs;
+
+	[Attribute("0.03", UIWidgets.Slider, "Least fuel a civilian vehicle starts with (share of a full tank).", params: "0 1 0.01", category: "The Turn - Civilian Vehicles")]
+	protected float m_fCivilianFuelMin;
+
+	[Attribute("0.12", UIWidgets.Slider, "Most fuel a civilian vehicle starts with (share of a full tank).", params: "0 1 0.01", category: "The Turn - Civilian Vehicles")]
+	protected float m_fCivilianFuelMax;
+
 	//===================================================================================
 	// STATE
 	//===================================================================================
@@ -196,6 +208,19 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const ResourceName BACON_CIVILIANS_LARGE = "{813B0F968868FA48}622120A5448725E3/Prefabs/Groups/Group_Zombies_CIV_Large.et";
 	protected static const ResourceName BACON_SOLDIERS = "{58251EDC277CE499}622120A5448725E3/Prefabs/Groups/Group_Zombies_USSR.et";
 	protected static const ResourceName BACON_HORDE = "{6AEA65C9E88BB0B2}622120A5448725E3/Prefabs/Groups/Group_Zombies_Horde.et";
+
+	// Vanilla civilian vehicles (randomized colours), used when the mission doesn't list its own.
+	// Repeats make the small cars more common than the vans, and the Ural rare.
+	protected static const ResourceName CIV_S105 = "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et";
+	protected static const ResourceName CIV_S1203_TRANSPORT = "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et";
+	protected static const ResourceName CIV_S1203_CARGO = "{5729759DD092B0F7}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_randomized.et";
+	protected static const ResourceName CIV_UAZ452 = "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et";
+	protected static const ResourceName CIV_UAZ469_OPEN = "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et";
+	protected static const ResourceName CIV_UAZ469_COVERED = "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et";
+	protected static const ResourceName CIV_URAL = "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et";
+
+	// Vehicles are dropped this far above the ground so they settle onto their wheels
+	protected static const float VEHICLE_SPAWN_LIFT = 0.5;
 
 	//===================================================================================
 	// LIFECYCLE
@@ -252,6 +277,9 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		BuildSchedule();
 
+		// Abandoned civilian vehicles, once the world has settled
+		GetGame().GetCallqueue().CallLater(SpawnCivilianVehicles, 2000, false);
+
 		m_iPhase = CRF_ETheTurnPhase.NORMAL;
 		m_iSeatsLeft = m_iSeats;
 		Replication.BumpMe();
@@ -274,6 +302,8 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			GetGame().GetCallqueue().Remove(Tick);
 			GetGame().GetCallqueue().Remove(UpdateMarkers);
+			GetGame().GetCallqueue().Remove(SpawnCivilianVehicles);
+			GetGame().GetCallqueue().Remove(SetLowFuel);
 		}
 
 		m_Markers.Clear();
@@ -288,6 +318,62 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			s_Instance = null;
 
 		super.OnDelete(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: an abandoned civilian vehicle at every listed spot, on the ground and nearly out of fuel.
+	//! Vehicles are replicated, so every client gets them (late joiners included).
+	protected void SpawnCivilianVehicles()
+	{
+		if (!m_aCivilianVehicleSpotNames || m_aCivilianVehicleSpotNames.IsEmpty())
+			return;
+
+		array<ResourceName> pool = {};
+		if (m_aCivilianVehiclePrefabs && !m_aCivilianVehiclePrefabs.IsEmpty())
+			pool.Copy(m_aCivilianVehiclePrefabs);
+		else
+		{
+			for (int car = 0; car < 3; car++)
+				pool.Insert(CIV_S105);
+			for (int pair = 0; pair < 2; pair++)
+			{
+				pool.Insert(CIV_S1203_TRANSPORT);
+				pool.Insert(CIV_UAZ452);
+				pool.Insert(CIV_UAZ469_OPEN);
+			}
+			pool.Insert(CIV_S1203_CARGO);
+			pool.Insert(CIV_UAZ469_COVERED);
+			pool.Insert(CIV_URAL);
+		}
+
+		int spawned = 0;
+		foreach (string spotName : m_aCivilianVehicleSpotNames)
+		{
+			IEntity spot = CRF_SpecialsHelper.FindNamedEntity(spotName, LOG);
+			if (!spot)
+				continue;
+
+			IEntity vehicle = CRF_SpecialsHelper.SpawnOnGround(pool.GetRandomElement(), spot.GetOrigin(), Math.RandomFloat(0, 360), 15, 3.5, VEHICLE_SPAWN_LIFT);
+			if (!vehicle)
+				continue;
+
+			// After a moment, once the vehicle's fuel system has set itself up
+			GetGame().GetCallqueue().CallLater(SetLowFuel, 1000, false, vehicle);
+			spawned++;
+		}
+
+		Print(string.Format("%1 %2 abandoned civilian vehicle(s) placed.", LOG, spawned), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetLowFuel(IEntity vehicle)
+	{
+		if (!vehicle)
+			return;
+
+		SCR_FuelManagerComponent fuelManager = SCR_FuelManagerComponent.Cast(vehicle.FindComponent(SCR_FuelManagerComponent));
+		if (fuelManager)
+			fuelManager.SetTotalFuelPercentage(Math.RandomFloat(m_fCivilianFuelMin, Math.Max(m_fCivilianFuelMin, m_fCivilianFuelMax)));
 	}
 
 	//------------------------------------------------------------------------------------------------

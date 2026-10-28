@@ -71,6 +71,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iSeats 12
    m_fBoardingRadius 15
    m_bEndMissionOnVictory 1
+   m_aCivilianVehicleSpotNames {
+    "turn_car_01" "turn_car_02" "turn_car_03" "turn_car_04" "turn_car_05" "turn_car_06" "turn_car_07" "turn_car_08" "turn_car_09" "turn_car_10" "turn_car_11" "turn_car_12" "turn_car_13" "turn_car_14" "turn_car_15"
+   }
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -103,7 +106,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    ""\
    "The ChDKz have dug into Stary Sobor. The CDF took Novy Sobor back this afternoon, one kilometre to the east, and are pushing west tonight."\
    ""\
-   "Both sides have been ignoring the reports coming down from the north: riots in the villages, patrols that stopped answering. Tonight they stop being reports."
+   "Both sides have been ignoring the reports coming down from the north: riots in the villages, patrols that stopped answering. Tonight they stop being reports."\
+   ""\
+   "The civilians are gone. Their cars and vans are still parked around both towns, most of them with barely a drop in the tank."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1

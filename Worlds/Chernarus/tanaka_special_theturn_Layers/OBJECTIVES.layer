@@ -37,3 +37,48 @@ GenericEntity turn_zombies_11 {
 GenericEntity turn_zombies_12 {
  coords 7850.000 300.000 7100.000
 }
+GenericEntity turn_car_01 {
+ coords 6140.000 297.000 7768.000
+}
+GenericEntity turn_car_02 {
+ coords 6228.000 297.000 7745.000
+}
+GenericEntity turn_car_03 {
+ coords 6185.000 297.000 7695.000
+}
+GenericEntity turn_car_04 {
+ coords 6280.000 297.000 7780.000
+}
+GenericEntity turn_car_05 {
+ coords 6098.000 297.000 7660.000
+}
+GenericEntity turn_car_06 {
+ coords 5980.000 297.000 7862.000
+}
+GenericEntity turn_car_07 {
+ coords 6245.000 297.000 7580.000
+}
+GenericEntity turn_car_08 {
+ coords 7275.000 297.000 7668.000
+}
+GenericEntity turn_car_09 {
+ coords 7080.000 297.000 7778.000
+}
+GenericEntity turn_car_10 {
+ coords 6995.000 297.000 7712.000
+}
+GenericEntity turn_car_11 {
+ coords 7150.000 297.000 7530.000
+}
+GenericEntity turn_car_12 {
+ coords 6950.000 297.000 7800.000
+}
+GenericEntity turn_car_13 {
+ coords 6910.000 297.000 7845.000
+}
+GenericEntity turn_car_14 {
+ coords 6390.000 297.000 7520.000
+}
+GenericEntity turn_car_15 {
+ coords 6490.000 297.000 7420.000
+}
