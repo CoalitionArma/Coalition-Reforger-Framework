@@ -3,5 +3,5 @@ COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/Spaw
  angles 0 20.109 0
 }
 COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
- coords 2305.224 89.731 1314.828
+ coords 2359.59 86.9 1374.414
 }

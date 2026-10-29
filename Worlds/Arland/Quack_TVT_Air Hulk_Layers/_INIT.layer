@@ -1,14 +1,5 @@
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
-  CRF_HighValueTargetGamemodeManager "{6AB917DFFC940281}" {
-   m_bEnableTransponderMarker 0
-   m_aHVTEntries {
-    CRF_HVTEntry "{6AB917DFF5030F25}" {
-     m_eEntryType PLAYER
-     m_eFaction OPFOR
-    }
-   }
-  }
   Quack_chaosControlGameComponent "{6AAE01911D98F643}" {
    m_iSeconds 5
    m_iMinutes 0
@@ -37,12 +28,88 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 5
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6ABA5A6983077662}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Occult Defense Initiative operatives attempt to stop Chaos Collective from completeing the Awakening Ritiual."\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets: NVGs"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets: Witches"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6ABA5A6983077293}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Eliminate Chaos Collective priests before they are able to complete the ritual."\
+   ""\
+   "INTENT"\
+   ""\
+   ""\
+   "EXECUTION"\
+   "Investigate the areas of interests for signs of cult activities. We believe they are using deer skulls as a focus for otherworld energy."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ABA5A69830773BE}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Conduct the awakening ritual and bring in the new era of existance."\
+   ""\
+   "INTENT"\
+   "IProtect the priests. They are the only ones that can complete the rites."\
+   ""\
+   "EXECUTION"\
+   "The ritual sites are marked by deer skulls. When you find a site bring a priests in order to complete part the ritual."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ABA5A69830770E0}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ABA5A698307712A}" {
+   m_sTitle "Administration"
+   m_sTextData "The ritual skulls have a user action that only shows up for people with a wrench in their inventorys. Only priests spawn with wrenches. Please don't loot the wrench item from dead priest bodies."\
+   ""\
+   "If you fall into the water due to bad teleports, please send an admin help message."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6AB917D81CCB636B}" {
+  COA_SlottingGroup "{6ABA5A6723567697}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -52,7 +119,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB6082}" {
+  COA_SlottingGroup "{6ABA5A67235674EE}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -62,7 +129,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB7E55}" {
+  COA_SlottingGroup "{6ABA5A67235675D4}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -78,7 +145,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB7FD6}" {
+  COA_SlottingGroup "{6ABA5A6723567299}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -94,23 +161,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB7C93}" {
-   m_sCallsign "1-2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    MEDIC
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
-    TEAM_LEAD
-    RIFLEMAN
-    RIFLEMAN
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AB917D81CCB7A4B}" {
+  COA_SlottingGroup "{6ABA5A672356706E}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -120,7 +171,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB7B2F}" {
+  COA_SlottingGroup "{6ABA5A672356713D}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -136,9 +187,36 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
+  COA_SlottingGroup "{6ABA5A6723564E27}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ABA5A6723564F07}" {
+   m_sCallsign "MMG"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6AB917D81CCB761B}" {
+  COA_SlottingGroup "{6ABA5A6723564D48}" {
    m_sCallsign "Cult HQ"
    m_FlagType SIGNAL
    m_aSlots {
@@ -148,7 +226,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB77EE}" {
+  COA_SlottingGroup "{6ABA5A6723564A4D}" {
    m_sCallsign "True Eye"
    m_FlagType INFANTRY
    m_aSlots {
@@ -161,55 +239,69 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB749F}" {
+  COA_SlottingGroup "{6ABA5A6723564B11}" {
    m_sCallsign "1st Hand"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AB917D81CCB7276}" {
-   m_sCallsign "2nd Hand"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    PLATOON_SERGEANT
-   }
-   m_eRespawnPoolType PER_SLOT
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AB917D81CCB736C}" {
-   m_sCallsign "3rd Hand"
-   m_FlagType INFANTRY
+   m_FlagType UNDEFINED
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB917D81CCB700E}" {
-   m_sCallsign "4th Hand"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6ABA5A6723564805}" {
+   m_sCallsign "2nd Hand"
+   m_FlagType UNDEFINED
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ABA5A67235649E9}" {
+   m_sCallsign "3rd Hand"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ABA5A67235646C6}" {
+   m_sCallsign "4th Hand"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT

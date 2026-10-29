@@ -49,6 +49,11 @@ class Quack_OctoTriggerEntity : BaseGameTriggerEntity
 	//------------------------------------------------------------------------------------------------	
 	protected void TargetBuilder()
 	{
+		if(Targets.IsEmpty())
+		{
+			Print("Array is empty");
+			return;
+		}
 		foreach(string targetVector : Targets)
 		{
 			IEntity teleportObject = GetGame().GetWorld().FindEntityByName(targetVector);

@@ -1438,73 +1438,15 @@ $grp LightEntity {
   LensFlareScale 0.39
  }
 }
-$grp Quack_GenericTriggerTeleporterEntity {
- Star1 {
-  coords 204.478 41.347 564.901
-  TriggerShapeType Sphere
-  SphereRadius 3
-  DrawShape 1
-  ShapeColor 0.624 0.1559 0.5029 0.3137
-  TriggerActivationType "All changes"
-  PeriodicQueries 1
-  ClassesFilter {
-   "SCR_ChimeraCharacter"
-  }
-  m_coords 204.36 41.9 535.2
-  m_bUseExactCoordinates 0
- }
- Star2 {
-  coords 204.189 41.388 594.762
-  TriggerShapeType Sphere
-  SphereRadius 3
-  DrawShape 1
-  ShapeColor 0.624 0.1559 0.5029 0.3137
-  TriggerActivationType "All changes"
-  PeriodicQueries 1
-  ClassesFilter {
-   "SCR_ChimeraCharacter"
-  }
-  m_coords 204.36 41.9 535.2
-  m_bUseExactCoordinates 0
- }
- Star4 {
-  coords 204.638 41.449 618.994
-  TriggerShapeType Sphere
-  SphereRadius 3
-  DrawShape 1
-  ShapeColor 0.624 0.1559 0.5029 0.3137
-  TriggerActivationType "All changes"
-  PeriodicQueries 1
-  ClassesFilter {
-   "SCR_ChimeraCharacter"
-  }
-  m_coords 204.8 41.5 680.8
-  m_bUseExactCoordinates 0
- }
- Star3 {
-  coords 204.65 41.332 649.6
-  TriggerShapeType Sphere
-  SphereRadius 3
-  DrawShape 1
-  ShapeColor 0.624 0.1559 0.5029 0.3137
-  TriggerActivationType "All changes"
-  PeriodicQueries 1
-  ClassesFilter {
-   "SCR_ChimeraCharacter"
-  }
-  m_coords 204.8 41.5 680.8
-  m_bUseExactCoordinates 0
- }
-}
 $grp Quack_OctoTriggerEntity {
  TeleStorm1 {
-  coords 2461.587 88.889 1477.313
+  coords 2463.448 88.889 1477.313
   TriggerShapeType Sphere
   SphereRadius 15
-  DrawShape 1
   ShapeColor 0.4735 0.6867 0.2582 0.3137
   TriggerActivationType "All changes"
   PeriodicQueries 1
+  UpdatePeriod 4
   ClassesFilter {
    "SCR_ChimeraCharacter"
   }
@@ -1522,7 +1464,6 @@ $grp Quack_OctoTriggerEntity {
   coords 2297.947 90.054 1242.483
   TriggerShapeType Sphere
   SphereRadius 15
-  DrawShape 1
   ShapeColor 0.4735 0.6867 0.2582 0.3137
   TriggerActivationType "All changes"
   PeriodicQueries 1
