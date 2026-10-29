@@ -1,0 +1,128 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 6351.880 296.647 7371.794
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "1. Stage start. Left 4 opens, 150"
+ }
+ {
+  coords 6448.686 312.230 7171.571
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "2. At junction left 2, 400"
+ }
+ {
+  coords 6814.414 311.848 7110.296
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "3. Steep downhill, 200"
+ }
+ {
+  coords 6998.944 289.973 7043.480
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "4. Left 4, 80"
+ }
+ {
+  coords 7118.482 267.755 7027.134
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "5. At junction square right onto asphalt, and steep downhill, into at junction hairpin left onto dirt"
+ }
+ {
+  coords 7190.447 253.039 6948.909
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "6. Hairpin right, and left 4 tightens, 200"
+ }
+ {
+  coords 7298.237 247.147 6689.488
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "7. Steep downhill, 250"
+ }
+ {
+  coords 7293.976 226.419 6435.275
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "8. Caution, at junction square left, into dip, and at junction square right"
+ }
+ {
+  coords 7420.493 234.979 6357.025
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "9. Left 4 opens, 400"
+ }
+ {
+  coords 7832.795 267.230 6059.019
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "10. Caution, left 2, 100"
+ }
+ {
+  coords 7978.818 278.284 6128.887
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "11. Hairpin right, into left 4 long opens, 200"
+ }
+ {
+  coords 8332.836 292.000 5991.194
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "12. Graveyard right, into ruined church right, 80"
+ }
+ {
+  coords 8402.365 291.937 5984.032
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "13. Onto asphalt, 150"
+ }
+ {
+  coords 8534.065 291.911 6036.625
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "14. Caution, at junction hairpin right onto dirt, into steep downhill, 50"
+ }
+ {
+  coords 8568.177 291.340 6010.647
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "15. Square left, and right 3, into left 3"
+ }
+ {
+  coords 8597.526 271.899 5886.772
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "16. Dip, into right 3 long opens, into crest"
+ }
+ {
+  coords 8582.150 273.796 5791.234
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "17. Steep downhill, 300"
+ }
+ {
+  coords 8354.430 210.546 5561.170
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "18. Steep downhill, and right 5, 80"
+ }
+ {
+  coords 8275.727 180.106 5410.860
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "19. Right 2, into left 3, and right 1"
+ }
+ {
+  coords 8179.287 159.095 5302.495
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "20. Hairpin left"
+ }
+ {
+  coords 8406.000 140.004 4956.093
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "21. Flying finish, 150"
+ }
+}

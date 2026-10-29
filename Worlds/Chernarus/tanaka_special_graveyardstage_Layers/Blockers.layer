@@ -1,0 +1,271 @@
+$grp ParticleEffectEntity {
+ {
+  coords 7121.638 268.443 7021.357
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+ {
+  coords 7134.759 267.373 7010.097
+  EffectPath "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+ }
+ {
+  coords 8340.979 295.022 6002.934
+  EffectPath "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+ }
+ {
+  coords 8547.754 293.2 6036.379
+  EffectPath "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+ }
+ {
+  coords 8575.189 293.824 6037.611
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+ {
+  coords 8391.403 141.637 5008.573
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+ {
+  coords 8376.333 141.664 5002.091
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+ {
+  coords 8388.034 146.21 4974.147
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+ {
+  coords 8403.159 146.101 4980.476
+  EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+ }
+}
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  coords 6368.794 287.199 7524.75
+ }
+ {
+  coords 6371.416 287.335 7530.116
+  angles 0 34 0
+ }
+ {
+  coords 6460.694 314.464 7151.381
+  angles -6.24 89.902 0.9
+ }
+ {
+  coords 6454.78 314.452 7150.553
+  angles 0.8 89.128 -6.254
+ }
+ {
+  coords 6448.497 314.491 7150.323
+  angles -0.108 89.133 -7.124
+ }
+ {
+  coords 7138.766 266.375 7027.507
+  angles 0 -166.867 0
+ }
+ {
+  coords 7137.446 266.366 7021.39
+  angles 0 -166.867 0
+ }
+ {
+  coords 7136.59 266.406 7032.837
+  angles 0 -62.867 0
+ }
+ {
+  coords 7117.478 264.197 6927.865
+  angles 0 -72.867 0
+ }
+ {
+  coords 7111.303 264.219 6929.382
+  angles 0 -74.867 0
+ }
+ {
+  coords 7131.082 266.406 7035.849
+  angles 0 -62.867 0
+ }
+ {
+  coords 7354.113 221.218 6359.5
+  angles -2.048 -137.758 -3.065
+ }
+ {
+  coords 7350.038 220.799 6354.741
+  angles -2.048 -137.758 -3.065
+ }
+ {
+  coords 7359.033 222.225 6364.254
+  angles -7.106 -137.396 -4.097
+ }
+ {
+  coords 8539.67 292.296 6054.339
+  angles 2.684 88 0
+ }
+ {
+  coords 8545.982 292.271 6054.657
+  angles 2.684 88 0
+ }
+ {
+  coords 8533.941 292.154 6051.468
+  angles 2.684 41 0
+ }
+ {
+  coords 8552.533 292.397 6054.45
+  angles 2.684 96 0
+ }
+ {
+  coords 8595.05 295.001 6044.895
+  angles -2.524 -174.713 7.802
+ }
+ {
+  coords 8594.593 294.833 6038.757
+  angles -2.524 -174.713 7.802
+ }
+ {
+  coords 8592.316 293.616 6030.058
+  angles -2.524 -148.713 7.802
+ }
+}
+$grp GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ {
+  coords 7135.656 266.183 7006.1
+ }
+ {
+  coords 8546.066 291.932 6039.599
+  angles 0 148 0
+ }
+}
+GenericEntity : "{58F0C4BE4655101A}Prefabs/Compositions/Misc/SubCompositions/VehicleGarbage_TireStack_02.et" {
+ coords 7121.899 267.096 7023.543
+ angles 0 108 0
+}
+$grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+ {
+  coords 6371.986 288.692 7526.465
+  angles 0 -158.939 0
+ }
+ {
+  coords 6455.76 316.903 7154.786
+  angles 0 87.061 0
+ }
+ {
+  coords 7135.899 267.921 7025.908
+  angles 0 -166.939 0
+ }
+ {
+  coords 7113.545 265.729 6930.866
+  angles 0 101.061 0
+ }
+ {
+  coords 7351.35 223.238 6360.225
+  angles 0 43.061 0
+ }
+ {
+  coords 8540.871 293.933 6052.073
+  angles 0 95.061 0
+ }
+ {
+  coords 8591.932 295.822 6039.004
+  angles 0 -162.939 0
+ }
+}
+$grp GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubCompositions/TireStack_M939A1_02.et" {
+ {
+  coords 7121.441 267.065 7022.528
+ }
+ {
+  coords 7121.342 266.907 7021.399
+ }
+ {
+  coords 7121.488 266.68 7020.236
+ }
+ {
+  coords 7121.284 266.605 7019.106
+ }
+ {
+  coords 7120.606 266.641 7018.216
+ }
+ {
+  coords 7119.58 266.754 7017.514
+ }
+ {
+  coords 7118.541 266.873 7016.948
+ }
+ {
+  coords 7117.452 266.997 7016.461
+ }
+ {
+  coords 7116.293 267.151 7016.118
+ }
+ {
+  coords 7115.212 267.312 7015.86
+ }
+ {
+  coords 8551.886 292.084 6041.124
+ }
+ {
+  coords 8553.104 292.111 6041.009
+ }
+ {
+  coords 8554.282 292.136 6040.909
+ }
+ {
+  coords 8555.597 292.196 6040.845
+ }
+ {
+  coords 8556.919 292.254 6040.747
+ }
+ {
+  coords 8558.137 292.278 6040.633
+ }
+ {
+  coords 8559.315 292.303 6040.533
+ }
+ {
+  coords 8560.63 292.375 6040.468
+ }
+ {
+  coords 8561.975 292.542 6040.434
+ }
+ {
+  coords 8563.192 292.557 6040.319
+ }
+ {
+  coords 8564.371 292.574 6040.219
+ }
+ {
+  coords 8565.686 292.638 6040.155
+ }
+ {
+  coords 8566.878 292.774 6039.604
+  angles 2.673 -0.167 -3.58
+ }
+ {
+  coords 8568.096 292.842 6039.49
+  angles 3.562 -0.223 -3.583
+ }
+ {
+  coords 8569.274 292.897 6039.39
+  angles 3.562 -0.223 -3.583
+ }
+ {
+  coords 8570.589 292.955 6039.325
+  angles 3.569 -0.168 -2.689
+ }
+ {
+  coords 8571.902 293.001 6038.9
+  angles 0 13 0
+ }
+ {
+  coords 8573.063 293.017 6038.515
+  angles 0 13 0
+ }
+ {
+  coords 8574.189 293.022 6038.152
+  angles 0 13 0
+ }
+ {
+  coords 8575.455 293.029 6037.794
+  angles 0 13 0
+ }
+}
+SCR_DestructibleBuildingEntity : "{D97095FEEDBD5613}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_PillarSmall.et" {
+ coords 8396.444 144.259 4975.105
+ angles 0 -112.766 9.431
+ scale 1.832
+}
