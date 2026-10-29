@@ -1,0 +1,290 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{AE973AF9E88AD3FC}Worlds/ChernoT/terrainName_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{1A6F9D049B8B476F}Worlds/ChernoT/terrainName_BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{C5EB0E76B45B4179}Worlds/ChernoT/terrainName_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 11105.187 204.696 12307.863
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_SlasherGamemodeComponent "{7C1AF1A2B3C4D611}" {
+   m_sSurvivorFaction "BLUFOR"
+   m_sKillerFaction "OPFOR"
+   m_aGeneratorNames {
+    "slasher_generator_1" "slasher_generator_2" "slasher_generator_3" "slasher_generator_4"
+   }
+   m_iGeneratorsRequired 4
+   m_iGeneratorSeconds 150
+   m_fExtraWorkerSpeed 0.5
+   m_fWorkRadius 8
+   m_bKillerStopsWork 1
+   m_bRevealWork 1
+   m_sRadioName "slasher_radio"
+   m_iRadioSeconds 20
+   m_sExtractionName "slasher_lz"
+   m_iInboundSeconds 150
+   m_iBoardingSeconds 60
+   m_fExtractionRadius 20
+   m_iSurvivorsToEscape 1
+   m_iTimeLimitMinutes 60
+   m_bEndMissionOnVictory 1
+   m_bKillersTireless 1
+   m_fKillerDamageTaken 0.35
+   m_fSurvivorMaxSpeed 0.9
+   m_fTerrorRadius 30
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 23
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 30
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 75
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{7C1AF1A2B3C4D612}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Grishino, the 31st of October, 2300."\
+   ""\
+   "The harvest festival was still going when the power died. The phone lines are dead and the people who went to look at the generators haven't come back."\
+   ""\
+   "Something is out there in the fog. It wears a mask."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{7C1AF1A2B3C4D613}" {
+   m_sTitle "SURVIVORS Briefing"
+   m_sTextData "MISSION"\
+   "Get out of Grishino alive."\
+   ""\
+   "HOW"\
+   "- Generators: get all four running. Stand at one to work on it (two and a half minutes alone, quicker with two or three of you). Your map shows each generator and how far along it is."\
+   "- They hear it: when you start on a generator, they're told roughly where it is. If one of them is next to it, the work stops."\
+   "- Radio: once all four generators run, the radio in the farm yard has power. Hold it for 20 seconds to call for extraction."\
+   "- Extraction: it lands at the airfield helipad, a kilometre west, two and a half minutes after the call, and waits one minute. Be there."\
+   ""\
+   "WHAT YOU'RE UP AGAINST"\
+   "- They never tire and they're hard to put down. You're slower than them and you only have a pistol and two magazines."\
+   "- \"Something is close\" means one of them is within 30 metres."\
+   "- Listen: they murmur while they move and scream when they run. When it goes quiet, they're standing still - and could be anywhere."\
+   "- Flashlights help you see, and help them see you."\
+   ""\
+   "If even one of you gets out, you win."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{7C1AF1A2B3C4D614}" {
+   m_sTitle "KILLERS Briefing"
+   m_sTextData "MISSION"\
+   "Nobody leaves Grishino."\
+   ""\
+   "HOW"\
+   "- Your blade: switch to your sidearm slot and use the melee key to strike."\
+   "- You never tire, you take a third of the damage they do, and your mask has night vision - switch it on."\
+   "- When they start on a generator you're told where. Standing next to one stops their work."\
+   "- When the radio has power you're told where it is; when they call extraction you're told where it lands."\
+   "- You respawn in 30-second waves at your camp in the woods north of the village."\
+   "- They can hear you: you murmur while you move and scream when you sprint. Stand still and you make no sound - wait for them."\
+   ""\
+   "You win if nobody escapes: they all die, the extraction leaves without them, or an hour passes."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{7C1AF1A2B3C4D615}" {
+   m_sTitle "Administration"
+   m_sTextData "Survivors don't respawn. Killers respawn in 30-second waves."\
+   ""\
+   "Slot four KILLERS (Rifleman slots only - the blade is set on that role)."\
+   ""\
+   "A dead killer's body vanishes after five seconds, mask and blade included."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 8
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{7C1AF1A2B3C4D616}" {
+   m_sCallsign "SURVIVORS 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AF1A2B3C4D617}" {
+   m_sCallsign "SURVIVORS 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AF1A2B3C4D618}" {
+   m_sCallsign "SURVIVORS 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AF1A2B3C4D619}" {
+   m_sCallsign "SURVIVORS 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{7C1AF1A2B3C4D61A}" {
+   m_sCallsign "KILLERS"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 9999
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{7C1AF1A2B3C4D61B}" {
+  m_rGearScript "{7C1AE1F2A3B4C700}Configs/Gearscripts/Standard/Specials/Slasher/COA_GS_Slasher_Survivor.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{7C1AF1A2B3C4D61C}" {
+  m_rGearScript "{7C1AE1F2A3B4C600}Configs/Gearscripts/Standard/Specials/Slasher/COA_GS_Slasher_Killer.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{7C1AF1A2B3C4D61D}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{7C1AF1A2B3C4D61E}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "7C1AF1A2B3C4D61F" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

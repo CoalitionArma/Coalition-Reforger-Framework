@@ -18,4 +18,5 @@ modded enum COA_EGamemode
 	PATROLAMBUSH,
 	INFECTION,
 	THETURN,
+	SLASHER
 }

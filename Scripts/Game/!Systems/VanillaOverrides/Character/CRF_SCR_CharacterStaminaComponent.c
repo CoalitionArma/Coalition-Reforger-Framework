@@ -26,6 +26,14 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 				AddStamina(pDrain);
 				return;
 			}
+
+			// Slasher special: neither do the killers
+			CRF_SlasherGamemodeComponent slasher = CRF_SlasherGamemodeComponent.GetInstance();
+			if (slasher && slasher.IsTirelessKiller(GetOwner()))
+			{
+				AddStamina(pDrain);
+				return;
+			}
 		}
 
 		if (pDrain <= 0)

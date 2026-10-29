@@ -1,0 +1,18 @@
+GenericEntity slasher_generator_1 {
+ coords 5815.000 277.000 10115.000
+}
+GenericEntity slasher_generator_2 {
+ coords 6230.000 282.000 10260.000
+}
+GenericEntity slasher_generator_3 {
+ coords 5925.000 270.000 10400.000
+}
+GenericEntity slasher_generator_4 {
+ coords 6130.000 254.000 10735.000
+}
+GenericEntity slasher_radio {
+ coords 5905.000 272.000 10225.000
+}
+GenericEntity slasher_lz {
+ coords 4955.600 339.000 9948.600
+}
