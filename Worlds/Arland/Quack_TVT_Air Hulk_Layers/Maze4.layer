@@ -1,0 +1,26 @@
+SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
+ coords 253.695 259.793 215.044
+}
+SCR_DestructibleBuildingEntity : "{A964BB3CC1B5FF28}Prefabs/Structures/Military/Fortifications/CoastalBattery_USSR_01/CoastalBattery_USSR_01_tower.et" {
+ coords 253.588 238.289 235.69
+ angles 0 -180 0
+}
+SCR_DestructibleBuildingEntity : "{CFFBF2762CF73C3C}Prefabs/Structures/Industrial/Cranes/CoalLoader_01/CoalLoader_01_tower.et" {
+ coords 255.832 223.26 243.277
+}
+SCR_DestructibleBuildingEntity : "{D85AB5883F48F24F}Prefabs/Structures/Military/Training/WatchtowerRange_USSR_01/WatchtowerRange_USSR_01.et" {
+ coords 257.98 330.186 188.01
+}
+SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m.et" {
+ coords 250.577 77.579 242.817
+}
+StaticModelEntity : "{DBCDEC45DB834E8A}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01.et" {
+ coords 258.035 149.335 198.7
+}
+SCR_DestructibleBuildingEntity : "{DECF116069DCCC2B}Prefabs/Structures/Cultural/Castles/Castle_01_Tower.et" {
+ coords 235.606 188.55 242.911
+ angles 0 0 0
+}
+SCR_DestructibleBuildingEntity : "{F6FC9703E7F4FDCA}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01.et" {
+ coords 257.446 278.493 200.084
+}

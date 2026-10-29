@@ -15,10 +15,8 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	protected float m_iMinutes;
 	
 	protected float m_fCheckDelay;
-	protected bool key1;
-	protected bool key2;
+	bool keys = false;
 	int RitualSitesActivations = 0;
-	// Need an array of locations, perferably 8 to randomly teleport players to; as well as two known locations. 
 	
 	//------------------------------------------------------------------------------------------------	
 	// Wait for the safe start to end before starting the countdown.
@@ -93,9 +91,6 @@ class Quack_chaosControlGameComponent : ScriptComponent
 		SCR_BaseInteractiveLightComponent skull2comp = SCR_BaseInteractiveLightComponent.Cast(skull2.FindComponent(SCR_BaseInteractiveLightComponent));
 		if(skull2comp)
 		skull2comp.ToggleLight(!skull2comp.IsOn());
-
-		key1 = true;
-		key2 = true;
 	}
 		
 	//------------------------------------------------------------------------------------------------
@@ -125,6 +120,13 @@ class Quack_chaosControlGameComponent : ScriptComponent
 		
 		Print(RitualSitesActivations);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void unlockTriggers()
+	{
+		keys = true;
+		Print(keys);
+	}	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -224,3 +226,47 @@ class Quack_RitualUserAction : ScriptedUserAction
 	    return false;
 	}
 }
+
+class Quack_BluStartUserAction : CRF_TeleportPlayerAction
+{
+	IEntity Skullobject;
+	//------------------------------------------------------------------------------------------------
+	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
+	{
+		Skullobject = pOwnerEntity
+	}
+	//------------------------------------------------------------------------------------------------
+	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
+	{
+		super.PerformAction(pOwnerEntity, pUserEntity);
+				SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if(!gamemode)
+		{
+			Print("No Game mode.");
+			return;
+		}
+		
+		Quack_chaosControlGameComponent Comp = Quack_chaosControlGameComponent.Cast(gamemode.FindComponent(Quack_chaosControlGameComponent));
+		if(!Comp)
+		{
+			Print("No component.");
+			return;
+		}
+		Print("Calling unlock triggers");
+		Comp.unlockTriggers();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override bool CanBeShownScript(IEntity user) 
+	{ 
+		SCR_BaseInteractiveLightComponent Lights = SCR_BaseInteractiveLightComponent.Cast(Skullobject.FindComponent(SCR_BaseInteractiveLightComponent));
+		if(!Lights)
+			return false;
+		
+		if(!Lights.IsOn())
+			return false;
+		
+		return true;
+	};
+}
+

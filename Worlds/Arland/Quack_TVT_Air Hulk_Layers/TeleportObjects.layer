@@ -28,6 +28,7 @@ $grp LightEntity {
   coords 615.834 33.931 448.521
   Color 0.1569 0.2745 0.6235 1
   LV 8.73
+  CastShadow 0
   ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
   ClipEV -10
   Radius 6
@@ -37,24 +38,1510 @@ $grp LightEntity {
   VolLightScale 0.071
   LensFlareScale 0.39
  }
+ Comet2 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 629.705 33.596 467.111
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet3 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 546.515 37.452 779.013
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet4 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 531.399 38.622 718.23
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet5 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 575.906 66.332 436.479
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet6 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 205.376 51.968 477.196
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet7 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 203.836 52.367 736.351
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Comet8 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 260.11 201.134 187.936
+  Color 0.1569 0.2745 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid1 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid2"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 612.64 33.448 412.773
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid2 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F26D8463}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid1"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 595.401 37.556 741.372
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid3 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F788CECCEA}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid4"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 502.173 37.125 755.271
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid4 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F78D69B449}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid3"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 204.656 42.078 732.569
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid5 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F78078725A}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid6"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 204.824 41.947 476.958
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid6 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F79AC86401}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid5"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 240.88 61.593 234.715
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid7 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F79F3F3900}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid8"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 269.138 194.309 187.847
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Astroid8 {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F79C6AF127}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Astroid7"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 549.126 66.654 437.831
+  Color 0.1569 0.6235 0.2745 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite2D {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite1D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.998 41.56 574.263
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite2A {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite3A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.126 41.67 573.69
+  Color 0.3176 0.5608 0.0706 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite2C {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite4D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.004 41.696 580.603
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite2B {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite2A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 209.294 42.206 580.85
+  Color 0.3176 0.5608 0.0706 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite3A {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite2D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 199.877 42.057 602.909
+  Color 0.3176 0.5608 0.0706 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite3D {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite2A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 209.412 41.914 603.131
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite3C {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.342 41.898 610.663
+  Color 0 0.1255 0.502 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite3B {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite1A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.867 41.748 610.356
+  Color 0.4745 0.2588 0.6863 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite5B {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.797 41.818 663.07
+  Color 0.5059 0.8118 0.8118 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite5C {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite1C"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.296 41.692 662.954
+  Color 0.6863 0.2588 0.2588 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite5D {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite4E"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 209.105 41.424 655.255
+  Color 0 0.1255 0.502 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite5A {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5B"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 199.959 41.737 655.306
+  Color 0.5059 0.8118 0.8118 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4F {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 209.098 41.66 640.079
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4E {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.071 41.987 640.186
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4B {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite4B"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.942 41.659 632.993
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4C {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.134 41.965 633.039
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite1B {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite1A"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.835 41.59 550.88
+  Color 0.4745 0.2588 0.6863 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite1D {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite2D"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.22 41.915 550.214
+  Color 0.2588 0.6863 0.6863 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite1C {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite5C"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 209.032 41.773 543.213
+  Color 0.6863 0.2588 0.2588 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite1A {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite1B"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 199.974 41.808 543.154
+  Color 0.4745 0.2588 0.6863 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4A {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite4B"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 200.413 41.557 625.739
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ Satellite4D {
+  components {
+   ActionsManagerComponent "{6AB9178074871528}" {
+    ActionContexts {
+     UserActionContext "{6AB917800BFA7278}" {
+      ContextName "Teleport"
+      Position PointInfo "{6AB917F7F9A9E487}" {
+      }
+     }
+    }
+    additionalActions {
+     CRF_TeleportPlayerAction "{6AB91780140A1329}" {
+      ParentContextList {
+       "Teleport"
+      }
+      UIInfo UIInfo "{6AB917803D0F9858}" {
+       Name "Interact"
+      }
+      ActionTitle "Interact"
+      Duration 3
+      m_sObjectNameToTeleportTo "Satellite2C"
+     }
+    }
+   }
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 208.934 41.746 625.717
+  Color 0.8196 0.9373 0.9373 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 2
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
 }
-$grp SCR_BaseTriggerEntity {
- TeleportSphere1 {
-  coords 2473.95 89.475 1449.365
+$grp Quack_GenericTriggerTeleporterEntity {
+ Star1 {
+  coords 204.478 41.347 564.901
   TriggerShapeType Sphere
-  SphereRadius 14.6
+  SphereRadius 3
   DrawShape 1
-  ShapeColor 0.3921 0.1569 0.6235 1
+  ShapeColor 0.624 0.1559 0.5029 0.3137
   TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 204.36 41.9 535.2
+  m_bUseExactCoordinates 0
  }
- TeleportSphere2 {
-  coords 2266.904 89.984 1184.079
+ Star2 {
+  coords 204.189 41.388 594.762
   TriggerShapeType Sphere
-  SphereRadius 14.6
+  SphereRadius 3
   DrawShape 1
-  ShapeColor 0.3921 0.1569 0.6235 1
+  ShapeColor 0.624 0.1559 0.5029 0.3137
   TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 204.36 41.9 535.2
+  m_bUseExactCoordinates 0
  }
+ Star4 {
+  coords 204.638 41.449 618.994
+  TriggerShapeType Sphere
+  SphereRadius 3
+  DrawShape 1
+  ShapeColor 0.624 0.1559 0.5029 0.3137
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 204.8 41.5 680.8
+  m_bUseExactCoordinates 0
+ }
+ Star3 {
+  coords 204.65 41.332 649.6
+  TriggerShapeType Sphere
+  SphereRadius 3
+  DrawShape 1
+  ShapeColor 0.624 0.1559 0.5029 0.3137
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 204.8 41.5 680.8
+  m_bUseExactCoordinates 0
+ }
+}
+$grp Quack_OctoTriggerEntity {
+ TeleStorm1 {
+  coords 2461.587 88.889 1477.313
+  TriggerShapeType Sphere
+  SphereRadius 15
+  DrawShape 1
+  ShapeColor 0.4735 0.6867 0.2582 0.3137
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 2315.236 90.245 1319.928
+  m_sTarget1 "Comet1"
+  m_sTarget2 "Comet2"
+  m_sTarget3 "Comet3"
+  m_sTarget4 "Comet4"
+  m_sTarget5 "Comet5"
+  m_sTarget6 "Comet6"
+  m_sTarget7 "Comet7"
+  m_sTarget8 "Comet8"
+ }
+ TeleStorm2 {
+  coords 2297.947 90.054 1242.483
+  TriggerShapeType Sphere
+  SphereRadius 15
+  DrawShape 1
+  ShapeColor 0.4735 0.6867 0.2582 0.3137
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassesFilter {
+   "SCR_ChimeraCharacter"
+  }
+  m_coords 2315.236 90.245 1319.928
+  m_sTarget1 "Comet1"
+  m_sTarget2 "Comet2"
+  m_sTarget3 "Comet3"
+  m_sTarget4 "Comet4"
+  m_sTarget5 "Comet5"
+  m_sTarget6 "Comet6"
+  m_sTarget7 "Comet7"
+  m_sTarget8 "Comet8"
+ }
+}
+SCR_DestructibleBuildingEntity : "{80D7D3EAABADBD44}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_Base.et" {
+ coords 204.539 154.482 668
 }
 GenericEntity sun : "{83618EAF9EFD3E20}PrefabsMissionMaking/Systems/Teleporter/Teleporter.et" {
  components {
@@ -115,6 +1602,27 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
     m_fLV 5.5
     m_eInitialLightState OFF
    }
+   ActionsManagerComponent "{6AB917E73B352B43}" {
+    ActionContexts {
+     UserActionContext "{6AB917E73A45CB42}" {
+      ContextName "default"
+      Position PointInfo "{6AB917E73308640B}" {
+      }
+     }
+    }
+    additionalActions {
+     Quack_BluStartUserAction "{6AB917E6CDCB23C3}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6AB917E6C6E3A76C}" {
+       Name "Interact"
+      }
+      Duration 0.8
+      m_sObjectNameToTeleportTo "Comet1"
+     }
+    }
+   }
    RplComponent "{5624A88DC2D9928D}" {
     Enabled 1
    }
@@ -138,6 +1646,27 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
     m_bGradualLightning 1
     m_fLV 5.5
     m_eInitialLightState OFF
+   }
+   ActionsManagerComponent "{6AB917D90BF71DD5}" {
+    ActionContexts {
+     UserActionContext "{6AB917D90A81AECA}" {
+      ContextName "default"
+      Position PointInfo "{6AB917D90D6DF8F8}" {
+      }
+     }
+    }
+    additionalActions {
+     Quack_BluStartUserAction "{6AB917D907741F1C}" {
+      ParentContextList {
+       "default"
+      }
+      UIInfo UIInfo "{6AB917D91F9D136E}" {
+       Name "Interact"
+      }
+      Duration 0.8
+      m_sObjectNameToTeleportTo "Comet8"
+     }
+    }
    }
    RplComponent "{5624A88DC2D9928D}" {
     Enabled 1

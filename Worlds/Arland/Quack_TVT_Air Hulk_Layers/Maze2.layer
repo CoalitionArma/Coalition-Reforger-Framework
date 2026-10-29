@@ -1,0 +1,241 @@
+$grp SCR_DestructibleBuildingEntity : "{0628C52DA626BE08}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_white_tutorial.et" {
+ {
+  coords 204.539 162.369 518.4
+ }
+ {
+  coords 204.539 153.551 698
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{80D7D3EAABADBD44}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_Base.et" {
+ {
+  coords 204.539 160.431 548.3
+ }
+ {
+  coords 204.539 158.529 578.2
+ }
+ {
+  coords 204.539 156.88 608.1
+ }
+ {
+  coords 204.539 155.5 638.03
+ }
+}
+SCR_DestructibleBuildingEntity : "{A9BD0F3A7B7CFF9A}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_blue.et" {
+ coords 204.539 165.222 483.843
+ {
+  Building {
+   ID "59B85D930A3DC8AA"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8AB"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8AF"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B2"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B4"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8B6"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC8BA"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC883"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC887"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC88B"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC88C"
+   coords 0 0 0
+  }
+  Building {
+   ID "59B85D930A3DC890"
+   coords 0 0 0
+  }
+  GameEnvironmentProbeEntity {
+   ID "57228D78139753B7"
+   coords 0.367 4.192 1.556
+  }
+  GenericEntity {
+   ID "59B85D930A3DC85B"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "56FCE4356CE6EC0C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "56FCE4356CE6EC77"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A6"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A4"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8A7"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D64B29FDD3F65E2"
+   coords 0 0 0.025
+   {
+    GenericEntity {
+     ID "568ABA4D12FD1B8E"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8B9"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BC"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BD"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8BE"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "568ABA4D4E60ACAA"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC895"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "572285DFAB51AAE1"
+     coords 0.18 0.37 -10.655
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A0"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A4"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC8D2"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5A34CA40FFF5915C"
+     coords 0 0 0
+    }
+    GenericEntity {
+     ID "5A34CA40FFF59161"
+     coords 0 0 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "59B85D930A3DC2A5"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "59B85D930A3D0BB9"
+   coords 0 0 0
+  }
+  SCR_DestructibleBuildingEntity {
+   ID "5D62A9B5292AC4AA"
+   coords 0 0 0
+   {
+    GameEnvironmentProbeEntity {
+     ID "5D62A9B50BDFBA76"
+     coords 0.377 -2.935 -3.766
+    }
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{D934884CAFA48F1D}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_reddecor.et" {
+ coords 204.539 150.029 730.2
+ angles 0 180 0
+}

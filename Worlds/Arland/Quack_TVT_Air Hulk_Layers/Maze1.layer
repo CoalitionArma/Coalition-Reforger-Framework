@@ -1,18 +1,3 @@
-Quack_GenericTriggerTeleporterEntity {
- coords 2478.553 88.546 1422.865
- TriggerShapeType Sphere
- SphereRadius 15
- DrawShape 1
- ShapeColor 0.0706 0.1922 0.5608 1
- TriggerActivationType "All changes"
- PeriodicQueries 1
- UpdatePeriod 2
- ClassesFilter {
-  "SCR_ChimeraCharacter"
- }
- m_coords 2446.248 89.107 1430.184
- m_bUseExactCoordinates 0
-}
 SCR_DestructibleBuildingEntity : "{0281C8310F67BD81}Prefabs/Structures/Houses/Village/House_Village_E_1I08/House_Village_E_1I08_Base.et" {
  coords 616.447 132.369 470.268
  angles 0 180 0
@@ -27,7 +12,7 @@ $grp SCR_DestructibleBuildingEntity : "{0628C52DA626BE08}Prefabs/Structures/Mili
   angles 0 90 0
  }
  {
-  coords 554.985 158.603 458.498
+  coords 555.405 158.57 458.498
  }
 }
 $grp SCR_DestructibleBuildingEntity : "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et" {
@@ -501,7 +486,7 @@ $grp SCR_DestructibleEntity : "{BBFFD4DA9684BFB9}Prefabs/Structures/Walls/Brick/
   angles 0 90 0
  }
  {
-  coords 567.886 159.506 442.099
+  coords 568.302 159.464 442.047
  }
 }
 SCR_DestructibleBuildingEntity : "{BE8A5FE302E617B6}Prefabs/Structures/Military/Houses/Cafeteria_E_01/Cafeteria_E_01_camo.et" {
@@ -522,6 +507,7 @@ SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/
        Enabled 0
       }
      }
+     Enabled 0
     }
    }
   }
@@ -535,6 +521,7 @@ SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/
        Enabled 0
       }
      }
+     Enabled 0
     }
    }
   }
@@ -548,13 +535,14 @@ SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/
        Enabled 0
       }
      }
+     Enabled 0
     }
    }
   }
  }
 }
 SCR_DestructibleBuildingEntity : "{CAAF73FB98E22FE4}Prefabs/Structures/Military/Houses/ApartmentBuilding_3I01/ApartmentBuilding_USSR_3I01.et" {
- coords 562.185 160.107 435.892
+ coords 563.02 160.003 435.892
 }
 SCR_DestructibleBuildingEntity : "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01.et" {
  coords 595.255 131.799 497.774
