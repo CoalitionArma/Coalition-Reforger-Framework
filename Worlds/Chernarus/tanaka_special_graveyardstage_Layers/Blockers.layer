@@ -35,6 +35,10 @@ $grp ParticleEffectEntity {
   coords 8403.159 146.101 4980.476
   EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
  }
+ {
+  coords 6374.875 289.134 7518.448
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
 }
 $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
@@ -121,8 +125,24 @@ $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyS
   angles -2.524 -148.713 7.802
  }
  {
-  coords 6368.852 287.187 7518.773
-  angles 0.895 0.014 0.895
+  coords 6367.808 287.196 7518.508
+  angles 0.895 14.014 0.895
+ }
+ {
+  coords 6366.394 287.243 7512.333
+  angles 0.895 8.014 0.895
+ }
+ {
+  coords 6365.672 287.315 7506.14
+  angles 0.895 8.014 0.895
+ }
+ {
+  coords 6374.791 287.32 7535.266
+  angles 0 34 0
+ }
+ {
+  coords 6378.366 287.356 7540.563
+  angles 0 34 0
  }
 }
 $grp GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
@@ -265,6 +285,110 @@ $grp GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubComposition
  }
  {
   coords 8575.455 293.029 6037.794
+  angles 0 13 0
+ }
+ {
+  coords 6374.846 287.188 7518.367
+  angles 0 13 0
+ }
+ {
+  coords 6376.061 287.186 7517.472
+  angles 0 13 0
+ }
+ {
+  coords 6377.204 287.15 7516.666
+  angles 0 13 0
+ }
+ {
+  coords 6378.327 287.089 7515.945
+  angles 0 13 0
+ }
+ {
+  coords 6374.628 287.188 7516.872
+  angles 0 13 0
+ }
+ {
+  coords 6374.455 287.187 7515.442
+  angles 0 13 0
+ }
+ {
+  coords 6374.178 287.187 7514.072
+  angles 0 13 0
+ }
+ {
+  coords 6379.455 286.966 7515.234
+  angles 0 13 0
+ }
+ {
+  coords 6380.734 286.883 7514.356
+  angles 0 13 0
+ }
+ {
+  coords 6381.773 286.851 7513.619
+  angles 0 13 0
+ }
+ {
+  coords 6382.991 286.813 7512.775
+  angles 0 13 0
+ }
+ {
+  coords 6384.443 286.776 7512.136
+  angles 0 13 0
+ }
+ {
+  coords 6386.022 286.742 7511.521
+  angles 0 13 0
+ }
+ {
+  coords 6387.167 286.711 7510.7
+  angles 0 13 0
+ }
+ {
+  coords 6388.42 286.681 7509.854
+  angles 0 13 0
+ }
+ {
+  coords 6389.792 286.66 7509.295
+  angles 0 13 0
+ }
+ {
+  coords 6391.23 286.618 7508.635
+  angles 0 13 0
+ }
+ {
+  coords 6392.584 286.584 7507.962
+  angles 0 13 0
+ }
+ {
+  coords 6393.898 286.551 7507.188
+  angles 0 13 0
+ }
+ {
+  coords 6395.115 286.523 7506.56
+  angles 0 13 0
+ }
+ {
+  coords 6396.516 286.484 7505.94
+  angles 0 13 0
+ }
+ {
+  coords 6374.393 287.209 7512.602
+  angles 0 13 0
+ }
+ {
+  coords 6374.427 287.219 7511.202
+  angles 0 13 0
+ }
+ {
+  coords 6374.288 287.219 7509.593
+  angles 0 13 0
+ }
+ {
+  coords 6374.196 287.219 7508.185
+  angles 0 13 0
+ }
+ {
+  coords 6374.125 287.264 7506.544
   angles 0 13 0
  }
 }
