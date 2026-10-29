@@ -289,20 +289,37 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
 }
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 6298.349 6 2560.933
+ Points {
+  ShapePoint "{6ABAE17B784CD53C}" {
+   Position 28.144 0 -8.082
+  }
+  ShapePoint "{6ABAE17B7F3B4830}" {
+   Position -17.949 0 2.24
+  }
+  ShapePoint "{6ABAE17B7EE6FA94}" {
+   Position -11.125 0 53.734
+  }
+  ShapePoint "{6ABAE17B7C8C7ED0}" {
+   Position 34.18 0 40.618
+  }
+ }
+}
 COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
  coords 6294.41 6.032 2584.726
  Points {
   ShapePoint "{6ABAE16676217A78}" {
-   Position -4.899 -0 24.629
+   Position -4.899 0 24.629
   }
   ShapePoint "{6ABAE166754DF905}" {
-   Position 32.289 -0 5.222
+   Position 32.289 0 5.222
   }
   ShapePoint "{6ABAE1667473E6D3}" {
-   Position 25.714 -0 -26.798
+   Position 25.714 0 -26.798
   }
   ShapePoint "{6ABAE16674D3138E}" {
-   Position -12.058 -0 -18.206
+   Position -12.058 0 -18.206
   }
  }
 }
