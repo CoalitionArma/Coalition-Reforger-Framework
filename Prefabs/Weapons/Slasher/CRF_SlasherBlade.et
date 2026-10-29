@@ -1,0 +1,26 @@
+GenericEntity : "{FD18607A975DA638}622120A5448725E3/Prefabs/Weapons/ImpKnife.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_MeleeWeaponProperties "{599EF119E0CBDE0E}" {
+   m_fDamage 40
+   m_fRange 1.6
+   m_fAccuracy 1
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB0701437228}" {
+     Name "Blade"
+     Description "Switch to your sidearm and use melee to strike."
+    }
+    m_bVisible 1
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "Blade"
+    Description "Switch to your sidearm and use melee to strike."
+    Icon ""
+   }
+  }
+ }
+}

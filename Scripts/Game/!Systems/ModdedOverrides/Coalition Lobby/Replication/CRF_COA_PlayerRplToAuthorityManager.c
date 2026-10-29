@@ -87,6 +87,13 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestRadioExtractionSendMessage);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Infection special: inject an antidote dose at the crate at cratePos (CRF_InfectionAntidoteAction)
+	void RequestInfectionAntidote(vector cratePos)
+	{
+		Rpc(RpcAsk_RequestInfectionAntidote, cratePos);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Broken in 1.7. Check CRF_PersistanceManager for update.
@@ -750,6 +757,18 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RadioExtraction radioExtraction = CRF_RadioExtraction.GetInstance();
 		if (radioExtraction)
 			radioExtraction.SendExtractionMessage();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestInfectionAntidote(vector cratePos)
+	{
+		LogTelemetry("RpcAsk_RequestInfectionAntidote", COA_BandwidthTelemetryManager.EstimateSize_Vector());
+
+		// The caller comes from this controller, never from the client; the component checks they're at a crate
+		CRF_InfectionGamemodeComponent infection = CRF_InfectionGamemodeComponent.GetInstance();
+		if (infection)
+			infection.UseAntidote(GetCallerPlayerId(), cratePos);
 	}
 	
 	//------------------------------------------------------------------------------------------------

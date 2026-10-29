@@ -1,0 +1,52 @@
+GameEntity : "{CF40E24930A137B2}Prefabs/Characters/HeadGear/FireMask/FireMask.et" {
+ ID "50D4E2187B1C4408"
+ components {
+  SCR_HeadgearInventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
+  }
+  RHS_HelmetNodeStorageComponent "{7C1AC2D3E4F50601}" {
+   Attributes SCR_ItemAttributeCollection "{7C1AC2D3E4F50602}" {
+    ItemDisplayName UIInfo "{7C1AC2D3E4F50603}" {
+     Name "Cultist mask"
+     Description "Night vision fitted. The infected see you before you see them."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{7C1AC2D3E4F50604}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 2500
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{7C1AC2D3E4F50605}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{7C1AC2D3E4F50606}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+      AspectRatio 1
+     }
+    }
+   }
+   Priority 150
+   StoragePurpose 0x40 0x1
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100.2
+   MaxItemSize 1 1 1
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     PivotID "Head"
+     Offset 0 0.1526 -0.1078
+     Angles -1.8476 -180 0
+     InspectionWidgetOffset 0 1.7698 0.129
+     m_sInspectIconTexture "{2099559B5965F0C7}UI/Textures/InventoryIcons/Inspection-gizmo-nvg-slot-UI.edds"
+     Prefab "{59E0D9B5B6967152}Prefabs/Items/Equipment/Nightvision/PVS31/NVG_PVS31_WP.et"
+    }
+   }
+  }
+ }
+}

@@ -17,6 +17,25 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 			return;
 		}
 
+		// Infection special: the infected never tire
+		if (pDrain > 0)
+		{
+			CRF_InfectionGamemodeComponent infection = CRF_InfectionGamemodeComponent.GetInstance();
+			if (infection && infection.IsTirelessInfected(GetOwner()))
+			{
+				AddStamina(pDrain);
+				return;
+			}
+
+			// Slasher special: neither do the killers
+			CRF_SlasherGamemodeComponent slasher = CRF_SlasherGamemodeComponent.GetInstance();
+			if (slasher && slasher.IsTirelessKiller(GetOwner()))
+			{
+				AddStamina(pDrain);
+				return;
+			}
+		}
+
 		if (pDrain <= 0)
 		{
 			// Recovery event — cancel proportionally to lone-wolf penalty intensity
