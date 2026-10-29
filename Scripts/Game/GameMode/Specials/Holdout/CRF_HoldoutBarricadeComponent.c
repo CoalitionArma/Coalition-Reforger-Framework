@@ -9,7 +9,10 @@
 // Server: zombies within m_fZombieReach wear the top board down at m_fDamagePerZombie a second each;
 // at m_fBoardHealth it comes off. Players with an entrenching tool put boards back
 // (CRF_HoldoutRepairBarricadeAction), and are paid for it. A window with no boards left is climbed
-// through: zombies at it outside are moved in, one a second, to the point inside it.
+// through: zombies at it outside are moved in, one a second, to the point inside it. A bare doorway
+// is walked through, but the AI doesn't reliably path through a doorway whose door was removed (it
+// stalls on the threshold, and the Bacon AI hops as it tries to climb), so zombies standing still
+// outside one are moved in the same way, two a second.
 //
 // The Holdout mode spawns these at a building's ground-floor openings and calls Setup with each one's
 // size; placed by hand, the default size is used.
@@ -75,6 +78,13 @@ class CRF_HoldoutBarricadeComponent : ScriptComponent
 	// One panel's width; wider openings get panels side by side
 	protected static const float PANEL_WIDTH = 1.15;
 
+	// Zombies a bare opening lets in a second: a window is climbed one at a time
+	protected static const int WINDOW_PASS_PER_TICK = 1;
+	protected static const int DOOR_PASS_PER_TICK = 2;
+
+	// A zombie moving slower than this (m/s, across the ground) is stuck, not walking
+	protected static const float STALLED_SPEED = 0.5;
+
 	//------------------------------------------------------------------------------------------------
 	//! Every barricade on this machine
 	static array<CRF_HoldoutBarricadeComponent> GetAll()
@@ -130,7 +140,21 @@ class CRF_HoldoutBarricadeComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Server: the opening's size, whether it is a window (and the floor inside it), and the boards it starts with
+	//! Whether a character is standing still or stuck (hopping in place counts: only movement across
+	//! the ground is measured)
+	static bool IsStalled(notnull IEntity character)
+	{
+		Physics physics = character.GetPhysics();
+		if (!physics)
+			return true;
+
+		vector velocity = physics.GetVelocity();
+		velocity[1] = 0;
+		return velocity.Length() < STALLED_SPEED;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: the opening's size, whether it is a window, the floor inside it, and the boards it starts with
 	void Setup(float width, float height, int boards, bool window, vector inside)
 	{
 		m_fWidth = Math.Max(width, 0.5);
@@ -210,7 +234,7 @@ class CRF_HoldoutBarricadeComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Server, once a second: zombies in reach wear the top board down, or climb in through a bare window
+	//! Server, once a second: zombies in reach wear the top board down, or come in through the bare opening
 	protected void ServerTick()
 	{
 		CollectZombiesInReach();
@@ -219,8 +243,7 @@ class CRF_HoldoutBarricadeComponent : ScriptComponent
 
 		if (m_iBoards <= 0)
 		{
-			if (m_bWindow)
-				ClimbIn();
+			PassThrough();
 			return;
 		}
 
@@ -237,24 +260,51 @@ class CRF_HoldoutBarricadeComponent : ScriptComponent
 		m_iBoards--;
 		Replication.BumpMe();
 		RebuildBoards();
+
+		// The groups sent at it go for the defenders now rather than at the next retarget
+		if (m_iBoards == 0 && holdout)
+			holdout.OnBarricadeBroken(GetOwner());
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! One zombie a second through the window: the first one still outside goes to the floor inside
-	protected void ClimbIn()
+	//! Zombies outside the bare opening go to the floor inside it: through a window whoever is first,
+	//! through a doorway only those stuck on the threshold (the rest walk in by themselves)
+	protected void PassThrough()
 	{
+		int limit = DOOR_PASS_PER_TICK;
+		if (m_bWindow)
+			limit = WINDOW_PASS_PER_TICK;
+
+		vector inside = GetInsidePoint();
+		int passed = 0;
 		foreach (IEntity zombie : m_aZombiesInReach)
 		{
 			BaseGameEntity body = BaseGameEntity.Cast(zombie);
 			if (!body || !IsOutside(body.GetOrigin()))
 				continue;
 
+			if (!m_bWindow && !IsStalled(body))
+				continue;
+
 			vector transform[4];
 			body.GetWorldTransform(transform);
-			transform[3] = m_vInside;
+			transform[3] = inside;
 			body.Teleport(transform);
-			return;
+
+			passed++;
+			if (passed >= limit)
+				return;
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Where a zombie coming through lands: the point Setup was given, or (placed by hand) a metre in
+	protected vector GetInsidePoint()
+	{
+		if (m_vInside != vector.Zero)
+			return m_vInside;
+
+		return GetOwner().GetOrigin() - GetOutward() * 1.0 + Vector(0, 0.05, 0);
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -120,6 +120,10 @@ $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyS
   coords 8592.316 293.616 6030.058
   angles -2.524 -148.713 7.802
  }
+ {
+  coords 6368.852 287.187 7518.773
+  angles 0.895 0.014 0.895
+ }
 }
 $grp GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
  {

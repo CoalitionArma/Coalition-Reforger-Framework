@@ -265,6 +265,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	protected float m_fWaveScale = 1;	// this wave's size against Players Per Wave Scale defenders
 	protected float m_fNextGroupAt;
 	protected float m_fNextRetargetAt;
+	protected float m_fNextDoorCheckAt;
 	protected int m_iNobodyAliveSeconds;
 	protected bool m_bAnnouncedFew;
 	protected ref array<RplId> m_aToolGivenBodies = {};
@@ -293,6 +294,8 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const float ROOF_PROBE_OUT = 1.8;
 	protected static const float ROOF_PROBE_UP = 14;
 	protected static const float SUPPLY_ITEM_RING = 1.3;
+	protected static const float DOOR_CHECK_SECONDS = 2;	// how often stuck zombies force doors (ForceDoorsOpen)
+	protected static const float DOOR_FORCE_RADIUS = 1.8;	// a closed door this close to a stuck zombie is forced
 
 	// Bacon Zombies groups, used when the mission doesn't set its own
 	protected static const ResourceName BACON_SOLDIERS = "{58251EDC277CE499}622120A5448725E3/Prefabs/Groups/Group_Zombies_USSR.et";
@@ -781,10 +784,19 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 				width = 1.2;
 
 			int boards = 0;
+			vector inside = entrance.m_vInside;
 			if (entrance.m_bWindow)
+			{
 				boards = 99; // full
+			}
+			else
+			{
+				// Where a zombie stuck on the threshold is put: the floor a metre past the barricade
+				inside = entrance.m_vFloor - entrance.m_vOutward * 1.2 + Vector(0, 1, 0);
+				inside[1] = FindFloor(inside, entrance.m_vFloor[1] - 1.5);
+			}
 
-			component.Setup(width, entrance.m_fHeight, boards, entrance.m_bWindow, entrance.m_vInside);
+			component.Setup(width, entrance.m_fHeight, boards, entrance.m_bWindow, inside);
 		}
 
 		return barricade;
@@ -922,6 +934,12 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			m_fNextRetargetAt = m_fElapsedSeconds + m_fRetargetSeconds;
 			UpdateGroups(alive);
+		}
+
+		if (m_fElapsedSeconds >= m_fNextDoorCheckAt)
+		{
+			m_fNextDoorCheckAt = m_fElapsedSeconds + DOOR_CHECK_SECONDS;
+			ForceDoorsOpen();
 		}
 
 		int zombies = CountZombies();
@@ -1192,6 +1210,87 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! A barricade lost its last board: the groups sent at it get their next waypoint now (the
+	//! defenders, or for a window still the window until they're through - see ShouldAssault)
+	void OnBarricadeBroken(IEntity barricade)
+	{
+		int breach = m_aBarricades.Find(barricade);
+		if (breach < 0)
+			return;
+
+		array<int> alive = {};
+		CRF_SpecialsHelper.GetAlivePlayers(m_sDefenderFactionKey, alive);
+		if (alive.IsEmpty())
+			return;
+
+		for (int i = 0; i < m_aGroupsAlive.Count(); i++)
+		{
+			if (m_aGroupBreach[i] != breach || !m_aGroupsAlive[i])
+				continue;
+
+			IEntity leader = m_aGroupsAlive[i].GetLeaderEntity();
+			if (leader)
+				SendGroupAt(i, leader.GetOrigin(), alive);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Bacon zombies can't open doors (their door reaction is switched off) and stop dead at a closed
+	//! one, hopping as they try to climb it - the building's inner doors, or an outer one that wasn't
+	//! barricaded. A zombie standing still next to a closed door forces it open.
+	protected void ForceDoorsOpen()
+	{
+		array<AIAgent> agents = {};
+		foreach (SCR_AIGroup group : m_aGroupsAlive)
+		{
+			if (!group)
+				continue;
+
+			agents.Clear();
+			group.GetAgents(agents);
+			foreach (AIAgent agent : agents)
+			{
+				SCR_ChimeraCharacter zombie = SCR_ChimeraCharacter.Cast(agent.GetControlledEntity());
+				if (!zombie)
+					continue;
+
+				// Backstop for the damage manager's UpdateConsciousness: a zombie lying unconscious dies
+				CharacterControllerComponent controller = zombie.GetCharacterController();
+				if (controller.GetLifeState() == ECharacterLifeState.INCAPACITATED)
+				{
+					SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(zombie.GetDamageManager());
+					if (damageManager)
+						damageManager.Kill(damageManager.GetInstigator());
+					continue;
+				}
+
+				if (controller.IsDead() || !CRF_HoldoutBarricadeComponent.IsStalled(zombie))
+					continue;
+
+				m_aFound.Clear();
+				GetGame().GetWorld().QueryEntitiesBySphere(zombie.GetOrigin() + Vector(0, 1, 0), DOOR_FORCE_RADIUS, CollectDoor, null, EQueryEntitiesFlags.ALL);
+				foreach (IEntity door : m_aFound)
+				{
+					DoorComponent doorComponent = DoorComponent.Cast(door.FindComponent(DoorComponent));
+					if (doorComponent && !doorComponent.IsOpen() && !doorComponent.IsOpening())
+						doorComponent.SetControlValue(1, RplId.Invalid());
+				}
+			}
+		}
+
+		m_aFound.Clear();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool CollectDoor(IEntity entity)
+	{
+		if (entity.FindComponent(DoorComponent) && !m_aFound.Contains(entity))
+			m_aFound.Insert(entity);
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Keep at the barricade: boards still on it, or a bare window most of the group hasn't come through yet
 	protected bool ShouldAssault(notnull SCR_AIGroup group, notnull CRF_HoldoutBarricadeComponent breach)
 	{
@@ -1232,18 +1331,22 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	//! Share of the damage dealt that a zombie takes this wave (CRF_Holdout_SCR_CharacterDamageManagerComponent)
 	float GetZombieDamageScale(IEntity victim)
 	{
-		if (m_iWave <= 1)
-			return 1;
-
-		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(victim);
-		if (!character)
-			return 1;
-
-		Faction faction = character.GetFaction();
-		if (!faction || faction.GetFactionKey() != m_sZombieFactionKey)
+		if (m_iWave <= 1 || !IsZombie(victim))
 			return 1;
 
 		return Math.Max(m_fMinZombieDamageScale, 1 - (m_iWave - 1) * m_fToughnessPerWave);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A character of the zombie faction
+	bool IsZombie(IEntity entity)
+	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+		if (!character)
+			return false;
+
+		Faction faction = character.GetFaction();
+		return faction && faction.GetFactionKey() == m_sZombieFactionKey;
 	}
 
 	//===================================================================================

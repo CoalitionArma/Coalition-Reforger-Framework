@@ -17,4 +17,20 @@ modded class SCR_CharacterDamageManagerComponent
 
 		return super.HijackDamageHandling(damageContext);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Zombies don't go down: where one would fall unconscious (second chance, blood loss) it dies, to
+	//! the last hit's instigator so the kill is still paid. Vanilla's "permit unconsciousness" can't do
+	//! this - ACE's UpdateConsciousness never looks at it.
+	override void UpdateConsciousness()
+	{
+		CRF_HoldoutGamemodeComponent holdout = CRF_HoldoutGamemodeComponent.GetInstance();
+		if (holdout && Replication.IsServer() && holdout.IsZombie(GetOwner()) && ShouldBeUnconscious())
+		{
+			Kill(GetInstigator());
+			return;
+		}
+
+		super.UpdateConsciousness();
+	}
 }
