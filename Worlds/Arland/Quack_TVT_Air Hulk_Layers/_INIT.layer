@@ -9,7 +9,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
      m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 20
+     m_iStartingHour 22
      m_iStartingMinutes 13
     }
    }
@@ -33,15 +33,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "Occult Defense Initiative operatives attempt to stop Chaos Collective from completeing the Awakening Ritiual."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Composition: nfantry"\
    "BLUFOR Assets: NVGs"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "OPFOR Assets: Witches"\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: None"\
    ""\
-   "Time:"\
+   "Time: 22:13"\
    ""\
-   "Weather:"
+   "Weather: Cloudy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
