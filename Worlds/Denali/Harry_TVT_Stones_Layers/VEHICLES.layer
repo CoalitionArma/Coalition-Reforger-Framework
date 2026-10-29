@@ -1,0 +1,32 @@
+SCR_VehicleSpawn {
+ coords 3083.622 286.031 1922.561
+ m_rnPrefab "{9F856C4817E8508F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_low_cap.et"
+ respawnDelay 10000
+ firstSpawn 1
+}
+GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 1
+   m_fVehicleFacingOffset -90
+   m_iGridColumns 1
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Ural"
+     m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+     m_eCostType USES
+     m_iCost -1
+    }
+    CRF_VehicleDepotVehicle "{6ABA22ABC56486A4}" {
+     m_sVehicleName "BTR-40"
+     m_sVehiclePrefab "{B691953D0FC63609}Vehicles/BTR40/BTR40new.et"
+     m_eCostType SUPPLIES
+     m_iCost 100
+    }
+   }
+  }
+ }
+ coords 1617.026 226.88 1565.889
+ angles 0 145.896 0
+}

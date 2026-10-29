@@ -1,0 +1,68 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 11680
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Transport_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{B8CFF80F79640C1E}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_transport.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels + {
+     TRAIT_PASSENGERS_LARGE TRAIT_SUPPLYSTORAGE_LARGE
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 200
+     }
+    }
+    m_bEditorPlaceAsOneGroup 0
+    m_aOccupantFillCompartmentTypes +{
+    }
+    m_aPassengerEntityBudgetCost {
+     SCR_EntityBudgetValue "{5A5EA70BBF190672}" {
+      m_BudgetType AI
+      m_Value 14
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   MaxCumulativeVolume 1000000
+   MaxItemSize 200 200 200
+  }
+  SCR_VehicleDustPerWheel "{5476BC43E4910F64}" {
+   m_aWheels + {
+    4 5
+   }
+   m_fDustTopSpeed 60
+  }
+  SCR_VehicleDustPerWheel "{5476BC43E4910F64}" {
+   m_aWheels + {
+    4 5
+   }
+   m_fDustTopSpeed 60
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Cargo {
+     MergePhysics 1
+     Prefab "{2CC01C94659EC969}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_cargo_low_cap.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+   }
+  }
+  VehicleAnimationComponent "{50B803EAA459B0AF}" {
+   StartNode "VehicleMasterControl"
+  }
+ }
+ m_eVehicleType SUPPLY_TRUCK
+}
