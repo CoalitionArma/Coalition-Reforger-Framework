@@ -155,7 +155,7 @@ modded class COA_Gamemode
 
 		NotifyJoinInProgressStatus(iPlayerID);
 
-		// Their identity is known from here: have their emblem cached before anyone they kill needs it
+		// Their identity is known from here: look their emblem up, then send it to everyone and everyone's to them
 		CRF_EmblemStore.Get().Prefetch();
 
 		// Get player's BI account GUID for privilege checks
