@@ -1,0 +1,308 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 11105.187 204.696 12307.863
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_HoldoutGamemodeComponent "{7C1AEAD000000001}" {
+   m_sDefenderFactionKey "BLUFOR"
+   m_sBuildingAnchorName "holdout_building"
+   m_aSpawnPointNames {
+    "holdout_spawn_01"
+    "holdout_spawn_02"
+    "holdout_spawn_03"
+    "holdout_spawn_04"
+    "holdout_spawn_05"
+    "holdout_spawn_06"
+    "holdout_spawn_07"
+    "holdout_spawn_08"
+   }
+   m_aGroups {
+    "{7C1AEA0000000301}Prefabs/Groups/Holdout/CRF_Holdout_Group_Squad.et"
+   }
+   m_aLargeGroups {
+    "{7C1AEA0000000302}Prefabs/Groups/Holdout/CRF_Holdout_Group_Platoon.et"
+   }
+   m_aSupplyItems {
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+    "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+    "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+    "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 21
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_bFogOverride 1
+   m_fFogAmount 0.35
+   m_fFogHeightDensity 0.5
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 120
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{7C1AEAD00000000B}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Chernogorsk, autumn 1944. The town was taken this morning and the line has moved on without you."\
+   ""\
+   "The German garrison that held it never surrendered. It never retreated either. After dark the men they buried in the park started walking back in, still in their greatcoats and helmets, and they have not stopped."\
+   ""\
+   "Your platoon has the municipal office on the main square. Hold it."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{7C1AEAD00000000C}" {
+   m_sTitle "Platoon Briefing"
+   m_sTextData "MISSION"\
+   "Hold the municipal office for as many waves as you can."\
+   ""\
+   "EXECUTION"\
+   "You have a minute and a half before the first wave. Get inside and board up every ground-floor door: each doorway has a barricade, and an entrenching tool puts a board back on it (everyone gets one). Barricades are on the map - green full, amber damaged, red broken."\
+   ""\
+   "The windows are boarded when you get there. Keep them that way: a window with no boards left is a way in, and they will climb through."\
+   ""\
+   "They come in waves, more of them each time and harder to put down. Between waves there is a short lull: the crate inside is restocked with dressings, and it is the time to fix the boards and spend your money."\
+   ""\
+   "REQUISITION"\
+   "You start with an M1911 and two magazines - nothing else. Every kill, every board you put back and every wave you live through earns you money (you start with 250). Spend it at the supply crate: ammunition for every weapon, rifles, submachine guns and the BAR, grenades, medical kits, and upgrades for the whole defence - reinforced boards, a fourth board on every barricade, double medical supplies and a radio recharge."\
+   ""\
+   "There are no respawns. Every fifth wave the radio inside can call in support once: the fallen come back, with a double resupply."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{7C1AEAD00000000D}" {
+   m_sTitle "Administration"
+   m_sTextData "HALLOWEEN SPECIAL - co-op wave defence. It ends when every defender is down; your score is the number of waves held."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "CIV"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{7C1AEAF000000001}" {
+   m_sCallsign "HQ"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    MEDIC
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000002}" {
+   m_sCallsign "ABLE"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000003}" {
+   m_sCallsign "BAKER"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000004}" {
+   m_sCallsign "CHARLIE"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000005}" {
+   m_sCallsign "DOG"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000006}" {
+   m_sCallsign "EASY"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1AEAF000000007}" {
+   m_sCallsign "FOX"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{7C1AEAD000000007}" {
+  m_rGearScript "{7C1AEA0000000501}Configs/Gearscripts/Standard/Specials/Holdout/COA_GS_Holdout_US.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{7C1AEAD000000008}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{7C1AEAD000000009}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{7C1AEAD000000006}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "7C1AEAD00000000A" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 6294.41 6.032 2584.726
+ Points {
+  ShapePoint "{6ABAE16676217A78}" {
+   Position -4.899 -0 24.629
+  }
+  ShapePoint "{6ABAE166754DF905}" {
+   Position 32.289 -0 5.222
+  }
+  ShapePoint "{6ABAE1667473E6D3}" {
+   Position 25.714 -0 -26.798
+  }
+  ShapePoint "{6ABAE16674D3138E}" {
+   Position -12.058 -0 -18.206
+  }
+ }
+}

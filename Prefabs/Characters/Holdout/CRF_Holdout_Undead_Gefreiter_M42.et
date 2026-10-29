@@ -1,0 +1,28 @@
+Bacon_622120A5448725E3_InfectedCharacter : "{FAF1350A99D893E7}622120A5448725E3/Prefabs/Characters/Variants/Variant_USSR_Rifleman.et" {
+ ID "520EC961A090B1EE"
+ components {
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{747BA3B3D60B3676}Prefabs/Characters/HeadGear/Helmet_Stahlhelm_M42_01/Helmet_Stahlhelm_M42_Feldgrau.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{B7E538F48ED5B12F}Prefabs/Characters/Uniforms/Blouse_M40/Jacket_HEER_M40_Feldgrau.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{9BB937575F3354A0}Prefabs/Characters/Vests/M1939/Variants/M1939_MG.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{BA4CDA33D60F0A3F}Prefabs/Characters/Uniforms/Trousers_M36/Pants_HEER_M36_Feldgrau.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{6550F264F1E19FCB}Prefabs/Characters/Footwear/LowBoots_M43/CombatBoots_HEER_M43_01.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+   }
+  }
+ }
+}
