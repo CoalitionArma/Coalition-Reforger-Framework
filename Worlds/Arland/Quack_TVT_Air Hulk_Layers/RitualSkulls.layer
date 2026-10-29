@@ -34,7 +34,7 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
        Description "Will increase ritual by 1"
       }
       ActionTitle "Chant"
-      Duration 0.8
+      Duration 60
      }
     }
    }
@@ -42,8 +42,8 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
     Enabled 1
    }
   }
-  coords 2319.664 90.573 1325.459
-  angles -45 57.643 0
+  coords 567.938 33.381 485.182
+  angles 0 -90 0
  }
  RitSkull2 {
   components {
@@ -309,7 +309,7 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
        Description "Will increase ritual by 1"
       }
       ActionTitle "Chant"
-      Duration 0.8
+      Duration 60
      }
     }
    }
@@ -354,7 +354,7 @@ $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSk
        Description "Will increase ritual by 1"
       }
       ActionTitle "Chant"
-      Duration 0.8
+      Duration 60
      }
     }
    }
