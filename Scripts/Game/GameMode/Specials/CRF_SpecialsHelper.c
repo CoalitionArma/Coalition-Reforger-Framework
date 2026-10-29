@@ -72,7 +72,8 @@ class CRF_SpecialsHelper
 	//------------------------------------------------------------------------------------------------
 	//! Server: spawns a prop on the ground at a clear spot near position, so props placed by a mode never
 	//! float or sink whatever height their anchor was given. Replicated if the prefab has an RplComponent.
-	static IEntity SpawnOnGround(ResourceName prefab, vector position, float yaw, float searchRadius = 6, float clearRadius = 1.5)
+	//! lift raises the spawn above the ground (vehicles: let them settle onto their wheels).
+	static IEntity SpawnOnGround(ResourceName prefab, vector position, float yaw, float searchRadius = 6, float clearRadius = 1.5, float lift = 0)
 	{
 		if (prefab.IsEmpty())
 			return null;
@@ -87,7 +88,7 @@ class CRF_SpecialsHelper
 		vector spot;
 		if (!SCR_WorldTools.FindEmptyTerrainPosition(spot, position, searchRadius, clearRadius, 2))
 			spot = position;
-		spot[1] = GetGame().GetWorld().GetSurfaceY(spot[0], spot[2]);
+		spot[1] = GetGame().GetWorld().GetSurfaceY(spot[0], spot[2]) + lift;
 
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
