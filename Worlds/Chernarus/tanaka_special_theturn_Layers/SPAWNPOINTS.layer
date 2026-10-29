@@ -1,8 +1,12 @@
-COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
- coords 7160.000 297.000 7684.000
- angles 0 -90.0 0
-}
 COA_StaticSpawnPoint OPFOR_Spawn1 : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
- coords 6174.000 304.000 7753.000
- angles 0 90.0 0
+ coords 5989.482 301.099 7807.226
+ angles 0 90 0
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 7169.22 294 7670.14
+ angles 0 -90 0
+}
+COA_StaticSpawnPoint CIV_Spawn_Church : "{91AC884B31EDEE23}PrefabsMissionMaking/SpawnPoints/SpawnPoints/CIVILIAN_Spawn.et" {
+ coords 6031.792 301.255 7774.437
+ angles 0 -135 0
 }

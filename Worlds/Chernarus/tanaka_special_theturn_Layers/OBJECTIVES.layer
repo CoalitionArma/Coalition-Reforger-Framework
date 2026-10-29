@@ -1,84 +1,155 @@
-GenericEntity turn_lz {
- coords 6700.000 297.000 7950.000
-}
-GenericEntity turn_zombies_01 {
- coords 5450.000 300.000 7750.000
-}
-GenericEntity turn_zombies_02 {
- coords 5600.000 300.000 8350.000
-}
-GenericEntity turn_zombies_03 {
- coords 5600.000 300.000 7150.000
-}
-GenericEntity turn_zombies_04 {
- coords 6200.000 300.000 8500.000
-}
-GenericEntity turn_zombies_05 {
- coords 6200.000 300.000 6950.000
-}
-GenericEntity turn_zombies_06 {
- coords 6700.000 300.000 8600.000
-}
-GenericEntity turn_zombies_07 {
- coords 6700.000 300.000 7050.000
-}
-GenericEntity turn_zombies_08 {
- coords 7150.000 300.000 8450.000
-}
-GenericEntity turn_zombies_09 {
- coords 7150.000 300.000 6950.000
-}
-GenericEntity turn_zombies_10 {
- coords 7950.000 300.000 7700.000
-}
-GenericEntity turn_zombies_11 {
- coords 7850.000 300.000 8250.000
-}
-GenericEntity turn_zombies_12 {
- coords 7850.000 300.000 7100.000
-}
-GenericEntity turn_car_01 {
- coords 6140.000 297.000 7768.000
-}
-GenericEntity turn_car_02 {
- coords 6228.000 297.000 7745.000
-}
-GenericEntity turn_car_03 {
- coords 6185.000 297.000 7695.000
-}
-GenericEntity turn_car_04 {
- coords 6280.000 297.000 7780.000
-}
-GenericEntity turn_car_05 {
- coords 6098.000 297.000 7660.000
-}
-GenericEntity turn_car_06 {
- coords 5980.000 297.000 7862.000
-}
-GenericEntity turn_car_07 {
- coords 6245.000 297.000 7580.000
-}
-GenericEntity turn_car_08 {
- coords 7275.000 297.000 7668.000
-}
-GenericEntity turn_car_09 {
- coords 7080.000 297.000 7778.000
-}
-GenericEntity turn_car_10 {
- coords 6995.000 297.000 7712.000
-}
-GenericEntity turn_car_11 {
- coords 7150.000 297.000 7530.000
-}
-GenericEntity turn_car_12 {
- coords 6950.000 297.000 7800.000
-}
-GenericEntity turn_car_13 {
- coords 6910.000 297.000 7845.000
-}
-GenericEntity turn_car_14 {
- coords 6390.000 297.000 7520.000
-}
-GenericEntity turn_car_15 {
- coords 6490.000 297.000 7420.000
+$grp GenericEntity {
+ turn_lz {
+  coords 6535.382 323.851 6184.629
+  angles 2.66 0.25 5.362
+ }
+ turn_zombies_01 {
+  coords 5450 315.375 7750
+  angles 2.678 0.126 2.687
+ }
+ turn_zombies_02 {
+  coords 5600 329.032 8350
+  angles -0.893 -0.042 2.684
+ }
+ turn_zombies_03 {
+  coords 5600 315.125 7150
+  angles -3.569 -0.168 2.689
+ }
+ turn_zombies_04 {
+  coords 6200 334.656 8500
+  angles 1.783 -0.112 -3.578
+ }
+ turn_zombies_05 {
+  coords 6200 360.406 6950
+  angles -7.997 -0.252 1.808
+ }
+ turn_zombies_06 {
+  coords 6700 368.875 8600
+  angles 3.507 0.494 8.02
+ }
+ turn_zombies_07 {
+  coords 6700 334.312 7050
+  angles -13.915 -1.331 5.518
+ }
+ turn_zombies_08 {
+  coords 7150 336.469 8450
+  angles 6.228 -0.293 -2.7
+ }
+ turn_zombies_09 {
+  coords 7150 258.437 6950
+  angles 0.842 0.211 14.038
+ }
+ turn_zombies_10 {
+  coords 7950 401.844 7700
+  angles 9.603 -1.212 -7.227
+ }
+ turn_zombies_11 {
+  coords 7850 385.062 8250
+  angles -0.887 0.083 -5.357
+ }
+ turn_zombies_12 {
+  coords 7850 333.281 7100
+  angles 0 0 -1.79
+ }
+ turn_car_01 {
+  coords 6140 300.969 7768
+ }
+ turn_car_02 {
+  coords 6228 301 7745
+ }
+ turn_car_03 {
+  coords 6185 300.562 7695
+  angles 0.895 0.014 0.895
+ }
+ turn_car_04 {
+  coords 6280 302.688 7780
+  angles 5.323 -0.417 -4.486
+ }
+ turn_car_05 {
+  coords 6098 301 7660
+ }
+ turn_car_06 {
+  coords 5980 302 7862
+  angles 1.789 0.028 0.896
+ }
+ turn_car_07 {
+  coords 6245 296.641 7580
+  angles 1.789 -0.028 -0.896
+ }
+ turn_car_08 {
+  coords 7275 295.391 7668
+  angles 0.885 -0.097 -6.243
+ }
+ turn_car_09 {
+  coords 7080 296.344 7778
+ }
+ turn_car_10 {
+  coords 6995 294 7712
+ }
+ turn_car_11 {
+  coords 7150 280 7530
+  angles 1.789 0.028 0.896
+ }
+ turn_car_12 {
+  coords 6950 294 7800
+ }
+ turn_car_13 {
+  coords 6910 294 7845
+ }
+ turn_car_14 {
+  coords 6390 286.75 7520
+  angles 0.895 0.014 0.895
+ }
+ turn_car_15 {
+  coords 6490 286.593 7420
+  angles -3.573 -0.112 1.793
+ }
+ turn_arsenal_01 {
+  coords 6172 341.812 8020
+  angles 7.109 -0.335 -2.705
+ }
+ turn_arsenal_02 {
+  coords 6066 301.031 7815
+  angles 1.789 -0.028 -0.896
+ }
+ turn_arsenal_03 {
+  coords 6285 301.187 7735
+ }
+ turn_arsenal_04 {
+  coords 6488 286.25 7428
+  angles -2.681 -0.084 1.792
+ }
+ turn_arsenal_05 {
+  coords 6952 294 7805
+ }
+ turn_arsenal_06 {
+  coords 7120 280.094 7522
+  angles 1.789 -0.028 -0.896
+ }
+ turn_supply_01 {
+  coords 6005 305.312 7720
+  angles -12.047 -1.911 9.082
+ }
+ turn_supply_02 {
+  coords 5988 308.312 7945
+  angles 8.804 -0.832 -5.42
+ }
+ turn_supply_03 {
+  coords 6328 301 7712
+ }
+ turn_supply_04 {
+  coords 6340 289 7545
+  angles 1.783 0.112 3.578
+ }
+ turn_supply_05 {
+  coords 6985 294 7748
+ }
+ turn_supply_06 {
+  coords 7282 295.484 7645
+  angles 0.881 -0.11 -7.126
+ }
+ turn_refugee {
+  coords 5944.726 192.397 5766.785
+  angles 0.894 0.028 1.79
+ }
 }

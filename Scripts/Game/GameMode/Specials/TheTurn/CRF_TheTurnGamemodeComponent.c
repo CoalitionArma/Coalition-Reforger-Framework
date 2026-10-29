@@ -11,13 +11,22 @@
 //
 //   Win: the side with more players aboard. Equal (or nobody) is a draw.
 //
+//   Dead become civilians (m_bDeadBecomeCivilians): a player killed on either side comes back once as a
+//   civilian at the civilian spawn point. Civilians draw the zombies like anyone else but can't board,
+//   and a civilian who dies spectates. Their way out is a refugee truck (m_sRefugeePointName) that waits
+//   from the extraction call until the helicopter leaves; only civilians see it on the map.
+//
+//   Caches: weapon arsenals and supply crates (fuel, medical) at named spots, each a question mark on
+//   everyone's map.
+//
 // Setup for mission makers
 // 1. Build a normal TvT, but without objective components that end the mission on their own.
 // 2. Add this component to the gamemode entity and set both faction keys.
 // 3. Place a few empty entities around the edge of the area and list their names as zombie spawn points.
 // 4. Place and name the landing zone (a helipad works) and set m_sLandingZoneName.
 // 5. Factions: make the zombie faction (BACON_622120A5448725E3_FACTION) hostile to both sides.
-// 6. Respawns: zombies make long fights deadly; the Lobby's respawn settings still apply.
+// 6. Respawns: turn the Lobby's respawns off when the dead become civilians, and place a civilian spawn
+//    point (CIVILIAN_Spawn.et) and set a civilian gearscript. Otherwise the Lobby's respawn settings apply.
 //------------------------------------------------------------------------------------
 
 enum CRF_ETheTurnPhase
@@ -155,6 +164,48 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("0.12", UIWidgets.Slider, "Most fuel a civilian vehicle starts with (share of a full tank).", params: "0 1 0.01", category: "The Turn - Civilian Vehicles")]
 	protected float m_fCivilianFuelMax;
 
+	[Attribute("1", UIWidgets.CheckBox, "Players killed on either side come back once as civilians at the civilian spawn point. Civilians can't board the helicopter, and a civilian who dies spectates. Turn the Lobby's respawns off.", category: "The Turn - Dead Become Civilians")]
+	protected bool m_bDeadBecomeCivilians;
+
+	[Attribute("CIV", UIWidgets.EditBox, "Faction the dead come back as. Needs a spawn point and a gearscript.", category: "The Turn - Dead Become Civilians")]
+	protected string m_sCivilianFactionKey;
+
+	[Attribute("10", UIWidgets.Auto, "Seconds after death before the player comes back as a civilian.", category: "The Turn - Dead Become Civilians")]
+	protected float m_fCivilianDelaySeconds;
+
+	[Attribute("You died, but you're not out. You're a civilian now, with no seat on the helicopter. Stay alive: when the helicopter is called, a refugee truck comes for civilians and it'll be on your map. Die again and you spectate.", UIWidgets.EditBoxMultiline, "Popup a player gets on coming back as a civilian.", category: "The Turn - Dead Become Civilians")]
+	protected string m_sCivilianText;
+
+	[Attribute("", UIWidgets.EditBox, "Name of the entity the refugee truck waits at (the civilians' way out). It's there from the extraction call until the helicopter leaves; civilians who reach it are out of the round. Empty = no truck.", category: "The Turn - Dead Become Civilians")]
+	protected string m_sRefugeePointName;
+
+	[Attribute("{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et", UIWidgets.ResourceNamePicker, "Truck shown at the refugee point (its tank is emptied, so nobody drives off in it). Empty = none.", params: "et", category: "The Turn - Dead Become Civilians")]
+	protected ResourceName m_sRefugeeTruckPrefab;
+
+	[Attribute("15", UIWidgets.Auto, "Metres from the refugee point a civilian has to reach to get on the truck.", category: "The Turn - Dead Become Civilians")]
+	protected float m_fRefugeeRadius;
+
+	[Attribute("", UIWidgets.Auto, "Names of entities where a weapon arsenal is put down. Only their position on the map matters.", category: "The Turn - Caches")]
+	protected ref array<string> m_aArsenalSpotNames;
+
+	[Attribute("{3324FCADDE3D4D31}Prefabs/Compositions/SupplyArsenal_NoSupply/SupplyArsenalNoSupply_CIV.et", UIWidgets.ResourceNamePicker, "Arsenal put down at each arsenal spot. The CRF supply arsenal gives every player their own side's gearscript (civilians: the civilian gearscript and its extra supply arsenal items).", params: "et", category: "The Turn - Caches")]
+	protected ResourceName m_sArsenalPrefab;
+
+	[Attribute("", UIWidgets.Auto, "Names of entities where a supply cache (a crate with fuel and medical supplies round it) is put down.", category: "The Turn - Caches")]
+	protected ref array<string> m_aSupplySpotNames;
+
+	[Attribute("{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et", UIWidgets.ResourceNamePicker, "Crate at the centre of each supply cache. Empty = just the items.", params: "et", category: "The Turn - Caches")]
+	protected ResourceName m_sSupplyCratePrefab;
+
+	[Attribute("", UIWidgets.ResourceNamePicker, "Items laid round each supply crate (list one several times for more). Fuel cans start full. Empty = two jerrycans, bandages, tourniquets, morphine and saline.", params: "et", category: "The Turn - Caches")]
+	protected ref array<ResourceName> m_aSupplyItems;
+
+	[Attribute("1", UIWidgets.CheckBox, "Mark every arsenal and supply cache on everyone's map with a question mark.", category: "The Turn - Caches")]
+	protected bool m_bMarkCaches;
+
+	[Attribute("{7606192F8A35EADE}UI/Textures/Tasks/TaskIcons/64/Icon_Task_Unknown.edds", UIWidgets.ResourcePickerThumbnail, "Map marker icon for the caches.", params: "edds", category: "The Turn - Caches")]
+	protected ResourceName m_sCacheMarkerIcon;
+
 	//===================================================================================
 	// STATE
 	//===================================================================================
@@ -192,8 +243,27 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<IEntity> m_aGroupWaypoints = {};
 	protected ref array<float> m_aGroupSpawnedAt = {};
 
+	// Playable groups the dead are put in as civilians
+	protected ref array<SCR_AIGroup> m_aCivilianGroups = {};
+	protected IEntity m_RefugeePoint;
+	protected IEntity m_RefugeeTruck;
+	protected int m_iCiviliansOut;
+
 	// Seconds a group gets to spawn its members before an empty one is dropped
 	protected static const float GROUP_SPAWN_GRACE = 60;
+
+	protected static const COA_EGearRole CIVILIAN_ROLE = COA_EGearRole.RIFLEMAN;
+	protected static const int CIVILIANS_PER_GROUP = 16;
+
+	// Supply cache contents, used when the mission doesn't list its own
+	protected static const ResourceName SUPPLY_JERRYCAN = "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et";
+	protected static const ResourceName SUPPLY_BANDAGE = "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et";
+	protected static const ResourceName SUPPLY_TOURNIQUET = "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et";
+	protected static const ResourceName SUPPLY_MORPHINE = "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et";
+	protected static const ResourceName SUPPLY_SALINE = "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et";
+
+	// Supply items lie this far from the crate's centre
+	protected static const float SUPPLY_ITEM_RING = 1.4;
 
 	// Client
 	protected ref CRF_SpecialsMarkerSet m_Markers = new CRF_SpecialsMarkerSet();
@@ -277,8 +347,12 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		BuildSchedule();
 
-		// Abandoned civilian vehicles, once the world has settled
+		if (m_bDeadBecomeCivilians && !m_sRefugeePointName.IsEmpty())
+			m_RefugeePoint = CRF_SpecialsHelper.FindNamedEntity(m_sRefugeePointName, LOG);
+
+		// Abandoned civilian vehicles and the caches, once the world has settled
 		GetGame().GetCallqueue().CallLater(SpawnCivilianVehicles, 2000, false);
+		GetGame().GetCallqueue().CallLater(SpawnCaches, 2000, false);
 
 		m_iPhase = CRF_ETheTurnPhase.NORMAL;
 		m_iSeatsLeft = m_iSeats;
@@ -304,6 +378,9 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(UpdateMarkers);
 			GetGame().GetCallqueue().Remove(SpawnCivilianVehicles);
 			GetGame().GetCallqueue().Remove(SetLowFuel);
+			GetGame().GetCallqueue().Remove(SpawnCaches);
+			GetGame().GetCallqueue().Remove(SetFuelPercentage);
+			GetGame().GetCallqueue().Remove(BecomeCivilian);
 		}
 
 		m_Markers.Clear();
@@ -374,6 +451,106 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		SCR_FuelManagerComponent fuelManager = SCR_FuelManagerComponent.Cast(vehicle.FindComponent(SCR_FuelManagerComponent));
 		if (fuelManager)
 			fuelManager.SetTotalFuelPercentage(Math.RandomFloat(m_fCivilianFuelMin, Math.Max(m_fCivilianFuelMin, m_fCivilianFuelMax)));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetFuelPercentage(IEntity entity, float fuel)
+	{
+		if (!entity)
+			return;
+
+		SCR_FuelManagerComponent fuelManager = SCR_FuelManagerComponent.Cast(entity.FindComponent(SCR_FuelManagerComponent));
+		if (fuelManager)
+			fuelManager.SetTotalFuelPercentage(fuel);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: a weapon arsenal at every arsenal spot and a supply cache at every supply spot, on the
+	//! ground. All of it is replicated; the map markers come from the spot entities on each client.
+	protected void SpawnCaches()
+	{
+		int arsenals = 0;
+		if (m_aArsenalSpotNames && !m_sArsenalPrefab.IsEmpty())
+		{
+			foreach (string arsenalSpotName : m_aArsenalSpotNames)
+			{
+				IEntity arsenalSpot = CRF_SpecialsHelper.FindNamedEntity(arsenalSpotName, LOG);
+				if (arsenalSpot && CRF_SpecialsHelper.SpawnOnGround(m_sArsenalPrefab, arsenalSpot.GetOrigin(), Math.RandomFloat(0, 360), 12, 3))
+					arsenals++;
+			}
+		}
+
+		array<ResourceName> items = {};
+		if (m_aSupplyItems && !m_aSupplyItems.IsEmpty())
+			items.Copy(m_aSupplyItems);
+		else
+		{
+			items.Insert(SUPPLY_JERRYCAN);
+			items.Insert(SUPPLY_JERRYCAN);
+			for (int bandage = 0; bandage < 4; bandage++)
+				items.Insert(SUPPLY_BANDAGE);
+			items.Insert(SUPPLY_TOURNIQUET);
+			items.Insert(SUPPLY_TOURNIQUET);
+			items.Insert(SUPPLY_MORPHINE);
+			items.Insert(SUPPLY_SALINE);
+		}
+
+		int caches = 0;
+		if (m_aSupplySpotNames)
+		{
+			foreach (string supplySpotName : m_aSupplySpotNames)
+			{
+				IEntity supplySpot = CRF_SpecialsHelper.FindNamedEntity(supplySpotName, LOG);
+				if (supplySpot && SpawnSupplyCache(supplySpot.GetOrigin(), items))
+					caches++;
+			}
+		}
+
+		Print(string.Format("%1 %2 arsenal(s) and %3 supply cache(s) placed.", LOG, arsenals, caches), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A crate on the ground with the items lying in a ring round it
+	protected bool SpawnSupplyCache(vector position, array<ResourceName> items)
+	{
+		vector centre = position;
+		if (!m_sSupplyCratePrefab.IsEmpty())
+		{
+			IEntity crate = CRF_SpecialsHelper.SpawnOnGround(m_sSupplyCratePrefab, position, Math.RandomFloat(0, 360), 10, 2);
+			if (!crate)
+				return false;
+
+			centre = crate.GetOrigin();
+		}
+
+		BaseWorld world = GetGame().GetWorld();
+		float startAngle = Math.RandomFloat(0, Math.PI * 2);
+		foreach (int i, ResourceName item : items)
+		{
+			Resource resource = Resource.Load(item);
+			if (!resource || !resource.IsValid())
+			{
+				Print(string.Format("%1 Can't load supply item '%2'.", LOG, item), LogLevel.ERROR);
+				continue;
+			}
+
+			float angle = startAngle + Math.PI * 2 * i / items.Count();
+			vector at = centre + Vector(Math.Cos(angle) * SUPPLY_ITEM_RING, 0, Math.Sin(angle) * SUPPLY_ITEM_RING);
+			at[1] = world.GetSurfaceY(at[0], at[2]) + 0.15;
+
+			EntitySpawnParams spawnParams = new EntitySpawnParams();
+			spawnParams.TransformMode = ETransformMode.WORLD;
+			Math3D.AnglesToMatrix(Vector(Math.RandomFloat(0, 360), 0, 0), spawnParams.Transform);
+			spawnParams.Transform[3] = at;
+
+			IEntity spawned = GetGame().SpawnEntityPrefab(resource, world, spawnParams);
+
+			// Fuel cans come part-full; these are full, once their fuel system has set itself up
+			if (spawned && spawned.FindComponent(SCR_FuelManagerComponent))
+				GetGame().GetCallqueue().CallLater(SetFuelPercentage, 1000, false, spawned, 1.0);
+		}
+
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -470,6 +647,10 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			UpdateGroups();
 		}
 
+		// The refugee truck waits from the extraction call until the helicopter leaves
+		if (m_iPhase == CRF_ETheTurnPhase.INBOUND || m_iPhase == CRF_ETheTurnPhase.BOARDING)
+			BoardRefugees();
+
 		switch (m_iPhase)
 		{
 			case CRF_ETheTurnPhase.OUTBREAK:
@@ -513,9 +694,9 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			}
 		}
 
-		// Everyone dead
+		// Everyone dead (civilians keep the round going for their truck)
 		array<int> alive = {};
-		GetAlivePlayingPlayers(alive);
+		GetZombieTargets(alive);
 		if (alive.IsEmpty())
 		{
 			m_iNobodyAliveSeconds++;
@@ -574,7 +755,7 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	protected void SpawnWave()
 	{
 		array<int> alive = {};
-		GetAlivePlayingPlayers(alive);
+		GetZombieTargets(alive);
 		if (alive.IsEmpty() || m_aSpawnPoints.IsEmpty())
 			return;
 
@@ -689,7 +870,7 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	protected void UpdateGroups()
 	{
 		array<int> alive = {};
-		GetAlivePlayingPlayers(alive);
+		GetZombieTargets(alive);
 
 		for (int i = m_aGroups.Count() - 1; i >= 0; i--)
 		{
@@ -822,6 +1003,55 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		CRF_RadioTransmissionEvents.PopupToFaction("", "A helicopter is coming",
 			string.Format("It lands in %1 with %2 seats - not enough for everyone.%3 Whoever gets aboard gets out.", CRF_SpecialsHelper.FormatSeconds(m_iInboundSeconds), m_iSeats, grid), 15);
 		SoundSiren();
+		SendRefugeeTruck();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The civilians' way out: a truck at the refugee point, told only to them
+	protected void SendRefugeeTruck()
+	{
+		if (!m_bDeadBecomeCivilians || !m_RefugeePoint)
+			return;
+
+		if (!m_sRefugeeTruckPrefab.IsEmpty())
+		{
+			m_RefugeeTruck = CRF_SpecialsHelper.SpawnOnGround(m_sRefugeeTruckPrefab, m_RefugeePoint.GetOrigin(), m_RefugeePoint.GetYawPitchRoll()[0], 15, 4, VEHICLE_SPAWN_LIFT);
+			if (m_RefugeeTruck)
+				GetGame().GetCallqueue().CallLater(SetFuelPercentage, 1000, false, m_RefugeeTruck, 0.0);
+		}
+
+		string grid = CRF_RadioTransmissionEvents.GetGrid100(m_RefugeePoint.GetOrigin());
+		CRF_RadioTransmissionEvents.PopupToFaction(m_sCivilianFactionKey, "A refugee truck is waiting",
+			string.Format("Civilians: a truck is waiting at grid %1, and it's marked on your map. It leaves when the helicopter does. Get on it and you're out.", grid), 15);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Civilians at the refugee point get on the truck (out of the round, like the helicopter)
+	protected void BoardRefugees()
+	{
+		if (!m_bDeadBecomeCivilians || !m_RefugeePoint)
+			return;
+
+		vector point = m_RefugeePoint.GetOrigin();
+		if (m_RefugeeTruck)
+			point = m_RefugeeTruck.GetOrigin();
+
+		array<int> civilians = {};
+		CRF_SpecialsHelper.GetAlivePlayers(m_sCivilianFactionKey, civilians);
+		foreach (int playerId : civilians)
+		{
+			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if (!entity || vector.DistanceXZ(entity.GetOrigin(), point) > m_fRefugeeRadius)
+				continue;
+
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			if (!CRF_SpecialsHelper.ExtractPlayer(playerId))
+				continue;
+
+			m_iCiviliansOut++;
+			CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "You're on the truck", "You made it out. Watch the rest from here.", 8);
+			CRF_RadioTransmissionEvents.PopupToFaction(m_sCivilianFactionKey, string.Format("%1 is on the refugee truck", playerName), "", 4);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -923,6 +1153,9 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_Helicopter)
 			SCR_EntityHelper.DeleteEntityAndChildren(m_Helicopter);
 
+		if (m_RefugeeTruck)
+			SCR_EntityHelper.DeleteEntityAndChildren(m_RefugeeTruck);
+
 		int one;
 		int two;
 		m_mAboard.Find(m_sFactionOneKey, one);
@@ -939,6 +1172,8 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			title = CRF_SpecialsHelper.GetFactionName(winner) + " WINS";
 
 		string score = string.Format("%1 aboard: %2 %3, %4 %5.", reason, CRF_SpecialsHelper.GetFactionName(m_sFactionOneKey), one, CRF_SpecialsHelper.GetFactionName(m_sFactionTwoKey), two);
+		if (m_RefugeePoint)
+			score += string.Format(" Civilians on the refugee truck: %1.", m_iCiviliansOut);
 		CRF_RadioTransmissionEvents.PopupToFaction("", title, score, 15);
 
 		if (!m_bEndMissionOnVictory)
@@ -950,6 +1185,114 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		if (m_Gamemode)
 			m_Gamemode.AdvanceGamemodeState(true);
+	}
+
+	//===================================================================================
+	// DEAD BECOME CIVILIANS (server)
+	//===================================================================================
+
+	//! Runs before the Lobby's own death handling (which marks the slot dead and puts the player in
+	//! spectator), so the switch to civilian waits until that is done
+	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+
+		if (!Replication.IsServer() || !m_bDeadBecomeCivilians || m_bEnded)
+			return;
+
+		int playerId = instigatorContextData.GetVictimPlayerID();
+		if (playerId <= 0)
+			return;
+
+		// Only soldiers come back; a civilian who dies stays in spectator
+		string factionKey = CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId);
+		if (factionKey != m_sFactionOneKey && factionKey != m_sFactionTwoKey)
+			return;
+
+		GetGame().GetCallqueue().CallLater(BecomeCivilian, (int)(Math.Max(m_fCivilianDelaySeconds, 1) * 1000), false, playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Moves a dead soldier's slot to the civilian faction and spawns them at its spawn point. The slot
+	//! itself changes side, so the player keeps one slot and reconnects into it as a civilian.
+	protected void BecomeCivilian(int playerId)
+	{
+		if (m_bEnded || !GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
+		if (!slottingManager || !respawnManager || !broadcastManager)
+			return;
+
+		int slotId = slottingManager.GetPlayerSlotID(playerId);
+		COA_SlotData slotData = slottingManager.GetSlotData(slotId);
+
+		// Still a dead soldier (not moved or revived by an admin meanwhile)
+		if (!slotData || !slotData.GetIsDeadSlot())
+			return;
+
+		FactionKey factionKey = slotData.GetSlotFactionKey();
+		if (factionKey != m_sFactionOneKey && factionKey != m_sFactionTwoKey)
+			return;
+
+		if (respawnManager.GetFactionSpawnpoints(m_sCivilianFactionKey).IsEmpty())
+		{
+			Print(string.Format("%1 No spawn point for '%2' - the dead stay in spectator. Place a CIVILIAN_Spawn.", LOG, m_sCivilianFactionKey), LogLevel.ERROR);
+			return;
+		}
+
+		SCR_AIGroup group = GetCivilianGroup();
+		if (!group)
+			return;
+
+		RplComponent groupRpl = RplComponent.Cast(group.FindComponent(RplComponent));
+		if (!groupRpl)
+			return;
+
+		slotData.SetSlotFactionKey(m_sCivilianFactionKey);
+		slotData.SetSlotCurrentGroup(groupRpl.Id());
+		broadcastManager.UpdateSlotData(slotData);
+
+		// Role isn't part of the full slot update; everyone gets the civilian gearscript's one role
+		slottingManager.UpdateSlotRole(slotId, CIVILIAN_ROLE);
+
+		// Marks the slot alive and spawns them at the civilian spawn point
+		respawnManager.RespawnPlayer(playerId);
+
+		CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "You're a civilian", m_sCivilianText, 12);
+		Print(string.Format("%1 %2 (%3) came back as a civilian.", LOG, GetGame().GetPlayerManager().GetPlayerName(playerId), factionKey), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A civilian playable group with room, created when they're all full
+	protected SCR_AIGroup GetCivilianGroup()
+	{
+		foreach (SCR_AIGroup group : m_aCivilianGroups)
+		{
+			if (group && group.GetPlayerCount() < CIVILIANS_PER_GROUP)
+				return group;
+		}
+
+		SCR_Faction faction = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey(m_sCivilianFactionKey));
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!faction || !groupsManager)
+		{
+			Print(string.Format("%1 No faction '%2' - the dead stay in spectator.", LOG, m_sCivilianFactionKey), LogLevel.ERROR);
+			return null;
+		}
+
+		SCR_AIGroup group = groupsManager.CreateNewPlayableGroup(faction);
+		if (!group)
+			return null;
+
+		group.SetCanDeleteIfNoPlayer(false);
+		group.SetDeleteWhenEmpty(false);
+		group.SetMaxMembers(CIVILIANS_PER_GROUP);
+		group.SetCustomName("Civilians", 0);
+		m_aCivilianGroups.Insert(group);
+		return group;
 	}
 
 	//===================================================================================
@@ -970,7 +1313,37 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			m_Markers.Want(lz.GetOrigin(), label, m_sMarkerIcon, ARGB(255, 255, 165, 0));
 		}
 
+		// Caches: a question mark for everyone, all round
+		if (m_bMarkCaches)
+		{
+			WantCacheMarkers(m_aArsenalSpotNames);
+			WantCacheMarkers(m_aSupplySpotNames);
+		}
+
+		// The refugee truck: civilians only, while it waits
+		if (m_bDeadBecomeCivilians && !m_sRefugeePointName.IsEmpty() && (m_iPhase == CRF_ETheTurnPhase.INBOUND || m_iPhase == CRF_ETheTurnPhase.BOARDING)
+			&& CRF_SpecialsHelper.GetLocalFactionKey() == m_sCivilianFactionKey)
+		{
+			IEntity refugeePoint = GetGame().GetWorld().FindEntityByName(m_sRefugeePointName);
+			if (refugeePoint)
+				m_Markers.Want(refugeePoint.GetOrigin(), "Refugee truck - leaves with the helicopter", m_sMarkerIcon, ARGB(255, 80, 200, 120));
+		}
+
 		m_Markers.Apply();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void WantCacheMarkers(array<string> spotNames)
+	{
+		if (!spotNames)
+			return;
+
+		foreach (string spotName : spotNames)
+		{
+			IEntity spot = GetGame().GetWorld().FindEntityByName(spotName);
+			if (spot)
+				m_Markers.Want(spot.GetOrigin(), "", m_sCacheMarkerIcon, ARGB(255, 150, 60, 210));
+		}
 	}
 
 	//===================================================================================
@@ -984,5 +1357,17 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		CRF_SpecialsHelper.GetAlivePlayers(m_sFactionOneKey, outPlayers);
 		CRF_SpecialsHelper.GetAlivePlayers(m_sFactionTwoKey, two);
 		outPlayers.InsertAll(two);
+	}
+
+	//! Living players the zombies spawn away from and hunt: both sides and the civilians
+	protected void GetZombieTargets(notnull array<int> outPlayers)
+	{
+		GetAlivePlayingPlayers(outPlayers);
+		if (!m_bDeadBecomeCivilians)
+			return;
+
+		array<int> civilians = {};
+		CRF_SpecialsHelper.GetAlivePlayers(m_sCivilianFactionKey, civilians);
+		outPlayers.InsertAll(civilians);
 	}
 }
