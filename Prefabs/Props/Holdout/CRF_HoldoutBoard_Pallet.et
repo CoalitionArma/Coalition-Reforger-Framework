@@ -1,0 +1,12 @@
+GenericEntity {
+ ID "7C1AEAC000000001"
+ components {
+  MeshObject "{7C1AEAB000000002}" {
+   Object "{A37F3027FD5051FD}Assets/Props/Industrial/Pallets/Pallet_01.xob"
+  }
+  RigidBody "{7C1AEAB000000003}" {
+   ModelGeometry 1
+   Static 1
+  }
+ }
+}

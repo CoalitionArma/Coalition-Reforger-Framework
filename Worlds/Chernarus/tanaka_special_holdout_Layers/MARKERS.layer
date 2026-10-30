@@ -1,0 +1,11 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 6309.117 6.300 2580.382
+  m_MarkerColor 0.2 0.45 0.85 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 8
+  m_sDescription "Hold: municipal office"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
