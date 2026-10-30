@@ -1,0 +1,32 @@
+GenericEntity {
+ ID "7C1AEAC000000004"
+ components {
+  CRF_HoldoutBarricadeComponent "{7C1AEAB000000005}" {
+  }
+  ActionsManagerComponent "{7C1AEAB000000006}" {
+   ActionContexts {
+    UserActionContext "{7C1AEAB000000007}" {
+     ContextName "default"
+     Position PointInfo "{7C1AEAB000000008}" {
+      Offset 0 1 0
+     }
+     Radius 1.4
+    }
+   }
+   additionalActions {
+    CRF_HoldoutRepairBarricadeAction "{7C1AEAB000000009}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000000A}" {
+      Name "Repair barricade"
+     }
+     Duration 2.5
+     "Sort Priority" 10
+    }
+   }
+  }
+  RplComponent "{7C1AEAB00000000B}" {
+  }
+ }
+}
