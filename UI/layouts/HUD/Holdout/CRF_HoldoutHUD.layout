@@ -1,0 +1,187 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{6AD00BB94077F0A0}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ "Ignore Cursor" 1
+ "Z Order" 99
+ {
+  OverlayWidgetClass "{601991BFE541E9BA}" {
+   Name "Panel"
+   Slot FrameWidgetSlot "{649731729A14FD18}" {
+    Anchor 1 1 1 1
+    PositionX -108
+    OffsetLeft -108
+    PositionY -330
+    OffsetTop -330
+    SizeX 256
+    OffsetRight -148
+    SizeY 160
+    OffsetBottom 170
+    Alignment 1 1
+    SizeToContent 1
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{631489B21E15A4FD}" {
+     Name "Background"
+     Slot OverlayWidgetSlot "{6C7414AF4AC6A934}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     "Ignore Cursor" 1
+     Color 0.0075 0.0086 0.0123 0.92
+    }
+    ImageWidgetClass "{677F824211B70633}" {
+     Name "AccentEdge"
+     Slot OverlayWidgetSlot "{6AF3B7859BCB2C45}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+     "Ignore Cursor" 1
+     Color 0.5841 0.0369 0.0369 1
+     Size 1 3
+    }
+    SizeLayoutWidgetClass "{6F8EB7DF40056360}" {
+     Name "Sizer"
+     Slot OverlayWidgetSlot "{663CBA0153E0C79C}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 18 14 18 14
+     }
+     "Ignore Cursor" 1
+     AllowWidthOverride 1
+     WidthOverride 220
+     {
+      VerticalLayoutWidgetClass "{6A05C0E382DF19E9}" {
+       Name "Content"
+       Slot AlignableSlot "{6BB0597BB91FC7BB}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Ignore Cursor" 1
+       {
+        TextWidgetClass "{6EB01F576997016F}" {
+         Name "Kicker"
+         Slot LayoutSlot "{6ADB5949A17D1680}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.3968 0.4564 0.6038 1
+         Text "PREPARE DEFENSES"
+         "Font Size" 14
+         "Min Font Size" 10
+         "Horizontal Alignment" Right
+         FontProperties FontProperties "{61754911443B183B}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{694909556C0565D1}" {
+         Name "Title"
+         Slot LayoutSlot "{620D29BB9B82D8B6}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.8632 0.8879 0.9301 1
+         Text "WAVE 1"
+         "Font Size" 34
+         "Min Font Size" 16
+         "Horizontal Alignment" Right
+         FontProperties FontProperties "{63BD71E3012088B3}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{69B42F80FE991CE0}" {
+         Name "Detail"
+         Slot LayoutSlot "{600795F8E48F2063}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.6038 0.6584 0.7454 1
+         Text "Starts in 2:00"
+         "Font Size" 17
+         "Min Font Size" 10
+         "Horizontal Alignment" Right
+         FontProperties FontProperties "{6BA455220AD459D5}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+        ImageWidgetClass "{614075DFD65E8193}" {
+         Name "Divider"
+         Slot LayoutSlot "{6B0ADB386FE7C28A}" {
+          HorizontalAlign 3
+          Padding 0 10 0 8
+         }
+         "Ignore Cursor" 1
+         Color 1 1 1 0.03
+         Size 1 1
+        }
+        TextWidgetClass "{6A1404DC09D03AD6}" {
+         Name "MoneyLabel"
+         Slot LayoutSlot "{6C14EB6600A05A29}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.3968 0.4564 0.6038 1
+         Text "REQUISITION"
+         "Font Size" 14
+         "Min Font Size" 10
+         "Horizontal Alignment" Right
+         FontProperties FontProperties "{6CEF2B1A54D6C627}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        HorizontalLayoutWidgetClass "{6F5085F1BA62BEA0}" {
+         Name "MoneyRow"
+         Slot LayoutSlot "{67C6E5DA2335A067}" {
+          HorizontalAlign 2
+         }
+         "Ignore Cursor" 1
+         {
+          TextWidgetClass "{6B7BFD9D35E6BADD}" {
+           Name "MoneyDelta"
+           Slot LayoutSlot "{624509ECF63DA7E5}" {
+            VerticalAlign 1
+            Padding 0 0 10 0
+           }
+           "Ignore Cursor" 1
+           Color 0.107 0.552 0.216 1
+           Text ""
+           "Font Size" 17
+           "Min Font Size" 10
+           FontProperties FontProperties "{65EA17AF3CB18BA2}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+          TextWidgetClass "{6016EB3AC5F16733}" {
+           Name "MoneyText"
+           Slot LayoutSlot "{649E2E2A08679738}" {
+            VerticalAlign 1
+           }
+           "Ignore Cursor" 1
+           Color 0.807 0.402 0.065 1
+           Text "$250"
+           "Font Size" 30
+           "Min Font Size" 14
+           FontProperties FontProperties "{67BC3F5E06DC82CF}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

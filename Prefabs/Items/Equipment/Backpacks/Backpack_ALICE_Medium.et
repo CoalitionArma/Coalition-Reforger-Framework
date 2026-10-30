@@ -3,8 +3,8 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
    UseCapacityCoefficient 0
-   MaxCumulativeVolume 16000
-   m_fMaxWeight 80
+   MaxCumulativeVolume 32000
+   m_fMaxWeight 160
   }
  }
 }

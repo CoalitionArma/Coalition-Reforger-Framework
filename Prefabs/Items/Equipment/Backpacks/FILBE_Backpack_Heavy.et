@@ -1,0 +1,9 @@
+GenericEntity : "{48602F57998AB597}Prefabs/Items/Equipment/Backpacks/FILBE_Backpack.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   MaxCumulativeVolume 32000
+   m_fMaxWeight 160
+  }
+ }
+}
