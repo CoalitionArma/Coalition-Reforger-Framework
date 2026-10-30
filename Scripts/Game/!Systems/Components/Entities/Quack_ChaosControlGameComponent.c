@@ -2,7 +2,11 @@
 class Quack_chaosControlGameComponentClass : ScriptComponentClass
 {
 }
-
+/****************************************************************************************
+* This component will sets up the "chaos control" game mode. It checks to see if the game has started. If it has, two skulls entities on the map will allow players to teleport
+* into the field of play. The component also keeps track of how many sub-rituals have been completed and will send a message to clients on the status of the game.
+* The component should be added to the GameMode entity.
+/****************************************************************************************/
 class Quack_chaosControlGameComponent : ScriptComponent
 {
 	[Attribute(defvalue: "10", desc: "Wait in seconds before check", params: "0 59 1", category: "Post Briefing")]
@@ -147,18 +151,10 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	}
 }
 
-class Quack_TriggerStormUserAction : ScriptedUserAction
-{
-	//------------------------------------------------------------------------------------------------
-	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
-	{
-		// teleport player
-	}
-	
-	//Activate triggers with flags
-	
-}
-
+/****************************************************************************************
+* This UserAction will increase the number of sub-rituals tracked by the above component. 
+* Only players with the wrench entity in their inventroy may conduct the ritual.
+/****************************************************************************************/
 class Quack_RitualUserAction : ScriptedUserAction
 {
 	bool ActivationSwitch = 1;
@@ -227,6 +223,10 @@ class Quack_RitualUserAction : ScriptedUserAction
 	}
 }
 
+
+/****************************************************************************************
+* This User action will teleport players into the field of play. It will also call for the conditions of the OctroTrigger triggers to be met.
+/****************************************************************************************/
 class Quack_BluStartUserAction : CRF_TeleportPlayerAction
 {
 	IEntity Skullobject;
@@ -257,6 +257,7 @@ class Quack_BluStartUserAction : CRF_TeleportPlayerAction
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//Players should only be able to see the UI when the owner entity begins to glow.
 	override bool CanBeShownScript(IEntity user) 
 	{ 
 		SCR_BaseInteractiveLightComponent Lights = SCR_BaseInteractiveLightComponent.Cast(Skullobject.FindComponent(SCR_BaseInteractiveLightComponent));

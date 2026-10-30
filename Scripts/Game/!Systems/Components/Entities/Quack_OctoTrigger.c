@@ -2,7 +2,13 @@
 class Quack_OctoTriggerEntityClass : BaseGameTriggerEntityClass
 {
 }
-
+/****************************************************************************************
+* This trigger entity will take the positions of 8 named entities on the map and convert them into position vectors.
+* The vector data will then be used to randomly teleport players to one of the 8 locations each. 
+* You can use exact coordinates if you're trying to teleport into a narrow area or have the system try to find an empty piece of terrain if you don't 
+* want the players to bunch up into each other.
+* The trigger should remain dorment until the keys condition within the ChoasControlGameComponent component has be set to 'true'.
+/****************************************************************************************/
 class Quack_OctoTriggerEntity : BaseGameTriggerEntity
 {
 	[Attribute("", UIWidgets.Coords, "Coordinates to where the user will teleport to", category: "Area",)]
@@ -37,31 +43,7 @@ class Quack_OctoTriggerEntity : BaseGameTriggerEntity
 	
 	ref array<IEntity> playersInside = {};
 	ref array<string> Targets = {m_sTarget1, m_sTarget2, m_sTarget3, m_sTarget4, m_sTarget5, m_sTarget6, m_sTarget7, m_sTarget8};
-	ref array<IEntity> TargetsCoord = {};
-	
-	
-	//------------------------------------------------------------------------------------------------	
-	override protected void EOnInit(IEntity owner)
-	{
-		TargetBuilder();
-	}
-	
-	//------------------------------------------------------------------------------------------------	
-	protected void TargetBuilder()
-	{
-		if(Targets.IsEmpty())
-		{
-			Print("Array is empty");
-			return;
-		}
-		foreach(string targetVector : Targets)
-		{
-			IEntity teleportObject = GetGame().GetWorld().FindEntityByName(targetVector);
-			TargetsCoord.Insert(teleportObject);
-			Print(teleportObject, LogLevel.ERROR)
-		}
-	}
-	
+		
 	//------------------------------------------------------------------------------------------------
 	override protected void OnActivate(IEntity ent)
 	{
@@ -71,56 +53,47 @@ class Quack_OctoTriggerEntity : BaseGameTriggerEntity
 			Print("No game mode found",LogLevel.ERROR);
 			return;
 		}
-		
+		// Check if the 'key' variable within the ChoasControlGameComponent component exists.
 		Quack_chaosControlGameComponent VariableCheck = Quack_chaosControlGameComponent.Cast(gamemode.FindComponent(Quack_chaosControlGameComponent));
 		if(!VariableCheck)
 			return;	
+
 		int keycheck = VariableCheck.keys;
 		Print(keycheck);
+		// Check if the variable is set to true. and if it is, start flinging players across the play area.
 		if(keycheck != true)
 			return;
 		
 		Print("Something is inside the teleporter");
 		GetGame().GetCallqueue().CallLater(popPlayerArray, 1000, false);
-		
 	}
 
-	//------------------------------------------------------------------------------------------------	
+	//------------------------------------------------------------------------------------------------
+	// Teleport players into the exact location by choosing a random location.	
 	protected void teleportEnt()
 	{
 		foreach(IEntity playerInField : playersInside)
 		{
-			int randomElement = Math.RandomInt(0, 8);
-			Print(randomElement);
-			if(TargetsCoord.IsEmpty())
-			{
-				Print("The Target Coodinate array is empty!");
-				playerInField.SetOrigin(m_coords);
-				return;
-			}
-			
-			IEntity TargetObj = TargetsCoord[randomElement];
-			vector telePos = TargetObj.GetOrigin();
+			int randomElement = Math.RandomInt(0, 8);		
+			string TargetObj = Targets[randomElement];
+			IEntity teleportObject = GetGame().GetWorld().FindEntityByName(TargetObj);
+			vector telePos = teleportObject.GetOrigin();
 			
 			playerInField.SetOrigin(telePos);
 		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Teleport players into a general area if it's safe by choosing a random location.	
 	protected void teleportgen()
 	{
 		foreach(IEntity playerInField : playersInside)
 		{
 			int randomElement = Math.RandomInt(0, 8);
-			
-			if(TargetsCoord.IsEmpty())
-			{
-				Print("The Target Coodinate array is empty!");
-				playerInField.SetOrigin(m_coords);
-				return;
-			}
-			IEntity TargetObj = TargetsCoord[randomElement];
-			vector telePos = TargetObj.GetOrigin();
+						
+			string TargetObj = Targets[randomElement];
+			IEntity teleportObject = GetGame().GetWorld().FindEntityByName(TargetObj);
+			vector telePos = teleportObject.GetOrigin();
 			
 			vector finalSpawnLocation = vector.Zero;
 			SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, telePos, 3);
@@ -149,7 +122,7 @@ class Quack_OctoTriggerEntity : BaseGameTriggerEntity
 		else
 		{
 			teleportgen();
-			Print("we're mooving! moooooo!");
+			Print("Searching to safe areas");
 		}
 	}
 }
