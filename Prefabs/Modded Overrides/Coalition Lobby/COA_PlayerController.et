@@ -6,7 +6,7 @@ COA_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
     CRF_LoneWolfPenaltyManager "{68D8E3872715A0C9}" {
      m_fCohesionCheckInterval 1
      m_aWhitelistedRoles {
-      MEDICAL_OFFICER MEDIC
+      MEDICAL_OFFICER MEDIC LOGI_LEAD LOGI_RUNNER PILOT CREW_CHIEF
      }
      m_aWhitelistedFactions {
       CIV

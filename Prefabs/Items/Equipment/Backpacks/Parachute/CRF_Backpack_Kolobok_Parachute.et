@@ -27,9 +27,9 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
    }
    UseCapacityCoefficient 0
    CapacityCoefficient 1.26
-   MaxCumulativeVolume 8000
+   MaxCumulativeVolume 16000
    MaxItemSize 20 20 20
-   m_fMaxWeight 40
+   m_fMaxWeight 80
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    WornModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"

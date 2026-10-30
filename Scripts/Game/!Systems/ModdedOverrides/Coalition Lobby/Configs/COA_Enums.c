@@ -1,0 +1,6 @@
+modded enum COA_EGearRole
+{
+	ZOMBIE,
+	ZOMBIE_HEAVY,
+	ZOMBIE_BOMBER,
+}

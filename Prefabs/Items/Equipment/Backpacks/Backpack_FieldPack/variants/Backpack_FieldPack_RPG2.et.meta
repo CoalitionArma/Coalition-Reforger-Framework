@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{12D1C9C12CDDA924}Prefabs/Items/Equipment/Backpacks/Backpack_FieldPack/variants/Backpack_FieldPack_RPG2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
