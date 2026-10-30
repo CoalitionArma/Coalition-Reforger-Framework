@@ -36,7 +36,7 @@ $grp ParticleEffectEntity {
   EffectPath "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
  }
  {
-  coords 6374.875 289.134 7518.448
+  coords 6375.371 289.173 7517.426
   EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
  }
 }
@@ -288,11 +288,37 @@ $grp GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubComposition
   angles 0 13 0
  }
  {
-  coords 6374.846 287.188 7518.367
+  coords 6375.443 287.188 7516.777
   angles 0 13 0
+  {
+   GenericEntity {
+    ID "552C739767950670"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "552C73976795067A"
+    coords -0.018 0.375 -0.016
+    angles 0.009 64.095 0.13
+   }
+   GenericEntity {
+    ID "552C73976795067D"
+    coords -0.002 0.749 -0.009
+    angles -0.026 89.361 0.17
+   }
+   GenericEntity {
+    ID "552C73976795067E"
+    coords 0.01 1.115 -0.004
+    angles 0.013 59.333 0.12
+   }
+   GenericEntity {
+    ID "552C73976795067F"
+    coords 0.019 1.491 -0.017
+    angles 0.023 41.895 0.084
+   }
+  }
  }
  {
-  coords 6376.061 287.186 7517.472
+  coords 6376.296 287.179 7516.913
   angles 0 13 0
  }
  {
@@ -304,15 +330,52 @@ $grp GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubComposition
   angles 0 13 0
  }
  {
-  coords 6374.628 287.188 7516.872
+  coords 6374.863 287.188 7516.313
   angles 0 13 0
+  {
+   GenericEntity {
+    ID "552C739767950670"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "552C73976795067A"
+    coords -0.018 0.375 -0.016
+    angles 0.009 64.095 0.13
+   }
+   GenericEntity {
+    ID "552C73976795067D"
+    coords -0.001 0.749 -0.009
+    angles -0.026 89.361 0.17
+   }
+   GenericEntity {
+    ID "552C73976795067E"
+    coords 0.01 1.115 -0.005
+    angles 0.013 59.333 0.12
+   }
+   GenericEntity {
+    ID "552C73976795067F"
+    coords 0.019 1.491 -0.018
+    angles 0.023 41.895 0.084
+   }
+  }
  }
  {
-  coords 6374.455 287.187 7515.442
+  coords 6374.69 287.187 7514.882
   angles 0 13 0
+  {
+   GenericEntity {
+    ID "552C739767950670"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "552C73976795067A"
+    coords -0.018 0.375 -0.016
+    angles 0.009 64.095 0.13
+   }
+  }
  }
  {
-  coords 6374.178 287.187 7514.072
+  coords 6374.677 287.192 7513.756
   angles 0 13 0
  }
  {

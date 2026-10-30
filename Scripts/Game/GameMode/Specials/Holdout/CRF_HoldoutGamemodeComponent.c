@@ -12,8 +12,10 @@
 //   3. Lull (m_fLullSeconds): the supply crate inside is restocked. Every m_iSupportEveryWaves waves
 //      the radio can call in support once: the fallen come back and an extra resupply is dropped.
 //
-//   Windows: ground-floor windows are barricaded too (they start boarded). Each zombie group is sent at
-//   one barricade; once a window's boards are gone, zombies at it climb in.
+//   Windows: ground-floor windows are barricaded too (they start boarded, and are repaired like doors).
+//   Each zombie group is sent at one barricade; once a window's boards are gone, zombies at it climb in.
+//   Windows that are separate parts of the building are found by themselves; ones built into the
+//   building's model can't be, so place a marker in each (m_aWindowNames). The log says what was found.
 //
 //   Requisition: defenders earn money for kills (m_iKillReward), for every board they put back
 //   (m_iRepairReward) and for each wave they live through (m_iWaveReward). They spend it at the supply
@@ -27,7 +29,8 @@
 // 1. Add this component to the gamemode entity and set the defending faction.
 // 2. Name an entity next to the building to defend and set m_sBuildingAnchorName. Its entrances are
 //    found by themselves (doors with a roof on one side only, at ground level); to place them by hand
-//    instead, list entities standing in the doorways, facing out, as m_aEntranceNames.
+//    instead, list entities standing in the doorways, facing out, as m_aEntranceNames. Windows the
+//    search misses: entities at each window's sill, facing out, as m_aWindowNames.
 // 3. Place a few empty entities around the area and list them as zombie spawn points.
 // 4. Respawns off: support calls bring the fallen back. A spawn point for the defenders near the
 //    building is needed for that.
@@ -101,6 +104,15 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 
 	[Attribute("", UIWidgets.Auto, "Optional: entities standing in doorways, facing out, to barricade instead of finding the entrances", category: "Holdout - Building")]
 	protected ref array<string> m_aEntranceNames;
+
+	[Attribute("", UIWidgets.Auto, "Optional: entities placed in ground-floor windows - at the sill, facing out - to barricade as windows. Added to any windows found by themselves; use it for the ones that aren't (the log says what the search found).", category: "Holdout - Building")]
+	protected ref array<string> m_aWindowNames;
+
+	[Attribute("1.2", UIWidgets.EditBox, "Width (metres) of the barricade in a hand-placed window", params: "0.4 4 0.1", category: "Holdout - Building")]
+	protected float m_fPlacedWindowWidth;
+
+	[Attribute("1.3", UIWidgets.EditBox, "Height (metres) of the barricade in a hand-placed window, up from the sill", params: "0.4 3 0.1", category: "Holdout - Building")]
+	protected float m_fPlacedWindowHeight;
 
 	[Attribute("2.2", UIWidgets.EditBox, "A door counts as ground level when its sill is at most this far (metres) above the ground outside", params: "0 10 0.1", category: "Holdout - Building")]
 	protected float m_fMaxEntranceHeight;
@@ -247,8 +259,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	// Every machine: the catalogue in use (m_aShop, or the default)
 	protected ref array<ref CRF_HoldoutShopEntry> m_aShopEntries = {};
 
-	// Client: the local player's money when last seen, for the +/- messages, and the m_sMoney last unpacked
-	protected int m_iLastSeenMoney = -1;
+	// Client: the m_sMoney last unpacked
 	protected string m_sUnpackedMoney;
 
 	// Server
@@ -281,6 +292,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 
 	// Client
 	protected ref CRF_SpecialsMarkerSet m_Markers = new CRF_SpecialsMarkerSet();
+	protected ref CRF_HoldoutHUD m_Hud;
 
 	// Scratch for queries
 	protected ref array<IEntity> m_aFound = {};
@@ -346,7 +358,13 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		super.EOnInit(owner);
 
 		if (!System.IsConsoleApp())
+		{
 			GetGame().GetCallqueue().CallLater(UpdateMarkers, 1000, true);
+
+			// The wave and money panel; often enough to step aside promptly when a menu opens
+			m_Hud = new CRF_HoldoutHUD();
+			GetGame().GetCallqueue().CallLater(UpdateHud, 250, true);
+		}
 
 		if (!Replication.IsServer())
 			return;
@@ -389,10 +407,13 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			GetGame().GetCallqueue().Remove(Tick);
 			GetGame().GetCallqueue().Remove(UpdateMarkers);
+			GetGame().GetCallqueue().Remove(UpdateHud);
 			GetGame().GetCallqueue().Remove(PrepareBuilding);
 		}
 
 		m_Markers.Clear();
+		if (m_Hud)
+			m_Hud.Destroy();
 
 		if (m_SafestartManager && m_SafestartManager.m_OnSafeStartChange)
 			m_SafestartManager.m_OnSafeStartChange.Remove(OnSafestartChanged);
@@ -448,6 +469,8 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 			if (m_Building)
 				FindEntrances(m_Building, entrances);
 		}
+
+		GetPlacedWindows(entrances);
 
 		if (entrances.IsEmpty())
 		{
@@ -613,6 +636,20 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		array<IEntity> windows = {};
 		CollectWindows(building, windows, 0);
 
+		string buildingPrefab = "?";
+		if (building.GetPrefabData())
+			buildingPrefab = building.GetPrefabData().GetPrefabName();
+
+		// Some buildings have their windows in the building's own model rather than as parts: nothing to find
+		if (windows.IsEmpty())
+		{
+			Print(string.Format("%1 No window parts in %2 - its windows are part of the building's model. Place markers in them and list them in Window Names to barricade them.", LOG, buildingPrefab), LogLevel.WARNING);
+			return;
+		}
+
+		// Why windows were left out, for the log
+		int tooHigh, tooSmall, notOutside;
+
 		BaseWorld world = GetGame().GetWorld();
 		foreach (IEntity window : windows)
 		{
@@ -621,7 +658,10 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 			vector centre = (mins + maxs) * 0.5;
 			float sill = mins[1];
 			if (sill - world.GetSurfaceY(centre[0], centre[2]) > m_fMaxWindowSill)
+			{
+				tooHigh++;
 				continue;
+			}
 
 			vector localMins, localMaxs;
 			window.GetBounds(localMins, localMaxs);
@@ -637,7 +677,10 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 
 			float height = maxs[1] - mins[1];
 			if (width < 0.4 || height < 0.4)
+			{
+				tooSmall++;
 				continue;
+			}
 
 			through[1] = 0;
 			through.Normalize();
@@ -645,7 +688,10 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 			bool roofAhead = IsCovered(centre + through * ROOF_PROBE_OUT, sill);
 			bool roofBehind = IsCovered(centre - through * ROOF_PROBE_OUT, sill);
 			if (roofAhead == roofBehind)
+			{
+				notOutside++;
 				continue;
+			}
 
 			vector outward = through;
 			if (roofAhead)
@@ -660,6 +706,45 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 			entrance.m_vOutward = outward;
 			entrance.m_fWidth = width;
 			entrance.m_fHeight = height;
+			entrance.m_bWindow = true;
+			entrance.m_vInside = inside;
+			outEntrances.Insert(entrance);
+		}
+
+		Print(string.Format("%1 Windows in %2: %3 part(s), %4 used; left out %5 above the ground floor (Max Window Sill), %6 too small, %7 not between inside and outside.",
+			LOG, buildingPrefab, windows.Count(), windows.Count() - tooHigh - tooSmall - notOutside, tooHigh, tooSmall, notOutside), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Windows placed by hand (m_aWindowNames): each marker sits at the sill, facing out
+	protected void GetPlacedWindows(notnull array<ref CRF_HoldoutEntrance> outEntrances)
+	{
+		if (!m_aWindowNames)
+			return;
+
+		foreach (string windowName : m_aWindowNames)
+		{
+			IEntity marker = CRF_SpecialsHelper.FindNamedEntity(windowName, LOG);
+			if (!marker)
+				continue;
+
+			vector transform[4];
+			marker.GetWorldTransform(transform);
+			vector outward = transform[2];
+			outward[1] = 0;
+			outward.Normalize();
+
+			vector sillPoint = marker.GetOrigin();
+
+			// Where a zombie coming through lands: the floor a metre inside
+			vector inside = sillPoint + Vector(0, 0.3, 0) - outward * 1.0;
+			inside[1] = FindFloor(inside, sillPoint[1] - 3);
+
+			CRF_HoldoutEntrance entrance = new CRF_HoldoutEntrance();
+			entrance.m_vFloor = sillPoint;
+			entrance.m_vOutward = outward;
+			entrance.m_fWidth = m_fPlacedWindowWidth;
+			entrance.m_fHeight = m_fPlacedWindowHeight;
 			entrance.m_bWindow = true;
 			entrance.m_vInside = inside;
 			outEntrances.Insert(entrance);
@@ -1588,27 +1673,49 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Every machine with a player: unpack, and tell the local player what changed
+	//! Every machine with a player: unpack, and show the local player the change straight away (the HUD
+	//! panel flashes the amount and shows the difference)
 	protected void OnMoneyChanged()
 	{
 		UnpackMoney();
 
-		if (System.IsConsoleApp())
-			return;
+		if (!System.IsConsoleApp())
+			UpdateHud();
+	}
 
-		int localId = SCR_PlayerController.GetLocalPlayerId();
-		if (!m_mMoney.Contains(localId))
-			return;
+	//------------------------------------------------------------------------------------------------
+	//! Every machine with a player: the wave and money panel (CRF_HoldoutHUD)
+	protected void UpdateHud()
+	{
+		if (m_Hud)
+			m_Hud.Update(this);
+	}
 
-		int money = GetMoney(localId);
-		if (m_iLastSeenMoney >= 0 && money > m_iLastSeenMoney)
-		{
-			SCR_PopUpNotification popup = SCR_PopUpNotification.GetInstance();
-			if (popup)
-				popup.PopupMsg(string.Format("+%1", money - m_iLastSeenMoney), 1.5, string.Format("Requisition: %1", money));
-		}
+	//------------------------------------------------------------------------------------------------
+	//! Any machine (replicated)
+	CRF_EHoldoutPhase GetPhase()
+	{
+		return m_iPhase;
+	}
 
-		m_iLastSeenMoney = money;
+	//------------------------------------------------------------------------------------------------
+	//! Any machine (replicated): the wave under way, or the last one held during a lull; 0 before the first
+	int GetWave()
+	{
+		return m_iWave;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Any machine (replicated): seconds until the next wave, during prep and lulls
+	int GetPhaseSecondsLeft()
+	{
+		return m_iPhaseSecondsLeft;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	string GetDefenderFactionKey()
+	{
+		return m_sDefenderFactionKey;
 	}
 
 	//------------------------------------------------------------------------------------------------
