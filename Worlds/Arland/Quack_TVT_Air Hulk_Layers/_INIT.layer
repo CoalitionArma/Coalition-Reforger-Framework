@@ -90,16 +90,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6ABA5A698307712A}" {
-   m_sTitle "INDFOR Briefing"
-   m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
+   m_sTitle "Administration"
+   m_sTextData "The ritual skulls have a user action that only shows up for people with a wrench in their inventorys. Only priests spawn with wrenches. Please don't loot the wrench item from dead priest bodies."\
    ""\
-   "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
-   ""\
-   "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   "If you fall into the water due to bad teleports, please send an admin help message."
    m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
     "INDFOR"
    }
    m_bShowForAnyFaction 0
