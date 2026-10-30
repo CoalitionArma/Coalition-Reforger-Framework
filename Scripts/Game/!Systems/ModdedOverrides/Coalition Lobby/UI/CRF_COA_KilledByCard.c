@@ -19,20 +19,32 @@ modded class COA_KilledByCard
 		if (!s_wCRFEmblem)
 			s_wCRFEmblem = GetGame().GetWorkspace().CreateWidgets(CRF_EMBLEM_LAYOUT, s_wRoot);
 
-		// Hidden until the server says what it is
 		if (s_wCRFEmblem)
 			s_wCRFEmblem.SetVisible(false);
 
 		s_iCRFEmblemPlayerId = 0;
-		if (entry.m_iAttackerPlayerId > 0 && entry.m_iAttackerPlayerId != entry.m_iVictimPlayerId)
+		if (entry.m_iAttackerPlayerId <= 0 || entry.m_iAttackerPlayerId == entry.m_iVictimPlayerId)
 		{
-			s_iCRFEmblemPlayerId = entry.m_iAttackerPlayerId;
-			CRF_EmblemStore.Get().Request(entry.m_iAttackerPlayerId);
+			Print(string.Format("[CRF_EmblemStore] Killed-by card: no player killer (attacker %1)", entry.m_iAttackerPlayerId), LogLevel.NORMAL);
+			return;
 		}
+
+		// The server sends every player's emblem as they join (CRF_EmblemStore); one still on its way is
+		// shown when it arrives
+		s_iCRFEmblemPlayerId = entry.m_iAttackerPlayerId;
+		string data;
+		if (!CRF_EmblemStore.Get().Find(entry.m_iAttackerPlayerId, data))
+		{
+			Print(string.Format("[CRF_EmblemStore] Killed-by card: player %1 has no emblem cached", entry.m_iAttackerPlayerId), LogLevel.NORMAL);
+			return;
+		}
+
+		Print(string.Format("[CRF_EmblemStore] Killed-by card: player %1, emblem %2", entry.m_iAttackerPlayerId, !data.IsEmpty()), LogLevel.NORMAL);
+		CRF_OnEmblem(entry.m_iAttackerPlayerId, data);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! A player's emblem arrived (CRF_EmblemStore) - shown if it's the killer on the card now
+	//! A player's emblem is known (CRF_EmblemStore) - shown if it's the killer on the card now
 	static void CRF_OnEmblem(int playerId, string data)
 	{
 		if (!s_wCRFEmblem || playerId != s_iCRFEmblemPlayerId)
