@@ -1,6 +1,9 @@
 GenericEntity : "{FD18607A975DA638}622120A5448725E3/Prefabs/Weapons/ImpKnife.et" {
  ID "CFBAA4B725411E45"
  components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{66847FFF1F40B71B}Imported Models/Kurts Eatseregss/kurtsknife20.xob"
+  }
   SCR_MeleeWeaponProperties "{599EF119E0CBDE0E}" {
    m_fDamage 40
    m_fRange 1.6
