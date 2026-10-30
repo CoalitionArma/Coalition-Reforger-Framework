@@ -1,3 +1,89 @@
+$grp LightEntity {
+ M4LightEntity1 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 235.931 62.701 240.927
+  angles 90 0 0
+  Color 0.8745 0.6823 0.1098 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ M4LightEntity2 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 257.846 100.093 244.976
+  angles 90 0 0
+  Color 0.4314 0.2353 0.6235 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ M4LightEntity3 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 256.212 112.75 235.892
+  angles 90 0 0
+  Color 0.8745 0.1098 0.6823 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ M4LightEntity4 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 259.411 120.504 211.04
+  angles 90 0 0
+  Color 0.8745 0.6823 0.1098 1
+  LV 8.73
+  CastShadow 0
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+}
 SCR_DestructibleBuildingEntity : "{9CEC8BB63429FF28}Prefabs/Structures/Airport/ControlTower_01/ControlTower_01.et" {
  coords 253.695 259.793 215.044
 }

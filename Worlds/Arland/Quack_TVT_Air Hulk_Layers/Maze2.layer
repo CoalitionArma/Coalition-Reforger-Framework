@@ -1,3 +1,24 @@
+LightEntity M2LightEntity1 {
+ components {
+  RplComponent "{69580816FFEA382B}" {
+  }
+  Hierarchy "{69580816FCB5F123}" {
+  }
+ }
+ coords 208.421 44.01 620.696
+ angles -42.196 -90 90
+ Color 0.958 0.9388 0.9388 1
+ LV 8.73
+ ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+ ClipEV -10
+ Type Spot
+ Radius 6
+ NearPlane 0.31
+ SpotAngle 80
+ ShowSource 1
+ VolLightScale 0.071
+ LensFlareScale 0.39
+}
 $grp SCR_DestructibleBuildingEntity : "{0628C52DA626BE08}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_white_tutorial.et" {
  {
   coords 204.539 162.369 518.4

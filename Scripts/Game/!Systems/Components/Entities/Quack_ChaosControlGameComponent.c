@@ -18,6 +18,9 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	[Attribute(defvalue: "1", desc: "Wait in Minutes", params: "0 45 1", category: "Wait time")]
 	protected float m_iMinutes;
 	
+	protected ResourceName SpookyMusic = "{510F8EB6E1312FEB}Sounds/Halloween/Spooky Background.wav";
+	protected ref array<ResourceName> Stingers = {"{84378CEA6ABA6769}Sounds/Halloween/Spooky Stinger 1.wav","{1D293573775D56F9}Sounds/Halloween/Spooky Stinger 2.wav",
+	"{6A235DFB83FFB989}Sounds/Halloween/Spooky Stinger 3.wav","{6DE4A7AAE579034A}Sounds/Halloween/Spooky Stinger 4.wav","{1AEECF2211DBEC3A}Sounds/Halloween/Spooky Stinger 5.wav"};
 	protected float m_fCheckDelay;
 	bool keys = false;
 	int RitualSitesActivations = 0;
@@ -95,6 +98,8 @@ class Quack_chaosControlGameComponent : ScriptComponent
 		SCR_BaseInteractiveLightComponent skull2comp = SCR_BaseInteractiveLightComponent.Cast(skull2.FindComponent(SCR_BaseInteractiveLightComponent));
 		if(skull2comp)
 		skull2comp.ToggleLight(!skull2comp.IsOn());
+
+		playSpookyMusic()
 	}
 		
 	//------------------------------------------------------------------------------------------------
@@ -106,12 +111,14 @@ class Quack_chaosControlGameComponent : ScriptComponent
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(
 			string.Format("The cult has completed %1 ritual out of %2", RitualSitesActivations, 8), 5);
+			playStinger();
 		}
 		
 		else if (RitualSitesActivations <= 7)
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(
 			string.Format("The cult has completed %1 rituals out of %2", RitualSitesActivations, 8), 5);
+			playStinger()
 		}
 		
 		else if(RitualSitesActivations > 7)
@@ -119,12 +126,28 @@ class Quack_chaosControlGameComponent : ScriptComponent
 			SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
 			SCR_PopUpNotification.GetInstance().PopupMsg("The Awakening Ritual is complete!", 5, "The Elder Gods have awoken!");
 			// Play ending music here.
-			// gamemode.SetGameState(COA_EGamemodeState.AAR);
 		}
 		
 		Print(RitualSitesActivations);
 	}
 	
+	void playSpookyMusic()
+	{
+		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.PlaySoundForEveryone(SpookyMusic);
+	}
+
+	void playStinger()
+	{
+		int randomElement = Math.RandomInt(0, 8);		
+		ResourceName stinger = Stingers[randomElement];
+		
+		COA_RplBroadcastManager broadcastManager2 = COA_RplBroadcastManager.GetInstance();
+		if (broadcastManager2)
+			broadcastManager2.PlaySoundForEveryone(stinger);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	void unlockTriggers()
 	{

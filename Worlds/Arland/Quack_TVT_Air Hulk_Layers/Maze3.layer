@@ -1,3 +1,22 @@
+LightEntity M3LightEntity10 {
+ components {
+  RplComponent "{69580816FFEA382B}" {
+  }
+  Hierarchy "{69580816FCB5F123}" {
+  }
+ }
+ coords 563.403 39.147 777.136
+ Color 0.1882 0.749 0.3294 1
+ LV 8.73
+ ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+ ClipEV -10
+ Radius 6
+ NearPlane 0.31
+ SpotAngle 80
+ ShowSource 1
+ VolLightScale 0.071
+ LensFlareScale 0.39
+}
 $grp SCR_DestructibleBuildingEntity : "{04457EB8415A90F9}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_USSR_01_Office.et" {
  {
   coords 596.294 92.509 756.733
@@ -990,5 +1009,43 @@ $grp SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infr
  }
  Pier12 {
   coords 519.5 31.783 736.899
+ }
+ PierN1 {
+  coords 531.067 31.997 787.462
+ }
+ PierS2 {
+  coords 528.705 32.548 711.616
+ }
+ PierS3 {
+  coords 548.705 32.548 711.616
+ }
+ PierN2 {
+  coords 551.067 31.997 787.462
+ }
+ PierN3 {
+  coords 571.067 31.997 787.462
+ }
+ PierS4 {
+  coords 568.705 32.548 711.616
+ }
+ PierS1 {
+  coords 508.705 32.548 711.616
+ }
+ PierN4 {
+  coords 591.067 31.997 787.462
+ }
+ PierS5 {
+  coords 588.665 32.548 711.616
+ }
+ PierN5 {
+  coords 511.187 31.997 787.462
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{F6AA92F7B23D8A71}Prefabs/Structures/Infrastructure/Naval/Piers/Pier_01.et" {
+ PierE1 {
+  coords 592.428 29.2 727.49
+ }
+ PierE2 {
+  coords 506.702 29.476 771.206
  }
 }

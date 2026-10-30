@@ -1,3 +1,213 @@
+$grp LightEntity {
+ LightEntity1 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 571.086 53.294 484.868
+  angles -90 0 0
+  Color 0.502 0 0 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity2 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 561.436 58.148 485.367
+  angles -90 0 0
+  Color 0.7425 0.2712 0.0105 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity3 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 551.54 56.769 480.128
+  angles -17.866 79.195 -42.018
+  Color 0.4314 0.2353 0.6235 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity4 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 554.461 57.534 442.484
+  angles -32.359 0 0
+  Color 0.4314 0.6235 0.2353 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity5 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 649.934 36.276 472.08
+  angles -11.161 26.944 -37.019
+  Color 0.0074 0.0081 0.2497 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 11.69
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity6 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 592.011 34.663 487.334
+  Color 0.749 0.1882 0.6079 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Radius 10
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity7 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 607.378 36.979 479.169
+  angles -90 0 0
+  Color 0.2353 0.6235 0.6235 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity8 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 666.644 37.863 431.751
+  angles -30.597 -41.71 24.402
+  Color 0.1098 0.302 0.8745 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 8
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity9 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 624.141 34.972 435.289
+  angles -30.883 140.712 -122.104
+  Color 0.502 0 0 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+ LightEntity10 {
+  components {
+   RplComponent "{69580816FFEA382B}" {
+   }
+   Hierarchy "{69580816FCB5F123}" {
+   }
+  }
+  coords 576.216 36.277 493.455
+  angles -48.383 -113.343 119.996
+  Color 0.8745 0.2763 0.1098 1
+  LV 8.73
+  ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+  ClipEV -10
+  Type Spot
+  Radius 6
+  NearPlane 0.31
+  SpotAngle 80
+  ShowSource 1
+  VolLightScale 0.071
+  LensFlareScale 0.39
+ }
+}
 SCR_DestructibleBuildingEntity : "{0281C8310F67BD81}Prefabs/Structures/Houses/Village/House_Village_E_1I08/House_Village_E_1I08_Base.et" {
  coords 616.447 132.369 470.268
  angles 0 180 0
