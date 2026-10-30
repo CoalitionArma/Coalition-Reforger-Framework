@@ -113,9 +113,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    ""\
    "INDFOR: The Hunter (1 player)"\
    ""\
-   "Time: 14:00"\
+   "Time: 00:00"\
    ""\
-   "Weather: Overcast"
+   "Weather: Cloudy"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
