@@ -1,11 +1,38 @@
 $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
   coords 3085.91 286.031 1934.12
  }
  {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
   coords 3083.27 286.031 1934.95
  }
  {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
   coords 3084.741 288.567 1937.313
  }
  {
@@ -21,9 +48,27 @@ $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyS
   angles 0 -36.388 0
  }
  {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
   coords 3083.361 286.031 1941.828
  }
  {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
   coords 3086 286.031 1941
  }
  {
@@ -114,54 +159,22 @@ GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/F
  coords 4847.967 345.094 1862.541
  angles 0 53.588 0
 }
-$grp GenericEntity : "{D4DDD345A352E97B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_US_01.et" {
+GenericEntity : "{D4DDD345A352E97B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_US_01.et" {
+ coords 4904.793 345.772 1897.548
+ angles 0 -104.772 0
  {
-  components {
-   FactionAffiliationComponent "{5D06E95D150EC47E}" {
-    "faction affiliation" "BLUFOR"
-   }
-  }
-  coords 4904.793 345.772 1897.548
-  angles 0 -104.772 0
-  {
-   GenericEntity {
-    ID "5D088D2F37FC42AB"
-    {
-     GenericEntity {
-      ID "5D371AC8D914191C"
-      components {
-       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
-        m_bAnyFactionCanUse 1
-       }
-       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
-        "faction affiliation" "BLUFOR"
-       }
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{5D06E95D150EC47E}" {
-    "faction affiliation" "BLUFOR"
-   }
-  }
-  coords 3119.313 286.031 1930.796
-  angles 0 -104.772 0
-  {
-   GenericEntity {
-    ID "5D088D2F37FC42AB"
-    {
-     GenericEntity {
-      ID "5D371AC8D914191C"
-      components {
-       SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
-        m_bAnyFactionCanUse 1
-       }
-       SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
-        "faction affiliation" "BLUFOR"
+  GenericEntity {
+   ID "5D088D2F37FC42AB"
+   {
+    GenericEntity {
+     ID "5D371AC8D914191C"
+     components {
+      SCR_ResourceComponent "{5D7CC617AC1077DD}" {
+       m_aConsumers {
+        SCR_ResourceConsumerMilitaryBase "{5DB899349B5974BC}" {
+         m_fBuyMultiplier 1
+         m_fSellMultiplier 1
+        }
        }
       }
      }

@@ -35,7 +35,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6ABA2AAD121FC59C}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "Tensions in the post-war restructuring of the world spill over, and Russians have landed in Alaska. They are gaining ground rapidly, and US troops try to pull back supply from exposed forward bases."\
+   m_sTextData "Tensions in the post-war restructuring of the world spill over, and Russians have landed in Alaska. They are gaining ground rapidly, and US troops try to pull back supply from exposed forward bases. There will be a respawn wave after the forward supply base falls."\
    ""\
    "BLUFOR Composition: Inf"\
    "BLUFOR Assets: PLT MMG"\
