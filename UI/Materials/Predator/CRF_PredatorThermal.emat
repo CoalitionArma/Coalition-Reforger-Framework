@@ -1,0 +1,16 @@
+ThermalImagingEffect {
+ TempConversionTex "{A40EEAAC066FA268}UI/Textures/Thermal/Thermal_Filter_RainbowHC.edds"
+ TemperatureConversionMethod AutomaticHistogramPLHE
+ DownsizeMethod Blur
+ FogRelStart 0
+ SkyHeightEnd 10000
+ SimOverrideValues 1
+ SimForceRecomputeTableOnChange 1
+ SimSunIrradianceMin 2000
+ SimSunIrradianceMax 2000
+ SimTemperatureAirMin -12.8
+ SimTemperatureAirMax 92
+ SimTemperatureSkyMin -100
+ SimTemperatureSkyMax -100
+ SimTemperatureWaterMin -100
+}

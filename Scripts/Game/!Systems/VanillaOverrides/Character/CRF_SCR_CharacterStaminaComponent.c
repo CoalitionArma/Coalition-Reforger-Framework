@@ -34,6 +34,14 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 				AddStamina(pDrain);
 				return;
 			}
+
+			// Predator special: nor does the predator
+			CRF_PredatorGamemodeComponent predator = CRF_PredatorGamemodeComponent.GetInstance();
+			if (predator && predator.IsTirelessPredator(GetOwner()))
+			{
+				AddStamina(pDrain);
+				return;
+			}
 		}
 
 		if (pDrain <= 0)
