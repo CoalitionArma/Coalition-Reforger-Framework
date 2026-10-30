@@ -34,16 +34,16 @@ COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safest
  coords 2388.863 1.626 3269.308
  Points {
   ShapePoint "{6ABA5A6402B6CE2C}" {
-   Position -35.522 0 -4.462
+   Position -85.774 0 -33.696
   }
   ShapePoint "{6ABA5A6402244832}" {
-   Position -28.519 0 21.601
+   Position -78.663 0 43.005
   }
   ShapePoint "{6ABA5A6401FBE251}" {
-   Position 20.495 0 12.646
+   Position 67.699 0 -0.583
   }
   ShapePoint "{6ABA5A6400B5F1F0}" {
-   Position 14.838 0 -14.62
+   Position 31.849 0 -60.044
   }
  }
 }

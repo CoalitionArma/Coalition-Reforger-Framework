@@ -48,26 +48,39 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6ABA5A6983077293}" {
    m_sTitle "BLUFOR Briefing"
-   m_sTextData "MISSION"\
+   m_sTextData "SITUATION: Intelligence has tracked down elements of Chaos Collective to a hamlet inside the Island or Arland, as well as a mass grave site near by. We believe that the Chaos Collective will be conducting a awakening ritual soon."\
+   ""\
+   "MISSION"\
    "Eliminate Chaos Collective priests before they are able to complete the ritual."\
    ""\
    "INTENT"\
    ""\
    ""\
    "EXECUTION"\
-   "Investigate the areas of interests for signs of cult activities. We believe they are using deer skulls as a focus for otherworld energy."
+   "Investigate the areas of interests for signs of cult activities. We believe they are using deer skulls as a focus for otherworldly energy."
    m_aFactionKeys {
     "BLUFOR"
    }
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6ABA5A69830773BE}" {
+   m_sTitle "Commander's Notes"
+   m_sTextData "If it looks like the force present here is excessive for two buildings it's not. We don't know what we'll find here. We're just lucky that they're not defended. Support has already set up UV lights near the enterences, Once we're given the green light, it should be safe to investigate the area."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ABA5A69830770E0}" {
    m_sTitle "OPFOR Briefing"
-   m_sTextData "MISSION"\
+   m_sTextData "SITUATIIN"\
+   "The dawn of a new reality will soon be upon us brothers! One more ritual and we'll be kings within the new world of our beloved god!"\
+   ""\
+   "MISSION"\
    "Conduct the awakening ritual and bring in the new era of existance."\
    ""\
    "INTENT"\
-   "IProtect the priests. They are the only ones that can complete the rites."\
+   "Protect the priests. They are the only ones that can complete the rites."\
    ""\
    "EXECUTION"\
    "The ritual sites are marked by deer skulls. When you find a site bring a priests in order to complete part the ritual."
@@ -76,7 +89,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6ABA5A69830770E0}" {
+  COA_MissionDescriptor "{6ABA5A698307712A}" {
    m_sTitle "INDFOR Briefing"
    m_sTextData "MISSION"\
    "Insert the bulleted or short-form list of objectives here"\
@@ -91,7 +104,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6ABA5A698307712A}" {
+  COA_MissionDescriptor "{6ABCF7F29D7D88FE}" {
    m_sTitle "Administration"
    m_sTextData "The ritual skulls have a user action that only shows up for people with a wrench in their inventorys. Only priests spawn with wrenches. Please don't loot the wrench item from dead priest bodies."\
    ""\
