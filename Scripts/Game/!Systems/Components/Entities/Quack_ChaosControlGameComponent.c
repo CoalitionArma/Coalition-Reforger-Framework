@@ -19,7 +19,7 @@ class Quack_chaosControlGameComponent : ScriptComponent
 	protected float m_iMinutes;
 	
 	protected ResourceName SpookyMusic = "{510F8EB6E1312FEB}Sounds/Halloween/Spooky Background.wav";
-	protected ResourceName Finale = "{B2EC6A5D330C2C1F}Sounds/Halloween/Ia Ia Cthulhu fhtagn.wav";
+	protected ResourceName Finale = "{A625468204CB2CC7}Sounds/Halloween/Ia Ia Cthulhu fhtagn 2.wav";
 	protected ref array<ResourceName> Stingers = {"{84378CEA6ABA6769}Sounds/Halloween/Spooky Stinger 1.wav","{1D293573775D56F9}Sounds/Halloween/Spooky Stinger 2.wav",
 	"{6A235DFB83FFB989}Sounds/Halloween/Spooky Stinger 3.wav","{6DE4A7AAE579034A}Sounds/Halloween/Spooky Stinger 4.wav","{1AEECF2211DBEC3A}Sounds/Halloween/Spooky Stinger 5.wav"};
 	protected float m_fCheckDelay;
@@ -141,7 +141,7 @@ class Quack_chaosControlGameComponent : ScriptComponent
 
 	void playStinger()
 	{
-		int randomElement = Math.RandomInt(0, 8);		
+		int randomElement = Math.RandomInt(0, 5);		
 		ResourceName stinger = Stingers[randomElement];
 		
 		COA_RplBroadcastManager broadcastManager2 = COA_RplBroadcastManager.GetInstance();
