@@ -32,10 +32,22 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     "OPFOR"
    }
    m_aSiteNames {
-    "hunted_site_alpha" "hunted_site_bravo" "hunted_site_charlie" "hunted_site_delta" "hunted_site_echo" "hunted_site_foxtrot" "hunted_site_golf"
+    "hunted_site_alpha"
+    "hunted_site_bravo"
+    "hunted_site_charlie"
+    "hunted_site_delta"
+    "hunted_site_echo"
+    "hunted_site_foxtrot"
+    "hunted_site_golf"
    }
    m_aSiteLabels {
-    "Objective Alpha" "Objective Bravo" "Objective Charlie" "Objective Delta" "Objective Echo" "Objective Foxtrot" "Objective Golf"
+    "Objective Alpha"
+    "Objective Bravo"
+    "Objective Charlie"
+    "Objective Delta"
+    "Objective Echo"
+    "Objective Foxtrot"
+    "Objective Golf"
    }
    m_fRadius 40
    m_fSiteMinutes 8
@@ -66,8 +78,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
-     m_sWeatherPresetName "Overcast"
-     m_iStartingHour 14
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 0
      m_iStartingMinutes 0
     }
    }
@@ -75,10 +87,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  coords 0 0 0
- m_bRespawnEnabled 1
+ m_bRespawnEnabled 0
  m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
- m_iTimeToRespawn 90
+ m_iTimeToRespawn 0
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
  m_iTimeLimitMinutes 60
@@ -91,7 +103,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "US Marines and the PAVN are both after the same intelligence: a relay that keeps moving through the valley. Whoever holds it gets the picture."\
    ""\
-   "Neither side has noticed the bodies yet. Something else is out there, and it hunts both of you."\
+   "Neither side has noticed the bodies yet. Something else is out there."\
    ""\
    "BLUFOR Composition: Rifle Platoon (4 squads)"\
    "BLUFOR Assets: 3x M923A1 Trucks"\
@@ -157,9 +169,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6B063936328467E8}" {
    m_sTitle "Administration"
-   m_sTextData "Respawns: 90 seconds, 60 tickets per side. The hunter has 2 respawns."\
-   "The objective is on the map: green while you hold it, red while the enemy does, orange when contested."\
-   "The hunter doesn't hold or contest the objective."
+   m_sTextData "N/A"
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
