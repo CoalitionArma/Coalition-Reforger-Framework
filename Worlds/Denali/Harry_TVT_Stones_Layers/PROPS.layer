@@ -1,0 +1,188 @@
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
+  coords 3085.91 286.031 1934.12
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
+  coords 3083.27 286.031 1934.95
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
+  coords 3084.741 288.567 1937.313
+ }
+ {
+  coords 4892.648 345.17 1907.958
+  angles 0 -36.388 0
+ }
+ {
+  coords 4890.031 345.17 1907.06
+  angles 0 -36.388 0
+ }
+ {
+  coords 4891.528 347.706 1907.342
+  angles 0 -36.388 0
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
+  coords 3083.361 286.031 1941.828
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+      m_fSellMultiplier 1
+     }
+    }
+   }
+  }
+  coords 3086 286.031 1941
+ }
+ {
+  coords 4886.646 345.094 1904.351
+ }
+ {
+  coords 4884.008 345.094 1905.179
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 1604.319 228.486 1590.384
+  angles 0 17.418 0
+  {
+   GenericEntity {
+    ID "6186DB2F1DE37192"
+    {
+     GenericEntity {
+      ID "60B8D36A59BEEA13"
+      components {
+       SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+        "faction affiliation" "OPFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 1596.329 228.799 1593.463
+  angles 0 20.987 0
+  {
+   GenericEntity {
+    ID "6186DB2F1DE37192"
+    {
+     GenericEntity {
+      ID "60B8D36A59BEEA13"
+      components {
+       SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+        "faction affiliation" "OPFOR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{4510C273B794F3AA}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_Conflict_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{630682596916F2F5}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 1556.602 227.973 1562.302
+ angles 0 104.627 0
+}
+$grp GenericEntity : "{97A03B43D914B4DD}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft_Base.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+     }
+    }
+   }
+  }
+  coords 1609.129 227.75 1580.714
+  angles 0 38.326 0
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+     }
+    }
+   }
+  }
+  coords 1611.194 227.552 1578.915
+  angles 0 38.326 0
+ }
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 4847.967 345.094 1862.541
+ angles 0 53.588 0
+}
+GenericEntity : "{D4DDD345A352E97B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_US_01.et" {
+ coords 4904.793 345.772 1897.548
+ angles 0 -104.772 0
+ {
+  GenericEntity {
+   ID "5D088D2F37FC42AB"
+   {
+    GenericEntity {
+     ID "5D371AC8D914191C"
+     components {
+      SCR_ResourceComponent "{5D7CC617AC1077DD}" {
+       m_aConsumers {
+        SCR_ResourceConsumerMilitaryBase "{5DB899349B5974BC}" {
+         m_fBuyMultiplier 1
+         m_fSellMultiplier 1
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{E55FC02F8C1518A2}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_US.et" {
+ coords 3085.97 286.031 1929.588
+}
