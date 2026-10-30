@@ -1,0 +1,33 @@
+$grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFloodlight_US_01.et" {
+ Floodlight1 {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_aLightData {
+     SCR_BaseLightData "{58CF01D19C208FF6}" {
+      m_vLightColor 0.5 0 1
+     }
+    }
+    m_eInitialLightState LIT
+   }
+  }
+  coords 2451.732 89.593 1456.138
+  angles 0 15.443 0
+ }
+ Floodlight2 {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_aLightData {
+     SCR_BaseLightData "{58CF01D19C208FF6}" {
+      m_vLightColor 0.5 0 1
+     }
+    }
+    m_eInitialLightState LIT
+   }
+  }
+  coords 2292.916 89.98 1257.336
+  angles 0 166.835 0
+ }
+}
+GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et" {
+ coords 2378.721 86.28 1376.923
+}

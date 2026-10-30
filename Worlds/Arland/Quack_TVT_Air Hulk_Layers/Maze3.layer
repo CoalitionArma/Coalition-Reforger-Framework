@@ -1,0 +1,1051 @@
+LightEntity M3LightEntity10 {
+ components {
+  RplComponent "{69580816FFEA382B}" {
+  }
+  Hierarchy "{69580816FCB5F123}" {
+  }
+ }
+ coords 563.403 39.147 777.136
+ Color 0.1882 0.749 0.3294 1
+ LV 8.73
+ ProjectionMap "{F81E6899860CB6CB}Common/Textures/Light_profiles/StreetLamp_01_Mask.edds"
+ ClipEV -10
+ Radius 6
+ NearPlane 0.31
+ SpotAngle 80
+ ShowSource 1
+ VolLightScale 0.071
+ LensFlareScale 0.39
+}
+$grp SCR_DestructibleBuildingEntity : "{04457EB8415A90F9}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_USSR_01_Office.et" {
+ {
+  coords 596.294 92.509 756.733
+  angles 0 -90 0
+ }
+ {
+  coords 502.374 116.776 742.286
+  angles 0 90 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et" {
+ {
+  coords 589.111 91.343 778.5
+  angles 0 -180 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 563.28 98.86 778.822
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 537.867 106.107 778.5
+  angles 0 -180 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 512.07 113.605 778.5
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 510.972 117.539 720.7
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 536.781 113.455 720.7
+  angles 0 180 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 562.154 107.374 720.7
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 587.908 102.842 720.7
+  angles 0 180 0
+  {
+   Building {
+    ID "59DEDB210771267D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712787"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB21077127AF"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771262D"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB2107712632"
+    coords 0 0 0
+   }
+   Building {
+    ID "59DEDB210771265A"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "521A8EF8D49F69FA"
+    coords -0.768 1.982 3.065
+   }
+   GenericEntity {
+    ID "59DEDB2107712742"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "55649319921183B4"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5886873F6026B648"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "5EB091ECA669BF16"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE59851AF9A6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB210771271F"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB2107712724"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568ABA5B8E4CDCD1"
+      coords 0 0 0
+     }
+     GenericEntity {
+      ID "568ABA5B8E4CDCEC"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "59DEDB21077124B9"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5564931ADBF597B6"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB091ECF7E994FC"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "59DEDB210771260D"
+    coords 0 0 0
+   }
+   StaticModelEntity {
+    ID "59DEDB210771261C"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{DB3F36604A282237}Prefabs/Structures/Infrastructure/Naval/Piers/PierConcrete_01_20m.et" {
+ Pier45 {
+  coords 579.5 31.783 760.899
+ }
+ Pier36 {
+  coords 559.5 31.783 768.899
+ }
+ Pier44 {
+  coords 579.5 31.783 752.899
+ }
+ Pier43 {
+  coords 579.5 31.783 744.899
+ }
+ Pier42 {
+  coords 579.5 31.783 736.899
+ }
+ Pier41 {
+  coords 579.5 31.783 728.899
+ }
+ Pier46 {
+  coords 579.5 31.783 768.899
+ }
+ Pier26 {
+  coords 539.5 31.783 768.899
+ }
+ Pier16 {
+  coords 519.5 31.783 768.899
+ }
+ Pier31 {
+  coords 559.5 31.783 728.899
+ }
+ Pier35 {
+  coords 559.5 31.783 760.899
+ }
+ Pier34 {
+  coords 559.5 31.783 752.899
+ }
+ Pier33 {
+  coords 559.5 31.783 744.899
+ }
+ Pier32 {
+  coords 559.5 31.783 736.899
+ }
+ Pier21 {
+  coords 539.5 31.783 728.899
+ }
+ Pier25 {
+  coords 539.5 31.783 760.899
+ }
+ Pier24 {
+  coords 539.5 31.783 752.899
+ }
+ Pier23 {
+  coords 539.5 31.783 744.899
+ }
+ Pier22 {
+  coords 539.5 31.783 736.899
+ }
+ Pier11 {
+  coords 519.5 31.783 728.899
+ }
+ Pier15 {
+  coords 519.5 31.783 760.899
+ }
+ Pier14 {
+  coords 519.5 31.783 752.899
+ }
+ Pier13 {
+  coords 519.5 31.783 744.899
+ }
+ Pier12 {
+  coords 519.5 31.783 736.899
+ }
+ PierN1 {
+  coords 531.067 31.997 787.462
+ }
+ PierS2 {
+  coords 528.705 32.548 711.616
+ }
+ PierS3 {
+  coords 548.705 32.548 711.616
+ }
+ PierN2 {
+  coords 551.067 31.997 787.462
+ }
+ PierN3 {
+  coords 571.067 31.997 787.462
+ }
+ PierS4 {
+  coords 568.705 32.548 711.616
+ }
+ PierS1 {
+  coords 508.705 32.548 711.616
+ }
+ PierN4 {
+  coords 591.067 31.997 787.462
+ }
+ PierS5 {
+  coords 588.665 32.548 711.616
+ }
+ PierN5 {
+  coords 511.187 31.997 787.462
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{F6AA92F7B23D8A71}Prefabs/Structures/Infrastructure/Naval/Piers/Pier_01.et" {
+ PierE1 {
+  coords 592.428 29.2 727.49
+ }
+ PierE2 {
+  coords 506.702 29.476 771.206
+ }
+}

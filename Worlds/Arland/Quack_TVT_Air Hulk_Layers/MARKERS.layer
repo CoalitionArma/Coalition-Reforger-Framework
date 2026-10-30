@@ -1,0 +1,10 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 2456.295 103.411 1467.705
+  m_sDescription "Investigate Building"
+ }
+ {
+  coords 2296.554 96.619 1233.305
+  m_sDescription "Investigate Building"
+ }
+}

@@ -1,0 +1,3260 @@
+$grp GenericEntity : "{B7C23E31A53C10D4}Prefabs/Structures/Signs/Military/Signpost_01/Signpost_01_base.et" {
+ {
+  coords 575 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull1 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull2 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 575 35.748 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull3 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull4 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 585 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull5 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull6 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 565 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull7 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull8 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 555 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull9 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull10 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 545 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull11 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull12 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 535 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull13 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull14 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 525 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull15 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull16 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 515 35.748 737
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull17 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull18 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 515 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull19 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull20 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 585 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull21 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull22 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 565 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull25 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull26 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 554.113 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull27 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull28 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 545 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull29 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull30 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 535 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull31 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull32 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 525 35.788 745
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull33 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull34 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 515 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull35 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull36 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 585 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull37 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull38 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 575 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull39 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull40 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 565 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull41 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull42 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 553.919 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull43 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull44 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 545 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull45 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull46 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 535 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull47 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull48 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 525 35.791 753
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull49 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull50 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 515 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull51 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull52 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 585 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull53 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull54 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 575 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull55 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull56 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 565 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull57 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull58 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 553.756 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull59 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull60 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 545 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull61 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull62 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 535 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull63 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull64 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+ {
+  coords 525 35.755 762
+  angles 0 90 0
+  {
+   $grp GenericEntity : "{91E4D4CBB097A9C1}Prefabs/Props/Forest/DeerSkull_01/DeerSkull_01.et" {
+    FakeSkull65 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0.003 2.174 0.091
+     angles 0 180 0
+    }
+    FakeSkull66 {
+     components {
+      SCR_BaseInteractiveLightComponent "{6AAE0193FBAF3348}" {
+       m_aLightData {
+        SCR_BaseLightData "{6AAE0193F94F2233}" {
+         m_eLightType POINT
+         m_vLightOffset 0 0.061 -0.339
+         m_vLightColor 0.98 0.482 0.196
+         m_fRadius 15
+         m_eFlareType Disabled
+         m_eLightFlags 17
+        }
+       }
+       m_bGradualLightning 1
+       m_fLV 5.5
+       m_eInitialLightState OFF
+      }
+      ActionsManagerComponent "{6AB6356E000A367A}" {
+       ActionContexts {
+        UserActionContext "{6AB6356CE8FFEB2E}" {
+         ContextName "Switch"
+         Position PointInfo "{6AB6356CFB85B3BF}" {
+         }
+        }
+       }
+       additionalActions {
+        SCR_SwitchLightUserAction "{6AB917A1ADE7C2C8}" {
+         ParentContextList {
+          "Switch"
+         }
+         Duration 0.5
+         m_sLightDescription "#AR-UserAction_LightGeneratorOn"
+         m_sExtinguishDescription "#AR-UserAction_LightGeneratorOff"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+     coords 0 2.116 0
+    }
+   }
+  }
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01.et" {
+ {
+  coords 498.274 117.656 767.99
+  angles 0 90 0
+  {
+   Building {
+    ID "555CDCE34C25171B"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251724"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251731"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C25178F"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517A1"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517CE"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517D5"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517E1"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C25175E"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251768"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251771"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2516C9"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2516E3"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251687"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "52185CF735E760C8"
+    coords 2.655 2.289 4.876
+   }
+   GenericEntity {
+    ID "5B18E407FC5587AB"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "555CDCE34C25100E"
+    coords 0 0 -0.102
+    {
+     GenericEntity {
+      ID "5668D20503330112"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "555CDCE34C251020"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5668D20503330112"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "58588855C157DDD7"
+    coords 0 0 -0.021
+    {
+     GenericEntity {
+      ID "56C4DE5B46FE790F"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5690E48C117926FA"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568279007B95913E"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5690E48E37C4741B"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5682790023B8AF6E"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB4B2F982BA80B8"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "58588855286FDBC5"
+    coords 0 0 -0.02
+    {
+     GenericEntity {
+      ID "56C4DE5A30EED764"
+      coords 0 0 0
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 600.616 96.461 731.556
+  angles 0 -90 0
+  {
+   Building {
+    ID "555CDCE34C25171B"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251724"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251731"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C25178F"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517A1"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517CE"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517D5"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2517E1"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C25175E"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251768"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251771"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2516C9"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C2516E3"
+    coords 0 0 0
+   }
+   Building {
+    ID "555CDCE34C251687"
+    coords 0 0 0
+   }
+   GameEnvironmentProbeEntity {
+    ID "52185CF735E760C8"
+    coords 2.655 2.289 4.876
+   }
+   GenericEntity {
+    ID "5B18E407FC5587AB"
+    coords 0 0 0
+   }
+   GenericEntity {
+    ID "555CDCE34C25100E"
+    coords 0 0 -0.102
+    {
+     GenericEntity {
+      ID "5668D20503330112"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "555CDCE34C251020"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5668D20503330112"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "58588855C157DDD7"
+    coords 0 0 -0.021
+    {
+     GenericEntity {
+      ID "56C4DE5B46FE790F"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5690E48C117926FA"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "568279007B95913E"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5690E48E37C4741B"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "5682790023B8AF6E"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "5EB4B2F982BA80B8"
+    coords 0 0 0
+    {
+     GenericEntity {
+      ID "56C4DE5A7BA1CC00"
+      coords 0 0 0
+     }
+    }
+   }
+   GenericEntity {
+    ID "58588855286FDBC5"
+    coords 0 0 -0.02
+    {
+     GenericEntity {
+      ID "56C4DE5A30EED764"
+      coords 0 0 0
+     }
+    }
+   }
+  }
+ }
+}
