@@ -146,7 +146,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bShowForAnyFaction 0
   }
  }
- m_iFactionOneRatio 7
+ m_iFactionOneRatio 8
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
@@ -231,12 +231,62 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
+  COA_SlottingGroup "{7C1A9B0C1D2E3F21}" {
+   m_sCallsign "SURVIVORS 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1A9B0C1D2E3F22}" {
+   m_sCallsign "SURVIVORS 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1A9B0C1D2E3F23}" {
+   m_sCallsign "SURVIVORS 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    RIFLEMAN
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
  }
  m_OPFORSlots {
   COA_SlottingGroup "{7C1A9B0C1D2E3F1A}" {
    m_sCallsign "GHOULS"
    m_FlagType INFANTRY
    m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
     RIFLEMAN
     RIFLEMAN
     RIFLEMAN
@@ -329,6 +379,38 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_SlottingGroup "{7C1A9B0C1D2E3F20}" {
    m_sCallsign "TURNED F - DO NOT SLOT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1A9B0C1D2E3F24}" {
+   m_sCallsign "TURNED G - DO NOT SLOT"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{7C1A9B0C1D2E3F25}" {
+   m_sCallsign "TURNED H - DO NOT SLOT"
    m_FlagType INFANTRY
    m_aSlots {
     RIFLEMAN
