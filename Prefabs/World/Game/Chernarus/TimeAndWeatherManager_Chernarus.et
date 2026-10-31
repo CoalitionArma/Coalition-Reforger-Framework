@@ -1,0 +1,4 @@
+TimeAndWeatherManagerEntity {
+ ID "5244F08C9618CADD"
+ WeatherStateMachine "{145430BBF1620448}Terrains/Common/WeatherPresets/StateMachine/WeatherStates.conf"
+}
