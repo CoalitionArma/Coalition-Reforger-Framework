@@ -17,7 +17,8 @@
 //   Windows that are separate parts of the building are found by themselves; ones built into the
 //   building's model can't be, so place a marker in each (m_aWindowNames). The log says what was found.
 //
-//   Requisition: defenders earn money for kills (m_iKillReward), for every board they put back
+//   Requisition: defenders earn money for kills (m_iKillReward), for assists - hurting a zombie someone
+//   else killed by at least m_fAssistMinDamage (m_iAssistReward) -, for every board they put back
 //   (m_iRepairReward) and for each wave they live through (m_iWaveReward). They spend it at the supply
 //   crate on the quartermaster's catalogue (m_aShop): weapons with ammunition, grenades, medical kits,
 //   and upgrades for the whole defence - reinforced boards, a fourth board, a bigger resupply, a radio
@@ -216,6 +217,12 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("50", UIWidgets.EditBox, "Money for each zombie killed", params: "0 10000 1", category: "Holdout - Requisition")]
 	protected int m_iKillReward;
 
+	[Attribute("25", UIWidgets.EditBox, "Money for an assist: every defender other than the killer who did at least Assist Min Damage to the zombie", params: "0 10000 1", category: "Holdout - Requisition")]
+	protected int m_iAssistReward;
+
+	[Attribute("10", UIWidgets.EditBox, "Damage a defender must do to a zombie (before its wave toughness) to get an assist when it dies", params: "0 1000 1", category: "Holdout - Requisition")]
+	protected float m_fAssistMinDamage;
+
 	[Attribute("20", UIWidgets.EditBox, "Money for each board put back on a barricade", params: "0 10000 1", category: "Holdout - Requisition")]
 	protected int m_iRepairReward;
 
@@ -255,6 +262,9 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	// Every machine: money by player (the server's is the real one; clients unpack m_sMoney into it)
 	protected ref map<int, int> m_mMoney = new map<int, int>();
 	protected bool m_bMoneyDirty;
+
+	// Server: damage done to each zombie, by player, for assists (zombie RplId -> playerId -> damage)
+	protected ref map<RplId, ref map<int, float>> m_mZombieDamage = new map<RplId, ref map<int, float>>();
 
 	// Every machine: the catalogue in use (m_aShop, or the default)
 	protected ref array<ref CRF_HoldoutShopEntry> m_aShopEntries = {};
@@ -967,6 +977,8 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void StartWave(int wave)
 	{
+		ForgetGoneZombies();
+
 		// Sized for the defenders still standing
 		array<int> defenders = {};
 		CRF_SpecialsHelper.GetAlivePlayers(m_sDefenderFactionKey, defenders);
@@ -1584,7 +1596,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	// REQUISITION
 	//===================================================================================
 
-	//! Server: a zombie a defender killed pays
+	//! Server: a zombie a defender killed pays the killer, and everyone else who hurt it enough an assist
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		super.OnControllableDestroyed(instigatorContextData);
@@ -1592,14 +1604,60 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		if (!Replication.IsServer() || m_iPhase == CRF_EHoldoutPhase.ENDED)
 			return;
 
-		int killerId = instigatorContextData.GetKillerPlayerID();
 		SCR_ChimeraCharacter victim = SCR_ChimeraCharacter.Cast(instigatorContextData.GetVictimEntity());
-		if (killerId <= 0 || !victim)
+		if (!victim || !IsZombie(victim))
 			return;
 
-		Faction faction = victim.GetFaction();
-		if (faction && faction.GetFactionKey() == m_sZombieFactionKey)
+		int killerId = instigatorContextData.GetKillerPlayerID();
+		if (killerId > 0)
 			AddMoney(killerId, m_iKillReward);
+
+		RplId victimId;
+		map<int, float> damageBy;
+		if (!COA_ReplicationHelper.GetRplId(victim, victimId) || !m_mZombieDamage.Find(victimId, damageBy))
+			return;
+
+		m_mZombieDamage.Remove(victimId);
+		foreach (int playerId, float damage : damageBy)
+		{
+			if (playerId != killerId && damage >= m_fAssistMinDamage)
+				AddMoney(playerId, m_iAssistReward);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server (SCR_CharacterDamageManagerComponent.HijackDamageHandling): a player hurt a character;
+	//! damage to zombies is added up for assists
+	void OnZombieDamaged(IEntity zombie, int playerId, float damage)
+	{
+		if (playerId <= 0 || damage <= 0 || m_iPhase == CRF_EHoldoutPhase.ENDED || !IsZombie(zombie))
+			return;
+
+		RplId zombieId;
+		if (!COA_ReplicationHelper.GetRplId(zombie, zombieId))
+			return;
+
+		map<int, float> damageBy = m_mZombieDamage.Get(zombieId);
+		if (!damageBy)
+		{
+			damageBy = new map<int, float>();
+			m_mZombieDamage.Insert(zombieId, damageBy);
+		}
+
+		float done;
+		damageBy.Find(playerId, done);
+		damageBy.Set(playerId, done + damage);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server, each wave: forget the damage to zombies that went without dying (cleaned up, stuck)
+	protected void ForgetGoneZombies()
+	{
+		for (int i = m_mZombieDamage.Count() - 1; i >= 0; i--)
+		{
+			if (!COA_ReplicationHelper.GetEntityFromRplId(m_mZombieDamage.GetKey(i)))
+				m_mZombieDamage.RemoveElement(i);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -2002,6 +2060,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		m_iPhase = CRF_EHoldoutPhase.ENDED;
 		Replication.BumpMe();
 		GetGame().GetCallqueue().Remove(Tick);
+		m_mZombieDamage.Clear();
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", "OVERRUN", string.Format("Nobody is left. You held out for %1 wave(s).", held), 15);
 		Print(string.Format("%1 Overrun after %2 wave(s).", LOG, held), LogLevel.NORMAL);
