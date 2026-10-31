@@ -13,5 +13,7 @@ MetaFileClass {
   }
   PNGResourceClass PS5 : "{6248F71B9D7C1E93}Configs/System/ResourceTypes/PS5/TextureUnspecified.conf" {
   }
+  PNGResourceClass Xbox : PC {
+  }
  }
 }

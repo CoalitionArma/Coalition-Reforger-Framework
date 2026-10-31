@@ -1,0 +1,22 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 6174 301 7753
+  m_MarkerColor 0.85 0.2 0.2 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 60
+  m_sDescription "Objective: Stary Sobor"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+$grp COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ {
+  coords 6174 301 7753
+  m_MarkerColor 0.85 0.2 0.2 1
+  m_sDescription "Stary Sobor"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_fWorldSizeX 600
+  m_fWorldSizeY 600
+ }
+}

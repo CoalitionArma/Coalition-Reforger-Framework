@@ -1,0 +1,291 @@
+GenericEntity {
+ ID "7C1AEAC000000015"
+ components {
+  MeshObject "{7C1AEAB000000016}" {
+   Object "{CD1CAAD3EFC0BE21}Assets/Props/Crates/CrateWooden_01/CrateWooden_01.xob"
+  }
+  RigidBody "{7C1AEAB000000017}" {
+   ModelGeometry 1
+   Static 1
+  }
+  ActionsManagerComponent "{7C1AEAB000000018}" {
+   ActionContexts {
+    UserActionContext "{7C1AEAB000000019}" {
+     ContextName "default"
+     Position PointInfo "{7C1AEAB00000001A}" {
+      Offset 0 0.6 0
+     }
+     Radius 1.2
+    }
+   }
+   additionalActions {
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000001B}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000001C}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 100
+     m_iEntry 0
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000001D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000001E}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 99
+     m_iEntry 1
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000001F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000020}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 98
+     m_iEntry 2
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000021}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000022}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 97
+     m_iEntry 3
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000023}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000024}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 96
+     m_iEntry 4
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000025}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000026}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 95
+     m_iEntry 5
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000027}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000028}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 94
+     m_iEntry 6
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000029}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000002A}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 93
+     m_iEntry 7
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000002B}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000002C}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 92
+     m_iEntry 8
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000002D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000002E}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 91
+     m_iEntry 9
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000002F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000030}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 90
+     m_iEntry 10
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000031}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000032}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 89
+     m_iEntry 11
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000033}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000034}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 88
+     m_iEntry 12
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000035}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000036}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 87
+     m_iEntry 13
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000037}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000038}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 86
+     m_iEntry 14
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000039}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000003A}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 85
+     m_iEntry 15
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000003B}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000003C}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 84
+     m_iEntry 16
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000003D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000003E}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 83
+     m_iEntry 17
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000003F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000040}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 82
+     m_iEntry 18
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000041}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000042}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 81
+     m_iEntry 19
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000043}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000044}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 80
+     m_iEntry 20
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000045}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000046}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 79
+     m_iEntry 21
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000047}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000048}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 78
+     m_iEntry 22
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000049}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000004A}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 77
+     m_iEntry 23
+    }
+   }
+  }
+  RplComponent "{7C1AEAB00000004B}" {
+  }
+ }
+}

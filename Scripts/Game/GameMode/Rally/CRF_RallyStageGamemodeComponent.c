@@ -13,9 +13,14 @@
 // - Crews get a countdown (30, 10, 5..1, GO) and the HUD shows their start time.
 // - The clock starts at the start time whether or not the crew has crossed the start line, as in a
 //   real rally. Crossing it early is a jump start: the clock starts there instead, plus a penalty.
+// - Crews can be put straight into a car as they spawn (m_bSeatCrewsInCars): the crew's own car, or the
+//   nearest free one, with the Driver role at the wheel.
 // - A car waiting inside the start zone is held until its start time: handbrake on, gearbox in neutral,
-//   re-applied ten times a second so the driver can't release it (EnforceStartHold). At GO it is
+//   re-applied so the driver can't release it. The server decides which cars are held and replicates
+//   the list (m_aHeldCars); the server and every client apply it (ApplyStartHolds). At GO the car is
 //   released into first gear. The jump start penalty stays as the backstop.
+// - With m_bHoldUntilCalledUp every racer's car is held wherever it is: before the start order is
+//   drawn, and after it until the crew is called up to the start line m_fCallUpSeconds before its start.
 // - Split times are taken at every checkpoint and compared with the fastest split so far, so the
 //   standings show who is up on the leader before anyone has finished.
 // - Point to point only: the lap count is forced to 1.
@@ -55,11 +60,37 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	[Attribute("10", UIWidgets.EditBox, desc: "Seconds added to a crew's stage time for crossing the start line before their start time", params: "0 600 1", category: "Rally - Stage")]
 	protected float m_fJumpStartPenalty;
 
-	[Attribute("true", UIWidgets.CheckBox, desc: "Draw the start order at random. Off: in the order players joined.", category: "Rally - Stage")]
+	[Attribute("true", UIWidgets.CheckBox, desc: "Draw the start order at random. Off: in team mode the groups' slotting order (the same order they're put in cars on the grid, front first), otherwise the order players joined.", category: "Rally - Stage")]
 	protected bool m_bRandomStartOrder;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Put each racer in a car as they spawn: their crew's car, or the nearest free one. The Driver role (VEHICLE_DRIVER) takes the wheel, everyone else a passenger seat. Done once per life - a player who gets out is left alone.", category: "Rally - Stage")]
+	protected bool m_bSeatCrewsInCars;
+
+	[Attribute("300", UIWidgets.EditBox, desc: "How far from a spawned racer (metres) a free car is looked for", params: "10 2000 10", category: "Rally - Stage")]
+	protected float m_fCrewCarSearchRadius;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Hold every racer's car wherever it is until its start time (or until it is called up, Call Up Seconds before), not only inside the start zone. Before the start order is drawn nobody drives.", category: "Rally - Stage")]
+	protected bool m_bHoldUntilCalledUp;
+
+	[Attribute("0", UIWidgets.EditBox, desc: "Seconds before a crew's start time that its car is let go to drive up to the start line, where it is held again until GO. 0 = held wherever it is until GO.", params: "0 300 1", category: "Rally - Stage")]
+	protected float m_fCallUpSeconds;
+
+	[Attribute("30", UIWidgets.EditBox, desc: "A crew that sets off from away from the start line (a grid behind it) has this long after its start time to reach the line: its clock starts when it crosses, or when this runs out. 0 = the clock always starts at the start time.", params: "0 300 1", category: "Rally - Stage")]
+	protected float m_fMoveUpSeconds;
 
 	// Server state
 	protected ref map<int, ref CRF_RallyStageEntry> m_mStage = new map<int, ref CRF_RallyStageEntry>();
+
+	// Server: seating racers in cars. The car each crew was put in, and per player the body last seated
+	// with how many tries it has had and when the last one was
+	protected ref map<string, RplId> m_mCrewCars = new map<string, RplId>();
+	protected ref map<int, RplId> m_mSeatBody = new map<int, RplId>();
+	protected ref map<int, int> m_mSeatTries = new map<int, int>();
+	protected ref map<int, int> m_mSeatTriedAtMs = new map<int, int>();
+	protected ref array<IEntity> m_aFoundCars = {};
+
+	protected static const int SEAT_MAX_TRIES = 3;
+	protected static const int SEAT_RETRY_MS = 2000;
 	protected ref array<int> m_aBestSplitsMs = {};   // fastest split per checkpoint index, -1 = none yet
 	protected bool m_bStartOrderDrawn;
 	protected int m_iNextSlot;
@@ -100,11 +131,18 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	{
 		super.PollAllPlayerCheckpoints();
 
+		int now = GetGame().GetWorld().GetWorldTime();
+
+		// From the first spawn on, safestart included
+		if (m_bSeatCrewsInCars)
+			SeatRacersInCars(now);
+
+		// Which cars wait - decided here, replicated to every machine
+		UpdateStartHolds(now);
+
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
 			return;
-
-		int now = GetGame().GetWorld().GetWorldTime();
 		if (!m_bStartOrderDrawn)
 			DrawStartOrder(now);
 		else
@@ -133,6 +171,256 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			return "vehicle" + controlled.GetParent().GetID();
 
 		return "player" + playerId;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: racers on foot who haven't started go into their crew's car, or the nearest free one.
+	//! The seat change runs on the player's own machine (MoveInVehicle sends it there), so a body that
+	//! still isn't seated after SEAT_RETRY_MS is tried again, up to SEAT_MAX_TRIES times per life.
+	protected void SeatRacersInCars(int now)
+	{
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		foreach (CRF_RallyPlayerEntry entry : m_aPlayerEntries)
+		{
+			int playerId = entry.m_iPlayerId;
+			if (entry.m_bFinished || entry.m_iNextCheckpoint != 0)
+				continue;
+
+			// Already away
+			CRF_RallyStageEntry stage = m_mStage.Get(playerId);
+			if (stage && stage.m_iSlot >= 0 && now >= stage.m_iClockStartMs)
+				continue;
+
+			ChimeraCharacter character = ChimeraCharacter.Cast(playerManager.GetPlayerControlledEntity(playerId));
+			if (!character || COA_EntityHelper.IsSpectator(character) || character.GetCharacterController().IsDead())
+				continue;
+
+			RplComponent bodyRpl = RplComponent.Cast(character.FindComponent(RplComponent));
+			if (!bodyRpl)
+				continue;
+
+			// A new body (first spawn or a respawn) gets a fresh set of tries
+			RplId seatedBody;
+			if (!m_mSeatBody.Find(playerId, seatedBody) || seatedBody != bodyRpl.Id())
+			{
+				m_mSeatBody.Set(playerId, bodyRpl.Id());
+				m_mSeatTries.Set(playerId, 0);
+			}
+
+			int tries = m_mSeatTries.Get(playerId);
+			if (character.IsInVehicle())
+			{
+				// Seated - by us or by themselves. Either way, leave them be from now on
+				m_mSeatTries.Set(playerId, SEAT_MAX_TRIES);
+				continue;
+			}
+
+			if (tries >= SEAT_MAX_TRIES || (tries > 0 && now - m_mSeatTriedAtMs.Get(playerId) < SEAT_RETRY_MS))
+				continue;
+
+			SCR_CompartmentAccessComponent access = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+			if (!access)
+				continue;
+
+			string crewKey = GetCrewKey(playerId);
+			IEntity car = GetCrewCar(crewKey, playerId, character.GetOrigin());
+			if (!car)
+				continue; // no car yet (still spawning in): try again next poll, without using a try
+
+			// The driver takes the wheel, the rest a passenger seat; whichever is free if that one isn't
+			bool driver = IsDriverRole(playerId);
+			bool seated;
+			if (driver)
+				seated = access.MoveInVehicle(car, ECompartmentType.PILOT) || access.MoveInVehicle(car, ECompartmentType.CARGO);
+			else
+				seated = access.MoveInVehicle(car, ECompartmentType.CARGO) || access.MoveInVehicle(car, ECompartmentType.PILOT);
+
+			if (!seated)
+			{
+				// Full: let the crew find another car
+				m_mCrewCars.Remove(crewKey);
+				continue;
+			}
+
+			m_mSeatTries.Set(playerId, tries + 1);
+			m_mSeatTriedAtMs.Set(playerId, now);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The car a crew was put in, or else a free one within m_fCrewCarSearchRadius, claimed for the crew.
+	//! The cars are ranked front to back by how near they are to the start line, and the crews by their
+	//! group's place in the slotting (team mode), so the first group gets the front car, the second the
+	//! next and so on. Without a rank, or if that car is taken, the front-most free car.
+	protected IEntity GetCrewCar(string crewKey, int playerId, vector near)
+	{
+		RplId carId;
+		if (m_mCrewCars.Find(crewKey, carId))
+		{
+			IEntity claimed = COA_EntityHelper.GetEntityFromRplId(carId);
+			if (claimed)
+				return claimed;
+
+			m_mCrewCars.Remove(crewKey);
+		}
+
+		m_aFoundCars.Clear();
+		GetGame().GetWorld().QueryEntitiesBySphere(near, m_fCrewCarSearchRadius, CollectCar, null, EQueryEntitiesFlags.DYNAMIC);
+
+		// Front of the grid first
+		vector startLine = near;
+		if (!m_aCheckpointPositions.IsEmpty())
+			startLine = m_aCheckpointPositions[0];
+
+		array<IEntity> grid = {};
+		array<float> gridDistances = {};
+		foreach (IEntity found : m_aFoundCars)
+		{
+			float distance = vector.DistanceSq(found.GetOrigin(), startLine);
+			int at = 0;
+			while (at < gridDistances.Count() && gridDistances[at] <= distance)
+				at++;
+
+			grid.InsertAt(found, at);
+			gridDistances.InsertAt(distance, at);
+		}
+		m_aFoundCars.Clear();
+
+		IEntity chosen;
+		int rank = GetCrewRank(playerId);
+		if (grid.IsIndexValid(rank) && IsCarFree(grid[rank]))
+			chosen = grid[rank];
+
+		if (!chosen)
+		{
+			foreach (IEntity car : grid)
+			{
+				if (IsCarFree(car))
+				{
+					chosen = car;
+					break;
+				}
+			}
+		}
+
+		if (chosen)
+			m_mCrewCars.Set(crewKey, RplComponent.Cast(chosen.FindComponent(RplComponent)).Id());
+
+		return chosen;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsCarFree(IEntity car)
+	{
+		RplComponent carRpl = RplComponent.Cast(car.FindComponent(RplComponent));
+		return carRpl && !IsCarClaimed(carRpl.Id()) && IsCarEmpty(car);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Team mode: where the player's group comes among the groups that have players, in slotting
+	//! order (0 = first). -1 without a group.
+	protected int GetCrewRank(int playerId)
+	{
+		SCR_AIGroup group = GetCrewGroup(playerId);
+		if (!group)
+			return -1;
+
+		array<SCR_AIGroup> crewGroups = {};
+		GetCrewGroupsInOrder(crewGroups);
+		return crewGroups.Find(group);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected SCR_AIGroup GetCrewGroup(int playerId)
+	{
+		if (!m_bTeamMode)
+			return null;
+
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!groupsManager)
+			return null;
+
+		return groupsManager.GetPlayerGroup(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The slotting groups with at least one player in them, in slotting order (group ID order -
+	//! COA_SlottingManager.GetAllGroups sorts that way)
+	protected void GetCrewGroupsInOrder(notnull array<SCR_AIGroup> outGroups)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		array<SCR_AIGroup> groups = slottingManager.GetAllGroups();
+		foreach (SCR_AIGroup group : groups)
+		{
+			RplComponent groupRpl = RplComponent.Cast(group.FindComponent(RplComponent));
+			if (!groupRpl)
+				continue;
+
+			array<int> slotIds = slottingManager.GetAllSlotIDsForGroup(groupRpl.Id());
+			foreach (int slotId : slotIds)
+			{
+				COA_SlotData slotData = slottingManager.GetSlotData(slotId);
+				if (slotData && slotData.GetSlotCurrentPlayerId() > 0)
+				{
+					outGroups.Insert(group);
+					break;
+				}
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool CollectCar(IEntity entity)
+	{
+		Vehicle vehicle = Vehicle.Cast(entity);
+		if (vehicle && vehicle == vehicle.GetRootParent() && CarControllerComponent.Cast(vehicle.GetVehicleController()) && !m_aFoundCars.Contains(vehicle))
+			m_aFoundCars.Insert(vehicle);
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsCarClaimed(RplId carId)
+	{
+		foreach (string crewKey, RplId claimedId : m_mCrewCars)
+		{
+			if (claimedId == carId)
+				return true;
+		}
+
+		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsCarEmpty(IEntity car)
+	{
+		BaseCompartmentManagerComponent compartments = BaseCompartmentManagerComponent.Cast(car.FindComponent(BaseCompartmentManagerComponent));
+		if (!compartments)
+			return false;
+
+		array<BaseCompartmentSlot> slots = {};
+		compartments.GetCompartments(slots);
+		foreach (BaseCompartmentSlot slot : slots)
+		{
+			if (slot.GetOccupant())
+				return false;
+		}
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsDriverRole(int playerId)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return true;
+
+		COA_SlotData slotData = slottingManager.GetPlayerSlotData(playerId);
+		return !slotData || slotData.GetSlotRole() == COA_EGearRole.VEHICLE_DRIVER;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -168,6 +456,10 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 				crewKeys[j] = swap;
 			}
 		}
+		else if (m_bTeamMode)
+		{
+			SortCrewsBySlotting(crewKeys, crews);
+		}
 
 		int intervalMs = m_fStartInterval * 1000;
 		int firstStartMs = now + m_fFirstStartDelay * 1000;
@@ -184,6 +476,40 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		int firstSecs = m_fFirstStartDelay;
 		Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] Start order drawn - %1 crew(s), %2 s apart. First away in %3 s.",
 			crewKeys.Count(), intervalSecs, firstSecs));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Team mode, start order not random: crews in their groups' slotting order (the order they were
+	//! put in cars on the grid), crews without a group at the back in join order
+	protected void SortCrewsBySlotting(notnull array<string> crewKeys, notnull map<string, ref array<int>> crews)
+	{
+		array<string> sorted = {};
+		array<int> ranks = {};
+		array<string> unranked = {};
+		foreach (string crewKey : crewKeys)
+		{
+			array<int> members = crews.Get(crewKey);
+			int rank = -1;
+			if (members && !members.IsEmpty())
+				rank = GetCrewRank(members[0]);
+
+			if (rank < 0)
+			{
+				unranked.Insert(crewKey);
+				continue;
+			}
+
+			int at = 0;
+			while (at < ranks.Count() && ranks[at] <= rank)
+				at++;
+
+			sorted.InsertAt(crewKey, at);
+			ranks.InsertAt(rank, at);
+		}
+
+		crewKeys.Clear();
+		crewKeys.InsertAll(sorted);
+		crewKeys.InsertAll(unranked);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -282,6 +608,10 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	protected void AnnounceCountdowns(int now)
 	{
 		array<int> countdownSeconds = {30, 10, 5, 4, 3, 2, 1, 0};
+		int callUpSecs = m_fCallUpSeconds;
+		if (m_bHoldUntilCalledUp && callUpSecs > 0 && !countdownSeconds.Contains(callUpSecs))
+			countdownSeconds.Insert(callUpSecs);
+
 		foreach (int playerId, CRF_RallyStageEntry stage : m_mStage)
 		{
 			// Not drawn yet, or jumped the start (no countdown after leaving)
@@ -302,7 +632,10 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			stage.m_iLastAnnouncedSecs = secsLeft;
 			if (secsLeft > 0)
 			{
-				Rpc(RpcDo_CheckpointNotify, playerId, string.Format("Start in %1", secsLeft));
+				if (m_bHoldUntilCalledUp && callUpSecs > 0 && secsLeft == callUpSecs)
+					Rpc(RpcDo_CheckpointNotify, playerId, string.Format("Start in %1 - drive up to the start line", secsLeft));
+				else
+					Rpc(RpcDo_CheckpointNotify, playerId, string.Format("Start in %1", secsLeft));
 				continue;
 			}
 
@@ -369,6 +702,19 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		{
 			// ── START LINE ──────────────────────────────────────────────────────────
 			entry.m_iNextCheckpoint = 1;
+
+			// Set off on time from away from the line: the clock starts here, unless the crew took
+			// longer than m_fMoveUpSeconds to arrive
+			if (now >= stage.m_iClockStartMs && !stage.m_bJumpStart && m_fMoveUpSeconds > 0)
+			{
+				int clockStartMs = (int)Math.Min(now, stage.m_iClockStartMs + m_fMoveUpSeconds * 1000);
+				stage.m_iClockStartMs = clockStartMs;
+				entry.m_iLapStartTimeMs = clockStartMs;
+				entry.m_iRaceStartTimeMs = clockStartMs;
+				Rpc(RpcDo_CheckpointNotify, pid, "Stage clock running");
+				return;
+			}
+
 			if (now < stage.m_iClockStartMs)
 			{
 				// Jump start: the clock starts now, not at the start time, plus a penalty
@@ -534,88 +880,186 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	protected static const int EXTRA_SPLIT_INDEX = 3;
 	protected static const int EXTRA_SPLIT_DELTA = 4;
 
-	// Client: the start hold (EnforceStartHold)
-	protected bool m_bHoldingStart;
-	protected CarControllerComponent m_HeldController;
+	// The start hold. The server decides which cars have to wait (UpdateStartHolds) and replicates the
+	// list; every machine - server and clients - then holds those cars itself, the way vanilla's
+	// handbrake action (SCR_ToggleHandbrakeAction) runs where it is performed and on the server. The
+	// driver's machine is the one that counts while a car is driven (it simulates it); the server's
+	// copy keeps the car held if it changes hands.
+	[RplProp(onRplName: "OnStartHoldsChanged")]
+	protected ref array<RplId> m_aHeldCars = {};
+
+	// The held cars that are waiting in the start zone (for the driver's message)
+	[RplProp(onRplName: "OnStartHoldsChanged")]
+	protected ref array<RplId> m_aHeldAtStartLine = {};
+
+	// Every machine: the cars it is holding now
+	protected ref array<RplId> m_aLocallyHeld = {};
+
+	// Client: why the local player's car is held (HOLD_*), for the messages
+	protected int m_iLocalHoldReason;
+
+	protected static const int HOLD_NONE = 0;
+	protected static const int HOLD_CALL_UP = 1;
+	protected static const int HOLD_START_LINE = 2;
 
 	//------------------------------------------------------------------------------------------------
 	override protected void UpdateHUD()
 	{
 		super.UpdateHUD();
-		EnforceStartHold();
+
+		// Re-applied ten times a second, so a driver letting the handbrake off gets nowhere
+		ApplyStartHolds();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Client, for the driver: until the crew's start time, a car inside the start zone is held with the
-	//! handbrake on and the gearbox in neutral. Re-applied every HUD tick (10 Hz), so letting it off does
-	//! nothing. It runs here and not on the server because a driven car is simulated on its driver's
-	//! machine - a handbrake set on the server wouldn't reliably hold it.
-	protected void EnforceStartHold()
+	//! Server: which racers' cars have to wait. Inside the start zone before the crew's start time,
+	//! and with m_bHoldUntilCalledUp anywhere before the start order is drawn or before the crew is
+	//! called up. Replicated when it changes, applied here on the server every poll.
+	protected void UpdateStartHolds(int now)
 	{
-		CarControllerComponent controller;
-		if (ShouldHoldAtStart(controller))
+		array<RplId> held = {};
+		array<RplId> atStartLine = {};
+		if (m_bRaceActive && !m_aCheckpointPositions.IsEmpty())
 		{
-			ApplyStartHold(controller);
-			return;
-		}
-
-		if (m_bHoldingStart)
-			ReleaseStartHold();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! True while the local player drives a car inside the start zone before their crew's start time
-	protected bool ShouldHoldAtStart(out CarControllerComponent controller)
-	{
-		if (!m_bRaceActive || m_aCheckpointPositions.IsEmpty())
-			return false;
-
-		ChimeraCharacter character = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
-		if (!character)
-			return false;
-
-		CompartmentAccessComponent access = character.GetCompartmentAccessComponent();
-		if (!access)
-			return false;
-
-		BaseCompartmentSlot seat = access.GetCompartment();
-		if (!PilotCompartmentSlot.Cast(seat))
-			return false;
-
-		Vehicle vehicle = Vehicle.Cast(seat.GetOwner().GetRootParent());
-		if (!vehicle)
-			return false;
-
-		controller = CarControllerComponent.Cast(vehicle.GetVehicleController());
-		if (!controller)
-			return false;
-
-		// The local player's own standings: has a start time, hasn't left yet, and it's not time
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		array<ref CRF_RallyHUDRow> standings = ParseStandings();
-		CRF_RallyHUDRow own;
-		foreach (CRF_RallyHUDRow row : standings)
-		{
-			if (row.m_iPlayerId == localPlayerId)
+			PlayerManager playerManager = GetGame().GetPlayerManager();
+			foreach (CRF_RallyPlayerEntry entry : m_aPlayerEntries)
 			{
-				own = row;
-				break;
+				if (entry.m_bFinished || entry.m_bDead || entry.m_iNextCheckpoint != 0)
+					continue;
+
+				Vehicle car = GetDrivenCar(playerManager.GetPlayerControlledEntity(entry.m_iPlayerId));
+				if (!car)
+					continue;
+
+				RplComponent carRpl = RplComponent.Cast(car.FindComponent(RplComponent));
+				if (!carRpl || held.Contains(carRpl.Id()))
+					continue;
+
+				bool inStartZone = vector.Distance(car.GetOrigin(), m_aCheckpointPositions[0]) <= m_fCheckpointRadius;
+				if (!MustWait(entry.m_iPlayerId, now, inStartZone))
+					continue;
+
+				held.Insert(carRpl.Id());
+				if (inStartZone)
+					atStartLine.Insert(carRpl.Id());
 			}
 		}
 
-		if (!own || own.m_bFinished || own.m_bDead || own.m_iNextCP != 0 || own.GetExtraInt(EXTRA_SLOT, -1) < 0)
-			return false;
+		if (!SameIds(held, m_aHeldCars) || !SameIds(atStartLine, m_aHeldAtStartLine))
+		{
+			m_aHeldCars.Copy(held);
+			m_aHeldAtStartLine.Copy(atStartLine);
+			Replication.BumpMe();
+		}
 
-		int serverNowMs = GetServerNowMs();
-		if (serverNowMs < 0 || serverNowMs >= own.m_iLapStartMs)
-			return false;
-
-		return vector.Distance(vehicle.GetOrigin(), m_aCheckpointPositions[0]) <= m_fCheckpointRadius;
+		ApplyStartHolds();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void ApplyStartHold(notnull CarControllerComponent controller)
+	//! Server: whether a racer's car has to wait right now
+	protected bool MustWait(int playerId, int now, bool inStartZone)
 	{
+		// No start time yet: nobody drives until the order is drawn
+		CRF_RallyStageEntry stage = m_mStage.Get(playerId);
+		if (!stage || stage.m_iSlot < 0)
+			return m_bHoldUntilCalledUp;
+
+		if (stage.m_bJumpStart || now >= stage.m_iClockStartMs)
+			return false;
+
+		if (inStartZone)
+			return true;
+
+		return m_bHoldUntilCalledUp && now < stage.m_iClockStartMs - m_fCallUpSeconds * 1000;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool SameIds(notnull array<RplId> a, notnull array<RplId> b)
+	{
+		if (a.Count() != b.Count())
+			return false;
+
+		foreach (RplId id : a)
+		{
+			if (!b.Contains(id))
+				return false;
+		}
+
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Clients: the held list arrived - apply it now rather than at the next HUD tick
+	protected void OnStartHoldsChanged()
+	{
+		ApplyStartHolds();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Every machine: hold the listed cars, let go of the ones no longer listed
+	protected void ApplyStartHolds()
+	{
+		for (int i = m_aLocallyHeld.Count() - 1; i >= 0; i--)
+		{
+			if (m_aHeldCars.Contains(m_aLocallyHeld[i]))
+				continue;
+
+			ReleaseStartHold(m_aLocallyHeld[i]);
+			m_aLocallyHeld.Remove(i);
+		}
+
+		foreach (RplId carId : m_aHeldCars)
+		{
+			// A car this machine hasn't streamed in is skipped until it has
+			if (ApplyStartHold(carId) && !m_aLocallyHeld.Contains(carId))
+				m_aLocallyHeld.Insert(carId);
+		}
+
+		if (!System.IsConsoleApp())
+			UpdateLocalHoldMessage();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The car a character is driving (in its pilot seat), if any
+	protected Vehicle GetDrivenCar(IEntity entity)
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+		if (!character)
+			return null;
+
+		CompartmentAccessComponent access = character.GetCompartmentAccessComponent();
+		if (!access)
+			return null;
+
+		BaseCompartmentSlot seat = access.GetCompartment();
+		if (!PilotCompartmentSlot.Cast(seat))
+			return null;
+
+		Vehicle vehicle = Vehicle.Cast(seat.GetOwner().GetRootParent());
+		if (!vehicle || !CarControllerComponent.Cast(vehicle.GetVehicleController()))
+			return null;
+
+		return vehicle;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected CarControllerComponent GetCarController(RplId carId)
+	{
+		Vehicle vehicle = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(carId));
+		if (!vehicle)
+			return null;
+
+		return CarControllerComponent.Cast(vehicle.GetVehicleController());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Handbrake on, brakes full, gearbox in neutral. False if the car isn't here (yet)
+	protected bool ApplyStartHold(RplId carId)
+	{
+		CarControllerComponent controller = GetCarController(carId);
+		if (!controller)
+			return false;
+
 		if (!controller.GetPersistentHandBrake())
 			controller.SetPersistentHandBrake(true);
 
@@ -630,24 +1074,14 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 				simulation.SetGear(neutral);
 		}
 
-		if (m_HeldController != controller && m_HeldController)
-			ReleaseStartHold();
-
-		m_HeldController = controller;
-		if (!m_bHoldingStart)
-		{
-			m_bHoldingStart = true;
-			SCR_PopUpNotification.GetInstance().PopupMsg("Held at the start line until your start time", 4);
-		}
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	//! Lets the car go: handbrake off, first gear, physics woken
-	protected void ReleaseStartHold()
+	protected void ReleaseStartHold(RplId carId)
 	{
-		m_bHoldingStart = false;
-		CarControllerComponent controller = m_HeldController;
-		m_HeldController = null;
+		CarControllerComponent controller = GetCarController(carId);
 		if (!controller)
 			return;
 
@@ -663,6 +1097,50 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		IEntity vehicle = controller.GetOwner();
 		if (vehicle && vehicle.GetPhysics())
 			vehicle.GetPhysics().SetActive(ActiveState.ACTIVE);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client: tell the local driver when, and why, their car is held
+	protected void UpdateLocalHoldMessage()
+	{
+		int reason = HOLD_NONE;
+		Vehicle car = GetDrivenCar(SCR_PlayerController.GetLocalControlledEntity());
+		if (car)
+		{
+			RplComponent carRpl = RplComponent.Cast(car.FindComponent(RplComponent));
+			if (carRpl && m_aHeldAtStartLine.Contains(carRpl.Id()))
+				reason = HOLD_START_LINE;
+			else if (carRpl && m_aHeldCars.Contains(carRpl.Id()))
+				reason = HOLD_CALL_UP;
+		}
+
+		if (reason == m_iLocalHoldReason)
+			return;
+
+		m_iLocalHoldReason = reason;
+		SCR_PopUpNotification popup = SCR_PopUpNotification.GetInstance();
+		if (!popup)
+			return;
+
+		if (reason == HOLD_START_LINE)
+			popup.PopupMsg("Held at the start line until your start time", 4);
+		else if (reason == HOLD_CALL_UP && m_fCallUpSeconds > 0)
+			popup.PopupMsg("Held until your crew is called up to the start line", 4);
+		else if (reason == HOLD_CALL_UP)
+			popup.PopupMsg("Held until your start time", 4);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Any machine: whether a car is being held at the start (the replicated list). Used to keep its
+	//! handbrake from being let off (CRF_SCR_ToggleHandbrakeAction).
+	static bool IsCarHeld(IEntity vehicle)
+	{
+		CRF_RallyStageGamemodeComponent stage = CRF_RallyStageGamemodeComponent.Cast(GetInstance());
+		if (!stage || !vehicle)
+			return false;
+
+		RplComponent carRpl = RplComponent.Cast(vehicle.FindComponent(RplComponent));
+		return carRpl && stage.m_aHeldCars.Contains(carRpl.Id());
 	}
 
 	//------------------------------------------------------------------------------------------------

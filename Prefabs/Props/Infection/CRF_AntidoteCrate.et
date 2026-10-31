@@ -1,0 +1,21 @@
+GenericEntity : "{387B85277E063AEA}Prefabs/Props/EmptyStorages/USSR_MedicalBox_empty.et" {
+ ID "6530846A16426463"
+ components {
+  CRF_InfectionAntidoteStation "{7C1A6E4B2D3F5A01}" {
+  }
+  ActionsManagerComponent "{6530846B5C15786D}" {
+   additionalActions {
+    CRF_InfectionAntidoteAction "{7C1A6E4B2D3F5A02}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1A6E4B2D3F5A03}" {
+      Name "Inject antidote"
+     }
+     Duration 3
+     "Sort Priority" 10
+    }
+   }
+  }
+ }
+}

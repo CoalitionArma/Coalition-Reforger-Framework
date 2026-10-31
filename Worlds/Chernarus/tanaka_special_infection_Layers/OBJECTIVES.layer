@@ -1,0 +1,18 @@
+Vehicle infection_escape_truck : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ coords 4893.167 339.091 10133.668
+ angles 0 -111.227 0
+}
+Vehicle infection_escape_heli : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
+ coords 4663.406 339 10180.478
+ angles 0 18.175 0
+}
+$grp GenericEntity : "{7C1A6E4B2D3F5A10}Prefabs/Props/Infection/CRF_AntidoteCrate.et" {
+ infection_antidote_start {
+  coords 4626.228 339.757 10490.437
+  angles 0 -31 0
+ }
+ infection_antidote_middle {
+  coords 4760.042 339.496 10271.922
+  angles 0 114.791 0
+ }
+}

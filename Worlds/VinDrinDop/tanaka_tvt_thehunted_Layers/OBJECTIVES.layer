@@ -1,0 +1,23 @@
+$grp GameEntity {
+ hunted_site_alpha {
+  coords 2849.525 79.763 1450.268
+ }
+ hunted_site_bravo {
+  coords 3026.585 85.36 1857.189
+ }
+ hunted_site_charlie {
+  coords 3708.008 259.907 1924.481
+ }
+ hunted_site_delta {
+  coords 2522.685 81.836 1701.437
+ }
+ hunted_site_echo {
+  coords 3384.038 148.352 2464.6
+ }
+ hunted_site_foxtrot {
+  coords 4413.306 49.595 1622.77
+ }
+ hunted_site_golf {
+  coords 976.582 44.501 2282.217
+ }
+}

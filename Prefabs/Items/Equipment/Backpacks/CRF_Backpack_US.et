@@ -32,8 +32,8 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
     }
    }
    UseCapacityCoefficient 0
-   MaxCumulativeVolume 30150
-   m_fMaxWeight 100
+   MaxCumulativeVolume 60300
+   m_fMaxWeight 200
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    WornModel "{AD560ADB3B8B102E}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium.xob"

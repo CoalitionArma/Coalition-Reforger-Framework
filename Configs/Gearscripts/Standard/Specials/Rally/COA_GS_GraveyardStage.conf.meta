@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7C1AE9B0C0D0E103}Configs/Gearscripts/Standard/Specials/Rally/COA_GS_GraveyardStage.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

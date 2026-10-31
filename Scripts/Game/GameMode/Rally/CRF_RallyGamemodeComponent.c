@@ -11,6 +11,7 @@
 // - Server-authoritative: standings replicated every second via RplProp string
 // - Per-player checkpoint notifications via broadcast RPC (client-side filtered)
 // - On-screen HUD panel showing position, running lap timer, and full leaderboard
+// - Course minimap under the panel with the player's car on it (CRF_RallyMinimap, m_bShowMinimap)
 //
 // Setup for mission makers
 // 1. Add this component to the gamemode entity
@@ -26,6 +27,8 @@
 // 6. Optional: place an entity named "<checkpoint name>_smoke" (e.g. rally_cp3_smoke) to put that
 //    checkpoint's smoke exactly there. Otherwise the smoke goes beside the nearest road, past its
 //    edge, on the downwind side so it drifts away from the racing line.
+// 7. The minimap traces the course along the shortest road route between checkpoints. Where the
+//    stage takes a longer road than that, add a checkpoint on it.
 //
 // Crossings only count while the round is live (COA_EGamemodeState.GAME), and are checked along the
 // path travelled since the last poll, so fast vehicles can't skip a checkpoint between polls.
@@ -156,6 +159,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("false", UIWidgets.CheckBox, desc: "When enabled, players sharing the same in-game group (e.g. driver + co-driver) are treated as one team entry on the HUD and results screen. Team position is determined by the furthest-ahead member.", category: "Rally - HUD")]
 	bool m_bTeamMode;
 
+	[Attribute("true", UIWidgets.CheckBox, desc: "Show a minimap of the course under the standings panel, with the player's car on it (see CRF_RallyMinimap).", category: "Rally - HUD")]
+	bool m_bShowMinimap;
+
 	//===================================================================================
 	// SERVER-SIDE RUNTIME STATE
 	//===================================================================================
@@ -233,6 +239,9 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const ResourceName HUD_LAYOUT = "{4CBBF00D5B6E1A24}UI/layouts/HUD/Rally/CRF_RallyHUD.layout";
 	protected static const ResourceName HUD_ROW_LAYOUT = "{4CBBF00D5B6E1B01}UI/layouts/HUD/Rally/CRF_RallyHUDRow.layout";
 	protected static const float HUD_PANEL_WIDTH = 300;
+	protected static const float HUD_PANEL_RIGHT = 16;		// RallyPanel's gap to the screen edge
+	protected static const float HUD_PANEL_TOP = 150;		// RallyPanel's PositionY
+	protected static const float HUD_MINIMAP_GAP = 10;		// between RallyPanel and MinimapPanel
 	protected static const float HUD_ROWS_TOP = 104;		// "Rows" in the layout
 	protected static const float HUD_ROW_HEIGHT = 24;		// RallyRow's height override
 	protected static const float HUD_PANEL_PADDING = 8;
@@ -250,6 +259,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<Widget> m_aRowWidgets = {};
 	protected ImageWidget m_wCPArrow = null;
 	protected TextWidget m_wCPDistanceText = null;
+	protected Widget m_wMinimapPanel = null;			// follows the bottom of RallyPanel
+	protected ref CRF_RallyMinimap m_Minimap;			// kept when the HUD goes down - its course trace isn't cheap
 
 	//===================================================================================
 	// STATIC ACCESSOR
@@ -1393,7 +1404,20 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		m_wRows              = m_wHUD.FindAnyWidget("Rows");
 		m_wCPArrow           = ImageWidget.Cast(m_wHUD.FindAnyWidget("CPArrowWidget"));
 		m_wCPDistanceText    = TextWidget.Cast(m_wHUD.FindAnyWidget("CPDistanceText"));
+		m_wMinimapPanel      = m_wHUD.FindAnyWidget("MinimapPanel");
 		m_aRowWidgets.Clear();
+
+		if (m_wMinimapPanel)
+		{
+			m_wMinimapPanel.SetVisible(m_bShowMinimap);
+			if (m_bShowMinimap)
+			{
+				if (!m_Minimap)
+					m_Minimap = new CRF_RallyMinimap();
+
+				m_Minimap.SetCanvas(CanvasWidget.Cast(m_wMinimapPanel.FindAnyWidget("MinimapCanvas")));
+			}
+		}
 	}
 
 	protected void DestroyHUD()
@@ -1412,8 +1436,12 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			m_wRows              = null;
 			m_wCPArrow           = null;
 			m_wCPDistanceText    = null;
+			m_wMinimapPanel      = null;
 			m_aRowWidgets.Clear();
 		}
+
+		if (m_Minimap)
+			m_Minimap.SetCanvas(null);
 	}
 
 	// Exactly count row widgets in the standings list (rows are reused between updates)
@@ -1759,9 +1787,13 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 				FillRowWidget(m_aRowWidgets[slot], rows[index], index + 1, serverNowMs);
 		}
 
-		// The panel ends under its last row
+		// The panel ends under its last row, and the minimap sits under the panel
+		float panelHeight = HUD_ROWS_TOP + m_aRowWidgets.Count() * HUD_ROW_HEIGHT + HUD_PANEL_PADDING;
 		if (m_wPanel)
-			FrameSlot.SetSize(m_wPanel, HUD_PANEL_WIDTH, HUD_ROWS_TOP + m_aRowWidgets.Count() * HUD_ROW_HEIGHT + HUD_PANEL_PADDING);
+			FrameSlot.SetSize(m_wPanel, HUD_PANEL_WIDTH, panelHeight);
+
+		if (m_wMinimapPanel)
+			FrameSlot.SetPos(m_wMinimapPanel, -(HUD_PANEL_WIDTH + HUD_PANEL_RIGHT), HUD_PANEL_TOP + panelHeight + HUD_MINIMAP_GAP);
 
 		if (m_wProgressFill)
 			FrameSlot.SetSize(m_wProgressFill, (HUD_PANEL_WIDTH - 2 * HUD_PROGRESS_INSET) * GetRaceProgress(own), 3);
@@ -1843,6 +1875,46 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			if (m_wCPDistanceText)
 				m_wCPDistanceText.SetText("");
 		}
+
+		UpdateMinimap(localEnt, own, isPlayerAlive);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The course minimap: traced the first time the checkpoints are known here, then the car moved
+	//! along it and the legs coloured by the local player's progress
+	protected void UpdateMinimap(notnull IEntity localEnt, CRF_RallyHUDRow own, bool isPlayerAlive)
+	{
+		if (!m_Minimap || m_aCheckpointPositions.Count() < 2)
+			return;
+
+		// Circuits also get the run from the finish back to the start line
+		bool closedLoop = m_iLapsToComplete > 1;
+		if (!m_Minimap.IsBuilt())
+			m_Minimap.Build(m_aCheckpointPositions, closedLoop);
+
+		// Leg i runs from checkpoint i to i + 1. Heading for the start after a lap is the run back.
+		int currentLeg = -1;
+		int nextCP = -1;
+		if (own)
+		{
+			if (own.m_bFinished)
+				currentLeg = m_aCheckpointPositions.Count();
+			else if (own.m_iNextCP > 0)
+				currentLeg = own.m_iNextCP - 1;
+			else if (own.m_iLaps > 0 && closedLoop)
+				currentLeg = m_aCheckpointPositions.Count() - 1;
+
+			if (!own.m_bFinished && !own.m_bDead)
+				nextCP = own.m_iNextCP;
+		}
+
+		// Vehicle position/heading when seated, character otherwise (as for the arrow)
+		IEntity trackEnt = localEnt;
+		if (localEnt.GetParent())
+			trackEnt = localEnt.GetParent();
+
+		bool showCar = isPlayerAlive && (!own || !own.m_bDead);
+		m_Minimap.Update(showCar, trackEnt.GetOrigin(), trackEnt.GetAngles()[1], currentLeg, nextCP);
 	}
 
 

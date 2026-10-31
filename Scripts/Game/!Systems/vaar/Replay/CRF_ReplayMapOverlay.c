@@ -80,7 +80,6 @@ class CRF_ReplayMapOverlay : COA_SpectatorMapOverlay
 			PositionVehicle(vehicle, detail, followed);
 		}
 
-		UpdateCamera(followed);
 		UpdateReplayKills(player);
 		PositionTooltip();
 	}

@@ -155,6 +155,9 @@ modded class COA_Gamemode
 
 		NotifyJoinInProgressStatus(iPlayerID);
 
+		// Their identity is known from here: look their emblem up, then send it to everyone and everyone's to them
+		CRF_EmblemStore.Get().Prefetch();
+
 		// Get player's BI account GUID for privilege checks
 		string playerGUID = SCR_PlayerIdentityUtils.GetPlayerIdentityId(iPlayerID);
 		
