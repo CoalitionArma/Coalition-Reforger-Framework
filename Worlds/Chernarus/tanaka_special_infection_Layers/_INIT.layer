@@ -27,6 +27,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
   CRF_InfectionGamemodeComponent "{7C1A9B0C1D2E3F10}" {
+   m_bEndMissionOnVictory 0
    m_sSurvivorFaction "BLUFOR"
    m_sInfectedFaction "OPFOR"
    m_iSurvivorsPerCarrier 10

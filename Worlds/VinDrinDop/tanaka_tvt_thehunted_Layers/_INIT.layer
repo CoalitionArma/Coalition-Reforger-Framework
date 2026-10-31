@@ -57,7 +57,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iSecureBonus 60
    m_iScoreToWin 600
    m_iTimeLimitMinutes 55
-   m_bEndMissionOnVictory 1
+   m_bEndMissionOnVictory 0
   }
   CRF_PredatorGamemodeComponent "{6704CDECA6EE465F}" {
    m_sPredatorFaction "INDFOR"
