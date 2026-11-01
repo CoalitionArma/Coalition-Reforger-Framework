@@ -232,7 +232,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("1.75", UIWidgets.EditBox, "Board toughness with the reinforced boards upgrade (times the barricade's)", params: "1 10 0.05", category: "Holdout - Requisition")]
 	protected float m_fReinforcedBoardScale;
 
-	[Attribute(desc: "The quartermaster's catalogue, bought at the supply crate. Empty = US Late War weapons, ammunition, grenades, medical kits and the defence upgrades. The crate prefab has a slot for each of the first 24.", category: "Holdout - Requisition")]
+	[Attribute(desc: "The quartermaster's catalogue, bought at the supply crate. Empty = US Late War weapons, ammunition, grenades, medical kits and the defence upgrades. The crate prefab has a slot for each of the first 32.", category: "Holdout - Requisition")]
 	protected ref array<ref CRF_HoldoutShopEntry> m_aShop;
 
 	//===================================================================================
@@ -324,7 +324,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const ResourceName BACON_HORDE = "{6AEA65C9E88BB0B2}622120A5448725E3/Prefabs/Groups/Group_Zombies_Horde.et";
 
 	// The crate prefab has requisition actions for this many catalogue slots
-	protected static const int SHOP_SLOTS = 24;
+	protected static const int SHOP_SLOTS = 32;
 
 	protected static const ResourceName MARKER_ICON = "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds";
 
@@ -1959,8 +1959,9 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! The catalogue when the mission doesn't set one: US Late War (Finest Hour) ammunition and weapons - the
-	//! defenders start with a pistol and buy the rest - kit, and the upgrades
+	//! The catalogue when the mission doesn't set one: US Late War (Finest Hour) ammunition and weapons, then
+	//! Cold War and modern ones (vanilla, RHS) for more - the defenders start with a pistol and buy the rest -
+	//! kit, and the upgrades
 	protected void BuildDefaultShop()
 	{
 		ResourceName garand = "{6FF6BC1AA4BC98BE}Prefabs/Weapons/Rifles/M1_Garand/Rifle_M1.et";
@@ -1976,6 +1977,19 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		ResourceName springfield = "{4191E250FDEC2FBF}Prefabs/Weapons/Rifles/M1903A3/Rifle_M1903A4.et";
 		ResourceName springfieldClip = "{228B4D35573544B0}Prefabs/Weapons/Magazines/M1903A3/Clip_762x63_M1903_5rnd_Ball_M2.et";
 		ResourceName pistolMag = "{BEDAB3A48410CF6C}Prefabs/Weapons/Magazines/M1911/Magazine_1143x23_M1911_7rnd_Ball_M1.et";
+		ResourceName m16 = "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et";
+		ResourceName m16Mag = "{2EBF60EF24B108FC}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_Ball.et";
+		ResourceName m21 = "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et";
+		ResourceName m21Mag = "{BCB5E5C608ECFF50}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M80.et";
+		ResourceName m249 = "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et";
+		ResourceName m249Box = "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et";
+		ResourceName m60 = "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et";
+		ResourceName m60Box = "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et";
+		ResourceName m72 = "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et";
+		// RHS: Status Quo - its rifles get RHS magazines
+		ResourceName m4 = "{31070CB2D8A07679}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1.et";
+		ResourceName m27 = "{66AAEDA477051298}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR.et";
+		ResourceName rhsMag = "{DD5358193169908B}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1.et";
 		ResourceName grenade = "{9404B8186F1501E7}Prefabs/Weapons/Grenades/Mk2/Grenade_Mk2_Olive.et";
 		ResourceName dressing = "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et";
 		ResourceName tourniquet = "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et";
@@ -1985,57 +1999,100 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		CRF_HoldoutShopEntry entry1 = AddShopEntry("M1911 magazines (4)", 50, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry1, pistolMag, 4);
 
-		CRF_HoldoutShopEntry entry2 = AddShopEntry("M1 Carbine magazines (4)", 75, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry2 = AddShopEntry("M1 Carbine magazines (4)", 60, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry2, carbineMag, 4);
 
-		CRF_HoldoutShopEntry entry3 = AddShopEntry("M1 Garand clips (6)", 100, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry3 = AddShopEntry("M1 Garand clips (6)", 80, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry3, garandClip, 6);
 
-		CRF_HoldoutShopEntry entry4 = AddShopEntry("M1903 clips (6)", 75, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry4 = AddShopEntry("M1903 clips (6)", 60, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry4, springfieldClip, 6);
 
-		CRF_HoldoutShopEntry entry5 = AddShopEntry("M3 grease gun magazines (3)", 100, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry5 = AddShopEntry("M3 grease gun magazines (3)", 80, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry5, greaseGunMag, 3);
 
-		CRF_HoldoutShopEntry entry6 = AddShopEntry("M1A1 Thompson magazines (3)", 125, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry6 = AddShopEntry("M1A1 Thompson magazines (3)", 100, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry6, thompsonMag, 3);
 
-		CRF_HoldoutShopEntry entry7 = AddShopEntry("M1918 BAR magazines (3)", 150, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry7 = AddShopEntry("M1918 BAR magazines (3)", 120, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry7, barMag, 3);
 
-		// Weapons
-		CRF_HoldoutShopEntry entry8 = AddShopEntry("M1 Carbine, 2 magazines", 750, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry8, carbine, 1);
-		AddShopItems(entry8, carbineMag, 2);
+		CRF_HoldoutShopEntry entry8 = AddShopEntry("M16A2 magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry8, m16Mag, 4);
 
-		CRF_HoldoutShopEntry entry9 = AddShopEntry("M1 Garand, 2 clips", 900, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry9, garand, 1);
-		AddShopItems(entry9, garandClip, 2);
+		CRF_HoldoutShopEntry entry9 = AddShopEntry("M4A1 / M27 IAR magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry9, rhsMag, 4);
 
-		CRF_HoldoutShopEntry entry10 = AddShopEntry("M1903A4 sniper rifle, 2 clips", 1200, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry10, springfield, 1);
-		AddShopItems(entry10, springfieldClip, 2);
+		CRF_HoldoutShopEntry entry10 = AddShopEntry("M21 magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry10, m21Mag, 4);
 
-		CRF_HoldoutShopEntry entry11 = AddShopEntry("M3 grease gun, 2 magazines", 1350, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry11, greaseGun, 1);
-		AddShopItems(entry11, greaseGunMag, 2);
+		CRF_HoldoutShopEntry entry11 = AddShopEntry("M249 200-round box", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry11, m249Box, 1);
 
-		CRF_HoldoutShopEntry entry12 = AddShopEntry("M1A1 Thompson, 2 magazines", 1800, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry12, thompson, 1);
-		AddShopItems(entry12, thompsonMag, 2);
+		CRF_HoldoutShopEntry entry12 = AddShopEntry("M60 100-round belts (2)", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry12, m60Box, 2);
 
-		CRF_HoldoutShopEntry entry13 = AddShopEntry("M1918 BAR, 2 magazines", 2700, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry13, bar, 1);
-		AddShopItems(entry13, barMag, 2);
+		// Weapons: Late War
+		CRF_HoldoutShopEntry entry13 = AddShopEntry("M1 Carbine, 2 magazines", 500, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry13, carbine, 1);
+		AddShopItems(entry13, carbineMag, 2);
+
+		CRF_HoldoutShopEntry entry14 = AddShopEntry("M1 Garand, 2 clips", 650, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry14, garand, 1);
+		AddShopItems(entry14, garandClip, 2);
+
+		CRF_HoldoutShopEntry entry15 = AddShopEntry("M1903A4 sniper rifle, 2 clips", 850, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry15, springfield, 1);
+		AddShopItems(entry15, springfieldClip, 2);
+
+		CRF_HoldoutShopEntry entry16 = AddShopEntry("M3 grease gun, 2 magazines", 950, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry16, greaseGun, 1);
+		AddShopItems(entry16, greaseGunMag, 2);
+
+		CRF_HoldoutShopEntry entry17 = AddShopEntry("M1A1 Thompson, 2 magazines", 1250, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry17, thompson, 1);
+		AddShopItems(entry17, thompsonMag, 2);
+
+		CRF_HoldoutShopEntry entry18 = AddShopEntry("M1918 BAR, 2 magazines", 1900, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry18, bar, 1);
+		AddShopItems(entry18, barMag, 2);
+
+		// Weapons: Cold War and modern
+		CRF_HoldoutShopEntry entry19 = AddShopEntry("M16A2, 2 magazines", 1400, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry19, m16, 1);
+		AddShopItems(entry19, m16Mag, 2);
+
+		CRF_HoldoutShopEntry entry20 = AddShopEntry("M4A1, 2 magazines", 1600, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry20, m4, 1);
+		AddShopItems(entry20, rhsMag, 2);
+
+		CRF_HoldoutShopEntry entry21 = AddShopEntry("M21 sniper rifle, 2 magazines", 1700, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry21, m21, 1);
+		AddShopItems(entry21, m21Mag, 2);
+
+		CRF_HoldoutShopEntry entry22 = AddShopEntry("M27 IAR, 2 magazines", 2100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry22, m27, 1);
+		AddShopItems(entry22, rhsMag, 2);
+
+		CRF_HoldoutShopEntry entry23 = AddShopEntry("M249, 200-round box", 2600, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry23, m249, 1);
+		AddShopItems(entry23, m249Box, 1);
+
+		CRF_HoldoutShopEntry entry24 = AddShopEntry("M60, 2 belts", 2800, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry24, m60, 1);
+		AddShopItems(entry24, m60Box, 2);
 
 		// Kit
-		CRF_HoldoutShopEntry entry14 = AddShopEntry("Three Mk 2 grenades", 150, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry14, grenade, 3);
+		CRF_HoldoutShopEntry entry25 = AddShopEntry("Three Mk 2 grenades", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry25, grenade, 3);
 
-		CRF_HoldoutShopEntry entry15 = AddShopEntry("Medical kit (4 dressings, tourniquet, morphine)", 100, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry15, dressing, 4);
-		AddShopItems(entry15, tourniquet, 1);
-		AddShopItems(entry15, morphine, 1);
+		CRF_HoldoutShopEntry entry26 = AddShopEntry("M72 LAW", 450, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry26, m72, 1);
+
+		CRF_HoldoutShopEntry entry27 = AddShopEntry("Medical kit (4 dressings, tourniquet, morphine)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry27, dressing, 4);
+		AddShopItems(entry27, tourniquet, 1);
+		AddShopItems(entry27, morphine, 1);
 
 		// The defence
 		AddShopEntry("Upgrade: reinforced boards on every barricade", 1500, CRF_EHoldoutShopKind.REINFORCED_BOARDS);
