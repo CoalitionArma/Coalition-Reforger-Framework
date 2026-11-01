@@ -2,7 +2,7 @@
 //! (CRF_HoldoutGamemodeComponent.GetZombieDamageScale). Same hook and the same exclusions as the
 //! Slasher's: the character damage manager's HijackDamageHandling runs before the hit is applied, and
 //! the default (health) hit zone is skipped because damage passed on to it from a body part was
-//! already scaled.
+//! already scaled. Damage players do to zombies is also passed on for assists (OnZombieDamaged).
 modded class SCR_CharacterDamageManagerComponent
 {
 	override bool HijackDamageHandling(notnull BaseDamageContext damageContext)
@@ -12,6 +12,10 @@ modded class SCR_CharacterDamageManagerComponent
 			&& damageContext.damageType != EDamageType.TRUE && damageContext.damageType != EDamageType.HEALING
 			&& damageContext.damageType != EDamageType.REGENERATION)
 		{
+			// Assists count the damage before the wave's toughness, so the bar doesn't rise with the waves
+			if (Replication.IsServer() && damageContext.instigator && GetState() != EDamageState.DESTROYED)
+				holdout.OnZombieDamaged(GetOwner(), damageContext.instigator.GetInstigatorPlayerID(), damageContext.damageValue);
+
 			damageContext.damageValue = damageContext.damageValue * holdout.GetZombieDamageScale(GetOwner());
 		}
 

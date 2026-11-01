@@ -156,6 +156,9 @@ class CRF_InfectionGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.EditBox, "Survivors win if any are still alive after this many seconds of the round (0 = off, the mission's objectives decide)", params: "0 14400 1", category: "Infection - Ending")]
 	protected int m_iSurvivalTimeLimit;
 
+	[Attribute("1", UIWidgets.CheckBox, "Record the winner and advance the gamemode to the AAR when the round is decided. Off: the result is announced and an admin ends the mission.", category: "Infection - Ending")]
+	protected bool m_bEndMissionOnVictory;
+
 	// Seconds with no survivor alive before the infected win (covers respawn gaps)
 	protected static const int NO_SURVIVOR_GRACE = 15;
 
@@ -578,6 +581,9 @@ class CRF_InfectionGamemodeComponent : SCR_BaseGameModeComponent
 		m_bEndRequested = true;
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", title, text, 10);
+
+		if (!m_bEndMissionOnVictory)
+			return;
 
 		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
 		if (loggingManager)

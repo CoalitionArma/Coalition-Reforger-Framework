@@ -24,6 +24,8 @@ class CRF_EmblemStore
 	protected static const int FETCH_TIMEOUT_MS = 20000;	// a request that never calls back mustn't block emblems for the session
 	protected static const int PREFETCH_DELAY_MS = 3000;	// joins within this long share one request
 	protected static const int SEND_CHUNK = 10;			// emblems per RPC - a full one is ~700 characters
+	protected static const int ASK_RETRY_MS = 10000;	// client: no cache this long after asking - ask again
+	protected static const int MAX_ASKS = 6;
 
 	protected static ref CRF_EmblemStore s_Instance;
 
@@ -38,6 +40,13 @@ class CRF_EmblemStore
 
 	// Client: playerId -> emblem ("" for none)
 	protected ref map<int, string> m_mByPlayer = new map<int, string>();
+
+	// Client: the controller the server's whole cache came to, and the one we've been asking with - both
+	// go null when it's deleted, so a new session starts over
+	protected SCR_PlayerController m_CacheController;
+	protected SCR_PlayerController m_AskController;
+	protected int m_iAsks;
+	protected bool m_bAskScheduled;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_EmblemStore Get()
@@ -62,7 +71,10 @@ class CRF_EmblemStore
 	void OnReceived(array<int> playerIds, array<string> emblems, bool reset)
 	{
 		if (reset)
+		{
 			m_mByPlayer.Clear();
+			m_CacheController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		}
 
 		foreach (int i, int playerId : playerIds)
 		{
@@ -71,6 +83,52 @@ class CRF_EmblemStore
 		}
 
 		Print(string.Format("[CRF_EmblemStore] Received %1 emblem(s), %2 player(s) cached", playerIds.Count(), m_mByPlayer.Count()), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client: ask the server for its whole cache, and again every ASK_RETRY_MS until it comes. Called when we
+	//! become the controller's owner and on every spawn (COA_PlayerController.OnControlledEntityChanged): an ask
+	//! sent before the ownership handshake is done is lost, and the owner event alone has proved unreliable.
+	void AskServer()
+	{
+		if (RplSession.Mode() != RplMode.Client || m_bAskScheduled)
+			return;
+
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if (!playerController || (m_CacheController != null && m_CacheController == playerController))
+			return;
+
+		if (m_AskController != playerController)
+		{
+			m_AskController = playerController;
+			m_iAsks = 0;
+		}
+
+		if (m_iAsks >= MAX_ASKS)
+			return;
+
+		m_iAsks++;
+		Print(string.Format("[CRF_EmblemStore] Asking the server for emblems (%1/%2)", m_iAsks, MAX_ASKS), LogLevel.NORMAL);
+		playerController.CRF_RequestEmblems();
+
+		m_bAskScheduled = true;
+		GetGame().GetCallqueue().CallLater(OnAskDue, ASK_RETRY_MS, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnAskDue()
+	{
+		m_bAskScheduled = false;
+		if (m_CacheController != null && m_CacheController == m_AskController)
+			return;
+
+		if (m_iAsks >= MAX_ASKS)
+		{
+			Print(string.Format("[CRF_EmblemStore] The server never sent the emblems (asked %1 times)", m_iAsks), LogLevel.WARNING);
+			return;
+		}
+
+		AskServer();
 	}
 
 	// ── Server ───────────────────────────────────────────────────────────────────────────────────
@@ -302,6 +360,7 @@ class CRF_EmblemStore
 			}
 		}
 
+		Print(string.Format("[CRF_EmblemStore] Sending player %1 the cache: %2 emblem(s), %3 identities looked up", playerController.GetPlayerId(), ids.Count(), m_mByGuid.Count()), LogLevel.NORMAL);
 		Send(playerController, ids, emblems, true);
 		playerController.CRF_SetHasEmblems();
 	}
@@ -352,7 +411,14 @@ modded class SCR_PlayerController
 		super.OnOwnershipChanged(changing, becameOwner);
 
 		if (!changing && becameOwner && RplSession.Mode() == RplMode.Client)
-			Rpc(RpcAsk_CRF_RequestEmblems);
+			CRF_EmblemStore.Get().AskServer();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client (CRF_EmblemStore.AskServer)
+	void CRF_RequestEmblems()
+	{
+		Rpc(RpcAsk_CRF_RequestEmblems);
 	}
 
 	//------------------------------------------------------------------------------------------------

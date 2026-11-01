@@ -48,6 +48,10 @@ modded class COA_PlayerController
 			if (mapMarkerManager)
 				GetGame().GetCallqueue().CallLater(mapMarkerManager.RequestGlobalMarkersRefresh, 1000, false);
 
+			//Players' emblems, if the server hasn't sent them yet (does nothing once it has)
+			if (this == GetGame().GetPlayerController())
+				CRF_EmblemStore.Get().AskServer();
+
 			//Offer JIP (Join In Progress) forward deploy exactly once, on this player's first live-
 			//character possession after a genuine join-in-progress (see SetIsJoinInProgress) - not on
 			//every spawn/respawn, not for everyone at once at round start, and not when a GM possesses
