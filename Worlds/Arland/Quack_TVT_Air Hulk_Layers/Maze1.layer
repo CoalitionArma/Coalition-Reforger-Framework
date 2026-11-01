@@ -225,6 +225,50 @@ $grp SCR_DestructibleBuildingEntity : "{0628C52DA626BE08}Prefabs/Structures/Mili
   coords 555.405 158.57 458.498
  }
 }
+$grp GenericEntity : "{4BCD2240C8EF8473}Prefabs/Props/Cultist/Prop_Cultist_Candles.et" {
+ {
+  coords 568.797 32.113 470.815
+  {
+   LightEntity {
+    ID "B1A81B70D2667030"
+    coords 0 0.45 0
+   }
+  }
+ }
+ {
+  coords 568.874 32.113 475.068
+ }
+ {
+  coords 568.5 32.113 482
+ }
+ {
+  coords 570.906 32.113 470.7
+  {
+   LightEntity {
+    ID "B1A81B70D2667030"
+    coords 0 0.45 0
+   }
+  }
+ }
+ {
+  coords 570.894 32.113 475.139
+ }
+ {
+  coords 571.3 32.113 482
+ }
+ {
+  coords 581.722 33.27 487.708
+ }
+ {
+  coords 554.424 55.435 455.643
+ }
+ {
+  coords 564.065 55.936 437.878
+ }
+ {
+  coords 549.591 59.179 440.516
+ }
+}
 $grp SCR_DestructibleBuildingEntity : "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et" {
  {
   coords 601.751 132.749 470.785
