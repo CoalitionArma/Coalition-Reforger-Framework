@@ -1771,8 +1771,8 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Pause menu mission info (COA_MissionInfo hook in COALITION Lobby): the wave state, from replicated values
-	override void COA_AppendMissionInfo(notnull array<string> lines)
+	//! Pause menu mission info (CRF_MissionInfo hook): the wave state, from replicated values
+	override void CRF_AppendMissionInfo(notnull array<string> lines)
 	{
 		switch (m_iPhase)
 		{
