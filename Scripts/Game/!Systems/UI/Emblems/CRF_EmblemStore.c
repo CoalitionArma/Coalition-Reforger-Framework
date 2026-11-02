@@ -57,6 +57,18 @@ class CRF_EmblemStore
 		return s_Instance;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	void CRF_EmblemStore()
+	{
+		COA_KilledByCard.GetOnShown().Insert(OnKilledByCardShown);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnKilledByCardShown(COA_SpectatorDamageReportEntry entry)
+	{
+		COA_KilledByCard.CRF_OnCardShown(entry);
+	}
+
 	// ── Client ───────────────────────────────────────────────────────────────────────────────────
 	//------------------------------------------------------------------------------------------------
 	//! \return false when the server hasn't sent anything for the player (yet) - COA_KilledByCard.CRF_OnEmblem

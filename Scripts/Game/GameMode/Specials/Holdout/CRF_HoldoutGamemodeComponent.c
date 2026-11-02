@@ -1771,6 +1771,38 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Pause menu mission info (COA_MissionInfo hook in COALITION Lobby): the wave state, from replicated values
+	override void COA_AppendMissionInfo(notnull array<string> lines)
+	{
+		switch (m_iPhase)
+		{
+			case CRF_EHoldoutPhase.PREP:
+			{
+				if (m_iPhaseSecondsLeft > 0)
+					lines.Insert(string.Format("Holdout: first wave in %1", SCR_FormatHelper.FormatTime(m_iPhaseSecondsLeft)));
+				else
+					lines.Insert("Holdout: waves start when the round goes live");
+				break;
+			}
+			case CRF_EHoldoutPhase.WAVE:
+			{
+				lines.Insert(string.Format("Holdout: wave %1 under way", m_iWave));
+				break;
+			}
+			case CRF_EHoldoutPhase.LULL:
+			{
+				lines.Insert(string.Format("Holdout: wave %1 held, next wave in %2", m_iWave, SCR_FormatHelper.FormatTime(m_iPhaseSecondsLeft)));
+				break;
+			}
+			case CRF_EHoldoutPhase.ENDED:
+			{
+				lines.Insert(string.Format("Holdout: over after wave %1", m_iWave));
+				break;
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	string GetDefenderFactionKey()
 	{
 		return m_sDefenderFactionKey;
