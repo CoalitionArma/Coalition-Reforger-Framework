@@ -1,0 +1,12 @@
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{48C4BA0B4E41763D}Assets/Vehicles/Wheeled/M923A1/M923A1_Cargo.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ModelGeometry 1
+   Static 1
+  }
+ }
+}
