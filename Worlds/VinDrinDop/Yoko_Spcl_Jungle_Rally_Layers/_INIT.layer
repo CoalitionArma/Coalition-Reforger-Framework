@@ -28,12 +28,73 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseSafestartTimeLimit 0
  m_iSafestartTimeLimit 0
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6ACA30A4E13D5726}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Jungle Rally Time"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6ACA30A4E13D2A33}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData ""
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACA30A4E13D2B46}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACA30A4E13D2BF4}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACA30A4E13D2C12}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 1
  m_iFactionTwoRatio 1
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6AB63D05C164AB69}" {
+  COA_SlottingGroup "{6ACA30A4E29AE092}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -43,7 +104,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164ACCA}" {
+  COA_SlottingGroup "{6ACA30A4E29AE25E}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -53,7 +114,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164AD7A}" {
+  COA_SlottingGroup "{6ACA30A4E29AE2D1}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -63,7 +124,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164ADFD}" {
+  COA_SlottingGroup "{6ACA30A4E29AE35A}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -73,7 +134,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164AE7C}" {
+  COA_SlottingGroup "{6ACA30A4E29AE328}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -83,7 +144,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164AEFE}" {
+  COA_SlottingGroup "{6ACA30A4E29AE3B7}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -93,7 +154,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164AF7A}" {
+  COA_SlottingGroup "{6ACA30A4E29AE407}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -103,7 +164,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164AFE4}" {
+  COA_SlottingGroup "{6ACA30A4E29AE495}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -113,7 +174,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A019}" {
+  COA_SlottingGroup "{6ACA30A4E29AE51B}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -123,7 +184,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A089}" {
+  COA_SlottingGroup "{6ACA30A4E29AE59B}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -133,7 +194,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A105}" {
+  COA_SlottingGroup "{6ACA30A4E29AE664}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -143,7 +204,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A1A8}" {
+  COA_SlottingGroup "{6ACA30A4E29AE6F6}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -153,7 +214,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A230}" {
+  COA_SlottingGroup "{6ACA30A4E29AE77E}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -163,7 +224,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A2BB}" {
+  COA_SlottingGroup "{6ACA30A4E29AE7FE}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -173,7 +234,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A33D}" {
+  COA_SlottingGroup "{6ACA30A4E29AF877}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -183,7 +244,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A380}" {
+  COA_SlottingGroup "{6ACA30A4E29AF8EF}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -193,7 +254,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A415}" {
+  COA_SlottingGroup "{6ACA30A4E29AF918}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -203,7 +264,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A498}" {
+  COA_SlottingGroup "{6ACA30A4E29AF9E3}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -213,7 +274,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A56F}" {
+  COA_SlottingGroup "{6ACA30A4E29AFA73}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -223,7 +284,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A5FA}" {
+  COA_SlottingGroup "{6ACA30A4E29AFAC7}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -233,7 +294,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A679}" {
+  COA_SlottingGroup "{6ACA30A4E29AFB4A}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -243,7 +304,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A6F3}" {
+  COA_SlottingGroup "{6ACA30A4E29AFBD0}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -253,7 +314,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A741}" {
+  COA_SlottingGroup "{6ACA30A4E29AFBA3}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -263,7 +324,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164A7D7}" {
+  COA_SlottingGroup "{6ACA30A4E29AFC34}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -273,7 +334,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164B859}" {
+  COA_SlottingGroup "{6ACA30A4E29AFC86}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -283,7 +344,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164B8CA}" {
+  COA_SlottingGroup "{6ACA30A4E29AFD0C}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -293,7 +354,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164B94B}" {
+  COA_SlottingGroup "{6ACA30A4E29AFD8D}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -303,7 +364,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164B9F9}" {
+  COA_SlottingGroup "{6ACA30A4E29AFE11}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -313,7 +374,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164BA44}" {
+  COA_SlottingGroup "{6ACA30A4E29AFEE0}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {
@@ -323,7 +384,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AB63D05C164BAC1}" {
+  COA_SlottingGroup "{6ACA30A4E29AFF73}" {
    m_sCallsign "DUO"
    m_FlagType INFANTRY
    m_aSlots {

@@ -1,12 +1,6 @@
-$grp SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Base.et" {
- {
-  coords 736.464 0.753 1346.753
-  angles 0.067 3.965 -30.49
- }
- {
-  coords 942.1 24.21 2790.312
-  angles 2.564 -79.004 -10.489
- }
+SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Base.et" {
+ coords 736.464 0.753 1346.753
+ angles 0.067 3.965 -30.49
 }
 GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
  coords 1144.626 8.339 2067.033
@@ -243,7 +237,7 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structur
   angles 0 -176.207 0
  }
  {
-  coords 2905.889 -0 560.654
+  coords 2905.889 0 560.654
   angles 0 -176.207 0
  }
  {
