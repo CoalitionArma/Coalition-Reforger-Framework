@@ -2,7 +2,8 @@
 // CRF_RallyStageGamemodeComponent: rally stage with staggered starts, like a real rally
 //
 // Instead of everyone racing off the line together, crews are given a start order and leave one at a
-// time, m_fStartInterval seconds apart. Each crew's stage clock starts at its own start time and stops
+// time, m_fStartInterval seconds apart (m_fLargeFieldStartInterval with more than m_iLargeFieldPlayers
+// players). Each crew's stage clock starts at its own start time and stops
 // at the finish; the fastest stage time wins. It is the CRF_RallyGamemodeComponent course (same
 // rally_start / rally_cpN / rally_end entities, smoke, map markers, HUD and results screen) with
 // different timing:
@@ -56,6 +57,12 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 	[Attribute("30", UIWidgets.EditBox, desc: "Seconds between one crew's start and the next", params: "5 600 1", category: "Rally - Stage")]
 	protected float m_fStartInterval;
+
+	[Attribute("20", UIWidgets.EditBox, desc: "With more players than this in the race, crews start Large Field Start Interval apart instead", params: "0 200 1", category: "Rally - Stage")]
+	protected int m_iLargeFieldPlayers;
+
+	[Attribute("15", UIWidgets.EditBox, desc: "Seconds between one crew's start and the next when more than Large Field Players are in the race", params: "5 600 1", category: "Rally - Stage")]
+	protected float m_fLargeFieldStartInterval;
 
 	[Attribute("10", UIWidgets.EditBox, desc: "Seconds added to a crew's stage time for crossing the start line before their start time", params: "0 600 1", category: "Rally - Stage")]
 	protected float m_fJumpStartPenalty;
@@ -461,7 +468,8 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			SortCrewsBySlotting(crewKeys, crews);
 		}
 
-		int intervalMs = m_fStartInterval * 1000;
+		float interval = GetStartInterval();
+		int intervalMs = interval * 1000;
 		int firstStartMs = now + m_fFirstStartDelay * 1000;
 
 		m_iNextSlot = 0;
@@ -472,7 +480,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 		BuildAndReplicateStandings();
 
-		int intervalSecs = m_fStartInterval;
+		int intervalSecs = interval;
 		int firstSecs = m_fFirstStartDelay;
 		Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] Start order drawn - %1 crew(s), %2 s apart. First away in %3 s.",
 			crewKeys.Count(), intervalSecs, firstSecs));
@@ -546,7 +554,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			members.Insert(entry.m_iPlayerId);
 		}
 
-		int intervalMs = m_fStartInterval * 1000;
+		int intervalMs = GetStartInterval() * 1000;
 		foreach (string newKey : newKeys)
 		{
 			// At the back of the queue, and never sooner than one interval from now
@@ -556,6 +564,16 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 			AssignSlot(newCrews.Get(newKey), startMs);
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Seconds between starts: shorter in a big field, so the last crews aren't left waiting
+	protected float GetStartInterval()
+	{
+		if (m_aPlayerEntries.Count() > m_iLargeFieldPlayers)
+			return m_fLargeFieldStartInterval;
+
+		return m_fStartInterval;
 	}
 
 	//------------------------------------------------------------------------------------------------

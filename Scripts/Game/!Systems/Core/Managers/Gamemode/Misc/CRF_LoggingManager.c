@@ -60,7 +60,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	// Winner tracking variables
 	private FactionKey m_sWinningFaction = "";
-	private string m_sWinnerMethod = ""; // "automatic", "manual", "timeout", "inconclusive"
+	private string m_sWinnerMethod = ""; // "automatic", "manual", "timeout", "inconclusive" (unused), or an admin's result line
 	private bool m_bWinnerDetermined = false;
 	
 	// Singleton instance
@@ -948,8 +948,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! Set the winning faction for this mission
-	//! \param[in] factionKey The faction key that won (BLUFOR, OPFOR, INDFOR, CIV)
-	//! \param[in] method The method used to determine the winner (manual, automatic, timeout, etc.)
+	//! \param[in] factionKey The faction key that won (BLUFOR, OPFOR, INDFOR, CIV), or
+	//! COA_MissionResultHelper.DRAW for a draw: logged as side DRAW (the bot's isDrawResult), and since no
+	//! player's faction matches it nobody gets the winner flag/XP bonus (CRF_ServerStatsManager)
+	//! \param[in] method The method used to determine the winner (manual, automatic, timeout, etc.), or the
+	//! admin's result line when ended from the admin menu - the website shows it as the result's reason
 	void SetWinningFaction(FactionKey factionKey, string method = "manual")
 	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
@@ -966,7 +969,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		factionKey.ToUpper();
 		
 		// Validate faction key is one of the supported factions
-		if (factionKey != "BLUFOR" && factionKey != "OPFOR" && factionKey != "INDFOR" && factionKey != "CIV")
+		if (factionKey != "BLUFOR" && factionKey != "OPFOR" && factionKey != "INDFOR" && factionKey != "CIV" && factionKey != COA_MissionResultHelper.DRAW)
 		{
 			Print(string.Format("[CRF_LoggingManager] Warning: Invalid faction key '%1' provided to SetWinningFaction", factionKey), LogLevel.WARNING);
 			return;

@@ -239,16 +239,16 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{88536FB5E7857958}Configs/Gearscripts/Standard/Modern/COA_GS_ModernBund_Fleck.conf"
-  m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
+  m_rGearScript "{658FB2B8E3ED1BA4}Configs/Gearscripts/Standard/40s/COA_GS_Germany_Late_War.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/COA_GS_TFMSV.conf"
-  m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
+  m_rGearScript "{C5F35C0C2EA7480B}Configs/Gearscripts/Standard/40s/COA_GS_USSR_Late_War.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
@@ -270,11 +270,22 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   SCR_FactionManager "6A4B0B9ADBB5C1CA" {
    ID "632A77473B3CC3A8"
    Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
     SCR_Faction "{607AA5C7A94496DA}" {
      m_aFriendlyFactionsIds {
       "BLUFOR"
       "OPFOR"
       "INDFOR"
+     }
+    }
+    SCR_Faction "{652689E761F0C3F5}" {
+     m_aFriendlyFactionsIds {
      }
     }
     SCR_Faction "{628B22E9B4056C88}" {

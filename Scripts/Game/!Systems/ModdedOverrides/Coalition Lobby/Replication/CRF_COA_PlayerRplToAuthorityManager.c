@@ -629,6 +629,26 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Admin menu > End with result: log the winner (or DRAW) the same way /aar does, before the AAR
+	//! transition flushes the stats (winner flag/XP bonus) and broadcasts the outro. The admin's result
+	//! line, when given, replaces "manual" as the logged reason, so the website shows e.g.
+	//! "BLUFOR win (Survivors extracted)" / "Draw (Time ran out)".
+	override protected void RecordMissionResult(string outcome, string resultNote)
+	{
+		super.RecordMissionResult(outcome, resultNote);
+
+		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+		if (!loggingManager)
+			return;
+
+		string method = "manual";
+		if (!resultNote.IsEmpty())
+			method = resultNote;
+
+		loggingManager.SetWinningFaction(outcome, method);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{

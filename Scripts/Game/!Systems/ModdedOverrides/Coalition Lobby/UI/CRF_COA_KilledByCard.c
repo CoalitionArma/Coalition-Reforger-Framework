@@ -10,9 +10,9 @@ modded class COA_KilledByCard
 	protected static int s_iCRFEmblemPlayerId;		// whose emblem the card is waiting for
 
 	//------------------------------------------------------------------------------------------------
-	override protected static void Show(COA_SpectatorDamageReportEntry entry)
+	//! A card is up (COA_KilledByCard.GetOnShown, added by CRF_EmblemStore)
+	static void CRF_OnCardShown(COA_SpectatorDamageReportEntry entry)
 	{
-		super.Show(entry);
 		if (!s_wRoot)
 			return;
 
