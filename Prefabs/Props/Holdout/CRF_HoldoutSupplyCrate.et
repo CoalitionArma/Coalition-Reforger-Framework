@@ -283,6 +283,94 @@ GenericEntity {
      "Sort Priority" 77
      m_iEntry 23
     }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000100}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000101}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 76
+     m_iEntry 24
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000102}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000103}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 75
+     m_iEntry 25
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000104}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000105}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 74
+     m_iEntry 26
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000106}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000107}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 73
+     m_iEntry 27
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB000000108}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB000000109}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 72
+     m_iEntry 28
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000010A}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000010B}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 71
+     m_iEntry 29
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000010C}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000010D}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 70
+     m_iEntry 30
+    }
+    CRF_HoldoutRequisitionAction "{7C1AEAB00000010E}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{7C1AEAB00000010F}" {
+      Name "Requisition"
+     }
+     Duration 1
+     "Sort Priority" 69
+     m_iEntry 31
+    }
    }
   }
   RplComponent "{7C1AEAB00000004B}" {

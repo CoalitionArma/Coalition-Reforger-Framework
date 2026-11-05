@@ -177,7 +177,13 @@ modded class COA_PlayerChatCommandManager
 				case "CIVILIAN":
 					winningFaction = "CIV";
 					break;
-					
+
+				// No winner - logged as a draw (see COA_MissionResultHelper)
+				case "DRAW":
+				case "TIE":
+					winningFaction = COA_MissionResultHelper.DRAW;
+					break;
+
 				default:
 					// Invalid faction specified
 					if (panel)
@@ -185,7 +191,7 @@ modded class COA_PlayerChatCommandManager
 						SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
 						if (chatComponent)
 						{
-							string validOptions = "Valid faction options: blufor (blu), opfor (opf), indfor (ind), civ";
+							string validOptions = "Valid options: blufor (blu), opfor (opf), indfor (ind), civ, draw";
 							chatComponent.ShowMessage(string.Format("Invalid faction '%1'. %2", data, validOptions));
 						}
 					}
@@ -201,7 +207,7 @@ modded class COA_PlayerChatCommandManager
 				{
 					SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
 					if (chatComponent)
-						chatComponent.ShowMessage(string.Format("Winner set to %1. Advancing to AAR...", winningFaction));
+						chatComponent.ShowMessage(string.Format("Result set to %1. Advancing to AAR...", COA_MissionResultHelper.GetOutcomeText(winningFaction)));
 				}
 			}
 			
@@ -216,7 +222,7 @@ modded class COA_PlayerChatCommandManager
 			{
 				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
 				if (chatComponent)
-					chatComponent.ShowMessage("Usage: /aar [faction] - Examples: /aar blufor, /aar opfor, /aar indfor, /aar civ");
+					chatComponent.ShowMessage("Usage: /aar [faction] - Examples: /aar blufor, /aar opfor, /aar indfor, /aar civ, /aar draw");
 					
 			}
 			return;

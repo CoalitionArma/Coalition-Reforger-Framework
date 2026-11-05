@@ -423,15 +423,19 @@ class COA_AARMenu: ChimeraMenuBase
 			if (winningFaction != "" && GetGame().GetFactionManager())
 				faction = GetGame().GetFactionManager().GetFactionByKey(winningFaction);
 
+			// Draws have no faction (or colour); anything else unknown is just "complete"
+			string resultText = "MISSION COMPLETE";
+			if (faction != null || winningFaction == COA_MissionResultHelper.DRAW)
+				resultText = GetOutcomeText(winningFaction);
+
 			if (faction)
-			{
-				m_wResultText.SetText(GetOutcomeText(winningFaction));
 				m_wResultText.SetColor(ReadableOnHeader(faction.GetFactionColor()));
-			}
-			else
-			{
-				m_wResultText.SetText("MISSION COMPLETE");
-			}
+
+			// The admin's result line when the mission was ended from the admin menu ("Survivors extracted")
+			if (broadcastManager != null && !broadcastManager.m_sOutroResultNote.IsEmpty())
+				resultText = resultText + " - " + broadcastManager.m_sOutroResultNote;
+
+			m_wResultText.SetText(resultText);
 		}
 
 		// The mission ID can arrive after the menu opens (the server looks it up when the AAR starts)
@@ -482,6 +486,7 @@ class COA_AARMenu: ChimeraMenuBase
 			case "OPFOR": return "OPFOR VICTORY";
 			case "INDFOR": return "INDFOR VICTORY";
 			case "CIV": return "CIVILIAN VICTORY";
+			case "DRAW": return "DRAW";
 		}
 		return "MISSION COMPLETE";
 	}

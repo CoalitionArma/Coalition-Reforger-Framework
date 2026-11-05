@@ -1,0 +1,9 @@
+GenericEntity : "{7AC107CA7AFC9B59}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_Soviet.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   MaxCumulativeVolume 40000
+   m_fMaxWeight 600
+  }
+ }
+}

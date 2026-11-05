@@ -17,7 +17,8 @@
 //   Windows that are separate parts of the building are found by themselves; ones built into the
 //   building's model can't be, so place a marker in each (m_aWindowNames). The log says what was found.
 //
-//   Requisition: defenders earn money for kills (m_iKillReward), for every board they put back
+//   Requisition: defenders earn money for kills (m_iKillReward), for assists - hurting a zombie someone
+//   else killed by at least m_fAssistMinDamage (m_iAssistReward) -, for every board they put back
 //   (m_iRepairReward) and for each wave they live through (m_iWaveReward). They spend it at the supply
 //   crate on the quartermaster's catalogue (m_aShop): weapons with ammunition, grenades, medical kits,
 //   and upgrades for the whole defence - reinforced boards, a fourth board, a bigger resupply, a radio
@@ -216,6 +217,12 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("50", UIWidgets.EditBox, "Money for each zombie killed", params: "0 10000 1", category: "Holdout - Requisition")]
 	protected int m_iKillReward;
 
+	[Attribute("25", UIWidgets.EditBox, "Money for an assist: every defender other than the killer who did at least Assist Min Damage to the zombie", params: "0 10000 1", category: "Holdout - Requisition")]
+	protected int m_iAssistReward;
+
+	[Attribute("10", UIWidgets.EditBox, "Damage a defender must do to a zombie (before its wave toughness) to get an assist when it dies", params: "0 1000 1", category: "Holdout - Requisition")]
+	protected float m_fAssistMinDamage;
+
 	[Attribute("20", UIWidgets.EditBox, "Money for each board put back on a barricade", params: "0 10000 1", category: "Holdout - Requisition")]
 	protected int m_iRepairReward;
 
@@ -225,7 +232,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("1.75", UIWidgets.EditBox, "Board toughness with the reinforced boards upgrade (times the barricade's)", params: "1 10 0.05", category: "Holdout - Requisition")]
 	protected float m_fReinforcedBoardScale;
 
-	[Attribute(desc: "The quartermaster's catalogue, bought at the supply crate. Empty = US Late War weapons, ammunition, grenades, medical kits and the defence upgrades. The crate prefab has a slot for each of the first 24.", category: "Holdout - Requisition")]
+	[Attribute(desc: "The quartermaster's catalogue, bought at the supply crate. Empty = US Late War weapons, ammunition, grenades, medical kits and the defence upgrades. The crate prefab has a slot for each of the first 32.", category: "Holdout - Requisition")]
 	protected ref array<ref CRF_HoldoutShopEntry> m_aShop;
 
 	//===================================================================================
@@ -255,6 +262,9 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	// Every machine: money by player (the server's is the real one; clients unpack m_sMoney into it)
 	protected ref map<int, int> m_mMoney = new map<int, int>();
 	protected bool m_bMoneyDirty;
+
+	// Server: damage done to each zombie, by player, for assists (zombie RplId -> playerId -> damage)
+	protected ref map<RplId, ref map<int, float>> m_mZombieDamage = new map<RplId, ref map<int, float>>();
 
 	// Every machine: the catalogue in use (m_aShop, or the default)
 	protected ref array<ref CRF_HoldoutShopEntry> m_aShopEntries = {};
@@ -314,7 +324,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const ResourceName BACON_HORDE = "{6AEA65C9E88BB0B2}622120A5448725E3/Prefabs/Groups/Group_Zombies_Horde.et";
 
 	// The crate prefab has requisition actions for this many catalogue slots
-	protected static const int SHOP_SLOTS = 24;
+	protected static const int SHOP_SLOTS = 32;
 
 	protected static const ResourceName MARKER_ICON = "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds";
 
@@ -967,6 +977,8 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void StartWave(int wave)
 	{
+		ForgetGoneZombies();
+
 		// Sized for the defenders still standing
 		array<int> defenders = {};
 		CRF_SpecialsHelper.GetAlivePlayers(m_sDefenderFactionKey, defenders);
@@ -1584,7 +1596,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	// REQUISITION
 	//===================================================================================
 
-	//! Server: a zombie a defender killed pays
+	//! Server: a zombie a defender killed pays the killer, and everyone else who hurt it enough an assist
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		super.OnControllableDestroyed(instigatorContextData);
@@ -1592,14 +1604,60 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		if (!Replication.IsServer() || m_iPhase == CRF_EHoldoutPhase.ENDED)
 			return;
 
-		int killerId = instigatorContextData.GetKillerPlayerID();
 		SCR_ChimeraCharacter victim = SCR_ChimeraCharacter.Cast(instigatorContextData.GetVictimEntity());
-		if (killerId <= 0 || !victim)
+		if (!victim || !IsZombie(victim))
 			return;
 
-		Faction faction = victim.GetFaction();
-		if (faction && faction.GetFactionKey() == m_sZombieFactionKey)
+		int killerId = instigatorContextData.GetKillerPlayerID();
+		if (killerId > 0)
 			AddMoney(killerId, m_iKillReward);
+
+		RplId victimId;
+		map<int, float> damageBy;
+		if (!COA_ReplicationHelper.GetRplId(victim, victimId) || !m_mZombieDamage.Find(victimId, damageBy))
+			return;
+
+		m_mZombieDamage.Remove(victimId);
+		foreach (int playerId, float damage : damageBy)
+		{
+			if (playerId != killerId && damage >= m_fAssistMinDamage)
+				AddMoney(playerId, m_iAssistReward);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server (SCR_CharacterDamageManagerComponent.HijackDamageHandling): a player hurt a character;
+	//! damage to zombies is added up for assists
+	void OnZombieDamaged(IEntity zombie, int playerId, float damage)
+	{
+		if (playerId <= 0 || damage <= 0 || m_iPhase == CRF_EHoldoutPhase.ENDED || !IsZombie(zombie))
+			return;
+
+		RplId zombieId;
+		if (!COA_ReplicationHelper.GetRplId(zombie, zombieId))
+			return;
+
+		map<int, float> damageBy = m_mZombieDamage.Get(zombieId);
+		if (!damageBy)
+		{
+			damageBy = new map<int, float>();
+			m_mZombieDamage.Insert(zombieId, damageBy);
+		}
+
+		float done;
+		damageBy.Find(playerId, done);
+		damageBy.Set(playerId, done + damage);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server, each wave: forget the damage to zombies that went without dying (cleaned up, stuck)
+	protected void ForgetGoneZombies()
+	{
+		for (int i = m_mZombieDamage.Count() - 1; i >= 0; i--)
+		{
+			if (!COA_ReplicationHelper.GetEntityFromRplId(m_mZombieDamage.GetKey(i)))
+				m_mZombieDamage.RemoveElement(i);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1710,6 +1768,38 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	int GetPhaseSecondsLeft()
 	{
 		return m_iPhaseSecondsLeft;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Pause menu mission info (CRF_MissionInfo hook): the wave state, from replicated values
+	override void CRF_AppendMissionInfo(notnull array<string> lines)
+	{
+		switch (m_iPhase)
+		{
+			case CRF_EHoldoutPhase.PREP:
+			{
+				if (m_iPhaseSecondsLeft > 0)
+					lines.Insert(string.Format("Holdout: first wave in %1", SCR_FormatHelper.FormatTime(m_iPhaseSecondsLeft)));
+				else
+					lines.Insert("Holdout: waves start when the round goes live");
+				break;
+			}
+			case CRF_EHoldoutPhase.WAVE:
+			{
+				lines.Insert(string.Format("Holdout: wave %1 under way", m_iWave));
+				break;
+			}
+			case CRF_EHoldoutPhase.LULL:
+			{
+				lines.Insert(string.Format("Holdout: wave %1 held, next wave in %2", m_iWave, SCR_FormatHelper.FormatTime(m_iPhaseSecondsLeft)));
+				break;
+			}
+			case CRF_EHoldoutPhase.ENDED:
+			{
+				lines.Insert(string.Format("Holdout: over after wave %1", m_iWave));
+				break;
+			}
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1901,8 +1991,9 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! The catalogue when the mission doesn't set one: US Late War (Finest Hour) ammunition and weapons - the
-	//! defenders start with a pistol and buy the rest - kit, and the upgrades
+	//! The catalogue when the mission doesn't set one: US Late War (Finest Hour) ammunition and weapons, then
+	//! Cold War and modern ones (vanilla, RHS) for more - the defenders start with a pistol and buy the rest -
+	//! kit, and the upgrades
 	protected void BuildDefaultShop()
 	{
 		ResourceName garand = "{6FF6BC1AA4BC98BE}Prefabs/Weapons/Rifles/M1_Garand/Rifle_M1.et";
@@ -1918,6 +2009,19 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		ResourceName springfield = "{4191E250FDEC2FBF}Prefabs/Weapons/Rifles/M1903A3/Rifle_M1903A4.et";
 		ResourceName springfieldClip = "{228B4D35573544B0}Prefabs/Weapons/Magazines/M1903A3/Clip_762x63_M1903_5rnd_Ball_M2.et";
 		ResourceName pistolMag = "{BEDAB3A48410CF6C}Prefabs/Weapons/Magazines/M1911/Magazine_1143x23_M1911_7rnd_Ball_M1.et";
+		ResourceName m16 = "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et";
+		ResourceName m16Mag = "{2EBF60EF24B108FC}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_Ball.et";
+		ResourceName m21 = "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et";
+		ResourceName m21Mag = "{BCB5E5C608ECFF50}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M80.et";
+		ResourceName m249 = "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et";
+		ResourceName m249Box = "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et";
+		ResourceName m60 = "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et";
+		ResourceName m60Box = "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et";
+		ResourceName m72 = "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et";
+		// RHS: Status Quo - its rifles get RHS magazines
+		ResourceName m4 = "{31070CB2D8A07679}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1.et";
+		ResourceName m27 = "{66AAEDA477051298}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR.et";
+		ResourceName rhsMag = "{DD5358193169908B}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1.et";
 		ResourceName grenade = "{9404B8186F1501E7}Prefabs/Weapons/Grenades/Mk2/Grenade_Mk2_Olive.et";
 		ResourceName dressing = "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et";
 		ResourceName tourniquet = "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et";
@@ -1927,57 +2031,100 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		CRF_HoldoutShopEntry entry1 = AddShopEntry("M1911 magazines (4)", 50, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry1, pistolMag, 4);
 
-		CRF_HoldoutShopEntry entry2 = AddShopEntry("M1 Carbine magazines (4)", 75, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry2 = AddShopEntry("M1 Carbine magazines (4)", 60, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry2, carbineMag, 4);
 
-		CRF_HoldoutShopEntry entry3 = AddShopEntry("M1 Garand clips (6)", 100, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry3 = AddShopEntry("M1 Garand clips (6)", 80, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry3, garandClip, 6);
 
-		CRF_HoldoutShopEntry entry4 = AddShopEntry("M1903 clips (6)", 75, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry4 = AddShopEntry("M1903 clips (6)", 60, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry4, springfieldClip, 6);
 
-		CRF_HoldoutShopEntry entry5 = AddShopEntry("M3 grease gun magazines (3)", 100, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry5 = AddShopEntry("M3 grease gun magazines (3)", 80, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry5, greaseGunMag, 3);
 
-		CRF_HoldoutShopEntry entry6 = AddShopEntry("M1A1 Thompson magazines (3)", 125, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry6 = AddShopEntry("M1A1 Thompson magazines (3)", 100, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry6, thompsonMag, 3);
 
-		CRF_HoldoutShopEntry entry7 = AddShopEntry("M1918 BAR magazines (3)", 150, CRF_EHoldoutShopKind.ITEMS);
+		CRF_HoldoutShopEntry entry7 = AddShopEntry("M1918 BAR magazines (3)", 120, CRF_EHoldoutShopKind.ITEMS);
 		AddShopItems(entry7, barMag, 3);
 
-		// Weapons
-		CRF_HoldoutShopEntry entry8 = AddShopEntry("M1 Carbine, 2 magazines", 750, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry8, carbine, 1);
-		AddShopItems(entry8, carbineMag, 2);
+		CRF_HoldoutShopEntry entry8 = AddShopEntry("M16A2 magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry8, m16Mag, 4);
 
-		CRF_HoldoutShopEntry entry9 = AddShopEntry("M1 Garand, 2 clips", 900, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry9, garand, 1);
-		AddShopItems(entry9, garandClip, 2);
+		CRF_HoldoutShopEntry entry9 = AddShopEntry("M4A1 / M27 IAR magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry9, rhsMag, 4);
 
-		CRF_HoldoutShopEntry entry10 = AddShopEntry("M1903A4 sniper rifle, 2 clips", 1200, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry10, springfield, 1);
-		AddShopItems(entry10, springfieldClip, 2);
+		CRF_HoldoutShopEntry entry10 = AddShopEntry("M21 magazines (4)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry10, m21Mag, 4);
 
-		CRF_HoldoutShopEntry entry11 = AddShopEntry("M3 grease gun, 2 magazines", 1350, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry11, greaseGun, 1);
-		AddShopItems(entry11, greaseGunMag, 2);
+		CRF_HoldoutShopEntry entry11 = AddShopEntry("M249 200-round box", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry11, m249Box, 1);
 
-		CRF_HoldoutShopEntry entry12 = AddShopEntry("M1A1 Thompson, 2 magazines", 1800, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry12, thompson, 1);
-		AddShopItems(entry12, thompsonMag, 2);
+		CRF_HoldoutShopEntry entry12 = AddShopEntry("M60 100-round belts (2)", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry12, m60Box, 2);
 
-		CRF_HoldoutShopEntry entry13 = AddShopEntry("M1918 BAR, 2 magazines", 2700, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry13, bar, 1);
-		AddShopItems(entry13, barMag, 2);
+		// Weapons: Late War
+		CRF_HoldoutShopEntry entry13 = AddShopEntry("M1 Carbine, 2 magazines", 500, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry13, carbine, 1);
+		AddShopItems(entry13, carbineMag, 2);
+
+		CRF_HoldoutShopEntry entry14 = AddShopEntry("M1 Garand, 2 clips", 650, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry14, garand, 1);
+		AddShopItems(entry14, garandClip, 2);
+
+		CRF_HoldoutShopEntry entry15 = AddShopEntry("M1903A4 sniper rifle, 2 clips", 850, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry15, springfield, 1);
+		AddShopItems(entry15, springfieldClip, 2);
+
+		CRF_HoldoutShopEntry entry16 = AddShopEntry("M3 grease gun, 2 magazines", 950, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry16, greaseGun, 1);
+		AddShopItems(entry16, greaseGunMag, 2);
+
+		CRF_HoldoutShopEntry entry17 = AddShopEntry("M1A1 Thompson, 2 magazines", 1250, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry17, thompson, 1);
+		AddShopItems(entry17, thompsonMag, 2);
+
+		CRF_HoldoutShopEntry entry18 = AddShopEntry("M1918 BAR, 2 magazines", 1900, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry18, bar, 1);
+		AddShopItems(entry18, barMag, 2);
+
+		// Weapons: Cold War and modern
+		CRF_HoldoutShopEntry entry19 = AddShopEntry("M16A2, 2 magazines", 1400, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry19, m16, 1);
+		AddShopItems(entry19, m16Mag, 2);
+
+		CRF_HoldoutShopEntry entry20 = AddShopEntry("M4A1, 2 magazines", 1600, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry20, m4, 1);
+		AddShopItems(entry20, rhsMag, 2);
+
+		CRF_HoldoutShopEntry entry21 = AddShopEntry("M21 sniper rifle, 2 magazines", 1700, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry21, m21, 1);
+		AddShopItems(entry21, m21Mag, 2);
+
+		CRF_HoldoutShopEntry entry22 = AddShopEntry("M27 IAR, 2 magazines", 2100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry22, m27, 1);
+		AddShopItems(entry22, rhsMag, 2);
+
+		CRF_HoldoutShopEntry entry23 = AddShopEntry("M249, 200-round box", 2600, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry23, m249, 1);
+		AddShopItems(entry23, m249Box, 1);
+
+		CRF_HoldoutShopEntry entry24 = AddShopEntry("M60, 2 belts", 2800, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry24, m60, 1);
+		AddShopItems(entry24, m60Box, 2);
 
 		// Kit
-		CRF_HoldoutShopEntry entry14 = AddShopEntry("Three Mk 2 grenades", 150, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry14, grenade, 3);
+		CRF_HoldoutShopEntry entry25 = AddShopEntry("Three Mk 2 grenades", 150, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry25, grenade, 3);
 
-		CRF_HoldoutShopEntry entry15 = AddShopEntry("Medical kit (4 dressings, tourniquet, morphine)", 100, CRF_EHoldoutShopKind.ITEMS);
-		AddShopItems(entry15, dressing, 4);
-		AddShopItems(entry15, tourniquet, 1);
-		AddShopItems(entry15, morphine, 1);
+		CRF_HoldoutShopEntry entry26 = AddShopEntry("M72 LAW", 450, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry26, m72, 1);
+
+		CRF_HoldoutShopEntry entry27 = AddShopEntry("Medical kit (4 dressings, tourniquet, morphine)", 100, CRF_EHoldoutShopKind.ITEMS);
+		AddShopItems(entry27, dressing, 4);
+		AddShopItems(entry27, tourniquet, 1);
+		AddShopItems(entry27, morphine, 1);
 
 		// The defence
 		AddShopEntry("Upgrade: reinforced boards on every barricade", 1500, CRF_EHoldoutShopKind.REINFORCED_BOARDS);
@@ -2002,6 +2149,7 @@ class CRF_HoldoutGamemodeComponent : SCR_BaseGameModeComponent
 		m_iPhase = CRF_EHoldoutPhase.ENDED;
 		Replication.BumpMe();
 		GetGame().GetCallqueue().Remove(Tick);
+		m_mZombieDamage.Clear();
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", "OVERRUN", string.Format("Nobody is left. You held out for %1 wave(s).", held), 15);
 		Print(string.Format("%1 Overrun after %2 wave(s).", LOG, held), LogLevel.NORMAL);
