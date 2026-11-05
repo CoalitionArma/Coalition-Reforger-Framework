@@ -1,0 +1,514 @@
+OverlayWidgetClass {
+ Name "CRF_MissionInfoPanel"
+ Slot FrameWidgetSlot "{6B13C0DE00000002}" {
+  Anchor 1 0 1 0
+  PositionX -588
+  OffsetLeft -588
+  PositionY 72
+  OffsetTop 72
+  SizeX 540
+  OffsetRight 48
+  SizeY 640
+  OffsetBottom -712
+  SizeToContent 1
+ }
+ "Z Order" 5
+ {
+  SmartPanelWidgetClass "{6B13C0DE00000003}" {
+   Name "CardBG"
+   Slot OverlayWidgetSlot "{6B13C0DE00000004}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   Color 0.0033 0.0037 0.0052 0.9
+   style rounded_12px
+  }
+  SmartPanelWidgetClass "{6B13C0DE00000005}" {
+   Name "CardOutline"
+   Slot OverlayWidgetSlot "{6B13C0DE00000006}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   Color 1 1 1 0.05
+   style outline_rounded_12px
+  }
+  SizeLayoutWidgetClass "{6B13C0DE00000007}" {
+   Name "CardWidth"
+   Slot OverlayWidgetSlot "{6B13C0DE00000008}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+    Padding 22 18 22 20
+   }
+   AllowWidthOverride 1
+   WidthOverride 496
+   {
+    VerticalLayoutWidgetClass "{6B13C0DE00000009}" {
+     Name "ContentLayout"
+     Slot AlignableSlot "{6B13C0DE0000000A}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     {
+      TextWidgetClass "{6B13C0DE00000010}" {
+       Name "PanelTitle"
+       Slot LayoutSlot "{6B13C0DE00000011}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        SizeMode Auto
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "MISSION INFO"
+       "Font Size" 12
+       "Min Font Size" 12
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6B13C0DE00000012}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      RichTextWidgetClass "{6B13C0DE00000013}" {
+       Name "MissionName"
+       Slot LayoutSlot "{6B13C0DE00000014}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 2 0 0
+        SizeMode Auto
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text ""
+       "Font Size" 24
+       "Min Font Size" 16
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       Wrap 1
+       FontProperties FontProperties "{6B13C0DE00000015}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      TextWidgetClass "{6B13C0DE00000016}" {
+       Name "MissionMeta"
+       Slot LayoutSlot "{6B13C0DE00000017}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 2 0 0
+        SizeMode Auto
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text ""
+       "Font Size" 13
+       "Min Font Size" 9
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6B13C0DE00000018}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      RichTextWidgetClass "{6B13C0DE00000019}" {
+       Name "MissionDescription"
+       Slot LayoutSlot "{6B13C0DE0000001A}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 8 0 0
+        SizeMode Auto
+       }
+       Color 0.5836 0.6376 0.7526 1
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Top
+       Wrap 1
+       FontProperties FontProperties "{6B13C0DE0000001B}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      ImageWidgetClass "{6B13C0DE00000020}" {
+       Name "ObjectivesDivider"
+       Slot LayoutSlot "{6B13C0DE00000021}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 14 0 0
+        SizeMode Auto
+       }
+       Color 1 1 1 0.013
+       Size 1 1
+      }
+      HorizontalLayoutWidgetClass "{6B13C0DE00000022}" {
+       Name "ObjectivesHeader"
+       Slot LayoutSlot "{6B13C0DE00000023}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 10 0 4
+        SizeMode Auto
+       }
+       {
+        ImageWidgetClass "{6B13C0DE00000024}" {
+         Name "ObjectivesTick"
+         Slot LayoutSlot "{6B13C0DE00000025}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 3 11
+        }
+        TextWidgetClass "{6B13C0DE00000026}" {
+         Name "ObjectivesHeaderText"
+         Slot LayoutSlot "{6B13C0DE00000027}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Fill
+          FillWeight 1
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "OBJECTIVES"
+         "Font Size" 12
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE00000028}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+      RichTextWidgetClass "{6B13C0DE00000029}" {
+       Name "ObjectivesExtra"
+       Slot LayoutSlot "{6B13C0DE0000002A}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 0 0 4
+        SizeMode Auto
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Top
+       Wrap 1
+       FontProperties FontProperties "{6B13C0DE0000002B}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+      RichTextWidgetClass "{6B13C0DE0000002C}" {
+       Name "ObjectivesText"
+       Slot LayoutSlot "{6B13C0DE0000002D}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        SizeMode Auto
+       }
+       Color 0.5836 0.6376 0.7526 1
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Top
+       Wrap 1
+       FontProperties FontProperties "{6B13C0DE0000002E}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      ImageWidgetClass "{6B13C0DE00000030}" {
+       Name "TimeDivider"
+       Slot LayoutSlot "{6B13C0DE00000031}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 14 0 0
+        SizeMode Auto
+       }
+       Color 1 1 1 0.013
+       Size 1 1
+      }
+      HorizontalLayoutWidgetClass "{6B13C0DE00000032}" {
+       Name "TimeHeader"
+       Slot LayoutSlot "{6B13C0DE00000033}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 10 0 2
+        SizeMode Auto
+       }
+       {
+        ImageWidgetClass "{6B13C0DE00000034}" {
+         Name "TimeTick"
+         Slot LayoutSlot "{6B13C0DE00000035}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 3 11
+        }
+        TextWidgetClass "{6B13C0DE00000036}" {
+         Name "TimeHeaderText"
+         Slot LayoutSlot "{6B13C0DE00000037}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Fill
+          FillWeight 1
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "TIME LEFT"
+         "Font Size" 12
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE00000038}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6B13C0DE00000039}" {
+         Name "TimeValue"
+         Slot LayoutSlot "{6B13C0DE0000003A}" {
+          HorizontalAlign 2
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Auto
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text ""
+         "Font Size" 20
+         "Min Font Size" 14
+         "Horizontal Alignment" Right
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE0000003B}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+      TextWidgetClass "{6B13C0DE0000003C}" {
+       Name "TimeDetail"
+       Slot LayoutSlot "{6B13C0DE0000003D}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 11 0 0 0
+        SizeMode Auto
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text ""
+       "Font Size" 13
+       "Min Font Size" 9
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6B13C0DE0000003E}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      ImageWidgetClass "{6B13C0DE00000040}" {
+       Name "AdminsDivider"
+       Slot LayoutSlot "{6B13C0DE00000041}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 14 0 0
+        SizeMode Auto
+       }
+       Color 1 1 1 0.013
+       Size 1 1
+      }
+      HorizontalLayoutWidgetClass "{6B13C0DE00000042}" {
+       Name "AdminsHeader"
+       Slot LayoutSlot "{6B13C0DE00000043}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 10 0 4
+        SizeMode Auto
+       }
+       {
+        ImageWidgetClass "{6B13C0DE00000044}" {
+         Name "AdminsTick"
+         Slot LayoutSlot "{6B13C0DE00000045}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 3 11
+        }
+        TextWidgetClass "{6B13C0DE00000046}" {
+         Name "AdminsHeaderText"
+         Slot LayoutSlot "{6B13C0DE00000047}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Fill
+          FillWeight 1
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "ADMINS ONLINE"
+         "Font Size" 12
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE00000048}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6B13C0DE00000049}" {
+         Name "AdminCount"
+         Slot LayoutSlot "{6B13C0DE0000004A}" {
+          HorizontalAlign 2
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Auto
+         }
+         Color 0.8632 0.8879 0.9301 1
+         Text ""
+         "Font Size" 13
+         "Min Font Size" 11
+         "Horizontal Alignment" Right
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE0000004B}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+      RichTextWidgetClass "{6B13C0DE0000004C}" {
+       Name "AdminList"
+       Slot LayoutSlot "{6B13C0DE0000004D}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        SizeMode Auto
+       }
+       Color 0.5836 0.6376 0.7526 1
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+       "Horizontal Alignment" Left
+       "Vertical Alignment" Top
+       Wrap 1
+       FontProperties FontProperties "{6B13C0DE0000004E}" {
+        Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+       }
+      }
+      ImageWidgetClass "{6B13C0DE00000050}" {
+       Name "RulesDivider"
+       Slot LayoutSlot "{6B13C0DE00000051}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 14 0 0
+        SizeMode Auto
+       }
+       Color 1 1 1 0.013
+       Size 1 1
+      }
+      HorizontalLayoutWidgetClass "{6B13C0DE00000052}" {
+       Name "RulesHeader"
+       Slot LayoutSlot "{6B13C0DE00000053}" {
+        HorizontalAlign 3
+        VerticalAlign 0
+        Padding 0 10 0 4
+        SizeMode Auto
+       }
+       {
+        ImageWidgetClass "{6B13C0DE00000054}" {
+         Name "RulesTick"
+         Slot LayoutSlot "{6B13C0DE00000055}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          SizeMode Auto
+         }
+         Color 0.5841 0.0369 0.0369 1
+         Size 3 11
+        }
+        TextWidgetClass "{6B13C0DE00000056}" {
+         Name "RulesHeaderText"
+         Slot LayoutSlot "{6B13C0DE00000057}" {
+          HorizontalAlign 0
+          VerticalAlign 1
+          Padding 8 0 0 0
+          SizeMode Fill
+          FillWeight 1
+         }
+         Color 0.3968 0.4564 0.6038 1
+         Text "SERVER RULES"
+         "Font Size" 12
+         "Min Font Size" 12
+         "Horizontal Alignment" Left
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6B13C0DE00000058}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+      SizeLayoutWidgetClass "{6B13C0DE00000060}" {
+       Name "FullRulesSize"
+       Slot LayoutSlot "{6B13C0DE00000061}" {
+        HorizontalAlign 0
+        VerticalAlign 0
+        Padding 0 6 0 0
+        SizeMode Auto
+       }
+       AllowWidthOverride 1
+       WidthOverride 180
+       AllowHeightOverride 1
+       HeightOverride 36
+       {
+        OverlayWidgetClass "{6B13C0DE00000062}" {
+         Name "FullRulesFrame"
+         Slot AlignableSlot "{6B13C0DE00000063}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         {
+          SmartPanelWidgetClass "{6B13C0DE00000064}" {
+           Name "FullRulesBG"
+           Slot OverlayWidgetSlot "{6B13C0DE00000065}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 0.5841 0.0369 0.0369 1
+           style rounded_4px
+          }
+          ButtonWidgetClass "{6B13C0DE00000066}" {
+           Name "FullRulesButton"
+           Slot OverlayWidgetSlot "{6B13C0DE00000067}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           Color 1 1 1 0
+           components {
+            SCR_ButtonTextComponent "{6B13C0DE00000068}" {
+             m_sSoundClicked "SOUND_FE_BUTTON_CONFIRM"
+             m_BackgroundHovered 1 1 1 0.02
+             m_sTextWidgetName ""
+            }
+            ButtonComponent "{6B13C0DE00000069}" {
+             m_ColorButtonDefault 0.042 0.042 0.042 0
+             m_ColorButtonHovered 1 1 1 0.012
+             m_ColorButtonHoveredFocused 1 1 1 0.025
+            }
+           }
+           {
+            TextWidgetClass "{6B13C0DE0000006A}" {
+             Name "FullRulesText"
+             Slot ButtonWidgetSlot "{6B13C0DE0000006B}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Color 1 1 1 1
+             Text "FULL RULES  ›"
+             "Font Size" 15
+             "Min Font Size" 9
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+             FontProperties FontProperties "{6B13C0DE0000006C}" {
+              Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

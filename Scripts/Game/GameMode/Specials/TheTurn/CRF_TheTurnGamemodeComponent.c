@@ -381,6 +381,7 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(SpawnCaches);
 			GetGame().GetCallqueue().Remove(SetFuelPercentage);
 			GetGame().GetCallqueue().Remove(BecomeCivilian);
+			GetGame().GetCallqueue().Remove(CheckCivilianSpawned);
 		}
 
 		m_Markers.Clear();
@@ -1207,8 +1208,12 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		// Only soldiers come back; a civilian who dies stays in spectator
 		string factionKey = CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId);
 		if (factionKey != m_sFactionOneKey && factionKey != m_sFactionTwoKey)
+		{
+			Print(string.Format("%1 %2 died as '%3' - not a soldier, stays in spectator.", LOG, GetGame().GetPlayerManager().GetPlayerName(playerId), factionKey), LogLevel.NORMAL);
 			return;
+		}
 
+		Print(string.Format("%1 %2 (%3) died - coming back as a civilian in %4 s.", LOG, GetGame().GetPlayerManager().GetPlayerName(playerId), factionKey, m_fCivilianDelaySeconds), LogLevel.NORMAL);
 		GetGame().GetCallqueue().CallLater(BecomeCivilian, (int)(Math.Max(m_fCivilianDelaySeconds, 1) * 1000), false, playerId);
 	}
 
@@ -1217,25 +1222,45 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 	//! itself changes side, so the player keeps one slot and reconnects into it as a civilian.
 	protected void BecomeCivilian(int playerId)
 	{
-		if (m_bEnded || !GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+		if (m_bEnded)
 			return;
+
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+		{
+			Print(string.Format("%1 %2 (player %3) left before coming back as a civilian.", LOG, playerName, playerId), LogLevel.NORMAL);
+			return;
+		}
 
 		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
 		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
 		COA_RplBroadcastManager broadcastManager = COA_RplBroadcastManager.GetInstance();
 		if (!slottingManager || !respawnManager || !broadcastManager)
+		{
+			Print(string.Format("%1 %2 can't come back as a civilian - Lobby managers missing (slotting %3, respawn %4, broadcast %5).", LOG, playerName, slottingManager != null, respawnManager != null, broadcastManager != null), LogLevel.ERROR);
 			return;
+		}
 
 		int slotId = slottingManager.GetPlayerSlotID(playerId);
 		COA_SlotData slotData = slottingManager.GetSlotData(slotId);
 
 		// Still a dead soldier (not moved or revived by an admin meanwhile)
 		if (!slotData || !slotData.GetIsDeadSlot())
+		{
+			string reason = "is no longer dead";
+			if (!slotData)
+				reason = "not found";
+
+			Print(string.Format("%1 %2 isn't coming back as a civilian - slot %3 %4.", LOG, playerName, slotId, reason), LogLevel.WARNING);
 			return;
+		}
 
 		FactionKey factionKey = slotData.GetSlotFactionKey();
 		if (factionKey != m_sFactionOneKey && factionKey != m_sFactionTwoKey)
+		{
+			Print(string.Format("%1 %2 isn't coming back as a civilian - slot %3 is on '%4' now.", LOG, playerName, slotId, factionKey), LogLevel.WARNING);
 			return;
+		}
 
 		if (respawnManager.GetFactionSpawnpoints(m_sCivilianFactionKey).IsEmpty())
 		{
@@ -1245,11 +1270,17 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 
 		SCR_AIGroup group = GetCivilianGroup();
 		if (!group)
+		{
+			Print(string.Format("%1 %2 can't come back as a civilian - no civilian group could be made.", LOG, playerName), LogLevel.ERROR);
 			return;
+		}
 
 		RplComponent groupRpl = RplComponent.Cast(group.FindComponent(RplComponent));
 		if (!groupRpl)
+		{
+			Print(string.Format("%1 %2 can't come back as a civilian - the civilian group has no RplComponent.", LOG, playerName), LogLevel.ERROR);
 			return;
+		}
 
 		slotData.SetSlotFactionKey(m_sCivilianFactionKey);
 		slotData.SetSlotCurrentGroup(groupRpl.Id());
@@ -1262,7 +1293,31 @@ class CRF_TheTurnGamemodeComponent : SCR_BaseGameModeComponent
 		respawnManager.RespawnPlayer(playerId);
 
 		CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "You're a civilian", m_sCivilianText, 12);
-		Print(string.Format("%1 %2 (%3) came back as a civilian.", LOG, GetGame().GetPlayerManager().GetPlayerName(playerId), factionKey), LogLevel.NORMAL);
+		Print(string.Format("%1 %2 (%3) sent back as a civilian (slot %4, group %5).", LOG, playerName, factionKey, slotId, group.GetGroupID()), LogLevel.NORMAL);
+
+		// RespawnPlayer gives up silently if the spawn fails - check they really got a body
+		GetGame().GetCallqueue().CallLater(CheckCivilianSpawned, 3000, false, playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void CheckCivilianSpawned(int playerId)
+	{
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+
+		IEntity controlled = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		string factionKey = CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId);
+		bool spectator = controlled != null && COA_EntityHelper.IsSpectator(controlled);
+		bool spawned = controlled != null && !spectator;
+
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		bool dead = slottingManager && slottingManager.IsPlayerConsideredDead(playerId);
+
+		if (spawned && factionKey == m_sCivilianFactionKey && !dead)
+			return;
+
+		Print(string.Format("%1 %2 did NOT come back as a civilian: controls %3 (spectator %4), slot faction '%5', slot dead %6.", LOG,
+			GetGame().GetPlayerManager().GetPlayerName(playerId), controlled, spectator, factionKey, dead), LogLevel.ERROR);
 	}
 
 	//------------------------------------------------------------------------------------------------
