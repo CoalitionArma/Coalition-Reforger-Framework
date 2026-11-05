@@ -1,0 +1,89 @@
+SCR_AIWorld : "{A6D677263435B871}Prefabs/AI/VDD_AIWorld.et" {
+ coords 3265.056 83.676 787.94
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 0
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 80
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{08608B7EAF4CD6DF}Configs/Gearscripts/Standard/Modern/COA_GS_USSpecOps.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{652689E761F0C3F5}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

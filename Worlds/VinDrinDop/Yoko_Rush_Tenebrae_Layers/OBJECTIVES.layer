@@ -1,0 +1,13 @@
+$grp GameEntity {
+ mcom_a_trigger {
+  coords 4089.514 8.094 817.815
+ }
+ mcom_b_trigger {
+  coords 3594.774 32.634 707.321
+  angles 0 43.468 0
+ }
+ mcom_c_trigger {
+  coords 3476.405 1.701 181.595
+  angles 0 43.468 0
+ }
+}
