@@ -113,7 +113,6 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
      m_sCall "Flying finish, 150"
     }
    }
-   m_eAudience DRIVER
   }
   CRF_RallyStageGamemodeComponent "{7C1AE9A00000003B}" {
    m_fCheckpointRadius 25
@@ -180,9 +179,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "EXECUTION"\
    "Crews of two: a driver and a co-driver. You spawn in your crew's car on the main road east of the start, driver at the wheel. The car is held where it is, handbrake locked, until your start time. At GO drive to the start line: your stage clock starts when you cross it, so a place further back on the grid costs you nothing - but you only get 30 seconds to get there. Crews leave one at a time, 30 seconds apart, in group order - BANSHEE first, at the front of the grid; the HUD counts you down."\
    ""\
-   "DRIVER: the pace notes come up on your screen as you reach each corner, and the full roadbook is in the next briefing tab."\
+   "DRIVER: you won't get the pace notes on screen. Your co-driver calls them, so listen to them and keep your eyes on the road. The full roadbook is in the next briefing tab."\
    ""\
-   "CO-DRIVER: every pace note is on your map, numbered, as an orange dot at its corner, along with the checkpoints. Keep the map open, read the next corners out early, and keep the driver on the road when the fog closes in."\
+   "CO-DRIVER: at each checkpoint a hint gives you the calls for the road ahead. Every pace note is also on your map, numbered, as an orange dot at its corner, along with the checkpoints. Read the next corners out early, and keep the driver on the road when the fog closes in."\
    ""\
    "Every checkpoint has to be crossed in order. Jumping your start costs 10 seconds."
    m_aFactionKeys {
