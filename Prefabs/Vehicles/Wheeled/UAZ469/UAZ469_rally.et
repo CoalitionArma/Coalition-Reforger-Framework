@@ -13,7 +13,7 @@ Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CI
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
-     Inertia 0.22
+     InertiaCoupled 0.22
      MaxPower 220
      MaxTorque 450
      RpmMaxPower 5500
@@ -42,6 +42,9 @@ Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CI
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {
+      Steering Steering "{BC687BE9D21C8894}" {
+       SteeringRatio 12
+      }
       Differential Differential Diff_01 {
        Ratio 4.24
        Strength 0.3
@@ -85,6 +88,10 @@ Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CI
       }
      }
     }
+    TyreModel Pacejka2002 "{6A38CB253C2D7203}" : "{5F3A91C27D4E8A01}Prefabs/Vehicles/Core/Configs/Pacejka/Pacejka2002_CRF_Rally.conf" {
+     NominalLoad 6000
+     NominalRadius 0.38
+    }
    }
   }
   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
@@ -95,7 +102,6 @@ Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CI
      }
      ClutchUncoupleTime 0.15
      ClutchCoupleTime 0.2
-     ClutchFeedbackRpm 1800
      ClutchUncoupleRpm 1500
      ClutchCoupleRpm 2800
      Latency 0.15
@@ -103,6 +109,21 @@ Vehicle : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CI
      UpShiftRpm 4200
      DownShiftFactor 1
      DownShiftRpm 2800
+     MaxSteeringSpeed 100
+     BrakingCurve {
+      0 0 0.1 0.6 0.5 0.8 1 1
+     }
+     HandbrakeTime 0.1
+     SteeringForwardSpeed {
+      0 40 2 32 16 52 80 40 120 32 160 16 200 4
+     }
+     SteeringBackwardSpeed {
+      0 40 2 56 16 88 80 72 120 59 160 34 200 10
+     }
+     SteeringCenterSpeed {
+      0 0 2 24 16 36 80 32 120 27 160 16 200 6
+     }
+     RpmSmoothing 0.3
     }
    }
   }
