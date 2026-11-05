@@ -1,14 +1,15 @@
 $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  {
-  coords 3470.229 1.526 219.635
+  coords 3467.133 1.971 200.905
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 3470.229 1.526 211.079
+  coords 3442.49 5.64 186.939
+  angles 0 88.474 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
-  coords 3470.229 1.889 200.896
+  coords 3459.82 2.753 182.166
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
  {
@@ -17,6 +18,49 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/Ve
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
  }
 }
-COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
- coords 4415.765 0 1707.157
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4415.765 0 1707.157
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4423.485 0 1707.157
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4432.953 0 1707.157
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4441.67 0 1707.157
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4423.485 0 1721.747
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4432.953 0 1721.747
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4441.67 0 1721.747
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4415.765 0 1721.747
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4399.891 0 1721.747
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4401.961 0 1706.327
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
+ {
+  coords 4407.568 0.023 1712.845
+  m_rVehicle "{38527BF34A02C3C7}Prefabs/Vehicles/Naval/RHIB/RHIB_Gunboat_MK19.et"
+ }
 }
