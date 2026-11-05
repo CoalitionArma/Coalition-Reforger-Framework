@@ -70,6 +70,186 @@ $grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Point
   coords 985.832 21.606 2784.635
   angles 0 6.769 0
  }
+ {
+  coords 931.693 27.666 2785.446
+  angles 0 80.403 0
+ }
+ {
+  coords 2530.175 96.769 575.403
+  angles 0 9.295 0
+  scale 7.6
+ }
+ {
+  coords 2554.92 104.284 703.084
+  angles -88.505 141.987 -72.838
+  scale 7.6
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
+ {
+  coords 2520.33 0 520.922
+  angles 0 64.347 0
+ }
+ {
+  coords 2512.849 0 552.926
+  angles 0 88.593 0
+ }
+ {
+  coords 2512.045 0 585.668
+  angles 0 88.593 0
+ }
+ {
+  coords 2511.219 0 619.326
+  angles 0 88.593 0
+ }
+ {
+  coords 2510.383 0 653.379
+  angles 0 88.593 0
+ }
+ {
+  coords 2532.856 0 712.493
+  angles 0 88.593 0
+ }
+ {
+  coords 2526.067 -0.001 683.564
+  angles 0 115.213 0
+ }
+ {
+  coords 2542.385 0.048 505.131
+  angles 0 1.091 0
+ }
+ {
+  coords 2578.184 -0.093 504.449
+  angles 0 1.091 0
+ }
+ {
+  coords 2610.678 -0.001 503.83
+  angles 0 1.091 0
+ }
+ {
+  coords 2644.815 0.034 505.261
+  angles 0 1.091 0
+ }
+ {
+  coords 2679.341 0.009 504.603
+  angles 0 1.091 0
+ }
+ {
+  coords 2713.888 -0.006 503.945
+  angles 0 1.091 0
+ }
+ {
+  coords 2749.621 0.016 503.264
+  angles 0 1.091 0
+ }
+ {
+  coords 2786.169 0.061 502.568
+  angles 0 1.091 0
+ }
+ {
+  coords 2819.074 -0.049 501.941
+  angles 0 1.091 0
+ }
+ {
+  coords 2854.879 0.016 501.259
+  angles 0 1.091 0
+ }
+ {
+  coords 2890.36 0.024 500.583
+  angles 0 1.091 0
+ }
+ {
+  coords 2925.475 -0.002 499.914
+  angles 0 1.091 0
+ }
+ {
+  coords 2956.558 -0.002 499.322
+  angles 0 1.091 0
+ }
+ {
+  coords 3143.299 -0.044 495.765
+  angles 0 1.091 0
+ }
+ {
+  coords 3177.376 0.232 495.116
+  angles 0 1.091 0
+ }
+ {
+  coords 3212.147 -0.003 494.454
+  angles 0 1.091 0
+ }
+ {
+  coords 3248.292 -0.003 493.766
+  angles 0 1.091 0
+ }
+ {
+  coords 3281.147 0.046 493.14
+  angles 0 1.091 0
+ }
+ {
+  coords 3291.117 -0.067 517.576
+  angles 0 -84.504 0
+ }
+ {
+  coords 3294.216 -0.347 549.783
+  angles 0 -84.504 0
+ }
+ {
+  coords 3296.56 -0.179 574.142
+  angles 0 -84.504 0
+ }
+ {
+  coords 2585.087 0.598 700.509
+  angles 0 -130.189 0
+ }
+ {
+  coords 2608.289 -0.027 673.042
+  angles 0 -130.189 0
+ }
+ {
+  coords 2630.023 -0.027 647.313
+  angles 0 -130.189 0
+ }
+ {
+  coords 2655.197 -0.027 627.038
+  angles 0 -142.177 0
+ }
+ {
+  coords 2681.865 -0.027 606.335
+  angles 0 -142.177 0
+ }
+ {
+  coords 2711.693 -0.027 591.891
+  angles 0 -153.72 0
+ }
+ {
+  coords 2742.373 -0.027 580.845
+  angles 0 -167.089 0
+ }
+ {
+  coords 2775.74 -0.027 573.196
+  angles 0 -167.089 0
+ }
+ {
+  coords 2806.856 -0.027 568.504
+  angles 0 -167.089 0
+ }
+ {
+  coords 2840.62 -0.027 563.448
+  angles 0 -167.089 0
+ }
+ {
+  coords 2872.256 0.138 561.267
+  angles 0 -176.207 0
+ }
+ {
+  coords 2905.889 -0 560.654
+  angles 0 -176.207 0
+ }
+ {
+  coords 2937.958 0 565.949
+  angles 0 160.235 0
+ }
 }
 $grp GenericEntity : "{FD426896698B4615}Prefabs/Compositions/Misc/FreeRoamBuilding/Dragonsteeth_S_US_01.et" {
  {
