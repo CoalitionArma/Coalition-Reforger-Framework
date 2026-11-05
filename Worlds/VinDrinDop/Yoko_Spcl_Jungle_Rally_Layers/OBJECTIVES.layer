@@ -1,13 +1,13 @@
 $grp GameEntity {
  rally_start {
-  coords 2903.76 80.73 537.025
+  coords 2558.589 80.688 681.258
  }
  rally_end {
   coords 751.147 0.854 1345.628
   angles 0 81.6 0
  }
  rally_cp1 {
-  coords 2573.442 80.688 665.544
+  coords 2628.482 81.908 966.722
  }
  rally_cp2 {
   coords 2790.705 79.482 1399.314

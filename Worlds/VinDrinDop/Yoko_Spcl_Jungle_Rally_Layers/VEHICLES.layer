@@ -1,211 +1,211 @@
 $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
  {
-  coords 3229.874 80.688 521.291
+  coords 2797.681 80.687 521.285
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3229.693 80.688 528.427
+  coords 2797.5 80.687 528.421
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3229.585 80.688 532.704
+  coords 2797.392 80.687 532.698
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3229.428 80.688 538.895
+  coords 2797.235 80.687 538.889
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3229.29 80.688 544.353
+  coords 2797.098 80.687 544.347
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3229.108 80.688 551.534
+  coords 2796.915 80.687 551.528
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3222.155 80.688 528.236
+  coords 2789.962 80.687 528.23
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3222.047 80.688 532.513
+  coords 2789.854 80.687 532.507
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3221.89 80.688 538.704
+  coords 2789.697 80.688 538.698
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3221.752 80.688 544.162
+  coords 2789.559 80.687 544.156
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3221.57 80.688 551.343
+  coords 2789.378 80.687 551.337
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3222.336 80.688 521.1
+  coords 2790.143 80.687 521.094
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3213.519 80.688 528.017
+  coords 2781.327 80.687 528.011
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3213.411 80.688 532.294
+  coords 2781.218 80.687 532.288
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3213.254 80.688 538.485
+  coords 2781.061 80.688 538.479
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3213.116 80.688 543.943
+  coords 2780.923 80.687 543.937
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3212.934 80.688 551.124
+  coords 2780.742 80.687 551.118
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3213.7 80.688 520.881
+  coords 2781.507 80.687 520.875
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.801 80.688 527.796
+  coords 2772.608 80.687 527.79
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.692 80.688 532.073
+  coords 2772.499 80.687 532.067
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.535 80.688 538.264
+  coords 2772.342 80.687 538.258
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.397 80.688 543.722
+  coords 2772.204 80.687 543.716
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.216 80.688 550.903
+  coords 2772.024 80.688 550.897
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3204.981 80.688 520.66
+  coords 2772.788 80.687 520.654
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3193.205 80.688 527.502
+  coords 2761.013 80.687 527.496
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3193.096 80.688 531.779
+  coords 2760.903 80.687 531.773
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3192.939 80.688 537.97
+  coords 2760.746 80.687 537.964
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3192.801 80.688 543.428
+  coords 2760.608 80.687 543.422
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3192.62 80.688 550.609
+  coords 2760.427 80.687 550.603
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3193.385 80.688 520.366
+  coords 2761.192 80.687 520.36
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3181.486 80.688 527.205
+  coords 2749.294 80.687 527.199
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3181.377 80.688 531.482
+  coords 2749.184 80.687 531.476
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3181.22 80.688 537.673
+  coords 2749.027 80.687 537.667
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3181.082 80.688 543.131
+  coords 2748.89 80.687 543.125
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3180.901 80.688 550.312
+  coords 2748.708 80.687 550.306
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3181.666 80.688 520.069
+  coords 2749.473 80.687 520.063
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.808 80.688 526.96
+  coords 2739.615 80.687 526.954
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.699 80.688 531.237
+  coords 2739.506 80.687 531.231
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.542 80.688 537.428
+  coords 2739.349 80.687 537.422
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.404 80.688 542.886
+  coords 2739.212 80.687 542.88
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.223 80.688 550.067
+  coords 2739.03 80.687 550.061
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
  {
-  coords 3171.988 80.688 519.824
+  coords 2739.796 80.688 519.818
   angles 0 -91.452 0
   m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
  }
