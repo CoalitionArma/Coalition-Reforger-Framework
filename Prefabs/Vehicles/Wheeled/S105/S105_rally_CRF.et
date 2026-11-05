@@ -22,6 +22,19 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     Name "S-105 Rally (COALITION)"
    }
   }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    CRF_RallyGarageAction "{5F3C91C200000301}" {
+     ParentContextList {
+      "starter_switch"
+     }
+     UIInfo UIInfo "{5F3C91C200000302}" {
+      Name "Garage (paint)"
+     }
+     "Sort Priority" 1
+    }
+   }
+  }
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
