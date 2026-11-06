@@ -1,0 +1,6 @@
+COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 2217.24 76 434.717
+ m_MarkerColor 0 0.125 0.502 1
+ m_sQuadName "point-special"
+ m_sDescription "Mortars"
+}

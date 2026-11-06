@@ -1,0 +1,120 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{5F3C91C200000201}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 356
+  OffsetRight -356
+  SizeY 40
+  OffsetBottom -40
+ }
+ {
+  ButtonWidgetClass "{5F3C91C200000202}" {
+   Name "EntryButton"
+   Slot FrameWidgetSlot "{5F3C91C200000203}" {
+    Anchor 0 0 1 1
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.07 0.08 0.12 0.72
+   components {
+    CRF_RallyGarageEntryButton "{5F3C91C200000204}" {
+    }
+   }
+  }
+  ImageWidgetClass "{5F3C91C200000205}" {
+   Name "SwatchBorder"
+   Slot FrameWidgetSlot "{5F3C91C200000206}" {
+    PositionX 8
+    OffsetLeft 8
+    PositionY 7
+    OffsetTop 7
+    SizeX 26
+    OffsetRight -34
+    SizeY 26
+    OffsetBottom -33
+   }
+   Color 0 0 0 0.9
+  }
+  ImageWidgetClass "{5F3C91C200000207}" {
+   Name "Swatch"
+   Slot FrameWidgetSlot "{5F3C91C200000208}" {
+    PositionX 10
+    OffsetLeft 10
+    PositionY 9
+    OffsetTop 9
+    SizeX 22
+    OffsetRight -32
+    SizeY 22
+    OffsetBottom -31
+   }
+   Color 1 1 1 1
+  }
+  TextWidgetClass "{5F3C91C200000209}" {
+   Name "EntryLabel"
+   Slot FrameWidgetSlot "{5F3C91C20000020A}" {
+    PositionX 44
+    OffsetLeft 44
+    PositionY 0
+    OffsetTop 0
+    SizeX 210
+    OffsetRight -254
+    SizeY 40
+    OffsetBottom -40
+   }
+   Color 0.9 0.92 1 1
+   Text "Paint"
+   "Font Size" 16
+   "Min Font Size" 10
+   "Horizontal Alignment" Left
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{5F3C91C20000020B}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{5F3C91C20000020C}" {
+   Name "CurrentText"
+   Slot FrameWidgetSlot "{5F3C91C20000020D}" {
+    PositionX 250
+    OffsetLeft 250
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -346
+    SizeY 40
+    OffsetBottom -40
+   }
+   Color 1 0.6 0.1 1
+   Text "ON THE CAR"
+   "Font Size" 12
+   "Min Font Size" 9
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{5F3C91C20000020E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{5F3C91C20000020F}" {
+   Name "BottomLine"
+   Slot FrameWidgetSlot "{5F3C91C200000210}" {
+    Anchor 0 1 1 1
+    OffsetLeft 0
+    OffsetTop -1
+    SizeX 0
+    OffsetRight 0
+    SizeY 1
+    OffsetBottom 0
+   }
+   Color 0.75 0.35 0 0.2
+  }
+ }
+}

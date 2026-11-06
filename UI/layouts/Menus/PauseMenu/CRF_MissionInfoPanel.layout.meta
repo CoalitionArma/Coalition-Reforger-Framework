@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{2E3A7C25A396AB62}UI/layouts/Menus/PauseMenu/CRF_MissionInfoPanel.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

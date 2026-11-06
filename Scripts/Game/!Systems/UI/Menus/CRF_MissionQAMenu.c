@@ -239,8 +239,35 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		AppendBriefingStatus(lines, gamemode);
 		lines.Insert("");
 		AppendPerFactionRollup(lines, gamemode);
+		lines.Insert("");
+		AppendGearCheck(lines);
 
 		m_wDetailBox.SetText(SCR_StringHelper.Join("\n", lines));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The same results admins get in the Gear Fix tab (Lobby's COA_GearCheckValidator)
+	protected void AppendGearCheck(array<string> lines)
+	{
+		array<ref COA_GearCheckIssue> issues = {};
+		COA_GearFixManager gearFixManager = COA_GearFixManager.GetInstance();
+		if (gearFixManager)
+			gearFixManager.CollectIssues(issues);
+
+		// Opened before the mission-load check has finished
+		if (issues.IsEmpty())
+		{
+			COA_GearCheckValidator.ValidateAll(issues);
+			COA_GearCheckValidator.SortBySeverity(issues);
+		}
+
+		lines.Insert(string.Format("Gear Check: %1 errors, %2 warnings", COA_GearCheckValidator.CountSeverity(issues, COA_EGearCheckSeverity.ERROR), COA_GearCheckValidator.CountSeverity(issues, COA_EGearCheckSeverity.WARNING)));
+		foreach (COA_GearCheckIssue issue : issues)
+		{
+			lines.Insert("  " + issue.ToListLine());
+			if (!issue.m_rResource.IsEmpty())
+				lines.Insert("    " + issue.m_rResource);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -273,7 +300,8 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		lines.Insert("Spectator Visibility");
 
 		bool eventBasedRespawn = gamemode.FindComponent(CRF_CacheHuntGamemodeManager) != null
-			|| gamemode.FindComponent(CRF_RushGamemodeManager) != null;
+			|| gamemode.FindComponent(CRF_RushGamemodeManager) != null
+			|| gamemode.FindComponent(CRF_PayloadGamemodeComponent) != null;
 
 		if (!gamemode.m_bRespawnEnabled && !eventBasedRespawn)
 		{

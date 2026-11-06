@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7C1AE7B8C9D0E400}Configs/Gearscripts/Standard/Specials/TheTurn/COA_GS_TheTurn_Civilian.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

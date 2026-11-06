@@ -1,4 +1,18 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0001}" : "{8BBC73472092902E}Configs/Navmesh/Navmesh_GM_Eden_Soldier.conf" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0002}" : "{0228A79846FD8A97}Configs/Navmesh/Navmesh_GM_Eden_Vehicle.conf" {
+    }
+   }
+  }
+ }
  coords 9994.791 0 1406.353
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {

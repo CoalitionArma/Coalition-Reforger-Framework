@@ -1,0 +1,4 @@
+COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 2491.361 80.687 623.461
+ m_sDescription "Rearm and Repair"
+}

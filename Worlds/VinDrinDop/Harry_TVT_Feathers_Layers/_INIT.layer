@@ -68,7 +68,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "American troops have been tasked with clearing out weapons caches roughly identified in the AO. "\
    ""\
    "BLUFOR Composition: Air Assault Infantry"\
-   "BLUFOR Assets: Armed Huey per Squad"\
+   "BLUFOR Assets: Armed Huey per Squad, Mortars"\
    ""\
    "OPFOR Composition: Inf"\
    "OPFOR Assets: Demo w/ mines, PLT MMG"\
@@ -140,110 +140,160 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6A9D2C5A19015EB8}" {
+  COA_SlottingGroup "{6AAA2ABA592D61BC}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
-    MEDICAL_OFFICER
+    RADIO_TELEPHONE_OPERATOR
+    JTAC
     PILOT
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19015C83}" {
+  COA_SlottingGroup "{6AAA2ABA592D67E9}" {
+   m_sCallsign "Hammer"
+   m_FlagType INFANTRY
+   m_aSlots {
+    INDIRECT_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D66DC}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    PILOT
-    CREW_CHIEF
     MEDIC
-    TEAM_LEAD
     RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19015362}" {
+  COA_SlottingGroup "{6AAA2ABA592D65C7}" {
+   m_sCallsign "Pidgeon 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D6500}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    PILOT
-    CREW_CHIEF
     MEDIC
-    TEAM_LEAD
     RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A1901527C}" {
+  COA_SlottingGroup "{6AAA2ABA592D644F}" {
+   m_sCallsign "Pidgeon 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D5B8D}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    PILOT
-    CREW_CHIEF
     MEDIC
-    TEAM_LEAD
     RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A1901517A}" {
+  COA_SlottingGroup "{6AAA2ABA592D5AD9}" {
+   m_sCallsign "Pidgeon 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D5871}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    PILOT
-    CREW_CHIEF
     MEDIC
-    TEAM_LEAD
     RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19015005}" {
+  COA_SlottingGroup "{6AAA2ABA592D5F42}" {
+   m_sCallsign "Pidgeon 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D5E8E}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    PILOT
-    CREW_CHIEF
     MEDIC
-    TEAM_LEAD
     RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AAA2ABA592D5DC0}" {
+   m_sCallsign "Pidgeon 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6A9D2C5A1901565E}" {
+  COA_SlottingGroup "{6AAA2ABA592D5CA5}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -257,7 +307,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19015574}" {
+  COA_SlottingGroup "{6AAA2ABA592D5380}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -270,7 +320,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19015478}" {
+  COA_SlottingGroup "{6AAA2ABA592D5791}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -283,7 +333,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19014B69}" {
+  COA_SlottingGroup "{6AAA2ABA592D56DE}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -296,7 +346,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A1901495F}" {
+  COA_SlottingGroup "{6AAA2ABA592D5612}" {
    m_sCallsign "1-4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -309,7 +359,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6A9D2C5A19014843}" {
+  COA_SlottingGroup "{6AAA2ABA592D5553}" {
    m_sCallsign "1-5"
    m_FlagType INFANTRY
    m_aSlots {
@@ -329,7 +379,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iCIVTickets 0
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{338B91A9E5653CD2}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_US_Army.conf"
+  m_rGearScript "{06D8C641152A168B}Configs/Gearscripts/Custom/Harry/Vietnam/COA_GS_Vietnam_US_Army_SR.conf"
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0

@@ -1,0 +1,44 @@
+$grp GenericEntity : "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et" {
+ {
+  coords 4493.699 339.094 10800.101
+ }
+ {
+  coords 4479.888 343.935 10831.741
+  angles 0 0 -91.544
+ }
+ {
+  coords 4784.317 340.512 10339.938
+  angles 0 0 -88.089
+ }
+ {
+  coords 4255.944 341.523 10401.867
+  angles 0 0 -89.31
+ }
+ {
+  coords 4691.106 343.27 10447.801
+ }
+ {
+  coords 4782.037 345.12 10264.386
+  angles 0 -42.544 0
+ }
+ {
+  coords 4867.743 339.02 10277.596
+ }
+}
+$grp GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et" {
+ {
+  coords 4498.232 340.455 10787.809
+ }
+ {
+  coords 4065.935 340.138 10761.283
+ }
+ {
+  coords 4592.002 339.677 10626.292
+ }
+ {
+  coords 4717.496 339.104 10223.806
+ }
+ {
+  coords 4789.261 345.07 10255.599
+ }
+}

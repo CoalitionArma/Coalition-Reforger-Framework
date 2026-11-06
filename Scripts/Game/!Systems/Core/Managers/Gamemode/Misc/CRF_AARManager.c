@@ -11,13 +11,23 @@ class CRF_AARManager
 {
 	protected static ref CRF_AARManager s_Instance;
 
-	// Website backend (same host CRF_CommunityTagManager uses) - trailing slash required
-	protected static const string API_BASE_URL = "https://api.coalitiongroup.net/";
-	protected static const string CURRENT_MISSION_ENDPOINT = "api/game/current-mission?name=";
+	// Website backend game API. RestApi.GetContext hands out one shared context per base URL, and
+	// CRF_CommunityTagManager uses "https://api.coalitiongroup.net/" - so this base URL is deliberately
+	// different: sharing a context would let its SetHeaders (no server key) and its queued requests
+	// apply to ours. Endpoints start with a slash, as in CRF_ReplayDownloader.
+	protected static const string API_BASE_URL = "https://api.coalitiongroup.net/api/game";
+	protected static const string CURRENT_MISSION_ENDPOINT = "/current-mission?name=";
 	protected static const int LOOKUP_RETRY_MS = 15000;
 	protected static const int LOOKUP_MAX_ATTEMPTS = 4;
-	protected static const string MISSION_RATING_ENDPOINT = "api/game/mission-rating";
-	protected static const string AAR_REVIEW_ENDPOINT = "api/game/aar-review";
+	protected static const string MISSION_RATING_ENDPOINT = "/mission-rating";
+	protected static const string AAR_REVIEW_ENDPOINT = "/aar-review";
+	// Engine timeout for every request on the context
+	protected static const int REQUEST_TIMEOUT_S = 15;
+	// Written AAR requests the engine never calls back about are given up on after this
+	static const int REVIEW_WATCHDOG_MS = 20000;
+	// A written AAR request that got no answer at all (timeout, dropped connection) is sent once more
+	protected static const int REVIEW_MAX_ATTEMPTS = 2;
+	protected static const int REVIEW_RETRY_DELAY_MS = 1000;
 	// Written AAR: form loads and submissions per player, not faster than this
 	protected static const int REVIEW_COOLDOWN_MS = 4000;
 	// A player can change their rating, but not faster than this
@@ -74,6 +84,7 @@ class CRF_AARManager
 	{
 		GetGame().GetCallqueue().Remove(LookupMissionId);
 		GetGame().GetCallqueue().Remove(SendMarkerBatch);
+		GetGame().GetCallqueue().Remove(SendReviewRequest);
 		m_mPendingMarkers.Clear();
 		m_sPlayersServed.Clear();
 		m_mLastRatingTime.Clear();
@@ -217,6 +228,29 @@ class CRF_AARManager
 //=============================================================================================================================================================================================================================================================================================================================================================
 
 	//------------------------------------------------------------------------------------------------
+	//! This manager's REST context (see API_BASE_URL), with the timeout and headers every request
+	//! uses - the server key is sent when configured (the mission lookup doesn't need it)
+	protected RestContext GetApiContext()
+	{
+		RestApi rest = GetGame().GetRestApi();
+		if (!rest)
+			return null;
+
+		RestContext context = rest.GetContext(API_BASE_URL);
+		if (!context)
+			return null;
+
+		string headers = "Content-Type,application/json";
+		string key = CRF_WebsiteApiConfig.GetGameServerKey();
+		if (!key.IsEmpty())
+			headers += ",x-game-server-key," + key;
+
+		context.SetTimeout(REQUEST_TIMEOUT_S);
+		context.SetHeaders(headers);
+		return context;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Asks the website backend which coalitiongroup.net/aar/<id> page belongs to this round. The bot
 	//! only creates that record for qualifying rounds (player count, game type), so "not found" is a
 	//! normal outcome and the AAR screen then links to the Past Missions list instead.
@@ -224,11 +258,7 @@ class CRF_AARManager
 	{
 		m_iLookupAttempts++;
 
-		RestApi rest = GetGame().GetRestApi();
-		if (!rest)
-			return;
-
-		RestContext context = rest.GetContext(API_BASE_URL);
+		RestContext context = GetApiContext();
 		if (!context)
 			return;
 
@@ -236,7 +266,6 @@ class CRF_AARManager
 		m_LookupCallback.SetOnSuccess(OnLookupSuccess);
 		m_LookupCallback.SetOnError(OnLookupFailed);
 
-		context.SetHeaders("Content-Type,application/json");
 		context.GET(m_LookupCallback, CURRENT_MISSION_ENDPOINT + EncodeQueryValue(GetGame().GetMissionName()));
 	}
 
@@ -365,7 +394,7 @@ class CRF_AARManager
 			return;
 		}
 
-		RestContext context = rest.GetContext(API_BASE_URL);
+		RestContext context = GetApiContext();
 		if (!context)
 			return;
 
@@ -379,7 +408,6 @@ class CRF_AARManager
 		CRF_MissionRatingRequest request = new CRF_MissionRatingRequest(this, playerId, rating);
 		m_aRatingRequests.Insert(request);
 
-		context.SetHeaders("Content-Type,application/json,x-game-server-key," + key);
 		context.POST(request.m_Callback, MISSION_RATING_ENDPOINT, payload);
 	}
 
@@ -428,24 +456,17 @@ class CRF_AARManager
 		array<string> leaderOptions = {};
 		AddInGameLeaders(playerId, leaderOptions);
 
-		string key = CRF_WebsiteApiConfig.GetGameServerKey();
-		RestApi rest = GetGame().GetRestApi();
-		RestContext context;
-		if (rest && !key.IsEmpty() && m_iMissionId > 0)
-			context = rest.GetContext(API_BASE_URL);
-
-		if (!context)
+		if (CRF_WebsiteApiConfig.GetGameServerKey().IsEmpty() || m_iMissionId <= 0 || !GetGame().GetRestApi())
 		{
 			SendEmptyReviewForm(ownerManager, leaderOptions);
 			return;
 		}
 
-		CRF_AARReviewRequest request = new CRF_AARReviewRequest(this, playerId, false);
-		m_aReviewRequests.Insert(request);
-
 		string guid = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
-		context.SetHeaders("Content-Type,application/json,x-game-server-key," + key);
-		context.GET(request.m_Callback, string.Format("%1?missionId=%2&guid=%3", AAR_REVIEW_ENDPOINT, m_iMissionId, EncodeQueryValue(guid)));
+		string path = string.Format("%1?missionId=%2&guid=%3", AAR_REVIEW_ENDPOINT, m_iMissionId, EncodeQueryValue(guid));
+		CRF_AARReviewRequest request = new CRF_AARReviewRequest(this, playerId, false, path);
+		m_aReviewRequests.Insert(request);
+		SendReviewRequest(request);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -483,13 +504,7 @@ class CRF_AARManager
 			return;
 		}
 
-		string key = CRF_WebsiteApiConfig.GetGameServerKey();
-		RestApi rest = GetGame().GetRestApi();
-		RestContext context;
-		if (rest && !key.IsEmpty())
-			context = rest.GetContext(API_BASE_URL);
-
-		if (!context)
+		if (CRF_WebsiteApiConfig.GetGameServerKey().IsEmpty() || !GetGame().GetRestApi())
 		{
 			ownerManager.ReceiveAARReviewResult(false, "This server isn't set up to send AARs to the website - write it on coalitiongroup.net instead.");
 			return;
@@ -497,17 +512,47 @@ class CRF_AARManager
 
 		m_mLastReviewSubmitTime.Set(playerId, now);
 
-		CRF_AARReviewRequest request = new CRF_AARReviewRequest(this, playerId, true);
+		CRF_AARReviewRequest request = new CRF_AARReviewRequest(this, playerId, true, BuildReviewJson(playerId, review));
 		m_aReviewRequests.Insert(request);
-
-		context.SetHeaders("Content-Type,application/json,x-game-server-key," + key);
-		context.POST(request.m_Callback, AAR_REVIEW_ENDPOINT, BuildReviewJson(playerId, review));
+		SendReviewRequest(request);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Called by CRF_AARReviewRequest when the website answers (or the request fails)
+	//! Send (or resend) a written AAR request: a form load GETs m_sRequest, a submission POSTs it
+	protected void SendReviewRequest(CRF_AARReviewRequest request)
+	{
+		if (!request || !m_aReviewRequests.Contains(request))
+			return;
+
+		RestContext context = GetApiContext();
+		if (!context)
+		{
+			HandleReviewResponse(request, false);
+			m_aReviewRequests.RemoveItem(request);
+			return;
+		}
+
+		RestCallback callback = request.BeginAttempt();
+		if (request.m_bSubmit)
+			context.POST(callback, AAR_REVIEW_ENDPOINT, request.m_sRequest);
+		else
+			context.GET(callback, request.m_sRequest);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called by CRF_AARReviewRequest when the website answers, the request fails, or the watchdog
+	//! gives up on it
 	void OnReviewRequestFinished(CRF_AARReviewRequest request, bool ok)
 	{
+		// No answer at all (timeout, dropped connection, lost callback): try once more. A submission
+		// is an upsert on the website, so resending one that did arrive just saves it again.
+		if (!ok && request.m_iHttpCode <= 0 && request.m_iAttempts < REVIEW_MAX_ATTEMPTS)
+		{
+			Print(string.Format("[CRF_AARManager] No answer from the website to %1 for player %2 (%3) - retrying", request.GetDescription(), request.m_iPlayerId, request.GetFailureReason()), LogLevel.WARNING);
+			GetGame().GetCallqueue().CallLater(SendReviewRequest, REVIEW_RETRY_DELAY_MS, false, request);
+			return;
+		}
+
 		HandleReviewResponse(request, ok);
 		m_aReviewRequests.RemoveItem(request);
 	}
@@ -519,14 +564,21 @@ class CRF_AARManager
 		if (!ownerManager)
 			return;
 
-		int httpCode = request.m_Callback.GetHttpCode();
-		string data = request.m_Callback.GetData();
+		int httpCode = request.m_iHttpCode;
+		string data = request.m_sData;
 
 		if (request.m_bSubmit)
 		{
 			if (ok && httpCode == HttpCode.HTTP_CODE_200)
 			{
 				ownerManager.ReceiveAARReviewResult(true, "");
+				return;
+			}
+
+			if (httpCode <= 0)
+			{
+				Print(string.Format("[CRF_AARManager] AAR review from player %1 got no answer from the website after %2 attempt(s) (%3)", request.m_iPlayerId, request.m_iAttempts, request.GetFailureReason()), LogLevel.WARNING);
+				ownerManager.ReceiveAARReviewResult(false, "coalitiongroup.net didn't answer in time - try again in a moment.");
 				return;
 			}
 
@@ -538,6 +590,9 @@ class CRF_AARManager
 			ownerManager.ReceiveAARReviewResult(false, message);
 			return;
 		}
+
+		if (!ok || httpCode != HttpCode.HTTP_CODE_200)
+			Print(string.Format("[CRF_AARManager] Couldn't load the AAR form for player %1 (HTTP %2, %3) - sending an empty one", request.m_iPlayerId, httpCode, request.GetFailureReason()), LogLevel.WARNING);
 
 		// Form load
 		array<string> leaderOptions = {};
@@ -841,34 +896,121 @@ class CRF_MissionRatingRequest
 
 
 //------------------------------------------------------------------------------------------------
-//! One in-flight written-AAR request to the website: a form load (GET) or a submission (POST)
+//! One in-flight written-AAR request to the website: a form load (GET) or a submission (POST).
+//! Each attempt gets a fresh callback and a watchdog, so a request the engine never answers still
+//! finishes (and a late answer to an attempt already given up on is ignored).
 class CRF_AARReviewRequest
 {
-	ref RestCallback m_Callback = new RestCallback();
 	int m_iPlayerId;
 	bool m_bSubmit;
+	string m_sRequest; // GET path with query, or the POST body
+	int m_iAttempts;
+
+	// Outcome of the last attempt (m_iHttpCode is 0 when nothing came back)
+	int m_iHttpCode;
+	string m_sData;
+	ERestResult m_eRestResult;
+	bool m_bTimedOut;
+
+	protected ref RestCallback m_Callback;
+	// Callbacks of earlier attempts, kept alive in case the engine still calls them
+	protected ref array<ref RestCallback> m_aSpentCallbacks = {};
 	protected CRF_AARManager m_Owner;
 
 	//------------------------------------------------------------------------------------------------
-	void CRF_AARReviewRequest(CRF_AARManager owner, int playerId, bool submit)
+	void CRF_AARReviewRequest(CRF_AARManager owner, int playerId, bool submit, string request)
 	{
 		m_Owner = owner;
 		m_iPlayerId = playerId;
 		m_bSubmit = submit;
+		m_sRequest = request;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void ~CRF_AARReviewRequest()
+	{
+		if (GetGame() && GetGame().GetCallqueue())
+			GetGame().GetCallqueue().Remove(OnWatchdog);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! \return the callback to send the next attempt with
+	RestCallback BeginAttempt()
+	{
+		if (m_Callback)
+			m_aSpentCallbacks.Insert(m_Callback);
+
+		m_iAttempts++;
+		m_iHttpCode = 0;
+		m_sData = "";
+		m_bTimedOut = false;
+
+		m_Callback = new RestCallback();
 		m_Callback.SetOnSuccess(OnSuccess);
 		m_Callback.SetOnError(OnError);
+
+		GetGame().GetCallqueue().Remove(OnWatchdog);
+		GetGame().GetCallqueue().CallLater(OnWatchdog, CRF_AARManager.REVIEW_WATCHDOG_MS, false);
+		return m_Callback;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	string GetDescription()
+	{
+		if (m_bSubmit)
+			return "an AAR submission";
+
+		return "an AAR form load";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Why the last attempt failed, for the log
+	string GetFailureReason()
+	{
+		if (m_bTimedOut)
+			return string.Format("no callback within %1 ms", CRF_AARManager.REVIEW_WATCHDOG_MS);
+
+		return typename.EnumToString(ERestResult, m_eRestResult);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnSuccess(RestCallback callback)
 	{
-		if (m_Owner)
-			m_Owner.OnReviewRequestFinished(this, true);
+		Finish(callback, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnError(RestCallback callback)
 	{
+		Finish(callback, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void Finish(RestCallback callback, bool ok)
+	{
+		// A late answer to an attempt the watchdog already gave up on
+		if (!m_Callback || callback != m_Callback)
+			return;
+
+		GetGame().GetCallqueue().Remove(OnWatchdog);
+		m_iHttpCode = callback.GetHttpCode();
+		m_sData = callback.GetData();
+		m_eRestResult = callback.GetRestResult();
+
+		if (m_Owner)
+			m_Owner.OnReviewRequestFinished(this, ok);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnWatchdog()
+	{
+		if (!m_Callback)
+			return;
+
+		m_aSpentCallbacks.Insert(m_Callback);
+		m_Callback = null;
+		m_bTimedOut = true;
+
 		if (m_Owner)
 			m_Owner.OnReviewRequestFinished(this, false);
 	}

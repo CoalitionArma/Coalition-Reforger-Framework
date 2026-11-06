@@ -1,5 +1,12 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0001}" {
+     NavmeshFile "{47AAC67BC4008B4B}Worlds/Navmesh/WW2_Soldier.nmn"
+    }
+   }
+  }
   NavmeshWorldComponent "{5584F30EEFEE1223}" {
    NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
     NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {

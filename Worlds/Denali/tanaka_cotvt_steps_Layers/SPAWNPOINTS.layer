@@ -1,0 +1,6 @@
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 568.666 220.128 387.116
+}
+COA_StaticSpawnPoint INDFOR_Spawn1 : "{A8C13E34C9597EA4}PrefabsMissionMaking/SpawnPoints/SpawnPoints/INDFOR_Spawn.et" {
+ coords 4300.026 399.503 5446.717
+}

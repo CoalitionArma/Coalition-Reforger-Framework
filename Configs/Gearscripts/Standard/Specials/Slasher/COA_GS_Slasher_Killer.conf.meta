@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7C1AE1F2A3B4C600}Configs/Gearscripts/Standard/Specials/Slasher/COA_GS_Slasher_Killer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

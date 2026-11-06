@@ -1,0 +1,46 @@
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{DF7CF60669EFC7E5}Assets/Vehicles/Wheeled/M923A1/M923A1_BASE.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ModelGeometry 1
+   Static 1
+  }
+  SlotManagerComponent "{5F3A91C27D4E6C10}" {
+   Slots {
+    EntitySlotInfo Cargo {
+     Prefab "{5F3A91C27D4E6C01}Prefabs/Props/Payload/CRF_PayloadTruck_Cargo.et"
+    }
+    EntitySlotInfo Wheel_L01 {
+     PivotID "v_wheel_L01"
+     Prefab "{5F3A91C27D4E6C02}Prefabs/Props/Payload/CRF_PayloadTruck_WheelFront.et"
+    }
+    EntitySlotInfo Wheel_R01 {
+     PivotID "v_wheel_R01"
+     Angles 0 180 0
+     Prefab "{5F3A91C27D4E6C02}Prefabs/Props/Payload/CRF_PayloadTruck_WheelFront.et"
+    }
+    EntitySlotInfo Wheel_L02 {
+     PivotID "v_wheel_L02"
+     Angles 0 180 0
+     Prefab "{5F3A91C27D4E6C03}Prefabs/Props/Payload/CRF_PayloadTruck_WheelRear.et"
+    }
+    EntitySlotInfo Wheel_R02 {
+     PivotID "v_wheel_R02"
+     Prefab "{5F3A91C27D4E6C03}Prefabs/Props/Payload/CRF_PayloadTruck_WheelRear.et"
+    }
+    EntitySlotInfo Wheel_L03 {
+     PivotID "v_wheel_L03"
+     Angles 0 180 0
+     Prefab "{5F3A91C27D4E6C03}Prefabs/Props/Payload/CRF_PayloadTruck_WheelRear.et"
+    }
+    EntitySlotInfo Wheel_R03 {
+     PivotID "v_wheel_R03"
+     Prefab "{5F3A91C27D4E6C03}Prefabs/Props/Payload/CRF_PayloadTruck_WheelRear.et"
+    }
+   }
+  }
+ }
+}

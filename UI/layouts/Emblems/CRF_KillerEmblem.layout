@@ -1,0 +1,18 @@
+FrameWidgetClass {
+ Name "KillerEmblem"
+ Slot FrameWidgetSlot "{6B3E1A0C5D7F2E96}" {
+  Anchor 0.5 0.68 0.5 0.68
+  PositionX -48
+  OffsetLeft -48
+  PositionY -108
+  OffsetTop -108
+  SizeX 96
+  OffsetRight -48
+  SizeY 96
+  OffsetBottom 12
+ }
+ "Ignore Cursor" 1
+ "Is Visible" 0
+ "Z Order" 1
+ Clipping True
+}

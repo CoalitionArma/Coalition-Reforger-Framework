@@ -28,93 +28,96 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
      RpmMaxTorque 7700
      Steepness 18
      Friction 95
+     RpmIdle 1000
+     RpmRedline 9300
      RpmMax 9500
     }
     Clutch Clutch Clutch {
-     MaxClutchTorque 550
+     MaxClutchTorque 750
     }
     Gearbox Gearbox Gearbox {
      Forward {
-      3.5 2.2 1.56 1.19 0.95
+      2.55 1.92 1.53 1.29 1.13 1.01
      }
-     Reverse 3.67
+     Reverse 3.2
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {
+      Steering Steering "{FB479C420F8B9CF4}" {
+       SteeringRatio 10
+      }
       Suspension Suspension "{4D8B26DFF8859A7B}" {
        SpringRate 40
+       MaxTravelDown 0.04
+      }
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       BrakeTorque 2200
+      }
+      Tyre Tyre "{4D8B26DFFD85E58F}" : "{8CFE8D5085FA6145}Prefabs/Vehicles/Wheeled/S105/Configs/VehicleSimulationTire_S105_rally.conf" {
+       LongitudinalFriction 1.35
+      }
+      Swaybar Swaybar "{66A2C7C60890C00B}" {
+       Stiffness 2400
       }
      }
      Axle "{4D8B26DF8CF2F3D8}" {
+      Differential Differential Diff_02 {
+       Type LSD
+       Strength 0.6
+       Ratio 3.6
+      }
       Suspension Suspension "{4D8B26DF2B10AE05}" {
        SpringRate 45
-       MaxTravelDown 0.02
+       MaxTravelDown 0.06
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       BrakeTorque 1300
+      }
+      Tyre Tyre "{4D8B26DF33F76974}" : "{8CFE8D5085FA6145}Prefabs/Vehicles/Wheeled/S105/Configs/VehicleSimulationTire_S105_rally.conf" {
+       LongitudinalFriction 1.35
       }
      }
     }
     Aerodynamics Aerodynamics "{5562A623B55A4C07}" {
      DragCoefficient 0.49
     }
-    Pacejka Pacejka "{54D561D473F27BA1}" {
-     Longitudinal PacejkaLongitudinal "{51DAB4E5E89185CD}" {
-      b0 1.65
-      b1 -80
-      b2 2200
-      b3 18
-      b4 310
-      b5 0.06
-      b6 0
-      b7 0.055
-      b8 -0.024
-      b9 0.014
-      b10 0.28
-     }
-     Lateral PacejkaLateral "{51DAB4E5E89185F8}" {
-      a0 1.3
-      a1 -65
-      a2 1900
-      a3 2100
-      a4 7.5
-      a5 0.014
-      a6 -0.22
-      a7 1
-      a8 -0.03
-      a9 -0.001
-      a10 -0.15
-      a11 -8.5
-      a12 -0.29
-      a13 17.8
-      a14 -2.4
-     }
-     Aligning PacejkaAligning "{51DAB4E5E89185FB}" {
-      c0 2.2
-      c1 -4.3
-      c2 -4.4
-      c3 -1.9
-      c4 -9.6
-      c5 0.023
-      c6 0
-      c7 0.044
-      c8 -0.58
-      c9 0.18
-      c10 0.043
-      c11 0.048
-      c12 -0.004
-      c13 -0.18
-      c14 0.14
-      c16 -1.029
-      c17 0.27
-      c18 -1.1
-     }
+    TyreModel Pacejka2002 "{6A36E2190A2E41D5}" : "{5F3A91C27D4E8A01}Prefabs/Vehicles/Core/Configs/Pacejka/Pacejka2002_CRF_Rally.conf" {
+     NominalLoad 4600
+     NominalRadius 0.295
     }
    }
   }
   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
    components {
     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ThrottleCurve {
+      8800 0.8 9300 0.5 9500 0
+     }
+     ReverseCurve {
+      2400 0.8 3100 0.5 3800 0
+     }
      ClutchUncoupleTime 0.1
      ClutchCoupleTime 0.1
+     ClutchUncoupleRpm 3300
+     ClutchCoupleRpm 4400
      Latency 0.1
+     UpShiftRpm 3800
+     DownShiftRpm 3300
+     MaxSteeringSpeed 100
+     BrakingCurve {
+      0 0 0.1 0.6 0.5 0.8 1 1
+     }
+     HandbrakeTime 0.1
+     SteeringForwardSpeed {
+      0 40 2 32 16 52 80 40 120 32 160 16 200 4
+     }
+     SteeringBackwardSpeed {
+      0 40 2 56 16 88 80 72 120 59 160 34 200 10
+     }
+     SteeringCenterSpeed {
+      0 0 2 24 16 36 80 32 120 27 160 16 200 6
+     }
+     RpmSmoothing 0.3
     }
    }
   }

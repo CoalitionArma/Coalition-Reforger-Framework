@@ -5,7 +5,7 @@ GenericEntity : "{95CB42A26DE581B0}Prefabs/Items/Equipment/Backpacks/backpack_51
    components {
     RHS_ClothNodeStorageComponent "{61D53B167240106F}" {
      UseCapacityCoefficient 0
-     MaxCumulativeVolume 16000
+     MaxCumulativeVolume 32000
     }
    }
    Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
@@ -13,7 +13,8 @@ GenericEntity : "{95CB42A26DE581B0}Prefabs/Items/Equipment/Backpacks/backpack_51
      Name "#RHS-Backpack_511rush12_Name - #RHS-Color_BLK"
     }
    }
-   MaxCumulativeVolume 16000
+   MaxCumulativeVolume 32000
+   m_fMaxWeight 80
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    WornMaterialsOverride {

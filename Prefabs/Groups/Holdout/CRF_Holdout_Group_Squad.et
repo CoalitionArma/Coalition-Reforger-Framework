@@ -1,0 +1,6 @@
+Bacon_622120A5448725E3_InfectedGroup : "{E15B91D284F1ED15}622120A5448725E3/Prefabs/Groups/Group_Zombies_Base.et" {
+ ID "62651601183F5AEE"
+ m_aUnitPrefabSlots {
+  "{7C1AEA0000000201}Prefabs/Characters/Holdout/CRF_Holdout_Undead_Schuetze_M36.et" "{7C1AEA0000000202}Prefabs/Characters/Holdout/CRF_Holdout_Undead_Schuetze_M40.et" "{7C1AEA0000000203}Prefabs/Characters/Holdout/CRF_Holdout_Undead_Grenadier_M43.et" "{7C1AEA0000000204}Prefabs/Characters/Holdout/CRF_Holdout_Undead_Gefreiter_M42.et"
+ }
+}

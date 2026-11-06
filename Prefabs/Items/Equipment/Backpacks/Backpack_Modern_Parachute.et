@@ -13,9 +13,9 @@ GenericEntity : "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Ko
     m_Size SLOT_1x1
     m_bStackable 0
    }
-   MaxCumulativeVolume 500
+   MaxCumulativeVolume 1000
    MaxItemSize 5 5 5
-   m_fMaxWeight 10
+   m_fMaxWeight 20
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    WornModel "{AD81AC53FCFA8AE2}Assets/Items/Equipment/Backpacks/Wartech_BB102_Backpack/BB102_inf.xob"

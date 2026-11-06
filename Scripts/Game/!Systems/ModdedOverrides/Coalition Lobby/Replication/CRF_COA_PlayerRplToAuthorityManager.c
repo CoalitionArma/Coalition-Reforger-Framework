@@ -87,6 +87,13 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_RequestRadioExtractionSendMessage);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Infection special: inject an antidote dose at the crate at cratePos (CRF_InfectionAntidoteAction)
+	void RequestInfectionAntidote(vector cratePos)
+	{
+		Rpc(RpcAsk_RequestInfectionAntidote, cratePos);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Broken in 1.7. Check CRF_PersistanceManager for update.
@@ -596,6 +603,14 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestCTFFlagPickup, playerId, flagRplId);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Rally garage: repaint the car the caller is driving. The server checks they're at its wheel
+	//! and it is still held at the start (CRF_RallyStageGamemodeComponent.RequestPaint)
+	void RequestRallyPaint(RplId carId, int paint)
+	{
+		Rpc(RpcAsk_RequestRallyPaint, carId, paint);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -619,6 +634,26 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		}
 		
 		m_Gamemode.AdvanceGamemodeState(overriden);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Admin menu > End with result: log the winner (or DRAW) the same way /aar does, before the AAR
+	//! transition flushes the stats (winner flag/XP bonus) and broadcasts the outro. The admin's result
+	//! line, when given, replaces "manual" as the logged reason, so the website shows e.g.
+	//! "BLUFOR win (Survivors extracted)" / "Draw (Time ran out)".
+	override protected void RecordMissionResult(string outcome, string resultNote)
+	{
+		super.RecordMissionResult(outcome, resultNote);
+
+		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+		if (!loggingManager)
+			return;
+
+		string method = "manual";
+		if (!resultNote.IsEmpty())
+			method = resultNote;
+
+		loggingManager.SetWinningFaction(outcome, method);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -750,6 +785,18 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RadioExtraction radioExtraction = CRF_RadioExtraction.GetInstance();
 		if (radioExtraction)
 			radioExtraction.SendExtractionMessage();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestInfectionAntidote(vector cratePos)
+	{
+		LogTelemetry("RpcAsk_RequestInfectionAntidote", COA_BandwidthTelemetryManager.EstimateSize_Vector());
+
+		// The caller comes from this controller, never from the client; the component checks they're at a crate
+		CRF_InfectionGamemodeComponent infection = CRF_InfectionGamemodeComponent.GetInstance();
+		if (infection)
+			infection.UseAntidote(GetCallerPlayerId(), cratePos);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1900,6 +1947,17 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 			return;
 
 		cacheHunt.RequestDestroyCache(cache, playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestRallyPaint(RplId carId, int paint)
+	{
+		LogTelemetry("RpcAsk_RequestRallyPaint", COA_BandwidthTelemetryManager.EstimateSize_RplId() + COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		CRF_RallyStageGamemodeComponent stage = CRF_RallyStageGamemodeComponent.Cast(CRF_RallyGamemodeComponent.GetInstance());
+		if (stage)
+			stage.RequestPaint(GetCallerPlayerId(), carId, paint);
 	}
 
 	//------------------------------------------------------------------------------------------------

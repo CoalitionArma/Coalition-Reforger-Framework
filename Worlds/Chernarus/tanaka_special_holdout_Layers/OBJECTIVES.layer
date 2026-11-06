@@ -1,0 +1,29 @@
+$grp GenericEntity {
+ holdout_building {
+  coords 6309.117 6.300 2580.382
+ }
+ holdout_spawn_01 {
+  coords 6365.100 6.000 2766.700
+ }
+ holdout_spawn_02 {
+  coords 6446.800 6.000 2728.500
+ }
+ holdout_spawn_03 {
+  coords 6507.300 6.000 2615.300
+ }
+ holdout_spawn_04 {
+  coords 6494.700 6.000 2499.300
+ }
+ holdout_spawn_05 {
+  coords 6500.400 6.000 2421.600
+ }
+ holdout_spawn_06 {
+  coords 6393.400 6.000 2398.700
+ }
+ holdout_spawn_07 {
+  coords 6238.500 7.080 2392.900
+ }
+ holdout_spawn_08 {
+  coords 6186.300 13.640 2373.800
+ }
+}
