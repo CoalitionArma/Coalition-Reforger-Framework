@@ -3,9 +3,11 @@
 //
 // The truck moves by itself while attackers are close to it and no defender is. More attackers push it
 // faster. Left alone it stops, then rolls back, though never past the last checkpoint reached. Each
-// checkpoint adds time to the clock and can move both sides' respawn flags forward. Attackers win when
-// the truck reaches the end of the route. Defenders win when the clock runs out, unless attackers are
-// still with the truck: then it's overtime until it arrives or they leave it.
+// checkpoint adds time to the clock and can move both sides' respawn flags forward, with their vehicle
+// spawners. Both sides come back, with their vehicles, at each checkpoint and whenever either side is
+// wiped out. Attackers win when the truck reaches the end of the route. Defenders win when the clock
+// runs out, unless attackers are still with the truck: then it's overtime until it arrives or they
+// leave it.
 //
 // The truck is a prop, not a vehicle. The server decides how far along the route it is and replicates
 // that one distance; every machine places the prop there itself, on the terrain. So nobody can drive
@@ -102,8 +104,20 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute(desc: "The checkpoints, in route order", category: "Payload - Checkpoints")]
 	protected ref array<ref CRF_PayloadCheckpoint> m_aCheckpoints;
 
-	[Attribute("1", UIWidgets.CheckBox, "Bring both sides' dead back when a checkpoint is reached", category: "Payload - Checkpoints")]
+	[Attribute("1", UIWidgets.CheckBox, "Bring both sides' dead back when a checkpoint is reached", category: "Payload - Respawns")]
 	protected bool m_bRespawnOnCheckpoint;
+
+	[Attribute("1", UIWidgets.CheckBox, "Bring both sides' dead back when either side has nobody left alive", category: "Payload - Respawns")]
+	protected bool m_bRespawnOnWipe;
+
+	[Attribute("5", UIWidgets.EditBox, "Seconds after a side is wiped out before both sides come back", params: "0 120 1", category: "Payload - Respawns")]
+	protected float m_fWipeRespawnDelay;
+
+	[Attribute("1", UIWidgets.CheckBox, "Each side's vehicle spawners move with its respawn flag, keeping their place around it. Place them around the side's starting flag.", category: "Payload - Respawns")]
+	protected bool m_bVehiclesFollowSpawns;
+
+	[Attribute("1", UIWidgets.CheckBox, "When both sides come back, so do their vehicles: wrecks, and vehicles left empty away from their spawn, are replaced at the spawn. Vehicles with someone in them are left alone. Only spawners set to respawn on a side respawn.", category: "Payload - Respawns")]
+	protected bool m_bRespawnVehicles;
 
 	[Attribute("1500", UIWidgets.EditBox, "Seconds on the clock when the round starts", params: "60 14400 1", category: "Payload - Ending")]
 	protected int m_iStartSeconds;
@@ -119,6 +133,9 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 
 	[Attribute("{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", UIWidgets.ResourcePickerThumbnail, "Map marker for the checkpoints and the finish", "edds", category: "Payload - Map")]
 	protected ResourceName m_sCheckpointMarkerIcon;
+
+	[Attribute("1", UIWidgets.CheckBox, "Show a minimap of the route on the HUD, with how far the truck has come and where the player is (see CRF_PayloadMinimap)", category: "Payload - Map")]
+	protected bool m_bShowMinimap;
 
 	// Replicated: all a client needs to place the truck and draw the panel
 	[RplProp()]
@@ -160,12 +177,16 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 	protected float m_fIdleSeconds;
 	protected float m_fOvertimeIdleSeconds;
 	protected float m_fClockCarry;
+	protected bool m_bRespawnPending;
 
 	protected static const int TICK_MS = 500;
 	protected static const float TICK_SECONDS = 0.5;
 	protected static const float SNAP_DISTANCE = 30;	//!< further than this from the real position, jump (joining mid-round)
 	protected static const float CATCH_UP = 2;
 	protected static const float HALF_WIDTH = 1.2;		//!< how far either side of the truck the ground is measured, for its roll
+	protected static const float VEHICLE_SEARCH_RADIUS = 30;	//!< how far a moved vehicle spawner looks for open ground
+	protected static const float VEHICLE_CLEAR_RADIUS = 5;		//!< CRF_VehicleGearscriptManager won't spawn on a pad with less room than this
+	protected static const float VEHICLE_PARKED_RADIUS = 25;	//!< an empty vehicle this close to its spawner is still waiting there
 
 	protected static CRF_PayloadGamemodeComponent s_Instance;
 
@@ -355,6 +376,9 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 			return;
 		}
 
+		if (m_bRespawnOnWipe)
+			CheckWipe();
+
 		UpdateClock(escorted);
 		Replication.BumpMe();
 	}
@@ -395,9 +419,10 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		MoveSpawn(m_sAttackerFaction, checkpoint.m_sAttackerSpawnEntity);
 		MoveSpawn(m_sDefenderFaction, checkpoint.m_sDefenderSpawnEntity);
 
-		// After the flags have moved, so the dead come back at the new ones
+		// After the flags have moved, so the dead come back at the new ones. This also takes over a
+		// wipe respawn that hasn't happened yet, so the two don't run back to back.
 		if (m_bRespawnOnCheckpoint)
-			GetGame().GetCallqueue().CallLater(RespawnBothSides, 500, false);
+			ScheduleRespawn(500);
 
 		string text = "The truck can't roll back past here.";
 		if (checkpoint.m_iBonusSeconds > 0)
@@ -428,18 +453,231 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		if (!flag)
 			return;
 
+		vector oldFlag[4];
+		flag.GetWorldTransform(oldFlag);
+		vector oldAngles = flag.GetAngles();
+		float oldYaw = oldAngles[1];
+
 		flag.SetOrigin(marker.GetOrigin());
 		flag.SetAngles(marker.GetAngles());
+
+		if (m_bVehiclesFollowSpawns)
+			MoveVehicleSpawners(factionKey, oldFlag, oldYaw, flag);
+	}
+
+	//! Keeps each spawner where it was around the flag: as far ahead or behind it and to the side,
+	//! turned as much as the flag turned. Then onto open ground nearby, since the same spot by the
+	//! next flag can be a house or a tree, and a blocked pad never spawns its vehicle.
+	protected void MoveVehicleSpawners(string factionKey, vector oldFlag[4], float oldYaw, notnull IEntity flag)
+	{
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
+		BaseWorld world = GetGame().GetWorld();
+		if (!respawnManager || !world)
+			return;
+
+		array<COA_VehicleSpawner> spawners = respawnManager.GetVehicleSpawners();
+		if (!spawners)
+			return;
+
+		vector newFlag[4];
+		flag.GetWorldTransform(newFlag);
+		vector newAngles = flag.GetAngles();
+		float turn = newAngles[1] - oldYaw;
+
+		vector oldRight = FlatAxis(oldFlag[0]);
+		vector oldForward = FlatAxis(oldFlag[2]);
+		vector newRight = FlatAxis(newFlag[0]);
+		vector newForward = FlatAxis(newFlag[2]);
+
+		foreach (COA_VehicleSpawner spawner : spawners)
+		{
+			if (!spawner || spawner.m_sFactionKey != factionKey)
+				continue;
+
+			vector offset = spawner.GetOrigin() - oldFlag[3];
+			float across = vector.Dot(offset, oldRight);
+			float along = vector.Dot(offset, oldForward);
+			vector target = newFlag[3] + newRight * across + newForward * along;
+
+			vector position;
+			if (!SCR_WorldTools.FindEmptyTerrainPosition(position, target, VEHICLE_SEARCH_RADIUS, VEHICLE_CLEAR_RADIUS, 3))
+				Print(string.Format("[CRF_Payload] No open ground for a %1 vehicle near %2: it may not spawn until the spot is clear.", factionKey, target), LogLevel.WARNING);
+
+			position[1] = world.GetSurfaceY(position[0], position[2]);
+			spawner.SetOrigin(position);
+
+			vector angles = spawner.GetAngles();
+			angles[1] = angles[1] + turn;
+			spawner.SetAngles(angles);
+		}
+	}
+
+	protected vector FlatAxis(vector axis)
+	{
+		vector flat = Vector(axis[0], 0, axis[2]);
+		return flat.Normalized();
+	}
+
+	//! Server: a side with players slotted and none of them alive
+	protected bool IsWipedOut(string factionKey)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return false;
+
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+
+		bool anyPlayers;
+		foreach (int playerId : playerIds)
+		{
+			if (!slottingManager.IsPlayerInASlot(playerId))
+				continue;
+
+			Faction faction = slottingManager.GetPlayerSlotFaction(playerId, true);
+			if (!faction || faction.GetFactionKey() != factionKey)
+				continue;
+
+			if (!slottingManager.IsPlayerConsideredDead(playerId))
+				return false;
+
+			anyPlayers = true;
+		}
+
+		return anyPlayers;
+	}
+
+	protected void CheckWipe()
+	{
+		if (m_bRespawnPending)
+			return;
+
+		string wipedFaction;
+		if (IsWipedOut(m_sAttackerFaction))
+			wipedFaction = m_sAttackerFaction;
+		else if (IsWipedOut(m_sDefenderFaction))
+			wipedFaction = m_sDefenderFaction;
+		else
+			return;
+
+		int delaySeconds = m_fWipeRespawnDelay;
+		ScheduleRespawn(delaySeconds * 1000);
+
+		string text = "Both sides are back at their spawns.";
+		if (delaySeconds > 0)
+			text = string.Format("Both sides come back at their spawns in %1 seconds.", delaySeconds);
+
+		CRF_RadioTransmissionEvents.PopupToFaction("", string.Format("%1 WIPED OUT", CRF_SpecialsHelper.GetFactionName(wipedFaction)), text, 8);
+	}
+
+	//! One respawn at a time: a later request replaces the one waiting
+	protected void ScheduleRespawn(int delayMs)
+	{
+		m_bRespawnPending = true;
+		GetGame().GetCallqueue().Remove(RespawnBothSides);
+		GetGame().GetCallqueue().CallLater(RespawnBothSides, delayMs, false);
 	}
 
 	protected void RespawnBothSides()
 	{
+		m_bRespawnPending = false;
+
 		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
-		if (!respawnManager)
+		if (!respawnManager || m_bEndRequested)
 			return;
+
+		// Before the players: RespawnSide charges tickets for every vehicle that needs replacing
+		if (m_bRespawnVehicles)
+		{
+			ReplaceVehicles(m_sAttackerFaction);
+			ReplaceVehicles(m_sDefenderFaction);
+		}
 
 		respawnManager.RespawnSide(m_sAttackerFaction);
 		respawnManager.RespawnSide(m_sDefenderFaction);
+	}
+
+	//! RespawnSide only brings back vehicles that are destroyed or gone. This also replaces ones
+	//! left empty somewhere else (like back down the road, when the spawn has moved up), so a side
+	//! that respawns has its vehicles at the spawn.
+	protected void ReplaceVehicles(string factionKey)
+	{
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
+		CRF_VehicleGearscriptManager gearscriptManager = CRF_VehicleGearscriptManager.GetInstance();
+		if (!respawnManager || !gearscriptManager)
+			return;
+
+		array<COA_VehicleSpawner> spawners = respawnManager.GetVehicleSpawners();
+		if (!spawners)
+			return;
+
+		int tickets = respawnManager.GetFactionTickets(factionKey);
+		foreach (COA_VehicleSpawner spawner : spawners)
+		{
+			if (!spawner || spawner.m_sFactionKey != factionKey || !spawner.m_bShouldRespawnOnSideRespawn)
+				continue;
+
+			// -1 is unlimited and 0 means tickets aren't used, as in Rush and Cache Hunt. Not
+			// CRF_COA_RespawnManager.RespawnSideVehicles' check, which skips every vehicle on -1.
+			if (tickets > 0 && tickets < spawner.m_iTicketsPerRespawn)
+				continue;
+
+			IEntity vehicle = GetSpawnerVehicle(spawner);
+			if (vehicle && !IsWrecked(vehicle))
+			{
+				if (IsCrewed(vehicle) || vector.DistanceXZ(vehicle.GetOrigin(), spawner.GetOrigin()) <= VEHICLE_PARKED_RADIUS)
+					continue;
+			}
+
+			// Removed here rather than by the gearscript manager, which waits 15 seconds after
+			// removing one before it spawns the next
+			if (vehicle)
+				SCR_EntityHelper.DeleteEntityAndChildren(vehicle);
+
+			spawner.m_eVehicle = null;
+			spawner.m_VehicleRplId = RplId.Invalid();
+			gearscriptManager.QueueSpawn(spawner);
+		}
+	}
+
+	protected IEntity GetSpawnerVehicle(notnull COA_VehicleSpawner spawner)
+	{
+		if (!spawner.m_VehicleRplId.IsValid())
+			return null;
+
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(spawner.m_VehicleRplId));
+		if (!rpl)
+			return null;
+
+		IEntity vehicle = rpl.GetEntity();
+		if (!vehicle || vehicle.IsDeleted())
+			return null;
+
+		return vehicle;
+	}
+
+	protected bool IsWrecked(notnull IEntity entity)
+	{
+		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
+		return damageManager != null && damageManager.GetState() == EDamageState.DESTROYED;
+	}
+
+	//! Someone alive in a seat
+	protected bool IsCrewed(notnull IEntity vehicle)
+	{
+		SCR_BaseCompartmentManagerComponent compartmentManager = SCR_BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentManager)
+			return false;
+
+		array<IEntity> occupants = {};
+		compartmentManager.GetOccupants(occupants);
+		foreach (IEntity occupant : occupants)
+		{
+			if (occupant && !IsWrecked(occupant))
+				return true;
+		}
+
+		return false;
 	}
 
 	protected void UpdateClock(bool escorted)
@@ -842,6 +1080,47 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 	vector GetTruckPosition()
 	{
 		return GetRoutePoint(m_fDistance);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! How far along the route the prop is drawn on this machine, which eases between updates
+	float GetShownDistance()
+	{
+		return m_fShownDistance;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! True once the route has been read from the world on this machine
+	bool IsRouteReady()
+	{
+		return m_bRouteReady;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The route's points in world space, start first. Read only.
+	array<vector> GetRoute()
+	{
+		return m_aRoute;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! How far along the route each of GetRoute()'s points is. Read only.
+	array<float> GetRouteDistances()
+	{
+		return m_aRouteDistances;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! How far along the route each checkpoint is, in order. Read only.
+	array<float> GetCheckpointDistances()
+	{
+		return m_aCheckpointDistances;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool ShowMinimap()
+	{
+		return m_bShowMinimap;
 	}
 
 	//------------------------------------------------------------------------------------------------

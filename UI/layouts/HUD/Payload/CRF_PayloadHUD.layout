@@ -143,5 +143,69 @@ FrameWidgetClass {
     }
    }
   }
+  FrameWidgetClass "{5F3A91C27D4E6B29}" {
+   Name "MinimapPanel"
+   Slot FrameWidgetSlot "{5F3A91C27D4E6B2A}" {
+    Anchor 1 0 1 0
+    PositionX -316
+    OffsetLeft -316
+    PositionY 150
+    OffsetTop 150
+    SizeX 300
+    OffsetRight 16
+    SizeY 300
+    OffsetBottom -450
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{5F3A91C27D4E6B2B}" {
+     Name "MinimapBackground"
+     Slot FrameWidgetSlot "{5F3A91C27D4E6B2C}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Ignore Cursor" 1
+     Color 0.0075 0.0086 0.0123 0.88
+    }
+    ImageWidgetClass "{5F3A91C27D4E6B2D}" {
+     Name "MinimapAccent"
+     Slot FrameWidgetSlot "{5F3A91C27D4E6B2E}" {
+      Anchor 0 0 0 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 3
+      OffsetRight -3
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Ignore Cursor" 1
+     Color 0.5841 0.0369 0.0369 1
+    }
+    CanvasWidgetClass "{5F3A91C27D4E6B2F}" {
+     Name "MinimapCanvas"
+     Slot FrameWidgetSlot "{5F3A91C27D4E6B30}" {
+      Anchor 0 0 1 1
+      PositionX 11
+      OffsetLeft 11
+      PositionY 8
+      OffsetTop 8
+      SizeX -19
+      OffsetRight 8
+      SizeY -16
+      OffsetBottom 8
+     }
+     "Ignore Cursor" 1
+    }
+   }
+  }
  }
 }

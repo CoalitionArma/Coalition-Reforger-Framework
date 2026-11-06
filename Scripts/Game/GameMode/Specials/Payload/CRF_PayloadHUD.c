@@ -1,6 +1,7 @@
 //------------------------------------------------------------------------------------
 // CRF_PayloadHUD: the panel at the top of the screen - what the truck is doing, how far along the route it
-// is, the clock and how far away it is. Worded for the side reading it.
+// is, the clock and how far away it is. Worded for the side reading it. Plus the route minimap at the top
+// right (CRF_PayloadMinimap).
 //
 // Styled like CRF_HoldoutHUD. Client only, built from what CRF_PayloadGamemodeComponent already replicates,
 // so it costs nothing on the network. Out of the way while a menu (map, inventory...) is open.
@@ -16,6 +17,8 @@ class CRF_PayloadHUD
 	protected TextWidget m_wTitle;
 	protected TextWidget m_wDetail;
 	protected ProgressBarWidget m_wBar;
+	protected Widget m_wMinimapPanel;
+	protected ref CRF_PayloadMinimap m_Minimap;	//!< kept when the HUD goes down, so it's only built once
 
 	protected bool m_bUrgent;
 
@@ -45,6 +48,8 @@ class CRF_PayloadHUD
 
 		m_wBar.SetMax(1);
 		m_wBar.SetCurrent(payload.GetProgress());
+
+		UpdateMinimap(payload);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -54,6 +59,53 @@ class CRF_PayloadHUD
 			m_wRoot.RemoveFromHierarchy();
 
 		m_wRoot = null;
+		m_wMinimapPanel = null;
+
+		if (m_Minimap)
+			m_Minimap.SetCanvas(null);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Built the first time the route is known here, then the truck and the player moved along it
+	protected void UpdateMinimap(CRF_PayloadGamemodeComponent payload)
+	{
+		bool show = payload.ShowMinimap() && payload.IsRouteReady();
+		if (m_wMinimapPanel)
+			m_wMinimapPanel.SetVisible(show);
+
+		if (!show || !m_wMinimapPanel)
+			return;
+
+		if (!m_Minimap)
+			m_Minimap = new CRF_PayloadMinimap();
+
+		if (!m_Minimap.IsBuilt())
+		{
+			m_Minimap.Build(payload.GetRoute(), payload.GetRouteDistances(), payload.GetCheckpointDistances());
+			m_Minimap.SetCanvas(CanvasWidget.Cast(m_wMinimapPanel.FindAnyWidget("MinimapCanvas")));
+		}
+
+		// Vehicle position/heading when seated, character otherwise
+		IEntity local = SCR_PlayerController.GetLocalControlledEntity();
+		bool showPlayer = local != null && !COA_EntityHelper.IsSpectator(local);
+		if (showPlayer)
+		{
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(local);
+			showPlayer = damageManager == null || damageManager.GetState() != EDamageState.DESTROYED;
+		}
+		vector playerPos;
+		float playerYaw;
+		if (showPlayer)
+		{
+			IEntity tracked = local;
+			if (local.GetParent())
+				tracked = local.GetParent();
+
+			playerPos = tracked.GetOrigin();
+			playerYaw = tracked.GetAngles()[1];
+		}
+
+		m_Minimap.Update(payload.GetShownDistance(), payload.GetCheckpointsReached(), showPlayer, playerPos, playerYaw);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -153,6 +205,10 @@ class CRF_PayloadHUD
 			Destroy();
 			return false;
 		}
+
+		m_wMinimapPanel = m_wRoot.FindAnyWidget("MinimapPanel");
+		if (m_wMinimapPanel && m_Minimap)
+			m_Minimap.SetCanvas(CanvasWidget.Cast(m_wMinimapPanel.FindAnyWidget("MinimapCanvas")));
 
 		m_bUrgent = false;
 		return true;
