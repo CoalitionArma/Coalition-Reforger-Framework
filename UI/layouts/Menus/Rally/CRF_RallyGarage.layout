@@ -1,0 +1,194 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{5F3C91C200000101}" {
+   Name "PanelBorder"
+   Slot FrameWidgetSlot "{5F3C91C200000102}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -422
+    OffsetLeft -422
+    PositionY -302
+    OffsetTop -302
+    SizeX 384
+    OffsetRight 38
+    SizeY 604
+    OffsetBottom -302
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{5F3C91C200000103}" {
+   Name "PanelBg"
+   Slot FrameWidgetSlot "{5F3C91C200000104}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 600
+    OffsetBottom -300
+   }
+   Color 0.05 0.06 0.09 0.95
+  }
+  ImageWidgetClass "{5F3C91C200000105}" {
+   Name "TitleBar"
+   Slot FrameWidgetSlot "{5F3C91C200000106}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 46
+    OffsetBottom 254
+   }
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{5F3C91C200000107}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{5F3C91C200000108}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 46
+    OffsetBottom 254
+   }
+   Color 1 1 1 1
+   Text "GARAGE"
+   "Font Size" 22
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{5F3C91C200000109}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 2
+    ShadowSize 2
+    ShadowOffset 1 1
+   }
+  }
+  TextWidgetClass "{5F3C91C20000010A}" {
+   Name "SubTitle"
+   Slot FrameWidgetSlot "{5F3C91C20000010B}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -408
+    OffsetLeft -408
+    PositionY -250
+    OffsetTop -250
+    SizeX 356
+    OffsetRight 52
+    SizeY 40
+    OffsetBottom 210
+   }
+   Color 0.72 0.77 0.87 1
+   Text "Pick your car's paint. It locks at your start time."
+   "Font Size" 13
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{5F3C91C20000010C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{5F3C91C20000010D}" {
+   Name "Divider1"
+   Slot FrameWidgetSlot "{5F3C91C20000010E}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -400
+    OffsetLeft -400
+    PositionY -206
+    OffsetTop -206
+    SizeX 340
+    OffsetRight 60
+    SizeY 2
+    OffsetBottom 204
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  ScrollLayoutWidgetClass "{5F3C91C20000010F}" {
+   Name "PaintListScroll"
+   Slot FrameWidgetSlot "{5F3C91C200000110}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -408
+    OffsetLeft -408
+    PositionY -198
+    OffsetTop -198
+    SizeX 356
+    OffsetRight 52
+    SizeY 440
+    OffsetBottom -242
+   }
+   {
+    VerticalLayoutWidgetClass "{5F3C91C200000111}" {
+     Name "PaintList"
+     Slot AlignableSlot "{5F3C91C200000112}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{5F3C91C200000113}" {
+   Name "Divider2"
+   Slot FrameWidgetSlot "{5F3C91C200000114}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -400
+    OffsetLeft -400
+    PositionY 248
+    OffsetTop 248
+    SizeX 340
+    OffsetRight 60
+    SizeY 2
+    OffsetBottom -250
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  ButtonWidgetClass "{5F3C91C200000115}" {
+   Name "DoneButton"
+   Slot FrameWidgetSlot "{5F3C91C200000116}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -310
+    OffsetLeft -310
+    PositionY 258
+    OffsetTop 258
+    SizeX 160
+    OffsetRight 150
+    SizeY 34
+    OffsetBottom -292
+   }
+   Color 0.75 0.35 0 0.85
+   components {
+    CRF_RallyGarageDoneButton "{5F3C91C200000117}" {
+    }
+   }
+   {
+    TextWidgetClass "{5F3C91C200000118}" {
+     Name "DoneText"
+     Slot ButtonWidgetSlot "{5F3C91C200000119}" {
+     }
+     Color 1 1 1 1
+     Text "Done  [Esc]"
+     "Font Size" 15
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{5F3C91C20000011A}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      Bold 1
+      OutlineSize 1
+      ShadowOffset 0.5 0.5
+     }
+    }
+   }
+  }
+ }
+}

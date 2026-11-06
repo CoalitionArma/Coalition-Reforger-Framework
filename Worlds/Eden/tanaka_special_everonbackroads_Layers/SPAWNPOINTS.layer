@@ -1,0 +1,158 @@
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 4799.274 167.547 7035.935
+ m_SpawnPointSettings COA_SpawnPointData "{5F3B91C200000001}" {
+  m_iSpawnPointRadius 8
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 4765.660 161.408 7189.669
+  angles 0 29.150 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4760.420 161.408 7192.591
+  angles 0 29.150 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4761.923 161.103 7182.074
+  angles 0 19.970 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4756.284 161.103 7184.123
+  angles 0 19.970 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4760.053 161.143 7173.660
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4754.199 161.143 7174.978
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4758.075 161.183 7164.879
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4752.222 161.183 7166.198
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4756.098 161.223 7156.099
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4750.244 161.223 7157.418
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4754.120 161.263 7147.319
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4748.267 161.263 7148.638
+  angles 0 12.693 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4757.481 161.768 7140.984
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4752.007 161.768 7138.526
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4761.168 162.284 7132.774
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4755.694 162.284 7130.316
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4764.855 162.800 7124.563
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4759.381 162.800 7122.105
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4768.542 163.316 7116.353
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4763.068 163.316 7113.895
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4772.229 163.832 7108.143
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4766.755 163.832 7105.685
+  angles 0 -24.184 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4775.976 164.336 7100.106
+  angles 0 -26.644 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4770.613 164.336 7097.415
+  angles 0 -26.644 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4780.153 164.795 7092.206
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4774.848 164.795 7089.402
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4784.359 165.255 7084.249
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4779.054 165.255 7081.445
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4788.565 165.715 7076.292
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+ {
+  coords 4783.260 165.715 7073.488
+  angles 0 -27.861 0
+  m_rVehicle "{5F3A91C27D4E8A02}Prefabs/Vehicles/Wheeled/S105/S105_rally_CRF.et"
+ }
+}

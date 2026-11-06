@@ -5,19 +5,26 @@
 //! frame, which makes real wall-clock completion time land on targetS regardless of whatever the
 //! prefab's native duration happens to be) and greys out the action while on cooldown.
 //!
+//! ACE Core 1.5.41 replaced ACE Chopping's own ACE_Chopping_UserAction with this generic action,
+//! which ACE_Chopping_TreeHelper/BushHelper now carry. Other ACE helpers can use it too, so all of
+//! this only applies when the helper's entity is a tree or bush (Tree, as in the server gate).
+//!
 //! This action's PerformAction/CanBePerformedScript only ever run locally on the client that
-//! invoked it (see ACE_Chopping_UserAction.HasLocalEffectOnlyScript - it never runs server-side),
+//! invoked it (see ACE_DestroyEntityUserAction.HasLocalEffectOnlyScript - it never runs server-side),
 //! so what's here is prediction only, purely for responsive UI. Real, unbypassable enforcement of
 //! the cooldown is in the modded SCR_PlayerController.ACE_IsDeletionGrantedByServer, since that's
 //! the actual server RPC gate the tree-deletion request goes through.
 //! See CRF_SCR_CampaignBuildingGadgetToolComponent for the tunable durations/multipliers.
-modded class ACE_Chopping_UserAction
+modded class ACE_DestroyEntityUserAction
 {
 	//------------------------------------------------------------------------------------------------
 	override bool CanBePerformedScript(IEntity user)
 	{
 		if (!super.CanBePerformedScript(user))
 			return false;
+
+		if (!CRF_IsChopping())
+			return true;
 
 		SCR_CampaignBuildingGadgetToolComponent gadgetComp = CRF_GetHeldBuildingTool(user);
 		if (gadgetComp && !gadgetComp.CRF_CanChop())
@@ -33,7 +40,7 @@ modded class ACE_Chopping_UserAction
 	override float GetActionProgressScript(float fProgress, float timeSlice)
 	{
 		float actionDuration = GetActionDuration();
-		if (actionDuration <= 0 || !m_pUserChar)
+		if (actionDuration <= 0 || !m_pUserChar || !CRF_IsChopping())
 			return fProgress + timeSlice;
 
 		SCR_CampaignBuildingGadgetToolComponent gadgetComp = CRF_GetHeldBuildingTool(m_pUserChar);
@@ -51,11 +58,28 @@ modded class ACE_Chopping_UserAction
 	//! Predict the cooldown locally right after the (locally-run) removal request fires.
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
+		// Before super, which deletes the helper this reads
+		bool chopping = CRF_IsChopping();
+
 		super.PerformAction(pOwnerEntity, pUserEntity);
+
+		if (!chopping || !pUserEntity)
+			return;
 
 		SCR_CampaignBuildingGadgetToolComponent gadgetComp = CRF_GetHeldBuildingTool(pUserEntity);
 		if (gadgetComp)
 			gadgetComp.CRF_ConsumeChop(COA_RoleHelper.IsCombatEngineerRole(pUserEntity));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A tree or bush, the only things ACE Chopping's helpers are put on
+	protected bool CRF_IsChopping()
+	{
+		ACE_ActionsHelperEntity helper = ACE_ActionsHelperEntity.Cast(GetOwner());
+		if (!helper)
+			return false;
+
+		return Tree.Cast(helper.GetAssociatedEntity()) != null;
 	}
 
 	//------------------------------------------------------------------------------------------------

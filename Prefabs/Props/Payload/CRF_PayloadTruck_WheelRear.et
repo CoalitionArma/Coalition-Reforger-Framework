@@ -1,0 +1,12 @@
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{FE848F530B59F5FB}Assets/Vehicles/Wheeled/M923A1/VehParts/Wheels/M923A1_rear_wheel.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ModelGeometry 1
+   Static 1
+  }
+ }
+}

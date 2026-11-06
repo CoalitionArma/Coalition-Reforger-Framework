@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5F3B91C27D4E9201}Configs/Gearscripts/Standard/Specials/Rally/COA_GS_RallyCrew.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

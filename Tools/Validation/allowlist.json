@@ -30,9 +30,14 @@
     "is never attached by a layout by design - COA_UIPolish adds it to buttons at runtime",
     "with Widget.AddHandler. Its FindHandler(COA_UIHoverEffect) calls are 'already",
     "attached?' guards that keep repeated scans from attaching it twice, so null is the",
-    "normal result there, not a silent failure."
+    "normal result there, not a silent failure.",
+    "",
+    "COA_AdminListRowContextHandler (COALITION-Lobby, Scripts/Game/Systems/UI/Menus) is the",
+    "same case: COA_AdminMenuUI.AttachContextMenu adds it to list rows at runtime, and its",
+    "FindHandler call is the guard that stops a repopulated row getting a second one."
   ],
   "unattached-handler": [
+    "COA_AdminListRowContextHandler",
     "COA_UIHoverEffect"
   ],
   "unattached-component": [

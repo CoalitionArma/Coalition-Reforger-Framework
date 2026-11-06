@@ -20,6 +20,7 @@ COA_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   CRF_VehicleGearscriptManager "{69F92C24F37D31F8}" {
   }
  }
+ m_eHydrationRules ENABLED
  m_fTacticalCameraRange 100
  m_fTacticalCameraMaxHeight 30
  m_aTacticalCameraRoles {
