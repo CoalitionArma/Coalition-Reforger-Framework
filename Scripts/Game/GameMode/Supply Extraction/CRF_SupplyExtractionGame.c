@@ -70,11 +70,7 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 	protected bool m_gameMessage1;
 	protected bool m_gameMessage2;
 
-	//For checking to see if safestart is running
 	protected SCR_PopUpNotification m_PopUpNotification = null;
-	
-	protected bool m_bHasSafestartStarted = false;
-	protected bool m_bHasSafeStartEnded = false;
 
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
@@ -89,13 +85,9 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 		super.EOnFixedFrame(owner, timeSlice);
 		if (m_fUpdateBuffer >= 1)
 		{
-			if (!m_bHasSafestartStarted)
-				m_bHasSafestartStarted = COA_SafestartManager.GetInstance().GetSafestartStatus();
-			
-			if (m_bHasSafestartStarted)
-				m_bHasSafeStartEnded = !COA_SafestartManager.GetInstance().GetSafestartStatus();
-			
-			if (m_bHasSafeStartEnded)
+			// The checks start once safestart has ended (or, without safestart, once the mission has started)
+			COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+			if (!safestart || safestart.IsRoundLive())
 				SupplyInit();
 			m_fUpdateBuffer = 0;
 		}
@@ -106,7 +98,8 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 	protected void SupplyInit()
 	{
 		//Is the game running? I fucking hope so
-		if (COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		if ((safestart && safestart.GetSafestartStatus()) || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
 		//Who's near extract?
 		int playerCount = CountFactionPlayers(m_extractionLocation, m_extractionDistance, m_factionKey);
 		//Who's alive

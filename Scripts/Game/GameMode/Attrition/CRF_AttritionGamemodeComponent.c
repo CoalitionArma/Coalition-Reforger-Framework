@@ -257,7 +257,8 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_bPoolsFinalized || !m_Gamemode)
 			return;
 
-		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
+		// Missions with safestart finalize on OnSafestartChanged, when it ends
+		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || m_SafestartManager.IsRoundLive()))
 			FinalizePools();
 	}
 

@@ -39,6 +39,8 @@ modded class COA_MissionSynopsisGenerator
 			activeComponents.Insert("Radio Direction Finding");
 		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_PatrolGamemodeComponent) >= 0)
 			activeComponents.Insert("Patrol & Ambush");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_EvacuationGamemodeComponent) >= 0)
+			activeComponents.Insert("Evacuation");
 	}
 }
 #endif

@@ -55,6 +55,13 @@ class CRF_CacheHunt_DestroyAction: ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBePerformedScript(IEntity user)
 	{
+		CRF_CacheHuntGamemodeManager gamemode = CRF_CacheHuntGamemodeManager.GetInstance();
+		if (gamemode && !gamemode.IsRoundLive())
+		{
+			SetCannotPerformReason(SAFESTART_REASON);
+			return false;
+		}
+
 		if (GetCacheRplId() == RplId.Invalid())
 		{
 			SetCannotPerformReason(NOT_READY_REASON);
@@ -121,4 +128,5 @@ class CRF_CacheHunt_DestroyAction: ScriptedUserAction
 
 	protected static const string ACTION_NAME		= "Destroy Cache";
 	protected static const string NOT_READY_REASON	= "Cache is not ready to be destroyed";
+	protected static const string SAFESTART_REASON	= "Available once safestart ends";
 }

@@ -1369,6 +1369,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				if (m_bCountdownActive)
 					return;
 				
+				// Don't allow planting before safestart has ended
+				if (!IsRoundLive())
+					return;
+				
 				// Update planted status
 				SetMCOMPlantedStatus(mcomIdentifier, isPlanted);
 				
@@ -3147,6 +3151,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 * @return True if countdown active
 	 */
 	bool IsCountdownActive() { return m_bCountdownActive; }
+	
+	/**
+	 * Check if the round is live (safestart has ended). MCOMs can't be armed before then.
+	 * @return True once the round is live, or if there is no safestart manager
+	 */
+	bool IsRoundLive()
+	{
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
 	
 	/**
 	 * Get remaining countdown time

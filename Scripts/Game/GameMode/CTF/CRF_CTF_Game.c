@@ -391,6 +391,12 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 			return;
 		}
 
+		// Flags can't be taken before safestart has ended
+		if (!IsRoundLive())
+		{
+			return;
+		}
+
 		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!playerEntity)
 		{
@@ -686,6 +692,15 @@ class CRF_CTFGamemodeManager : SCR_BaseGameModeComponent
 	//===================================================================================
 	// ACCESSORS
 	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! \return True once safestart has ended (or there is no safestart manager). Flags can't be
+	//! picked up before then, so nothing can be captured either.
+	bool IsRoundLive()
+	{
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
 
 	//------------------------------------------------------------------------------------------------
 	int GetTeamAScore()

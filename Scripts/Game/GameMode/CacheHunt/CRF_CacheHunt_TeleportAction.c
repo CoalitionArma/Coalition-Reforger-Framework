@@ -98,6 +98,12 @@ class CRF_CacheHunt_TeleportAction: ScriptedUserAction
 			return false;
 		}
 
+		if (!gamemode.IsRoundLive())
+		{
+			SetCannotPerformReason(SAFESTART_REASON);
+			return false;
+		}
+
 		int destinationIndex = GetDestinationIndex();
 		vector position;
 		vector angles;
@@ -193,4 +199,5 @@ class CRF_CacheHunt_TeleportAction: ScriptedUserAction
 	protected static const string ENEMIES_HERE_REASON		= "Enemies nearby - teleport disabled";
 	protected static const string ENEMIES_THERE_REASON		= "Enemies at the destination - teleport disabled";
 	protected static const string NO_DESTINATION_REASON		= "No teleport destination available";
+	protected static const string SAFESTART_REASON			= "Available once safestart ends";
 }

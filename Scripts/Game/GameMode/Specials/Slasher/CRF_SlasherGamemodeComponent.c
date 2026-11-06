@@ -344,7 +344,7 @@ class CRF_SlasherGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void OnGamemodeStateChanged()
 	{
-		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || !m_SafestartManager.GetSafestartStatus()))
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || m_SafestartManager.IsRoundLive()))
 			StartRound();
 	}
 

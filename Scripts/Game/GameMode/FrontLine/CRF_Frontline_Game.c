@@ -303,9 +303,18 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// True once safestart has ended (or the mission has none). Not !GetSafestartStatus(): safestart is
+	// briefly off when the mission starts, before it turns on.
+	protected bool IsRoundLive()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		return !safestartManager || safestartManager.IsRoundLive();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void StartGame()
 	{
-		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(!IsRoundLive() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
 			return;
 		
 		int zoneIndex = ((m_aZonesStatus.Count()-1)/2);
@@ -338,7 +347,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateZones(IEntity owner)
 	{
-		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
+		if(!IsRoundLive() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
 		
 		int zonesCapturedBlufor;

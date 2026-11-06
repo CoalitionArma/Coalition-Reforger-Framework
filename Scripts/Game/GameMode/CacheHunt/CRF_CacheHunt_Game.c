@@ -73,6 +73,15 @@ class CRF_CacheHuntCacheData
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Server: caches can't be damaged until the round is live, so explosives set during
+	//! safestart can't take one down
+	void SetDamageEnabled(bool enabled)
+	{
+		if (m_DamageManager)
+			m_DamageManager.EnableDamageHandling(enabled);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void OnDamageStateChanged(EDamageState state)
 	{
 		if (state != EDamageState.DESTROYED)
@@ -320,6 +329,7 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 	protected COA_RplBroadcastManager m_RplBroadcastManager;
 	protected COA_RespawnManager m_RespawnManager;
+	protected COA_SafestartManager m_SafestartManager;	//!< Server: listened to for the round going live
 
 	protected static CRF_CacheHuntGamemodeManager m_sInstance;
 
@@ -391,6 +401,9 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(EnsureMarkerWidget);
 		}
 
+		if (m_SafestartManager && m_SafestartManager.m_OnRoundLive)
+			m_SafestartManager.m_OnRoundLive.Remove(OnRoundLive);
+
 		ClearAllDefenderMarkers();
 		ClearAllSearchMarkers();
 
@@ -437,6 +450,12 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 			return;
 
 		m_bInitialised = true;
+
+		// The caches go up now so both sides can plan around them, but they can't be
+		// damaged or destroyed until safestart ends
+		m_SafestartManager = COA_SafestartManager.GetInstance();
+		if (m_SafestartManager && !m_SafestartManager.IsRoundLive())
+			m_SafestartManager.m_OnRoundLive.Insert(OnRoundLive);
 
 		array<vector> positions = {};
 
@@ -691,6 +710,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		{
 			Print(string.Format("[CRF_CacheHunt] Cache prefab '%1' has no SCR_DamageManagerComponent. It can never be destroyed, so the objective will not complete.", m_rCachePrefab), LogLevel.ERROR);
 		}
+
+		// OnRoundLive turns damage back on
+		if (!IsRoundLive())
+			data.SetDamageEnabled(false);
 
 		data.m_vSearchOffset = ComputeSearchOffset();
 
@@ -989,6 +1012,21 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	}
 
 	//===================================================================================
+	// ROUND START (SERVER)
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Safestart has ended: the caches can be destroyed from now on
+	protected void OnRoundLive()
+	{
+		foreach (CRF_CacheHuntCacheData cache : m_aCaches)
+		{
+			if (cache && !cache.m_bDestroyed)
+				cache.SetDamageEnabled(true);
+		}
+	}
+
+	//===================================================================================
 	// CACHE DESTRUCTION (SERVER)
 	//===================================================================================
 
@@ -1062,6 +1100,10 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 
 		CRF_CacheHuntCacheData data = GetCacheDataForEntity(cache);
 		if (!data || data.m_bDestroyed)
+			return;
+
+		// The action is greyed out until the round is live; re-checked here all the same
+		if (!IsRoundLive())
 			return;
 
 		// Re-check the faction server-side; a client could ask for anything
@@ -1173,12 +1215,12 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bEnableSearchNarrowing || m_bAllCachesDestroyed)
 			return;
 
-		// Nothing narrows during safestart. The mission clock only starts when safestart
-		// ends, so this is belt and braces on top of GetMissionProgress() returning -1
-		// while m_iTimeMissionEnds is still unset - but it makes the intent explicit and
-		// covers a safestart that gets re-entered.
+		// Nothing narrows before the round is live, or during a safestart that gets
+		// re-entered. The mission clock only starts when safestart ends, so this is belt and
+		// braces on top of GetMissionProgress() returning -1 while m_iTimeMissionEnds is
+		// still unset - but it makes the intent explicit.
 		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-		if (safestartManager && safestartManager.GetSafestartStatus())
+		if (safestartManager && (!safestartManager.IsRoundLive() || safestartManager.GetSafestartStatus()))
 			return;
 
 		float progress = GetMissionProgress();
@@ -2177,6 +2219,15 @@ class CRF_CacheHuntGamemodeManager: SCR_BaseGameModeComponent
 	//===================================================================================
 	// PUBLIC API
 	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Any machine. \return True once safestart has ended (or the mission has none). Caches
+	//! can't be destroyed and the teleports don't work before then.
+	bool IsRoundLive()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		return !safestartManager || safestartManager.IsRoundLive();
+	}
 
 	//------------------------------------------------------------------------------------------------
 	//! \return True when the given entity belongs to the defending side

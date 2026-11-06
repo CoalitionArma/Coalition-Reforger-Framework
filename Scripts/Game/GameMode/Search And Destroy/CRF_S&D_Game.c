@@ -83,6 +83,14 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// True once safestart has ended (or there is no safestart manager)
+	bool IsRoundLive()
+	{
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void InitBombSites()
 	{
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
@@ -195,6 +203,10 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void ToggleBombPlanted(string sitePlanted, bool togglePlanted) 
 	{
+		// Bombs can't be planted before safestart has ended
+		if (togglePlanted && !IsRoundLive())
+			return;
+		
 		m_SoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
 		if (!togglePlanted) 
 		{

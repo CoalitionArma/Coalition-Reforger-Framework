@@ -66,7 +66,9 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 			return;
 		};
 		
-		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		bool roundLive = !safestartManager || safestartManager.IsRoundLive();
+		if(!roundLive || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !COA_PlayerControllerManager.GetInstance().m_bHUDVisible)
 			m_wRoot.SetOpacity(0);
 		else
 			m_wRoot.SetOpacity(1);

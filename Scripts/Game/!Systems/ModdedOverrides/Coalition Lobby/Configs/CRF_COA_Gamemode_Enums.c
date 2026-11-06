@@ -20,5 +20,6 @@ modded enum COA_EGamemode
 	THETURN,
 	SLASHER,
 	HOLDOUT,
-	PAYLOAD
+	PAYLOAD,
+	EVACUATION
 }

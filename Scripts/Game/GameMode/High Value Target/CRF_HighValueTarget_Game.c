@@ -222,7 +222,6 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	bool m_bHVTStateSet = false;
 	bool m_bHVTsSpawned = false;
 	bool m_bGameInit = false;
-	bool m_bHasSafestartBegun = false;  // Latch: Ensures we've seen safestart active before watching for it to end
 	
 	// ReplicationTimer prevents constant position updates to clients= (m_timeBetweenPings ; Performance good ?)
 	float m_fReplicationTimer = 0; // Timer for marker position replication now fires UpdateHVTPositions every m_timeBetweenPings seconds
@@ -281,23 +280,12 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				return;
 			}
 			
-			// Two-stage safestart check: First ensure we've seen it active, then wait for it to end
-			// If safestart is never enabled, skip directly to GameInit
-			if (!m_bHasSafestartBegun)
-			{
-				COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-				if (safestartManager && safestartManager.GetSafestartStatus())
-				{
-					m_bHasSafestartBegun = true;
-					return;
-				}
-			}
-			
-			// Wait for safestart to end before GameInit (skipped if safestart was never active)
+			// Wait for the round to go live before GameInit: safestart has ended, or the mission has none.
+			// Not !GetSafestartStatus(): safestart is briefly off when the mission starts, before it turns on.
 			if (!m_bGameInit)
 			{
 				COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-				if (m_bHasSafestartBegun && safestartManager && safestartManager.GetSafestartStatus())
+				if (safestartManager && !safestartManager.IsRoundLive())
 					return;
 				
 				GameInit();
