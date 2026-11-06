@@ -723,8 +723,11 @@ class CRF_BattleRoyaleComponent : SCR_BaseGameModeComponent
 			return;
 		}
 		
+		// IsRoundLive, not !GetSafestartStatus: safestart is briefly off as the mission starts, before it turns on
 		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
-		if (!safestart || safestart.GetSafestartStatus() || COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		bool roundLive = gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!safestart || safestart.IsRoundLive());
+		if (!roundLive)
 		{
 			if (m_bDebugEnabled) 
 				Print("[CRF_BattleRoyaleComponent] Waiting for game to be ready and safestart to end...");

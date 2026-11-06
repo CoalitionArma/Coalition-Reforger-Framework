@@ -1,0 +1,147 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{6ACE7A0100000001}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ "Ignore Cursor" 1
+ "Z Order" 1000
+ {
+  OverlayWidgetClass "{6ACE7A0100000002}" {
+   Name "Panel"
+   Slot FrameWidgetSlot "{6ACE7A0100000003}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 16
+    OffsetTop 16
+    SizeX 340
+    OffsetRight -340
+    SizeY 100
+    OffsetBottom -116
+    Alignment 0.5 0
+    SizeToContent 1
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{6ACE7A0100000004}" {
+     Name "Background"
+     Slot OverlayWidgetSlot "{6ACE7A0100000005}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     "Ignore Cursor" 1
+     Color 0.0075 0.0086 0.0123 0.92
+    }
+    ImageWidgetClass "{6ACE7A0100000006}" {
+     Name "AccentEdge"
+     Slot OverlayWidgetSlot "{6ACE7A0100000007}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+     "Ignore Cursor" 1
+     Color 0.5841 0.0369 0.0369 1
+     Size 1 3
+    }
+    SizeLayoutWidgetClass "{6ACE7A0100000008}" {
+     Name "Sizer"
+     Slot OverlayWidgetSlot "{6ACE7A0100000009}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 18 12 18 12
+     }
+     "Ignore Cursor" 1
+     AllowWidthOverride 1
+     WidthOverride 340
+     {
+      VerticalLayoutWidgetClass "{6ACE7A010000000A}" {
+       Name "Content"
+       Slot AlignableSlot "{6ACE7A010000000B}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Ignore Cursor" 1
+       {
+        TextWidgetClass "{6ACE7A010000000C}" {
+         Name "Kicker"
+         Slot LayoutSlot "{6ACE7A010000000D}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.3968 0.4564 0.6038 1
+         Text "EVACUATE THE SUPPLIES"
+         "Font Size" 14
+         "Min Font Size" 10
+         "Horizontal Alignment" Center
+         FontProperties FontProperties "{6ACE7A010000000E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        TextWidgetClass "{6ACE7A010000000F}" {
+         Name "Title"
+         Slot LayoutSlot "{6ACE7A0100000010}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.8632 0.8879 0.9301 1
+         Text "LOADING  40%"
+         "Font Size" 30
+         "Min Font Size" 10
+         "Horizontal Alignment" Center
+         FontProperties FontProperties "{6ACE7A0100000011}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+        SizeLayoutWidgetClass "{6ACE7A0100000012}" {
+         Name "BarSizer"
+         Slot LayoutSlot "{6ACE7A0100000013}" {
+          HorizontalAlign 3
+          Padding 0 6 0 6
+         }
+         "Ignore Cursor" 1
+         AllowHeightOverride 1
+         HeightOverride 8
+         {
+          ProgressBarWidgetClass "{6ACE7A0100000014}" {
+           Name "Bar"
+           Slot AlignableSlot "{6ACE7A0100000015}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           "Ignore Cursor" 1
+           Color 0.807 0.402 0.065 1
+           Maximum 1
+           Current 0
+          }
+         }
+        }
+        TextWidgetClass "{6ACE7A0100000016}" {
+         Name "Detail"
+         Slot LayoutSlot "{6ACE7A0100000017}" {
+          HorizontalAlign 3
+         }
+         "Ignore Cursor" 1
+         Color 0.6038 0.6584 0.7454 1
+         Text "Out 2/5  |  Site 4  |  Road 1  |  41:20"
+         "Font Size" 17
+         "Min Font Size" 10
+         "Horizontal Alignment" Center
+         FontProperties FontProperties "{6ACE7A0100000018}" {
+          Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

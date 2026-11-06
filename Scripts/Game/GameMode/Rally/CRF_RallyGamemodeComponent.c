@@ -30,7 +30,7 @@
 // 7. The minimap traces the course along the shortest road route between checkpoints. Where the
 //    stage takes a longer road than that, add a checkpoint on it.
 //
-// Crossings only count while the round is live (COA_EGamemodeState.GAME), and are checked along the
+// Crossings only count once the round is live (COA_EGamemodeState.GAME, safestart over), and are checked along the
 // path travelled since the last poll, so fast vehicles can't skip a checkpoint between polls.
 //------------------------------------------------------------------------------------
 
@@ -768,11 +768,22 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	// SERVER — CHECKPOINT POLLING
 	//===================================================================================
 
+	//! True once the race counts: the mission is in the game state and safestart is over (or the
+	//! mission has none). The course, smoke and HUD are up before then so racers can see it.
+	protected bool IsRaceLive()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+			return false;
+
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
+
 	protected void PollAllPlayerCheckpoints()
 	{
 		// Nothing counts before the round is live (briefing, slotting, safestart)
-		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
-		bool live = gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.GAME;
+		bool live = IsRaceLive();
 
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -1092,7 +1103,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(instigatorContextData);
 
-		if (!m_bRaceActive)
+		// A death in safestart isn't a race death
+		if (!m_bRaceActive || !IsRaceLive())
 			return;
 
 		int victimId = instigatorContextData.GetVictimPlayerID();

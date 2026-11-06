@@ -41,7 +41,8 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 	protected COA_RplBroadcastManager m_RplBroadcastManager;
 	protected COA_RespawnManager m_RespawnManager;
     protected COA_GamemodeManager m_GamemodeManager;
-    
+	protected COA_SafestartManager m_SafestartManager;	//!< Server: listened to for the round going live
+
     protected bool m_bZoneRevealNotificationSent = false;
 
     void CRF_InsurgencyGamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
@@ -94,6 +95,60 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         m_iTimePhaseZoneReveals = -1;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	// Caches stay undamageable until safestart ends, so nothing counts towards a phase before then
+	override void OnWorldPostProcess(World world)
+	{
+		super.OnWorldPostProcess(world);
+
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
+			return;
+
+		m_SafestartManager = COA_SafestartManager.GetInstance();
+		if (!m_SafestartManager || m_SafestartManager.IsRoundLive())
+			return;
+
+		m_SafestartManager.m_OnRoundLive.Insert(OnRoundLive);
+
+		foreach (IEntity cache : m_aObjCaches)
+			SetCacheDamageEnabled(cache, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		if (m_SafestartManager && m_SafestartManager.m_OnRoundLive)
+			m_SafestartManager.m_OnRoundLive.Remove(OnRoundLive);
+
+		super.OnDelete(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! True once safestart has ended (or the mission has none)
+	bool IsRoundLive()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		return !safestartManager || safestartManager.IsRoundLive();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnRoundLive()
+	{
+		foreach (IEntity cache : m_aObjCaches)
+			SetCacheDamageEnabled(cache, true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SetCacheDamageEnabled(IEntity cache, bool enabled)
+	{
+		if (!cache)
+			return;
+
+		CRF_InsDestructiveComponent cacheComp = CRF_InsDestructiveComponent.Cast(cache.FindComponent(CRF_InsDestructiveComponent));
+		if (cacheComp)
+			cacheComp.SetDamageEnabled(enabled);
+	}
+
     //------------------------------------------------------------------------------------------------
     static const int MAX_CACHE_REGISTER_RETRIES = 20;
 
@@ -138,7 +193,11 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         }
         
         m_mPhaseToActiveCaches.Get(phase).Insert(objectiveItem);
-        
+
+        // OnRoundLive turns damage back on
+        if (!IsRoundLive())
+            cacheComp.SetDamageEnabled(false);
+
         // FIX: Removed spammy Print statements, kept one summary log
         Print(string.Format("CRF_InsurgencyGamemodeManager: Cache registered to phase %1. Total in phase: %2", 
             phase, m_mPhaseToActiveCaches.Get(phase).Count()), LogLevel.NORMAL);

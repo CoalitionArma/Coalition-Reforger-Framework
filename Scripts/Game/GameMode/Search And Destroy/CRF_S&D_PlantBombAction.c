@@ -42,6 +42,10 @@ class CRF_PlantBombAction : ScriptedUserAction
 		// Get game mode manager
 		Faction userFaction = factionManager.GetLocalPlayerFaction();
 		
+		// Bombs can't be planted before safestart has ended
+		if (!gameMode.IsRoundLive())
+			return false;
+		
 		// Get attacker side definition
 		if (gameMode.attackingSide != userFaction.GetFactionKey())
 			return false;
@@ -53,7 +57,7 @@ class CRF_PlantBombAction : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBePerformedScript(IEntity user)
 	{
-		if (gameMode.countDownActive)
+		if (gameMode.countDownActive || !gameMode.IsRoundLive())
 			return false;
 		
 		// else true

@@ -130,9 +130,10 @@ class CRF_AreaTimerComponent : ScriptComponent
 		if (!m_Owner)
 			return;
 
-		// Gate: safestart active
+		// Gate: round not live yet (slotting, briefing, safestart), or an admin turned safestart back on.
+		// Safestart is briefly off as the mission starts, so "off" alone doesn't mean the round is live.
 		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-		if (!safestartManager || safestartManager.GetSafestartStatus())
+		if (safestartManager && (!safestartManager.IsRoundLive() || safestartManager.GetSafestartStatus()))
 			return;
 
 		// Gate: game mode not running

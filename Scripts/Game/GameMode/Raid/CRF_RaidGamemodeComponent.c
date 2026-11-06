@@ -137,7 +137,16 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		if (!item || m_bVictoryTriggered)
 			return;
- 
+
+		// Lost before safestart ended: it leaves the pool instead of counting for the attackers
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		if (safestartManager && !safestartManager.IsRoundLive())
+		{
+			m_aRegisteredItems.RemoveItem(item);
+			Print(string.Format("[CRF_Raid] %1 was lost before the round went live: removed from the supply pool.", item.GetOwner()), LogLevel.WARNING);
+			return;
+		}
+
 		// Finalize the supply total on the very first destruction if not yet done.
 		// This is more reliable than a fixed startup delay on slow-loading servers.
 		if (!m_bTotalsReady)

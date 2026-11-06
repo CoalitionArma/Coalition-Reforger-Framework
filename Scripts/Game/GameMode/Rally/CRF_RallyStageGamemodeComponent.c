@@ -169,8 +169,8 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		// Which cars wait - decided here, replicated to every machine
 		UpdateStartHolds(now);
 
-		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
-		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+		// The draw (and so m_fFirstStartDelay) counts from safestart ending, not from the game state
+		if (!IsRaceLive())
 			return;
 		if (!m_bStartOrderDrawn)
 			DrawStartOrder(now);

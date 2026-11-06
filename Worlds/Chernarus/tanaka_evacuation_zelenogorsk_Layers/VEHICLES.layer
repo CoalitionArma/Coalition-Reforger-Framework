@@ -1,0 +1,52 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 1857.167 167.698 4245.405
+  angles 0 21.257 0
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1861.738 168.825 4257.049
+  angles 0 21.583 0
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1866.220 169.901 4268.381
+  angles 0 21.583 0
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1871.402 171.039 4279.659
+  angles 0 28.379 0
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 2762.591 209.065 5324.277
+  angles 0 11.653 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2760.346 208.358 5312.287
+  angles 0 11.075 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2757.784 207.995 5299.719
+  angles 0 11.522 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 2755.222 207.633 5287.150
+  angles 0 11.258 0
+  m_rVehicle "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_sFactionKey "OPFOR"
+ }
+}

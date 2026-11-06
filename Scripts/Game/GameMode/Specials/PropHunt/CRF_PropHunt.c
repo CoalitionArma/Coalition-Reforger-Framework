@@ -145,6 +145,10 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	// Prevents re-entrant round-end logic
 	protected bool m_bRoundEndPending = false;
 
+	// Server: the first round waits for safestart to end (COA_SafestartManager.m_OnRoundLive)
+	protected COA_SafestartManager m_Safestart;
+	protected bool m_bAwaitingRoundLive = false;
+
 	// Throttle timer for prop-position broadcast RPCs (10 Hz = 0.1 s).
 	protected float m_fPropSyncTimer = 0;
 
@@ -191,6 +195,9 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	void ~CRF_PropHuntGamemode()
 	{
 		m_sInstance = null;
+
+		if (m_Safestart && m_Safestart.m_OnRoundLive)
+			m_Safestart.m_OnRoundLive.Remove(OnRoundLive);
 	}
 
 	//------------------------------------------------------------
@@ -586,6 +593,28 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 		m_iHuntersWins   = 0;
 		Replication.BumpMe();
 
+		// The first round starts when safestart ends (or, without safestart, once the mission has
+		// started), not when the mission enters the game state
+		m_Safestart = COA_SafestartManager.GetInstance();
+		if (!m_Safestart || m_Safestart.IsRoundLive())
+		{
+			BeginRound();
+			return;
+		}
+
+		m_bAwaitingRoundLive = true;
+		m_Safestart.m_OnRoundLive.Insert(OnRoundLive);
+	}
+
+	//------------------------------------------------------------
+	// Safestart ended — start the first round
+	//------------------------------------------------------------
+	protected void OnRoundLive()
+	{
+		if (!m_bAwaitingRoundLive)
+			return;
+
+		m_bAwaitingRoundLive = false;
 		BeginRound();
 	}
 
@@ -1992,6 +2021,7 @@ class CRF_PropHuntGamemode : SCR_BaseGameModeComponent
 	//------------------------------------------------------------
 	protected void AdminRestart(int adminPlayerId)
 	{
+		m_bAwaitingRoundLive = false; // restarted by hand: safestart ending doesn't start it again
 		m_bRoundEndPending  = false;
 		m_bPhaseTimerActive = false;
 		m_iCurrentRound     = 1;

@@ -109,6 +109,12 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 			return false;
 		}
 		
+		// MCOMs can't be armed until safestart has ended
+		if (!m_RushGamemode.IsRoundLive())
+		{
+			return false;
+		}
+		
 		FactionKey userFactionKey;
 		
 		// Try method 1: FactionAffiliationComponent (preferred)
@@ -176,6 +182,12 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 	override bool CanBePerformedScript(IEntity user)
 	{
 		if (!m_RushGamemode)
+		{
+			return false;
+		}
+		
+		// Don't allow planting before safestart has ended
+		if (!m_RushGamemode.IsRoundLive())
 		{
 			return false;
 		}

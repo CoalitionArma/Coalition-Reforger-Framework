@@ -278,7 +278,7 @@ class CRF_InfectionGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && !m_bRoundLive)
 		{
 			// Missions with safestart start on OnSafestartChanged
-			if (!m_Safestart || !m_Safestart.GetSafestartStatus())
+			if (!m_Safestart || m_Safestart.IsRoundLive())
 				StartRound();
 			return;
 		}
