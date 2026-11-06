@@ -35,11 +35,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "A US Spec OPS company has been tasked with destroy Russian MCOMs along the south eastern coast."\
    ""\
-   "BLUFOR Composition: Amphibious Infantry Company"\
-   "BLUFOR Assets: Armed RHIBs"\
+   "BLUFOR Composition: Motorized Infantry Company"\
+   "BLUFOR Assets: None"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
-   "OPFOR Assets: None"\
+   "OPFOR Assets: MMG (Optics)"\
    ""\
    "Time: Midnight"\
    ""\
@@ -54,7 +54,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destroy each MCOM"\
    ""\
    "INTENT"\
-   "My intent was to create a mission  to allow you (the attackers) to choose your landing and take on the enemy in land combat with support from Sea Assets. One boat should fill a full squad."\
+   "My intent was to create a mission  to allow you (the attackers) to have an overwehleming numbers advatage and push your way through the tight corrder that is this AO."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -69,7 +69,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Defend each Mcom."\
    ""\
    "INTENT"\
-   "My intent this mission was to give you the denfends a small area of defense and deal with both land and sea attacks."\
+   "My intent this mission was to give you the defenders a way to funnel the attackers and cut them down with your MMG"\
    ""\
    "EXECUTION"\
    "Commanders discretion"
