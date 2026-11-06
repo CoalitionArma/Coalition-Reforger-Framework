@@ -1,0 +1,429 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A9F174A58FB1116}" {
+     NavmeshFile "{0259BDC1ED7459C7}Worlds/GameMaster/NavMesh/GM_UKSFO_S_Belize_Soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{5CB851AFD0AA3FF1}Worlds/GameMaster/NavMesh/GM_UKSFO_S_Belize_BTRLike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{14A5EBC4DEBE35E7}Worlds/GameMaster/NavMesh/GM_UKSFO_S_Belize_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 1397.006 31.656 836.564
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_BTIGamemodeManager "{6A9F174F18BC56FE}" {
+   m_aFlipFromFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_sFlipToFactionKey "CIV"
+  }
+  CRF_LooterGamemodeComponent "{6A9F174F4E4740C5}" {
+   m_fGlobalSpawnChance 0.4
+   m_iTotalSpawnPoints 3559
+   m_aWeaponEntries {
+    CRF_WeaponLootEntry "{6A9F56127F903935}" {
+     m_fWeight 0.4
+     m_sPrimaryPrefab "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et"
+     m_sMagazinePrefab "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et"
+     m_iMagazineCount 5
+    }
+    CRF_WeaponLootEntry "{6A9F561709B3C599}" {
+     m_fWeight 0.001
+     m_sPrimaryPrefab "{BFEA719491610A45}Prefabs/Weapons/Rifles/AKS74U/Rifle_AKS74U.et"
+     m_sMagazinePrefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+     m_iMagazineCount 1
+    }
+   }
+   m_aGearEntries {
+    CRF_GearLootEntry "{6A9F56121EFE3ADF}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{ADE19B33DCBB9005}Prefabs/Characters/Vests/Vest_6B2/Vest_6B2.et"
+    }
+    CRF_GearLootEntry "{6A9F561264EC624E}" {
+     m_fWeight 0.05
+     m_sPrimaryPrefab "{A7E6D7ECD5F684D7}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01.et"
+    }
+   }
+   m_aBagEntries {
+    CRF_BagLootEntry "{6A9F5612380C1F15}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+    }
+   }
+   m_aMiscEntries {
+    CRF_MiscLootEntry "{6A9F5612233C2ACD}" {
+     m_fWeight 1
+     m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+    }
+    CRF_MiscLootEntry "{6AA00D877FC9B1B6}" {
+     m_fWeight 0.1
+     m_sPrimaryPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+     m_aExtraItems {
+      CRF_MiscItem "{6AA00D8744921D51}" {
+       m_sPrefab "{79C1DB62DB7161F2}Prefabs/Items/Core/ACE_Banana_glowing.et"
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 11
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 20
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AA0F7D7B79B3DDA}" {
+   m_sTitle "GET BANANAS, PLACE THEM IN YOUR DEPOSIT AREA"
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3221}" {
+   m_sTitle "WATCH OUT FOR THE BANANA FREAK AND ANYONE HE TURNS"
+   m_sTextData ""
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B314F}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3081}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B37DB}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "GET BANANA"
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B371D}" {
+   m_sTitle "BANANA FREAK"
+   m_sTextData "Kill the intruders, and you'll spawn more banana freaks."
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AA0F7D7B79B3665}" {
+   m_sTitle "Administration"
+   m_sTextData "There's a collector on the deposit areas."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6A9F174CAA3E21A5}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E27CE}" {
+   m_sCallsign "0-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E2720}" {
+   m_sCallsign "0-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E267E}" {
+   m_sCallsign "0-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6A9F174CAA3E24CF}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E2409}" {
+   m_sCallsign "0-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E1B5E}" {
+   m_sCallsign "0-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E1A89}" {
+   m_sCallsign "0-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+ }
+ m_INDFORSlots {
+  COA_SlottingGroup "{6A9F174CAA3E19BA}" {
+   m_sCallsign "0-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E1890}" {
+   m_sCallsign "0-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E1FDC}" {
+   m_sCallsign "0-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+  COA_SlottingGroup "{6A9F174CAA3E1F16}" {
+   m_sCallsign "0-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns 0
+  }
+ }
+ m_CIVSlots {
+  COA_SlottingGroup "{6A9F174CAA3E1E07}" {
+   m_sCallsign "Banana Freak"
+   m_FlagType SIGNAL
+   m_aSlots {
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+   m_aRoleRespawns {
+    COA_RoleRespawnEntry "{6A9F174CAA3E1D4A}" {
+     m_Role RIFLEMAN
+     m_iRespawns -1
+    }
+   }
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{AB5CF09B0D974592}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_UnarmedBR.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{AB5CF09B0D974592}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_UnarmedBR.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{AB5CF09B0D974592}Configs/Gearscripts/Standard/80s/Variants/COA_GS_USSR80s_UnarmedBR.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{943E2C2A6661CDB8}Configs/Gearscripts/Standard/80s/COA_GS_USSR80s.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ {
+  SCR_FactionManager "6A9F5613431846AE" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "OPFOR"
+      "INDFOR"
+      "CIV"
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "INDFOR"
+      "CIV"
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "CIV"
+     }
+    }
+   }
+  }
+ }
+}

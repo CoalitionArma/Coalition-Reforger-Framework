@@ -1,0 +1,41 @@
+GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222EB4D07D865FA}" {
+     Name "#ACE-Item_Banana_Name"
+     Description "#ACE-Item_Banana_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.175
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 100
+     RestingUP Right
+     RestingAdditiveOffsetLS 0.12 0 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6AA00D82FB82D00B}" {
+      CameraOrbitAngles 0 -90 45
+      CameraDistanceToItem 0.3
+      FOV 40
+     }
+    }
+    CommonItemType "FOOD"
+   }
+  }
+  MeshObject "{6AA00D82FB82D7CC}" {
+   Object "{DBE32115FB8473C1}Assets/Items/Food/ACE_Banana.xob"
+   Materials {
+    MaterialAssignClass "{6AA00D82C4529A0E}" {
+     SourceMaterial "ace_banana"
+     AssignedMaterial "{45EC832AE9B30B1F}Assets/Items/Food/Data/ACE_Banana_glow.emat"
+    }
+   }
+  }
+  RigidBody "{6AA00D82FB82D7C8}" {
+   Mass 0.3
+  }
+ }
+}
