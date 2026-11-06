@@ -35,18 +35,6 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
    MaxCumulativeVolume 1000000
    MaxItemSize 200 200 200
   }
-  SCR_VehicleDustPerWheel "{5476BC43E4910F64}" {
-   m_aWheels + {
-    4 5
-   }
-   m_fDustTopSpeed 60
-  }
-  SCR_VehicleDustPerWheel "{5476BC43E4910F64}" {
-   m_aWheels + {
-    4 5
-   }
-   m_fDustTopSpeed 60
-  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Cargo {

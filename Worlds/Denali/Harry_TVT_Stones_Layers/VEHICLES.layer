@@ -18,12 +18,6 @@ GenericEntity : "{02D89CB8A159DDF0}PrefabsMissionMaking/Systems/VehicleDepot/Veh
      m_eCostType USES
      m_iCost -1
     }
-    CRF_VehicleDepotVehicle "{6ABA22ABC56486A4}" {
-     m_sVehicleName "BTR-40"
-     m_sVehiclePrefab "{B691953D0FC63609}Vehicles/BTR40/BTR40new.et"
-     m_eCostType SUPPLIES
-     m_iCost 100
-    }
    }
   }
  }
