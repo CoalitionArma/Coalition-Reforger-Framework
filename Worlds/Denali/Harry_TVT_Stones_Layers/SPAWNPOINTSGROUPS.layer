@@ -1,0 +1,21 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 3110.611 286.031 1880.503
+ }
+ {
+  coords 3129.269 286.032 1882.86
+  m_sCallsignOfGroupToSpawn "1-2"
+ }
+ {
+  coords 3143.653 286.031 1892.24
+  m_sCallsignOfGroupToSpawn "1-3"
+ }
+ {
+  coords 3157.937 286.031 1907.515
+  m_sCallsignOfGroupToSpawn "1-4"
+ }
+ {
+  coords 3082.853 286.032 1886.312
+  m_sCallsignOfGroupToSpawn "1PLT"
+ }
+}
