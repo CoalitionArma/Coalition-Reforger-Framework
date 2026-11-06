@@ -118,15 +118,6 @@ $grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSma
   }
  }
 }
-GenericEntity : "{4510C273B794F3AA}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_Conflict_USSR_01.et" {
- components {
-  FactionAffiliationComponent "{630682596916F2F5}" {
-   "faction affiliation" "OPFOR"
-  }
- }
- coords 1556.602 227.973 1562.302
- angles 0 104.627 0
-}
 $grp GenericEntity : "{97A03B43D914B4DD}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft_Base.et" {
  {
   components {
