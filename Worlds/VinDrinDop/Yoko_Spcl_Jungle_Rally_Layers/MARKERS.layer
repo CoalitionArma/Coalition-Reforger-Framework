@@ -1,0 +1,152 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 2555.635 80.309 699.843
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "1. Stage start, 600"
+ }
+ {
+  coords 2793.647 79.872 1345.451
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "2. Left 2, into right 2, into left 3, 100"
+ }
+ {
+  coords 2680.246 83.816 1536.163
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "3. Left 4 long, into right 4 opens, 200"
+ }
+ {
+  coords 2293.571 85.328 1601.919
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "4. Right 3 long opens, steep downhill, into left 5, 150"
+ }
+ {
+  coords 2142.327 25.844 1842.742
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "5. Left 4 long, 400"
+ }
+ {
+  coords 1639.111 4.472 1933.752
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "6. Left 4, 150"
+ }
+ {
+  coords 1402.272 4.738 1934.393
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "7. At junction right 5 opens, steep uphill, into left 5 opens, and right 3 opens, 70"
+ }
+ {
+  coords 1182.757 12.119 2052.838
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "8. Right 3 long tightens, into leave road, off road 80, rejoin road, into left 2 long opens, steep uphill, 150"
+ }
+ {
+  coords 947.349 44.888 2259.617
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "9. At junction square right, into left 3 opens, into right 1 opens"
+ }
+ {
+  coords 954.300 41.923 2420.408
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "10. Left 1 tightens, into leave road, off road 60, rejoin road, 100"
+ }
+ {
+  coords 946.772 49.337 2632.164
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "11. Steep downhill, 90"
+ }
+ {
+  coords 938.853 31.282 2734.400
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "12. At junction right 2 opens, into at junction square left, into at junction right 2"
+ }
+ {
+  coords 953.202 3.084 2870.926
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "13. At junction left 2 long tightens, 200"
+ }
+ {
+  coords 701.971 1.931 2961.933
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "14. Left 4 tightens, into leave road, off road 80, rejoin road, and left 2"
+ }
+ {
+  coords 552.429 2.321 2833.835
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "15. Right 5, 60"
+ }
+ {
+  coords 517.804 3.023 2703.342
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "16. Right 2 long, into left 2, 70"
+ }
+ {
+  coords 311.581 2.100 2606.313
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "17. Left 2 long tightens, into right 3 long, into left 3 opens"
+ }
+ {
+  coords 341.029 2.081 2428.930
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "18. At junction right 2 opens, into left 2 tightens, into right 3 opens"
+ }
+ {
+  coords 239.347 2.280 2342.677
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "19. Left 4, 50"
+ }
+ {
+  coords 159.461 2.212 2260.092
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "20. Left 3 long tightens, 200"
+ }
+ {
+  coords 366.375 1.293 2049.621
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "21. Right 4 long opens, 100"
+ }
+ {
+  coords 462.814 -0.400 1870.216
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "22. Left 4 opens, and right 2 long, 100"
+ }
+ {
+  coords 439.051 -0.124 1674.383
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "23. Left 4 long tightens, and right 2 long, into hairpin left"
+ }
+ {
+  coords 375.454 0.280 1327.823
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "24. Right 2 opens, into at junction left 3, and left 2 opens, 100"
+ }
+ {
+  coords 613.683 0.492 1298.508
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "25. Leave road, straight 140 over rough to flying finish"
+ }
+}

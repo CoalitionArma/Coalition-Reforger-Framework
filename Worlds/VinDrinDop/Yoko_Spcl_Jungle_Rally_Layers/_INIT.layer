@@ -8,6 +8,110 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bRandomStartOrder 0
    m_fCrewCarSearchRadius 500
   }
+  CRF_RallyPaceNotesComponent "{6ACD5A1E00000001}" {
+   m_aCalls {
+    CRF_RallyPaceNote "{6ACD5A1E00000002}" {
+     m_vPosition 2557.295 80.667 684.462
+     m_sCall "Stage start, 600"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000003}" {
+     m_vPosition 2786.471 79.738 1330.526
+     m_sCall "Left 2, into right 2, into left 3, 100"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000004}" {
+     m_vPosition 2693.379 83.503 1525.390
+     m_sCall "Left 4 long, into right 4 opens, 200"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000005}" {
+     m_vPosition 2311.070 84.114 1599.856
+     m_sCall "Right 3 long opens, steep downhill, into left 5, 150"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000006}" {
+     m_vPosition 2152.584 29.829 1828.619
+     m_sCall "Left 4 long, 400"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000007}" {
+     m_vPosition 1654.676 4.351 1929.221
+     m_sCall "Left 4, 150"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000008}" {
+     m_vPosition 1420.206 0.386 1934.844
+     m_sCall "At junction right 5 opens, steep uphill, into left 5 opens, and right 3 opens, 70"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000009}" {
+     m_vPosition 1193.154 15.359 2040.601
+     m_sCall "Right 3 long tightens, into leave road, off road 80, rejoin road, into left 2 long opens, steep uphill, 150"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000A}" {
+     m_vPosition 964.387 45.065 2257.077
+     m_sCall "At junction square right, into left 3 opens, into right 1 opens"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000B}" {
+     m_vPosition 937.253 44.353 2414.650
+     m_sCall "Left 1 tightens, into leave road, off road 60, rejoin road, 100"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000C}" {
+     m_vPosition 952.284 50.125 2615.711
+     m_sCall "Steep downhill, 90"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000D}" {
+     m_vPosition 941.400 33.519 2718.419
+     m_sCall "At junction right 2 opens, into at junction square left, into at junction right 2"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000E}" {
+     m_vPosition 945.589 4.510 2856.882
+     m_sCall "At junction left 2 long tightens, 200"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000000F}" {
+     m_vPosition 719.424 2.008 2958.992
+     m_sCall "Left 4 tightens, into leave road, off road 80, rejoin road, and left 2"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000010}" {
+     m_vPosition 550.835 2.628 2851.800
+     m_sCall "Right 5, 60"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000011}" {
+     m_vPosition 520.216 2.969 2720.839
+     m_sCall "Right 2 long, into left 2, 70"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000012}" {
+     m_vPosition 323.847 2.118 2616.574
+     m_sCall "Left 2 long tightens, into right 3 long, into left 3 opens"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000013}" {
+     m_vPosition 340.681 1.948 2446.222
+     m_sCall "At junction right 2 opens, into left 2 tightens, into right 3 opens"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000014}" {
+     m_vPosition 254.175 2.263 2347.862
+     m_sCall "Left 4, 50"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000015}" {
+     m_vPosition 173.049 1.916 2272.921
+     m_sCall "Left 3 long tightens, 200"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000016}" {
+     m_vPosition 352.567 1.531 2057.843
+     m_sCall "Right 4 long opens, 100"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000017}" {
+     m_vPosition 455.404 -0.408 1886.392
+     m_sCall "Left 4 opens, and right 2 long, 100"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000018}" {
+     m_vPosition 454.108 -0.114 1686.184
+     m_sCall "Left 4 long tightens, and right 2 long, into hairpin left"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E00000019}" {
+     m_vPosition 359.049 0.381 1329.302
+     m_sCall "Right 2 opens, into at junction left 3, and left 2 opens, 100"
+    }
+    CRF_RallyPaceNote "{6ACD5A1E0000001A}" {
+     m_vPosition 596.773 0.349 1292.820
+     m_sCall "Leave road, straight 140 over rough to flying finish"
+    }
+   }
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
    m_aStartingWeatherAndTime {
@@ -47,6 +151,42 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6ACA30A4E13D2A33}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData ""
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACD5A1E0000001B}" {
+   m_sTitle "Roadbook"
+   m_sTextData "Jungle Rally - 6.41 km, point to point on forest and dirt roads, with four short cuts off the road."\
+   ""\
+   "Grades: 1 is the tightest corner, 6 the fastest. Square: a 90 degree junction. Distances in metres to the next call; into and and mean it follows straight on. Off road: there is no road there, head for where the road picks up again."\
+   ""\
+   "0.02 km   Stage start, 600"\
+   "0.64 km   Left 2, into right 2, into left 3, 100"\
+   "0.87 km   Left 4 long, into right 4 opens, 200"\
+   "1.23 km   Right 3 long opens, steep downhill, into left 5, 150"\
+   "1.48 km   Left 4 long, 400"\
+   "1.95 km   Left 4, 150"\
+   "2.16 km   At junction right 5 opens, steep uphill, into left 5 opens, and right 3 opens, 70"\
+   "2.40 km   Right 3 long tightens, into leave road, off road 80, rejoin road, into left 2 long opens, steep uphill, 150"\
+   "2.86 km   At junction square right, into left 3 opens, into right 1 opens"\
+   "3.04 km   Left 1 tightens, into leave road, off road 60, rejoin road, 100"\
+   "3.25 km   Steep downhill, 90"\
+   "3.35 km   At junction right 2 opens, into at junction square left, into at junction right 2"\
+   "3.52 km   At junction left 2 long tightens, 200"\
+   "3.81 km   Left 4 tightens, into leave road, off road 80, rejoin road, and left 2"\
+   "4.01 km   Right 5, 60"\
+   "4.13 km   Right 2 long, into left 2, 70"\
+   "4.36 km   Left 2 long tightens, into right 3 long, into left 3 opens"\
+   "4.56 km   At junction right 2 opens, into left 2 tightens, into right 3 opens"\
+   "4.69 km   Left 4, 50"\
+   "4.79 km   Left 3 long tightens, 200"\
+   "5.10 km   Right 4 long opens, 100"\
+   "5.28 km   Left 4 opens, and right 2 long, 100"\
+   "5.59 km   Left 4 long tightens, and right 2 long, into hairpin left"\
+   "6.03 km   Right 2 opens, into at junction left 3, and left 2 opens, 100"\
+   "6.27 km   Leave road, straight 140 over rough to flying finish"
    m_aFactionKeys {
     "BLUFOR"
    }
