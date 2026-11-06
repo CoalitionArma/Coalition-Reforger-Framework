@@ -20,6 +20,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  }
  coords 0 0 0
  m_bRespawnEnabled 0
+ m_bSeperateSpectatorsByFaction 1
+ m_bHideOtherSpectatorFactions 1
  m_bWaveRespawn 0
  m_bRallyPointsEnabled 0
  m_iTimeToRespawn 60
@@ -33,13 +35,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6ACA1DC4CEEF3402}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "A US Spec OPS company has been tasked with destroy Russian MCOMs along the south eastern coast."\
+   m_sTextData "A US Spec OPS company has been tasked with destroying Russian MCOMs along the south eastern coast."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
-   "BLUFOR Assets: None"\
+   "BLUFOR Assets: 10x M923 Truck, 15x M1025 Humvee (unarmed)"\
    ""\
    "OPFOR Composition: Motorized Infantry Platoon"\
-   "OPFOR Assets: MMG (Optics)"\
+   "OPFOR Assets: MMG (Optics), 5x Ural-4320 Truck"\
    ""\
    "Time: Midnight"\
    ""\
@@ -54,7 +56,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destroy each MCOM"\
    ""\
    "INTENT"\
-   "My intent was to create a mission  to allow you (the attackers) to have an overwehleming numbers advatage and push your way through the tight corrder that is this AO."\
+   "My intent was to create a mission to allow you (the attackers) to have an overwhelming numbers advantage and push your way through the tight corridor that is this AO."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -66,7 +68,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6ACA1DC4CEEF0A5B}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Defend each Mcom."\
+   "Defend each MCOM."\
    ""\
    "INTENT"\
    "My intent this mission was to give you the defenders a way to funnel the attackers and cut them down with your MMG"\
@@ -358,7 +360,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{8550175E5377DF0E}Configs/Gearscripts/Standard/Modern/Variants/COA_GS_RHSMSV_MMGoptic_Sandbags.conf"
+  m_rGearScript "{8E70FE9085A4F1D5}Configs/Gearscripts/Standard/Modern/Variants/COA_GS_RHSMSV_MMGoptic_Sandbags_NVG.conf"
   m_bEnableBFT 1
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
@@ -382,7 +384,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   SCR_FactionManager "6ACA1DC7C28EA9DC" {
    ID "632A77473B3CC3A8"
    Factions {
-    SCR_Faction "{56DEAC40D3C2E623}" {
+    SCR_Faction "{607AA5C7A94496DA}" {
      m_aFriendlyFactionsIds {
       "BLUFOR"
       "OPFOR"

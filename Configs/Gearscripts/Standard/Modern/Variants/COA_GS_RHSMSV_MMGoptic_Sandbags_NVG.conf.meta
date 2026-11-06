@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8E70FE9085A4F1D5}Configs/Gearscripts/Standard/Modern/Variants/COA_GS_RHSMSV_MMGoptic_Sandbags_NVG.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
