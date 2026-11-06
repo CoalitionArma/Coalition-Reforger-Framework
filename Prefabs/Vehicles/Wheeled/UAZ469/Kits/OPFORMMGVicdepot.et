@@ -133,10 +133,10 @@ Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
  m_bShouldAddAmmo 0
  m_aAdditionalVehicleItems {
   CRF_VehicleGearScriptAdditionalItem "{6A33342A662E770F}" {
-   m_Prefab "{C7115ECCD10BF1FB}Prefabs/Weapons/MachineGuns/PKM/MG_PKM_AP.et"
+   m_Prefab "{80CBC9A8D95A8A7B}Prefabs/Weapons/MachineGuns/PKM/MG_PKMN.et"
   }
   CRF_VehicleGearScriptAdditionalItem "{6A33342A6E8DF738}" {
-   m_Prefab "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
+   m_Prefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
    m_iAmountOfItemSupplyTruck 15
    m_iAmountOfItemRegularVehicle 15
   }

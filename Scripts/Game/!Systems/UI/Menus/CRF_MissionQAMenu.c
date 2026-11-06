@@ -300,7 +300,8 @@ class CRF_MissionQAMenu: ChimeraMenuBase
 		lines.Insert("Spectator Visibility");
 
 		bool eventBasedRespawn = gamemode.FindComponent(CRF_CacheHuntGamemodeManager) != null
-			|| gamemode.FindComponent(CRF_RushGamemodeManager) != null;
+			|| gamemode.FindComponent(CRF_RushGamemodeManager) != null
+			|| gamemode.FindComponent(CRF_PayloadGamemodeComponent) != null;
 
 		if (!gamemode.m_bRespawnEnabled && !eventBasedRespawn)
 		{

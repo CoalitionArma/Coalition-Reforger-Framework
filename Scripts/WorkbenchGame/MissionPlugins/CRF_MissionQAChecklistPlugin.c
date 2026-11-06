@@ -1052,7 +1052,8 @@ class CRF_MissionQAChecklistPlugin : WorkbenchPlugin
 	protected void CheckSpectatorVisibility(array<string> lines, COA_Gamemode gamemode, IEntitySource lobbyEntitySource, inout int failCount, inout int warnCount)
 	{
 		bool eventBasedRespawn = SCR_BaseContainerTools.FindComponentIndex(lobbyEntitySource, CRF_CacheHuntGamemodeManager) >= 0
-			|| SCR_BaseContainerTools.FindComponentIndex(lobbyEntitySource, CRF_RushGamemodeManager) >= 0;
+			|| SCR_BaseContainerTools.FindComponentIndex(lobbyEntitySource, CRF_RushGamemodeManager) >= 0
+			|| SCR_BaseContainerTools.FindComponentIndex(lobbyEntitySource, CRF_PayloadGamemodeComponent) >= 0;
 
 		if (!gamemode.m_bRespawnEnabled && !eventBasedRespawn)
 		{

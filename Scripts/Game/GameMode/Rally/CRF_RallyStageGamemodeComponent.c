@@ -85,6 +85,12 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	[Attribute("30", UIWidgets.EditBox, desc: "A crew that sets off from away from the start line (a grid behind it) has this long after its start time to reach the line: its clock starts when it crosses, or when this runs out. 0 = the clock always starts at the start time.", params: "0 300 1", category: "Rally - Stage")]
 	protected float m_fMoveUpSeconds;
 
+	[Attribute("{5F3C91C27D4E9301}Configs/Rally/CRF_RallyPaints_S105.conf", UIWidgets.ResourceNamePicker, desc: "Paints a driver can pick in the garage while their car is held at the start (CRF_RallyGarage). Only cars whose mesh has the materials the paints swap get a garage. Empty: no garage.", params: "conf class=CRF_RallyPaintConfig", category: "Rally - Garage")]
+	protected ResourceName m_sPaintConfig;
+
+	[Attribute("true", UIWidgets.CheckBox, desc: "Open the garage by itself the first time a driver is held at the start. Either way it opens from the dashboard (Garage) until their start.", category: "Rally - Garage")]
+	protected bool m_bOpenGarageWhenSeated;
+
 	// Server state
 	protected ref map<int, ref CRF_RallyStageEntry> m_mStage = new map<int, ref CRF_RallyStageEntry>();
 
@@ -107,6 +113,22 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	// SERVER
 	//===================================================================================
 
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		if (GetGame().InPlayMode())
+			LoadPaintConfig();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		CRF_RallyGarageMenu.CloseGarage();
+		super.OnDelete(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override protected void ServerInit()
 	{
 		// Point to point: one run from start to finish
@@ -927,6 +949,10 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 		// Re-applied ten times a second, so a driver letting the handbrake off gets nowhere
 		ApplyStartHolds();
+
+		// Cars that have streamed in since, and the local driver's garage
+		ApplyPaints();
+		UpdateLocalGarage();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -1159,6 +1185,245 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 		RplComponent carRpl = RplComponent.Cast(vehicle.FindComponent(RplComponent));
 		return carRpl && stage.m_aHeldCars.Contains(carRpl.Id());
+	}
+
+	//===================================================================================
+	// GARAGE (see CRF_RallyGarage)
+	//===================================================================================
+
+	// Which car has which paint (index into the paint config), set by the server from the drivers'
+	// garages. Kept here, not on the cars: they are spawned at runtime, and this component's RplProps
+	// are the ones that reliably reach every client. Every machine that draws the cars applies it.
+	[RplProp(onRplName: "OnPaintsChanged")]
+	protected ref array<RplId> m_aPaintedCars = {};
+
+	[RplProp(onRplName: "OnPaintsChanged")]
+	protected ref array<int> m_aCarPaints = {};
+
+	protected ref CRF_RallyPaintConfig m_PaintConfig;
+
+	// Every machine that draws: the car entity each paint was applied to, and which paint. A car that
+	// streams out and back in is a new entity, so it is painted again
+	protected ref map<RplId, IEntity> m_mLocallyPaintedCars = new map<RplId, IEntity>();
+	protected ref map<RplId, int> m_mLocalPaints = new map<RplId, int>();
+
+	// Whether the paints fit a car prefab (CRF_RallyPaintConfig.Fits), per prefab
+	protected ref map<string, bool> m_mPaintsFit = new map<string, bool>();
+
+	// Client: the body the garage last opened by itself for (once per life), and when it is due to
+	protected IEntity m_LocalGarageBody;
+	protected int m_iLocalGarageDueMs = -1;
+
+	// How long a driver is held at the wheel before the garage opens by itself
+	protected static const int GARAGE_OPEN_DELAY_MS = 2000;
+
+	//------------------------------------------------------------------------------------------------
+	protected void LoadPaintConfig()
+	{
+		if (m_sPaintConfig.IsEmpty())
+			return;
+
+		Resource holder = BaseContainerTools.LoadContainer(m_sPaintConfig);
+		if (!holder || !holder.IsValid())
+		{
+			Print(string.Format("[CRF_Rally] Paint config '%1' could not be loaded - no garage", m_sPaintConfig), LogLevel.WARNING);
+			return;
+		}
+
+		m_PaintConfig = CRF_RallyPaintConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(holder.GetResource().ToBaseContainer()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server, from a driver's garage (COA_PlayerRplToAuthorityManager.RequestRallyPaint): repaint the
+	//! car, if they are at its wheel and it is held at the start
+	void RequestPaint(int playerId, RplId carId, int paint)
+	{
+		if (!m_PaintConfig || paint < 0 || paint >= m_PaintConfig.Count() || !m_aHeldCars.Contains(carId))
+			return;
+
+		Vehicle car = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(carId));
+		if (!car || car != GetDrivenCar(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)) || !PaintsFit(car))
+			return;
+
+		// Cars that are gone drop off the list
+		for (int i = m_aPaintedCars.Count() - 1; i >= 0; i--)
+		{
+			if (!COA_EntityHelper.GetEntityFromRplId(m_aPaintedCars[i]))
+			{
+				m_aPaintedCars.RemoveOrdered(i);
+				m_aCarPaints.RemoveOrdered(i);
+			}
+		}
+
+		int at = m_aPaintedCars.Find(carId);
+		if (at < 0)
+		{
+			m_aPaintedCars.Insert(carId);
+			m_aCarPaints.Insert(paint);
+		}
+		else if (m_aCarPaints[at] != paint)
+		{
+			m_aCarPaints.Set(at, paint);
+		}
+		else
+		{
+			return;
+		}
+
+		Replication.BumpMe();
+		ApplyPaints();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Clients: the paint list arrived - apply it now rather than at the next HUD tick
+	protected void OnPaintsChanged()
+	{
+		ApplyPaints();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Every machine that draws: paint the listed cars that aren't painted yet, or have changed
+	protected void ApplyPaints()
+	{
+		if (!m_PaintConfig || System.IsConsoleApp() || m_aCarPaints.Count() != m_aPaintedCars.Count())
+			return;
+
+		foreach (int i, RplId carId : m_aPaintedCars)
+		{
+			IEntity car = COA_EntityHelper.GetEntityFromRplId(carId);
+			if (!car)
+				continue;
+
+			int paint = m_aCarPaints[i];
+			if (m_mLocallyPaintedCars.Get(carId) == car && m_mLocalPaints.Get(carId) == paint)
+				continue;
+
+			if (!CRF_RallyGarage.ApplyPaint(car, m_PaintConfig.Get(paint)))
+				continue;
+
+			m_mLocallyPaintedCars.Set(carId, car);
+			m_mLocalPaints.Set(carId, paint);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The paint picked for a car, -1 if none has been
+	protected int GetCarPaint(RplId carId)
+	{
+		int at = m_aPaintedCars.Find(carId);
+		if (at < 0 || !m_aCarPaints.IsIndexValid(at))
+			return -1;
+
+		return m_aCarPaints[at];
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool PaintsFit(notnull IEntity car)
+	{
+		EntityPrefabData prefabData = car.GetPrefabData();
+		if (!m_PaintConfig || !prefabData)
+			return false;
+
+		string prefab = prefabData.GetPrefabName();
+		bool fits;
+		if (m_mPaintsFit.Find(prefab, fits))
+			return fits;
+
+		fits = m_PaintConfig.Fits(car);
+		m_mPaintsFit.Set(prefab, fits);
+		return fits;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Any machine: whether this character can repaint this car - at its wheel, with the car held at
+	//! the start and paints that fit it
+	bool CanUseGarage(IEntity user, IEntity vehicle)
+	{
+		if (!m_PaintConfig || !user || !vehicle)
+			return false;
+
+		Vehicle car = GetDrivenCar(user);
+		if (!car || car != vehicle)
+			return false;
+
+		RplComponent carRpl = RplComponent.Cast(car.FindComponent(RplComponent));
+		return carRpl != null && m_aHeldCars.Contains(carRpl.Id()) && PaintsFit(car);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client: open the garage for the car the local player is driving
+	void OpenGarage(IEntity user, IEntity vehicle)
+	{
+		if (!CanUseGarage(user, vehicle))
+			return;
+
+		RplComponent carRpl = RplComponent.Cast(vehicle.FindComponent(RplComponent));
+		CRF_RallyGarageMenu.Open(carRpl.Id(), m_PaintConfig);
+		CRF_RallyGarageMenu.ShowCurrentPaint(GetCarPaint(carRpl.Id()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client, every HUD tick: keep the open garage's mark on the car's paint and close it at the start
+	//! (or when the driver gets out); otherwise open it by itself once per life, a moment after the
+	//! driver is first held at the wheel
+	protected void UpdateLocalGarage()
+	{
+		if (System.IsConsoleApp())
+			return;
+
+		IEntity body = SCR_PlayerController.GetLocalControlledEntity();
+		Vehicle car = GetDrivenCar(body);
+		bool canUse = car != null && CanUseGarage(body, car);
+
+		if (CRF_RallyGarageMenu.IsOpen())
+		{
+			RplComponent carRpl;
+			if (car)
+				carRpl = RplComponent.Cast(car.FindComponent(RplComponent));
+
+			if (!canUse || !carRpl || carRpl.Id() != CRF_RallyGarageMenu.GetCarId())
+			{
+				CRF_RallyGarageMenu.CloseGarage();
+				return;
+			}
+
+			CRF_RallyGarageMenu.ShowCurrentPaint(GetCarPaint(carRpl.Id()));
+			return;
+		}
+
+		if (!canUse)
+		{
+			m_iLocalGarageDueMs = -1;
+			return;
+		}
+
+		if (!m_bOpenGarageWhenSeated || body == m_LocalGarageBody)
+			return;
+
+		int now = GetGame().GetWorld().GetWorldTime();
+		if (m_iLocalGarageDueMs < 0)
+		{
+			m_iLocalGarageDueMs = now + GARAGE_OPEN_DELAY_MS;
+			return;
+		}
+
+		// Not over the pause menu, a dialog or the map: it waits until they're closed
+		if (now < m_iLocalGarageDueMs || IsOtherMenuOpen())
+			return;
+
+		m_LocalGarageBody = body;
+		OpenGarage(body, car);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsOtherMenuOpen()
+	{
+		MenuManager menuManager = GetGame().GetMenuManager();
+		if (menuManager != null && (menuManager.GetTopMenu() != null || menuManager.IsAnyDialogOpen()))
+			return true;
+
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		return mapEntity != null && mapEntity.IsOpen();
 	}
 
 	//------------------------------------------------------------------------------------------------
