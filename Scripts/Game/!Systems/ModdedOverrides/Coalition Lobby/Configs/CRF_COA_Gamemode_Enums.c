@@ -19,5 +19,6 @@ modded enum COA_EGamemode
 	INFECTION,
 	THETURN,
 	SLASHER,
-	HOLDOUT
+	HOLDOUT,
+	PAYLOAD
 }

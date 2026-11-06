@@ -1,0 +1,164 @@
+Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{631B4948527E5708}" {
+     SourceMaterial "Exterior02"
+     AssignedMaterial "{9A6DEA4C5AB75B67}Assets/Vehicles/Wheeled/S105/Data/S105_Rally_Exterior.emat"
+    }
+    MaterialAssignClass "{631B4948527E577F}" {
+     SourceMaterial "S105Body_mat"
+     AssignedMaterial "{168AD3C54A6F5CA8}Assets/Vehicles/Wheeled/S105/Data/S105Body_rally_mat.emat"
+    }
+   }
+  }
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 825
+   CenterOfMass 0 0.675 0.125
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "S-105 Rally (COALITION)"
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    CRF_RallyGarageAction "{5F3C91C200000301}" {
+     ParentContextList {
+      "starter_switch"
+     }
+     UIInfo UIInfo "{5F3C91C200000302}" {
+      Name "Garage (paint)"
+     }
+     "Sort Priority" 1
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     InertiaCoupled 0.085
+     MaxPower 125
+     MaxTorque 165
+     RpmMaxPower 8000
+     RpmMaxTorque 6000
+     Steepness 12
+     Friction 40
+     RpmRedline 9000
+     RpmMax 9500
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 230
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      4.2 2.9 2.15 1.65 1.3 1.05
+     }
+     Reverse 4.5
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Steering Steering "{FB479C420F8B9CF4}" {
+       SteeringRatio 10
+      }
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       MaxSteeringAngle 36
+       SpringRate 34
+       CompressionDamper 2040
+       RelaxationDamper 2960
+       MaxTravelUp 0.205
+       MaxTravelDown 0.085
+      }
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       BrakeTorque 1300
+      }
+      Tyre Tyre "{4D8B26DFFD85E58F}" : "{23BE5725A6E5F97D}Prefabs/Vehicles/Core/Configs/VehicleSimulationTire_Racing.conf" {
+       LongitudinalFriction 1.3
+       LateralFriction 1.15
+       Tread 0.55
+      }
+      Swaybar Swaybar "{66A2C7C60890C00B}" {
+       Stiffness 2400
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Differential Differential Diff_02 {
+       Type LSD
+       Ratio 5.3
+       Strength 0.925
+      }
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+       SpringRate 22
+       CompressionDamper 1300
+       RelaxationDamper 1850
+       MaxTravelUp 0.215
+       MaxTravelDown 0.095
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       BrakeTorque 650
+       HandbrakeTorqueFactor 3
+      }
+      Tyre Tyre "{4D8B26DF33F76974}" : "{23BE5725A6E5F97D}Prefabs/Vehicles/Core/Configs/VehicleSimulationTire_Racing.conf" {
+       LongitudinalFriction 1.3
+       LateralFriction 1.15
+       Tread 0.55
+      }
+     }
+    }
+    InertiaOverride 1703.434 1813.165 466.702
+    Aerodynamics Aerodynamics "{5562A623B55A4C07}" {
+     ReferenceArea 1.375
+     DragCoefficient 0.31
+    }
+    TyreModel Pacejka2002 "{6A36E2190A2E41D5}" : "{5F3A91C27D4E8A01}Prefabs/Vehicles/Core/Configs/Pacejka/Pacejka2002_CRF_Rally.conf" {
+     NominalLoad 4600
+     NominalRadius 0.252
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{50E6E6F81354B90F}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{50E6E9C42E916085}" {
+         m_fValueMax 12000
+        }
+       }
+      }
+     }
+    }
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     MaxSteeringSpeed 100
+     ThrottleCurve {
+      8000 0.8 9000 0.5 9500 0
+     }
+     ReverseCurve {
+      2400 0.8 3100 0.5 3800 0
+     }
+     BrakingCurve {
+      0 0 0.1 0.6 0.5 0.8 1 1
+     }
+     HandbrakeTime 0.1
+     ClutchUncoupleTime 0.12
+     ClutchCoupleTime 0.2
+     Latency 0.15
+     SteeringForwardSpeed {
+      0 40 2 32 16 52 80 40 120 32 160 16 200 4
+     }
+     SteeringBackwardSpeed {
+      0 40 2 56 16 88 80 72 120 59 160 34 200 10
+     }
+     SteeringCenterSpeed {
+      0 0 2 24 16 36 80 32 120 27 160 16 200 6
+     }
+     RpmSmoothing 0.3
+     UpShiftRpm 3500
+     DownShiftRpm 3000
+    }
+   }
+  }
+ }
+}
