@@ -28,7 +28,10 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	protected int  m_iDestroyedSupply	= 0;
 	protected bool m_bTotalsReady		= false;
 	protected bool m_bVictoryTriggered	= false;
- 
+
+	// Vanilla tasks (CRF_ObjectiveTasks): attackers "Destroy N% of the supplies", defenders "Protect the supplies"
+	protected ref map<string, string> m_mTaskIds = new map<string, string>();
+
 	// Client-side HUD state
 	protected Widget m_wCurrentAlert;
 	protected int    m_iWidgetGeneration = 0;   // used to cancel stale fade callbacks
@@ -76,8 +79,46 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		// Supply total is finalized lazily on the first destruction event,
-		// so there is nothing to schedule here.
+		// Supply total is finalized lazily on the first destruction event. The tasks go up once the
+		// round is live (polled: the safestart manager may not exist yet this early).
+		GetGame().GetCallqueue().CallLater(WaitForRoundLive, 1000, true);
+	}
+
+	// ---------------------------------------------------------------- tasks
+	protected void WaitForRoundLive()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		if (safestartManager && !safestartManager.IsRoundLive())
+			return;
+
+		GetGame().GetCallqueue().Remove(WaitForRoundLive);
+		CreateTasks();
+	}
+
+	protected void CreateTasks()
+	{
+		string threshold = Math.Round(m_fWinThresholdPercent).ToString();
+
+		string attackId = CRF_ObjectiveTasks.MakeId("Raid", "Destroy", m_sAttackingSide);
+		string attackName = string.Format("Destroy %1%% of the supplies", threshold);
+		string attackDescription = string.Format("Destroy marked enemy equipment and supplies until %1%% of their total value is gone.", threshold);
+		if (CRF_ObjectiveTasks.Create(attackId, m_sAttackingSide, attackName, attackDescription, CRF_ObjectiveTasks.ICON_DESTROY, SCR_ETaskState.FAILED))
+			m_mTaskIds.Set(m_sAttackingSide, attackId);
+
+		string defendId = CRF_ObjectiveTasks.MakeId("Raid", "Protect", m_sDefendingSide);
+		string defendDescription = string.Format("Keep the enemy from destroying %1%% of your marked equipment and supplies.", threshold);
+		if (CRF_ObjectiveTasks.Create(defendId, m_sDefendingSide, "Protect the supplies", defendDescription, CRF_ObjectiveTasks.ICON_PROTECT, SCR_ETaskState.COMPLETED))
+			m_mTaskIds.Set(m_sDefendingSide, defendId);
+	}
+
+	//! Both tasks show how close the attackers are to the threshold
+	protected void UpdateTasks(float destroyedPercent)
+	{
+		if (m_fWinThresholdPercent <= 0)
+			return;
+
+		foreach (string faction, string id : m_mTaskIds)
+			CRF_ObjectiveTasks.SetProgress(id, destroyedPercent / m_fWinThresholdPercent);
 	}
 
 	override void OnDelete(IEntity owner)
@@ -86,6 +127,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			GetGame().GetCallqueue().Remove(FadeAlert);
 			GetGame().GetCallqueue().Remove(DeleteAlert);
+			GetGame().GetCallqueue().Remove(WaitForRoundLive);
 		}
 
 		ClearAlert();
@@ -164,11 +206,13 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
  
 		// Broadcast HUD update to all clients
 		Rpc(RpcDo_ShowDestructionUpdate, destroyedPercent);
- 
+		UpdateTasks(destroyedPercent);
+
 		// Check win condition
 		if (destroyedPercent >= m_fWinThresholdPercent && !m_bVictoryTriggered)
 		{
 			m_bVictoryTriggered = true;
+			CRF_ObjectiveTasks.Resolve(m_mTaskIds, m_sAttackingSide);
 			Rpc(RpcDo_BroadcastMessage, string.Format("Attackers have destroyed enough equipment! %1%% destroyed — attacker victory!",
 				Math.Round(destroyedPercent).ToString()));
 		}

@@ -106,7 +106,11 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 
 		m_SafestartManager = COA_SafestartManager.GetInstance();
 		if (!m_SafestartManager || m_SafestartManager.IsRoundLive())
+		{
+			// No safestart to wait for: tasks once the caches have registered (RegisterCacheObjective retries for ~2 s)
+			GetGame().GetCallqueue().CallLater(CreatePhaseTasks, 3000, false, m_iCurrentPhase);
 			return;
+		}
 
 		m_SafestartManager.m_OnRoundLive.Insert(OnRoundLive);
 
@@ -119,6 +123,9 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 	{
 		if (m_SafestartManager && m_SafestartManager.m_OnRoundLive)
 			m_SafestartManager.m_OnRoundLive.Remove(OnRoundLive);
+
+		if (GetGame() && GetGame().GetCallqueue())
+			GetGame().GetCallqueue().Remove(CreatePhaseTasks);
 
 		super.OnDelete(owner);
 	}
@@ -136,6 +143,64 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
 	{
 		foreach (IEntity cache : m_aObjCaches)
 			SetCacheDamageEnabled(cache, true);
+
+		CreatePhaseTasks(m_iCurrentPhase);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Vanilla tasks (CRF_ObjectiveTasks), one pair per phase: attackers "Destroy", defenders "Defend".
+	// Counts only - never cache positions, which the attackers mustn't learn (every client gets task data).
+	//------------------------------------------------------------------------------------------------
+	protected string GetPhaseTaskId(int phase, bool attackers)
+	{
+		if (attackers)
+			return CRF_ObjectiveTasks.MakeId("Insurgency", "DestroyP" + phase, m_AttackingSide);
+
+		return CRF_ObjectiveTasks.MakeId("Insurgency", "DefendP" + phase, m_DefendingSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void CreatePhaseTasks(int phase)
+	{
+		if (!m_mPhaseToActiveCaches.Contains(phase))
+			return;
+
+		CRF_ObjectiveTasks.Create(GetPhaseTaskId(phase, true), m_AttackingSide, "Destroy the caches",
+			string.Format("Find and destroy the enemy's phase %1 weapons caches. Clearing a phase moves the fight to the next one.", phase),
+			CRF_ObjectiveTasks.ICON_DESTROY, SCR_ETaskState.FAILED);
+
+		CRF_ObjectiveTasks.Create(GetPhaseTaskId(phase, false), m_DefendingSide, "Defend the caches",
+			string.Format("Keep the enemy from destroying your phase %1 weapons caches.", phase),
+			CRF_ObjectiveTasks.ICON_DEFEND, SCR_ETaskState.COMPLETED);
+
+		UpdatePhaseTasks(phase);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdatePhaseTasks(int phase)
+	{
+		if (!m_mPhaseToActiveCaches.Contains(phase))
+			return;
+
+		int remaining = m_mPhaseToActiveCaches.Get(phase).Count();
+		int destroyed = m_mPhaseToDestroyedCaches.Get(phase).Count();
+		int total = remaining + destroyed;
+		if (total <= 0)
+			return;
+
+		string attackId = GetPhaseTaskId(phase, true);
+		string defendId = GetPhaseTaskId(phase, false);
+		CRF_ObjectiveTasks.SetText(attackId, string.Format("Destroy the phase %1 caches (%2/%3)", phase, destroyed, total));
+		CRF_ObjectiveTasks.SetText(defendId, string.Format("Defend the phase %1 caches (%2 left)", phase, remaining));
+		CRF_ObjectiveTasks.SetProgress(attackId, destroyed / (float)total);
+		CRF_ObjectiveTasks.SetProgress(defendId, destroyed / (float)total);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void FinishPhaseTasks(int phase)
+	{
+		CRF_ObjectiveTasks.Finish(GetPhaseTaskId(phase, true), SCR_ETaskState.COMPLETED);
+		CRF_ObjectiveTasks.Finish(GetPhaseTaskId(phase, false), SCR_ETaskState.FAILED);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -270,9 +335,14 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         if (activeCaches.IsEmpty())
         {
             Print(string.Format("CRF_InsurgencyGamemodeManager: Phase %1 complete! All caches destroyed.", phase), LogLevel.NORMAL);
-            
+
+            UpdatePhaseTasks(phase);
+            FinishPhaseTasks(phase);
+
             int res = ActivateNextPhase(phase + 1);
-            
+            if (res != -1)
+                CreatePhaseTasks(phase + 1);
+
             // FIX: Removed CheckGameEndConditions() call (was dead code) - win condition handled here directly
 			if (res == -1)
 			{
@@ -283,6 +353,8 @@ class CRF_InsurgencyGamemodeManager: SCR_BaseGameModeComponent
         }
 		else
 		{
+			UpdatePhaseTasks(phase);
+
 			int cachesDestroyed = m_mPhaseToDestroyedCaches.Get(phase).Count();
 			int cacheTotal = activeCaches.Count() + cachesDestroyed;
 			
