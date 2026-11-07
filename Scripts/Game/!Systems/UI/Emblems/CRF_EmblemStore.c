@@ -23,7 +23,7 @@ class CRF_EmblemStore
 	protected static const int REQUEST_TIMEOUT_S = 15;
 	protected static const int FETCH_TIMEOUT_MS = 20000;	// a request that never calls back mustn't block emblems for the session
 	protected static const int PREFETCH_DELAY_MS = 3000;	// joins within this long share one request
-	protected static const int SEND_CHUNK = 10;			// emblems per RPC - a full one is ~700 characters
+	protected static const int SEND_CHUNK = 5;			// emblems per RPC - a full 32-layer one is ~1,700 characters
 	protected static const int ASK_RETRY_MS = 10000;	// client: no cache this long after asking - ask again
 	protected static const int MAX_ASKS = 6;
 
