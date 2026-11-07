@@ -108,6 +108,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	protected bool m_bStartOrderDrawn;
 	protected int m_iNextSlot;
 	protected int m_iLastSlotStartMs;
+	protected float m_fDrawnStartInterval;          // the interval the start order was drawn with (results)
 
 	//===================================================================================
 	// SERVER
@@ -182,7 +183,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 	//------------------------------------------------------------------------------------------------
 	//! Who a player races with: their group in team mode, else the vehicle they're in, else nobody
-	protected string GetCrewKey(int playerId)
+	override protected string GetCrewKey(int playerId)
 	{
 		if (m_bTeamMode)
 		{
@@ -212,7 +213,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		foreach (CRF_RallyPlayerEntry entry : m_aPlayerEntries)
 		{
 			int playerId = entry.m_iPlayerId;
-			if (entry.m_bFinished || entry.m_iNextCheckpoint != 0)
+			if (entry.m_bFinished || entry.m_bDead || entry.m_iNextCheckpoint != 0)
 				continue;
 
 			// Already away
@@ -491,13 +492,14 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		}
 
 		float interval = GetStartInterval();
+		m_fDrawnStartInterval = interval;
 		int intervalMs = interval * 1000;
 		int firstStartMs = now + m_fFirstStartDelay * 1000;
 
 		m_iNextSlot = 0;
 		foreach (int slot, string crewKey : crewKeys)
 		{
-			AssignSlot(crews.Get(crewKey), firstStartMs + slot * intervalMs);
+			AssignSlot(crews.Get(crewKey), firstStartMs + slot * intervalMs, crewKey);
 		}
 
 		BuildAndReplicateStandings();
@@ -563,6 +565,14 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 				stage.m_iClockStartMs = crewMate.m_iClockStartMs;
 				entry.m_iLapStartTimeMs = stage.m_iClockStartMs;
 				entry.m_iRaceStartTimeMs = stage.m_iClockStartMs;
+
+				// Same run as the crew-mate, under the key their crew was drawn with
+				string runCrewKey = key;
+				CRF_RallyPlayerEntry crewMateEntry = GetEntry(GetStagePlayerId(crewMate));
+				if (crewMateEntry && !crewMateEntry.m_sCrewKey.IsEmpty())
+					runCrewKey = crewMateEntry.m_sCrewKey;
+
+				SetRunCrew(entry, runCrewKey, stage.m_iSlot);
 				continue;
 			}
 
@@ -584,7 +594,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			if (startMs < now + intervalMs)
 				startMs = now + intervalMs;
 
-			AssignSlot(newCrews.Get(newKey), startMs);
+			AssignSlot(newCrews.Get(newKey), startMs, newKey);
 		}
 	}
 
@@ -614,7 +624,20 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void AssignSlot(array<int> members, int startMs)
+	//! The player a stage entry belongs to, 0 if none
+	protected int GetStagePlayerId(CRF_RallyStageEntry stage)
+	{
+		foreach (int playerId, CRF_RallyStageEntry candidate : m_mStage)
+		{
+			if (candidate == stage)
+				return playerId;
+		}
+
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AssignSlot(array<int> members, int startMs, string crewKey)
 	{
 		if (!members)
 			return;
@@ -635,11 +658,22 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			{
 				entry.m_iLapStartTimeMs = startMs;
 				entry.m_iRaceStartTimeMs = startMs;
+				SetRunCrew(entry, crewKey, slot);
 			}
 
 			Rpc(RpcDo_CheckpointNotify, playerId, string.Format("You are car %1 - you start in %2",
 				slot + 1, FormatCountdown(startMs - GetGame().GetWorld().GetWorldTime())));
 		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The run record's crew is the one the start order was drawn for - the "vehicle" key a crew
+	//! without a group gets would change as soon as they leave the car
+	protected void SetRunCrew(notnull CRF_RallyPlayerEntry entry, string crewKey, int slot)
+	{
+		entry.m_sCrewKey = crewKey;
+		entry.m_sCrewName = GetCrewName(entry.m_iPlayerId);
+		entry.m_iCarNumber = slot + 1;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -702,32 +736,48 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 	//------------------------------------------------------------------------------------------------
 	// Crews wait at the start line, inside its detection radius. Before their start time only leaving
 	// that radius counts (a jump start); from their start time on, being in it counts as starting.
-	override protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, vector lastPos, vector pos)
+	// Both are timed along the path since the last poll (GetCrossingTimeMs), so a crew that leaves just
+	// before its start time is caught even when the poll comes just after it.
+	override protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, vector lastPos, vector pos, int lastMs, int nowMs)
 	{
 		CRF_RallyStageEntry stage = m_mStage.Get(entry.m_iPlayerId);
 		if (entry.m_iNextCheckpoint != 0 || !stage || stage.m_iSlot < 0 || m_aCheckpointPositions.IsEmpty())
 		{
-			super.CheckCheckpointCrossing(entry, lastPos, pos);
-			return;
-		}
-
-		if (GetGame().GetWorld().GetWorldTime() >= stage.m_iClockStartMs)
-		{
-			super.CheckCheckpointCrossing(entry, lastPos, pos);
+			super.CheckCheckpointCrossing(entry, lastPos, pos, lastMs, nowMs);
 			return;
 		}
 
 		vector startPos = m_aCheckpointPositions[0];
+		int startMs = stage.m_iClockStartMs;
 		bool wasInside = vector.Distance(lastPos, startPos) <= m_fCheckpointRadius;
 		bool isInside = vector.Distance(pos, startPos) <= m_fCheckpointRadius;
-		if (wasInside && !isInside)
-			OnCheckpointCrossed(entry, 0);
+		if (lastMs < startMs && wasInside && !isInside)
+		{
+			int leftMs = GetCrossingTimeMs(startPos, lastPos, pos, lastMs, nowMs, true);
+			if (leftMs < startMs)
+			{
+				OnCheckpointCrossed(entry, 0, leftMs);
+				return;
+			}
+		}
+
+		if (nowMs < startMs || DistanceToSegment(startPos, lastPos, pos) > m_fCheckpointRadius)
+			return;
+
+		// On time. A crew waiting in the zone was in it before its start time - its clock still starts
+		// at the start time, not when it got there.
+		int enteredMs = GetCrossingTimeMs(startPos, lastPos, pos, lastMs, nowMs, false);
+		if (enteredMs < startMs)
+			enteredMs = startMs;
+
+		OnCheckpointCrossed(entry, 0, enteredMs);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override protected void OnCheckpointCrossed(notnull CRF_RallyPlayerEntry entry, int cpIndex)
+	// cpIndex was crossed at crossMs (world time, see GetCrossingTimeMs)
+	override protected void OnCheckpointCrossed(notnull CRF_RallyPlayerEntry entry, int cpIndex, int crossMs)
 	{
-		int now = GetGame().GetWorld().GetWorldTime();
+		int now = crossMs;
 		int pid = entry.m_iPlayerId;
 		int totalCPs = m_aCheckpointPositions.Count();
 		CRF_RallyStageEntry stage = GetStage(pid);
@@ -742,6 +792,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		{
 			// ── START LINE ──────────────────────────────────────────────────────────
 			entry.m_iNextCheckpoint = 1;
+			RecordRunStart(entry);
 
 			// Set off on time from away from the line: the clock starts here, unless the crew took
 			// longer than m_fMoveUpSeconds to arrive
@@ -765,6 +816,8 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 				stage.m_iClockStartMs = now;
 				entry.m_iLapStartTimeMs = now;
 				entry.m_iRaceStartTimeMs = now;
+				entry.m_bJumpStart = true;
+				entry.m_iPenaltyMs = stage.m_iPenaltyMs;
 
 				Rpc(RpcDo_CheckpointNotify, pid, string.Format("JUMP START  —  +%1 s penalty", penaltySecs));
 				Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] Jump start: %1 (+%2 s).", GetGame().GetPlayerManager().GetPlayerName(pid), penaltySecs));
@@ -792,6 +845,7 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 
 			stage.m_iLastSplitIndex = cpIndex;
 			stage.m_iLastSplitDeltaMs = delta;
+			entry.m_aSplitsMs.Insert(stageMs);
 
 			string split = string.Format("CP %1/%2  —  %3", cpIndex, totalCPs - 2, FormatTime(stageMs * 0.001));
 			if (best < 0 || delta < 0)
@@ -810,6 +864,9 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 		stage.m_iFinishTimeMs = stageMs;
 		entry.m_fFinishTimeSecs = stageMs * 0.001;
 		entry.m_fBestLapTime = entry.m_fFinishTimeSecs;
+		entry.m_iRunTimeMs = stageMs;
+		entry.m_iPenaltyMs = stage.m_iPenaltyMs;
+		entry.m_aLapsMs.Insert(stageMs);
 
 		BuildAndReplicateStandings();
 		int position = GetFinishPosition(stageMs);
@@ -907,6 +964,69 @@ class CRF_RallyStageGamemodeComponent : CRF_RallyGamemodeComponent
 			return ";-1;0;-1;-1;0";
 
 		return string.Format(";%1;%2;%3;%4;%5", stage.m_iSlot, stage.m_iPenaltyMs, stage.m_iFinishTimeMs, stage.m_iLastSplitIndex, stage.m_iLastSplitDeltaMs);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// A run moved to another player ID (a rejoin, or its old ID reused): its stage timing goes with it
+	override protected void OnEntryPlayerIdChanged(int oldId, int newId)
+	{
+		super.OnEntryPlayerIdChanged(oldId, newId);
+
+		CRF_RallyStageEntry stage = m_mStage.Get(oldId);
+		if (!stage)
+			return;
+
+		m_mStage.Remove(oldId);
+		m_mStage.Set(newId, stage);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override protected void ResetRace()
+	{
+		super.ResetRace();
+
+		m_mStage.Clear();
+		m_mCrewCars.Clear();
+		m_mSeatBody.Clear();
+		m_mSeatTries.Clear();
+		m_mSeatTriedAtMs.Clear();
+		for (int i = 0; i < m_aBestSplitsMs.Count(); i++)
+		{
+			m_aBestSplitsMs[i] = -1;
+		}
+
+		m_bStartOrderDrawn = false;
+		m_iNextSlot = 0;
+		m_iLastSlotStartMs = 0;
+		m_fDrawnStartInterval = 0;
+
+		// Nothing is held until the next round's draw decides it again
+		m_aHeldCars.Clear();
+		m_aHeldAtStartLine.Clear();
+		Replication.BumpMe();
+		ApplyStartHolds();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override protected string GetRallyModeName()
+	{
+		return "stage";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override protected string GetSettingsJson()
+	{
+		// The interval the start order was drawn with (it depends on the field size then)
+		float startInterval = m_fDrawnStartInterval;
+		if (startInterval <= 0)
+			startInterval = GetStartInterval();
+
+		return super.GetSettingsJson()
+			+ ",\"startInterval\":" + CRF_RallyJson.Number(startInterval)
+			+ ",\"jumpStartPenalty\":" + CRF_RallyJson.Number(m_fJumpStartPenalty)
+			+ ",\"moveUp\":" + CRF_RallyJson.Number(m_fMoveUpSeconds)
+			+ ",\"firstStartDelay\":" + CRF_RallyJson.Number(m_fFirstStartDelay)
+			+ ",\"randomStartOrder\":" + CRF_RallyJson.Bool(m_bRandomStartOrder);
 	}
 
 	//===================================================================================

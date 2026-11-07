@@ -320,7 +320,7 @@ class CRF_AARManager
 
 	//------------------------------------------------------------------------------------------------
 	//! Reads the "id" field from {"success":true,"id":260}. Returns 0 if absent.
-	protected static int ParseMissionId(string data)
+	static int ParseMissionId(string data)
 	{
 		int keyIndex = data.IndexOf("\"id\":");
 		if (keyIndex < 0)
@@ -345,7 +345,7 @@ class CRF_AARManager
 
 	//------------------------------------------------------------------------------------------------
 	//! Percent-encodes the characters a mission name can contain that would break a query string
-	protected static string EncodeQueryValue(string value)
+	static string EncodeQueryValue(string value)
 	{
 		string encoded = value;
 		encoded.Replace("%", "%25");
