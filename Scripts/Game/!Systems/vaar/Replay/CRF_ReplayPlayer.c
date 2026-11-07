@@ -105,11 +105,16 @@ class CRF_ReplayPlayer
 	protected static const ResourceName FALLBACK_APC = "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et";
 	protected static const ResourceName FALLBACK_HELICOPTER = "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et";
 
+	//! Unix time (4 Nov 2026) after which recordings without "ay" in the header came from 1.9 - none were made
+	//! between 1 Nov and 1.9's release on 5 Nov
+	protected static const int AIM_YAW_CLOCKWISE_FROM = 1793750400;
+
 	// Recording
 	protected string m_sFile;
 	protected string m_sTitle;
 	protected ref FileHandle m_File;		// ref: a FileHandle is managed - without one it's freed straight away
 	protected int m_iVersion = 2;
+	protected bool m_bAimClockwise;			// character aim yaw clockwise from north (CRF_VAAR_GamemodeComponent.AIM_YAW_REVISION)
 	protected float m_fInterval = 0.5;
 	protected ref array<int> m_aOffsets = {};
 	protected bool m_bIndexed;
@@ -256,6 +261,14 @@ class CRF_ReplayPlayer
 			return;
 
 		context.ReadValue("v", m_iVersion);
+
+		// Aim yaw is clockwise when the header says so, or on recordings from 1.9 that predate the "ay" mark
+		int aimYawRevision;
+		int start;
+		context.ReadValue("ay", aimYawRevision);
+		context.ReadValue("start", start);
+		m_bAimClockwise = aimYawRevision >= 1 || start >= AIM_YAW_CLOCKWISE_FROM;
+
 		float interval;
 		if (context.ReadValue("interval", interval) && interval > 0)
 			m_fInterval = interval;
@@ -649,10 +662,13 @@ class CRF_ReplayPlayer
 					y = world.GetSurfaceY(x, z);
 				}
 
-				// Recorded aim yaw runs the other way to entity yaw
-				float yaw = -c.a / 1000.0;
+				// Entity yaw runs clockwise; recordings from before 1.9 hold the aim yaw the other way round
+				float yawSign = -1;
+				if (m_bAimClockwise)
+					yawSign = 1;
+				float yaw = yawSign * c.a / 1000.0;
 				if (b)
-					yaw = LerpAngle(yaw, -b.a / 1000.0, alpha);
+					yaw = LerpAngle(yaw, yawSign * b.a / 1000.0, alpha);
 
 				LearnCharacter(c);
 				CRF_ReplayCharProxy proxy = m_mChars.Get(c.i);
