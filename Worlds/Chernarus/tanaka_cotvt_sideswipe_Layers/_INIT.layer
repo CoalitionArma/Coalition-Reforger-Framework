@@ -22,7 +22,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
    }
   }
  }
- coords 11105.187 204.696 12307.863
+ coords 11105.187 211.312 12307.863
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
@@ -41,7 +41,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sBaseAnchorName "interdiction_base"
    m_fBaseRadius 350
    m_iTimeLimitMinutes 120
-   m_bEndMissionOnVictory 1
+   m_bEndMissionOnVictory 0
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bRandomStartingWeather 0
@@ -150,17 +150,18 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6B1108A500000020}" {
+  COA_SlottingGroup "{6AD11E356D3A5855}" {
    m_sCallsign "SABRE 6"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
     JTAC
+    PILOT
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000021}" {
+  COA_SlottingGroup "{6AD11E356D3A5BB5}" {
    m_sCallsign "VIPER 1"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -175,7 +176,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000022}" {
+  COA_SlottingGroup "{6AD11E356D3A5ABE}" {
    m_sCallsign "VIPER 2"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -190,7 +191,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000023}" {
+  COA_SlottingGroup "{6AD11E356D3A5DD8}" {
    m_sCallsign "VIPER 3"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -205,7 +206,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000024}" {
+  COA_SlottingGroup "{6AD11E356D3A5CE8}" {
    m_sCallsign "VIPER 4"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -220,7 +221,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000025}" {
+  COA_SlottingGroup "{6AD11E356D3A5F08}" {
    m_sCallsign "VIPER 5"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -235,7 +236,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6B1108A500000026}" {
+  COA_SlottingGroup "{6AD11E356D3A5E2D}" {
    m_sCallsign "VIPER 6"
    m_FlagType INFANTRY_AIR
    m_aSlots {
@@ -252,7 +253,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6B1108A500000030}" {
+  COA_SlottingGroup "{6AD11E356D3A510F}" {
    m_sCallsign "CELL"
    m_FlagType INFANTRY
    m_aSlots {

@@ -1,31 +1,5 @@
-COA_GameBorder interdiction_game_border : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
- coords 9000 200 6500
- Points {
-  ShapePoint "{6B1108A500000170}" {
-   Position -5300 0 5000
-  }
-  ShapePoint "{6B1108A500000171}" {
-   Position -3700 0 5000
-  }
-  ShapePoint "{6B1108A500000172}" {
-   Position 5200 0 1100
-  }
-  ShapePoint "{6B1108A500000173}" {
-   Position 5200 0 -5000
-  }
-  ShapePoint "{6B1108A500000174}" {
-   Position 600 0 -5000
-  }
-  ShapePoint "{6B1108A500000175}" {
-   Position -600 0 -3300
-  }
-  ShapePoint "{6B1108A500000176}" {
-   Position -5300 0 3300
-  }
- }
-}
 COA_SafestartBorder interdiction_safestart_blufor : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
- coords 4415 327.4 10770
+ coords 4415 339 10770
  Points {
   ShapePoint "{6B1108A500000177}" {
    Position 0 0 260
@@ -55,6 +29,7 @@ COA_SafestartBorder interdiction_safestart_blufor : "{8AE1D02BC25C93C5}PrefabsMi
 }
 COA_SafestartBorder interdiction_safestart_opfor : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
  coords 9147.759 223.958 3891.072
+ angles 0.895 0.014 0.895
  Points {
   ShapePoint "{6B1108A50000017F}" {
    Position 0 0 160

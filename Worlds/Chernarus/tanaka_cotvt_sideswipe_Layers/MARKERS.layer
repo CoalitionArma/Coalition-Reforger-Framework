@@ -1,5 +1,14 @@
+COA_ManualMarker interdiction_route_label : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 10345 77.515 4217
+ angles 3.569 -0.168 -2.689
+ m_MarkerColor 0.558 0.086 0.07 1
+ m_sDescription "Convoy route (patrols continuously)"
+ m_aVisibleForFactions +{
+ }
+ m_bShowForAnyFaction 0
+}
 COA_BorderBase interdiction_route_line : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
- coords 10361.4 5.8 2179.1
+ coords 10361.4 5.75 2179.1
  Points {
   ShapePoint "{6B1108A500000101}" {
    Position 0 0 0
@@ -341,13 +350,4 @@ COA_BorderBase interdiction_route_line : "{FE33610F66DBCB07}PrefabsMissionMaking
  m_cPolygonBorderColor 0.558 0.086 0.07 1
  m_fPolygonBorderWidth 8
  m_bLineMode 1
-}
-COA_ManualMarker interdiction_route_label : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
- coords 10345 78 4217
- m_MarkerColor 0.558 0.086 0.07 1
- m_sDescription "Convoy route (patrols continuously)"
- m_aVisibleForFactions {
-  "BLUFOR"
- }
- m_bShowForAnyFaction 0
 }
