@@ -1,0 +1,150 @@
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ interdiction_route_01 {
+  coords 10361 6 2179
+  CompletionRadius 30
+ }
+ interdiction_route_02 {
+  coords 10223 24 3149
+  CompletionRadius 30
+ }
+ interdiction_route_03 {
+  coords 10345 78 4217
+  CompletionRadius 30
+ }
+ interdiction_route_04 {
+  coords 10327 206 5125
+  CompletionRadius 30
+ }
+ interdiction_route_05 {
+  coords 10139 245 5412
+  CompletionRadius 30
+ }
+ interdiction_route_06 {
+  coords 9891 272 6126
+  CompletionRadius 30
+ }
+ interdiction_route_07 {
+  coords 9692 196 6909
+  CompletionRadius 30
+ }
+ interdiction_route_08 {
+  coords 10679 110 6824
+  CompletionRadius 30
+ }
+ interdiction_route_09 {
+  coords 11293 75 6579
+  CompletionRadius 30
+ }
+ interdiction_route_10 {
+  coords 12717 18 6172
+  CompletionRadius 30
+ }
+ interdiction_route_11 {
+  coords 13437 6 6077
+  CompletionRadius 30
+ }
+ interdiction_route_12 {
+  coords 13484 6 4884
+  CompletionRadius 30
+ }
+ interdiction_route_13 {
+  coords 13038 6 3833
+  CompletionRadius 30
+ }
+ interdiction_route_14 {
+  coords 11884 6 3461
+  CompletionRadius 30
+ }
+ interdiction_route_15 {
+  coords 10915 6 2842
+  CompletionRadius 30
+ }
+}
+AIWaypointCycle interdiction_route_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ coords 10361 6 2179
+ CycleWaypoints {
+  "interdiction_route_01" "interdiction_route_02" "interdiction_route_03" "interdiction_route_04" "interdiction_route_05" "interdiction_route_06" "interdiction_route_07" "interdiction_route_08" "interdiction_route_09" "interdiction_route_10" "interdiction_route_11" "interdiction_route_12" "interdiction_route_13" "interdiction_route_14" "interdiction_route_15"
+ }
+}
+SCR_BoardingTimedWaypoint interdiction_convoy_getin : "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et" {
+ coords 10410.8 6 2236.7
+ CompletionRadius 100
+}
+SCR_AIGroup interdiction_convoy : "{8EC6B2FB5C407949}Prefabs/Groups/OPFOR/Vehicle/COA_OPFOR_VehicleCrew_p.et" {
+ coords 10377.8 6.2 2202.4
+ angles 0 35 0
+ m_faction "OPFOR"
+ m_aUnitPrefabSlots {
+  "{CC8EDD051CB0C1CE}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_SL.et" "{B3182F73DBEACB7B}Prefabs/!Systems/!Characters/GS_Characters/Leadership/COA_COY.et" "{88611B14BF2B14B1}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehDriver.et" "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et" "{88611B14BF2B14B1}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehDriver.et" "{5915E51A1AABB9D2}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehGunner.et" "{88611B14BF2B14B1}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehDriver.et" "{5915E51A1AABB9D2}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehGunner.et" "{88611B14BF2B14B1}Prefabs/!Systems/!Characters/GS_Characters/Crews/COA_VehDriver.et" "{6F99DE8453E6B423}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Rifleman.et" "{690B6588C8F675A4}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_AR.et" "{D4DB370FB7ED69BA}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_AT.et" "{4F201B6446013397}Prefabs/!Systems/!Characters/GS_Characters/Squad Level/COA_Medic.et"
+ }
+ m_aStaticWaypoints {
+  "interdiction_convoy_getin"
+  "interdiction_route_02"
+  "interdiction_route_03"
+  "interdiction_route_04"
+  "interdiction_route_05"
+  "interdiction_route_06"
+  "interdiction_route_07"
+  "interdiction_route_08"
+  "interdiction_route_09"
+  "interdiction_route_10"
+  "interdiction_route_11"
+  "interdiction_route_12"
+  "interdiction_route_13"
+  "interdiction_route_14"
+  "interdiction_route_15"
+  "interdiction_route_cycle"
+ }
+ m_aStaticVehicles {
+  "interdiction_tech_pkm"
+  "interdiction_cmd_uaz"
+  "interdiction_ural"
+  "interdiction_tech_dshkm"
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ interdiction_hq_defend_centre {
+  coords 9147.759 223.958 3891.072
+  CompletionRadius 60
+ }
+ interdiction_hq_defend_east {
+  coords 9195.8 223.5 3918.3
+  CompletionRadius 45
+ }
+ interdiction_hq_defend_south {
+  coords 9169.1 222.9 3801.8
+  CompletionRadius 45
+ }
+ interdiction_hq_defend_west {
+  coords 9122.3 224.2 3895.2
+  CompletionRadius 30
+ }
+}
+SCR_AIGroup interdiction_hq_squad_1 : "{8AA6789CBC9922E8}Prefabs/Groups/OPFOR/Infantry/COA_OPFOR_RifleSquad_p.et" {
+ coords 9140 224.2 3900
+ m_faction "OPFOR"
+ m_aStaticWaypoints {
+  "interdiction_hq_defend_centre"
+ }
+}
+SCR_AIGroup interdiction_hq_squad_2 : "{8AA6789CBC9922E8}Prefabs/Groups/OPFOR/Infantry/COA_OPFOR_RifleSquad_p.et" {
+ coords 9195.8 223.8 3918.3
+ m_faction "OPFOR"
+ m_aStaticWaypoints {
+  "interdiction_hq_defend_east"
+ }
+}
+SCR_AIGroup interdiction_hq_squad_3 : "{8AA6789CBC9922E8}Prefabs/Groups/OPFOR/Infantry/COA_OPFOR_RifleSquad_p.et" {
+ coords 9169.1 223.2 3801.8
+ m_faction "OPFOR"
+ m_aStaticWaypoints {
+  "interdiction_hq_defend_south"
+ }
+}
+SCR_AIGroup interdiction_hq_hmg : "{D28E70FB9B3EAD50}Prefabs/Groups/OPFOR/Support/COA_OPFOR_HMGTeam_p.et" {
+ coords 9122.3 224.5 3895.2
+ m_faction "OPFOR"
+ m_aStaticWaypoints {
+  "interdiction_hq_defend_west"
+ }
+}

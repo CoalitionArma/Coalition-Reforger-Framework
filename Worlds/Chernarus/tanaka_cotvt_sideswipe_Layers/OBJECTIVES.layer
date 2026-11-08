@@ -1,0 +1,8 @@
+$grp GameEntity {
+ interdiction_hq {
+  coords 9147.759 223.958 3891.072
+ }
+ interdiction_base {
+  coords 4430 327.4 10770
+ }
+}
