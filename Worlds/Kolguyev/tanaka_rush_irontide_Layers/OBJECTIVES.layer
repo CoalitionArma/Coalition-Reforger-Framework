@@ -6,6 +6,6 @@ $grp SCR_BaseTriggerEntity {
   coords 8318 46.91 6735
  }
  mcom_c_trigger {
-  coords 7705.7 207.43 6841.2
+  coords 7694.68 208.052 6842.804
  }
 }

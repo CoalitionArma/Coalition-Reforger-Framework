@@ -35,8 +35,14 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   m_sFactionKey "BLUFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_spare {
+ irontide_lcvp_7 {
   coords 9638.6 0.5 7190
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_spare {
+  coords 9638.6 0.5 7204
   m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
   m_sFactionKey "BLUFOR"
   m_iTicketsPerRespawn 0
