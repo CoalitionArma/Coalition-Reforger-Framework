@@ -153,6 +153,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 				StartGame();
 			if (m_bZoneUpdateChecks)
 				UnlockZone(m_iZoneIndex, m_iZoneIndex2);
+			SyncTasks(owner);
 		}
 		m_fUpdateBuffer += timeSlice;
 		
@@ -303,9 +304,18 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// True once safestart has ended (or the mission has none). Not !GetSafestartStatus(): safestart is
+	// briefly off when the mission starts, before it turns on.
+	protected bool IsRoundLive()
+	{
+		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
+		return !safestartManager || safestartManager.IsRoundLive();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void StartGame()
 	{
-		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(!IsRoundLive() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
 			return;
 		
 		int zoneIndex = ((m_aZonesStatus.Count()-1)/2);
@@ -338,7 +348,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateZones(IEntity owner)
 	{
-		if(COA_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
+		if(!IsRoundLive() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
 		
 		int zonesCapturedBlufor;
@@ -535,6 +545,8 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void ZoneCaptured(int zoneIndex, FactionKey side)
 	{
+		ResolveZoneTasks(zoneIndex, side);
+
 		string zoneText = ConvertIndexToZoneString(zoneIndex);
 		string nickname;
 		int zoneIndexToChange;
@@ -864,4 +876,144 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	{
 		AudioSystem.PlaySound("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav");
 	};
+
+	//------------------------------------------------------------------------------------------------
+	// Vanilla tasks (CRF_ObjectiveTasks), derived from m_aZonesStatus once a second (server):
+	//  - an unlocked zone: its owner gets "Defend", the other side "Capture" (both "Capture" while
+	//    neutral), with the capture progress
+	//  - captured: the capturer's task completes and the other side's fails (ResolveZoneTasks)
+	//  - locked without a capture: the open tasks go; they come back when it unlocks
+	//  - "Take every zone" per side, resolved at victory
+	//------------------------------------------------------------------------------------------------
+	protected ref map<string, string> m_mOverallTaskIds = new map<string, string>();
+	protected bool m_bTasksStarted;
+	protected bool m_bTaskVictoryResolved;
+
+	//------------------------------------------------------------------------------------------------
+	protected string GetZoneTaskId(int zoneIndex, bool capture, FactionKey side)
+	{
+		if (capture)
+			return CRF_ObjectiveTasks.MakeId("Frontline", "Capture" + zoneIndex, side);
+
+		return CRF_ObjectiveTasks.MakeId("Frontline", "Defend" + zoneIndex, side);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void SyncTasks(IEntity owner)
+	{
+		if (!m_bGameStarted || m_aZonesStatus.Count() != m_aZoneObjectNames.Count())
+			return;
+
+		array<FactionKey> sides = {m_BluforSide, m_OpforSide};
+
+		if (!m_bTasksStarted)
+		{
+			m_bTasksStarted = true;
+			string overallDescription = string.Format("Capture every zone along the front line, then hold them all for %1.", SCR_FormatHelper.FormatTime(m_iTimeToWin));
+			foreach (FactionKey overallSide : sides)
+			{
+				string overallId = CRF_ObjectiveTasks.MakeId("Frontline", "AllZones", overallSide);
+				if (CRF_ObjectiveTasks.Create(overallId, overallSide, "Take every zone", overallDescription, CRF_ObjectiveTasks.ICON_SEIZE, SCR_ETaskState.FAILED))
+					m_mOverallTaskIds.Set(overallSide, overallId);
+			}
+		}
+
+		if (m_bVictoryDeclared && !m_bTaskVictoryResolved)
+		{
+			// Every zone belongs to the winner by now
+			m_bTaskVictoryResolved = true;
+			array<string> firstZone = {};
+			m_aZonesStatus[0].Split(":", firstZone, false);
+			if (firstZone.Count() == 3)
+				CRF_ObjectiveTasks.Resolve(m_mOverallTaskIds, firstZone[2]);
+		}
+
+		foreach (int index, string zoneName : m_aZoneObjectNames)
+		{
+			array<string> zoneStatusArray = {};
+			m_aZonesStatus[index].Split(":", zoneStatusArray, false);
+			if (zoneStatusArray.Count() != 3)
+				continue;
+
+			FactionKey zoneFaction = zoneStatusArray[0];
+			string zoneState = zoneStatusArray[1];
+			FactionKey owningFaction = zoneStatusArray[2];
+			bool active = zoneState != "Locked" && !m_bVictoryDeclared;
+
+			// While a side is capturing, the state is its seconds so far
+			int captureSeconds = zoneState.ToInt();
+			float captureProgress;
+			if (captureSeconds > 0 && m_iZoneCaptureTime > 0)
+				captureProgress = captureSeconds / (float)m_iZoneCaptureTime;
+
+			string zoneText = ConvertIndexToZoneString(index);
+			foreach (FactionKey side : sides)
+			{
+				string captureId = GetZoneTaskId(index, true, side);
+				string defendId = GetZoneTaskId(index, false, side);
+
+				if (!active)
+				{
+					if (CRF_ObjectiveTasks.IsOpen(captureId))
+						CRF_ObjectiveTasks.Remove(captureId);
+					if (CRF_ObjectiveTasks.IsOpen(defendId))
+						CRF_ObjectiveTasks.Remove(defendId);
+					continue;
+				}
+
+				bool defending = owningFaction == side;
+				string openId = captureId;
+				string otherId = defendId;
+				if (defending)
+				{
+					openId = defendId;
+					otherId = captureId;
+				}
+
+				if (CRF_ObjectiveTasks.IsOpen(otherId))
+					CRF_ObjectiveTasks.Remove(otherId);
+
+				if (!CRF_ObjectiveTasks.IsOpen(openId))
+				{
+					vector position;
+					IEntity zone = GetZoneEntity(owner, zoneName);
+					if (zone)
+						position = zone.GetOrigin();
+
+					if (defending)
+					{
+						CRF_ObjectiveTasks.Create(openId, side, "Defend " + zoneText,
+							string.Format("Hold %1. The enemy takes it by keeping %2+ players inside, with fewer than half as many of yours, for %3 seconds.", zoneText, m_iMinNumberOfPlayersNeeded, m_iZoneCaptureTime),
+							CRF_ObjectiveTasks.ICON_DEFEND, SCR_ETaskState.COMPLETED, position);
+					}
+					else
+					{
+						CRF_ObjectiveTasks.Create(openId, side, "Capture " + zoneText,
+							string.Format("Get %1+ players into %2, with fewer than half as many enemies there, for %3 seconds.", m_iMinNumberOfPlayersNeeded, zoneText, m_iZoneCaptureTime),
+							CRF_ObjectiveTasks.ICON_CAPTURE, SCR_ETaskState.FAILED, position);
+					}
+				}
+
+				// The capturing side's progress shows on its "Capture" task and on the owner's "Defend" task
+				if ((!defending && zoneFaction == side) || (defending && zoneFaction != side))
+					CRF_ObjectiveTasks.SetProgress(openId, captureProgress);
+				else
+					CRF_ObjectiveTasks.SetProgress(openId, 0);
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Called before ZoneCaptured changes the zone's status
+	protected void ResolveZoneTasks(int zoneIndex, FactionKey capturer)
+	{
+		FactionKey loser = m_BluforSide;
+		if (capturer == m_BluforSide)
+			loser = m_OpforSide;
+
+		CRF_ObjectiveTasks.SetProgress(GetZoneTaskId(zoneIndex, true, capturer), 1);
+		CRF_ObjectiveTasks.Finish(GetZoneTaskId(zoneIndex, true, capturer), SCR_ETaskState.COMPLETED);
+		CRF_ObjectiveTasks.Finish(GetZoneTaskId(zoneIndex, false, loser), SCR_ETaskState.FAILED);
+		CRF_ObjectiveTasks.Finish(GetZoneTaskId(zoneIndex, true, loser), SCR_ETaskState.FAILED);
+	}
 };

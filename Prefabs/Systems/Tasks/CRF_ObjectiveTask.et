@@ -1,0 +1,6 @@
+SCR_ExtendedTask : "{CF6A2A13DF7B1018}Prefabs/Tasks/ExtendedTask.et" {
+ ID "6178881B8CB3C788"
+ m_eTaskOwnership FACTION
+ m_eTaskVisibility FACTION
+ m_eTaskUIVisibility LIST_ONLY
+}

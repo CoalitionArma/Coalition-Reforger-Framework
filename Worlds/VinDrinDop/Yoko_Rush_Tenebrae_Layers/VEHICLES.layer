@@ -1,0 +1,42 @@
+GenericEntity : "{971302B9970AA871}PrefabsMissionMaking/Systems/VehicleDepot/OPFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F111246FC7}" {
+   m_iSpawnPointCount 2
+   m_fSpawnSpacing 6.5
+   m_fVehicleFacingOffset 180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+     m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+     m_eCostType USES
+     m_iCost 5
+    }
+   }
+  }
+ }
+ coords 3470.509 1.618 207.18
+ angles 0 -179.155 0
+}
+GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLUFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F0F94232BA}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F0F94232A9}" {
+     m_sVehicleName "Big Truck"
+     m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+     m_eCostType USES
+    }
+    CRF_VehicleDepotVehicle "{6ACC59E4D725318D}" {
+     m_sVehicleName "Humvee"
+     m_sVehiclePrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+     m_eCostType USES
+     m_iCost 15
+    }
+   }
+  }
+ }
+ coords 4395.914 49.563 1635.098
+ angles 0 -11.559 0
+}

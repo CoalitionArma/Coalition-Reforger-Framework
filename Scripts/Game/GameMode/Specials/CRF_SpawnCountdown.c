@@ -32,6 +32,17 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 		CheckIfGamemodeStarted(owner, timeSlice);
 	}
 
+	//! The countdown runs from safestart ending (or, without safestart, from the mission starting)
+	protected bool IsRoundLive()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+			return false;
+
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
+
 	void CheckIfGamemodeStarted(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
@@ -40,7 +51,7 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 			return;
 		#endif
 
-		if (COA_Gamemode.GetInstance().m_GamemodeState != COA_EGamemodeState.GAME)
+		if (!IsRoundLive())
 			return;
 
 		m_fGameStartTimer -= timeSlice;
@@ -73,7 +84,8 @@ class CRF_SpawnCountDown: SCR_BaseGameModeComponent
 			return;
 
 		bool isInitialEntity = localEntity.GetPrefabData().GetPrefabName() == INITIAL_ENTITY_PREFAB;
-		if (isInitialEntity)
+		// No countdown screen while slotting or in safestart: the countdown starts when the round goes live
+		if (isInitialEntity || !IsRoundLive())
 		{
 			if (m_wGameStartBase)
 				GetGame().GetMenuManager().CloseMenu(m_wGameStartBase);

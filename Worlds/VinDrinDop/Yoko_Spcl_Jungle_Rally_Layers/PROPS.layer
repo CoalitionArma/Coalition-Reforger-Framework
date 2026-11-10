@@ -1,0 +1,371 @@
+SCR_DestructibleBuildingEntity : "{12981279D4DB92D3}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Base.et" {
+ coords 736.464 0.753 1346.753
+ angles 0.067 3.965 -30.49
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck/BMP1_wreck.et" {
+ coords 1144.626 8.339 2067.033
+ angles 0 -167.755 0
+}
+$grp GenericEntity : "{520626A206926F47}Prefabs/Props/Agriculture/Farm/Haystack_01.et" {
+ {
+  coords 739.932 0.864 1336.683
+  angles 0 0 0
+  scale 4.8
+ }
+ {
+  coords 739.932 0.864 1356.206
+  angles 0 0 0
+  scale 4.8
+ }
+ {
+  coords 739.932 0.864 1363.934
+  angles 0 0 0
+  scale 4.8
+ }
+}
+$grp GenericEntity : "{7082E31A88C47D14}Prefabs/Props/Indicators/Indicator_Pointer_Upright.et" {
+ {
+  coords 1151.224 9.336 2071.817
+  angles 0 31.644 0
+ }
+ {
+  coords 967.314 4.142 2894.836
+  angles 0 -22.723 0
+ }
+ {
+  coords 935.554 6.848 2963.031
+  angles 0 -119.168 0
+ }
+ {
+  coords 578.529 16.123 2886.345
+  angles -89.839 -42.755 -180
+ }
+ {
+  coords 334.382 7.57 2393.032
+  angles 0 -102.68 0
+ }
+ {
+  coords 599.288 3.226 1745.691
+  angles 0 -116.6 0
+ }
+ {
+  coords 733.766 5.886 1354.459
+  angles 0 146.664 0
+ }
+ {
+  coords 732.791 6.047 1339.275
+  angles 0 40.294 0
+ }
+ {
+  coords 921.393 48.893 2267.819
+  angles 0 9.561 0
+ }
+ {
+  coords 985.832 21.606 2784.635
+  angles 0 6.769 0
+ }
+ {
+  coords 931.693 27.666 2785.446
+  angles 0 80.403 0
+ }
+ {
+  coords 2530.175 96.769 575.403
+  angles 0 9.295 0
+  scale 7.6
+ }
+ {
+  coords 2554.92 104.284 703.084
+  angles -88.505 141.987 -72.838
+  scale 7.6
+ }
+}
+$grp SCR_IndestructibleEnvironmentalEntity : "{F281250F8F8E3755}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall.et" {
+ {
+  coords 2520.33 0 520.922
+  angles 0 64.347 0
+ }
+ {
+  coords 2512.849 0 552.926
+  angles 0 88.593 0
+ }
+ {
+  coords 2512.045 0 585.668
+  angles 0 88.593 0
+ }
+ {
+  coords 2511.219 0 619.326
+  angles 0 88.593 0
+ }
+ {
+  coords 2510.383 0 653.379
+  angles 0 88.593 0
+ }
+ {
+  coords 2532.856 0 712.493
+  angles 0 88.593 0
+ }
+ {
+  coords 2526.067 -0.001 683.564
+  angles 0 115.213 0
+ }
+ {
+  coords 2542.385 0.048 505.131
+  angles 0 1.091 0
+ }
+ {
+  coords 2578.184 -0.093 504.449
+  angles 0 1.091 0
+ }
+ {
+  coords 2610.678 -0.001 503.83
+  angles 0 1.091 0
+ }
+ {
+  coords 2644.815 0.034 505.261
+  angles 0 1.091 0
+ }
+ {
+  coords 2679.341 0.009 504.603
+  angles 0 1.091 0
+ }
+ {
+  coords 2713.888 -0.006 503.945
+  angles 0 1.091 0
+ }
+ {
+  coords 2749.621 0.016 503.264
+  angles 0 1.091 0
+ }
+ {
+  coords 2786.169 0.061 502.568
+  angles 0 1.091 0
+ }
+ {
+  coords 2819.074 -0.049 501.941
+  angles 0 1.091 0
+ }
+ {
+  coords 2854.879 0.016 501.259
+  angles 0 1.091 0
+ }
+ {
+  coords 2890.36 0.024 500.583
+  angles 0 1.091 0
+ }
+ {
+  coords 2925.475 -0.002 499.914
+  angles 0 1.091 0
+ }
+ {
+  coords 2956.558 -0.002 499.322
+  angles 0 1.091 0
+ }
+ {
+  coords 3143.299 -0.044 495.765
+  angles 0 1.091 0
+ }
+ {
+  coords 3177.376 0.232 495.116
+  angles 0 1.091 0
+ }
+ {
+  coords 3212.147 -0.003 494.454
+  angles 0 1.091 0
+ }
+ {
+  coords 3248.292 -0.003 493.766
+  angles 0 1.091 0
+ }
+ {
+  coords 3281.147 0.046 493.14
+  angles 0 1.091 0
+ }
+ {
+  coords 3291.117 -0.067 517.576
+  angles 0 -84.504 0
+ }
+ {
+  coords 3294.216 -0.347 549.783
+  angles 0 -84.504 0
+ }
+ {
+  coords 3296.56 -0.179 574.142
+  angles 0 -84.504 0
+ }
+ {
+  coords 2585.087 0.598 700.509
+  angles 0 -130.189 0
+ }
+ {
+  coords 2608.289 -0.027 673.042
+  angles 0 -130.189 0
+ }
+ {
+  coords 2630.023 -0.027 647.313
+  angles 0 -130.189 0
+ }
+ {
+  coords 2655.197 -0.027 627.038
+  angles 0 -142.177 0
+ }
+ {
+  coords 2681.865 -0.027 606.335
+  angles 0 -142.177 0
+ }
+ {
+  coords 2711.693 -0.027 591.891
+  angles 0 -153.72 0
+ }
+ {
+  coords 2742.373 -0.027 580.845
+  angles 0 -167.089 0
+ }
+ {
+  coords 2775.74 -0.027 573.196
+  angles 0 -167.089 0
+ }
+ {
+  coords 2806.856 -0.027 568.504
+  angles 0 -167.089 0
+ }
+ {
+  coords 2840.62 -0.027 563.448
+  angles 0 -167.089 0
+ }
+ {
+  coords 2872.256 0.138 561.267
+  angles 0 -176.207 0
+ }
+ {
+  coords 2905.889 0 560.654
+  angles 0 -176.207 0
+ }
+ {
+  coords 2937.958 0 565.949
+  angles 0 160.235 0
+ }
+}
+$grp GenericEntity : "{FD426896698B4615}Prefabs/Compositions/Misc/FreeRoamBuilding/Dragonsteeth_S_US_01.et" {
+ {
+  coords 963.086 2.528 2869.974
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 1.446 0 0
+   }
+  }
+ }
+ {
+  coords 963.036 2.469 2874.845
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 1.387 0 0
+   }
+  }
+ }
+ {
+  coords 964.617 2.322 2878.969
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 0.601 0 0.267
+   }
+  }
+ }
+ {
+  coords 965.17 2.306 2884.128
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords 0.434 0 0.02
+    angles 0 29.425 0
+   }
+  }
+ }
+ {
+  coords 969.689 2.306 2886.927
+  scale 3.2
+ }
+ {
+  coords 942.868 2.56 2965.721
+  scale 3.2
+ }
+ {
+  coords 413.565 -0.005 1264.463
+  scale 3.2
+ }
+ {
+  coords 408.823 -0.005 1268.786
+  scale 3.2
+ }
+ {
+  coords 420.691 -0.001 1261.39
+  scale 3.2
+ }
+ {
+  coords 605.518 0 1768.016
+  angles 0 -42.348 0
+  scale 3.2
+  {
+   StaticModelEntity {
+    ID "5E64F5E7596006C9"
+    coords -1.084 0 0
+   }
+  }
+ }
+ {
+  coords 601.909 0 1771.976
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 609.337 0 1763.826
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1674.723 4.62 1936.367
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1680.126 4.644 1935.21
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1685.167 4.516 1933.979
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2014.003 6.181 1873.854
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2018.941 6.124 1872.641
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 2025.224 5.125 1872.288
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1388.456 6.298 1927.717
+  angles 0 -42.348 0
+  scale 3.2
+ }
+ {
+  coords 1382.974 6 1928.161
+  angles 0 -42.348 0
+  scale 3.2
+ }
+}

@@ -338,7 +338,15 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (killerId == -1)
 			return;
 		#endif
-		
+
+		// Kills before the round is live (safestart) don't level anyone up
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		if (safestart && !safestart.IsRoundLive())
+		{
+			GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID());
+			return;
+		}
+
 		CRF_GunGamePlayerStats killerStats = m_mPlayerStats.Get(killerId);
 		if (!killerStats)
 			return;

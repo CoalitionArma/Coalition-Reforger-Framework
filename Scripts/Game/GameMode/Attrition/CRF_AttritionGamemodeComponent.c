@@ -132,6 +132,9 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected bool m_bPoolsFinalized = false;
 	protected bool m_bVictoryTriggered = false;
+
+	// Vanilla tasks (CRF_ObjectiveTasks): "Destroy N% of <enemy> forces" per side, by faction key
+	protected ref map<string, string> m_mTaskIds = new map<string, string>();
 	protected float m_fVehicleGraceRemaining = 0;
 
 	protected COA_Gamemode m_Gamemode;
@@ -257,7 +260,8 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_bPoolsFinalized || !m_Gamemode)
 			return;
 
-		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
+		// Missions with safestart finalize on OnSafestartChanged, when it ends
+		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || m_SafestartManager.IsRoundLive()))
 			FinalizePools();
 	}
 
@@ -286,6 +290,49 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 
 		if (m_bCountVehicles)
 			GetGame().GetCallqueue().CallLater(PollVehicleDestruction, 1000, true);
+
+		CreateTask(m_TeamA, m_TeamB, m_fTeamAVictoryThreshold);
+		CreateTask(m_TeamB, m_TeamA, m_fTeamBVictoryThreshold);
+	}
+
+	//===================================================================================
+	// TASKS
+	//===================================================================================
+
+	//! A side that can win (threshold above 0) gets "Destroy N% of <enemy> forces"
+	protected void CreateTask(notnull CRF_AttritionTeamPool side, notnull CRF_AttritionTeamPool enemy, float threshold)
+	{
+		if (threshold <= 0)
+			return;
+
+		string counted = "players and vehicles";
+		if (!m_bCountVehicles)
+			counted = "players";
+		else if (!m_bCountPlayers)
+			counted = "vehicles";
+
+		string name = string.Format("Destroy %1%% of %2 forces", Math.Round(threshold), enemy.m_sFactionKey);
+		string description = string.Format("Wear %1 down: kill or destroy %2%% of their %3.", enemy.m_sFactionKey, Math.Round(threshold), counted);
+		string id = CRF_ObjectiveTasks.MakeId("Attrition", "Destroy", side.m_sFactionKey);
+		if (CRF_ObjectiveTasks.Create(id, side.m_sFactionKey, name, description, CRF_ObjectiveTasks.ICON_KILL, SCR_ETaskState.FAILED))
+			m_mTaskIds.Set(side.m_sFactionKey, id);
+	}
+
+	//! Each side's progress: how much of the enemy is gone, against its own threshold
+	protected void UpdateTasks()
+	{
+		UpdateTask(m_TeamA, m_TeamB, m_fTeamAVictoryThreshold);
+		UpdateTask(m_TeamB, m_TeamA, m_fTeamBVictoryThreshold);
+	}
+
+	protected void UpdateTask(notnull CRF_AttritionTeamPool side, notnull CRF_AttritionTeamPool enemy, float threshold)
+	{
+		string id;
+		if (threshold <= 0 || enemy.m_iTotalUnits <= 0 || !m_mTaskIds.Find(side.m_sFactionKey, id))
+			return;
+
+		float destroyedPercent = (float)enemy.m_iDestroyedUnits / (float)enemy.m_iTotalUnits * 100.0;
+		CRF_ObjectiveTasks.SetProgress(id, destroyedPercent / threshold);
 	}
 
 	// Polls every tracked vehicle once a second for its destroyed state, and — for a
@@ -573,6 +620,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 			BroadcastUpdate();
 		}
 
+		UpdateTasks();
 		CheckVictory(pool, destroyedPercent);
 	}
 
@@ -596,6 +644,7 @@ class CRF_AttritionGamemodeComponent : SCR_BaseGameModeComponent
 			return;
 
 		m_bVictoryTriggered = true;
+		CRF_ObjectiveTasks.Resolve(m_mTaskIds, winningPool.m_sFactionKey);
 
 		Rpc(RpcDo_BroadcastMessage, string.Format("%1 forces have been reduced by %2%%! %3 achieves victory!",
 			losingPool.m_sFactionKey, Math.Round(destroyedPercent).ToString(), winningPool.m_sFactionKey));

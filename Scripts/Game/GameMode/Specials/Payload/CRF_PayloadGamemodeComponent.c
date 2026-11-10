@@ -293,7 +293,7 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
 		{
 			// Missions with safestart start on OnSafestartChanged
-			if (!m_bRoundLive && (!m_Safestart || !m_Safestart.GetSafestartStatus()))
+			if (!m_bRoundLive && (!m_Safestart || m_Safestart.IsRoundLive()))
 				StartRound();
 			return;
 		}

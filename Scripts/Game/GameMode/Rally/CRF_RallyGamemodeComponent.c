@@ -30,8 +30,13 @@
 // 7. The minimap traces the course along the shortest road route between checkpoints. Where the
 //    stage takes a longer road than that, add a checkpoint on it.
 //
-// Crossings only count while the round is live (COA_EGamemodeState.GAME), and are checked along the
-// path travelled since the last poll, so fast vehicles can't skip a checkpoint between polls.
+// Crossings only count once the round is live (COA_EGamemodeState.GAME, safestart over), and are checked along the
+// path travelled since the last poll, so fast vehicles can't skip a checkpoint between polls. They are timed where
+// that path enters the checkpoint radius (GetCrossingTimeMs), not at the poll that sees them.
+//
+// Results: every run (crew, car, seats, splits, laps, finish or how it ended) is recorded as it happens and sent to
+// coalitiongroup.net once per round - when everyone is done, or else when the round ends - with a copy in
+// $profile:rally (see CRF_RallyResults.c). A new round on the same mission load starts the race over.
 //------------------------------------------------------------------------------------
 
 
@@ -52,6 +57,27 @@ class CRF_RallyPlayerEntry
 	int m_iDeathTimeMs;          // GetWorldTime() in ms when this player died (0 = not dead)
 	vector m_vLastPos;           // Tracked position at the previous poll, for the swept crossing check
 	bool m_bHasLastPos;
+	int m_iLastPosMs;            // GetWorldTime() in ms when m_vLastPos was taken, for interpolated crossing times
+
+	// The run as the results upload reports it (BuildSessionJson). Recorded as it happens, so it is
+	// still there after the player has left, changed group or lost their car.
+	string m_sGuid;              // BI identity ("" if unavailable) - also how a rejoin finds its run again
+	string m_sName;
+	int m_iLastConnectedId;      // the player ID they last had (m_iPlayerId moves if an archived run's ID is reused)
+	string m_sCrewKey;           // "" until known: the start order draw (stage) or the start line
+	string m_sCrewName;
+	string m_sVehiclePrefab;     // the car they were in when they started
+	IEntity m_LastVehicle;       // the car m_sVehiclePrefab was read from
+	bool m_bStarted;             // crossed the start line
+	bool m_bStartedAtWheel;
+	bool m_bDriverRole;          // slotted as COA_EGearRole.VEHICLE_DRIVER
+	int m_iRunTimeMs = -1;       // total time including the penalty, finishers only
+	int m_iPenaltyMs;
+	bool m_bJumpStart;
+	int m_iCarNumber = -1;       // stage start slot + 1
+	ref array<int> m_aSplitsMs = {}; // time at each intermediate checkpoint passed, on the run's clock
+	ref array<int> m_aLapsMs = {};   // completed lap times
+	bool m_bDisconnected;
 
 	void CRF_RallyPlayerEntry(int playerId)
 	{
@@ -66,6 +92,7 @@ class CRF_RallyPlayerEntry
 		m_bFinished         = false;
 		m_bDead             = false;
 		m_iDeathTimeMs      = 0;
+		m_iLastConnectedId  = playerId;
 	}
 
 	// Higher progress = further ahead in the race
@@ -185,6 +212,31 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	// First player to die during the race
 	protected int m_iFirstDeathPlayerId = -1;
 	protected string m_sFirstDeathPlayerName = "";
+
+	// Racers who left during the round: kept for the results (dnf_disconnect, or their finish), and
+	// handed back by GUID if they rejoin - the Lobby notes a reconnecting player can get a new player ID
+	protected ref array<ref CRF_RallyPlayerEntry> m_aArchivedEntries = {};
+	protected int m_iNextFreedPlayerId = -1;
+
+	// Players killed by the finish-line kill (KillPlayerAndVehicle), whose death isn't a race death
+	protected ref set<int> m_FinishKillIds = new set<int>();
+
+	// The round as the results upload reports it (see CRF_RallySessionUpload). Opened when the round
+	// goes live, uploaded once: when everyone is done (TriggerResults) or else when the round ends.
+	protected bool m_bSessionOpen;
+	protected bool m_bResultsUploaded;
+	protected string m_sSessionId;
+	protected int m_iSessionStartedAt;          // unix time
+	protected int m_iRaceLiveMs;                // world time the round went live
+	protected int m_iMissionId;                 // coalitiongroup.net mission ID, 0 = not found
+	protected int m_iMissionLookupAttempts;
+	protected ref RestCallback m_MissionLookupCallback;
+	protected ref array<ref RestCallback> m_aSpentLookupCallbacks = {}; // a previous round's, in case they still answer
+	protected COA_Gamemode m_CoaGamemode;       // whose state changes reset the race and end the round
+
+	protected static const string CURRENT_MISSION_ENDPOINT = "/current-mission?name=";
+	protected static const int MISSION_LOOKUP_RETRY_MS = 15000;
+	protected static const int MISSION_LOOKUP_MAX_ATTEMPTS = 4;
 
 	// Smoke prefab resource names — start=green, finish=red, intermediates cycle yellow/purple
 	static const ResourceName SMOKE_START  = "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et";
@@ -310,8 +362,12 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(SpawnCheckpointSmokes);
 			GetGame().GetCallqueue().Remove(DeleteOldSmokes);
 			GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
+			GetGame().GetCallqueue().Remove(LookupMissionId);
 			ClearCheckpointSmokes();
 			ClearCheckpointMarkers();
+
+			if (m_CoaGamemode && m_CoaGamemode.GetOnStateChanged())
+				m_CoaGamemode.GetOnStateChanged().Remove(OnCoaStateChanged);
 		}
 	}
 
@@ -366,6 +422,11 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 		// Place persistent map markers for each checkpoint
 		SpawnCheckpointMarkers();
+
+		// The round ending sends the results if the race didn't finish first; a new round resets it
+		m_CoaGamemode = COA_Gamemode.GetInstance();
+		if (m_CoaGamemode && m_CoaGamemode.GetOnStateChanged())
+			m_CoaGamemode.GetOnStateChanged().Insert(OnCoaStateChanged);
 
 		Print(string.Format("[CRF_Rally] Race initialised — %1 checkpoints, %2 lap(s), radius=%.0fm",
 			m_aCheckpointPositions.Count(), m_iLapsToComplete, m_fCheckpointRadius), LogLevel.NORMAL);
@@ -690,9 +751,84 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		if (existing)
 			return existing;
 
-		CRF_RallyPlayerEntry entry = new CRF_RallyPlayerEntry(playerId);
+		// Run of someone who left still filed under this ID: the ID is someone else's now
+		FreeArchivedPlayerId(playerId);
+
+		// A racer who left and came back carries on with their run, rather than counting twice
+		string guid = GetPlayerGuid(playerId);
+		CRF_RallyPlayerEntry entry = TakeArchivedEntry(guid);
+		if (entry)
+		{
+			int oldId = entry.m_iPlayerId;
+			entry.m_iPlayerId = playerId;
+			entry.m_bDisconnected = false;
+			entry.m_bHasLastPos = false; // their body may have moved while they were away
+			OnEntryPlayerIdChanged(oldId, playerId);
+			Print(string.Format("[CRF_Rally] %1 rejoined - their run carries on", GetGame().GetPlayerManager().GetPlayerName(playerId)), LogLevel.NORMAL);
+		}
+		else
+		{
+			entry = new CRF_RallyPlayerEntry(playerId);
+			entry.m_sGuid = guid;
+			entry.m_bDriverRole = HasDriverRole(playerId);
+		}
+
+		entry.m_iLastConnectedId = playerId;
+		entry.m_sName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_aPlayerEntries.Insert(entry);
 		return entry;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The archived run of the player with this GUID, taken out of the archive; null if there is none
+	protected CRF_RallyPlayerEntry TakeArchivedEntry(string guid)
+	{
+		if (guid.IsEmpty())
+			return null;
+
+		foreach (int i, CRF_RallyPlayerEntry archived : m_aArchivedEntries)
+		{
+			if (archived.m_sGuid != guid)
+				continue;
+
+			m_aArchivedEntries.RemoveOrdered(i);
+			return archived;
+		}
+
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Moves an archived run off a player ID that has been handed to someone else, onto an unused
+	//! negative one, so per-ID state (the stage's m_mStage) can't be picked up by the new player
+	protected void FreeArchivedPlayerId(int playerId)
+	{
+		foreach (CRF_RallyPlayerEntry archived : m_aArchivedEntries)
+		{
+			if (archived.m_iPlayerId != playerId)
+				continue;
+
+			archived.m_iPlayerId = m_iNextFreedPlayerId;
+			m_iNextFreedPlayerId--;
+			OnEntryPlayerIdChanged(playerId, archived.m_iPlayerId);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A run moved to another player ID - for variants that keep per-player state of their own
+	protected void OnEntryPlayerIdChanged(int oldId, int newId)
+	{
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! BI identity of a connected player, "" if unavailable
+	protected static string GetPlayerGuid(int playerId)
+	{
+		UUID identity = SCR_PlayerIdentityUtils.GetPlayerIdentityId(playerId);
+		if (identity.IsNull())
+			return "";
+
+		return identity;
 	}
 
 	protected CRF_RallyPlayerEntry GetEntry(int playerId)
@@ -713,11 +849,24 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 		for (int i = m_aPlayerEntries.Count() - 1; i >= 0; i--)
 		{
-			if (m_aPlayerEntries[i].m_iPlayerId == playerId)
+			CRF_RallyPlayerEntry entry = m_aPlayerEntries[i];
+			if (entry.m_iPlayerId != playerId)
+				continue;
+
+			m_aPlayerEntries.Remove(i);
+
+			// Out of the standings, but a run once the round is live: it goes in the results and
+			// carries on if they rejoin. Before that there is nothing to keep.
+			if (m_bSessionOpen)
 			{
-				m_aPlayerEntries.Remove(i);
-				break;
+				string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
+				if (!name.IsEmpty())
+					entry.m_sName = name;
+
+				entry.m_bDisconnected = true;
+				m_aArchivedEntries.Insert(entry);
 			}
+			break;
 		}
 	}
 
@@ -768,11 +917,25 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	// SERVER — CHECKPOINT POLLING
 	//===================================================================================
 
+	//! True once the race counts: the mission is in the game state and safestart is over (or the
+	//! mission has none). The course, smoke and HUD are up before then so racers can see it.
+	protected bool IsRaceLive()
+	{
+		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
+		if (!gamemode || gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+			return false;
+
+		COA_SafestartManager safestart = COA_SafestartManager.GetInstance();
+		return !safestart || safestart.IsRoundLive();
+	}
+
 	protected void PollAllPlayerCheckpoints()
 	{
 		// Nothing counts before the round is live (briefing, slotting, safestart)
-		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
-		bool live = gamemode && gamemode.m_GamemodeState == COA_EGamemodeState.GAME;
+		bool live = IsRaceLive();
+		int now = GetGame().GetWorld().GetWorldTime();
+		if (live && !m_bSessionOpen)
+			OpenSession(now);
 
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -785,48 +948,112 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			if (!playerEnt || COA_EntityHelper.IsSpectator(playerEnt))
 				continue;
 
+			// Finishers are done, and a racer who died is out of the race, respawned or not
 			CRF_RallyPlayerEntry entry = GetOrCreateEntry(pid);
-			if (entry.m_bFinished)
+			if (entry.m_bFinished || entry.m_bDead)
 				continue;
+
+			if (entry.m_sGuid.IsEmpty())
+				entry.m_sGuid = GetPlayerGuid(pid);
+
+			// The car they start in is the one they're in when they cross the start line, but a run that
+			// never gets that far still reports the car it had
+			if (!entry.m_bStarted)
+				RecordCar(entry, playerEnt);
 
 			// Track from the vehicle position when seated, otherwise from the character
 			IEntity trackEnt = playerEnt;
 			if (playerEnt.GetParent())
 				trackEnt = playerEnt.GetParent();
 
+			// Without a usable previous sample (first poll, respawn, teleport) the path is a point, timed now
 			vector pos = trackEnt.GetOrigin();
 			vector lastPos = pos;
+			int lastMs = now;
 			if (entry.m_bHasLastPos && vector.Distance(entry.m_vLastPos, pos) <= MAX_SWEEP_DISTANCE)
+			{
 				lastPos = entry.m_vLastPos;
+				lastMs = entry.m_iLastPosMs;
+			}
 
 			entry.m_vLastPos = pos;
+			entry.m_iLastPosMs = now;
 			entry.m_bHasLastPos = true;
 
 			// Optional vehicle requirement: character must be seated in a vehicle
 			if (!live || (m_bRequireVehicle && !playerEnt.GetParent()))
 				continue;
 
-			CheckCheckpointCrossing(entry, lastPos, pos);
+			CheckCheckpointCrossing(entry, lastPos, pos, lastMs, now);
 		}
 	}
 
-	// Checks the path travelled since the last poll (lastPos to pos), not just where the player is now:
-	// at 4 Hz a fast car covers 10+ m between polls and could otherwise clip past a checkpoint unseen
-	protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, vector lastPos, vector pos)
+	// Checks the path travelled since the last poll (lastPos at lastMs to pos at nowMs), not just where
+	// the player is now: at 4 Hz a fast car covers 10+ m between polls and could otherwise clip past a
+	// checkpoint unseen
+	protected void CheckCheckpointCrossing(notnull CRF_RallyPlayerEntry entry, vector lastPos, vector pos, int lastMs, int nowMs)
 	{
 		int cpIndex = entry.m_iNextCheckpoint;
 		if (cpIndex >= m_aCheckpointPositions.Count())
 			return;
 
-		if (DistanceToSegment(m_aCheckpointPositions[cpIndex], lastPos, pos) > m_fCheckpointRadius)
+		vector cpPos = m_aCheckpointPositions[cpIndex];
+		if (DistanceToSegment(cpPos, lastPos, pos) > m_fCheckpointRadius)
 			return;
 
-		OnCheckpointCrossed(entry, cpIndex);
+		OnCheckpointCrossed(entry, cpIndex, GetCrossingTimeMs(cpPos, lastPos, pos, lastMs, nowMs, false));
 	}
 
-	protected void OnCheckpointCrossed(notnull CRF_RallyPlayerEntry entry, int cpIndex)
+	//------------------------------------------------------------------------------------------------
+	//! When the car entered (or, leaving set, left) the checkpoint radius around cpPos, taking it to
+	//! have driven straight and at a steady speed from lastPos at lastMs to pos at nowMs. A poll sees a
+	//! crossing anything up to 250 ms after it happened, and how late varies from car to car, so
+	//! splits and finishes are timed at the crossing itself. Never earlier than the round going live.
+	protected int GetCrossingTimeMs(vector cpPos, vector lastPos, vector pos, int lastMs, int nowMs, bool leaving)
 	{
-		int worldTimeMs          = GetGame().GetWorld().GetWorldTime();
+		float fraction = SegmentSphereFraction(cpPos, m_fCheckpointRadius, lastPos, pos, leaving);
+		int crossMs = lastMs + (int)Math.Round((nowMs - lastMs) * fraction);
+		if (crossMs < m_iRaceLiveMs)
+			crossMs = m_iRaceLiveMs;
+
+		return crossMs;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! How far (0-1) along segment a-b it first comes within radius of centre, or with leaving set
+	//! the last point it is within it. 0 when entering and a is already inside; 1 when it can't be
+	//! worked out (no movement, or the segment misses), which times the crossing at b's poll.
+	protected static float SegmentSphereFraction(vector centre, float radius, vector a, vector b, bool leaving)
+	{
+		// Points on the segment are a + t * (b - a); solve |a + t * (b - a) - centre| = radius for t
+		vector ab = b - a;
+		vector fromCentre = a - centre;
+		float qa = vector.Dot(ab, ab);
+		float qb = vector.Dot(fromCentre, ab);
+		float qc = vector.Dot(fromCentre, fromCentre) - radius * radius;
+
+		if (!leaving && qc <= 0)
+			return 0;
+
+		if (qa <= 0.0001)
+			return 1;
+
+		float discriminant = qb * qb - qa * qc;
+		if (discriminant < 0)
+			return 1;
+
+		float root = Math.Sqrt(discriminant);
+		float t = (-qb - root) / qa;
+		if (leaving)
+			t = (-qb + root) / qa;
+
+		return Math.Clamp(t, 0, 1);
+	}
+
+	// cpIndex was crossed at crossMs (world time, see GetCrossingTimeMs)
+	protected void OnCheckpointCrossed(notnull CRF_RallyPlayerEntry entry, int cpIndex, int crossMs)
+	{
+		int worldTimeMs          = crossMs;
 		int totalCPs             = m_aCheckpointPositions.Count();
 		int pid                  = entry.m_iPlayerId;
 
@@ -841,6 +1068,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			if (entry.m_iRaceStartTimeMs == 0)
 				entry.m_iRaceStartTimeMs = worldTimeMs;
 
+			RecordRunStart(entry);
+
 			string startName = GetGame().GetPlayerManager().GetPlayerName(pid);
 			Rpc(RpcDo_ChatBroadcast, string.Format("[Rally] %1 crossed the start line!", startName));
 			Rpc(RpcDo_CheckpointNotify, pid, "START LINE — GO!");
@@ -848,12 +1077,14 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		else if (cpIndex == totalCPs - 1)
 		{
 			// ── FINISH LINE ─────────────────────────────────────────────────────────
-			float lapTimeSecs = (worldTimeMs - entry.m_iLapStartTimeMs) * 0.001;
+			int lapTimeMs = worldTimeMs - entry.m_iLapStartTimeMs;
 			if (entry.m_iLapStartTimeMs == 0)
-				lapTimeSecs = 0; // safety for the unusual case they skipped start
+				lapTimeMs = 0; // safety for the unusual case they skipped start
+			float lapTimeSecs = lapTimeMs * 0.001;
 
 			entry.m_iLapsCompleted++;
 			entry.m_iLastCPTimeMs = worldTimeMs;
+			entry.m_aLapsMs.Insert(lapTimeMs);
 
 			if (entry.m_fBestLapTime < 0 || lapTimeSecs < entry.m_fBestLapTime)
 				entry.m_fBestLapTime = lapTimeSecs;
@@ -866,9 +1097,10 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 				// Record total race time from when the player first crossed the start line
 				if (entry.m_iRaceStartTimeMs > 0)
-					entry.m_fFinishTimeSecs = (worldTimeMs - entry.m_iRaceStartTimeMs) * 0.001;
+					entry.m_iRunTimeMs = worldTimeMs - entry.m_iRaceStartTimeMs;
 				else
-					entry.m_fFinishTimeSecs = lapTimeSecs;
+					entry.m_iRunTimeMs = lapTimeMs;
+				entry.m_fFinishTimeSecs = entry.m_iRunTimeMs * 0.001;
 
 				BuildAndReplicateStandings(); // immediate update for accurate finish position
 				int finishPos = GetPlayerStandingPosition(pid);
@@ -904,6 +1136,12 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 			// ── INTERMEDIATE CHECKPOINT ─────────────────────────────────────────────
 			entry.m_iNextCheckpoint = cpIndex + 1;
 			entry.m_iLastCPTimeMs   = worldTimeMs;
+
+			// Splits run on the race clock, from the first start line crossing (as the finish time)
+			if (entry.m_iRaceStartTimeMs > 0)
+				entry.m_aSplitsMs.Insert(worldTimeMs - entry.m_iRaceStartTimeMs);
+			else
+				entry.m_aSplitsMs.Insert(0);
 
 			// cpIndex 1 is the first real CP after start; adjust the label for display.
 			// Only the racer is told - a chat line per checkpoint per racer flooded chat for everyone.
@@ -1035,19 +1273,45 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		if (!charEnt)
 			return;
 
+		// This death, and those of everyone riding along, ends a finished run - it isn't a race death
+		m_FinishKillIds.Insert(pid);
+		IEntity vehicle = charEnt.GetParent();
+		if (vehicle)
+			AddFinishKillOccupants(vehicle);
+
 		// Kill the character
 		DamageManagerComponent charDmg = DamageManagerComponent.Cast(charEnt.FindComponent(DamageManagerComponent));
 		if (charDmg && !charDmg.IsDestroyed())
 			charDmg.SetHealthScaled(0);
 
 		// Kill the vehicle if the character is seated in one
-		IEntity vehicle = charEnt.GetParent();
 		if (!vehicle)
 			return;
 
 		DamageManagerComponent vehDmg = DamageManagerComponent.Cast(vehicle.FindComponent(DamageManagerComponent));
 		if (vehDmg && !vehDmg.IsDestroyed())
 			vehDmg.SetHealthScaled(0);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AddFinishKillOccupants(notnull IEntity vehicle)
+	{
+		BaseCompartmentManagerComponent compartments = BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(BaseCompartmentManagerComponent));
+		if (!compartments)
+			return;
+
+		array<BaseCompartmentSlot> slots = {};
+		compartments.GetCompartments(slots);
+		foreach (BaseCompartmentSlot slot : slots)
+		{
+			IEntity occupant = slot.GetOccupant();
+			if (!occupant)
+				continue;
+
+			int occupantId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(occupant);
+			if (occupantId > 0)
+				m_FinishKillIds.Insert(occupantId);
+		}
 	}
 
 	// Called (with a delay) after each player finishes to check if all racers are done.
@@ -1058,7 +1322,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 		foreach (CRF_RallyPlayerEntry entry : m_aPlayerEntries)
 		{
-			if (entry.m_bFinished)
+			// A racer who died is out, even if they have respawned since
+			if (entry.m_bFinished || entry.m_bDead)
 				continue;
 
 			IEntity ent = GetGame().GetPlayerManager().GetPlayerControlledEntity(entry.m_iPlayerId);
@@ -1085,6 +1350,8 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 
 		string packed = BuildResultsString();
 		Rpc(RpcDo_ShowRallyResults, packed, m_sFirstDeathPlayerName);
+
+		UploadResults("all_finished");
 	}
 
 	// Tracks the first player to die during an active race.
@@ -1092,26 +1359,33 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(instigatorContextData);
 
-		if (!m_bRaceActive)
-			return;
-
 		int victimId = instigatorContextData.GetVictimPlayerID();
 		if (victimId <= 0)
 			return;
 
-		// Mark entry as dead and freeze the death time for HUD display
-		CRF_RallyPlayerEntry entry = GetEntry(victimId);
-		if (entry && !entry.m_bDead && !entry.m_bFinished)
-		{
-			entry.m_bDead        = true;
-			entry.m_iDeathTimeMs = GetGame().GetWorld().GetWorldTime();
-			BuildAndReplicateStandings();
+		// The finish-line kill ends a finished run: not a race death, and not the "first death" (it
+		// used to be, which named the winner)
+		if (m_FinishKillIds.RemoveItem(victimId))
+			return;
 
-			// The last racer out ends the race too - before, the check only ran after someone
-			// finished, so a race where the remaining racers all died never showed its results
-			GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
-			GetGame().GetCallqueue().CallLater(CheckAllRacersFinishedOrDead, 5000, false);
-		}
+		// A death in safestart isn't a race death
+		if (!m_bRaceActive || !IsRaceLive())
+			return;
+
+		// Only a racer still on the course is out of the race
+		CRF_RallyPlayerEntry entry = GetEntry(victimId);
+		if (!entry || entry.m_bDead || entry.m_bFinished)
+			return;
+
+		// Mark entry as dead and freeze the death time for HUD display
+		entry.m_bDead        = true;
+		entry.m_iDeathTimeMs = GetGame().GetWorld().GetWorldTime();
+		BuildAndReplicateStandings();
+
+		// The last racer out ends the race too - before, the check only ran after someone
+		// finished, so a race where the remaining racers all died never showed its results
+		GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
+		GetGame().GetCallqueue().CallLater(CheckAllRacersFinishedOrDead, 5000, false);
 
 		if (m_iFirstDeathPlayerId >= 0)
 			return;
@@ -1228,6 +1502,596 @@ class CRF_RallyGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		return packed;
+	}
+
+	//===================================================================================
+	// SERVER — RUN RECORD
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! The first start line crossing: who was at the wheel, of which car, in which crew. Once per run -
+	//! a circuit crosses the start line every lap.
+	protected void RecordRunStart(notnull CRF_RallyPlayerEntry entry)
+	{
+		if (entry.m_bStarted)
+			return;
+
+		entry.m_bStarted = true;
+		int pid = entry.m_iPlayerId;
+		IEntity body = GetGame().GetPlayerManager().GetPlayerControlledEntity(pid);
+		RecordCar(entry, body);
+		entry.m_bStartedAtWheel = IsAtWheel(body);
+		if (HasDriverRole(pid))
+			entry.m_bDriverRole = true;
+
+		// A stage crew is fixed by the start order draw already
+		if (entry.m_sCrewKey.IsEmpty())
+		{
+			entry.m_sCrewKey = GetCrewKey(pid);
+			entry.m_sCrewName = GetCrewName(pid);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The car a racer is in, for the run record (read only when they change car)
+	protected void RecordCar(notnull CRF_RallyPlayerEntry entry, IEntity body)
+	{
+		if (!body || !body.GetParent())
+			return;
+
+		IEntity car = body.GetParent().GetRootParent();
+		if (!car || car == entry.m_LastVehicle)
+			return;
+
+		entry.m_LastVehicle = car;
+		EntityPrefabData prefabData = car.GetPrefabData();
+		if (prefabData)
+			entry.m_sVehiclePrefab = prefabData.GetPrefabName();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected static bool IsAtWheel(IEntity body)
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(body);
+		if (!character)
+			return false;
+
+		CompartmentAccessComponent access = character.GetCompartmentAccessComponent();
+		return access != null && PilotCompartmentSlot.Cast(access.GetCompartment()) != null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Slotted in the Driver role (COA_EGearRole.VEHICLE_DRIVER)
+	protected bool HasDriverRole(int playerId)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return false;
+
+		COA_SlotData slotData = slottingManager.GetPlayerSlotData(playerId);
+		return slotData && slotData.GetSlotRole() == COA_EGearRole.VEHICLE_DRIVER;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Who a player races with, for the results: their group in team mode, else nobody
+	protected string GetCrewKey(int playerId)
+	{
+		SCR_AIGroup group = GetTeamGroup(playerId);
+		if (group)
+			return "group" + group.GetID();
+
+		return "player" + playerId;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The slotting group's name in team mode, else ""
+	protected string GetCrewName(int playerId)
+	{
+		SCR_AIGroup group = GetTeamGroup(playerId);
+		if (!group)
+			return "";
+
+		return group.GetCustomNameWithOriginal();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected SCR_AIGroup GetTeamGroup(int playerId)
+	{
+		if (!m_bTeamMode)
+			return null;
+
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!groupsManager)
+			return null;
+
+		return groupsManager.GetPlayerGroup(playerId);
+	}
+
+	//===================================================================================
+	// SERVER — RESULTS UPLOAD (contract: CRF_RallySessionUpload)
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! The round went live: from here on the race is a session for the website
+	protected void OpenSession(int nowMs)
+	{
+		m_bSessionOpen = true;
+		m_bResultsUploaded = false;
+		m_iRaceLiveMs = nowMs;
+		m_iSessionStartedAt = System.GetUnixTime();
+		m_sSessionId = BuildSessionId();
+		Print(string.Format("[CRF_Rally] Round live - results session %1", m_sSessionId), LogLevel.NORMAL);
+
+		// Optional on the website, so the upload doesn't wait for it
+		m_iMissionId = 0;
+		m_iMissionLookupAttempts = 0;
+		LookupMissionId();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! <scenario GUID>_<startedAt>_<4 random hex digits>
+	protected string BuildSessionId()
+	{
+		string scenario = GetScenarioId();
+		string scenarioGuid = "local";
+		int guidEnd = scenario.IndexOf("}");
+		if (scenario.StartsWith("{") && guidEnd > 1)
+			scenarioGuid = scenario.Substring(1, guidEnd - 1);
+
+		int randomValue = Math.RandomInt(0, 65536);
+		string random = randomValue.ToString(4, true);
+		random.ToLower();
+		return scenarioGuid + "_" + m_iSessionStartedAt.ToString() + "_" + random;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The website's mission ID for this round, as CRF_AARManager looks it up. "Not found" is normal -
+	//! the record only exists for qualifying rounds - and the session then goes up without one.
+	protected void LookupMissionId()
+	{
+		m_iMissionLookupAttempts++;
+
+		RestContext context = CRF_RallySessionUpload.GetApiContext();
+		if (!context)
+			return;
+
+		if (m_MissionLookupCallback)
+			m_aSpentLookupCallbacks.Insert(m_MissionLookupCallback);
+
+		m_MissionLookupCallback = new RestCallback();
+		m_MissionLookupCallback.SetOnSuccess(OnMissionLookupSuccess);
+		m_MissionLookupCallback.SetOnError(OnMissionLookupFailed);
+		context.GET(m_MissionLookupCallback, CURRENT_MISSION_ENDPOINT + CRF_AARManager.EncodeQueryValue(GetGame().GetMissionName()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnMissionLookupSuccess(RestCallback callback)
+	{
+		// An answer for a previous round's lookup
+		if (callback != m_MissionLookupCallback)
+			return;
+
+		int missionId = 0;
+		if (callback.GetHttpCode() == HttpCode.HTTP_CODE_200)
+			missionId = CRF_AARManager.ParseMissionId(callback.GetData());
+
+		if (missionId <= 0)
+		{
+			RetryMissionLookup();
+			return;
+		}
+
+		m_iMissionId = missionId;
+		Print(string.Format("[CRF_Rally] Results session %1 belongs to website mission %2", m_sSessionId, m_iMissionId), LogLevel.NORMAL);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnMissionLookupFailed(RestCallback callback)
+	{
+		if (callback == m_MissionLookupCallback)
+			RetryMissionLookup();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void RetryMissionLookup()
+	{
+		if (m_iMissionLookupAttempts >= MISSION_LOOKUP_MAX_ATTEMPTS)
+		{
+			Print("[CRF_Rally] No coalitiongroup.net mission record for this round - the results go up without a mission ID", LogLevel.NORMAL);
+			return;
+		}
+
+		GetGame().GetCallqueue().CallLater(LookupMissionId, MISSION_LOOKUP_RETRY_MS, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: COA round state. The round ending sends the results if they haven't gone yet; a new
+	//! round (back to briefing or slotting on the same mission load) starts the race over.
+	protected void OnCoaStateChanged()
+	{
+		if (!m_CoaGamemode)
+			return;
+
+		int state = m_CoaGamemode.m_GamemodeState;
+		if (state == COA_EGamemodeState.AAR)
+		{
+			UploadResults("round_ended");
+		}
+		else if (state == COA_EGamemodeState.BRIEFING || state == COA_EGamemodeState.SLOTTING)
+		{
+			UploadResults("round_ended");
+			ResetRace();
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnGameModeEnd(SCR_GameModeEndData data)
+	{
+		super.OnGameModeEnd(data);
+
+		if (Replication.IsServer())
+			UploadResults("round_ended");
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: build this round's results and send them, once per round. endReason is "all_finished"
+	//! (TriggerResults) or "round_ended".
+	protected void UploadResults(string endReason)
+	{
+		if (!Replication.IsServer() || !m_bSessionOpen || m_bResultsUploaded)
+			return;
+
+		m_bResultsUploaded = true;
+		if (m_aPlayerEntries.IsEmpty() && m_aArchivedEntries.IsEmpty())
+		{
+			Print(string.Format("[CRF_Rally] Results session %1 had no racers - nothing to upload", m_sSessionId), LogLevel.NORMAL);
+			return;
+		}
+
+		CRF_RallySessionUpload.Send(m_sSessionId, BuildSessionJson(endReason));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: back to before the round - no racers, no start order, nothing sent. The course, smoke
+	//! and markers stay. An upload still in flight carries on (CRF_RallySessionUpload owns it).
+	protected void ResetRace()
+	{
+		GetGame().GetCallqueue().Remove(CheckAllRacersFinishedOrDead);
+		GetGame().GetCallqueue().Remove(LookupMissionId);
+
+		m_aPlayerEntries.Clear();
+		m_aArchivedEntries.Clear();
+		m_FinishKillIds.Clear();
+		m_iFirstDeathPlayerId = -1;
+		m_sFirstDeathPlayerName = "";
+		m_bResultsTriggered = false;
+
+		m_bSessionOpen = false;
+		m_bResultsUploaded = false;
+		m_sSessionId = "";
+		m_iRaceLiveMs = 0;
+		m_iMissionId = 0;
+		if (m_MissionLookupCallback)
+			m_aSpentLookupCallbacks.Insert(m_MissionLookupCallback);
+		m_MissionLookupCallback = null;
+
+		// TriggerResults took the HUD down; the next round brings it back
+		m_bRaceActive = m_bRaceInitialised;
+		BuildAndReplicateStandings();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! "mass" or "stage", as the website tells the modes apart
+	protected string GetRallyModeName()
+	{
+		return "mass";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The session's "settings" fields (without the braces)
+	protected string GetSettingsJson()
+	{
+		return "\"teamMode\":" + CRF_RallyJson.Bool(m_bTeamMode)
+			+ ",\"radius\":" + CRF_RallyJson.Number(m_fCheckpointRadius)
+			+ ",\"requireVehicle\":" + CRF_RallyJson.Bool(m_bRequireVehicle);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Identifies the course layout: checkpoint names and positions (whole metres) in course order,
+	//! plus the lap count. Moving a checkpoint makes it a different course.
+	protected string GetCourseHash()
+	{
+		string course = "";
+		foreach (int i, vector cpPos : m_aCheckpointPositions)
+		{
+			int x = Math.Round(cpPos[0]);
+			int y = Math.Round(cpPos[1]);
+			int z = Math.Round(cpPos[2]);
+			course += string.Format("%1@%2,%3,%4;", m_aCheckpointNames[i], x, y, z);
+		}
+
+		course += "laps=" + m_iLapsToComplete.ToString();
+		return CRF_RallyJson.HashHex(course);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The mission header's resource name; without a header (Workbench) the world, so the session
+	//! still has something to group by
+	protected string GetScenarioId()
+	{
+		MissionHeader header = GetGame().GetMissionHeader();
+		if (header)
+		{
+			string headerName = header.GetHeaderResourceName();
+			if (!headerName.IsEmpty())
+				return headerName;
+		}
+
+		return GetWorldPath();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The world's path (no GUID), e.g. Worlds/Chernarus/x.ent
+	protected string GetWorldPath()
+	{
+		MissionHeader header = GetGame().GetMissionHeader();
+		if (header)
+		{
+			ResourceName world = header.GetWorldResourceName();
+			string worldPath = world.GetPath();
+			if (!worldPath.IsEmpty())
+				return worldPath;
+		}
+
+		// The loaded world file, from "worlds/" on - it can start with a local folder (as in vanilla's
+		// world links, ArmaReforgerScripted.GetLinkToWorldPosition)
+		string file = GetGame().GetWorldFile();
+		string fileLower = file;
+		fileLower.ToLower();
+		int begin = fileLower.IndexOf("worlds/");
+		if (begin > 0)
+			return file.Substring(begin, file.Length() - begin);
+
+		return file;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The whole session as the website's POST /api/game/rally/session body (contract v1)
+	protected string BuildSessionJson(string endReason)
+	{
+		array<ref CRF_RallyRunResult> runs = {};
+		BuildRuns(runs);
+
+		int missionId = m_iMissionId;
+		int intermediates = Math.Max(0, m_aCheckpointPositions.Count() - 2);
+		int endedAt = System.GetUnixTime();
+		string json = "{\"v\":1";
+		json += ",\"sessionId\":" + CRF_RallyJson.Str(m_sSessionId);
+		json += ",\"scenarioId\":" + CRF_RallyJson.Str(GetScenarioId());
+		json += ",\"missionName\":" + CRF_RallyJson.Str(GetGame().GetMissionName());
+		json += ",\"world\":" + CRF_RallyJson.Str(GetWorldPath());
+		json += ",\"gameMode\":\"RALLY\"";
+		json += ",\"mode\":" + CRF_RallyJson.Str(GetRallyModeName());
+		json += ",\"courseHash\":" + CRF_RallyJson.Str(GetCourseHash());
+		json += ",\"checkpoints\":" + intermediates.ToString();
+		json += ",\"laps\":" + m_iLapsToComplete.ToString();
+		json += ",\"settings\":{" + GetSettingsJson() + "}";
+		json += ",\"missionId\":" + CRF_RallyJson.IntOrNull(missionId, missionId > 0);
+		json += ",\"startedAt\":" + m_iSessionStartedAt.ToString();
+		json += ",\"endedAt\":" + endedAt.ToString();
+		json += ",\"endReason\":" + CRF_RallyJson.Str(endReason);
+
+		json += ",\"runs\":[";
+		foreach (int i, CRF_RallyRunResult run : runs)
+		{
+			if (i > 0)
+				json += ",";
+
+			json += run.ToJson();
+		}
+		json += "]}";
+
+		return json;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! One run per crew - racers still here and those who left - finishers first, in finishing order
+	protected void BuildRuns(notnull array<ref CRF_RallyRunResult> outRuns)
+	{
+		array<CRF_RallyPlayerEntry> everyone = {};
+		foreach (CRF_RallyPlayerEntry entry : m_aPlayerEntries)
+		{
+			everyone.Insert(entry);
+		}
+		foreach (CRF_RallyPlayerEntry entry : m_aArchivedEntries)
+		{
+			everyone.Insert(entry);
+		}
+
+		array<string> crewKeys = {};
+		map<string, ref array<CRF_RallyPlayerEntry>> crews = new map<string, ref array<CRF_RallyPlayerEntry>>();
+		foreach (CRF_RallyPlayerEntry entry : everyone)
+		{
+			string crewKey = GetResultsCrewKey(entry);
+			array<CRF_RallyPlayerEntry> members = crews.Get(crewKey);
+			if (!members)
+			{
+				members = {};
+				crews.Set(crewKey, members);
+				crewKeys.Insert(crewKey);
+			}
+			members.Insert(entry);
+		}
+
+		array<ref CRF_RallyRunResult> finished = {};
+		array<ref CRF_RallyRunResult> others = {};
+		int totalCPs = Math.Max(1, m_aCheckpointPositions.Count());
+		foreach (string crewKey : crewKeys)
+		{
+			CRF_RallyRunResult run = BuildRun(crewKey, crews.Get(crewKey), totalCPs);
+			if (run.m_iTimeMs < 0)
+			{
+				others.Insert(run);
+				continue;
+			}
+
+			// Finishing order by time
+			int at = 0;
+			while (at < finished.Count() && finished[at].m_iTimeMs <= run.m_iTimeMs)
+				at++;
+
+			finished.InsertAt(run, at);
+		}
+
+		foreach (int i, CRF_RallyRunResult run : finished)
+		{
+			run.m_iPosition = i + 1;
+			outRuns.Insert(run);
+		}
+		foreach (CRF_RallyRunResult run : others)
+		{
+			outRuns.Insert(run);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The crew a run was recorded with, or for a run that never got that far the one it would have
+	protected string GetResultsCrewKey(notnull CRF_RallyPlayerEntry entry)
+	{
+		if (!entry.m_sCrewKey.IsEmpty())
+			return entry.m_sCrewKey;
+
+		if (!entry.m_bDisconnected)
+			return GetCrewKey(entry.m_iPlayerId);
+
+		return "player" + entry.m_iLastConnectedId;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! A crew's run is its best member's: the fastest finisher, else whoever got furthest. It is out
+	//! dead if a member died on the stage, disconnected if one left, unfinished if still going.
+	protected CRF_RallyRunResult BuildRun(string crewKey, notnull array<CRF_RallyPlayerEntry> members, int totalCPs)
+	{
+		CRF_RallyRunResult run = new CRF_RallyRunResult();
+		run.m_sCrewKey = crewKey;
+
+		CRF_RallyPlayerEntry lead = members[0];
+		bool anyStarted = false;
+		bool anyDead = false;
+		bool anyDisconnected = false;
+		foreach (CRF_RallyPlayerEntry member : members)
+		{
+			if (IsBetterRun(member, lead, totalCPs))
+				lead = member;
+
+			if (member.m_bJumpStart)
+				run.m_bJumpStart = true;
+
+			if (run.m_sCrewName.IsEmpty())
+				run.m_sCrewName = member.m_sCrewName;
+
+			if (run.m_iCarNumber < 0)
+				run.m_iCarNumber = member.m_iCarNumber;
+
+			// A death or a disconnect only ends a run that had started
+			if (!member.m_bStarted)
+				continue;
+
+			anyStarted = true;
+			if (member.m_bDead)
+				anyDead = true;
+			if (member.m_bDisconnected)
+				anyDisconnected = true;
+		}
+
+		if (lead.m_bFinished)
+		{
+			run.m_sStatus = "finished";
+			run.m_iTimeMs = lead.m_iRunTimeMs;
+		}
+		else if (!anyStarted)
+		{
+			run.m_sStatus = "dns";
+		}
+		else if (anyDead)
+		{
+			run.m_sStatus = "dnf_dead";
+		}
+		else if (anyDisconnected)
+		{
+			run.m_sStatus = "dnf_disconnect";
+		}
+		else
+		{
+			run.m_sStatus = "dnf_unfinished";
+		}
+
+		run.m_iPenaltyMs = lead.m_iPenaltyMs;
+		run.m_aSplitsMs.Copy(lead.m_aSplitsMs);
+		run.m_aLapsMs.Copy(lead.m_aLapsMs);
+		run.m_iCheckpointsPassed = lead.m_aSplitsMs.Count();
+
+		// The driver: at the wheel when the crew started, else slotted as the Driver, else the lead
+		int driverIndex = -1;
+		foreach (int i, CRF_RallyPlayerEntry member : members)
+		{
+			if (member.m_bStartedAtWheel)
+			{
+				driverIndex = i;
+				break;
+			}
+		}
+		if (driverIndex < 0)
+		{
+			foreach (int i, CRF_RallyPlayerEntry member : members)
+			{
+				if (member.m_bDriverRole)
+				{
+					driverIndex = i;
+					break;
+				}
+			}
+		}
+		if (driverIndex < 0)
+			driverIndex = members.Find(lead);
+
+		run.m_sVehicle = members[driverIndex].m_sVehiclePrefab;
+		foreach (int i, CRF_RallyPlayerEntry member : members)
+		{
+			if (run.m_sVehicle.IsEmpty())
+				run.m_sVehicle = member.m_sVehiclePrefab;
+
+			string seat = "passenger";
+			if (i == driverIndex)
+				seat = "driver";
+			else if (members.Count() == 2)
+				seat = "codriver";
+
+			run.AddMember(member.m_sGuid, member.m_sName, seat, member.m_iLastConnectedId);
+		}
+
+		return run;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Whether a's run beats b's: finished beats not, then the faster time, else further along
+	protected bool IsBetterRun(CRF_RallyPlayerEntry a, CRF_RallyPlayerEntry b, int totalCPs)
+	{
+		if (a == b)
+			return false;
+
+		if (a.m_bFinished != b.m_bFinished)
+			return a.m_bFinished;
+
+		if (a.m_bFinished)
+			return a.m_iRunTimeMs < b.m_iRunTimeMs;
+
+		int progressA = a.GetProgress(totalCPs);
+		int progressB = b.GetProgress(totalCPs);
+		if (progressA != progressB)
+			return progressA > progressB;
+
+		return a.m_bStarted && !b.m_bStarted;
 	}
 
 	//===================================================================================

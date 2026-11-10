@@ -73,6 +73,10 @@ class CRF_AreaTimerComponent : ScriptComponent
 	protected string m_sLastSentFaction;
 	protected int m_iTicksSinceBroadcast;
 
+	// Vanilla tasks (CRF_ObjectiveTasks): "Hold <zone>" per playable faction, by faction key
+	protected ref map<string, string> m_mTaskIds = new map<string, string>();
+	protected bool m_bTasksCreated;
+
 	//---------------------------------------------------------------------------------------------
 	// Singleton
 	//---------------------------------------------------------------------------------------------
@@ -130,9 +134,10 @@ class CRF_AreaTimerComponent : ScriptComponent
 		if (!m_Owner)
 			return;
 
-		// Gate: safestart active
+		// Gate: round not live yet (slotting, briefing, safestart), or an admin turned safestart back on.
+		// Safestart is briefly off as the mission starts, so "off" alone doesn't mean the round is live.
 		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-		if (!safestartManager || safestartManager.GetSafestartStatus())
+		if (safestartManager && (!safestartManager.IsRoundLive() || safestartManager.GetSafestartStatus()))
 			return;
 
 		// Gate: game mode not running
@@ -143,6 +148,8 @@ class CRF_AreaTimerComponent : ScriptComponent
 		// Gate: already won
 		if (m_eState == CRF_EAreaTimerState.WIN)
 			return;
+
+		CreateTasks();
 
 		//--- Collect alive, player-controlled characters inside the radius ---
 		m_aPlayersInZone.Clear();
@@ -274,6 +281,7 @@ class CRF_AreaTimerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void BroadcastState()
 	{
+		UpdateTaskProgress();
 		m_iTicksSinceBroadcast++;
 
 		bool changed = !m_bHasBroadcast
@@ -307,6 +315,8 @@ class CRF_AreaTimerComponent : ScriptComponent
 		// Stop the poll loop
 		GetGame().GetCallqueue().Remove(UpdateAreaTimer);
 
+		CRF_ObjectiveTasks.Resolve(m_mTaskIds, m_sControllingFaction);
+
 		// Notify all clients via the broadcast manager
 		COA_RplBroadcastManager bm = COA_RplBroadcastManager.GetInstance();
 		if (bm)
@@ -318,6 +328,49 @@ class CRF_AreaTimerComponent : ScriptComponent
 			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
 			if (loggingManager)
 				loggingManager.SetWinningFaction(m_sControllingFaction, "automatic");
+		}
+	}
+
+	//---------------------------------------------------------------------------------------------
+	// Tasks
+	//---------------------------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------------------------------
+	//! Once the round is live: every playable faction gets "Hold <zone>"
+	protected void CreateTasks()
+	{
+		if (m_bTasksCreated)
+			return;
+
+		m_bTasksCreated = true;
+
+		array<string> factions = {};
+		COA_GearFixSlotHelper.GetPlayableFactions(factions);
+
+		string name = "Hold " + m_sZoneLabel;
+		string description = string.Format("Keep more of your players alive inside %1 (%2 m) than everyone else combined for %3 seconds.", m_sZoneLabel, Math.Round(m_fCaptureRadius), m_iCountdownSeconds);
+		foreach (string faction : factions)
+		{
+			string id = CRF_ObjectiveTasks.MakeId("AreaTimer", "Zone", faction);
+			if (CRF_ObjectiveTasks.Create(id, faction, name, description, CRF_ObjectiveTasks.ICON_CAPTURE, SCR_ETaskState.FAILED, m_Owner.GetOrigin()))
+				m_mTaskIds.Set(faction, id);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The controlling faction's task shows how far its countdown has run; everyone else's is empty
+	protected void UpdateTaskProgress()
+	{
+		float elapsed;
+		if (m_iCountdownSeconds > 0)
+			elapsed = (m_iCountdownSeconds - m_iCountdownRemaining) / (float)m_iCountdownSeconds;
+
+		foreach (string faction, string id : m_mTaskIds)
+		{
+			if (faction == m_sControllingFaction)
+				CRF_ObjectiveTasks.SetProgress(id, elapsed);
+			else
+				CRF_ObjectiveTasks.SetProgress(id, 0);
 		}
 	}
 }

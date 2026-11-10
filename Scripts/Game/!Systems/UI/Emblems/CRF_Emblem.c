@@ -13,7 +13,7 @@ class CRF_Emblem
 	static const ResourceName IMAGESET = "{6B3E1A0C5D7F2E92}UI/Images/Emblems/CRF_EmblemShapes.imageset";
 	protected static const ResourceName LAYER_LAYOUT = "{6B3E1A0C5D7F2E94}UI/layouts/Emblems/CRF_EmblemLayer.layout";
 	protected static const string VERSION = "1";
-	protected static const int MAX_LAYERS = 16;
+	protected static const int MAX_LAYERS = 32;
 	protected static const string HEX = "0123456789ABCDEF";
 
 	//------------------------------------------------------------------------------------------------

@@ -122,7 +122,7 @@ class CRF_VAAR_CharacterSnapshot : Managed
 	int i;			// ID
 	int x;			// pos X ×10
 	int z;			// pos Z ×10
-	int a;			// aim yaw ×1000 - counter-clockwise from north (the opposite way to a vehicle's)
+	int a;			// aim yaw ×1000 - clockwise from north like a vehicle's (counter-clockwise before 1.9, see AIM_YAW_REVISION)
 	int s;			// CRF_EVAARCharacterState flags
 	int y;			// v3: pos Y (height above sea level) ×10 - the vehicle's while riding in one
 	int p;			// v3: aim pitch in degrees ×10, up positive

@@ -1,0 +1,335 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 2753.483 208.867 5278.215
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_EvacuationGamemodeComponent "{6ACE7B0200000030}" {
+   m_fSiteRadius 150
+   m_iTotalLoads 8
+   m_iLoadsToWin 5
+   m_fLoadSeconds 60
+   m_aCargoPrefabs {
+    "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+    "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+   }
+   m_iStartSeconds 2700
+   m_bEndMissionOnVictory 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6ACE7B0200000031}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 9
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 65
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6ACE7B020000002B}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Zelenogorsk, Chernarus. Morning."\
+   ""\
+   "A US task force has come ashore at Pavlovo and is pushing north. The ChDKz have been running their war out of the old depot in Zelenogorsk, and it holds everything they have left: ammunition, fuel and explosives. They have to get it into the hills before the town falls."\
+   ""\
+   "BLUFOR: US Army, a motorized rifle platoon. Each squad has an M2 HMMWV and its own crew."\
+   "OPFOR: ChDKz insurgents, three squads with an RPG-7 team in every one, and a transport section with 4 Ural trucks."\
+   ""\
+   "Time: 09:00. Weather: clear."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6ACE7B020000002C}" {
+   m_sTitle "How Evacuation Works"
+   m_sTextData "The depot holds 8 truckloads. The ChDKz need 5 of them out."\
+   ""\
+   "LOADING: park a Ural in the loading bay (on your map, north of the crossroads) and stand still. One truck loads at a time and takes 60 seconds. Any American inside the site (the orange marker, 300 m across the centre of town) stops the loading."\
+   ""\
+   "EXTRACTION: drive the loaded truck up the road to the extraction point south of Pustoshka (2.5 km) and stop there for 15 seconds with one of the ChDKz aboard and no American. The load counts, and the empty truck can go back for another."\
+   ""\
+   "A loaded truck that is destroyed loses its load for good."\
+   ""\
+   "WITHDRAWAL: once the 5th load is out, loading stops and the ChDKz have to get out themselves. Half of the ChDKz still alive at that moment (at least one) must reach the extraction point, on foot or in a vehicle. Each one who arrives leaves the round alive and spectates."\
+   ""\
+   "THE CHDKZ WIN when 5 loads are out and enough of them have then reached the extraction point, or when the Americans have nobody left alive."\
+   "THE AMERICANS WIN by holding the site with no ChDKz in it for 90 seconds, by destroying loads until fewer than 5 can still get out, by killing enough of the withdrawing ChDKz that too few can still reach the extraction point, when the 45 minute clock runs out, or when the ChDKz have nobody left alive."\
+   ""\
+   "No respawns."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6ACE7B020000002D}" {
+   m_sTitle "US Briefing"
+   m_sTextData "MISSION"\
+   "Stop the ChDKz evacuating the Zelenogorsk depot."\
+   ""\
+   "INTENT"\
+   "You don't have to kill everyone. Every minute you have a man inside the site is a minute nothing loads, and every truck you burn on the Pustoshka road is a load they never get back. Find the road, or take the town - ideally both."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACE7B020000002E}" {
+   m_sTitle "ChDKz Briefing"
+   m_sTextData "MISSION"\
+   "Get 5 loads out of Zelenogorsk to the extraction point, then get out yourselves."\
+   ""\
+   "INTENT"\
+   "Holding the town is only half of it: nothing loads while they are inside the site, and the trucks still have to make it up the road. Every man escorting a truck is a man off the line. Decide early how many you can spare."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ACE7B020000002F}" {
+   m_sTitle "Administration"
+   m_sTextData "Evacuation. No respawns. Safe start 15 minutes; the evacuation clock starts when it ends."\
+   "ChDKz: during safe start you are held inside Zelenogorsk. The Urals are parked on the road north of the crossroads, nose to the loading bay."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 7
+ m_iFactionTwoRatio 6
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6ACE7B0200000021}" {
+   m_sCallsign "SABRE"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000022}" {
+   m_sCallsign "SABRE 1"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000023}" {
+   m_sCallsign "SABRE 2"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000024}" {
+   m_sCallsign "SABRE 3"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000025}" {
+   m_sCallsign "SABRE 4"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6ACE7B0200000026}" {
+   m_sCallsign "BERKUT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000027}" {
+   m_sCallsign "BERKUT 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000028}" {
+   m_sCallsign "BERKUT 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B0200000029}" {
+   m_sCallsign "BERKUT 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_ANTITANK
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ACE7B020000002A}" {
+   m_sCallsign "VOLGA"
+   m_FlagType SUPPLY_MOTORIZED
+   m_aSlots {
+    LOGI_LEAD
+    LOGI_RUNNER
+    LOGI_RUNNER
+    LOGI_RUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_bSeperateSpectatorsByFaction 1
+ m_bHideOtherSpectatorFactions 1
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{6ACE7B0200000032}" {
+  m_rGearScript "{DF772B41EA36E3D7}Configs/Gearscripts/Standard/80s/COA_GS_US80s.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{6ACE7B0200000033}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{6ACE7B0200000034}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}

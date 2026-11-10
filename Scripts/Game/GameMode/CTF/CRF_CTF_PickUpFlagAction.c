@@ -73,6 +73,13 @@ class CRF_CTF_PickUpFlagAction : ScriptedUserAction
 			return false;
 		}
 
+		CRF_CTFGamemodeManager ctfGamemode = CRF_CTFGamemodeManager.GetInstance();
+		if (ctfGamemode && !ctfGamemode.IsRoundLive())
+		{
+			reason = "the round isn't live yet (safestart)";
+			return false;
+		}
+
 		FactionKey userFaction = GetUserFactionKey(user);
 		if (userFaction.IsEmpty())
 		{

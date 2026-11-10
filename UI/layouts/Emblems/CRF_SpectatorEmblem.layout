@@ -1,0 +1,18 @@
+FrameWidgetClass {
+ Name "SpectatorEmblem"
+ Slot FrameWidgetSlot "{BFD2E597EE20E6EC}" {
+  Anchor 0 0 0 0
+  PositionX -92
+  OffsetLeft -92
+  PositionY 58
+  OffsetTop 58
+  SizeX 80
+  OffsetRight 12
+  SizeY 80
+  OffsetBottom -138
+ }
+ "Ignore Cursor" 1
+ "Is Visible" 0
+ "Z Order" 1
+ Clipping True
+}

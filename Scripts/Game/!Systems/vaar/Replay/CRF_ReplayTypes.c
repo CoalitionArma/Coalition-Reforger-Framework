@@ -155,7 +155,7 @@ class CRF_ReplayChar
 	int i;
 	int x;			// ×10
 	int z;
-	int a;			// aim yaw ×1000, counter-clockwise from north
+	int a;			// aim yaw ×1000 - clockwise from north, or counter-clockwise before 1.9 (CRF_ReplayPlayer.m_bAimClockwise)
 	int s;			// CRF_EVAARCharacterState flags
 	int y;			// height ×10 (v3)
 	int p;			// aim pitch ×10 (v3)

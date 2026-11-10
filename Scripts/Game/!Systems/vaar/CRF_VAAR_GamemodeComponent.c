@@ -12,6 +12,11 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 	//! Header "sk": shot kinds are reliable. Recordings from 12-16 Oct 2026 lack it - they marked every bullet
 	//! as a shell (bullets use ShellMoveComponent too), and the viewer corrects them.
 	static const int SHOT_KIND_REVISION = 1;
+	//! Header "ay": character aim yaw ("a") runs clockwise from north, like a vehicle's. Before Reforger 1.9 the
+	//! head aiming component's world direction came back mirrored east-west, so older recordings hold the yaw
+	//! counter-clockwise. Recordings without "ay" from 1.9 (5 Nov 2026) on are clockwise too - readers tell
+	//! them apart by "start".
+	static const int AIM_YAW_REVISION = 1;
 
 	protected static CRF_VAAR_GamemodeComponent m_sInstance;
 
@@ -233,8 +238,8 @@ class CRF_VAAR_GamemodeComponent: SCR_BaseGameModeComponent
 		if (!m_bRecord3D)
 			version = 2;
 
-		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"scenes\": [%7], \"frames\": [",
-			version, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes));
+		m_AARFile.WriteLine(string.Format("{ \"v\": %1, \"sk\": %6, \"mission\": \"%2\", \"interval\": %3, \"start\": %4, \"world\": \"%5\", \"scenes\": [%7], \"ay\": %8, \"frames\": [",
+			version, mission, m_iRecordIntervals, System.GetUnixTime(), world, SHOT_KIND_REVISION, scenes, AIM_YAW_REVISION));
 		Print(string.Format("[CRF_VAAR] Recording format v%1 (3D data %2)", version, m_bRecord3D));
 
 		m_bWroteFrame = false;

@@ -83,6 +83,10 @@ class CRF_RadioDFGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected bool m_bStarted;
 	protected bool m_bEnded;
+
+	// Vanilla tasks (CRF_ObjectiveTasks), by faction key. Positionless, and the transmitters' progress only
+	// moves with the public 10% announcements: a live bar would tell the hunters when someone is on the air.
+	protected ref map<string, string> m_mTaskIds = new map<string, string>();
 	protected float m_fScoreSeconds;
 	protected float m_fElapsedSeconds;
 	protected int m_iLastNotifiedBracket;
@@ -167,7 +171,8 @@ class CRF_RadioDFGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void OnGamemodeStateChanged()
 	{
-		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
+		// Missions with safestart start on OnSafestartChanged
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || m_SafestartManager.IsRoundLive()))
 			StartRound();
 	}
 
@@ -178,6 +183,7 @@ class CRF_RadioDFGamemodeComponent : SCR_BaseGameModeComponent
 
 		m_bStarted = true;
 		GetGame().GetCallqueue().CallLater(Tick, 1000, true);
+		CreateTasks();
 
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -427,6 +433,43 @@ class CRF_RadioDFGamemodeComponent : SCR_BaseGameModeComponent
 		m_iLastNotifiedBracket = bracket;
 		CRF_RadioTransmissionEvents.PopupToFaction("", string.Format("Enemy radio traffic: %1%%", (int)Math.Round(percent)),
 			string.Format("%1 / %2 seconds on the air", (int)m_fScoreSeconds, m_iTransmissionGoalSeconds), 6);
+
+		string id;
+		if (m_mTaskIds.Find(m_sTransmitterFactionKey, id))
+			CRF_ObjectiveTasks.SetProgress(id, m_fScoreSeconds / m_iTransmissionGoalSeconds);
+	}
+
+	//===================================================================================
+	// TASKS
+	//===================================================================================
+
+	protected void CreateTasks()
+	{
+		if (m_iTransmissionGoalSeconds > 0)
+		{
+			string transmitId = CRF_ObjectiveTasks.MakeId("RadioDF", "Transmit", m_sTransmitterFactionKey);
+			string transmitDescription = string.Format("Get %1 seconds of radio traffic on the air - every transmitter counts. Each transmission gives enemy direction finders a bearing on you.", m_iTransmissionGoalSeconds);
+			if (m_bOnlyLongRangeCounts)
+				transmitDescription += " Only long-range radios count.";
+
+			if (CRF_ObjectiveTasks.Create(transmitId, m_sTransmitterFactionKey, "Get your traffic on the air", transmitDescription, CRF_ObjectiveTasks.ICON_INTEL, SCR_ETaskState.FAILED))
+				m_mTaskIds.Set(m_sTransmitterFactionKey, transmitId);
+		}
+
+		string huntDescription = "Triangulate the enemy transmitters from direction-finder bearings and stop them";
+		if (m_iTransmissionGoalSeconds > 0)
+			huntDescription += string.Format(" before they get %1 seconds on the air", m_iTransmissionGoalSeconds);
+
+		huntDescription += ".";
+		if (m_iTimeLimitMinutes > 0)
+			huntDescription += string.Format(" You win if they haven't when %1 minutes are up.", m_iTimeLimitMinutes);
+
+		if (m_bHuntersWinWhenTransmittersDead)
+			huntDescription += " Killing all of them also wins.";
+
+		string huntId = CRF_ObjectiveTasks.MakeId("RadioDF", "Hunt", m_sHunterFactionKey);
+		if (CRF_ObjectiveTasks.Create(huntId, m_sHunterFactionKey, "Silence the transmitters", huntDescription, CRF_ObjectiveTasks.ICON_SEARCH, SCR_ETaskState.FAILED))
+			m_mTaskIds.Set(m_sHunterFactionKey, huntId);
 	}
 
 	//===================================================================================
@@ -441,6 +484,7 @@ class CRF_RadioDFGamemodeComponent : SCR_BaseGameModeComponent
 		m_bEnded = true;
 		GetGame().GetCallqueue().Remove(Tick);
 		m_mActiveTransmitters.Clear();
+		CRF_ObjectiveTasks.Resolve(m_mTaskIds, factionKey);
 
 		CRF_RadioTransmissionEvents.PopupToFaction("", factionKey + " wins", reason, 10);
 

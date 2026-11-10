@@ -101,6 +101,8 @@ class CRF_PredatorGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref set<int> m_WarnedLowCharge = new set<int>();
 	protected ref map<int, float> m_mLastPresence = new map<int, float>();
 	protected int m_iTrophies;
+	// Vanilla tasks (CRF_ObjectiveTasks), positionless: the predator side's "Take trophies", everyone else's "Kill the hunter"
+	protected ref map<string, string> m_mTaskIds = new map<string, string>();
 	protected COA_Gamemode m_Gamemode;
 	protected COA_SafestartManager m_SafestartManager;
 
@@ -240,7 +242,7 @@ class CRF_PredatorGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected void OnGamemodeStateChanged()
 	{
-		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || !m_SafestartManager.GetSafestartStatus()))
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME && (!m_SafestartManager || m_SafestartManager.IsRoundLive()))
 			StartRound();
 	}
 
@@ -251,11 +253,72 @@ class CRF_PredatorGamemodeComponent : SCR_BaseGameModeComponent
 
 		m_bRoundLive = true;
 		GetGame().GetCallqueue().CallLater(Tick, 1000, true);
+		CreateTasks();
 
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
 		foreach (int playerId : playerIds)
 			SendBriefing(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void CreateTasks()
+	{
+		array<string> factions = {};
+		COA_GearFixSlotHelper.GetPlayableFactions(factions);
+		foreach (string faction : factions)
+		{
+			if (faction == m_sPredatorFaction)
+			{
+				// Done at the end if it took anyone (UpdateTrophyTask switches the round-end state)
+				string trophyId = CRF_ObjectiveTasks.MakeId("Predator", "Trophies", faction);
+				if (CRF_ObjectiveTasks.Create(trophyId, faction, "Take trophies", "Hunt down players from every side. Stay cloaked - getting hit breaks it.", CRF_ObjectiveTasks.ICON_KILL, SCR_ETaskState.FAILED))
+					m_mTaskIds.Set(faction, trophyId);
+
+				continue;
+			}
+
+			string huntId = CRF_ObjectiveTasks.MakeId("Predator", "KillHunter", faction);
+			if (CRF_ObjectiveTasks.Create(huntId, faction, "Kill the hunter", "Something is hunting both sides. It can turn invisible - you'll only see it up close. Bring it down.", CRF_ObjectiveTasks.ICON_KILL, SCR_ETaskState.FAILED))
+				m_mTaskIds.Set(faction, huntId);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateTrophyTask()
+	{
+		string id;
+		if (!m_mTaskIds.Find(m_sPredatorFaction, id))
+			return;
+
+		// Create on an open task only updates it - here the name and the round-end state
+		CRF_ObjectiveTasks.Create(id, m_sPredatorFaction, string.Format("Take trophies (%1)", m_iTrophies), string.Empty, CRF_ObjectiveTasks.ICON_KILL, SCR_ETaskState.COMPLETED);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Every other side's "Kill the hunter" is done once no predator is left alive
+	protected void OnPredatorDown(int victimId)
+	{
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		foreach (int playerId : playerIds)
+		{
+			if (playerId != victimId && CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId) == m_sPredatorFaction && CRF_RadioTransmissionEvents.GetAlivePlayerEntity(playerId))
+				return;
+		}
+
+		// The predator side's hunt is over too: a success if it took anyone first
+		SCR_ETaskState predatorResult = SCR_ETaskState.FAILED;
+		if (m_iTrophies > 0)
+			predatorResult = SCR_ETaskState.COMPLETED;
+
+		foreach (string faction, string id : m_mTaskIds)
+		{
+			if (faction == m_sPredatorFaction)
+				CRF_ObjectiveTasks.Finish(id, predatorResult);
+			else
+				CRF_ObjectiveTasks.Finish(id, SCR_ETaskState.COMPLETED);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -547,14 +610,18 @@ class CRF_PredatorGamemodeComponent : SCR_BaseGameModeComponent
 			if (bodyRpl && m_fBodyRemoveDelay > 0)
 				GetGame().GetCallqueue().CallLater(RemoveBody, m_fBodyRemoveDelay * 1000, false, bodyRpl.Id());
 
+			OnPredatorDown(victimId);
 			return;
 		}
 
-		if (!m_bAnnounceKills || killerId <= 0 || CRF_RadioTransmissionEvents.GetPlayerFactionKey(killerId) != m_sPredatorFaction)
+		if (killerId <= 0 || CRF_RadioTransmissionEvents.GetPlayerFactionKey(killerId) != m_sPredatorFaction)
 			return;
 
 		m_iTrophies++;
-		NotifyAll(playerManager.GetPlayerName(victimId) + " was taken", string.Format("The hunter has %1 trophies.", m_iTrophies), 6);
+		UpdateTrophyTask();
+
+		if (m_bAnnounceKills)
+			NotifyAll(playerManager.GetPlayerName(victimId) + " was taken", string.Format("The hunter has %1 trophies.", m_iTrophies), 6);
 	}
 
 	//------------------------------------------------------------------------------------------------
