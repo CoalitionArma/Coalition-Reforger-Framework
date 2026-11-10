@@ -1,0 +1,98 @@
+$grp SCR_DestructibleBuildingEntity : "{5EE66239F0D1E648}Prefabs/Structures/Infrastructure/Naval/Piers/FloatingDock_01/FloatingDock_01.et" {
+ irontide_pontoon_south {
+  coords 9650 1.78 7125
+ }
+ irontide_pontoon_north {
+  coords 9650 1.78 7175
+ }
+}
+$grp StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+ {
+  coords 8763 1.2 7010
+  angles 0 15 0
+ }
+ {
+  coords 8749 1.34 7040
+  angles 0 50 0
+ }
+ {
+  coords 8760.5 1.21 7070
+  angles 0 80 0
+ }
+ {
+  coords 8766 1.5 7100
+  angles 0 30 0
+ }
+ {
+  coords 8780 1.22 7130
+  angles 0 65 0
+ }
+ {
+  coords 8781.5 1.54 7160
+  angles 0 5 0
+ }
+ {
+  coords 8788.5 1.2 7190
+  angles 0 40 0
+ }
+ {
+  coords 8785.5 1.69 7220
+  angles 0 70 0
+ }
+ {
+  coords 8793.5 1.24 7250
+  angles 0 20 0
+ }
+ {
+  coords 8797 1.59 7280
+  angles 0 55 0
+ }
+}
+$grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
+ {
+  coords 8730 4.03 7070
+  angles 0 108 0
+ }
+ {
+  coords 8738 4.05 7095
+  angles 0 108 0
+ }
+ {
+  coords 8752 4 7145
+  angles 0 104 0
+ }
+ {
+  coords 8758 4 7170
+  angles 0 104 0
+ }
+ {
+  coords 8767 4.03 7220
+  angles 0 100 0
+ }
+ {
+  coords 8770.5 4.05 7245
+  angles 0 100 0
+ }
+}
+$grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
+ {
+  coords 8668 5.3 6961
+  angles 0 90 0
+ }
+ {
+  coords 8668 5.67 6969
+  angles 0 90 0
+ }
+ {
+  coords 8675 10.67 7284
+  angles 0 90 0
+ }
+ {
+  coords 8675 9.86 7294
+  angles 0 90 0
+ }
+ {
+  coords 7605 217.38 6851
+  angles 0 90 0
+ }
+}

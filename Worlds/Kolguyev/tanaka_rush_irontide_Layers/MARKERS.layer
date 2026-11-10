@@ -1,0 +1,18 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ irontide_beach_red {
+  coords 8790 0.7 7140
+  m_sDescription "BEACH RED"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+ irontide_staging {
+  coords 9650 2 7150
+  m_sDescription "Staging pontoon (LCVPs)"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+}

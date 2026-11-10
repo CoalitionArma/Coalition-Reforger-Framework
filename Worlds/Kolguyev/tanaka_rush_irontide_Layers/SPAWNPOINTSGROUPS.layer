@@ -1,0 +1,77 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 9645 3.9 7106
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "1-1"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+ {
+  coords 9645 3.9 7120
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "1-2"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+ {
+  coords 9645 3.9 7134
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "1-3"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+ {
+  coords 9645 3.9 7148
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "1-4"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+ {
+  coords 9645 3.9 7162
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "1PLT"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+ {
+  coords 9645 3.9 7176
+  angles 0 -90 0
+  m_sCallsignOfGroupToSpawn "WPNS"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 2
+  }
+ }
+}
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 8520 28.3 7095
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "ZUG"
+ }
+ {
+  coords 8617 11.52 6995
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "GRUPPE 1"
+ }
+ {
+  coords 8590 21.53 7125
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "GRUPPE 2"
+ }
+ {
+  coords 8623 20.16 7255
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "GRUPPE 3"
+ }
+ {
+  coords 8562 29.48 7185
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "MG-TRUPP"
+ }
+}

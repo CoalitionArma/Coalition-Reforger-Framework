@@ -1,0 +1,44 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ irontide_lcvp_1 {
+  coords 9638.6 0.5 7106
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_2 {
+  coords 9638.6 0.5 7120
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_3 {
+  coords 9638.6 0.5 7134
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_4 {
+  coords 9638.6 0.5 7148
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_5 {
+  coords 9638.6 0.5 7162
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_6 {
+  coords 9638.6 0.5 7176
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ irontide_lcvp_spare {
+  coords 9638.6 0.5 7190
+  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+}
