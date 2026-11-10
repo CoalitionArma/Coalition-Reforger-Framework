@@ -23,10 +23,10 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position 488.274 0 -123.684
   }
   ShapePoint "{6B1109E15DDD69C6}" {
-   Position 50 0 -128.939
+   Position 85.301 19.066 -59.044
   }
   ShapePoint "{6B1109E1DAFD4C8B}" {
-   Position -419.197 0 -581.637
+   Position 95.313 197.814 -520.308
   }
   ShapePoint "{6B1109E1347AE8A4}" {
    Position -900 0 -400
@@ -69,10 +69,10 @@ COA_SafestartBorder irontide_safestart_opfor : "{D8E7812AC12E29EB}PrefabsMission
    Position -140 0 -200
   }
   ShapePoint "{6B1109E16E96C5C8}" {
-   Position 120 0 -200
+   Position 142.213 0 -205.251
   }
   ShapePoint "{6B1109E17F353E4E}" {
-   Position 130 0 200
+   Position 204.716 -33.956 158.352
   }
   ShapePoint "{6B1109E1FD449D09}" {
    Position -140 0 200

@@ -1,18 +1,18 @@
-SCR_DestructibleBuildingEntity irontide_silo_tower : "{FBCE1861B987EA68}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01.et" {
- coords 8304 47.16 6753.5
- angles 0 80 0
-}
 GenericEntity irontide_silo_op : "{2F4E74E28B1114AB}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_ObservationPost_Soviet.et" {
- coords 8315 46.92 6750.3
- angles 0 80 0
+ coords 8315 46.934 6750.3
+ angles 0.925 80.085 5.276
 }
 $grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
  {
-  coords 8319.81 45.98 6752.98
-  angles 0 80 0
+  coords 8319.81 45.982 6752.98
+  angles -17.619 82.142 -7.046
  }
  {
-  coords 8320.43 46 6749.43
-  angles 0 80 0
+  coords 8320.43 46.01 6749.43
+  angles -19.585 79.041 2.857
  }
+}
+SCR_DestructibleBuildingEntity irontide_silo_tower : "{FBCE1861B987EA68}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01.et" {
+ coords 8304 0 6753.5
+ angles 0 80 0
 }
