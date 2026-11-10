@@ -20,9 +20,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   CRF_RushGamemodeManager "{6B1109E1F442907D}" {
    m_AttackingSide "BLUFOR"
    m_DefendingSide "OPFOR"
-   m_iNumberOfZones 3
-   m_iMCOMsPerZone 2
    m_iMCOMTimer 45
+   m_iNumberOfZones 3
+   m_iMCOMsPerZone 1
    m_bEnableDynamicRespawns 1
    m_aZoneRespawnConfigs {
     CRF_Rush_ZoneRespawnConfig "{6B1109E1C208BC2D}" {
@@ -85,7 +85,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "Kolguyev, east coast, 0700. Overcast, calm sea."\
    ""\
-   "The beach between Gorshkovo and the naval harbour is the only stretch of open shore on this coast. The Germans have wired it, salted the waterline with hedgehogs and dug in on the bluff above. Behind the beach the ground climbs past the mining village of Gorshkovo and its coal silo to the Nadezhda coal mine on the ridge, 1.2 km inland and 200 m up."\
+   "The beach between Gorshkovo and the naval harbour is the only stretch of open shore on this coast. The Germans have turned it into a strongpoint: a belt of hedgehogs in the shallows and more on the sand, two belts of wire up the slope, a line of Tobruk MG pits, two casemates and two hill bunkers above them, and MG nests covering the south draw and the harbour road. Behind the beach the ground climbs past the mining village of Gorshkovo and its coal silo to the Nadezhda coal mine on the ridge, 1.2 km inland and 200 m up."\
    ""\
    "US infantry are loading into LCVPs at a staging pontoon 850 m offshore."\
    ""\
@@ -98,15 +98,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6B1109E1F61769E7}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Destroy the six MCOMs, two per zone. Plant a charge (5 s) on an active MCOM and keep the Germans off it until it blows (45 s). When both MCOMs of a zone are gone, the next zone opens."\
+   "Destroy the three MCOMs, one per zone. Plant a charge (5 s) on the active MCOM and keep the Germans off it until it blows (45 s). When a zone's MCOM is gone, the next zone opens."\
    ""\
    "ZONES"\
-   "1. Beach exits: A at the south draw above the fishermen's huts, B at the harbour road at the north end of the beach."\
-   "2. Gorshkovo: C in the courtyard of the apartment blocks, D at the coal silo north of the village."\
-   "3. Nadezhda mine: E at the conveyor head, F next to the mine shaft on the ridge."\
+   "1. Beach exit: A at the south draw above the fishermen's huts."\
+   "2. Gorshkovo: B at the coal silo north of the village."\
+   "3. Nadezhda mine: C at the conveyor head on the ridge."\
    ""\
    "EXECUTION"\
-   "Each element spawns on the pontoon next to its own LCVP: step down into the boat, the squad lead or a volunteer drives. Land anywhere on BEACH RED (marked); the old dragon's teeth and the hedgehogs give some cover, the wire above the beach has gaps. A spare LCVP waits at the north end of the pontoon."\
+   "Each element spawns on the pontoon next to its own LCVP: step down into the boat, the squad lead or a volunteer drives. A belt of hedgehogs lies in the shallows off BEACH RED: come in through one of the three cleared lanes (LANE 1-3 on the map) or the boat hangs up short of the beach. The lower wire belt has gaps straight up from each lane, the upper belt has gaps between them. The hedgehogs and dragon's teeth on the sand give some cover. A spare LCVP waits at the north end of the pontoon."\
    "After safe start the run in takes about two minutes. Mind the rock awash 130 m off the middle of the beach."\
    ""\
    "When zone 1 falls your spawn moves ashore to the beachhead; when zone 2 falls, to the silo road below the mine."
@@ -121,12 +121,12 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Hold the MCOMs. The Americans will come from the sea. Defuse a planted charge (7 s) before it blows (45 s)."\
    ""\
    "ZONES"\
-   "1. Beach exits: A at the south draw above the fishermen's huts, B at the harbour road at the north end of the beach."\
-   "2. Gorshkovo: C in the courtyard of the apartment blocks, D at the coal silo north of the village."\
-   "3. Nadezhda mine: E at the conveyor head, F next to the mine shaft on the ridge."\
+   "1. Beach exit: A at the south draw above the fishermen's huts."\
+   "2. Gorshkovo: B at the coal silo north of the village."\
+   "3. Nadezhda mine: C at the conveyor head on the ridge."\
    ""\
    "EXECUTION"\
-   "You start on the bluff above the beach. When a zone falls, fall back: your spawn moves to the hill west of Gorshkovo, then to the road behind the mine."\
+   "You start on the slope above the beach. Beach Red is fortified: four Tobruk MG pits behind the upper wire, two casemates (ladder to the roof) and two hill bunkers above them, MG nests at the south draw and on the harbour road. The boats can only get through three lanes in the hedgehog belt. When a zone falls, fall back: your spawn moves to the hill west of Gorshkovo, then to the road behind the mine."\
    "You have no vehicles. Each Gruppe's anti-tank rifleman carries HEAT rifle grenades and bundle charges: use them on the boats."\
    ""\
    "YOU WIN if any MCOM survives the time limit (60 minutes) or the Americans are wiped out."
@@ -137,7 +137,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6B1109E10A6C267B}" {
    m_sTitle "Administration"
-   m_sTextData "Rush, 3 zones x 2 MCOMs. Time limit 60 minutes after safe start (safe start max. 15 minutes)."\
+   m_sTextData "Rush, 3 zones x 1 MCOM. Time limit 60 minutes after safe start (safe start max. 15 minutes)."\
    ""\
    "No timed respawns. When a zone falls, every dead player of both sides respawns at their side's new spawn."\
    ""\
@@ -340,20 +340,21 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_bHideOtherSpectatorFactions 1
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{3C1D4706A4377524}Configs/Gearscripts/Standard/40s/COA_GS_US_Late_War.conf"
   m_bEnableBFT 0
-  m_bEnableLeadershipRadios 1
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{658FB2B8E3ED1BA4}Configs/Gearscripts/Standard/40s/COA_GS_Germany_Late_War.conf"
   m_bEnableBFT 0
-  m_bEnableLeadershipRadios 1
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 0
+  m_bEnableRTORadios 1
  }
  m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
@@ -395,4 +396,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
   }
  }
+}
+GenericEntity irontide_hillbunker_s2 : "{0705FBC0682A515F}Prefabs/Structures/Bunkers/Concrete_Hill_Bunker.et" {
+ coords 8522.421 33.512 7169.062
+ angles 6.325 -66.674 -1.154
 }
