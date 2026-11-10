@@ -1,0 +1,330 @@
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8723.25 0.34 6996.92
+  angles 0 -75.5 0
+ }
+ {
+  coords 8724.58 0.35 7000.63
+  angles 0 -67.8 0
+ }
+ {
+  coords 8726.12 0.35 7004.27
+  angles 0 -67 0
+ }
+ {
+  coords 8727.72 0.34 7007.88
+  angles 0 -65.2 0
+ }
+ {
+  coords 8729.33 0.34 7011.49
+  angles 0 -66.5 0
+ }
+ {
+  coords 8730.89 0.34 7015.12
+  angles 0 -67.2 0
+ }
+ {
+  coords 8732.39 0.35 7018.77
+  angles 0 -67 0
+ }
+ {
+  coords 8733.92 0.35 7022.42
+  angles 0 -67.7 0
+ }
+ {
+  coords 8735.39 0.34 7026.08
+  angles 0 -68.1 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_1 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8736.86 0.33 7029.75
+ angles 0 -68 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8738.33 0.34 7033.41
+  angles 0 -68.5 0
+ }
+ {
+  coords 8739.79 0.34 7037.09
+  angles 0 -68.7 0
+ }
+ {
+  coords 8741.19 0.34 7040.78
+  angles 0 -69.7 0
+ }
+ {
+  coords 8742.56 0.35 7044.48
+  angles 0 -69.3 0
+ }
+ {
+  coords 8744.02 0.37 7048.15
+  angles 0 -67.7 0
+ }
+ {
+  coords 8745.65 0.38 7051.75
+  angles 0 -62.7 0
+ }
+ {
+  coords 8747.59 0.38 7055.19
+  angles 0 -59.4 0
+ }
+ {
+  coords 8749.59 0.41 7058.59
+  angles 0 -59.8 0
+ }
+ {
+  coords 8751.35 0.41 7062.13
+  angles 0 -69.1 0
+ }
+ {
+  coords 8752.55 0.38 7065.89
+  angles 0 -74.9 0
+ }
+ {
+  coords 8753.35 0.35 7069.75
+  angles 0 -80.1 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_2 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8754.02 0.34 7073.65
+ angles 0 -79.6 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8754.89 0.35 7077.5
+  angles 0 -76.3 0
+ }
+ {
+  coords 8755.96 0.37 7081.3
+  angles 0 -73.5 0
+ }
+ {
+  coords 8757.1 0.38 7085.08
+  angles 0 -73.9 0
+ }
+ {
+  coords 8758.2 0.36 7088.88
+  angles 0 -74.4 0
+ }
+ {
+  coords 8759.25 0.36 7092.68
+  angles 0 -76.2 0
+ }
+ {
+  coords 8760.18 0.38 7096.52
+  angles 0 -76.9 0
+ }
+ {
+  coords 8761 0.37 7100.39
+  angles 0 -78.6 0
+ }
+ {
+  coords 8761.78 0.37 7104.26
+  angles 0 -78 0
+ }
+ {
+  coords 8762.64 0.37 7108.11
+  angles 0 -75.4 0
+ }
+ {
+  coords 8763.74 0.36 7111.91
+  angles 0 -72.6 0
+ }
+ {
+  coords 8764.97 0.38 7115.66
+  angles 0 -71.1 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_3 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8766.22 0.38 7119.41
+ angles 0 -72 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8767.39 0.39 7123.18
+  angles 0 -72.8 0
+ }
+ {
+  coords 8768.48 0.39 7126.98
+  angles 0 -75.2 0
+ }
+ {
+  coords 8769.43 0.39 7130.81
+  angles 0 -76 0
+ }
+ {
+  coords 8770.29 0.39 7134.66
+  angles 0 -78 0
+ }
+ {
+  coords 8771.07 0.4 7138.54
+  angles 0 -78.8 0
+ }
+ {
+  coords 8771.81 0.39 7142.42
+  angles 0 -80.5 0
+ }
+ {
+  coords 8772.51 0.41 7146.3
+  angles 0 -78.7 0
+ }
+ {
+  coords 8773.28 0.39 7150.18
+  angles 0 -77.5 0
+ }
+ {
+  coords 8774.34 0.38 7153.98
+  angles 0 -73.8 0
+ }
+ {
+  coords 8775.59 0.39 7157.73
+  angles 0 -70.3 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_4 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8776.81 0.39 7161.49
+ angles 0 -73.1 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8777.73 0.39 7165.32
+  angles 0 -79.2 0
+ }
+ {
+  coords 8778.4 0.38 7169.22
+  angles 0 -83.3 0
+ }
+ {
+  coords 8778.9 0.38 7173.13
+  angles 0 -81.4 0
+ }
+ {
+  coords 8779.5 0.36 7177.04
+  angles 0 -80.4 0
+ }
+ {
+  coords 8780.21 0.36 7180.92
+  angles 0 -79.3 0
+ }
+ {
+  coords 8780.99 0.35 7184.8
+  angles 0 -78.6 0
+ }
+ {
+  coords 8781.75 0.35 7188.67
+  angles 0 -79.7 0
+ }
+ {
+  coords 8782.32 0.35 7192.58
+  angles 0 -82.7 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_5 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8782.73 0.36 7196.51
+ angles 0 -85.4 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8782.96 0.36 7200.45
+  angles 0 -88.4 0
+ }
+ {
+  coords 8783.03 0.33 7204.4
+  angles 0 -89.3 0
+ }
+ {
+  coords 8783.09 0.32 7208.35
+  angles 0 -89.5 0
+ }
+ {
+  coords 8783.05 0.35 7212.3
+  angles 0 -91 0
+ }
+ {
+  coords 8782.96 0.39 7216.25
+  angles 0 -90.4 0
+ }
+ {
+  coords 8783.02 0.42 7220.2
+  angles 0 -86.6 0
+ }
+ {
+  coords 8783.37 0.4 7224.13
+  angles 0 -82 0
+ }
+ {
+  coords 8783.98 0.36 7228.03
+  angles 0 -81.2 0
+ }
+ {
+  coords 8784.6 0.31 7231.93
+  angles 0 -81.1 0
+ }
+ {
+  coords 8784.2 0.44 7235.83
+  angles 0 -104.6 0
+ }
+}
+SCR_DestructibleBuildingEntity irontide_breach_6 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 8782.84 0.73 7239.54
+ angles 0 -111.2 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 8781.82 0.94 7243.34
+  angles 0 -94.5 0
+ }
+ {
+  coords 8782.4 0.97 7247.2
+  angles 0 -66.4 0
+ }
+ {
+  coords 8784.37 0.81 7250.61
+  angles 0 -54.5 0
+ }
+ {
+  coords 8786.78 0.6 7253.74
+  angles 0 -51.9 0
+ }
+ {
+  coords 8789.04 0.39 7256.97
+  angles 0 -58 0
+ }
+ {
+  coords 8790.43 0.32 7260.65
+  angles 0 -77.2 0
+ }
+ {
+  coords 8791.27 0.34 7264.51
+  angles 0 -78.1 0
+ }
+ {
+  coords 8792.01 0.35 7268.39
+  angles 0 -80.1 0
+ }
+ {
+  coords 8792.67 0.34 7272.29
+  angles 0 -81.9 0
+ }
+ {
+  coords 8793.23 0.34 7276.2
+  angles 0 -81.8 0
+ }
+ {
+  coords 8793.79 0.35 7280.11
+  angles 0 -81.9 0
+ }
+ {
+  coords 8794.33 0.34 7284.02
+  angles 0 -83.3 0
+ }
+ {
+  coords 8794.77 0.32 7287.94
+  angles 0 -83.7 0
+ }
+ {
+  coords 8795.06 0.34 7291.88
+  angles 0 -86.9 0
+ }
+}

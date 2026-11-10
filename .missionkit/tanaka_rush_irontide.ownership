@@ -6,18 +6,24 @@
   "Missions/Kolguyev/tanaKa_1109_RUSH89_IronTide.conf.meta": "eab357ad35c7b653ce8146d01fc53532ed865a209451e9524235790240b6725b",
   "Missions/Kolguyev/tanaKa_1109_RUSH97_IronTide.conf": "64ef97764c4f07f6acb0f69549d688b50c75e2be2bb5e910e19454c3ecf52230",
   "Missions/Kolguyev/tanaKa_1109_RUSH97_IronTide.conf.meta": "57692b488a8a0937878ab64b3a852d8fdc91b379e8d5a7c26b6d0da7ae4a580a",
+  "Missions/Kolguyev/tanaKa_1109_TVT101_IronTide.conf": "ff84f934b222342148da98846eb2b3fddc227d4cb8a2d42361dfba6ffa457510",
+  "Missions/Kolguyev/tanaKa_1109_TVT101_IronTide.conf.meta": "5471d470f2d947032d95874cb1bec1251bed76aa49b6f7177439f850d4afc484",
   "Worlds/Kolguyev/tanaka_rush_irontide.ent": "b37fe82114f7da0fbd06a5a79cb1e7c6f95fb56b4f3fd4cece09fe0325f2a32a",
   "Worlds/Kolguyev/tanaka_rush_irontide.ent.meta": "e7c7b396c82b7cf6e58264122244618924785bc75accf8ff935aaef39cbe13af",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/GameBorderS.layer": "6a015483aabf0007bab3f8484abb9370bd703d0effd301fa049633aa3f3537ee",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/MARKERS.layer": "86a4a311597930506b85bb2465b274c640af7e0dcb4ea819556dd5420b4a78de",
-  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/OBJECTIVES.layer": "965ab39018054591c91e4123d871b163a2a9e6ec7a942433fd52f04287344be0",
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/OBJECTIVES.layer": "1804802d8465d54cb8212bfc8c3f3423073ae5e5e28e1186444e57d2ba673ed2",
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/OBJ_GARRISON.layer": "48bd5c449d1f59958e0ee0138886f812263a8999ba8ff399c6673ff8e831191f",
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/OBJ_SILO.layer": "17d32e6aebdde32e572480877e5ee504650bf1ca16f241c23f6f213fa235b905",
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/PONTOON.layer": "1943d6cfcc2dc48bd31de05580b36fa53d1bcd8cda40fb4ca21835315ce87e78",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/PROPS.layer": "e8f3ce3d6f8fbb3a9ed74c8d65019d13776c085eb938ad4b572c1672032f3270",
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/SEAWALL.layer": "07a07ee637d2982fdf42f2b7432a26d76a69ba984f0b0fb7b9c37101e2628f68",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/SPAWNPOINTS.layer": "ff966ebdba91b5ffcba922a6a2339eda17ee6e68acfbe528912ab219f6a94cd0",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/SPAWNPOINTSGROUPS.layer": "fb235a87a163894643b665080da1e94dcb6170fa1f73065e720dd96051b852a8",
   "Worlds/Kolguyev/tanaka_rush_irontide_Layers/VEHICLES.layer": "bec7bed94dec4724c729cef736a69898a65e8dc22dbccba4c2517a6ba60bdd8b",
-  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/_INIT.layer": "52eb25c0df751f6ec2a7fde0c71b362593d1bc4a6ed2b34d0c2813b279973e97"
+  "Worlds/Kolguyev/tanaka_rush_irontide_Layers/_INIT.layer": "8218553b5c64a268bf85334ab887bb3dd1679de52c51171ac9e0bbe8146ccebd"
  },
- "header": "Missions/Kolguyev/tanaKa_1109_RUSH101_IronTide.conf",
+ "header": "Missions/Kolguyev/tanaKa_1109_TVT101_IronTide.conf",
  "note": "Files listed here are owned by a missionkit spec; see CRF-MissionKit README (Layer ownership).",
  "world": "Worlds/Kolguyev/tanaka_rush_irontide.ent"
 }

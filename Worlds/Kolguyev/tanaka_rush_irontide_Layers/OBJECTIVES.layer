@@ -1,11 +1,15 @@
-$grp SCR_BaseTriggerEntity {
- mcom_a_trigger {
-  coords 8664.778 13.497 7131.608
+$grp GameEntity {
+ irontide_obj_beach {
+  coords 8680 11.91 7135
  }
- mcom_b_trigger {
-  coords 8318 46.91 6735
+ irontide_obj_silo {
+  coords 8310 47.16 6752
  }
- mcom_c_trigger {
-  coords 7694.68 208.052 6842.804
+ irontide_obj_garrison {
+  coords 7640 208.16 6835
+ }
+ irontide_spawn_beachhead {
+  coords 8738 5 7125
+  angles 0 -90 0
  }
 }

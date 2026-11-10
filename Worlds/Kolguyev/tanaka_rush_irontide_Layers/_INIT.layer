@@ -17,39 +17,79 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
-  CRF_RushGamemodeManager "{6B1109E1F442907D}" {
-   m_AttackingSide "BLUFOR"
-   m_DefendingSide "OPFOR"
-   m_iNumberOfZones 3
-   m_iMCOMsPerZone 1
-   m_iMCOMTimer 45
-   m_bEnableDynamicRespawns 1
-   m_aZoneRespawnConfigs {
-    CRF_Rush_ZoneRespawnConfig "{6B1109E1C208BC2D}" {
-     m_sZoneName "Zone 1 cleared - beachhead / Gorshkovo"
-     m_aRespawnPoints {
-      CRF_Rush_RespawnPointEntry "{6B1109E1D06E8D75}" {
-       m_sMarkerEntityName "Zone2_BLUFOR_Spawn"
-       m_eFaction "BLUFOR"
+  CRF_ObjectiveChainGamemodeComponent "{6B1109E1AEAF0007}" {
+   m_sAttackerFaction "BLUFOR"
+   m_sDefenderFaction "OPFOR"
+   m_iTimeLimitMinutes 60
+   m_bEndMissionOnVictory 0
+   m_fBreachFuseSeconds 10
+   m_aBreachChargeKeywords {
+    "Explosive_Satchels"
+    "DemoBlock_M112"
+    "Bangalore"
+   }
+   m_aObjectives {
+    CRF_ObjectiveChainObjective "{6B1109E13FE40ED1}" {
+     m_sTitle "Breach the sea wall and control Red Beach"
+     m_sDescription "Blow a gap in the sea wall at one of the marked breach points: an engineer with a satchel, an M112 block or a Bangalore sets the charge (10 s fuse). Then hold Red Beach - at least 3 of you on the beach and the slope above it, at most 2 Germans - for 60 seconds."
+     m_sDefenderTitle "Hold the sea wall and Red Beach"
+     m_sDefenderDescription "Keep the Americans off the beach. Once they blow a gap in the wall, they need 60 seconds with you down to 2 or fewer on the beach and the slope."
+     m_sZoneEntityName "irontide_obj_beach"
+     m_fRadius 120
+     m_fHoldSeconds 60
+     m_iMinAttackers 3
+     m_iMaxDefenders 2
+     m_iBreachesRequired 1
+     m_aBreachPointNames {
+      "irontide_breach_1"
+      "irontide_breach_2"
+      "irontide_breach_3"
+      "irontide_breach_4"
+      "irontide_breach_5"
+      "irontide_breach_6"
+     }
+     m_aRespawnMoves {
+      CRF_ObjectiveChainRespawnMove "{6B1109E125258F12}" {
+       m_sMarkerEntityName "irontide_spawn_beachhead"
+       m_sFaction "BLUFOR"
       }
-      CRF_Rush_RespawnPointEntry "{6B1109E13738BAA3}" {
+      CRF_ObjectiveChainRespawnMove "{6B1109E125DDF2F8}" {
        m_sMarkerEntityName "Zone2_OPFOR_Spawn"
-       m_eFaction "OPFOR"
+       m_sFaction "OPFOR"
       }
      }
     }
-    CRF_Rush_ZoneRespawnConfig "{6B1109E1F61EA413}" {
-     m_sZoneName "Zone 2 cleared - silo / mine road"
-     m_aRespawnPoints {
-      CRF_Rush_RespawnPointEntry "{6B1109E18C1EB43C}" {
+    CRF_ObjectiveChainObjective "{6B1109E164F62576}" {
+     m_sTitle "Capture the spotting position at the coal silo"
+     m_sDescription "The artillery spotters on the silo pad see the whole beach. Take the tower and the observation post next to it: at least 2 of you, at most 1 German, for 45 seconds."
+     m_sDefenderTitle "Hold the spotting position at the coal silo"
+     m_sDefenderDescription "Hold the tower and the observation post at the coal silo."
+     m_sZoneEntityName "irontide_obj_silo"
+     m_fRadius 45
+     m_fHoldSeconds 45
+     m_iMinAttackers 2
+     m_iMaxDefenders 1
+     m_aRespawnMoves {
+      CRF_ObjectiveChainRespawnMove "{6B1109E1C44A8B52}" {
        m_sMarkerEntityName "Zone3_BLUFOR_Spawn"
-       m_eFaction "BLUFOR"
+       m_sFaction "BLUFOR"
       }
-      CRF_Rush_RespawnPointEntry "{6B1109E1B2D4F00B}" {
+      CRF_ObjectiveChainRespawnMove "{6B1109E172AAF0D3}" {
        m_sMarkerEntityName "Zone3_OPFOR_Spawn"
-       m_eFaction "OPFOR"
+       m_sFaction "OPFOR"
       }
      }
+    }
+    CRF_ObjectiveChainObjective "{6B1109E168C906D9}" {
+     m_sTitle "Capture the garrison (Nadezhda mine)"
+     m_sDescription "The German garrison holds the mine yard on the ridge: three huts, the tents and the flag. Clear it and hold it - at least 3 of you, at most 1 German, for 90 seconds."
+     m_sDefenderTitle "Hold the garrison (Nadezhda mine)"
+     m_sDefenderDescription "The last position. Hold the mine yard."
+     m_sZoneEntityName "irontide_obj_garrison"
+     m_fRadius 65
+     m_fHoldSeconds 90
+     m_iMinAttackers 3
+     m_iMaxDefenders 1
     }
    }
   }
@@ -75,7 +115,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 65
  m_bLockUnusedSlots 1
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
@@ -98,21 +138,27 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6B1109E1F61769E7}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Destroy the three MCOMs, one per zone. Plant a charge (5 s) on the active MCOM and keep the Germans off it until it blows (45 s). When a zone's MCOM is gone, the next zone opens."\
+   "Three objectives, one after another (the task list shows the open one and its progress):"\
+   "1. Breach the sea wall and control Red Beach."\
+   "2. Capture the spotting position at the coal silo."\
+   "3. Capture the garrison (Nadezhda mine)."\
    ""\
-   "ZONES"\
-   "1. Beach Red: A on the slope above the middle of the beach, between the two casemates and behind the upper wire."\
-   "2. Gorshkovo: B at the coal silo north of the village."\
-   "3. Nadezhda mine: C at the conveyor head on the ridge."\
+   "1. RED BEACH"\
+   "A concrete sea wall runs along the top of the sand, too high to climb. Six sections of it are breach points (marked on your map): an engineer with a satchel, an M112 block or a Bangalore uses \"Place breaching charge\" on the seaward side of one. The charge is used up and the section blows 10 seconds later - get clear. One breach is enough. Then hold Red Beach (the beach and the slope up to the casemates): at least 3 of you, at most 2 Germans, for 60 seconds."\
+   "2. COAL SILO"\
+   "The German artillery spotters sit in the tower and the observation post on the silo pad above Gorshkovo. At least 2 of you, at most 1 German, for 45 seconds."\
+   "3. NADEZHDA MINE"\
+   "The garrison holds the mine yard on the ridge, 1.2 km inland and 200 m up: three huts, tents and the flag. At least 3 of you, at most 1 German, for 90 seconds."\
+   "If nobody is there to hold a zone, its progress drains; contested, it holds."\
    ""\
    "EXECUTION"\
-   "Each element spawns on the pontoon next to its own LCVP: step down into the boat, the squad lead or a volunteer drives. A belt of hedgehogs lies in the shallows off BEACH RED: come in through one of the three cleared lanes (LANE 1-3 on the map) or the boat hangs up short of the beach. The lower wire belt has gaps straight up from each lane, the upper belt has gaps between them. The hedgehogs and dragon's teeth on the sand give some cover. WPNS is 14 strong and takes two boats: its own and the next one north. A spare LCVP waits past the end of the dock."\
+   "Each element spawns on the pontoon next to its own LCVP: step down into the boat, the squad lead or a volunteer drives. A belt of hedgehogs lies in the shallows off BEACH RED: come in through one of the three cleared lanes (LANE 1-3 on the map) or the boat hangs up short of the beach. A breach point sits at the head of every lane and between the lanes. The lower wire belt behind the wall has gaps straight up from each lane, the upper belt has gaps between them. WPNS is 14 strong and takes two boats: its own and the next one north. A spare LCVP waits past the end of the dock."\
    "After safe start the run in takes about two minutes. Mind the rock awash 130 m off the middle of the beach."\
    ""\
-   "ENGINEERS (WPNS): four combat engineers, each with a Bangalore torpedo, three satchel charges, an M112 block and a blasting machine. Lay a Bangalore under the wire, then \"Push Bangalore\" to add the next engineer's section; one section won't reach through a belt. Fuse it with the timer or the blasting machine. Satchels are for the bunkers."\
-   "MORTAR (WPNS): the 81 mm M1 comes in three loads: the mortar leader carries the base plate, the gunner the tube, the loader the bipod. Set the base plate down (needs the e-tool), then add the bipod and the tube. 14 HE and 2 WP rounds across the team; range tables with the leader and the gunner. Zone 3 is 1.2 km from the beach."\
+   "ENGINEERS (WPNS): four combat engineers, each with a Bangalore torpedo, three satchel charges, an M112 block and a blasting machine - every one of them can blow a breach point. Spare charges go under the wire: lay a Bangalore and \"Push Bangalore\" to add the next engineer's section."\
+   "MORTAR (WPNS): the 81 mm M1 comes in three loads: the mortar leader carries the base plate, the gunner the tube, the loader the bipod. Set the base plate down (needs the e-tool), then add the bipod and the tube. 14 HE and 2 WP rounds across the team; range tables with the leader and the gunner."\
    ""\
-   "When zone 1 falls your spawn moves ashore to the beachhead; when zone 2 falls, to the silo road below the mine."
+   "No timed respawns: when an objective falls, everyone dead comes back - after the beach at the beachhead behind the wall, after the silo on the road below it."
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -121,18 +167,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6B1109E199D38E4F}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Hold the MCOMs. The Americans will come from the sea. Defuse a planted charge (7 s) before it blows (45 s)."\
-   ""\
-   "ZONES"\
-   "1. Beach Red: A on the slope above the middle of the beach, between the two casemates and behind the upper wire."\
-   "2. Gorshkovo: B at the coal silo north of the village."\
-   "3. Nadezhda mine: C at the conveyor head on the ridge."\
+   "Hold three positions, one after another: the sea wall and Red Beach, the artillery spotting position at the coal silo, the garrison at the Nadezhda mine."\
    ""\
    "EXECUTION"\
-   "You start on the slope above the beach. Beach Red is fortified: four Tobruk MG pits behind the upper wire, two casemates (ladder to the roof) and two hill bunkers above them, MG nests at the south draw and on the harbour road. The boats can only get through three lanes in the hedgehog belt. When a zone falls, fall back: your spawn moves to the hill west of Gorshkovo, then to the road behind the mine."\
+   "You start on the slope above the beach. Beach Red is fortified: the sea wall along the top of the sand, sandbag bunkers on the beach, four Tobruk MG pits behind the upper wire, two casemates (ladder to the roof) and two hill bunkers above them, MG nests at the south draw and on the harbour road. The boats can only get through three lanes in the hedgehog belt."\
+   "The Americans have to blow a gap in the wall first: you are warned when a breaching charge is set (10 s). After that they take the beach if they hold it for 60 seconds with 2 or fewer of you on it."\
+   "When a position falls, everyone dead comes back at the next one: the hill west of Gorshkovo for the silo, the road behind the mine for the garrison."\
    "You have no vehicles. Each Gruppe's anti-tank rifleman carries HEAT rifle grenades and bundle charges: use them on the boats."\
    ""\
-   "YOU WIN if any MCOM survives the time limit (60 minutes) or the Americans are wiped out."
+   "YOU WIN if the Americans have not taken all three when the time limit (60 minutes) runs out, or if they are wiped out."
    m_aFactionKeys {
     "OPFOR"
    }
@@ -140,11 +183,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6B1109E10A6C267B}" {
    m_sTitle "Administration"
-   m_sTextData "Rush, 3 zones x 1 MCOM. Time limit 60 minutes after safe start (safe start max. 15 minutes)."\
+   m_sTextData "Objective chain, 3 objectives. Time limit 60 minutes after safe start (safe start max. 15 minutes)."\
    ""\
-   "No timed respawns. When a zone falls, every dead player of both sides respawns at their side's new spawn."\
+   "No timed respawns. When an objective falls, every dead player of both sides respawns at their side's new spawn."\
    ""\
-   "LCVPs: 8 at the staging pontoon (one per BLUFOR element, two for WPNS, + 1 spare). A destroyed LCVP is respawned at the pontoon for free when the next zone falls; intact boats (beached or adrift) stay where they are. Nothing else respawns."\
+   "LCVPs: 8 at the staging pontoon (one per BLUFOR element, two for WPNS, + 1 spare). A destroyed LCVP is respawned at the pontoon for free when an objective falls; intact boats (beached or adrift) stay where they are. Nothing else respawns."\
    ""\
    "Mission by tanaKa-."
    m_aFactionKeys {
@@ -351,7 +394,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
  }
- m_iBLUFORTickets 0
+ m_iBLUFORTickets -1
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
