@@ -5,7 +5,7 @@ The attackers take a list of objectives in order. Each objective is a zone they 
 - **Attackers win** when the last objective falls.
 - **Defenders win** when the time limit runs out, or when the attackers are wiped out with no respawns left.
 
-Iron Tide (`Missions/Kolguyev/tanaKa_1109_TVT101_IronTide.conf`) is the reference mission.
+Iron Tide (`Missions/Kolguyev/tanaKa_1109_TVT99_IronTide.conf`) is the reference mission.
 
 ## Setup
 

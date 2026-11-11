@@ -11,7 +11,7 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position -400 0 500
   }
   ShapePoint "{6B1109E13CF95F79}" {
-   Position 120.204 0 386.528
+   Position 209.254 120.351 367.643
   }
   ShapePoint "{6B1109E10BEAAF91}" {
    Position 1200 0 470
@@ -23,7 +23,7 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position 488.274 0 -123.684
   }
   ShapePoint "{6B1109E15DDD69C6}" {
-   Position 85.301 19.066 -59.044
+   Position 105.953 -19.166 -50.046
   }
   ShapePoint "{6B1109E1DAFD4C8B}" {
    Position 95.313 197.814 -520.308
