@@ -13,4 +13,11 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
   }
   m_bShowForAnyFaction 0
  }
+ irontide_howitzer_marker {
+  coords 9650 2 7000
+  m_sDescription "HOWITZER"
+  m_aVisibleForFactions +{
+  }
+  m_bShowForAnyFaction 0
+ }
 }

@@ -40,7 +40,7 @@ $grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/S
   }
  }
  {
-  coords 9645 3.9 7183
+  coords 9645 3.9 7176
   angles 0 -90 0
   m_sCallsignOfGroupToSpawn "WPNS"
   m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
@@ -73,5 +73,13 @@ $grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/S
   coords 8562 29.48 7185
   angles 0 90 0
   m_sCallsignOfGroupToSpawn "MG-TRUPP"
+ }
+}
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 9652 3.9 6990
+ angles 0 -90 0
+ m_sCallsignOfGroupToSpawn "ARTY"
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+  m_iSpawnPointRadius 2
  }
 }

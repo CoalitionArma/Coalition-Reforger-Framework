@@ -1,0 +1,48 @@
+Turret irontide_howitzer : "{3BD6ADF7ED80F156}Prefabs/Weapons/Artillery/Howitzer/M2A1/Howitzer_M2A1.et" {
+ coords 9650.209 0.188 7004
+ angles 0 -90 1.478
+}
+SCR_DestructibleBuildingEntity irontide_pontoon_arty : "{5EE66239F0D1E648}Prefabs/Structures/Infrastructure/Naval/Piers/FloatingDock_01/FloatingDock_01.et" {
+ coords 9650.209 0 7000.024
+}
+COA_SafestartBorder irontide_safestart_arty : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 9650 2 7000
+ Points {
+  ShapePoint "{6B1109E1B6EA0959}" {
+   Position -20 0 -35
+  }
+  ShapePoint "{6B1109E1AEC1CB99}" {
+   Position 20 0 -35
+  }
+  ShapePoint "{6B1109E11A3901F0}" {
+   Position 20 0 35
+  }
+  ShapePoint "{6B1109E185526164}" {
+   Position -20 0 35
+  }
+ }
+}
+GenericEntity irontide_howitzer_ammo_wp : "{B2845440E61281E3}Prefabs/Props/Military/AmmoBoxes/CRF_AmmoBox_105mm_M2A1_WP.et" {
+ coords 9655.5 2.084 7006
+}
+GenericEntity irontide_howitzer_ammo_he : "{F4257999B3421370}Prefabs/Props/Military/AmmoBoxes/CRF_AmmoBox_105mm_M2A1_HE.et" {
+ coords 9655.5 2.084 7002
+}
+$grp GameEntity : "{FCC9A062B697948E}Prefabs/Structures/BuildingParts/Ladders/Ladder_Pier_520_B.et" {
+ {
+  coords 9641.385 2.084 6985
+  angles 0 -90 0
+ }
+ {
+  coords 9641.385 2.084 7015
+  angles 0 -90 0
+ }
+ {
+  coords 9659.021 2.084 6985
+  angles 0 90 0
+ }
+ {
+  coords 9659.021 2.084 7015
+  angles 0 90 0
+ }
+}
