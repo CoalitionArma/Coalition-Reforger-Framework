@@ -2,40 +2,14 @@ $grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/Objectiv
  irontide_beach_red {
   coords 8790 0.7 7140
   m_sDescription "BEACH RED"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
-  m_bShowForAnyFaction 0
- }
- irontide_lane_1 {
-  coords 8845 0.5 7030
-  m_sDescription "LANE 1"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
-  m_bShowForAnyFaction 0
- }
- irontide_lane_2 {
-  coords 8850 0.5 7120
-  m_sDescription "LANE 2"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
-  m_bShowForAnyFaction 0
- }
- irontide_lane_3 {
-  coords 8855 0.5 7195
-  m_sDescription "LANE 3"
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
   m_bShowForAnyFaction 0
  }
  irontide_staging {
   coords 9650 2 7150
   m_sDescription "Staging pontoon (LCVPs)"
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
   m_bShowForAnyFaction 0
  }
