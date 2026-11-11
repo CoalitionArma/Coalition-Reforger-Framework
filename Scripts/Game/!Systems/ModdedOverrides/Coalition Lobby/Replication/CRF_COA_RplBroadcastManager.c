@@ -35,6 +35,61 @@ modded class COA_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//! Server: sends many lock changes at once so clients rebuild the slot list once, not per slot.
+	//! The caller must already have applied them to the server's slot data.
+	void BroadcastSlotLockBatch(notnull array<int> lockSlotIds, notnull array<int> unlockSlotIds)
+	{
+		if (!Replication.IsServer() || (lockSlotIds.IsEmpty() && unlockSlotIds.IsEmpty()))
+			return;
+
+		// Queued single-slot deltas are older; send them first so they can't overwrite this batch
+		FlushSlotUpdates();
+
+		int bytes = COA_BandwidthTelemetryManager.EstimateSize_IntArray(lockSlotIds);
+		bytes += COA_BandwidthTelemetryManager.EstimateSize_IntArray(unlockSlotIds);
+		LogTelemetry("BroadcastSlotLockBatch", bytes);
+
+		Rpc(RpcDo_ApplySlotLockBatch, lockSlotIds, unlockSlotIds);
+
+		// Broadcasts skip the sender; a listen/Workbench host needs its own UI refreshed
+		if (RplSession.Mode() != RplMode.Dedicated)
+			RpcDo_ApplySlotLockBatch(lockSlotIds, unlockSlotIds);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_ApplySlotLockBatch(array<int> lockSlotIds, array<int> unlockSlotIds)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		ApplySlotLockState(slottingManager, lockSlotIds, true);
+		ApplySlotLockState(slottingManager, unlockSlotIds, false);
+
+		ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+		if (invoker)
+			invoker.Invoke();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ApplySlotLockState(COA_SlottingManager slottingManager, array<int> slotIds, bool isLocked)
+	{
+		if (!slotIds)
+			return;
+
+		foreach (int slotId : slotIds)
+		{
+			COA_SlotData slotData = slottingManager.GetSlotData(slotId);
+			if (!slotData)
+				continue;
+
+			slotData.SetIsLockedSlot(isLocked);
+			slotData.GetOnDataUpdate().Invoke();
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void BroadcastAdminChatMessage(string message)
 	{
 		// Telemetry: string

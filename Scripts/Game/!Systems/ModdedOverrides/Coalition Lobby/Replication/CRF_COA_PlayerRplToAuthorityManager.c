@@ -281,6 +281,51 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Admin only (checked on the server). See CRF_SlotBalancer.
+	//! \param reset reopen what the balancer locked instead of balancing
+	void RequestBalanceSlots(bool reset)
+	{
+		Rpc(RpcAsk_RequestBalanceSlots, reset);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestBalanceSlots(bool reset)
+	{
+		LogTelemetry("RpcAsk_RequestBalanceSlots", COA_BandwidthTelemetryManager.EstimateSize_Bool());
+
+		if (!IsCallerAdmin() || !m_Gamemode)
+			return;
+
+		int callerId = GetCallerPlayerId();
+		string message;
+		if (reset)
+		{
+			int reopened = CRF_SlotBalancer.GetInstance().Reset();
+			message = string.Format("%1 reset slot balancing - %2 slots reopened", GetCallerName(), reopened);
+		}
+		else
+		{
+			string summary;
+			if (!CRF_SlotBalancer.GetInstance().Balance(summary))
+			{
+				if (m_RplBroadcastManager)
+					m_RplBroadcastManager.SendHint("Slots can't be balanced: the mission has no slot ratio, or the round has started.", callerId);
+
+				return;
+			}
+
+			message = string.Format("%1 balanced slots: %2", GetCallerName(), summary);
+		}
+
+		if (!m_RplBroadcastManager)
+			return;
+
+		m_RplBroadcastManager.SendHint(message, callerId);
+		m_RplBroadcastManager.LogAdminAction(message, callerId, false, COA_EAdminLogLevel.Medium);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! AAR screen: join (recreating if needed) the caller's group voice channel
 	void RequestGroupVoiceChannel()
 	{
