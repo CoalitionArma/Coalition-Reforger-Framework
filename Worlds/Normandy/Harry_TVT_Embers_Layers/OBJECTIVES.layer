@@ -1,0 +1,104 @@
+$grp SCR_BaseTriggerEntity {
+ ch1 {
+  coords 3095.47 12.614 1736.522
+ }
+ ch2 {
+  coords 3449.164 22.043 2382.288
+ }
+ ch3 {
+  coords 4011.053 8.5 616.796
+ }
+}
+$grp SCR_VehicleSpawn {
+ {
+  coords 3607.957 7.311 1636.076
+  angles 0 35.151 0
+  m_rnPrefab "{EC0F4A5B20D56FB1}Prefabs/Vehicles/Wheeled/Kubelwagen/Kubelwagen_raid.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3041.339 40.472 2045.806
+  angles 0 -3.948 0
+  m_rnPrefab "{EC0F4A5B20D56FB1}Prefabs/Vehicles/Wheeled/Kubelwagen/Kubelwagen_raid.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3716.975 4.125 1904.105
+  angles 0 -3.948 0
+  m_rnPrefab "{EC0F4A5B20D56FB1}Prefabs/Vehicles/Wheeled/Kubelwagen/Kubelwagen_raid.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3528.722 8.474 1377.548
+  angles 0 -3.948 0
+  m_rnPrefab "{EC0F4A5B20D56FB1}Prefabs/Vehicles/Wheeled/Kubelwagen/Kubelwagen_raid.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3874.243 18.177 2379.638
+  angles 0 -3.948 0
+  m_rnPrefab "{EC0F4A5B20D56FB1}Prefabs/Vehicles/Wheeled/Kubelwagen/Kubelwagen_raid.et"
+  respawnDelay 10000
+ }
+}
+GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHunt/CRF_CacheHunt_FlagPole.et" {
+ coords 3561.335 6.125 1902.698
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cache1 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3707.281 9.104 1426.613
+ }
+ cache2 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3652.61 7.255 1554.695
+ }
+ cache3 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3433.026 5.342 1666.452
+ }
+ cache4 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3416.677 19.562 2163.406
+ }
+ cache5 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3748.241 8.187 1052.047
+ }
+ cache6 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 3061.717 50.11 2186.459
+ }
+ cache7 {
+  components {
+   CRF_RaidItemComponent "{6AD510A957A1364D}" {
+    m_sItemName "Supply"
+   }
+  }
+  coords 4000.479 14.071 2243.723
+ }
+}

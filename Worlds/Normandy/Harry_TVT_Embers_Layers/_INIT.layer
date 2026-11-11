@@ -1,0 +1,383 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6AD311A940DBA999}" {
+     NavmeshFile "{47AAC67BC4008B4B}Worlds/Navmesh/WW2_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{4B5627BD3ECF8F8B}Worlds/Navmesh/WW2_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{69312D923A3C066E}Worlds/Navmesh/WW2_Low.nmn"
+    }
+   }
+  }
+ }
+ coords 4070.874 294.216 1613.829
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_AttritionGamemodeComponent "{6AD6150505FF0F7E}" {
+   m_fTeamAVictoryThreshold 90
+   m_fTeamBVictoryThreshold 90
+   m_bEndMissionOnVictory 0
+   m_fNotifyIncrementPercent 25
+   m_bCountVehicles 0
+  }
+  CRF_CacheHuntGamemodeManager "{6AD6150F3DBF76B6}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_aCacheSpawnPointNames {
+    "ch1"
+    "ch2"
+    "ch3"
+   }
+   m_fRandomMaxRadius 760
+   m_fSearchAreaRadius 500
+   m_fSearchMinRadiusFactor 0.3
+   m_fSearchNarrowCompleteAt 0.8
+   m_bRespawnOnCacheDestroyed 0
+  }
+  CRF_RaidGamemodeComponent "{6AD510A997EC656B}" {
+   m_fWinThresholdPercent 80
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 19
+     m_iStartingMinutes 24
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 70
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AD615019EA64DAF}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "French resistance in the Normandy region have been smuggling in British and US weaponry, staging for something big. This morning, the Germans grabbed a comrade off the street and beat him until he talked. The time to act is now, before they can destroy the weapons caches. "\
+   ""\
+   "The French BLUFOR are trying to destroy 80% of the raid objective before German OPFOR destroy all 3 weapons caches. There is not a planned respawn. "\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Demo"\
+   ""\
+   "OPFOR Composition:  Infantry"\
+   "OPFOR Assets: PLT MMG, Trucks"\
+   ""\
+   "Time: 70 Min"\
+   "Weather: Dusk Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AD615019EA64032}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Destroy 80% of the raid objectives, or eliminate the enemy, and prevent the enemy from destroying all 3 of your weapons caches."\
+   ""\
+   "INTENT"\
+   "You are an irregular force, and while you have less firepower, you brought more explosive. Balance attack and defense, and don't get over your head. "\
+   ""\
+   "EXECUTION"\
+   "If you just hold up at a cache, the enemy will destroy you with superior firepower. "
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AD615019EA647AD}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Destroy the three weapons caches, or eliminate the enemy. Prevent the enemy from destroying 80% of the raid objectives."\
+   ""\
+   "INTENT"\
+   "You are the regular force, and able to bring to bear more firepower. Balance attack and defend to get the job done."\
+   ""\
+   "EXECUTION"\
+   "If you simply sit in a building, the enemy will leverage their larger explosive array to destroy you. "
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AD615019EA646D5}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AD615019EA64405}" {
+   m_sTitle "Administration"
+   m_sTextData "There is no planned respawn. "
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 3
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6AD61504DD97DF2D}" {
+   m_sCallsign "Area Commander"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDICAL_OFFICER
+    RADIO_TELEPHONE_OPERATOR
+    RADIO_TELEPHONE_OPERATOR
+    RADIO_TELEPHONE_OPERATOR
+    RADIO_TELEPHONE_OPERATOR
+    RADIO_TELEPHONE_OPERATOR
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97DD3C}" {
+   m_sCallsign "Les Loups"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97DDE9}" {
+   m_sCallsign "Les Sangliers"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97DCDE}" {
+   m_sCallsign "Les Fantômes"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D3A0}" {
+   m_sCallsign "Les Corbeaux"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D292}" {
+   m_sCallsign "Les Hérisson"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D17C}" {
+   m_sCallsign "Les Serpents"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6AD61504DD97D0DB}" {
+   m_sCallsign "PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    RADIO_TELEPHONE_OPERATOR
+    MEDICAL_OFFICER
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D7B9}" {
+   m_sCallsign "Wachgruppe 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN_ANTITANK
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D685}" {
+   m_sCallsign "Wachgruppe 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN_ANTITANK
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD61504DD97D56D}" {
+   m_sCallsign "Wachgruppe 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RIFLEMAN_ANTITANK
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{46017A6CFFE15B63}Configs/Gearscripts/Custom/Harry/40s/COA_GS_FR_Resistance.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F3720D34C47F594C}Configs/Gearscripts/Standard/40s/COA_GS_Germany_Early_War.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6AD615001861476F" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
