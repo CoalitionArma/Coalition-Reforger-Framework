@@ -31,7 +31,11 @@ modded class COA_Gamemode
 //=============================================================================================================================================================================================================================================================================================================================================================
 	
 	protected CRF_LoggingManager m_LoggingManager;
-	
+
+	// Server: players who joined in progress and still have their one forward deploy (see
+	// NotifyJoinInProgressStatus, CRF_COA_PlayerRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy)
+	protected ref set<int> m_aJIPForwardDeployEligible = new set<int>();
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 INITIALIZATION AND SETUP
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -200,9 +204,26 @@ modded class COA_Gamemode
 		if (!pc)
 			return;
 
+		// The server's own record - forward deploy is checked against this, not the client's flag
+		m_aJIPForwardDeployEligible.Insert(playerId);
+
 		COA_PlayerRplToOwnerManager rplManager = COA_PlayerRplToOwnerManager.Cast(pc.FindComponent(COA_PlayerRplToOwnerManager));
 		if (rplManager)
 			rplManager.SetJoinInProgress();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: whether this player joined in progress and hasn't used their forward deploy yet
+	bool IsJIPForwardDeployEligible(int playerId)
+	{
+		return m_aJIPForwardDeployEligible.Contains(playerId);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: a JIP player gets one forward deploy - spent once a deploy is accepted
+	void ConsumeJIPForwardDeploy(int playerId)
+	{
+		m_aJIPForwardDeployEligible.RemoveItem(playerId);
 	}
 	
 //=============================================================================================================================================================================================================================================================================================================================================================

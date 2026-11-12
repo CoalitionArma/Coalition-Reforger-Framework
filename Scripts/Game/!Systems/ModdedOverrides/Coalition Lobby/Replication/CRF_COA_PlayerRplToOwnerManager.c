@@ -235,6 +235,30 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Server: answer this player's forward deploy request. Called from
+	//! CRF_COA_PlayerRplToAuthorityManager.RpcAsk_RequestJIPForwardDeploy.
+	//! \param[in] accepted true = the teleport is queued; false = refused, message says why
+	//! \param[in] stillEligible whether the player can try again (false once used, or never a JIP player)
+	void SendJIPForwardDeployResult(bool accepted, bool stillEligible, string message)
+	{
+		if (IsLocallyOwned())
+			RpcDo_JIPForwardDeployResult(accepted, stillEligible, message);
+		else
+			Rpc(RpcDo_JIPForwardDeployResult, accepted, stillEligible, message);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_JIPForwardDeployResult(bool accepted, bool stillEligible, string message)
+	{
+		COA_PlayerController pc = COA_PlayerController.Cast(GetOwner());
+		if (pc)
+			pc.SetCanForwardDeploy(stillEligible);
+
+		CRF_JIPForwardDeployMenu.OnServerResult(accepted, message);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Sends one map marker (of any faction) to this player's AAR map. Called by CRF_AARManager.
 	void ReceiveAARMarker(SCR_MapMarkerBase marker)
 	{
