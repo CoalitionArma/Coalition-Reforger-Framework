@@ -2100,7 +2100,9 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	//! Handles a JIP (Join In Progress) forward deploy request: teleports the requesting player to the
 	//! selected friendly group's current live position, unless that unit is in/near contact with the enemy.
-	//! Only reachable while JIP is enabled (Disable JIP off) and SafeStart has ended - see COA_PlayerController.
+	//! Each player who joined in progress gets one accepted deploy (CRF_COA_Gamemode keeps the record),
+	//! while JIP is enabled (Disable JIP off) and the round is live. Every request is answered (see
+	//! ReplyJIPForwardDeploy) so the menu can show the outcome and let the player pick again.
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestJIPForwardDeploy(RplId groupId, int playerId)
 	{
@@ -2108,43 +2110,67 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 
 		LogTelemetry("RpcAsk_RequestJIPForwardDeploy", COA_BandwidthTelemetryManager.EstimateSize_Int() * 2);
 
-		if (!m_Gamemode || m_Gamemode.m_bLockUnusedSlots)
+		if (!m_Gamemode || m_Gamemode.m_bLockUnusedSlots || !m_SafestartManager || !m_SafestartManager.IsRoundLive() || !m_SlottingManager)
+		{
+			ReplyJIPForwardDeploy(playerId, false, "Forward deploy isn't available right now.");
 			return;
+		}
 
-		if (!m_SafestartManager || m_SafestartManager.GetSafestartStatus())
+		if (!m_Gamemode.IsJIPForwardDeployEligible(playerId))
+		{
+			ReplyJIPForwardDeploy(playerId, false, "Forward deploy is only for players who join in progress, and only once.");
 			return;
-
-		if (!m_SlottingManager)
-			return;
+		}
 
 		Faction requesterFaction = m_SlottingManager.GetPlayerSlotFaction(playerId, true);
 		if (!requesterFaction)
+		{
+			ReplyJIPForwardDeploy(playerId, false, "You need a slot to forward deploy.");
 			return;
+		}
 
 		SCR_AIGroup targetGroup = COA_EntityHelper.GetGroupFromRplId(groupId);
 		if (!targetGroup || !targetGroup.GetFaction() || targetGroup.GetFaction().GetFactionKey() != requesterFaction.GetFactionKey())
+		{
+			ReplyJIPForwardDeploy(playerId, false, "That unit isn't on your side.");
 			return;
+		}
 
 		vector targetPosition;
 		if (!COA_EntityHelper.GetGroupOrigin(targetGroup, targetPosition))
 		{
-			if (m_RplBroadcastManager)
-				m_RplBroadcastManager.ShowPlayerHint(playerId, "Your unit could not be located.");
+			ReplyJIPForwardDeploy(playerId, false, string.Format("%1 has nobody alive to deploy to.", targetGroup.GetCustomNameWithOriginal()));
 			return;
 		}
 
 		COA_ForwardDeployManager forwardDeployManager = COA_ForwardDeployManager.GetInstance();
 		if (!forwardDeployManager)
-			return;
-
-		if (forwardDeployManager.IsPositionNearEnemy(targetPosition, requesterFaction))
 		{
-			if (m_RplBroadcastManager)
-				m_RplBroadcastManager.ShowPlayerHint(playerId, "Your unit is in contact with the enemy. Forward deploy is unavailable.");
+			ReplyJIPForwardDeploy(playerId, false, "Forward deploy isn't available right now.");
 			return;
 		}
 
+		if (forwardDeployManager.IsPositionNearEnemy(targetPosition, requesterFaction))
+		{
+			ReplyJIPForwardDeploy(playerId, false, string.Format("%1 is in contact with the enemy. Pick another unit or try again shortly.", targetGroup.GetCustomNameWithOriginal()));
+			return;
+		}
+
+		m_Gamemode.ConsumeJIPForwardDeploy(playerId);
 		forwardDeployManager.CreateForwardDeployRequest(playerId, targetPosition);
+		ReplyJIPForwardDeploy(playerId, true, string.Format("Deploying to %1.", targetGroup.GetCustomNameWithOriginal()));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Server: tell the requesting player how their forward deploy went
+	protected void ReplyJIPForwardDeploy(int playerId, bool accepted, string message)
+	{
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.Cast(GetOwner().FindComponent(COA_PlayerRplToOwnerManager));
+		if (!ownerManager)
+			return;
+
+		bool stillEligible = m_Gamemode && m_Gamemode.IsJIPForwardDeployEligible(playerId);
+		ownerManager.SendJIPForwardDeployResult(accepted, stillEligible, message);
 	}
 
 	//------------------------------------------------------------------------------------------------
