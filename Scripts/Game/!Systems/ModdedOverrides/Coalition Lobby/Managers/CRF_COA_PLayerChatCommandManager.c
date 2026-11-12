@@ -63,20 +63,28 @@ modded class COA_PlayerChatCommandManager
 
 	//------------------------------------------------------------------------------------------------
 	//! Reopens the JIP forward deploy menu (e.g. if the player closed it earlier via the back action).
+	//! Only for players who joined in progress and haven't deployed yet - the server checks again.
 	//! Usage: /forwarddeploy or /fd
 	void ReopenForwardDeployMenu(SCR_ChatPanel panel, string data)
 	{
 		SCR_ChatComponent chatComponent;
-		PlayerController pc = GetGame().GetPlayerController();
+		COA_PlayerController pc = COA_PlayerController.Cast(GetGame().GetPlayerController());
 		if (pc)
 			chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 
 		COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 		COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-		if (!gamemode || !safestartManager || gamemode.m_bLockUnusedSlots || safestartManager.GetSafestartStatus())
+		if (!gamemode || !safestartManager || gamemode.m_bLockUnusedSlots || !safestartManager.IsRoundLive())
 		{
 			if (chatComponent)
 				chatComponent.ShowMessage("Forward deploy is not available right now.");
+			return;
+		}
+
+		if (!pc || !pc.CanForwardDeploy())
+		{
+			if (chatComponent)
+				chatComponent.ShowMessage("Forward deploy is only for players who join in progress, and only once.");
 			return;
 		}
 
