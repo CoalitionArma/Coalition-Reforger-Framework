@@ -99,7 +99,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Destroy 80% of the raid objectives, or eliminate the enemy, and prevent the enemy from destroying all 3 of your weapons caches."\
    ""\
    "INTENT"\
-   "You are an irregular force, and while you have less firepower, you brought more explosive. Balance attack and defense, and don't get over your head. "\
+   "You are an irregular force, and while you have less firepower, you brought more explosives. Balance attack and defense, and don't get in over your head. "\
    ""\
    "EXECUTION"\
    "If you just hold up at a cache, the enemy will destroy you with superior firepower. "
@@ -140,7 +140,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6AD615019EA64405}" {
    m_sTitle "Administration"
-   m_sTextData "There is no planned respawn. "
+   m_sTextData "There is no planned respawn. "\
+   ""\
+   "Raid caches need explosives, but cache hunt caches are interactable. "
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
@@ -331,7 +333,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableBFT 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{F3720D34C47F594C}Configs/Gearscripts/Standard/40s/COA_GS_Germany_Early_War.conf"
