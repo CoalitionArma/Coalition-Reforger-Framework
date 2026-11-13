@@ -9,14 +9,14 @@ $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/Ve
  {
   coords 2852 179.4 2150
   angles 0 321 0
-  m_rVehicle "{D21F4B92BB8228FC}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM_Green.et"
+  m_rVehicle "{70BF53CF0F4D103F}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM.et"
   m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 999
  }
  {
   coords 2864 179.5 2165
   angles 0 321 0
-  m_rVehicle "{D21F4B92BB8228FC}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM_Green.et"
+  m_rVehicle "{70BF53CF0F4D103F}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM.et"
   m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 999
  }
