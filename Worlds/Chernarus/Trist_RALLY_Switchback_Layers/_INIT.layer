@@ -471,10 +471,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{5F3B91C27D4E9201}Configs/Gearscripts/Standard/Specials/Rally/COA_GS_RallyCrew.conf"
-  m_bEnableBFT 1
-  m_bEnableLeadershipRadios 1
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
-  m_bEnableRTORadios 1
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
