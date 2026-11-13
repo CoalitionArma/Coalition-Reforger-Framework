@@ -1,0 +1,27 @@
+SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ ID "1C2AACE64BC94EBD"
+ components {
+  ActionsManagerComponent "{1D12AB80FACD4607}" {
+   ActionContexts {
+    UserActionContext "{A37D1BA9759F4E60}" {
+     ContextName "breach"
+     Position PointInfo "{A37D1BA9759F4E61}" {
+      Offset 0 2.6 -1.6
+     }
+     Radius 2.5
+    }
+   }
+   additionalActions {
+    CRF_BreachChargeAction "{A37D1BA9759F4E62}" {
+     ParentContextList {
+      "breach"
+     }
+     UIInfo UIInfo "{A37D1BA9759F4E63}" {
+      Name "Place breaching charge"
+     }
+     Duration 6
+    }
+   }
+  }
+ }
+}

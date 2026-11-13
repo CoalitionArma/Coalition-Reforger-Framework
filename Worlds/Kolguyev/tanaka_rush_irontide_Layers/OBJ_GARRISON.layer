@@ -1,0 +1,54 @@
+$grp StaticModelEntity : "{01AE5FD77A9A4C21}Prefabs/Structures/Military/Camps/TentSmallUS_01/TentSmallUS_01.et" {
+ {
+  coords 7640 208.156 6835
+ }
+ {
+  coords 7636 208.156 6837
+  angles 0 90 0
+ }
+ {
+  coords 7606 219.451 6829
+  angles -33.324 -9.789 17.436
+ }
+ {
+  coords 7610 217.381 6821
+  angles 26.32 12.572 26.701
+ }
+ {
+  coords 7610 217.219 6815
+ }
+}
+GenericEntity irontide_garrison_flag : "{1A8791C2BC2B8B75}Prefabs/Structures/Military/Flags/FlagPole_01/FlagPole_01_empty.et" {
+ coords 7652 205.718 6838
+ angles 21.291 1.047 2.881
+}
+$grp SCR_DestructibleBuildingEntity : "{3F91DEEC9C78E473}Prefabs/Structures/Military/Houses/GuardHouse_01/GuardHouse_01.et" {
+ irontide_garrison_hq {
+  coords 7635 0 6845
+ }
+ irontide_garrison_hut_s {
+  coords 7647 0 6811
+ }
+ irontide_garrison_hut_w {
+  coords 7677.98 0 6807.898
+  angles -1.608 -84.423 -1.954
+ }
+}
+$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ {
+  coords 7690 208.875 6826
+  angles -0.895 90.014 -0.895
+ }
+ {
+  coords 7690 208.562 6834
+  angles 0 90 -1.79
+ }
+ {
+  coords 7690 207.688 6852
+  angles 0 90 -1.79
+ }
+ {
+  coords 7690 207.906 6860
+  angles 0 90 1.79
+ }
+}

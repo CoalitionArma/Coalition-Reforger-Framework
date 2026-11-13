@@ -458,8 +458,7 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		vector oldAngles = flag.GetAngles();
 		float oldYaw = oldAngles[1];
 
-		flag.SetOrigin(marker.GetOrigin());
-		flag.SetAngles(marker.GetAngles());
+		CRF_SpecialsHelper.MoveSpawnPoint(flag, marker);
 
 		if (m_bVehiclesFollowSpawns)
 			MoveVehicleSpawners(factionKey, oldFlag, oldYaw, flag);
