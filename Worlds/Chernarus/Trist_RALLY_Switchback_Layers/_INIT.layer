@@ -3,6 +3,250 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  CRF_RallyPaceNotesComponent "{6B1113DA00000002}" {
+   m_aCalls {
+    CRF_RallyPaceNote "{6B1113DA00000900}" {
+     m_vPosition 10240.203 6 1602.48
+     m_sCall "Left 3, and left 3 long, and left 1, 250"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000901}" {
+     m_vPosition 10091.125 6 1790.512
+     m_sCall "Caution, at junction square right, 250"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000902}" {
+     m_vPosition 10021.926 6 2021.464
+     m_sCall "Caution, at junction square right, 300"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000903}" {
+     m_vPosition 10282.263 5.625 2143.03
+     m_sCall "Left 5, 60"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000904}" {
+     m_vPosition 10388.029 5.894 2217.61
+     m_sCall "Right 5, and square left at junction, into right 5 tightens at junction, 50"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000905}" {
+     m_vPosition 10465.316 6 2472.31
+     m_sCall "At junction right 5 opens, and steep uphill, into left 4 long, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000906}" {
+     m_vPosition 10499.597 9.57 2647.76
+     m_sCall "Crest, 150"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000907}" {
+     m_vPosition 10401.659 10.057 2751.349
+     m_sCall "Right 4, into left 4 opens, into right 3 opens, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000908}" {
+     m_vPosition 10260.923 15.594 2919.648
+     m_sCall "Left 4 opens, into hairpin right at junction, into steep uphill, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000909}" {
+     m_vPosition 10209.488 23.328 3106.985
+     m_sCall "Onto dirt, into left 6, 350"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090A}" {
+     m_vPosition 10463.973 47.967 2808.452
+     m_sCall "Left 4, into right 6 opens, into steep downhill, 70"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090B}" {
+     m_vPosition 10567.634 44.853 2690.875
+     m_sCall "At junction hairpin left, into right 4 opens, 90"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090C}" {
+     m_vPosition 10682.324 33.746 2704.463
+     m_sCall "Steep uphill, into right 6 tightens, into left 5, 150"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090D}" {
+     m_vPosition 10794.203 56.464 2925.662
+     m_sCall "Crest, into right 3 opens, and left 5 long, 200"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090E}" {
+     m_vPosition 10785.583 98.395 3295.369
+     m_sCall "Left 6, 90"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000090F}" {
+     m_vPosition 10719.442 119.634 3424.954
+     m_sCall "Right 4, into left 5 tightens, into right 3 opens, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000910}" {
+     m_vPosition 10729.433 144.455 3663.706
+     m_sCall "Left 3, 200"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000911}" {
+     m_vPosition 10824.755 193.694 3891.711
+     m_sCall "Left 3 tightens, 60"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000912}" {
+     m_vPosition 10792.208 218.446 4004.483
+     m_sCall "Right 3 long tightens, 100"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000913}" {
+     m_vPosition 10872.023 275.062 4104.912
+     m_sCall "Left 6, and left 4 tightens, into steep downhill, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000914}" {
+     m_vPosition 11060.693 289.085 4100.123
+     m_sCall "Left 5, into right 6, and left 6, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000915}" {
+     m_vPosition 11159.89 264.401 4319.586
+     m_sCall "Right 4 opens, into steep uphill, 90"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000916}" {
+     m_vPosition 11188.354 269.088 4409.1
+     m_sCall "Left 6, and hairpin right at junction, and right 5, 30"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000917}" {
+     m_vPosition 11350.174 227.368 4536.496
+     m_sCall "Left 4 long, 150"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000918}" {
+     m_vPosition 11651.974 187.594 4563.254
+     m_sCall "Right 5, and steep downhill, and right 5 opens at junction, 50"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000919}" {
+     m_vPosition 12003.653 177.141 4571.094
+     m_sCall "Left 5, into steep uphill, 70"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091A}" {
+     m_vPosition 12089.235 179.883 4538.788
+     m_sCall "Right 3 tightens, into left 5, into right 3, 30"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091B}" {
+     m_vPosition 12265.168 220.276 4490.496
+     m_sCall "Right 5 tightens, into crest, into steep downhill, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091C}" {
+     m_vPosition 12347.297 227.622 4478.622
+     m_sCall "At junction left 3, 150"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091D}" {
+     m_vPosition 12505.434 192.918 4432.902
+     m_sCall "At junction right 4 opens, into left 6 opens, and hairpin left at junction, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091E}" {
+     m_vPosition 12769.194 173.044 4424.565
+     m_sCall "Onto asphalt, 100"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000091F}" {
+     m_vPosition 12694.651 161.078 4472.767
+     m_sCall "Right 3 long, into left 4 tightens, into steep uphill, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000920}" {
+     m_vPosition 12631.62 139.57 4635.286
+     m_sCall "Right 1, into crest, and left 3 long, 100"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000921}" {
+     m_vPosition 12676.018 114.802 4857.781
+     m_sCall "Left 5, into hairpin right, into right 4 tightens, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000922}" {
+     m_vPosition 12724.886 86.043 4885.429
+     m_sCall "Hairpin left, into right 4, and right 5, 20"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000923}" {
+     m_vPosition 12830.953 69.42 5014.181
+     m_sCall "Left 6, 300"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000924}" {
+     m_vPosition 13109.976 25.103 5241.658
+     m_sCall "Left 6, and right 5 tightens, into right 2 at junction, 60"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000925}" {
+     m_vPosition 13301.395 4.981 5426.435
+     m_sCall "At junction square right, 100"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000926}" {
+     m_vPosition 13385.487 5.906 5336.899
+     m_sCall "Long flat left, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000927}" {
+     m_vPosition 13462.865 5.901 4947.219
+     m_sCall "Long flat right, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000928}" {
+     m_vPosition 13497.834 6 4552.433
+     m_sCall "Long flat right, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000929}" {
+     m_vPosition 13387.868 6.31 4172.174
+     m_sCall "Long flat right, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092A}" {
+     m_vPosition 13116.058 4.718 3883.416
+     m_sCall "Flat out, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092B}" {
+     m_vPosition 12781.115 4.812 3664.779
+     m_sCall "Long flat right, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092C}" {
+     m_vPosition 12409.051 6.219 3532.758
+     m_sCall "Flat out, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092D}" {
+     m_vPosition 12012.303 6.495 3481.864
+     m_sCall "Flat out, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092E}" {
+     m_vPosition 11621.147 5.688 3399.559
+     m_sCall "Long flat left, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000092F}" {
+     m_vPosition 11249.328 5.75 3261.349
+     m_sCall "Long flat left, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000930}" {
+     m_vPosition 10977.446 6.094 2969.424
+     m_sCall "Long flat left, 400"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000931}" {
+     m_vPosition 10839.828 6 2608.101
+     m_sCall "Caution, at junction left 1, onto dirt, into right 5, 150"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000932}" {
+     m_vPosition 10830.514 4.768 2366.204
+     m_sCall "At junction right 1, into left 3, into steep uphill, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000933}" {
+     m_vPosition 10798.146 7.31 2309.501
+     m_sCall "Right 4 long tightens, into steep downhill, into left 5, 40"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000934}" {
+     m_vPosition 10658.089 6.393 2198.926
+     m_sCall "Onto asphalt, 70"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000935}" {
+     m_vPosition 10587.709 6 2165.872
+     m_sCall "At junction square left, 70"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000936}" {
+     m_vPosition 10565.727 5.969 2093.956
+     m_sCall "Right 2 tightens, off road, 250"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000937}" {
+     m_vPosition 10467.237 3.073 1873.536
+     m_sCall "Caution, right 2, back onto asphalt, 90"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000938}" {
+     m_vPosition 10388.803 4.631 1833.547
+     m_sCall "At junction square left, into left 6, into right 3 long, 50"
+    }
+    CRF_RallyPaceNote "{6B1113DA00000939}" {
+     m_vPosition 10332.506 6 1635.82
+     m_sCall "Right 3, 70"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000093A}" {
+     m_vPosition 10229.059 6 1604.247
+     m_sCall "Up the ramp, 90"
+    }
+    CRF_RallyPaceNote "{6B1113DA0000093B}" {
+     m_vPosition 10188.287 8.1 1613.222
+     m_sCall "Flying finish"
+    }
+   }
+  }
   CRF_RallyStageGamemodeComponent "{6AD939551172D65D}" {
    m_bRequireVehicle 1
    m_bTeamMode 1
@@ -52,6 +296,79 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    ""\
    "EXECUTION"\
    "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1113DA0000003E}" {
+   m_sTitle "Roadbook"
+   m_sTextData "Switchback - 15.4 km, point to point, start and finish on the Elektrozavodsk breakwater."\
+   ""\
+   "CO-DRIVER: at each checkpoint a hint gives you the calls for the road ahead. Every pace note is also on your map, numbered, as an orange dot at its corner. Read the next corners out early; the driver doesn't get them on screen."\
+   ""\
+   "Grades: 1 is the tightest corner, 6 the fastest; flat is flat out. Square: a 90 degree junction. Distances in metres to the next call; into and and mean it follows straight on."\
+   ""\
+   "0.08 km   Left 3, and left 3 long, and left 1, 250"\
+   "0.61 km   Caution, at junction square right, 250"\
+   "0.88 km   Caution, at junction square right, 300"\
+   "1.21 km   Left 5, 60"\
+   "1.35 km   Right 5, and square left at junction, into right 5 tightens at junction, 50"\
+   "1.68 km   At junction right 5 opens, and steep uphill, into left 4 long, 20"\
+   "1.87 km   Crest, 150"\
+   "2.02 km   Right 4, into left 4 opens, into right 3 opens, 20"\
+   "2.25 km   Left 4 opens, into hairpin right at junction, into steep uphill, 40"\
+   "2.45 km   Onto dirt, into left 6, 350"\
+   "2.86 km   Left 4, into right 6 opens, into steep downhill, 70"\
+   "3.02 km   At junction hairpin left, into right 4 opens, 90"\
+   "3.24 km   Steep uphill, into right 6 tightens, into left 5, 150"\
+   "3.49 km   Crest, into right 3 opens, and left 5 long, 200"\
+   "3.91 km   Left 6, 90"\
+   "4.05 km   Right 4, into left 5 tightens, into right 3 opens, 20"\
+   "4.31 km   Left 3, 200"\
+   "4.57 km   Left 3 tightens, 60"\
+   "4.70 km   Right 3 long tightens, 100"\
+   "5.04 km   Left 6, and left 4 tightens, into steep downhill, 20"\
+   "5.24 km   Left 5, into right 6, and left 6, 20"\
+   "5.49 km   Right 4 opens, into steep uphill, 90"\
+   "5.58 km   Left 6, and hairpin right at junction, and right 5, 30"\
+   "5.94 km   Left 4 long, 150"\
+   "6.30 km   Right 5, and steep downhill, and right 5 opens at junction, 50"\
+   "6.67 km   Left 5, into steep uphill, 70"\
+   "6.76 km   Right 3 tightens, into left 5, into right 3, 30"\
+   "6.95 km   Right 5 tightens, into crest, into steep downhill, 40"\
+   "7.03 km   At junction left 3, 150"\
+   "7.20 km   At junction right 4 opens, into left 6 opens, and hairpin left at junction, 20"\
+   "7.48 km   Onto asphalt, 100"\
+   "7.60 km   Right 3 long, into left 4 tightens, into steep uphill, 40"\
+   "7.81 km   Right 1, into crest, and left 3 long, 100"\
+   "8.09 km   Left 5, into hairpin right, into right 4 tightens, 40"\
+   "8.36 km   Hairpin left, into right 4, and right 5, 20"\
+   "8.67 km   Left 6, 300"\
+   "9.03 km   Left 6, and right 5 tightens, into right 2 at junction, 60"\
+   "9.32 km   At junction square right, 100"\
+   "9.49 km   Long flat left, 400"\
+   "9.89 km   Long flat right, 400"\
+   "10.29 km   Long flat right, 400"\
+   "10.69 km   Long flat right, 400"\
+   "11.09 km   Flat out, 400"\
+   "11.49 km   Long flat right, 400"\
+   "11.89 km   Flat out, 400"\
+   "12.29 km   Flat out, 400"\
+   "12.69 km   Long flat left, 400"\
+   "13.09 km   Long flat left, 400"\
+   "13.49 km   Long flat left, 400"\
+   "13.88 km   Caution, at junction left 1, onto dirt, into right 5, 150"\
+   "14.13 km   At junction right 1, into left 3, into steep uphill, 40"\
+   "14.20 km   Right 4 long tightens, into steep downhill, into left 5, 40"\
+   "14.40 km   Onto asphalt, 70"\
+   "14.48 km   At junction square left, 70"\
+   "14.58 km   Right 2 tightens, off road, 250"\
+   "14.85 km   Caution, right 2, back onto asphalt, 90"\
+   "14.95 km   At junction square left, into left 6, into right 3 long, 50"\
+   "15.20 km   Right 3, 70"\
+   "15.32 km   Up the ramp, 90"\
+   "15.37 km   Flying finish"
    m_aFactionKeys {
     "BLUFOR"
    }

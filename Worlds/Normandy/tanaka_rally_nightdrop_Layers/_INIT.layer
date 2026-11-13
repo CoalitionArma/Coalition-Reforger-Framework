@@ -1,0 +1,664 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0001}" {
+     NavmeshFile "{47AAC67BC4008B4B}Worlds/Navmesh/WW2_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{4B5627BD3ECF8F8B}Worlds/Navmesh/WW2_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{69312D923A3C066E}Worlds/Navmesh/WW2_Low.nmn"
+    }
+   }
+  }
+ }
+ coords 700 14.781 1100
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_RallyPaceNotesComponent "{6B1113D900000002}" {
+   m_aCalls {
+    CRF_RallyPaceNote "{6B1113D900000900}" {
+     m_vPosition 766.551 9.672 857.759
+     m_sCall "At junction left 1 long opens, into right 2 tightens, and left 3 tightens, 20"
+    }
+    CRF_RallyPaceNote "{6B1113D900000901}" {
+     m_vPosition 946.878 10.574 988.921
+     m_sCall "Right 1, into steep uphill, 60"
+    }
+    CRF_RallyPaceNote "{6B1113D900000902}" {
+     m_vPosition 976.921 15.671 1038.304
+     m_sCall "At junction right 6 tightens, into left 2 long tightens, into right 4 tightens, 20"
+    }
+    CRF_RallyPaceNote "{6B1113D900000903}" {
+     m_vPosition 1193.363 24.676 1025.897
+     m_sCall "Left 3, and left 4 opens, and right 4, 100"
+    }
+    CRF_RallyPaceNote "{6B1113D900000904}" {
+     m_vPosition 1343.689 23.242 1254.267
+     m_sCall "Right 2 opens, into left 2 long, into steep downhill, 300"
+    }
+    CRF_RallyPaceNote "{6B1113D900000905}" {
+     m_vPosition 1412.651 10.124 1564.069
+     m_sCall "Caution, left 2 tightens, into right 3, 250"
+    }
+    CRF_RallyPaceNote "{6B1113D900000906}" {
+     m_vPosition 1326.195 13.926 1888.392
+     m_sCall "Right 3 opens, and right 2 tightens, into left 2, 20"
+    }
+    CRF_RallyPaceNote "{6B1113D900000907}" {
+     m_vPosition 1343.513 10.031 2022.675
+     m_sCall "Right 3 opens, into left 5, 150"
+    }
+    CRF_RallyPaceNote "{6B1113D900000908}" {
+     m_vPosition 1466.618 22.744 2260.251
+     m_sCall "Right 2, into steep uphill, 300"
+    }
+    CRF_RallyPaceNote "{6B1113D900000909}" {
+     m_vPosition 1684.773 36.013 2432.381
+     m_sCall "Caution, at junction square right, and right 4 opens, into square right at junction, 20"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090A}" {
+     m_vPosition 1874.955 46.648 2359.466
+     m_sCall "Left 2, into steep downhill, 150"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090B}" {
+     m_vPosition 1867.643 31.51 2212.848
+     m_sCall "Left 5 tightens, 350"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090C}" {
+     m_vPosition 2058.769 23.46 1868.039
+     m_sCall "At junction left 3 opens, and right 5, into left 3 opens at junction, 150"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090D}" {
+     m_vPosition 2340.912 14.677 1762.61
+     m_sCall "At junction left 4, 80"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090E}" {
+     m_vPosition 2436.395 12.241 1859.16
+     m_sCall "Left 5 opens, into square right at junction, and right 2 tightens, 20"
+    }
+    CRF_RallyPaceNote "{6B1113D90000090F}" {
+     m_vPosition 2520.795 16.906 1976.182
+     m_sCall "Right 3 tightens, into left 4, into steep uphill, 200"
+    }
+    CRF_RallyPaceNote "{6B1113D900000910}" {
+     m_vPosition 2774.1 24.719 1921.12
+     m_sCall "Right 4, 100"
+    }
+    CRF_RallyPaceNote "{6B1113D900000911}" {
+     m_vPosition 2926.113 25.929 1842.682
+     m_sCall "Right 4 tightens, 150"
+    }
+    CRF_RallyPaceNote "{6B1113D900000912}" {
+     m_vPosition 2996.85 22.856 1639.899
+     m_sCall "Steep downhill, into left 4 opens, 70"
+    }
+    CRF_RallyPaceNote "{6B1113D900000913}" {
+     m_vPosition 3087.614 10.166 1494.935
+     m_sCall "Left 5, into right 4 tightens, into left 3 long, 100"
+    }
+    CRF_RallyPaceNote "{6B1113D900000914}" {
+     m_vPosition 3393.897 8.5 1422.269
+     m_sCall "At junction right 4 opens, into crest, and left 4 at junction, 90"
+    }
+    CRF_RallyPaceNote "{6B1113D900000915}" {
+     m_vPosition 3616.924 8.5 1423.453
+     m_sCall "Onto cobbles, and right 3 opens, into hairpin left at junction, 100"
+    }
+    CRF_RallyPaceNote "{6B1113D900000916}" {
+     m_vPosition 3739.416 8.5 1505.143
+     m_sCall "Left 5, and crest, 100"
+    }
+    CRF_RallyPaceNote "{6B1113D900000917}" {
+     m_vPosition 3654.494 8.018 1636.771
+     m_sCall "Flying finish"
+    }
+   }
+  }
+  CRF_RallyStageGamemodeComponent "{6B1113D90000003B}" {
+   m_fCheckpointRadius 25
+   m_bRequireVehicle 1
+   m_iMaxStandingsRows 8
+   m_bTeamMode 1
+   m_fFirstStartDelay 60
+   m_fStartInterval 30
+   m_fJumpStartPenalty 10
+   m_bRandomStartOrder 0
+   m_bSeatCrewsInCars 1
+   m_fCrewCarSearchRadius 300
+   m_bHoldUntilCalledUp 1
+   m_fCallUpSeconds 0
+   m_fMoveUpSeconds 30
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 1
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1113D90000003C}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Normandy, the 6th of June 1944, one o'clock in the morning: the hour the paratroopers came down around Sainte Mere. Clear sky, moonlight, and nothing else to see by."\
+   ""\
+   "The tournament's final stage. It starts in the fields above La Rue and runs 5.9 km east on narrow dirt lanes between the hedgerows, over the high ground in the middle of the map and down into Sainte Mere, finishing on the cobbles of the main street."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1113D90000003D}" {
+   m_sTitle "Crew Briefing"
+   m_sTextData "MISSION"\
+   "Set the fastest stage time, start to finish."\
+   ""\
+   "EXECUTION"\
+   "Crews of two: a driver and a co-driver. You spawn in your crew's car on the farm road north of La Rue, driver at the wheel. The car is held where it stands: crews are called up in slot order, move up to the line when told, and leave one at a time, 30 seconds apart (15 with more than 20 players)."\
+   ""\
+   "It's night. Turn your headlights on before your start."\
+   ""\
+   "DRIVER: you won't get the pace notes on screen. Your co-driver calls them, so listen to them and keep your eyes on the road. The full roadbook is in the next briefing tab."\
+   ""\
+   "CO-DRIVER: at each checkpoint a hint gives you the calls for the road ahead. Every pace note is also on your map, numbered, as an orange dot at its corner, along with the checkpoints. Read the next corners out early."\
+   ""\
+   "The lanes are narrow and side roads are blocked with tyre stacks. Every checkpoint has to be crossed in order. Jumping your start costs 10 seconds. After the finish, slow down and pull over in the town: keep the main street clear for the crews behind you."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1113D90000003E}" {
+   m_sTitle "Roadbook"
+   m_sTextData "Night Drop - 5.89 km, point to point: dirt lanes, then the cobbles of Sainte Mere to the finish."\
+   ""\
+   "Grades: 1 is the tightest corner, 6 the fastest. Square: a 90 degree junction. Distances in metres to the next call; into and and mean it follows straight on."\
+   ""\
+   "0.03 km   At junction left 1 long opens, into right 2 tightens, and left 3 tightens, 20"\
+   "0.31 km   Right 1, into steep uphill, 60"\
+   "0.38 km   At junction right 6 tightens, into left 2 long tightens, into right 4 tightens, 20"\
+   "0.68 km   Left 3, and left 4 opens, and right 4, 100"\
+   "0.96 km   Right 2 opens, into left 2 long, into steep downhill, 300"\
+   "1.32 km   Caution, left 2 tightens, into right 3, 250"\
+   "1.69 km   Right 3 opens, and right 2 tightens, into left 2, 20"\
+   "1.83 km   Right 3 opens, into left 5, 150"\
+   "2.11 km   Right 2, into steep uphill, 300"\
+   "2.40 km   Caution, at junction square right, and right 4 opens, into square right at junction, 20"\
+   "2.63 km   Left 2, into steep downhill, 150"\
+   "2.79 km   Left 5 tightens, 350"\
+   "3.19 km   At junction left 3 opens, and right 5, into left 3 opens at junction, 150"\
+   "3.54 km   At junction left 4, 80"\
+   "3.68 km   Left 5 opens, into square right at junction, and right 2 tightens, 20"\
+   "3.85 km   Right 3 tightens, into left 4, into steep uphill, 200"\
+   "4.13 km   Right 4, 100"\
+   "4.32 km   Right 4 tightens, 150"\
+   "4.54 km   Steep downhill, into left 4 opens, 70"\
+   "4.72 km   Left 5, into right 4 tightens, into left 3 long, 100"\
+   "5.07 km   At junction right 4 opens, into crest, and left 4 at junction, 90"\
+   "5.30 km   Onto cobbles, and right 3 opens, into hairpin left at junction, 100"\
+   "5.65 km   Left 5, and crest, 100"\
+   "5.81 km   Flying finish"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1113D90000003F}" {
+   m_sTitle "Administration"
+   m_sTextData "Rally stage, the tournament final. No respawns: a crashed crew is out. Night all stage long; turn your headlights on."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "CIV"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6B1113D900000018}" {
+   m_sCallsign "CAR 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000019}" {
+   m_sCallsign "CAR 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001A}" {
+   m_sCallsign "CAR 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001B}" {
+   m_sCallsign "CAR 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001C}" {
+   m_sCallsign "CAR 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001D}" {
+   m_sCallsign "CAR 6"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001E}" {
+   m_sCallsign "CAR 7"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000001F}" {
+   m_sCallsign "CAR 8"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000020}" {
+   m_sCallsign "CAR 9"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000021}" {
+   m_sCallsign "CAR 10"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000022}" {
+   m_sCallsign "CAR 11"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000023}" {
+   m_sCallsign "CAR 12"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000024}" {
+   m_sCallsign "CAR 13"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000025}" {
+   m_sCallsign "CAR 14"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000026}" {
+   m_sCallsign "CAR 15"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000027}" {
+   m_sCallsign "CAR 16"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000028}" {
+   m_sCallsign "CAR 17"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000029}" {
+   m_sCallsign "CAR 18"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002A}" {
+   m_sCallsign "CAR 19"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002B}" {
+   m_sCallsign "CAR 20"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002C}" {
+   m_sCallsign "CAR 21"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002D}" {
+   m_sCallsign "CAR 22"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002E}" {
+   m_sCallsign "CAR 23"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D90000002F}" {
+   m_sCallsign "CAR 24"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000030}" {
+   m_sCallsign "CAR 25"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000031}" {
+   m_sCallsign "CAR 26"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000032}" {
+   m_sCallsign "CAR 27"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000033}" {
+   m_sCallsign "CAR 28"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000034}" {
+   m_sCallsign "CAR 29"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113D900000035}" {
+   m_sCallsign "CAR 30"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_bSafestartEnabledOnMissionStart 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{6B1113D900000037}" {
+  m_rGearScript "{5F3B91C27D4E9201}Configs/Gearscripts/Standard/Specials/Rally/COA_GS_RallyCrew.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{6B1113D900000038}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{6B1113D900000039}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{6B1113D900000036}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6B1113D90000003A" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp GameEntity {
+ rally_start {
+  coords 736.944 12.341 873.546
+ }
+ rally_cp1 {
+  coords 950.926 11.652 1008.39
+ }
+ rally_cp2 {
+  coords 1206.161 23.254 1035.256
+ }
+ rally_cp3 {
+  coords 1380.976 18.946 1318.476
+ }
+ rally_cp4 {
+  coords 1409.034 9.815 1589.817
+ }
+ rally_cp5 {
+  coords 1311.358 12.524 1931.932
+ }
+ rally_cp6 {
+  coords 1458.103 20.751 2231.485
+ }
+ rally_cp7 {
+  coords 1696.668 37.144 2439.764
+ }
+ rally_cp8 {
+  coords 1862.649 34.23 2234.274
+ }
+ rally_cp9 {
+  coords 2028.999 22.08 1935.738
+ }
+ rally_cp10 {
+  coords 2273.259 15.347 1740.684
+ }
+ rally_cp11 {
+  coords 2486.743 16.074 1967.946
+ }
+ rally_cp12 {
+  coords 2799.35 25.198 1927.319
+ }
+ rally_cp13 {
+  coords 2993.904 23.772 1663.717
+ }
+ rally_cp14 {
+  coords 3198.118 5.076 1435.725
+ }
+ rally_cp15 {
+  coords 3512.343 6.901 1408.539
+ }
+ rally_cp16 {
+  coords 3771.058 8.5 1447.256
+ }
+ rally_end {
+  coords 3593.049 4.063 1694.015
+ }
+}
