@@ -1,0 +1,20 @@
+{
+ "files": {
+  "Missions/BelleauWood/tanaKa_1112_TVT80_HoldtheCrossroads.conf": "5d44c25ece73f9c1e5c2657c88dbebca16fabc64c393b07af040e4bb85919e4c",
+  "Missions/BelleauWood/tanaKa_1112_TVT80_HoldtheCrossroads.conf.meta": "49b07cd8c667ccf56d2a89f9865c89e8173c653e066fdb6291c84fcbd6474275",
+  "Missions/BelleauWood/tanaKa_1112_TVT81_HoldtheCrossroads.conf": "ec95ddbb4a6d67f43ceb4ba0bed695a9b9c10bb62bb58c361cea1dafb11ce775",
+  "Missions/BelleauWood/tanaKa_1112_TVT81_HoldtheCrossroads.conf.meta": "912659b2e6152b1cab7ae3a8cdb6085d10b45ef3f6d77fe8151c87d8a848faa4",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads.ent": "5b7c397b7061084be21716f729aa7441e912f9bc5f370d5d8f8ad8e61708434c",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads.ent.meta": "ad3adfb12a29bdfa4ee2d87b2c12cb0e624e05b2c5a66440eeb8a51aded7799b",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/GameBorderS.layer": "24c951404bf3140eb6ec85f398614dac3545b1466d9e69da467e2fadcf072bd0",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/MARKERS.layer": "5344eb6976cc76cdb44a5b9d42aad968848903d656d4758afd1a5a900bd82e28",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/OBJECTIVES.layer": "a282f206c07a3720c36fb257846bdf77084d146e8df02c80de1398a739a07d52",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/SPAWNPOINTS.layer": "6573fb9f986b4e5ee8b0750d792428b66347a36b659cffb939ff0e6867456812",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/SPAWNPOINTSGROUPS.layer": "473caef77b4777314f2dacacb115335b819b11eba7ffb3d84876ec02ba03c590",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/VEHICLES.layer": "03f41236ddab5662b5e7675d863900c9a1313ee13ab89ff2a4193684243ef420",
+  "Worlds/BelleauWood/tanaka_tvt_crossroads_Layers/_INIT.layer": "f4d4cae98f817c3c8d8dbc1556f307141418b0d9928e23dbeec408df00cde0d7"
+ },
+ "header": "Missions/BelleauWood/tanaKa_1112_TVT81_HoldtheCrossroads.conf",
+ "note": "Files listed here are owned by a missionkit spec; see CRF-MissionKit README (Layer ownership).",
+ "world": "Worlds/BelleauWood/tanaka_tvt_crossroads.ent"
+}

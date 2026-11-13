@@ -805,7 +805,7 @@ class CRF_InterdictionGamemodeComponent : SCR_BaseGameModeComponent
 	//! Revealed or not.
 	protected void TickHQ()
 	{
-		bool huntersInside = CountPlayersWithin(m_aHunters, m_vHQPosition, m_fHQRadius) > 0;
+		bool huntersInside = CRF_SpecialsHelper.CountPlayersWithin(m_aHunters, m_vHQPosition, m_fHQRadius) > 0;
 		if (huntersInside && CountConsciousInHQ(m_sOpforFaction) <= m_iHQClearedMaxOpfor)
 			m_fHQSecureProgress += TICK_SECONDS;
 		else
@@ -845,7 +845,7 @@ class CRF_InterdictionGamemodeComponent : SCR_BaseGameModeComponent
 	protected void TickExtraction()
 	{
 		int alive = m_aHunters.Count();
-		int atBase = CountPlayersWithin(m_aHunters, m_vBasePosition, m_fBaseRadius);
+		int atBase = CRF_SpecialsHelper.CountPlayersWithin(m_aHunters, m_vBasePosition, m_fBaseRadius);
 		if (atBase != m_iLastAtBase || alive != m_iLastAlive)
 		{
 			m_iLastAtBase = atBase;
@@ -970,19 +970,6 @@ class CRF_InterdictionGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		return true;
-	}
-
-	protected int CountPlayersWithin(notnull array<int> playerIds, vector center, float radius)
-	{
-		int count;
-		foreach (int playerId : playerIds)
-		{
-			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			if (entity && vector.DistanceXZ(entity.GetOrigin(), center) <= radius)
-				count++;
-		}
-
-		return count;
 	}
 
 	//! 3D, so a helicopter hovering high over him doesn't count

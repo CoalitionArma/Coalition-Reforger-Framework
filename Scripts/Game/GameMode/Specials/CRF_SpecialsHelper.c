@@ -121,6 +121,21 @@ class CRF_SpecialsHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! How many of the given players are within radius of center (map distance, ignoring height)
+	static int CountPlayersWithin(notnull array<int> playerIds, vector center, float radius)
+	{
+		int count;
+		foreach (int playerId : playerIds)
+		{
+			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if (entity && vector.DistanceXZ(entity.GetOrigin(), center) <= radius)
+				count++;
+		}
+
+		return count;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! 45 -> "0:45"
 	static string FormatSeconds(int seconds)
 	{
