@@ -2,7 +2,7 @@
 
 One side has an element cut off in a zone and a relief force fighting its way to it. The other side sits between them and tries to seize the zone first.
 
-Example mission: `Missions/BelleauWood/tanaKa_1112_TVT80_HoldtheCrossroads.conf` (a US Army platoon cut off at a crossroads near Marigny-en-Orxois, its relief coming up the Paris Farm road, a Russian motor-rifle platoon in the copse between them). Its spec is `CRF-MissionKit/specs/crossroads.toml`.
+Example mission: `Missions/BelleauWood/tanaKa_1112_TVT81_CROSSROADS.conf` (a US Army platoon cut off at a crossroads near Marigny-en-Orxois, its relief coming up the Paris Farm road, a Russian motor-rifle platoon in the copse between them). Its spec is `CRF-MissionKit/specs/crossroads.toml`.
 
 ---
 
