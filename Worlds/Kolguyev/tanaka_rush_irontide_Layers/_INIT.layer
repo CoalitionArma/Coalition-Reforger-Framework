@@ -17,6 +17,12 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
 }
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
+  CRF_CasualtyCounterGamemodeComponent "{6B1109E1CA5C0A01}" {
+   m_sMonitoredFaction "BLUFOR"
+   m_fCasualtyLimitPercent 250
+   m_sWinningFaction "OPFOR"
+   m_fAnnounceEveryPercent 50
+  }
   CRF_ObjectiveChainGamemodeComponent "{6B1109E1AEAF0007}" {
    m_sAttackerFaction "BLUFOR"
    m_sDefenderFaction "OPFOR"
@@ -158,7 +164,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "ENGINEERS (WPNS): four combat engineers, each with a Bangalore torpedo, three satchel charges, an M112 block and a blasting machine - every one of them can blow a breach point. Spare charges go under the wire: lay a Bangalore and \"Push Bangalore\" to add the next engineer's section."\
    "HOWITZER (ARTY): a 105 mm M2A1 on its own pontoon (HOWITZER on the map), 75 m south of the staging pontoon, laid towards the beach. Two crates next to the gun hold 60 HE (M1) and 100 white phosphorus smoke (M60) rounds - that is all there is. Take a shell from a crate, set its charge, load it into the gun. The section chief and the gunner carry the firing table. The beach is about 1 km away, the silo 1.4 km, the mine 2 km. A dead gun crew respawns with everyone else, at BLUFOR's current spawn."\
    ""\
-   "No timed respawns: when an objective falls, everyone dead comes back - after the beach at the beachhead behind the wall, after the silo on the road below it."
+   "No timed respawns: when an objective falls, everyone dead comes back - after the beach at the beachhead behind the wall, after the silo on the road below it."\
+   ""\
+   "CASUALTIES: the platoon can take as many casualties as it has men when safe start ends. Every death counts, again after a respawn. Reach that and the Germans win (the pause menu shows the count)."
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -175,7 +183,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "When a position falls, everyone dead comes back at the next one: the hill west of Gorshkovo for the silo, the road behind the mine for the garrison."\
    "You have no vehicles. Each Gruppe has an MG34 and a Panzerfaust (one shot: save it for a boat), and its grenadier has rifle grenades. The MG-Trupp has two MG42s. Your only medic is the Zug's Sanitäter."\
    ""\
-   "YOU WIN if the Americans have not taken all three when the time limit (60 minutes) runs out, or if they are wiped out."
+   "YOU WIN if the Americans have not taken all three when the time limit (60 minutes) runs out, if they are wiped out, or if they take as many casualties as they had men when safe start ended (every death counts, again after a respawn; the pause menu shows the count)."
    m_aFactionKeys {
     "OPFOR"
    }
@@ -183,16 +191,26 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6B1109E10A6C267B}" {
    m_sTitle "Administration"
-   m_sTextData "Objective chain, 3 objectives. Time limit 60 minutes after safe start (safe start max. 15 minutes)."\
+   m_sTextData "Objective chain, 3 objectives. Time limit 75 minutes after safe start (safe start max. 15 minutes)."\
    ""\
-   "No timed respawns. When an objective falls, every dead player of both sides respawns at their side's new spawn."\
+   "No timed respawns. When an objective falls, every dead player of both sides respawns at their side's new spawn. Each spawn also updates after each objective."\
    ""\
-   "LCVPs: 8 at the staging pontoon (one each for 1PLT, 1-1 to 1-4 and WPNS, + 2 spares). A destroyed LCVP is respawned at the pontoon for free when an objective falls; intact boats (beached or adrift) stay where they are. Nothing else respawns: not the M2A1 howitzer on the artillery pontoon, and not its 60 HE + 100 smoke rounds."\
+   "Casualty limit: BLUFOR, 250% of its players when safe start ends. This means there can be three respawn waves (300%), but if the 3rd respawn wave receives over 50% casualties, it's a mission fail for BLU."\
    ""\
    "Mission by tanaKa-."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AD978D01806B5C4}" {
+   m_sTitle "Administration"
+   m_sTextData "N/A"
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
    }
    m_bShowForAnyFaction 0
   }

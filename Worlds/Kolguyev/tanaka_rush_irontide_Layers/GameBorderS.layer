@@ -11,19 +11,19 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position -400 0 500
   }
   ShapePoint "{6B1109E13CF95F79}" {
-   Position 209.254 120.351 367.643
+   Position 213.131 8.59 347.589
   }
   ShapePoint "{6B1109E10BEAAF91}" {
-   Position 1200 0 470
+   Position 1200 0 394.728
   }
   ShapePoint "{6B1109E1D1A0A0B1}" {
    Position 1200 0 -70
   }
   ShapePoint "{6B1109E139E51AFE}" {
-   Position 488.274 0 -123.684
+   Position 500.496 0 -60.228
   }
   ShapePoint "{6B1109E15DDD69C6}" {
-   Position 105.953 -19.166 -50.046
+   Position 107.783 15.766 30.821
   }
   ShapePoint "{6B1109E1DAFD4C8B}" {
    Position 95.313 197.814 -520.308
@@ -33,49 +33,20 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
   }
  }
 }
-COA_SafestartBorder irontide_safestart_blufor : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
- coords 9645 2 7150
- Points {
-  ShapePoint "{6B1109E1D068977B}" {
-   Position 0 0 90
-  }
-  ShapePoint "{6B1109E1424EEC44}" {
-   Position 63.64 0 63.64
-  }
-  ShapePoint "{6B1109E1B1804CEA}" {
-   Position 90 0 0
-  }
-  ShapePoint "{6B1109E13F77671D}" {
-   Position 63.64 0 -63.64
-  }
-  ShapePoint "{6B1109E1FFA12F41}" {
-   Position 0 0 -90
-  }
-  ShapePoint "{6B1109E1867FF330}" {
-   Position -63.64 0 -63.64
-  }
-  ShapePoint "{6B1109E181219D6F}" {
-   Position -90 0 0
-  }
-  ShapePoint "{6B1109E1219FADC4}" {
-   Position -63.64 0 63.64
-  }
- }
-}
 COA_SafestartBorder irontide_safestart_opfor : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
  coords 8600 20 7130
  Points {
   ShapePoint "{6B1109E1B05AE677}" {
-   Position -140 0 -200
+   Position -148.168 0 -150.992
   }
   ShapePoint "{6B1109E16E96C5C8}" {
-   Position 142.213 0 -205.251
+   Position 151.466 -5.027 -151.421
   }
   ShapePoint "{6B1109E17F353E4E}" {
    Position 204.716 -33.956 158.352
   }
   ShapePoint "{6B1109E1FD449D09}" {
-   Position -140 0 200
+   Position -139.376 0 226.799
   }
  }
 }
