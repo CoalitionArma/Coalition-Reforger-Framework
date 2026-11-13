@@ -1,0 +1,648 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 10018.002 5.594 1630.002
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_RallyStageGamemodeComponent "{6AD939551172D65D}" {
+   m_bRequireVehicle 1
+   m_bTeamMode 1
+   m_fStartInterval 15
+   m_fLargeFieldStartInterval 15
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 45
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6ADA2CC144EF7FD0}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "I made this while on lexapro, advil, and coffee."\
+   ""
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6ADA2CC144EF71EF}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ADA2CC144EF769A}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ADA2CC144EF77E8}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6ADA2CC144EF74D7}" {
+   m_sTitle "Administration"
+   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6ADA02F10A03CE73}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03CF9A}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03CC95}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03CDFD}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C2E6}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C3D7}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C036}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C126}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C60F}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C777}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C46B}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C54F}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03C5B4}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DA9F}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DB8E}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D8F5}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D9DC}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DEC2}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DF3F}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DC2D}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03DD1D}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D218}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D302}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D071}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D165}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D652}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D6BA}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D7A0}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D48C}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03D59A}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03AABA}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03ABB3}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03A8A8}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03AED7}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03AC63}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6ADA02F10A03ADD0}" {
+   m_sCallsign "Rally Car"
+   m_FlagType INFANTRY
+   m_aSlots {
+    VEHICLE_DRIVER
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{5F3B91C27D4E9201}Configs/Gearscripts/Standard/Specials/Rally/COA_GS_RallyCrew.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/COA_GS_USSR80s.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6ADA28529F16040A" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+$grp GameEntity {
+ rally_start {
+  coords 10158.962 6.005 1637.87
+ }
+ rally_cp1 {
+  coords 10350.213 6.005 1684.947
+ }
+ rally_end {
+  coords 10124.789 14.953 1668.946
+ }
+ rally_cp2 {
+  coords 10045.795 5.983 1790.881
+ }
+ rally_cp3 {
+  coords 10010.213 6 2067.367
+ }
+ rally_cp4 {
+  coords 10348.554 6 2165.988
+ }
+ rally_cp5 {
+  coords 10525.67 5.969 2349.075
+ }
+ rally_cp6 {
+  coords 10497.566 7.096 2633.365
+ }
+ rally_cp7 {
+  coords 10203.073 21.115 3043.116
+ }
+ rally_cp8 {
+  coords 10591.692 31.382 2638.067
+ }
+ rally_cp9 {
+  coords 10799.035 61.71 2972.822
+ }
+ rally_cp10 {
+  coords 10720.142 143.936 3617.083
+ }
+ rally_cp11 {
+  coords 10752.369 262.278 4171.483
+ }
+ rally_cp12 {
+  coords 11047.887 289.514 4089.018
+ }
+ rally_cp13 {
+  coords 11233.469 247.998 4559.677
+ }
+ rally_cp14 {
+  coords 11441.435 210.007 4471.069
+ }
+ rally_cp15 {
+  coords 11926.176 184.98 4598.626
+ }
+ rally_cp16 {
+  coords 12364.82 225.33 4472.101
+ }
+ rally_cp17 {
+  coords 12719.51 179.531 4403.336
+ }
+ rally_cp18 {
+  coords 12618.728 154.892 4552.185
+ }
+ rally_cp19 {
+  coords 12612.637 106.51 4958.001
+ }
+ rally_cp20 {
+  coords 12780.625 82.31 4813.186
+ }
+ rally_cp21 {
+  coords 12825.952 69.79 5009.761
+ }
+ rally_cp22 {
+  coords 13230.462 6.031 5401.377
+ }
+ rally_cp23 {
+  coords 13386.166 5.906 5403.718
+ }
+ rally_cp24 {
+  coords 13314.054 6.74 4067.313
+ }
+ rally_cp25 {
+  coords 12312.445 5.915 3519.369
+ }
+ rally_cp26 {
+  coords 11085.288 6.093 3095.14
+ }
+ rally_cp27 {
+  coords 10824.258 5.969 2570.908
+ }
+ rally_cp28 {
+  coords 10828.006 5.161 2355.252
+ }
+ rally_cp29 {
+  coords 10771.592 13.987 2241.251
+ }
+ rally_cp30 {
+  coords 10546.188 5.999 2150.404
+ }
+ rally_cp31 {
+  coords 10588.621 5.254 2038.006
+ }
+ rally_cp32 {
+  coords 10518.306 2.954 1959.093
+ }
+ rally_cp33 {
+  coords 10443.901 2.971 1834.441
+ }
+ rally_cp34 {
+  coords 10345.681 5.917 1830.839
+ }
+ rally_cp35 {
+  coords 10363.787 6 1675.075
+ }
+ rally_cp36 {
+  coords 10297.394 6 1595.382
+ }
+ rally_cp37 {
+  coords 10211.752 6.177 1606.111
+ }
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 9958.042 6 1651.247
+}
