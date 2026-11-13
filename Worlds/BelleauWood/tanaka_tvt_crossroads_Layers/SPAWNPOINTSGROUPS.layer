@@ -1,0 +1,66 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 1985 202 3135
+  m_sCallsignOfGroupToSpawn "BULLDOG 6"
+ }
+ {
+  coords 2015 201.5 3175
+  m_sCallsignOfGroupToSpawn "BULLDOG 1"
+ }
+ {
+  coords 1970 201.1 3165
+  m_sCallsignOfGroupToSpawn "BULLDOG WPNS"
+ }
+ {
+  coords 3315 195.3 1112
+  angles 0 292 0
+  m_sCallsignOfGroupToSpawn "HAMMER 6"
+ }
+ {
+  coords 3340 195.3 1108
+  angles 0 292 0
+  m_sCallsignOfGroupToSpawn "HAMMER 1"
+ }
+ {
+  coords 3355 195.6 1102
+  angles 0 292 0
+  m_sCallsignOfGroupToSpawn "HAMMER 2"
+ }
+ {
+  coords 3365 195.9 1096
+  angles 0 292 0
+  m_sCallsignOfGroupToSpawn "HAMMER WPNS"
+ }
+}
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 2805 180.3 2165
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT 6"
+ }
+ {
+  coords 2795 179.4 2148
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT 1"
+ }
+ {
+  coords 2812 181.8 2185
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT 2"
+ }
+ {
+  coords 2790 179.4 2130
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT 3"
+ }
+ {
+  coords 2822 182.2 2200
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT WPNS"
+ }
+ {
+  coords 2830 179.3 2125
+  angles 0 321 0
+  m_sCallsignOfGroupToSpawn "BERKUT ARMOR"
+ }
+}

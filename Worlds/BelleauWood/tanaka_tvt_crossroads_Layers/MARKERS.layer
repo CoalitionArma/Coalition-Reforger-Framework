@@ -1,0 +1,33 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ crossroads_marker {
+  coords 1999 200.4 3155
+  m_sDescription "THE CROSSROADS"
+  m_bShowForAnyFaction 1
+ }
+ crossroads_relief_start {
+  coords 3330 195 1100
+  m_sDescription "HAMMER - relief start"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+}
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ crossroads_opfor_copse {
+  coords 2815 180 2160
+  m_sDescription "BERKUT - assembly area"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+ crossroads_opfor_respawn {
+  coords 4300 186 3560
+  m_sDescription "Respawn - Lucy-le-Bocage"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+}

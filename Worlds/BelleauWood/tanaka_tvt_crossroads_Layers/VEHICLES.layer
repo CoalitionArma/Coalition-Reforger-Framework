@@ -1,0 +1,88 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ {
+  coords 2840 179.3 2135
+  angles 0 321 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 999
+ }
+ {
+  coords 2852 179.4 2150
+  angles 0 321 0
+  m_rVehicle "{70BF53CF0F4D103F}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 999
+ }
+ {
+  coords 2864 179.5 2165
+  angles 0 321 0
+  m_rVehicle "{70BF53CF0F4D103F}Prefabs/Vehicles/Wheeled/TIGR/ArbaletDM/GAZ_TIGR_v2_Arbalet_PKM.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 999
+ }
+ {
+  coords 4308.265 185.531 3596.513
+  angles 0 -90 0
+  m_rVehicle "{76C687EA8C6E953F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_camo1.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 4293.265 185.531 3596.513
+  angles 0 -90 0
+  m_rVehicle "{76C687EA8C6E953F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_camo1.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 4278.265 185.473 3596.513
+  angles -0.895 -90.015 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 4266.265 185.41 3596.513
+  angles -0.895 -89.743 -0.004
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 3300 195.1 1095.6
+  angles 0 292 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 999
+ }
+ {
+  coords 3311.1 195.2 1091
+  angles 0 292 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3322.2 195.4 1086.5
+  angles 0 292 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3333.3 195.3 1081.9
+  angles 0 292 0
+  m_rVehicle "{9172A683F8CB7644}Prefabs/Vehicles/Wheeled/M998/M1151.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 0
+ }
+ {
+  coords 3344.4 195.7 1077.3
+  angles 0 292 0
+  m_rVehicle "{03708F7E58BB7A53}Prefabs/Vehicles/Wheeled/M998/M1151_armed_M2HB.et"
+  m_sFactionKey "BLUFOR"
+  m_iTicketsPerRespawn 999
+ }
+}
