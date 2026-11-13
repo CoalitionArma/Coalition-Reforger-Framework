@@ -159,6 +159,7 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<float> m_aCheckpointDistances = {};
 	protected float m_fRouteLength;
 	protected IEntity m_Payload;
+	protected ref array<IEntity> m_aPayloadParts = {};	//!< the prop and everything in its slots (cargo bed, wheels)
 	protected bool m_bRouteReady;
 	protected bool m_bWarnedNoRoute;
 
@@ -187,6 +188,9 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const float VEHICLE_SEARCH_RADIUS = 30;	//!< how far a moved vehicle spawner looks for open ground
 	protected static const float VEHICLE_CLEAR_RADIUS = 5;		//!< CRF_VehicleGearscriptManager won't spawn on a pad with less room than this
 	protected static const float VEHICLE_PARKED_RADIUS = 25;	//!< an empty vehicle this close to its spawner is still waiting there
+	protected static const float RIDER_TRACE_UP = 0.5;		//!< a rider's feet are looked for from this far above their origin...
+	protected static const float RIDER_TRACE_DOWN = 0.75;	//!< ...to this far below it
+	protected static const float RIDER_TRACE_RADIUS = 0.25;
 
 	protected static CRF_PayloadGamemodeComponent s_Instance;
 
@@ -802,6 +806,9 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		// Placed props are flagged static, which stops them moving
 		m_Payload.ClearFlags(EntityFlags.STATIC, true);
 
+		m_aPayloadParts.Clear();
+		CollectPayloadParts(m_Payload);
+
 		m_bRouteReady = true;
 		return true;
 	}
@@ -962,9 +969,94 @@ class CRF_PayloadGamemodeComponent : SCR_BaseGameModeComponent
 		transform[2] = forward;
 		transform[3] = position;
 
+		// Where on the truck the local player is standing, if they are, before it moves
+		ChimeraCharacter rider = GetLocalRider();
+		vector riderOnTruck;
+		if (rider)
+			riderOnTruck = m_Payload.CoordToLocal(rider.GetOrigin());
+
 		m_Payload.SetWorldTransform(transform);
 		m_Payload.Update();
 		UpdateChildren(m_Payload);
+
+		if (rider)
+			CarryRider(rider, m_Payload.CoordToParent(riderOnTruck));
+	}
+
+	//===================================================================================
+	// EVERY CLIENT: RIDING ON THE TRUCK
+	//
+	// The truck is a static prop placed by script, so physics gives it no velocity and a player standing on
+	// it would be left behind as it moves. Instead each client moves its own player with it: character
+	// movement is owned by the client, and the move replicates like any other step they take.
+	//===================================================================================
+
+	//! The local player, if they are standing (or have just jumped) on the truck
+	protected ChimeraCharacter GetLocalRider()
+	{
+		if (System.IsConsoleApp())
+			return null;
+
+		// The slots (cargo bed, wheels) may fill in after the route was read
+		if (m_aPayloadParts.Count() < 2 && m_Payload.GetChildren())
+		{
+			m_aPayloadParts.Clear();
+			CollectPayloadParts(m_Payload);
+		}
+
+		ChimeraCharacter character = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
+		if (!character || character.IsInVehicle())
+			return null;
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller || controller.GetLifeState() != ECharacterLifeState.ALIVE)
+			return null;
+
+		vector origin = character.GetOrigin();
+		if (vector.DistanceSqXZ(origin, m_Payload.GetOrigin()) > 100)
+			return null;
+
+		TraceSphere trace = new TraceSphere();
+		trace.Start = origin + vector.Up * RIDER_TRACE_UP;
+		trace.End = origin - vector.Up * RIDER_TRACE_DOWN;
+		trace.Radius = RIDER_TRACE_RADIUS;
+		trace.Flags = TraceFlags.ENTS;
+		trace.IncludeArray = m_aPayloadParts;
+
+		float hit = character.GetWorld().TraceMove(trace, null);
+		if (!trace.TraceEnt)
+			return null;
+
+		// Under their feet, not a wheel they're standing beside
+		float hitHeight = trace.Start[1] - (RIDER_TRACE_UP + RIDER_TRACE_DOWN) * hit;
+		if (hitHeight > origin[1] + 0.15)
+			return null;
+
+		return character;
+	}
+
+	//! Moves the rider to where the truck has taken the spot they were standing on
+	protected void CarryRider(notnull ChimeraCharacter rider, vector position)
+	{
+		vector riderTransform[4];
+		rider.GetWorldTransform(riderTransform);
+		if (vector.DistanceSq(riderTransform[3], position) < 0.000001)
+			return;
+
+		riderTransform[3] = position;
+		rider.Teleport(riderTransform);
+	}
+
+	//! The prop and every entity hanging off it in slots, for the rider trace
+	protected void CollectPayloadParts(IEntity entity)
+	{
+		m_aPayloadParts.Insert(entity);
+		IEntity child = entity.GetChildren();
+		while (child)
+		{
+			CollectPayloadParts(child);
+			child = child.GetSibling();
+		}
 	}
 
 	//! The wheels and cargo bed hang off the truck in slots
