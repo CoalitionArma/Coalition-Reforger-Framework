@@ -1,0 +1,27 @@
+SubScene {
+ Parent "{4169A24B95DEC173}worlds/Denali/denali_world.ent"
+}
+Layer VEHICLES {
+ Index 8
+}
+Layer _INIT {
+ Index 1
+}
+Layer GameBorderS {
+ Index 2
+}
+Layer MARKERS {
+ Index 3
+}
+Layer OBJECTIVES {
+ Index 4
+}
+Layer PROPS {
+ Index 5
+}
+Layer SPAWNPOINTS {
+ Index 6
+}
+Layer SPAWNPOINTSGROUPS {
+ Index 7
+}
