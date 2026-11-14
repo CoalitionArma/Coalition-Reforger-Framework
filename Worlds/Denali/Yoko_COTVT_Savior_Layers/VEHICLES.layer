@@ -25,8 +25,13 @@ $grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/Ve
   m_rVehicle "{63BBA47D1396A29A}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_Olive.et"
  }
  {
-  coords 1652.239 336.157 3498.823
-  angles 0 -119.684 0
-  m_rVehicle "{F2C8E85F145934F4}Prefabs/Vehicles/Helicopters/AH64/AH64D.et"
+  coords 6119.095 405.845 6261.26
+  angles 0 -163.054 0
+  m_rVehicle "{63BBA47D1396A29A}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_Olive.et"
+ }
+ {
+  coords 6145.216 405.845 6261.141
+  angles 0 -163.054 0
+  m_rVehicle "{63BBA47D1396A29A}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_Olive.et"
  }
 }
