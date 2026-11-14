@@ -35,8 +35,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "Marine Raiders are stuck behind enemy lines"\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "BLUFOR Assets: 2x M1A2 and 1x  AH-6 Apache"\
+   "BLUFOR Composition: Armored Infantry Platoon"\
+   "BLUFOR Assets: 4x M1A2 Abrams"\
    ""\
    "OPFOR Composition: Unknown"\
    "OPFOR Assets: Unknown"\
