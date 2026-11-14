@@ -1,0 +1,82 @@
+$grp GenericEntity : "{0D6A1225534F164D}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Small_USSR.et" {
+ {
+  coords 3011.325 430.626 4921.556
+  angles 0 19.344 0
+ }
+ {
+  coords 2991.947 430.148 4921.751
+  angles 0 19.344 0
+ }
+ {
+  coords 3002.106 428.613 4896.562
+  angles 0 19.344 0
+ }
+ {
+  coords 2998.816 420.991 4598.853
+  angles 0 19.344 0
+ }
+ {
+  coords 3015.266 419.511 4585.778
+  angles 0 19.344 0
+ }
+ {
+  coords 2996.619 419.172 4573.583
+  angles 0 19.344 0
+ }
+}
+$grp GenericEntity : "{28ECED0C0F3655DB}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_USSR.et" {
+ {
+  coords 4740.53 316.589 5458.595
+ }
+ {
+  coords 4720.303 320.013 5564.869
+ }
+ {
+  coords 2705.886 304.912 3896.814
+  angles 0 11.739 0
+ }
+ {
+  coords 2795.201 301.698 3888.629
+  angles 0 11.739 0
+ }
+ {
+  coords 2639.552 309.482 3961.552
+  angles 0 11.739 0
+ }
+}
+$grp GenericEntity : "{B86FFB24E23D8055}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Rect_Row_USSR.et" {
+ {
+  coords 5537.231 308.503 5620.245
+  angles 0 -76.587 0
+ }
+ {
+  coords 5546.268 308.503 5661.078
+  angles 0 -76.587 0
+ }
+ {
+  coords 5554.632 308.503 5701.562
+  angles 0 -76.587 0
+ }
+}
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 4733.401 318.19 5512.606
+  m_sDescription "MInefield"
+ }
+ {
+  coords 5549.441 308.522 5669.969
+  m_sDescription "Minefield"
+ }
+ {
+  coords 3004.822 433.65 4915.89
+  m_sDescription "Minefield"
+ }
+ {
+  coords 3003.251 419.766 4585.01
+  m_sDescription "Minefield"
+ }
+ {
+  coords 2714.84 307.538 3933.254
+  m_sDescription "Minefield"
+ }
+}

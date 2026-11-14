@@ -1,0 +1,32 @@
+GenericEntity : "{971302B9970AA871}PrefabsMissionMaking/Systems/VehicleDepot/OPFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F111246FC7}" {
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+     m_sVehicleName "TGR (Unarmed)"
+     m_sVehiclePrefab "{6F4D5B56F4905A62}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed_Green.et"
+     m_eCostType USES
+    }
+   }
+  }
+ }
+ coords 1928.212 424.219 5804.651
+ angles 0 -83.935 0
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 6123.909 405.844 6226.532
+  angles 0 -163.054 0
+  m_rVehicle "{63BBA47D1396A29A}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_Olive.et"
+ }
+ {
+  coords 6128.654 405.844 6242.103
+  angles 0 -163.054 0
+  m_rVehicle "{63BBA47D1396A29A}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_Olive.et"
+ }
+ {
+  coords 1652.239 336.157 3498.823
+  angles 0 -119.684 0
+  m_rVehicle "{F2C8E85F145934F4}Prefabs/Vehicles/Helicopters/AH64/AH64D.et"
+ }
+}

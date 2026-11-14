@@ -1,6 +1,0 @@
-SCR_AIWorld : "{0E73737564F88B7E}Prefabs/AI/SCR_AIWorld_DenaliEmpty.et" {
- coords 5465.611 362.848 5871.002
-}
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
- coords 0 0 0
-}

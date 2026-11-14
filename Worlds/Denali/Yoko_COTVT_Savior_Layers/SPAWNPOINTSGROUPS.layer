@@ -1,0 +1,46 @@
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 1641.22 336.156 3522.296
+ m_sCallsignOfGroupToSpawn "Angel 1"
+}
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ {
+  coords 1633.849 336.156 3517.36
+  Points {
+   ShapePoint "{6ADD2564D04C06A2}" {
+    Position -196.281 0 184.685
+   }
+   ShapePoint "{6ADD2564D3B01CB3}" {
+    Position -70.815 0 234.354
+   }
+   ShapePoint "{6ADD2564D2DCD6B4}" {
+    Position 110.265 0 28.475
+   }
+   ShapePoint "{6ADD2564D5CA6F09}" {
+    Position 181.52 0 -331.643
+   }
+   ShapePoint "{6ADD2564D4F12057}" {
+    Position 93.112 0 -354.694
+   }
+  }
+ }
+ {
+  coords 6092.403 405.844 6251.852
+  Points {
+   ShapePoint "{6ADD2564DD6E5BEB}" {
+    Position -89.552 0 -112.699
+   }
+   ShapePoint "{6ADD2564DCE05101}" {
+    Position 52.472 0 -148.437
+   }
+   ShapePoint "{6ADD2564DFB40703}" {
+    Position 161.918 0 39.521
+   }
+   ShapePoint "{6ADD2564DEB76F11}" {
+    Position -39.615 0 143.466
+   }
+   ShapePoint "{6ADD2564C13CF055}" {
+    Position -139.206 0 -8.792
+   }
+  }
+ }
+}
