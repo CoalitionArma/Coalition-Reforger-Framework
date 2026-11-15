@@ -1,0 +1,40 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 4439.104 339 10690.84
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 1"
+ }
+ {
+  coords 4420.233 339 10726.967
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 2"
+ }
+ {
+  coords 4403.207 339 10755.734
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 3"
+ }
+ {
+  coords 4384.706 339 10787.926
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 4"
+ }
+ {
+  coords 4367.035 339 10816.283
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 5"
+ }
+ {
+  coords 4348.117 339 10849.224
+  angles 0 59 0
+  m_sCallsignOfGroupToSpawn "VIPER 6"
+ }
+ {
+  coords 4478.58 336.97 10822.437
+  m_sCallsignOfGroupToSpawn "SABRE 6"
+ }
+}
+COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ coords 9144.2 224.031 3897.2
+ m_sCallsignOfGroupToSpawn "CELL"
+}

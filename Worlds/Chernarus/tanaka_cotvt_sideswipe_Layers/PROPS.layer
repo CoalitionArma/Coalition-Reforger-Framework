@@ -1,0 +1,268 @@
+GenericEntity interdiction_hq_tent : "{070E80C72C21BF4F}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_FIA_01.et" {
+ coords 9134 223.969 3886
+ angles 0 90 0
+}
+GenericEntity interdiction_hq_radio : "{1ED8F6D056701E7E}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_RadioStation_FIA_01.et" {
+ coords 9149 223.782 3881
+ angles 0.895 -90.014 -0.895
+}
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ {
+  coords 4425.403 339 10693.189
+ }
+ {
+  coords 4407.187 339 10731.294
+ }
+ {
+  coords 4390.786 339 10757.989
+ }
+ {
+  coords 4371.239 339 10790.869
+ }
+ {
+  coords 4354.613 339 10819.141
+ }
+ {
+  coords 4334.237 339 10854.228
+ }
+ {
+  coords 4428.465 339 10695.36
+ }
+}
+GenericEntity interdiction_hq_antenna : "{6F9E338FCED334F8}Prefabs/Props/Military/Compositions/FIA/Antenna_02_FIA.et" {
+ coords 9127 223.922 3881
+}
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords 4398.172 339 10784.983
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4379.457 339 10813.424
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4361.997 339 10844.22
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4415.627 339 10753.48
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4433.279 339 10722.64
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 4452.805 339 10688.49
+  angles 0 -31.005 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity interdiction_hq_camonet : "{BE2B14A482E169F7}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_Top_FIA_01_V1.et" {
+ coords 9149 223.782 3881
+ angles 0.895 0.014 0.895
+}

@@ -1,0 +1,332 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 11105.187 211.312 12307.863
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_InterdictionGamemodeComponent "{6B1108A500000001}" {
+   m_sBluforFaction "BLUFOR"
+   m_sOpforFaction "OPFOR"
+   m_sConvoyGroupName "interdiction_convoy"
+   m_rOfficerPrefab "{B3182F73DBEACB7B}Prefabs/!Systems/!Characters/GS_Characters/Leadership/COA_COY.et"
+   m_fSurrenderRadius 40
+   m_fSurrenderDelay 3
+   m_sHQAnchorName "interdiction_hq"
+   m_fHQRadius 150
+   m_iHQClearedMaxOpfor 2
+   m_fHQSecureSeconds 30
+   m_fHintRadius 900
+   m_sBaseAnchorName "interdiction_base"
+   m_fBaseRadius 350
+   m_iTimeLimitMinutes 120
+   m_bEndMissionOnVictory 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 22
+     m_iStartingMinutes 0
+    }
+    SCR_TimeAndWeatherState "{6B1108A500000002}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 10
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 120
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1108A500000010}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "South-East Chernarus. Morning, clear skies."\
+   ""\
+   "The ChDKz insurgency is being run by a field commander who never sleeps in the same place twice. He rides with a small armed convoy that loops the roads between Elektrozavodsk, the Pusta hills, Polana and the coast, day and night. His headquarters is hidden somewhere in the hills north of Elektrozavodsk."\
+   ""\
+   "A NATO special operations task unit at the Northwest Airfield has been tasked with taking him off the board and rolling up his headquarters."\
+   ""\
+   "BLUFOR: six SF teams (VIPER 1-6), each with its own MH-6M Little Bird, and a command element (SABRE 6)."\
+   "OPFOR: ChDKz insurgents. The convoy and the HQ garrison are AI; a small player cell (CELL) is based at the HQ."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1108A500000011}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "1. Find and interdict the convoy. Its route is marked on your map; it patrols the loop continuously."\
+   "2. Take the officer riding with the convoy. Get close and stop his vehicle and he will surrender - restrain him (zip-ties)."\
+   "3. Clear and secure the insurgent HQ."\
+   "4. Return to the Northwest Airfield. The mission ends when the HQ is secured and every living member of the task unit is back at base."\
+   ""\
+   "INTEL"\
+   "Take the officer ALIVE: a restrained officer gives up the exact location of the HQ, and it is marked on your map."\
+   "If he is killed, the documents on him only point to a rough area (a large circle on your map) - you will have to find the HQ yourselves."\
+   "The HQ counts as secured when you hold it with no more than a couple of insurgents left alive inside it for 30 seconds."\
+   ""\
+   "ASSETS"\
+   "Each VIPER team has one MH-6M on its own pad at NWAF. Your team spawns next to it. Lose it and it is gone."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1108A500000012}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Protect the convoy and defend the HQ."\
+   ""\
+   "SITUATION"\
+   "The commander's convoy (a command UAZ, two technicals and a Ural) is patrolling its loop. The Americans want the commander alive - if they catch him, he will give up the HQ."\
+   "The HQ is in Pusta and is garrisoned by our fighters. The cell spawns at the HQ and has one technical."\
+   ""\
+   "YOU WIN if the Americans run out of time (120 minutes), or if they are wiped out with no respawns left."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion. Escort the convoy, hunt the helicopters, or hold the village - but the HQ must not fall."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1108A500000013}" {
+   m_sTitle "Administration"
+   m_sTextData "Wave respawn every 60 seconds."\
+   "BLUFOR: 60 tickets. Respawns at the NWAF spawn."\
+   "OPFOR: 10 tickets. Respawns at the HQ."\
+   "Helicopters do not respawn."\
+   ""\
+   "Time limit: 120 minutes from the end of safe start. When it runs out, OPFOR win."\
+   ""\
+   "Mission by tanaKa-."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 15
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6AD11E356D3A5855}" {
+   m_sCallsign "SABRE 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    JTAC
+    PILOT
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5BB5}" {
+   m_sCallsign "VIPER 1"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5ABE}" {
+   m_sCallsign "VIPER 2"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5DD8}" {
+   m_sCallsign "VIPER 3"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5CE8}" {
+   m_sCallsign "VIPER 4"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5F08}" {
+   m_sCallsign "VIPER 5"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AD11E356D3A5E2D}" {
+   m_sCallsign "VIPER 6"
+   m_FlagType INFANTRY_AIR
+   m_aSlots {
+    SQUAD_LEAD
+    PILOT
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6AD11E356D3A510F}" {
+   m_sCallsign "CELL"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 60
+ m_iOPFORTickets 10
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 2
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{08608B7EAF4CD6DF}Configs/Gearscripts/Standard/Modern/COA_GS_USSpecOps.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A283830C79B67D2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

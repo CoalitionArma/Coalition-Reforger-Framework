@@ -1,0 +1,30 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 3522.392 6.156 1866.358
+  angles 0 149.446 0
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3528.116 6.154 1868.92
+  angles 0 149.446 0
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3515.174 6.142 1878.941
+  angles 0 149.446 0
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3520.898 6.125 1881.503
+  angles 0 149.446 0
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

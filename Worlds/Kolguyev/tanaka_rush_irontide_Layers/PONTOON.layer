@@ -1,0 +1,41 @@
+$grp GameEntity : "{FCC9A062B697948E}Prefabs/Structures/BuildingParts/Ladders/Ladder_Pier_520_B.et" {
+ {
+  coords 9641.385 2.084 7113
+  angles 0 -90 0
+ }
+ {
+  coords 9641.385 2.084 7141
+  angles 0 -90 0
+ }
+ {
+  coords 9641.385 2.084 7169
+  angles 0 -90 0
+ }
+ {
+  coords 9641.385 2.084 7197
+  angles 0 -90 0
+ }
+ {
+  coords 9659.021 2.084 7112.5
+  angles 0 90 0
+ }
+ {
+  coords 9659.021 2.084 7137.5
+  angles 0 90 0
+ }
+ {
+  coords 9659.021 2.084 7162.5
+  angles 0 90 0
+ }
+ {
+  coords 9659.021 2.084 7187.5
+  angles 0 90 0
+ }
+ {
+  coords 9650.209 2.084 7200.035
+ }
+ {
+  coords 9650.209 2.084 7099.986
+  angles 0 180 0
+ }
+}

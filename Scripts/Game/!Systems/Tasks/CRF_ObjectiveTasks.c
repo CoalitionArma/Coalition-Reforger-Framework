@@ -13,6 +13,7 @@
 //!    a task never carries anything its faction couldn't already see (no exact hidden-cache positions,
 //!    no hidden player positions).
 //!  - Silent: there are no popups for task changes; the modes already announce what happens.
+//!  - Unassigned unless the mode calls AutoAssign for a side's single current objective.
 //!  - Tasks still open when the game reaches AAR are closed with the state given at creation
 //!    (roundEndState): e.g. a "Defend" task COMPLETED, an "Attack" task FAILED. Modes that know the
 //!    result call Finish themselves first.
@@ -31,8 +32,15 @@ class CRF_ObjectiveTasks
 	static const string ICON_INTEL = "Icon_M_Task_Intel";
 	static const string ICON_SEIZE = "Icon_M_Task_Seize";
 
+	// How often AutoAssign looks for players to assign (late joiners, faction picks, respawns)
+	static const int AUTO_ASSIGN_INTERVAL_MS = 2000;
+
 	// Task id -> state to close it with if it's still open when the game reaches AAR
 	protected static ref map<string, SCR_ETaskState> s_mRoundEndStates = new map<string, SCR_ETaskState>();
+	// Faction key -> the task its players are auto-assigned to
+	protected static ref map<string, string> s_mAutoAssignTasks = new map<string, string>();
+	// Task id -> players already auto-assigned to it (once each, so a player who unassigns stays unassigned)
+	protected static ref map<string, ref set<int>> s_mAutoAssigned = new map<string, ref set<int>>();
 	// Statics outlive the mission: the game mode they were set up for
 	protected static COA_Gamemode s_Gamemode;
 
@@ -141,9 +149,53 @@ class CRF_ObjectiveTasks
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Make an open task the one every player of the faction is assigned to: everyone now, and anyone
+	//! who joins or picks the faction later (checked every AUTO_ASSIGN_INTERVAL_MS). Each player is
+	//! assigned once per task, so a player who unassigns stays unassigned. Assigning moves a player off
+	//! any other task (a player has one task at a time), so use it for a side's single current
+	//! objective, not for modes with several tasks open at once. Calling it again for the same faction
+	//! replaces its task; finishing or removing the task stops it.
+	static void AutoAssign(string id, FactionKey faction)
+	{
+		if (faction.IsEmpty() || !GetOpenTask(id))
+			return;
+
+		s_mAutoAssignTasks.Set(faction, id);
+		if (!s_mAutoAssigned.Contains(id))
+			s_mAutoAssigned.Insert(id, new set<int>());
+
+		ScriptCallQueue callQueue = GetGame().GetCallqueue();
+		callQueue.Remove(SweepAutoAssign);
+		SweepAutoAssign();
+		callQueue.CallLater(SweepAutoAssign, AUTO_ASSIGN_INTERVAL_MS, true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Stop auto-assigning a task (players already assigned keep it)
+	static void StopAutoAssign(string id)
+	{
+		s_mAutoAssigned.Remove(id);
+
+		array<string> factions = {};
+		foreach (string faction, string taskId : s_mAutoAssignTasks)
+		{
+			if (taskId == id)
+				factions.Insert(faction);
+		}
+
+		foreach (string factionKey : factions)
+			s_mAutoAssignTasks.Remove(factionKey);
+
+		if (s_mAutoAssignTasks.IsEmpty())
+			GetGame().GetCallqueue().Remove(SweepAutoAssign);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Close an open task: COMPLETED, FAILED or CANCELLED. It stays in the list as finished.
 	static void Finish(string id, SCR_ETaskState state)
 	{
+		StopAutoAssign(id);
+
 		SCR_Task task = GetOpenTask(id);
 		if (!task)
 			return;
@@ -175,9 +227,53 @@ class CRF_ObjectiveTasks
 			return;
 
 		s_mRoundEndStates.Remove(id);
+		StopAutoAssign(id);
 		SCR_Task task = SCR_TaskSystem.GetTaskFromTaskID(id, false);
 		if (task)
 			taskSystem.DeleteTask(task);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Assign every player whose faction has an auto-assign task and who hasn't had it yet
+	protected static void SweepAutoAssign()
+	{
+		SCR_TaskSystem taskSystem = GetServerTaskSystem();
+		if (!taskSystem || s_mAutoAssignTasks.IsEmpty())
+		{
+			GetGame().GetCallqueue().Remove(SweepAutoAssign);
+			return;
+		}
+
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (!playerManager || !factionManager)
+			return;
+
+		array<int> playerIds = {};
+		playerManager.GetPlayers(playerIds);
+		foreach (int playerId : playerIds)
+		{
+			Faction faction = factionManager.GetPlayerFaction(playerId);
+			if (!faction)
+				continue;
+
+			string id;
+			if (!s_mAutoAssignTasks.Find(faction.GetFactionKey(), id))
+				continue;
+
+			set<int> assigned = s_mAutoAssigned.Get(id);
+			if (!assigned || assigned.Contains(playerId))
+				continue;
+
+			SCR_Task task = GetOpenTask(id);
+			if (!task)
+				continue;
+
+			assigned.Insert(playerId);
+			SCR_TaskExecutor executor = SCR_TaskExecutor.FromPlayerID(playerId);
+			if (!task.IsTaskAssignedTo(executor))
+				taskSystem.AssignTask(task, executor, true);
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -238,6 +334,9 @@ class CRF_ObjectiveTasks
 		{
 			// New mission: forget the last one's tasks and close this one's at AAR
 			s_mRoundEndStates.Clear();
+			s_mAutoAssignTasks.Clear();
+			s_mAutoAssigned.Clear();
+			GetGame().GetCallqueue().Remove(SweepAutoAssign);
 			s_Gamemode = gamemode;
 			gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
 		}

@@ -1,0 +1,136 @@
+FrameWidgetClass {
+ Name "CRF_BalanceSlots"
+ Slot FrameWidgetSlot "{EE89C261CFC1852E}" {
+  Anchor 0 0.5 0 0.5
+  PositionX 690
+  OffsetLeft 690
+  PositionY -22
+  OffsetTop -22
+  SizeX 300
+  OffsetRight -990
+  SizeY 44
+  OffsetBottom -22
+ }
+ "Z Order" 2
+ "Is Visible" 0
+ {
+  OverlayWidgetClass "{668C4E1E0D3A368F}" {
+   Name "BalanceFrame"
+   Slot FrameWidgetSlot "{550EA877F6A65337}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 196
+    OffsetRight -196
+    SizeY 44
+    OffsetBottom -44
+   }
+   {
+    ImageWidgetClass "{99DB4FCC55F14D63}" {
+     Name "BalanceBG"
+     Slot OverlayWidgetSlot "{1F11670A171C14F4}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0075 0.0086 0.0123 1
+    }
+    ButtonWidgetClass "{20AE99D776E93BEC}" {
+     Name "BalanceButton"
+     Slot OverlayWidgetSlot "{3911F2BFDB93D4D8}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     components {
+      ButtonComponent "{4EDA3D302AB6F996}" {
+       m_ColorButtonDefault 0.042 0.042 0.042 0
+       m_ColorButtonFocused 1 1 1 0
+       m_ColorButtonHovered 1 1 1 0.012
+       m_ColorButtonHoveredFocused 1 1 1 0.025
+      }
+      SCR_ButtonBaseComponent "{D0E1919461F3A1EC}" {
+      }
+     }
+     {
+      TextWidgetClass "{7181BDC9F7A9D98D}" {
+       Name "BalanceText"
+       Slot ButtonWidgetSlot "{F8ED3233F833E5C2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.8632 0.8879 0.9301 1
+       Text "BALANCE SLOTS"
+       "Font Size" 17
+       "Min Font Size" 9
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{B3491A6C6DE1587E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+  OverlayWidgetClass "{2AC949E67887EF8C}" {
+   Name "ResetFrame"
+   Slot FrameWidgetSlot "{EA18A89623929C37}" {
+    Anchor 0 0 0 0
+    PositionX 204
+    OffsetLeft 204
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -300
+    SizeY 44
+    OffsetBottom -44
+   }
+   {
+    ImageWidgetClass "{EE89C261CFC1852F}" {
+     Name "ResetBG"
+     Slot OverlayWidgetSlot "{668C4E1E0D3A3690}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.0075 0.0086 0.0123 1
+    }
+    ButtonWidgetClass "{550EA877F6A65338}" {
+     Name "ResetButton"
+     Slot OverlayWidgetSlot "{99DB4FCC55F14D64}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     components {
+      ButtonComponent "{1F11670A171C14F5}" {
+       m_ColorButtonDefault 0.042 0.042 0.042 0
+       m_ColorButtonFocused 1 1 1 0
+       m_ColorButtonHovered 1 1 1 0.012
+       m_ColorButtonHoveredFocused 1 1 1 0.025
+      }
+      SCR_ButtonBaseComponent "{20AE99D776E93BED}" {
+      }
+     }
+     {
+      TextWidgetClass "{3911F2BFDB93D4D9}" {
+       Name "ResetText"
+       Slot ButtonWidgetSlot "{4EDA3D302AB6F997}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.3968 0.4564 0.6038 1
+       Text "RESET"
+       "Font Size" 17
+       "Min Font Size" 9
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{D0E1919461F3A1ED}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

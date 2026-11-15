@@ -1,0 +1,254 @@
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ {
+  coords 9971.781 6.005 1642.588
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9970.663 6.005 1648.483
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9969.545 6.005 1654.378
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9968.427 6.005 1660.272
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9977.324 6.005 1649.746
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9976.206 6.005 1655.641
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9975.088 6.005 1661.535
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9978.442 6.005 1643.851
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9984.769 6.005 1651.158
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9983.65 6.005 1657.053
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9982.532 6.005 1662.947
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9985.887 6.005 1645.263
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9992.266 6.005 1652.58
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9991.147 6.005 1658.475
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9990.029 6.005 1664.369
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 9993.384 6.005 1646.685
+  angles 0 79.262 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10000.835 6.005 1654.142
+  angles 0 87.466 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10000.569 6.005 1660.136
+  angles 0 87.466 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10000.304 6.005 1666.13
+  angles 0 87.466 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10001.101 6.005 1648.148
+  angles 0 87.466 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10009.813 6.005 1654.204
+  angles 0 100.932 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10010.952 6.005 1660.097
+  angles 0 100.932 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10012.089 6.005 1665.987
+  angles 0 100.932 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10008.677 6.005 1648.313
+  angles 0 100.932 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10018.225 6.005 1652.579
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10019.242 6.005 1658.493
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10020.259 6.005 1664.405
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10017.208 6.005 1646.665
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10027.553 6.005 1650.974
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10028.57 6.005 1656.888
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10029.587 6.005 1662.8
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10026.536 6.005 1645.06
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10036.719 6.005 1655.486
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10037.735 6.005 1661.398
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10034.685 6.005 1643.658
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+ {
+  coords 10035.701 6.005 1649.572
+  angles 0 99.762 0
+  m_rVehicle "{7C1A5E3B9D2F4A11}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_rally.et"
+  m_iRespawnTimer 99999
+  m_bShouldAddAmmo 0
+ }
+}

@@ -1,11 +1,15 @@
 modded class COA_SlottingMenu
-{	
+{
+	// Admin BALANCE SLOTS / RESET buttons (CRF_SlotBalancer)
+	protected static const ResourceName CRF_BALANCE_SLOTS_LAYOUT = "{EA18A89623929C36}UI/layouts/Menus/Slotting/CRF_BalanceSlots.layout";
+	protected Widget m_wCRFBalanceSlots;
+
     /**
 	 * Called when the menu is opened
 	 * Initializes UI elements and sets up event listeners
 	 */
 	override void OnMenuOpen()
-	{	
+	{
 		super.OnMenuOpen();
 
 		// Don't open this menu on dedicated servers
@@ -13,6 +17,8 @@ modded class COA_SlottingMenu
 			Close();
 			return;
 		}
+
+		CreateBalanceSlotsButtons();
 
 		// Fetch community tags + ranks and register for updates when they arrive
 		CRF_CommunityTagManager tagMgr = CRF_CommunityTagManager.GetInstance();
@@ -39,7 +45,106 @@ modded class COA_SlottingMenu
 			tagMgr.GetOnPlayerInfoUpdated().Remove(RefreshTagsAndRanks);
 			tagMgr.GetOnPlayerRosterChanged().Remove(OnPlayerRosterChanged);
 		};
+
+		m_wCRFBalanceSlots = null;
     }
+
+	//------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
+
+		UpdateBalanceSlotsButtons();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void CreateBalanceSlotsButtons()
+	{
+		Widget strip = m_wRoot.FindAnyWidget("AdminStrip");
+		if (!strip)
+			return;
+
+		m_wCRFBalanceSlots = GetGame().GetWorkspace().CreateWidgets(CRF_BALANCE_SLOTS_LAYOUT, strip);
+		if (!m_wCRFBalanceSlots)
+			return;
+
+		SCR_ButtonBaseComponent balanceButton = FindBalanceSlotsButton("BalanceButton");
+		if (balanceButton)
+			balanceButton.m_OnClicked.Insert(OnBalanceSlotsClicked);
+
+		SCR_ButtonBaseComponent resetButton = FindBalanceSlotsButton("ResetButton");
+		if (resetButton)
+			resetButton.m_OnClicked.Insert(OnResetBalanceClicked);
+
+		UpdateBalanceSlotsButtons();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected SCR_ButtonBaseComponent FindBalanceSlotsButton(string widgetName)
+	{
+		ButtonWidget button = ButtonWidget.Cast(m_wCRFBalanceSlots.FindAnyWidget(widgetName));
+		if (!button)
+			return null;
+
+		return SCR_ButtonBaseComponent.Cast(button.FindHandler(SCR_ButtonBaseComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateBalanceSlotsButtons()
+	{
+		if (!m_wCRFBalanceSlots || !m_Gamemode)
+			return;
+
+		bool show = m_Gamemode.m_GamemodeState < COA_EGamemodeState.GAME
+			&& CRF_SlotBalancer.HasValidRatio(m_Gamemode)
+			&& SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
+
+		if (m_wCRFBalanceSlots.IsVisible() != show)
+			m_wCRFBalanceSlots.SetVisible(show);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnBalanceSlotsClicked()
+	{
+		RequestBalanceSlots(false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnResetBalanceClicked()
+	{
+		RequestBalanceSlots(true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void RequestBalanceSlots(bool reset)
+	{
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+			return;
+
+		COA_PlayerRplToAuthorityManager authorityManager = COA_PlayerRplToAuthorityManager.GetInstance();
+		if (authorityManager)
+			authorityManager.RequestBalanceSlots(reset);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Uses the balancer's split so the readout matches; the Lobby's integer division showed 3 : 2 for 9 players at 3:2
+	private override void UpdateRatioCalculation(int playerCount)
+	{
+		EditBoxWidget leftBox = EditBoxWidget.Cast(GetCachedWidget("RatioBox1"));
+		EditBoxWidget rightBox = EditBoxWidget.Cast(GetCachedWidget("RatioBox2"));
+		TextWidget finalText = TextWidget.Cast(GetCachedWidget("Final"));
+		if (!leftBox || !rightBox || !finalText)
+			return;
+
+		int leftRatio = leftBox.GetText().ToInt();
+		int rightRatio = rightBox.GetText().ToInt();
+		if (leftRatio < 0 || rightRatio < 0 || leftRatio + rightRatio == 0)
+			return;
+
+		int leftPlayers, rightPlayers;
+		CRF_SlotBalancer.GetTargets(playerCount, leftRatio, rightRatio, leftPlayers, rightPlayers);
+		finalText.SetText(leftPlayers.ToString() + " : " + rightPlayers.ToString());
+	}
 
 	/**
 	 * Surgically updates a single slot element when only its player ID has changed.

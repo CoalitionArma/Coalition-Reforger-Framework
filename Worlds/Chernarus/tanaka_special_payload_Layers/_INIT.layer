@@ -28,6 +28,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  components {
   CRF_PayloadGamemodeComponent "{5F3A91C27D4E7211}" {
    m_fHeightOffset 1.1
+   m_bEndMissionOnVictory 0
    m_aCheckpoints {
     CRF_PayloadCheckpoint "{5F3A91C27D4E7301}" {
      m_sName "Alpha"
@@ -88,13 +89,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "How Payload Works"
    m_sTextData "The truck drives itself. It is orange on your map and it can't be destroyed."\
    ""\
-   "It moves while CDF are within 30 m of it and no ChDKz are. More CDF push it faster."\
+   "It moves while CDF are within 30 m of it and no ChDKz are. More CDF push it faster. You can climb onto it and ride: it carries you with it."\
    ""\
    "One ChDKz within 30 m stops it dead. Left with no CDF near it for 30 seconds, it rolls back down the road, but never past a checkpoint it has already reached."\
    ""\
    "Checkpoints Alpha, Bravo and Charlie each add 5 minutes to the clock, bring back both sides' dead and move both sides' spawns up the road."\
    ""\
-   "CDF win when the truck reaches Novy Sobor. ChDKz win when the clock runs out, unless CDF are still with the truck: then it is overtime, until the truck arrives or they leave it."
+   "CDF win when the truck reaches Novy Sobor. ChDKz win when the clock runs out, unless CDF are still with the truck: then it is overtime, until the truck arrives or they leave it. The result is announced; an admin ends the mission."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1

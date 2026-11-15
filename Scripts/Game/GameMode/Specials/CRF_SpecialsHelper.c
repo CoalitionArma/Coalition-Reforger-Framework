@@ -70,6 +70,26 @@ class CRF_SpecialsHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Server: move a Lobby respawn point onto a marker entity, for every machine. Static spawn points
+	//! (flag poles) replicate the move themselves (COA_StaticSpawnPoint.MoveTo_S); a plain SetOrigin
+	//! only moved the server's copy, leaving the pole and its map marker behind on every client.
+	static void MoveSpawnPoint(notnull IEntity spawnEntity, notnull IEntity marker)
+	{
+		vector transform[4];
+		marker.GetWorldTransform(transform);
+
+		COA_StaticSpawnPoint staticSpawn = COA_StaticSpawnPoint.Cast(spawnEntity);
+		if (staticSpawn)
+		{
+			staticSpawn.MoveTo_S(transform);
+			return;
+		}
+
+		spawnEntity.SetWorldTransform(transform);
+		spawnEntity.Update();
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Server: spawns a prop on the ground at a clear spot near position, so props placed by a mode never
 	//! float or sink whatever height their anchor was given. Replicated if the prefab has an RplComponent.
 	//! lift raises the spawn above the ground (vehicles: let them settle onto their wheels).
@@ -118,6 +138,21 @@ class CRF_SpecialsHelper
 		}
 
 		return best;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! How many of the given players are within radius of center (map distance, ignoring height)
+	static int CountPlayersWithin(notnull array<int> playerIds, vector center, float radius)
+	{
+		int count;
+		foreach (int playerId : playerIds)
+		{
+			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if (entity && vector.DistanceXZ(entity.GetOrigin(), center) <= radius)
+				count++;
+		}
+
+		return count;
 	}
 
 	//------------------------------------------------------------------------------------------------

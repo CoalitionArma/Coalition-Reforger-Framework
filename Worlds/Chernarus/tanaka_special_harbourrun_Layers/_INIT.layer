@@ -1,0 +1,325 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 11105.187 204.696 12307.863
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_PayloadGamemodeComponent "{6B1113DB00007211}" {
+   m_fHeightOffset 1.1
+   m_iStartSeconds 1300
+   m_bEndMissionOnVictory 0
+   m_aCheckpoints {
+    CRF_PayloadCheckpoint "{6B1113DB00007301}" {
+     m_sName "Alpha"
+     m_sEntityName "payload_cp1"
+     m_sAttackerSpawnEntity "payload_spawn_att_1"
+     m_sDefenderSpawnEntity "payload_spawn_def_1"
+    }
+    CRF_PayloadCheckpoint "{6B1113DB00007302}" {
+     m_sName "Bravo"
+     m_sEntityName "payload_cp2"
+     m_sAttackerSpawnEntity "payload_spawn_att_2"
+     m_sDefenderSpawnEntity "payload_spawn_def_2"
+    }
+    CRF_PayloadCheckpoint "{6B1113DB00007303}" {
+     m_sName "Charlie"
+     m_sEntityName "payload_cp3"
+     m_sAttackerSpawnEntity "payload_spawn_att_3"
+     m_sDefenderSpawnEntity "payload_spawn_def_3"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 9
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 1
+ m_bHideOtherSpectatorFactions 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 75
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 10
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1113DB00007215}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Chernogorsk, half past nine in the morning."\
+   ""\
+   "A ship is waiting at the end of the harbour breakwater to take the CDF's wounded and the last of the city's medical stores out. The truck carrying them has to come in along the coast road from the west, through the centre of town and down to the docks. The ChDKz hold the streets in between."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1113DB00007216}" {
+   m_sTitle "How Payload Works"
+   m_sTextData "The truck drives itself. It is orange on your map and it can't be destroyed."\
+   ""\
+   "It moves while CDF are within 30 m of it and no ChDKz are. More CDF push it faster. You can climb onto it and ride: it carries you with it."\
+   ""\
+   "One ChDKz within 30 m stops it dead. Left with no CDF near it for 30 seconds, it rolls back, but never past a checkpoint it has already reached."\
+   ""\
+   "Checkpoints Alpha (the railway crossing), Bravo (the town centre) and Charlie (the harbour gate) each add 5 minutes to the clock, bring back both sides' dead and move both sides' spawns up the road."\
+   ""\
+   "CDF win when the truck reaches the end of the breakwater. ChDKz win when the clock runs out, unless CDF are still with the truck: then it is overtime, until the truck arrives or they leave it. The result is announced; an admin ends the mission."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1113DB00007217}" {
+   m_sTitle "CDF Briefing"
+   m_sTextData "MISSION"\
+   "Get the truck to the ship at the end of the harbour breakwater."\
+   ""\
+   "INTENT"\
+   "The route is 2.2 km of streets: every window on it is a firing position. The truck only moves with you beside it, so clear the blocks ahead of it before it gets there."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1113DB00007218}" {
+   m_sTitle "ChDKz Briefing"
+   m_sTextData "MISSION"\
+   "Stop the truck reaching the harbour."\
+   ""\
+   "INTENT"\
+   "One of you near the truck stops it, for as long as you live. You own the town: use the buildings along the main streets and make them pay for every block."\
+   ""\
+   "EXECUTION"\
+   "Commander's discretion."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6B1113DB00007331}" {
+   m_sCallsign "VOLK"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007332}" {
+   m_sCallsign "VOLK 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007333}" {
+   m_sCallsign "VOLK 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007334}" {
+   m_sCallsign "VOLK 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007335}" {
+   m_sCallsign "VOLK 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6B1113DB00007336}" {
+   m_sCallsign "SOKOL"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007337}" {
+   m_sCallsign "SOKOL 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007338}" {
+   m_sCallsign "SOKOL 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB00007339}" {
+   m_sCallsign "SOKOL 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1113DB0000733A}" {
+   m_sCallsign "SOKOL 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets -1
+ m_iOPFORTickets -1
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{6B1113DB0000721F}" {
+  m_rGearScript "{AF06DCD9277D1AF9}Configs/Gearscripts/Standard/Modern/COA_GS_CDF.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{6B1113DB00007220}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{6B1113DB00007221}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+}
