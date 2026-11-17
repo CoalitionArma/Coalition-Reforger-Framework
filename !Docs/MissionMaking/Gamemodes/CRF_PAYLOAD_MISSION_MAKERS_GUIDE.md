@@ -11,7 +11,9 @@ Attackers escort a truck along a route. Defenders stop it.
 
 The truck can't be driven, destroyed or stuck. It's a prop that every machine places on the terrain at a distance the server replicates.
 
-`Worlds/Chernarus/tanaka_special_payload` is a working example.
+Players can climb onto the truck and ride it. A prop placed by script has no physics velocity, so it would slide out from under them; instead each client moves its own player with the truck while they're standing on it, or on anything in its slots, such as the cargo bed.
+
+`Worlds/Chernarus/tanaka_special_payload` (Novy Sobor) and `Worlds/Chernarus/tanaka_special_harbourrun` (through Chernogorsk to the harbour) are working examples.
 
 ## Setup
 

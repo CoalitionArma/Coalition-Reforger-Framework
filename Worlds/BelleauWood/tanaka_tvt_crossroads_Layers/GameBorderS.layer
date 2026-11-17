@@ -1,0 +1,138 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 3050 178.531 2250
+ angles -4.463 0.14 -1.795
+ Points {
+  ShapePoint "{6B1112C570E0F242}" {
+   Position -1750 270.166 1750
+  }
+  ShapePoint "{6B1112C5E1DF4273}" {
+   Position 1750 182.795 1750
+  }
+  ShapePoint "{6B1112C58D377FDD}" {
+   Position 1750 0 -1750
+  }
+  ShapePoint "{6B1112C53CF95F79}" {
+   Position -1750 0 -1750
+  }
+ }
+}
+$grp COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ crossroads_safestart_bulldog {
+  coords 1999 200.4 3155
+  Points {
+   ShapePoint "{6B1112C5FD94152D}" {
+    Position 0 0 160
+   }
+   ShapePoint "{6B1112C58F11FA7F}" {
+    Position 113.137 0 113.137
+   }
+   ShapePoint "{6B1112C5EFB41D4A}" {
+    Position 160 0 0
+   }
+   ShapePoint "{6B1112C574ADF5E6}" {
+    Position 113.137 0 -113.137
+   }
+   ShapePoint "{6B1112C5FF5CD0C3}" {
+    Position 0 0 -160
+   }
+   ShapePoint "{6B1112C50D35979F}" {
+    Position -113.137 0 -113.137
+   }
+   ShapePoint "{6B1112C5641CF49D}" {
+    Position -160 0 0
+   }
+   ShapePoint "{6B1112C5B3BD4590}" {
+    Position -113.137 0 113.137
+   }
+  }
+ }
+ crossroads_safestart_hammer {
+  coords 3335 195 1095
+  Points {
+   ShapePoint "{6B1112C52CA3C818}" {
+    Position 0 0 140
+   }
+   ShapePoint "{6B1112C50E133150}" {
+    Position 98.995 0 98.995
+   }
+   ShapePoint "{6B1112C52CCD3C49}" {
+    Position 140 0 0
+   }
+   ShapePoint "{6B1112C5D32AC048}" {
+    Position 98.995 0 -98.995
+   }
+   ShapePoint "{6B1112C5E26D57D1}" {
+    Position 0 0 -140
+   }
+   ShapePoint "{6B1112C5EF3C8CB8}" {
+    Position -98.995 0 -98.995
+   }
+   ShapePoint "{6B1112C54BB70946}" {
+    Position -140 0 0
+   }
+   ShapePoint "{6B1112C5C9F900A8}" {
+    Position -98.995 0 98.995
+   }
+  }
+ }
+}
+$grp COA_SafestartBorder : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ crossroads_safestart_berkut {
+  coords 2815 180 2160
+  Points {
+   ShapePoint "{6B1112C55FDFF2B4}" {
+    Position 0 0 140
+   }
+   ShapePoint "{6B1112C56DF03580}" {
+    Position 98.995 0 98.995
+   }
+   ShapePoint "{6B1112C5416BC5A2}" {
+    Position 140 0 0
+   }
+   ShapePoint "{6B1112C5FB2D1D2B}" {
+    Position 98.995 0 -98.995
+   }
+   ShapePoint "{6B1112C5A7D9C26C}" {
+    Position 0 0 -140
+   }
+   ShapePoint "{6B1112C51AEF8F29}" {
+    Position -98.995 0 -98.995
+   }
+   ShapePoint "{6B1112C5560D7EF7}" {
+    Position -140 0 0
+   }
+   ShapePoint "{6B1112C5F098E636}" {
+    Position -98.995 0 98.995
+   }
+  }
+ }
+ crossroads_safestart_respawn {
+  coords 4300 186 3560
+  Points {
+   ShapePoint "{6B1112C59BAA886E}" {
+    Position 0 0 80
+   }
+   ShapePoint "{6B1112C5327CD56E}" {
+    Position 56.569 0 56.569
+   }
+   ShapePoint "{6B1112C59D60A67D}" {
+    Position 80 0 0
+   }
+   ShapePoint "{6B1112C53389944F}" {
+    Position 56.569 0 -56.569
+   }
+   ShapePoint "{6B1112C5D083AECF}" {
+    Position 0 0 -80
+   }
+   ShapePoint "{6B1112C5E52DDF88}" {
+    Position -56.569 0 -56.569
+   }
+   ShapePoint "{6B1112C53413888D}" {
+    Position -80 0 0
+   }
+   ShapePoint "{6B1112C5E563A149}" {
+    Position -56.569 0 56.569
+   }
+  }
+ }
+}

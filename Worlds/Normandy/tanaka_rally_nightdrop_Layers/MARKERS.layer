@@ -1,0 +1,146 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 766.551 9.672 857.759
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "1. At junction left 1 long opens, into right 2 tightens, and left 3 tightens, 20"
+ }
+ {
+  coords 946.878 10.574 988.921
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "2. Right 1, into steep uphill, 60"
+ }
+ {
+  coords 976.921 15.671 1038.304
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "3. At junction right 6 tightens, into left 2 long tightens, into right 4 tightens, 20"
+ }
+ {
+  coords 1193.363 24.676 1025.897
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "4. Left 3, and left 4 opens, and right 4, 100"
+ }
+ {
+  coords 1343.689 23.242 1254.267
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "5. Right 2 opens, into left 2 long, into steep downhill, 300"
+ }
+ {
+  coords 1412.651 10.124 1564.069
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "6. Caution, left 2 tightens, into right 3, 250"
+ }
+ {
+  coords 1326.195 13.926 1888.392
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "7. Right 3 opens, and right 2 tightens, into left 2, 20"
+ }
+ {
+  coords 1343.513 10.031 2022.675
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "8. Right 3 opens, into left 5, 150"
+ }
+ {
+  coords 1466.618 22.744 2260.251
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "9. Right 2, into steep uphill, 300"
+ }
+ {
+  coords 1684.773 36.013 2432.381
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "10. Caution, at junction square right, and right 4 opens, into square right at junction, 20"
+ }
+ {
+  coords 1874.955 46.648 2359.466
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "11. Left 2, into steep downhill, 150"
+ }
+ {
+  coords 1867.643 31.510 2212.848
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "12. Left 5 tightens, 350"
+ }
+ {
+  coords 2058.769 23.460 1868.039
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "13. At junction left 3 opens, and right 5, into left 3 opens at junction, 150"
+ }
+ {
+  coords 2340.912 14.677 1762.610
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "14. At junction left 4, 80"
+ }
+ {
+  coords 2436.395 12.241 1859.160
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "15. Left 5 opens, into square right at junction, and right 2 tightens, 20"
+ }
+ {
+  coords 2520.795 16.906 1976.182
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "16. Right 3 tightens, into left 4, into steep uphill, 200"
+ }
+ {
+  coords 2774.100 24.719 1921.120
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "17. Right 4, 100"
+ }
+ {
+  coords 2926.113 25.929 1842.682
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "18. Right 4 tightens, 150"
+ }
+ {
+  coords 2996.850 22.856 1639.899
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "19. Steep downhill, into left 4 opens, 70"
+ }
+ {
+  coords 3087.614 10.166 1494.935
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "20. Left 5, into right 4 tightens, into left 3 long, 100"
+ }
+ {
+  coords 3393.897 8.500 1422.269
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "21. At junction right 4 opens, into crest, and left 4 at junction, 90"
+ }
+ {
+  coords 3616.924 8.500 1423.453
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "22. Onto cobbles, and right 3 opens, into hairpin left at junction, 100"
+ }
+ {
+  coords 3739.416 8.500 1505.143
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "23. Left 5, and crest, 100"
+ }
+ {
+  coords 3654.494 8.018 1636.771
+  m_MarkerColor 1 0.55 0 1
+  m_sQuadName "dot"
+  m_sDescription "24. Flying finish"
+ }
+}

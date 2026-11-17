@@ -3491,14 +3491,14 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			
 			COA_SpawnPointData respawnFlag = factionSpawns[0];
 			
-			// Get marker position and orientation
 			vector markerPos = markerEntity.GetOrigin();
-			vector markerAngles = markerEntity.GetAngles();
 			
 			IEntity respawnFlagEnt = COA_EntityHelper.GetEntityFromRplId(respawnFlag.GetSpawnPointEntity());
-			// Move respawn flag (Note: visual flag mesh may not update immediately)
-			respawnFlagEnt.SetOrigin(markerPos);
-			respawnFlagEnt.SetAngles(markerAngles);
+			if (!respawnFlagEnt)
+				continue;
+
+			// Replicated move: a plain SetOrigin left the pole and its map marker behind on clients
+			CRF_SpecialsHelper.MoveSpawnPoint(respawnFlagEnt, markerEntity);
 			
 			Print(string.Format("[CRF_Rush] Teleported %1 respawn flag to zone %2 at %3", entry.m_eFaction, zoneNumber, markerPos), LogLevel.DEBUG);
 		}

@@ -4,10 +4,10 @@ modded class CSI_HUD
 	//! Updates the compass visibility based on player state.
 	//! \param[in] owner The entity that owns this component
 	//! \param[in] timeSlice Time elapsed since last update
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	protected override void DisplayUpdate(IEntity owner, float timeSlice)
 	{
 		// Call the parent class implementation first
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
 		// Early exit if no local player entity exists
 		if (!SCR_PlayerController.GetLocalMainEntity())

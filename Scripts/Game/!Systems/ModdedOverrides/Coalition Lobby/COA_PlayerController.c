@@ -6,10 +6,28 @@ modded class COA_PlayerController
 	// it's acted on in OnControlledEntityChanged below, so it can't fire again on a later respawn.
 	protected bool m_bIsJoinInProgress = false;
 
+	// Client: this player joined in progress and hasn't used their forward deploy yet - gates /fd.
+	// The server keeps the authoritative record (CRF_COA_Gamemode.IsJIPForwardDeployEligible) and
+	// updates this with every answer (CRF_COA_PlayerRplToOwnerManager.RpcDo_JIPForwardDeployResult).
+	protected bool m_bCanForwardDeploy = false;
+
 	//------------------------------------------------------------------------------------------------
 	void SetIsJoinInProgress(bool isJip)
 	{
 		m_bIsJoinInProgress = isJip;
+		m_bCanForwardDeploy = isJip;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetCanForwardDeploy(bool canDeploy)
+	{
+		m_bCanForwardDeploy = canDeploy;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool CanForwardDeploy()
+	{
+		return m_bCanForwardDeploy;
 	}
 
     //------------------------------------------------------------------------------------------------
@@ -55,18 +73,19 @@ modded class COA_PlayerController
 			//Offer JIP (Join In Progress) forward deploy exactly once, on this player's first live-
 			//character possession after a genuine join-in-progress (see SetIsJoinInProgress) - not on
 			//every spawn/respawn, not for everyone at once at round start, and not when a GM possesses
-			//an AI unit via Zeus (neither of those is this player joining). SafeStart must also have
-			//ended, and the mission must allow JIP (Disable JIP off).
+			//an AI unit via Zeus (neither of those is this player joining). The round must be live
+			//and the mission must allow JIP (Disable JIP off). Spawning in while the round isn't live
+			//yet (SafeStart) puts the player with their side at the start, so the offer is dropped -
+			//otherwise it would pop up on a later respawn.
 			//Delayed slightly so it doesn't fight the character loading screen for the top menu slot.
 			if (m_bIsJoinInProgress && to && !COA_EntityHelper.IsSpectator(to))
 			{
+				m_bIsJoinInProgress = false;
+
 				COA_Gamemode gamemode = COA_Gamemode.GetInstance();
 				COA_SafestartManager safestartManager = COA_SafestartManager.GetInstance();
-				if (gamemode && safestartManager && !gamemode.m_bLockUnusedSlots && !safestartManager.GetSafestartStatus())
-				{
+				if (gamemode && safestartManager && !gamemode.m_bLockUnusedSlots && safestartManager.IsRoundLive() && m_bCanForwardDeploy)
 					GetGame().GetCallqueue().CallLater(OpenJIPForwardDeployMenu, 500, false);
-					m_bIsJoinInProgress = false;
-				}
 			}
 
 			if (from)
