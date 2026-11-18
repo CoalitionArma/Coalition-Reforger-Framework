@@ -1,0 +1,6 @@
+COA_ShapeMarker : "{B1A844B7FEF4BC41}PrefabsMissionMaking/Markers/ShapeMarkers/ShapeMarker_Base.et" {
+ coords 3452.424 178.416 13026.92
+ m_MarkerColor 0 0 0 1
+ m_fWorldSizeX 1000
+ m_fWorldSizeY 1000
+}
