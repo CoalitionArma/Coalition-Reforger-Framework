@@ -1,0 +1,21 @@
+Vehicle : "{A6783FAA5D516D68}Prefabs/Vehicles/Wheeled/Stryker/M1128/Stryker_MGS.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     AutoConnectToTurret "tb_maingun"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F75}Prefabs/Vehicles/TankBattle/Stryker/Stryker_MGS_Turret_TankBattle.et"
+    }
+   }
+  }
+ }
+}

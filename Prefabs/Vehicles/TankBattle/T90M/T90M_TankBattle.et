@@ -1,0 +1,21 @@
+RHS_Tank : "{F9137C80D7F169FF}Prefabs/Vehicles/Tracked/T90M2/T90M2_base.et" {
+ ID "6A0940C853038E80"
+ components {
+  SCR_BaseCompartmentManagerComponent "{6A0940C848771D7E}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     AutoConnectToTurret "tb_maingun"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{6A0940C848768FEF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F77}Prefabs/Vehicles/TankBattle/T90M/T90M_Turret_TankBattle.et"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,11 @@
+Turret : "{03C4CE5E555BC852}Prefabs/Vehicles/Tracked/Kurganets25/VehParts/Turret/Turret_Epoch57mm.et" {
+ ID "69612DAEC717CF1A"
+ components {
+  RHS_DeployableWeaponTurretControllerComponent "{69612DA0C0CCA231}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

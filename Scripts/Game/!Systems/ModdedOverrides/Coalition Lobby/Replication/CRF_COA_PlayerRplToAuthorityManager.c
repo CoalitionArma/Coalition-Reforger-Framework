@@ -656,6 +656,14 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestRallyPaint, carId, paint);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Tank Battle: the caller wants this tank (index in their side's list). The server checks the
+	//! limit and that they're alive on foot (CRF_TankBattleGamemodeComponent.RequestTank)
+	void RequestTankBattleTank(int option)
+	{
+		Rpc(RpcAsk_RequestTankBattleTank, option);
+	}
+
 //=============================================================================================================================================================================================================================================================================================================================================================
 //	 REPLICATION METHODS
 //=============================================================================================================================================================================================================================================================================================================================================================
@@ -2003,6 +2011,17 @@ modded class COA_PlayerRplToAuthorityManager : ScriptComponent
 		CRF_RallyStageGamemodeComponent stage = CRF_RallyStageGamemodeComponent.Cast(CRF_RallyGamemodeComponent.GetInstance());
 		if (stage)
 			stage.RequestPaint(GetCallerPlayerId(), carId, paint);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestTankBattleTank(int option)
+	{
+		LogTelemetry("RpcAsk_RequestTankBattleTank", COA_BandwidthTelemetryManager.EstimateSize_Int());
+
+		CRF_TankBattleGamemodeComponent tankBattle = CRF_TankBattleGamemodeComponent.GetInstance();
+		if (tankBattle)
+			tankBattle.RequestTank(GetCallerPlayerId(), option);
 	}
 
 	//------------------------------------------------------------------------------------------------

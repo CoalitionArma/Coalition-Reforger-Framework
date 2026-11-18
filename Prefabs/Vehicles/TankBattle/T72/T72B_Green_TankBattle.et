@@ -1,0 +1,21 @@
+Tank : "{F9DFB7DD3BDE0A5B}Prefabs/Vehicles/Tracked/T72B/T72B_Green.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     AutoConnectToTurret "tb_maingun"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F7B}Prefabs/Vehicles/TankBattle/T72/T72B_Green_Turret_TankBattle.et"
+    }
+   }
+  }
+ }
+}

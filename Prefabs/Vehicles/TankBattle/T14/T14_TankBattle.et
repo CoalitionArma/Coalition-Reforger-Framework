@@ -1,0 +1,21 @@
+RHS_Tank : "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et" {
+ ID "61B56109CDF9B97F"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     AutoConnectToTurret "tb_maingun"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F67}Prefabs/Vehicles/TankBattle/T14/T14_Turret_TankBattle.et"
+    }
+   }
+  }
+ }
+}

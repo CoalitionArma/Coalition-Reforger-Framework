@@ -1,0 +1,87 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 2780 25 5150
+ Points {
+  ShapePoint "{6B1118B770E0F242}" {
+   Position -450 0 350
+  }
+  ShapePoint "{6B1118B7E1DF4273}" {
+   Position -330 0 550
+  }
+  ShapePoint "{6B1118B78D377FDD}" {
+   Position -230 0 620
+  }
+  ShapePoint "{6B1118B73CF95F79}" {
+   Position 70 0 620
+  }
+  ShapePoint "{6B1118B70BEAAF91}" {
+   Position 90 0 300
+  }
+  ShapePoint "{6B1118B7D1A0A0B1}" {
+   Position 480 0 -350
+  }
+  ShapePoint "{6B1118B739E51AFE}" {
+   Position 170 0 -600
+  }
+  ShapePoint "{6B1118B75DDD69C6}" {
+   Position 100 0 -560
+  }
+ }
+}
+COA_SafestartBorder steelrunway_safestart_blufor : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 2510.5 24.6 5419
+ Points {
+  ShapePoint "{6B1118B72DA1CBEA}" {
+   Position 0 0 89
+  }
+  ShapePoint "{6B1118B7F0095617}" {
+   Position 62.933 0 62.933
+  }
+  ShapePoint "{6B1118B78BA22FA7}" {
+   Position 89 0 0
+  }
+  ShapePoint "{6B1118B7AB6FB5F5}" {
+   Position 62.933 0 -62.933
+  }
+  ShapePoint "{6B1118B7159E6CC1}" {
+   Position 0 0 -89
+  }
+  ShapePoint "{6B1118B7CCB422DF}" {
+   Position -62.933 0 -62.933
+  }
+  ShapePoint "{6B1118B7886E4F2D}" {
+   Position -89 0 0
+  }
+  ShapePoint "{6B1118B7074E9E74}" {
+   Position -62.933 0 62.933
+  }
+ }
+}
+COA_SafestartBorder steelrunway_safestart_opfor : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 2960.1 24.6 4773
+ Points {
+  ShapePoint "{6B1118B7E3945934}" {
+   Position 0 0 90
+  }
+  ShapePoint "{6B1118B7C7A43AFD}" {
+   Position 63.64 0 63.64
+  }
+  ShapePoint "{6B1118B78CEFEB1A}" {
+   Position 90 0 0
+  }
+  ShapePoint "{6B1118B7A620CABE}" {
+   Position 63.64 0 -63.64
+  }
+  ShapePoint "{6B1118B7A3F6A88A}" {
+   Position 0 0 -90
+  }
+  ShapePoint "{6B1118B7BCF855C4}" {
+   Position -63.64 0 -63.64
+  }
+  ShapePoint "{6B1118B71C7766BF}" {
+   Position -90 0 0
+  }
+  ShapePoint "{6B1118B7430FA5D5}" {
+   Position -63.64 0 63.64
+  }
+ }
+}

@@ -1,0 +1,2001 @@
+//------------------------------------------------------------------------------------
+// CRF_TankBattleGamemodeComponent: one player, one tank, three points (a War Thunder style special)
+//
+// Each player spawns on foot at their side's flag and picks a tank from a menu; it spawns at one of
+// the side's tank spawns and they are put straight in it. One player runs the whole tank: they sit
+// in the driver's seat, so driving, the engine and the vehicle's network ownership are vanilla, and
+// the main gun is attached to that seat (BaseCompartmentSlot.AttachTurret, the way vanilla's armed
+// helicopters give the pilot the rocket pods), so the mouse aims it, left click fires and right
+// click goes to its sight. The camera is held in third person. They can't get out. When the tank is
+// destroyed, so are they; they come back after Respawn Seconds and pick again.
+//
+// Capture points are counted by tanks, not people: a point belongs to the side whose tanks sit in
+// it alone long enough (more tanks capture faster; tanks from both sides stop it). Every point a
+// side holds fills its bar; holding them all fills it faster still. The first bar full wins.
+//
+// Full guide: !Docs/MissionMaking/Gamemodes/CRF_TANKBATTLE_MISSION_MAKERS_GUIDE.md.
+//
+// Setup for mission makers (full guide in the doc above):
+//   1. Add this component to the gamemode entity. Fill in the two sides: faction, tanks, tank spawns.
+//   2. Place a named entity at the centre of each capture point and list them in Points.
+//   3. Give each side a respawn flag (players spawn there on foot and pick a tank) and the same
+//      number of slots on each side. Leave the mission's own respawns off: this mode respawns
+//      players itself.
+//------------------------------------------------------------------------------------
+
+enum CRF_ETankBattleState
+{
+	WAITING,	//!< round not live yet: tanks can be picked but are held
+	LIVE,
+	ENDED
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sName")]
+class CRF_TankBattleTank
+{
+	[Attribute(desc: "Name shown in the tank menu, e.g. \"T-72A\"")]
+	string m_sName;
+
+	[Attribute(desc: "One line under the name, e.g. \"Main battle tank\"")]
+	string m_sDescription;
+
+	[Attribute("", UIWidgets.ResourcePickerThumbnail, "Vehicle prefab. Tracked or wheeled, with a turret.", "et")]
+	ResourceName m_sPrefab;
+
+	[Attribute("0", UIWidgets.EditBox, "How many of these one side can have out at once (0 = no limit)", params: "0 64 1")]
+	int m_iLimit;
+
+	[Attribute("0", UIWidgets.EditBox, "Which turret the driver controls, counting the vehicle's turret seats from 0. The main gun is usually 0; try 1 if the mouse turns the commander's machine gun instead.", params: "0 8 1")]
+	int m_iTurretSeat;
+
+	protected int m_iAvailable = -1;	//!< -1 not checked yet, 0 no, 1 yes
+
+	//------------------------------------------------------------------------------------------------
+	//! Can this vehicle be spawned with the mods that are loaded? Checked once, on every machine (the
+	//! server and its clients run the same mods, so the menu and the server agree).
+	//! A Tank Battle prefab is a CRF child of a mod's vehicle: without that mod the child itself still
+	//! loads, but its parent is missing. So: the prefab loads and has a parent prefab.
+	bool IsAvailable()
+	{
+		if (m_iAvailable < 0)
+			m_iAvailable = CheckAvailable();
+
+		return m_iAvailable == 1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int CheckAvailable()
+	{
+		if (m_sPrefab.IsEmpty())
+			return 0;
+
+		Resource resource = Resource.Load(m_sPrefab);
+		if (!resource || !resource.IsValid())
+			return 0;
+
+		BaseResourceObject resourceObject = resource.GetResource();
+		if (!resourceObject)
+			return 0;
+
+		BaseContainer prefab = resourceObject.ToBaseContainer();
+		if (!prefab || !prefab.GetAncestor())
+			return 0;
+
+		return 1;
+	}
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sFactionKey")]
+class CRF_TankBattleSide
+{
+	[Attribute("BLUFOR", desc: "Faction key")]
+	string m_sFactionKey;
+
+	[Attribute(desc: "Tanks this side can pick from, in menu order")]
+	ref array<ref CRF_TankBattleTank> m_aTanks;
+
+	[Attribute(desc: "Names of entities where this side's tanks spawn, facing the way the entity faces. A spawn with a tank on it is skipped while another is free. None: near the player.")]
+	ref array<string> m_aSpawnEntities;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sName")]
+class CRF_TankBattlePoint
+{
+	[Attribute("A", desc: "What players call it")]
+	string m_sName;
+
+	[Attribute(desc: "Name of an entity at the point's centre")]
+	string m_sEntityName;
+
+	[Attribute("60", UIWidgets.EditBox, "Metres from the centre a tank counts as in the point", params: "10 500 1")]
+	float m_fRadius;
+}
+
+//------------------------------------------------------------------------------------------------
+//! Server: one player's state in the mode
+class CRF_TankBattlePlayer
+{
+	int m_iSide = -1;
+	RplId m_TankId = RplId.Invalid();
+	Vehicle m_Tank;
+	int m_iOption = -1;
+	bool m_bWasSeated;
+	int m_iSeatTries;
+	int m_iSeatTriedAtMs;
+	int m_iDeadSinceMs = -1;
+	int m_iRequestedAtMs = -100000;
+}
+
+
+//------------------------------------------------------------------------------------------------
+[ComponentEditorProps(category: "Game Mode Component", description: "Tank Battle: one player per tank, third person, three capture points and a score bar per side.")]
+class CRF_TankBattleGamemodeComponentClass : SCR_BaseGameModeComponentClass {}
+
+
+class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
+{
+	[Attribute(desc: "The two sides. The first is drawn on the left of the score bar for spectators.", category: "Tank Battle - Sides")]
+	protected ref array<ref CRF_TankBattleSide> m_aSides;
+
+	[Attribute(desc: "The capture points (three is the classic layout, up to five fit on the HUD)", category: "Tank Battle - Points")]
+	protected ref array<ref CRF_TankBattlePoint> m_aPoints;
+
+	[Attribute("20", UIWidgets.EditBox, "Seconds for one tank to take a neutral point. An enemy point takes twice as long: it is neutralised first.", params: "1 600 1", category: "Tank Battle - Points")]
+	protected float m_fCaptureSeconds;
+
+	[Attribute("0.5", UIWidgets.EditBox, "How much faster each extra tank captures (0.5 = two tanks capture 1.5x as fast)", params: "0 5 0.05", category: "Tank Battle - Points")]
+	protected float m_fExtraTankCaptureSpeed;
+
+	[Attribute("2", UIWidgets.EditBox, "Fastest a point can be captured, as a multiple of one tank's speed", params: "1 10 0.1", category: "Tank Battle - Points")]
+	protected float m_fMaxCaptureMultiplier;
+
+	[Attribute("1000", UIWidgets.EditBox, "Score that fills a side's bar and wins", params: "10 100000 10", category: "Tank Battle - Score")]
+	protected int m_iScoreLimit;
+
+	[Attribute("2", UIWidgets.EditBox, "Score per second for each point a side holds", params: "0 1000 0.1", category: "Tank Battle - Score")]
+	protected float m_fScorePerPoint;
+
+	[Attribute("4", UIWidgets.EditBox, "Extra score per second while a side holds every point", params: "0 1000 0.1", category: "Tank Battle - Score")]
+	protected float m_fAllPointsBonus;
+
+	[Attribute("0", UIWidgets.EditBox, "Score a side gets for each enemy it kills (0 = kills don't score)", params: "0 10000 1", category: "Tank Battle - Score")]
+	protected int m_iScorePerKill;
+
+	[Attribute("1", UIWidgets.CheckBox, "Record the winner and advance the gamemode to the AAR when a bar fills. Off: the result is announced and an admin ends the mission.", category: "Tank Battle - Score")]
+	protected bool m_bEndMissionOnVictory;
+
+	[Attribute("10", UIWidgets.EditBox, "Seconds after dying before a player is back at their flag to pick another tank", params: "0 300 1", category: "Tank Battle - Players")]
+	protected float m_fRespawnSeconds;
+
+	[Attribute("1", UIWidgets.CheckBox, "Respawn players after Respawn Seconds. Off: the mission's own respawn settings decide.", category: "Tank Battle - Players")]
+	protected bool m_bRespawnPlayers;
+
+	[Attribute("1", UIWidgets.CheckBox, "Players can't get out of their tank or change seats", category: "Tank Battle - Players")]
+	protected bool m_bLockCrewIn;
+
+	[Attribute("1", UIWidgets.CheckBox, "Hold the camera in third person while in a tank. The gun sights still work.", category: "Tank Battle - Players")]
+	protected bool m_bForceThirdPerson;
+
+	[Attribute("1", UIWidgets.CheckBox, "Tanks are held (engine off, handbrake on) until the round goes live", category: "Tank Battle - Players")]
+	protected bool m_bHoldUntilLive;
+
+	[Attribute("60", UIWidgets.EditBox, "Seconds a wreck, or a tank whose player is gone, stays before it's removed", params: "0 600 1", category: "Tank Battle - Players")]
+	protected float m_fWreckSeconds;
+
+	[Attribute("1.6", UIWidgets.EditBox, "Third person camera distance in a tank, as a multiple of the tank's own (1 = vanilla)", params: "1 4 0.05", category: "Tank Battle - Camera")]
+	protected float m_fCameraDistanceScale;
+
+	[Attribute("10", UIWidgets.EditBox, "Degrees added to the third person field of view in a tank (0 = vanilla)", params: "0 40 1", category: "Tank Battle - Camera")]
+	protected float m_fCameraExtraFov;
+
+	[Attribute("2.5", UIWidgets.EditBox, "Metres the third person camera is raised in a tank. It looks down at where the gun points, so the aim point stays in the middle of the screen.", params: "0 15 0.1", category: "Tank Battle - Camera")]
+	protected float m_fCameraExtraHeight;
+
+	[Attribute("1", UIWidgets.CheckBox, "Third person camera looks at where the gun points (the crosshair stays in the middle of the screen). Off: vanilla, along the gun.", category: "Tank Battle - Camera")]
+	protected bool m_bCameraLookAtAim;
+
+	[Attribute("1", UIWidgets.CheckBox, "Crosshair where the gun points, in third person", category: "Tank Battle - HUD")]
+	protected bool m_bShowCrosshair;
+
+	[Attribute("1", UIWidgets.CheckBox, "Minimap in the bottom right while the player sits in their tank: the capture zones and friendly tanks", category: "Tank Battle - HUD")]
+	protected bool m_bShowMinimap;
+
+	[Attribute("1", UIWidgets.CheckBox, "Draw the map's satellite image under the minimap", category: "Tank Battle - HUD")]
+	protected bool m_bMinimapSatellite;
+
+	[Attribute("", UIWidgets.ResourcePickerThumbnail, "Image under the minimap instead of the world's own map satellite image (it must cover the whole terrain, north up). Needed on maps that set the image on their placed map entity rather than its prefab, e.g. Chernarus Minus: {096230E40A49DAC9}Worlds/MapData/ChernarusMinusMap.edds", "edds", category: "Tank Battle - HUD")]
+	protected ResourceName m_sMinimapImage;
+
+	[Attribute("{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", UIWidgets.ResourcePickerThumbnail, "Map marker for the capture points", "edds", category: "Tank Battle - Map")]
+	protected ResourceName m_sPointMarkerIcon;
+
+	// Replicated
+	[RplProp()]
+	protected int m_iState;
+	[RplProp()]
+	protected int m_iScore0;
+	[RplProp()]
+	protected int m_iScore1;
+	[RplProp()]
+	protected int m_iWinnerSide = -1;
+	[RplProp()]
+	protected ref array<int> m_aPointOwner = {};		//!< -1 nobody, else side index
+	[RplProp()]
+	protected ref array<int> m_aPointProgress = {};		//!< -100 (side 1 holds it) to 100 (side 0)
+	[RplProp()]
+	protected ref array<int> m_aPointCapturing = {};	//!< -1 nobody in it, side index, or CONTESTED
+	[RplProp()]
+	protected ref array<int> m_aTankPlayers = {};		//!< who has a tank, with the three lists below
+	[RplProp()]
+	protected ref array<RplId> m_aTankIds = {};
+	[RplProp()]
+	protected ref array<int> m_aTankSides = {};
+	[RplProp()]
+	protected ref array<int> m_aTankOptions = {};
+
+	// Server
+	protected COA_Gamemode m_Gamemode;
+	protected COA_SafestartManager m_Safestart;
+	protected bool m_bEndRequested;
+	protected bool m_bDirty;
+	protected ref map<int, ref CRF_TankBattlePlayer> m_mPlayers = new map<int, ref CRF_TankBattlePlayer>();
+	protected ref array<float> m_aProgress = {};		//!< -1 to 1, as m_aPointProgress
+	protected float m_fScore0;
+	protected float m_fScore1;
+	protected ref array<RplId> m_aWreckIds = {};
+	protected ref array<int> m_aWreckRemoveAtMs = {};
+
+	// Every machine
+	protected ref array<IEntity> m_aPointEntities = {};
+	protected ref array<IEntity> m_aAttachLogged = {};	//!< tanks whose turret attachment has been logged (once each)
+	protected ref array<IEntity> m_aNoTurretWarned = {};
+	protected bool m_bPointsFound;
+
+	// Client
+	protected Vehicle m_LocalTank;
+	protected bool m_bLocalHeld;			//!< this machine put the local tank's handbrake on for the hold
+	protected int m_iEngineStartAtMs;
+	protected int m_iMenuSnoozeUntilMs;
+	protected int m_iTurretCheckAtMs;
+	protected ref TraceParam m_GunTrace;
+	protected bool m_bGunRayCached;
+	protected bool m_bGunRayValid;
+	protected int m_iGunRayAtMs;
+	protected vector m_vGunRayOrigin;
+	protected vector m_vGunRayDirection;
+	protected float m_fGunRayDistance;
+
+	static const float GUN_TRACE_RANGE = 2500;		//!< m traced along the gun
+	protected static const float GUN_TRACE_START = 3;	//!< m past the muzzle the trace starts (clear of the barrel)
+	protected ref CRF_SpecialsMarkerSet m_Markers;
+	protected ref CRF_TankBattleHUD m_Hud;
+
+	static const int CONTESTED = 2;
+
+	protected static const int TICK_MS = 500;
+	protected static const float TICK_SECONDS = 0.5;
+	protected static const int SEAT_MAX_TRIES = 5;
+	protected static const int SEAT_RETRY_MS = 1500;
+	protected static const int REQUEST_COOLDOWN_MS = 1500;
+	protected static const int ENGINE_RETRY_MS = 2000;
+	protected static const int TURRET_CHECK_MS = 250;
+	protected static const int MENU_SNOOZE_MS = 5000;
+	protected static const float SPAWN_CLEAR_RADIUS = 9;	//!< a tank spawn with a tank this close is taken
+	protected static const string LOG = "[CRF_TankBattle]";
+
+	protected static CRF_TankBattleGamemodeComponent s_Instance;
+
+	//===================================================================================
+	// LIFECYCLE
+	//===================================================================================
+
+	void CRF_TankBattleGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		s_Instance = this;
+	}
+
+	void ~CRF_TankBattleGamemodeComponent()
+	{
+		if (s_Instance == this)
+			s_Instance = null;
+	}
+
+	static CRF_TankBattleGamemodeComponent GetInstance()
+	{
+		return s_Instance;
+	}
+
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		if (!GetGame().InPlayMode())
+			return;
+
+		SetEventMask(owner, EntityEvent.FRAME);
+
+		if (!System.IsConsoleApp())
+		{
+			m_Markers = new CRF_SpecialsMarkerSet();
+			m_Hud = new CRF_TankBattleHUD();
+			GetGame().GetCallqueue().CallLater(UpdateMarkers, 1000, true);
+			GetGame().GetCallqueue().CallLater(UpdateUi, 250, true);
+		}
+
+		if (Replication.IsServer())
+		{
+			InitPointState();
+			GetGame().GetCallqueue().CallLater(HookGamemode, 1000, false);
+		}
+	}
+
+	override void OnDelete(IEntity owner)
+	{
+		if (GetGame())
+		{
+			GetGame().GetCallqueue().Remove(Tick);
+			GetGame().GetCallqueue().Remove(HookGamemode);
+			GetGame().GetCallqueue().Remove(UpdateMarkers);
+			GetGame().GetCallqueue().Remove(UpdateUi);
+		}
+
+		if (m_Gamemode && m_Gamemode.GetOnStateChanged())
+			m_Gamemode.GetOnStateChanged().Remove(OnGamemodeStateChanged);
+
+		if (m_Safestart && m_Safestart.m_OnRoundLive)
+			m_Safestart.m_OnRoundLive.Remove(OnRoundLive);
+
+		CRF_TankBattleMenu.CloseMenu();
+
+		if (m_Markers)
+			m_Markers.Clear();
+
+		if (m_Hud)
+			m_Hud.Destroy();
+
+		super.OnDelete(owner);
+	}
+
+	protected void InitPointState()
+	{
+		m_aPointOwner.Clear();
+		m_aPointProgress.Clear();
+		m_aPointCapturing.Clear();
+		m_aProgress.Clear();
+
+		if (!m_aPoints)
+			return;
+
+		for (int i = 0; i < m_aPoints.Count(); i++)
+		{
+			m_aPointOwner.Insert(-1);
+			m_aPointProgress.Insert(0);
+			m_aPointCapturing.Insert(-1);
+			m_aProgress.Insert(0);
+		}
+	}
+
+	//! Server, once: the vehicles left out of the menu because their mod isn't loaded
+	protected void LogUnavailableTanks()
+	{
+		if (!m_aSides)
+			return;
+
+		foreach (CRF_TankBattleSide side : m_aSides)
+		{
+			if (!side.m_aTanks)
+				continue;
+
+			int available;
+			foreach (CRF_TankBattleTank tank : side.m_aTanks)
+			{
+				if (tank.IsAvailable())
+				{
+					available++;
+					continue;
+				}
+
+				Print(string.Format("%1 %2: '%3' isn't offered - its prefab or the mod it comes from isn't loaded (%4).", LOG, side.m_sFactionKey, tank.m_sName, tank.m_sPrefab), LogLevel.WARNING);
+			}
+
+			if (available == 0)
+				Print(string.Format("%1 %2 has no vehicle it can spawn: its players can't play.", LOG, side.m_sFactionKey), LogLevel.ERROR);
+		}
+	}
+
+	protected void HookGamemode()
+	{
+		if (!m_aSides || m_aSides.Count() != 2)
+			Print(string.Format("%1 Needs exactly two sides, has %2.", LOG, SideCount()), LogLevel.ERROR);
+
+		if (!m_aPoints || m_aPoints.IsEmpty())
+			Print(string.Format("%1 No capture points: nobody can score.", LOG), LogLevel.WARNING);
+
+		LogUnavailableTanks();
+
+		m_Gamemode = COA_Gamemode.GetInstance();
+		if (!m_Gamemode)
+		{
+			Print(string.Format("%1 No COA_Gamemode: Tank Battle is not running.", LOG), LogLevel.WARNING);
+			return;
+		}
+
+		m_Gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
+
+		m_Safestart = COA_SafestartManager.GetInstance();
+		if (m_Safestart && m_Safestart.m_OnRoundLive)
+			m_Safestart.m_OnRoundLive.Insert(OnRoundLive);
+
+		// Players are looked after (tanks, seats, respawns) from now on, safestart included
+		GetGame().GetCallqueue().CallLater(Tick, TICK_MS, true);
+
+		OnGamemodeStateChanged();
+	}
+
+	protected void OnRoundLive()
+	{
+		if (m_Gamemode && m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
+			StartRound();
+	}
+
+	protected void OnGamemodeStateChanged()
+	{
+		if (!m_Gamemode)
+			return;
+
+		if (m_Gamemode.m_GamemodeState == COA_EGamemodeState.GAME)
+		{
+			// Missions with safestart start on OnRoundLive
+			if (m_iState == CRF_ETankBattleState.WAITING && (!m_Safestart || m_Safestart.IsRoundLive()))
+				StartRound();
+			return;
+		}
+
+		// The mission ended, whoever decided it
+		if (m_iState == CRF_ETankBattleState.LIVE)
+			SetEnded(-1);
+	}
+
+	protected void StartRound()
+	{
+		if (m_iState != CRF_ETankBattleState.WAITING)
+			return;
+
+		m_iState = CRF_ETankBattleState.LIVE;
+		Replication.BumpMe();
+
+		CheckSidesEven();
+
+		string pointNames = PointNames();
+		CRF_RadioTransmissionEvents.PopupToFaction("", "TANK BATTLE", string.Format("Hold %1. The more you hold, the faster your bar fills.", pointNames), 8);
+	}
+
+	//! 1:1 is the mission's slots: this only says so when the sides are uneven at the start
+	protected void CheckSidesEven()
+	{
+		if (SideCount() != 2)
+			return;
+
+		int count0 = CountSidePlayers(0);
+		int count1 = CountSidePlayers(1);
+		if (count0 == count1)
+			return;
+
+		string text = string.Format("%1 %2 v %3 %4", CRF_SpecialsHelper.GetFactionName(m_aSides[0].m_sFactionKey), count0, count1, CRF_SpecialsHelper.GetFactionName(m_aSides[1].m_sFactionKey));
+		Print(string.Format("%1 Uneven sides at the start: %2", LOG, text), LogLevel.WARNING);
+		CRF_RadioTransmissionEvents.PopupToFaction("", "UNEVEN SIDES", text, 8);
+	}
+
+	protected int CountSidePlayers(int side)
+	{
+		array<int> players = {};
+		CRF_SpecialsHelper.GetAlivePlayers(m_aSides[side].m_sFactionKey, players);
+		return players.Count();
+	}
+
+	//===================================================================================
+	// SERVER: THE TICK
+	//===================================================================================
+
+	protected void Tick()
+	{
+		int now = GetGame().GetWorld().GetWorldTime();
+
+		ManagePlayers(now);
+		RemoveWrecks(now);
+
+		if (m_iState == CRF_ETankBattleState.LIVE && !m_bEndRequested)
+		{
+			UpdatePoints();
+			UpdateScore();
+		}
+
+		if (m_bDirty)
+		{
+			m_bDirty = false;
+			Replication.BumpMe();
+		}
+	}
+
+	//===================================================================================
+	// SERVER: PLAYERS AND THEIR TANKS
+	//===================================================================================
+
+	protected CRF_TankBattlePlayer GetPlayerState(int playerId)
+	{
+		CRF_TankBattlePlayer state = m_mPlayers.Get(playerId);
+		if (!state)
+		{
+			state = new CRF_TankBattlePlayer();
+			m_mPlayers.Set(playerId, state);
+		}
+
+		return state;
+	}
+
+	protected void ManagePlayers(int now)
+	{
+		COA_SlottingManager slottingManager = COA_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		foreach (int playerId : playerIds)
+		{
+			int side = GetSideOfFaction(CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId));
+			if (side < 0)
+				continue;
+
+			CRF_TankBattlePlayer state = GetPlayerState(playerId);
+			state.m_iSide = side;
+
+			ChimeraCharacter character = ChimeraCharacter.Cast(CRF_RadioTransmissionEvents.GetAlivePlayerEntity(playerId));
+			if (character && COA_EntityHelper.IsSpectator(character))
+				character = null;
+
+			if (!character)
+			{
+				if (state.m_Tank || state.m_TankId.IsValid())
+					ReleaseTank(state, now);
+
+				if (slottingManager.IsPlayerInASlot(playerId) && slottingManager.IsPlayerConsideredDead(playerId))
+					UpdateRespawn(playerId, state, now);
+				else
+					state.m_iDeadSinceMs = -1;
+
+				continue;
+			}
+
+			state.m_iDeadSinceMs = -1;
+			ManageTank(playerId, state, character, now);
+		}
+	}
+
+	//! Server: a living player and their tank, if they have one
+	protected void ManageTank(int playerId, notnull CRF_TankBattlePlayer state, notnull ChimeraCharacter character, int now)
+	{
+		Vehicle tank = GetStateTank(state);
+		if (!tank)
+		{
+			if (state.m_TankId.IsValid())
+				ReleaseTank(state, now);	// deleted under them
+			return;
+		}
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+
+		// Their tank went up: so do they
+		if (IsWrecked(tank))
+		{
+			if (character.IsInVehicle() || state.m_bWasSeated)
+				KillCharacter(character);
+
+			ReleaseTank(state, now);
+			return;
+		}
+
+		if (character.IsInVehicle() && character.GetRootParent() == tank)
+		{
+			state.m_bWasSeated = true;
+			state.m_iSeatTries = 0;
+
+			// No revives in a tank
+			if (controller && controller.GetLifeState() == ECharacterLifeState.INCAPACITATED)
+				KillCharacter(character);
+
+			return;
+		}
+
+		// Not in it (yet): the seat change runs on the player's own machine, which may not have the
+		// new tank yet, so it's tried a few times
+		if (state.m_iSeatTries >= SEAT_MAX_TRIES)
+		{
+			if (now - state.m_iSeatTriedAtMs < SEAT_RETRY_MS)
+				return;
+
+			if (state.m_bWasSeated)
+			{
+				// They got out somehow and couldn't be put back
+				KillCharacter(character);
+			}
+			else
+			{
+				Print(string.Format("%1 Couldn't seat player %2 in their tank: removed it so they can pick again.", LOG, playerId), LogLevel.WARNING);
+				CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "TANK LOST", "Couldn't put you in it. Pick again.", 5);
+			}
+
+			ReleaseTank(state, now, true);
+			return;
+		}
+
+		if (state.m_iSeatTries > 0 && now - state.m_iSeatTriedAtMs < SEAT_RETRY_MS)
+			return;
+
+		if (character.IsInVehicle())
+			return;	// in some other vehicle: wait for them to be out
+
+		state.m_iSeatTries++;
+		state.m_iSeatTriedAtMs = now;
+		SeatCharacter(character, tank, state.m_iSide, state.m_iOption);
+	}
+
+	protected void SeatCharacter(notnull ChimeraCharacter character, notnull Vehicle tank, int side, int option)
+	{
+		SCR_CompartmentAccessComponent access = SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+		if (!access)
+			return;
+
+		AttachMainTurret(tank);
+
+		BaseCompartmentSlot seat = GetDriverSeat(tank);
+		if (!seat || seat.GetOccupant() || !access.MoveInVehicle(tank, ECompartmentType.PILOT, false, seat))
+			Print(string.Format("%1 No free driver's seat in %2.", LOG, tank), LogLevel.WARNING);
+	}
+
+	//! The vehicle's driver's seat, null if it has none
+	static BaseCompartmentSlot GetDriverSeat(notnull Vehicle vehicle)
+	{
+		VehicleControllerComponent controller = vehicle.GetVehicleController();
+		if (!controller)
+			return null;
+
+		return controller.GetPilotCompartmentSlot();
+	}
+
+	//! The turret the driver controls: the index'th turret seat's turret (m_iTurretSeat), null if there isn't one
+	static TurretControllerComponent GetMainTurret(notnull IEntity vehicle, int index)
+	{
+		array<BaseCompartmentSlot> seats = {};
+		CollectSeats(vehicle, ECompartmentType.TURRET, seats);
+		if (!seats.IsIndexValid(index))
+			return null;
+
+		return TurretControllerComponent.Cast(seats[index].GetController());
+	}
+
+	//! The turret in entity or anything slotted on it whose controller has this UniqueTurretName
+	static TurretControllerComponent FindTurretByName(notnull IEntity entity, string uniqueName)
+	{
+		TurretControllerComponent turret = TurretControllerComponent.Cast(entity.FindComponent(TurretControllerComponent));
+		if (turret && turret.GetUniqueName() == uniqueName)
+			return turret;
+
+		IEntity child = entity.GetChildren();
+		while (child)
+		{
+			turret = FindTurretByName(child, uniqueName);
+			if (turret)
+				return turret;
+
+			child = child.GetSibling();
+		}
+
+		return null;
+	}
+
+	//! Seats of a type in entity and the entities slotted on it, in vanilla's order (the hull's own, then
+	//! each child's, depth first). A compartment manager only lists its own entity's seats: a tank's
+	//! gunner sits on the turret entity (see SCR_CompartmentAccessComponent.FindFreeAndAccessibleCompartment).
+	static void CollectSeats(notnull IEntity entity, ECompartmentType type, notnull array<BaseCompartmentSlot> seats)
+	{
+		BaseCompartmentManagerComponent manager = BaseCompartmentManagerComponent.Cast(entity.FindComponent(BaseCompartmentManagerComponent));
+		if (manager)
+		{
+			array<BaseCompartmentSlot> own = {};
+			manager.GetCompartments(own);
+			foreach (BaseCompartmentSlot seat : own)
+			{
+				if (seat.GetType() == type)
+					seats.Insert(seat);
+			}
+		}
+
+		IEntity child = entity.GetChildren();
+		while (child)
+		{
+			CollectSeats(child, type, seats);
+			child = child.GetSibling();
+		}
+	}
+
+	//! Every machine: the main gun answers to the driver's seat. Aim (mouse), sight, fire and zeroing,
+	//! not TurretContext: that holds the W/A/S/D turret keys, which drive here. Bits are
+	//! 1 << ETurretContextID, as in vanilla's AutoConnectContextIndices (armed Mi-8: 0x8, fire only).
+	protected void AttachMainTurret(notnull Vehicle tank)
+	{
+		BaseCompartmentSlot driverSeat = GetDriverSeat(tank);
+		if (!driverSeat)
+			return;
+
+		int option = -1;
+		int index = m_aTankIds.Find(GetRplId(tank));
+		if (index >= 0)
+			option = m_aTankOptions[index];
+
+		int seatIndex;
+		CRF_TankBattleTank tankOption;
+		if (index >= 0)
+			tankOption = GetTankOption(m_aTankSides[index], option);
+		if (tankOption)
+			seatIndex = tankOption.m_iTurretSeat;
+
+		// The turret the seat auto-connects to (Tank Battle prefabs name it), else the Turret Seat'th turret
+		TurretControllerComponent turret;
+		string autoConnect = driverSeat.GetAutoConnectTurret();
+		if (!autoConnect.IsEmpty())
+			turret = FindTurretByName(tank, autoConnect);
+
+		if (!turret)
+			turret = GetMainTurret(tank, seatIndex);
+
+		if (!turret)
+		{
+			if (!m_aNoTurretWarned.Contains(tank))
+			{
+				m_aNoTurretWarned.Insert(tank);
+				Print(string.Format("%1 %2 has no turret seat %3: the driver can't fire.", LOG, tank, seatIndex), LogLevel.WARNING);
+			}
+			return;
+		}
+
+		// The Tank Battle prefabs connect it natively when the driver gets in (AutoConnectToTurret); this
+		// covers a prefab without that. Either way the turret must allow it (CanBeOverridden), or nothing happens.
+		if (driverSeat.GetAttachedTurret() != turret)
+		{
+			ETurretContextID contexts = (1 << ETurretContextID.TURRET_MOVEMENTCONTEXT) | (1 << ETurretContextID.TURRET_OPSCONTEXT) | (1 << ETurretContextID.TURRET_WEAPONCONTEXT) | (1 << ETurretContextID.TURRET_WEAPONAIMCONTEXT);
+			driverSeat.AttachTurret(turret, contexts);
+		}
+
+		// Once per tank, with the driver in: whether it worked
+		if (!driverSeat.GetOccupant() || m_aAttachLogged.Contains(tank))
+			return;
+
+		m_aAttachLogged.Insert(tank);
+		TurretControllerComponent attached = driverSeat.GetAttachedTurret();
+		if (attached == turret)
+		{
+			Print(string.Format("%1 %2: the driver controls the main gun %3 (contexts %4).", LOG, tank, turret.GetOwner(), attached.GetContextIDs()), LogLevel.NORMAL);
+			return;
+		}
+
+		Print(string.Format("%1 %2: the main gun %3 couldn't be attached to the driver's seat (attached: %4). Use a Tank Battle prefab: the turret needs CanBeOverridden, the driver's seat AutoConnectToTurret (see the guide).", LOG, tank, turret.GetOwner(), attached), LogLevel.WARNING);
+	}
+
+	protected static RplId GetRplId(notnull IEntity entity)
+	{
+		RplComponent rpl = RplComponent.Cast(entity.FindComponent(RplComponent));
+		if (!rpl)
+			return RplId.Invalid();
+
+		return rpl.Id();
+	}
+
+	//! Player dead: back at the flag after m_fRespawnSeconds
+	protected void UpdateRespawn(int playerId, notnull CRF_TankBattlePlayer state, int now)
+	{
+		if (!m_bRespawnPlayers || m_iState == CRF_ETankBattleState.ENDED || !m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+			return;
+
+		if (state.m_iDeadSinceMs < 0)
+		{
+			state.m_iDeadSinceMs = now;
+			int seconds = m_fRespawnSeconds;
+			if (seconds > 0)
+				CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "TANK DESTROYED", string.Format("Back in %1 seconds.", seconds), 4);
+			return;
+		}
+
+		if (now - state.m_iDeadSinceMs < m_fRespawnSeconds * 1000)
+			return;
+
+		COA_RespawnManager respawnManager = COA_RespawnManager.GetInstance();
+		if (!respawnManager)
+			return;
+
+		state.m_iDeadSinceMs = -1;
+		respawnManager.RespawnPlayer(playerId);
+	}
+
+	//! The player no longer has this tank. It's removed after m_fWreckSeconds (straight away if
+	//! removeNow), unless someone is still in it.
+	protected void ReleaseTank(notnull CRF_TankBattlePlayer state, int now, bool removeNow = false)
+	{
+		if (state.m_TankId.IsValid())
+		{
+			int delayMs = m_fWreckSeconds * 1000;
+			if (removeNow)
+				delayMs = 0;
+
+			m_aWreckIds.Insert(state.m_TankId);
+			m_aWreckRemoveAtMs.Insert(now + delayMs);
+		}
+
+		state.m_TankId = RplId.Invalid();
+		state.m_Tank = null;
+		state.m_iOption = -1;
+		state.m_bWasSeated = false;
+		state.m_iSeatTries = 0;
+		RebuildTankList();
+	}
+
+	protected void RemoveWrecks(int now)
+	{
+		for (int i = m_aWreckIds.Count() - 1; i >= 0; i--)
+		{
+			if (now < m_aWreckRemoveAtMs[i])
+				continue;
+
+			IEntity wreck = COA_EntityHelper.GetEntityFromRplId(m_aWreckIds[i]);
+			if (wreck && !IsWrecked(wreck) && HasLivingOccupant(wreck))
+				continue;	// someone got in: leave it
+
+			if (wreck)
+				SCR_EntityHelper.DeleteEntityAndChildren(wreck);
+
+			m_aWreckIds.Remove(i);
+			m_aWreckRemoveAtMs.Remove(i);
+		}
+	}
+
+	protected void KillCharacter(notnull ChimeraCharacter character)
+	{
+		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(character.GetDamageManager());
+		if (damageManager && damageManager.GetState() != EDamageState.DESTROYED)
+			damageManager.Kill(Instigator.CreateInstigator(null));
+	}
+
+	//! The replicated list of who has which tank, from m_mPlayers
+	protected void RebuildTankList()
+	{
+		m_aTankPlayers.Clear();
+		m_aTankIds.Clear();
+		m_aTankSides.Clear();
+		m_aTankOptions.Clear();
+
+		foreach (int playerId, CRF_TankBattlePlayer state : m_mPlayers)
+		{
+			if (!state.m_TankId.IsValid())
+				continue;
+
+			m_aTankPlayers.Insert(playerId);
+			m_aTankIds.Insert(state.m_TankId);
+			m_aTankSides.Insert(state.m_iSide);
+			m_aTankOptions.Insert(state.m_iOption);
+		}
+
+		m_bDirty = true;
+	}
+
+	protected Vehicle GetStateTank(notnull CRF_TankBattlePlayer state)
+	{
+		if (state.m_Tank && !state.m_Tank.IsDeleted())
+			return state.m_Tank;
+
+		if (!state.m_TankId.IsValid())
+			return null;
+
+		state.m_Tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(state.m_TankId));
+		return state.m_Tank;
+	}
+
+	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		super.OnPlayerDisconnected(playerId, cause, timeout);
+
+		if (!Replication.IsServer())
+			return;
+
+		CRF_TankBattlePlayer state = m_mPlayers.Get(playerId);
+		if (!state)
+			return;
+
+		int now = GetGame().GetWorld().GetWorldTime();
+		ReleaseTank(state, now);
+		m_mPlayers.Remove(playerId);
+		RebuildTankList();
+	}
+
+	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+
+		if (!Replication.IsServer() || m_iScorePerKill <= 0 || m_iState != CRF_ETankBattleState.LIVE || m_bEndRequested)
+			return;
+
+		int victimSide = GetSideOfFaction(CRF_RadioTransmissionEvents.GetPlayerFactionKey(instigatorContextData.GetVictimPlayerID()));
+		int killerSide = GetSideOfFaction(CRF_RadioTransmissionEvents.GetPlayerFactionKey(instigatorContextData.GetKillerPlayerID()));
+		if (killerSide < 0 || victimSide < 0 || killerSide == victimSide)
+			return;
+
+		AddScore(killerSide, m_iScorePerKill);
+		CheckWin();
+		m_bDirty = true;
+	}
+
+	//===================================================================================
+	// SERVER: PICKING A TANK
+	//===================================================================================
+
+	//! Server, from the player's tank menu (COA_PlayerRplToAuthorityManager.RequestTankBattleTank)
+	void RequestTank(int playerId, int option)
+	{
+		if (!Replication.IsServer() || m_iState == CRF_ETankBattleState.ENDED || !m_Gamemode || m_Gamemode.m_GamemodeState != COA_EGamemodeState.GAME)
+			return;
+
+		int side = GetSideOfFaction(CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId));
+		CRF_TankBattleTank tankOption = GetTankOption(side, option);
+		if (!tankOption || !tankOption.IsAvailable())
+			return;	// its mod isn't loaded (the menu doesn't offer it)
+
+		CRF_TankBattlePlayer state = GetPlayerState(playerId);
+		int now = GetGame().GetWorld().GetWorldTime();
+		if (now - state.m_iRequestedAtMs < REQUEST_COOLDOWN_MS)
+			return;
+
+		state.m_iRequestedAtMs = now;
+		state.m_iSide = side;
+
+		ChimeraCharacter character = ChimeraCharacter.Cast(CRF_RadioTransmissionEvents.GetAlivePlayerEntity(playerId));
+		if (!character || COA_EntityHelper.IsSpectator(character) || character.IsInVehicle())
+			return;
+
+		Vehicle current = GetStateTank(state);
+		if (current && !IsWrecked(current))
+			return;	// already has one
+
+		if (current || state.m_TankId.IsValid())
+			ReleaseTank(state, now);	// the old wreck is cleared away as usual
+
+		if (tankOption.m_iLimit > 0 && CountTanks(side, option) >= tankOption.m_iLimit)
+		{
+			CRF_RadioTransmissionEvents.PopupToPlayer(playerId, "TANK FULL", string.Format("Your side already has %1 %2. Pick another.", tankOption.m_iLimit, tankOption.m_sName), 4);
+			return;
+		}
+
+		vector spawnPosition;
+		float spawnYaw;
+		GetSpawnPosition(side, character.GetOrigin(), spawnPosition, spawnYaw);
+
+		// Kept until the spawn is done: a load result freed mid-spawn crashes
+		Resource resource = Resource.Load(tankOption.m_sPrefab);
+		if (!resource || !resource.IsValid())
+		{
+			Print(string.Format("%1 Can't load tank '%2'.", LOG, tankOption.m_sPrefab), LogLevel.ERROR);
+			return;
+		}
+
+		Vehicle tank = Vehicle.Cast(CRF_SpecialsHelper.SpawnOnGround(tankOption.m_sPrefab, spawnPosition, spawnYaw, 15, 4, 0.5));
+		if (!tank)
+		{
+			Print(string.Format("%1 '%2' didn't spawn as a vehicle.", LOG, tankOption.m_sPrefab), LogLevel.ERROR);
+			return;
+		}
+
+		RplComponent tankRpl = RplComponent.Cast(tank.FindComponent(RplComponent));
+		if (!tankRpl)
+		{
+			Print(string.Format("%1 '%2' has no RplComponent.", LOG, tankOption.m_sPrefab), LogLevel.ERROR);
+			SCR_EntityHelper.DeleteEntityAndChildren(tank);
+			return;
+		}
+
+		state.m_TankId = tankRpl.Id();
+		state.m_Tank = tank;
+		state.m_iOption = option;
+		state.m_bWasSeated = false;
+		state.m_iSeatTries = 0;
+		RebuildTankList();
+
+		CRF_RadioTransmissionEvents.PopupToPlayer(playerId, tankOption.m_sName, "W/A/S/D drive. Mouse aims, left click fires, right click for the sight.", 8);
+	}
+
+	//! Where side's next tank spawns: a free tank spawn, else the least busy, else near the player
+	protected void GetSpawnPosition(int side, vector near, out vector position, out float yaw)
+	{
+		position = near;
+		yaw = 0;
+
+		CRF_TankBattleSide sideData = m_aSides[side];
+		if (!sideData.m_aSpawnEntities || sideData.m_aSpawnEntities.IsEmpty())
+			return;
+
+		IEntity best;
+		int bestCount = int.MAX;
+		foreach (string entityName : sideData.m_aSpawnEntities)
+		{
+			IEntity spawn = CRF_SpecialsHelper.FindNamedEntity(entityName, LOG);
+			if (!spawn)
+				continue;
+
+			int count = CountTanksNear(spawn.GetOrigin(), SPAWN_CLEAR_RADIUS);
+			if (count < bestCount)
+			{
+				best = spawn;
+				bestCount = count;
+			}
+
+			if (count == 0)
+				break;
+		}
+
+		if (!best)
+			return;
+
+		position = best.GetOrigin();
+		vector angles = best.GetAngles();
+		yaw = angles[1];
+	}
+
+	protected int CountTanksNear(vector position, float radius)
+	{
+		int count;
+		foreach (int statePlayerId, CRF_TankBattlePlayer state : m_mPlayers)
+		{
+			Vehicle tank = GetStateTank(state);
+			if (tank && vector.DistanceXZ(tank.GetOrigin(), position) <= radius)
+				count++;
+		}
+
+		return count;
+	}
+
+	//===================================================================================
+	// SERVER: POINTS AND SCORE
+	//===================================================================================
+
+	protected void UpdatePoints()
+	{
+		if (!m_aPoints || !FindPoints())
+			return;
+
+		foreach (int i, CRF_TankBattlePoint point : m_aPoints)
+		{
+			IEntity pointEntity = m_aPointEntities[i];
+			if (!pointEntity)
+				continue;
+
+			int count0;
+			int count1;
+			CountTanksInPoint(pointEntity.GetOrigin(), point.m_fRadius, count0, count1);
+
+			int capturing = -1;
+			float progress = m_aProgress[i];
+			if (count0 > 0 && count1 > 0)
+				capturing = CONTESTED;
+			else if (count0 > 0)
+			{
+				capturing = 0;
+				progress += CaptureRate(count0) * TICK_SECONDS;
+			}
+			else if (count1 > 0)
+			{
+				capturing = 1;
+				progress -= CaptureRate(count1) * TICK_SECONDS;
+			}
+
+			progress = Math.Clamp(progress, -1, 1);
+			m_aProgress[i] = progress;
+
+			int owner = m_aPointOwner[i];
+			int newOwner = owner;
+			if (progress >= 1)
+				newOwner = 0;
+			else if (progress <= -1)
+				newOwner = 1;
+			else if ((owner == 0 && progress <= 0) || (owner == 1 && progress >= 0))
+				newOwner = -1;	// neutralised
+
+			if (newOwner != owner)
+				AnnouncePoint(point, owner, newOwner);
+
+			int shownProgress = (int)Math.Round(progress * 100);
+			if (newOwner != owner || shownProgress != m_aPointProgress[i] || capturing != m_aPointCapturing[i])
+			{
+				m_aPointOwner[i] = newOwner;
+				m_aPointProgress[i] = shownProgress;
+				m_aPointCapturing[i] = capturing;
+				m_bDirty = true;
+			}
+		}
+	}
+
+	//! Points per second: 1/m_fCaptureSeconds for one tank, faster with more
+	protected float CaptureRate(int tanks)
+	{
+		if (m_fCaptureSeconds <= 0)
+			return 1;
+
+		float multiplier = Math.Min(1 + (tanks - 1) * m_fExtraTankCaptureSpeed, m_fMaxCaptureMultiplier);
+		return multiplier / m_fCaptureSeconds;
+	}
+
+	//! Seated players' living tanks in the point, per side
+	protected void CountTanksInPoint(vector center, float radius, out int count0, out int count1)
+	{
+		count0 = 0;
+		count1 = 0;
+		foreach (int statePlayerId, CRF_TankBattlePlayer state : m_mPlayers)
+		{
+			if (!state.m_bWasSeated)
+				continue;
+
+			Vehicle tank = GetStateTank(state);
+			if (!tank || IsWrecked(tank) || vector.DistanceXZ(tank.GetOrigin(), center) > radius)
+				continue;
+
+			if (state.m_iSide == 0)
+				count0++;
+			else if (state.m_iSide == 1)
+				count1++;
+		}
+	}
+
+	protected void AnnouncePoint(notnull CRF_TankBattlePoint point, int oldOwner, int newOwner)
+	{
+		if (newOwner >= 0)
+		{
+			CRF_RadioTransmissionEvents.PopupToFaction(m_aSides[newOwner].m_sFactionKey, string.Format("%1 CAPTURED", point.m_sName), "", 4);
+			CRF_RadioTransmissionEvents.PopupToFaction(m_aSides[1 - newOwner].m_sFactionKey, string.Format("%1 LOST", point.m_sName), "The enemy holds it.", 4);
+			return;
+		}
+
+		if (oldOwner >= 0)
+		{
+			CRF_RadioTransmissionEvents.PopupToFaction(m_aSides[oldOwner].m_sFactionKey, string.Format("%1 LOST", point.m_sName), "It's neutral: take it back.", 4);
+			CRF_RadioTransmissionEvents.PopupToFaction(m_aSides[1 - oldOwner].m_sFactionKey, string.Format("%1 NEUTRALISED", point.m_sName), "Stay on it to capture it.", 4);
+		}
+	}
+
+	protected void UpdateScore()
+	{
+		if (SideCount() != 2)
+			return;
+
+		int pointCount = m_aPointOwner.Count();
+		for (int side = 0; side < 2; side++)
+		{
+			int held;
+			foreach (int owner : m_aPointOwner)
+			{
+				if (owner == side)
+					held++;
+			}
+
+			if (held == 0)
+				continue;
+
+			float rate = m_fScorePerPoint * held;
+			if (held == pointCount)
+				rate += m_fAllPointsBonus;
+
+			AddScore(side, rate * TICK_SECONDS);
+		}
+
+		CheckWin();
+	}
+
+	protected void AddScore(int side, float amount)
+	{
+		if (side == 0)
+			m_fScore0 = Math.Min(m_fScore0 + amount, m_iScoreLimit);
+		else
+			m_fScore1 = Math.Min(m_fScore1 + amount, m_iScoreLimit);
+
+		int score0 = m_fScore0;
+		int score1 = m_fScore1;
+		if (score0 != m_iScore0 || score1 != m_iScore1)
+		{
+			m_iScore0 = score0;
+			m_iScore1 = score1;
+			m_bDirty = true;
+		}
+	}
+
+	protected void CheckWin()
+	{
+		if (m_bEndRequested)
+			return;
+
+		bool full0 = m_fScore0 >= m_iScoreLimit;
+		bool full1 = m_fScore1 >= m_iScoreLimit;
+		if (!full0 && !full1)
+			return;
+
+		int winner = 0;
+		if (full1 && (!full0 || m_fScore1 > m_fScore0))
+			winner = 1;
+
+		EndRound(winner);
+	}
+
+	protected void EndRound(int winnerSide)
+	{
+		if (m_bEndRequested)
+			return;
+
+		m_bEndRequested = true;
+		SetEnded(winnerSide);
+
+		string winnerFaction = m_aSides[winnerSide].m_sFactionKey;
+		int winnerScore = m_iScore0;
+		int loserScore = m_iScore1;
+		if (winnerSide == 1)
+		{
+			winnerScore = m_iScore1;
+			loserScore = m_iScore0;
+		}
+
+		CRF_RadioTransmissionEvents.PopupToFaction("", string.Format("%1 WINS", CRF_SpecialsHelper.GetFactionName(winnerFaction)), string.Format("Their bar filled first: %1 to %2.", winnerScore, loserScore), 10);
+
+		if (!m_bEndMissionOnVictory)
+			return;
+
+		CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+		if (loggingManager)
+			loggingManager.SetWinningFaction(winnerFaction, "automatic");
+
+		if (m_Gamemode)
+			m_Gamemode.AdvanceGamemodeState(true);
+	}
+
+	protected void SetEnded(int winnerSide)
+	{
+		m_iState = CRF_ETankBattleState.ENDED;
+		m_iWinnerSide = winnerSide;
+		m_bDirty = false;
+		Replication.BumpMe();
+	}
+
+	//===================================================================================
+	// DRIVING
+	//===================================================================================
+
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		int now = GetGame().GetWorld().GetWorldTime();
+		if (now >= m_iTurretCheckAtMs)
+		{
+			m_iTurretCheckAtMs = now + TURRET_CHECK_MS;
+			AttachMainTurrets();
+		}
+
+		if (!System.IsConsoleApp())
+		{
+			UpdateLocalTank(now);
+			if (m_Hud)
+				m_Hud.UpdateFrame(this);
+		}
+	}
+
+	//! Every machine: each mode tank's main gun attached to its driver's seat (the tank list is replicated,
+	//! so clients do it as their copies of the tanks stream in)
+	protected void AttachMainTurrets()
+	{
+		foreach (RplId tankId : m_aTankIds)
+		{
+			Vehicle tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(tankId));
+			if (tank && !IsWrecked(tank))
+				AttachMainTurret(tank);
+		}
+	}
+
+	//! Client, every frame: camera held in third person, and on the machine that drives the tank (the
+	//! driver's own), the hold before the round goes live and the engine started once it is
+	protected void UpdateLocalTank(int now)
+	{
+		m_LocalTank = FindLocalTank();
+		if (!m_LocalTank)
+		{
+			m_bLocalHeld = false;
+			return;
+		}
+
+		if (m_bForceThirdPerson)
+			HoldThirdPerson();
+
+		VehicleControllerComponent controller = m_LocalTank.GetVehicleController();
+		if (!controller)
+			return;
+
+		CarControllerComponent carController = CarControllerComponent.Cast(controller);
+		bool hold = m_iState == CRF_ETankBattleState.ENDED || (m_bHoldUntilLive && m_iState != CRF_ETankBattleState.LIVE);
+		if (hold)
+		{
+			if (controller.IsEngineOn())
+				controller.StopEngine(false);
+
+			if (carController && !carController.GetPersistentHandBrake())
+				carController.SetPersistentHandBrake(true);
+
+			m_bLocalHeld = true;
+			return;
+		}
+
+		if (m_bLocalHeld)
+		{
+			m_bLocalHeld = false;
+			if (carController)
+				carController.SetPersistentHandBrake(false);
+		}
+
+		// Vanilla starts the engine from the driver's seat (SCR_EngineAction): same here, so nobody has to
+		if (!controller.IsEngineOn() && now >= m_iEngineStartAtMs)
+		{
+			m_iEngineStartAtMs = now + ENGINE_RETRY_MS;
+			controller.StartEngine();
+		}
+	}
+
+	protected void HoldThirdPerson()
+	{
+		IEntity local = SCR_PlayerController.GetLocalControlledEntity();
+		if (!local)
+			return;
+
+		SCR_CharacterCameraHandlerComponent cameraHandler = SCR_CharacterCameraHandlerComponent.Cast(local.FindComponent(SCR_CharacterCameraHandlerComponent));
+		if (cameraHandler && !cameraHandler.IsInThirdPerson())
+			cameraHandler.SetThirdPerson(true);
+	}
+
+	//! The local player's own tank, if they are sitting in it
+	protected Vehicle FindLocalTank()
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
+		if (!character || !character.IsInVehicle())
+			return null;
+
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller || controller.IsDead())
+			return null;
+
+		Vehicle tank = Vehicle.Cast(character.GetRootParent());
+		if (!tank || GetTankPlayer(tank) != SCR_PlayerController.GetLocalPlayerId() || IsWrecked(tank))
+			return null;
+
+		return tank;
+	}
+
+	//===================================================================================
+	// CLIENT: MENU, HUD AND MAP
+	//===================================================================================
+
+	protected void UpdateUi()
+	{
+		UpdateMenu();
+
+		if (m_Hud)
+			m_Hud.Update(this);
+	}
+
+	//! Open while the local player is alive on foot without a tank
+	protected void UpdateMenu()
+	{
+		int side = GetLocalSide();
+		bool want = side >= 0 && m_iState != CRF_ETankBattleState.ENDED && GetTankIndexOfPlayer(SCR_PlayerController.GetLocalPlayerId()) < 0;
+
+		if (want)
+		{
+			ChimeraCharacter character = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
+			want = character && !COA_EntityHelper.IsSpectator(character) && !character.IsInVehicle();
+			if (want)
+			{
+				CharacterControllerComponent controller = character.GetCharacterController();
+				want = controller && !controller.IsDead();
+			}
+		}
+
+		if (!want)
+		{
+			CRF_TankBattleMenu.CloseMenu();
+			return;
+		}
+
+		if (CRF_TankBattleMenu.IsOpen())
+		{
+			CRF_TankBattleMenu.Refresh(this, side);
+			return;
+		}
+
+		int now = GetGame().GetWorld().GetWorldTime();
+		if (now < m_iMenuSnoozeUntilMs)
+			return;
+
+		// Only over the game, not over the map, the pause menu or the lobby
+		if (GetGame().GetMenuManager().GetTopMenu())
+			return;
+
+		CRF_TankBattleMenu.Open(this, side);
+	}
+
+	//! Client: the menu was closed with Esc - it comes back after a few seconds
+	void SnoozeMenu()
+	{
+		m_iMenuSnoozeUntilMs = GetGame().GetWorld().GetWorldTime() + MENU_SNOOZE_MS;
+	}
+
+	protected void UpdateMarkers()
+	{
+		if (!m_Markers || !m_aPoints || !FindPoints())
+			return;
+
+		int localSide = GetLocalSide();
+
+		m_Markers.Begin();
+		foreach (int i, CRF_TankBattlePoint point : m_aPoints)
+		{
+			IEntity pointEntity = m_aPointEntities[i];
+			if (!pointEntity)
+				continue;
+
+			vector position = pointEntity.GetOrigin();
+			m_Markers.Want(Vector((int)Math.Round(position[0]), 0, (int)Math.Round(position[2])), point.m_sName, m_sPointMarkerIcon, GetOwnerColor(GetPointOwner(i), localSide));
+		}
+
+		m_Markers.Apply();
+	}
+
+	//! Blue for the local side, red for the enemy, white for nobody (side 0 is blue for spectators)
+	static int GetOwnerColor(int ownerSide, int localSide)
+	{
+		if (ownerSide < 0)
+			return ARGB(255, 230, 230, 230);
+
+		if (localSide < 0)
+			localSide = 0;
+
+		if (ownerSide == localSide)
+			return ARGB(255, 60, 140, 255);
+
+		return ARGB(255, 225, 45, 35);
+	}
+
+	//===================================================================================
+	// EVERY MACHINE
+	//===================================================================================
+
+	//! Finds the points' entities by name. False until all of them are found.
+	protected bool FindPoints()
+	{
+		if (m_bPointsFound)
+			return true;
+
+		BaseWorld world = GetGame().GetWorld();
+		if (!world || !m_aPoints)
+			return false;
+
+		m_aPointEntities.Clear();
+		bool all = true;
+		foreach (CRF_TankBattlePoint point : m_aPoints)
+		{
+			IEntity pointEntity = world.FindEntityByName(point.m_sEntityName);
+			if (!pointEntity)
+				all = false;
+
+			m_aPointEntities.Insert(pointEntity);
+		}
+
+		if (!all)
+			Print(string.Format("%1 Not every point's entity is in the world (%2).", LOG, PointNames()), LogLevel.WARNING);
+
+		// Missing ones stay missing: don't search again every tick
+		m_bPointsFound = true;
+		return true;
+	}
+
+	protected string PointNames()
+	{
+		string names;
+		if (!m_aPoints)
+			return names;
+
+		foreach (int i, CRF_TankBattlePoint point : m_aPoints)
+		{
+			if (i > 0 && i == m_aPoints.Count() - 1)
+				names += " and ";
+			else if (i > 0)
+				names += ", ";
+
+			names += point.m_sName;
+		}
+
+		return names;
+	}
+
+	protected bool IsWrecked(notnull IEntity entity)
+	{
+		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
+		return damageManager != null && damageManager.GetState() == EDamageState.DESTROYED;
+	}
+
+	protected bool HasLivingOccupant(notnull IEntity vehicle)
+	{
+		SCR_BaseCompartmentManagerComponent compartmentManager = SCR_BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentManager)
+			return false;
+
+		array<IEntity> occupants = {};
+		compartmentManager.GetOccupants(occupants);
+		foreach (IEntity occupant : occupants)
+		{
+			if (occupant && !IsWrecked(occupant))
+				return true;
+		}
+
+		return false;
+	}
+
+	//! -1 if factionKey isn't one of the two sides
+	int GetSideOfFaction(string factionKey)
+	{
+		if (!m_aSides || factionKey.IsEmpty())
+			return -1;
+
+		foreach (int i, CRF_TankBattleSide side : m_aSides)
+		{
+			if (side.m_sFactionKey == factionKey)
+				return i;
+		}
+
+		return -1;
+	}
+
+	//! Client: the local player's side, -1 if they aren't on one
+	int GetLocalSide()
+	{
+		return GetSideOfFaction(CRF_SpecialsHelper.GetLocalFactionKey());
+	}
+
+	int SideCount()
+	{
+		if (!m_aSides)
+			return 0;
+
+		return m_aSides.Count();
+	}
+
+	CRF_TankBattleSide GetSide(int side)
+	{
+		if (!m_aSides || !m_aSides.IsIndexValid(side))
+			return null;
+
+		return m_aSides[side];
+	}
+
+	CRF_TankBattleTank GetTankOption(int side, int option)
+	{
+		CRF_TankBattleSide sideData = GetSide(side);
+		if (!sideData || !sideData.m_aTanks || !sideData.m_aTanks.IsIndexValid(option))
+			return null;
+
+		return sideData.m_aTanks[option];
+	}
+
+	//! How many of a side's tanks are this option (replicated)
+	int CountTanks(int side, int option)
+	{
+		int count;
+		foreach (int i, int tankSide : m_aTankSides)
+		{
+			if (tankSide == side && m_aTankOptions[i] == option)
+				count++;
+		}
+
+		return count;
+	}
+
+	//! Index in the replicated tank list, -1 if the player has no tank
+	protected int GetTankIndexOfPlayer(int playerId)
+	{
+		return m_aTankPlayers.Find(playerId);
+	}
+
+	//! The player a mode tank belongs to (replicated), -1 if it isn't one
+	int GetTankPlayer(notnull IEntity vehicle)
+	{
+		RplComponent rpl = RplComponent.Cast(vehicle.FindComponent(RplComponent));
+		if (!rpl)
+			return -1;
+
+		int index = m_aTankIds.Find(rpl.Id());
+		if (index < 0)
+			return -1;
+
+		return m_aTankPlayers[index];
+	}
+
+	//! A character sitting in a mode tank that is still in one piece
+	bool IsInModeTank(IEntity entity)
+	{
+		ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+		if (!character || !character.IsInVehicle())
+			return false;
+
+		IEntity vehicle = character.GetRootParent();
+		if (!vehicle || vehicle == character)
+			return false;
+
+		return GetTankPlayer(vehicle) >= 0 && !IsWrecked(vehicle);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla overrides: is this character kept in their tank (no getting out, no changing seats)
+	static bool IsLockedInTank(IEntity character)
+	{
+		return s_Instance && s_Instance.m_bLockCrewIn && s_Instance.IsInModeTank(character);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla overrides: the camera switch key does nothing for this character
+	static bool IsThirdPersonLocked(IEntity character)
+	{
+		return s_Instance && s_Instance.m_bForceThirdPerson && s_Instance.m_LocalTank && character == SCR_PlayerController.GetLocalControlledEntity();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla overrides: this character sits in a mode tank (the camera treats its driver as the gunner)
+	static bool IsInTankBattleTank(IEntity character)
+	{
+		return s_Instance && s_Instance.IsInModeTank(character);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla overrides: W/A/S/D drive this turret's tank rather than turn the turret
+	static bool IsLocalTankTurret(notnull TurretControllerComponent turret)
+	{
+		return s_Instance && s_Instance.m_LocalTank && turret.GetOwner().GetRootParent() == s_Instance.m_LocalTank;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	CRF_ETankBattleState GetBattleState()
+	{
+		return m_iState;
+	}
+
+	int GetScore(int side)
+	{
+		if (side == 0)
+			return m_iScore0;
+
+		return m_iScore1;
+	}
+
+	int GetScoreLimit()
+	{
+		return m_iScoreLimit;
+	}
+
+	int GetWinnerSide()
+	{
+		return m_iWinnerSide;
+	}
+
+	int GetPointCount()
+	{
+		return m_aPointOwner.Count();
+	}
+
+	string GetPointName(int index)
+	{
+		if (!m_aPoints || !m_aPoints.IsIndexValid(index))
+			return "?";
+
+		return m_aPoints[index].m_sName;
+	}
+
+	int GetPointOwner(int index)
+	{
+		if (!m_aPointOwner.IsIndexValid(index))
+			return -1;
+
+		return m_aPointOwner[index];
+	}
+
+	//! -100 (side 1) to 100 (side 0)
+	int GetPointProgress(int index)
+	{
+		if (!m_aPointProgress.IsIndexValid(index))
+			return 0;
+
+		return m_aPointProgress[index];
+	}
+
+	//! -1 nobody, a side index, or CONTESTED
+	int GetPointCapturing(int index)
+	{
+		if (!m_aPointCapturing.IsIndexValid(index))
+			return -1;
+
+		return m_aPointCapturing[index];
+	}
+
+	//! The point position (here) is within, -1 if none
+	int GetPointAt(vector position)
+	{
+		if (!m_aPoints || !FindPoints())
+			return -1;
+
+		foreach (int i, CRF_TankBattlePoint point : m_aPoints)
+		{
+			IEntity pointEntity = m_aPointEntities[i];
+			if (pointEntity && vector.DistanceXZ(pointEntity.GetOrigin(), position) <= point.m_fRadius)
+				return i;
+		}
+
+		return -1;
+	}
+
+	//! Client: the local player's tank while they sit in it
+	Vehicle GetLocalTank()
+	{
+		return m_LocalTank;
+	}
+
+	//! Client: the gun the local player controls (attached to their driver's seat), null if none
+	TurretControllerComponent GetLocalTurret()
+	{
+		if (!m_LocalTank)
+			return null;
+
+		BaseCompartmentSlot driverSeat = GetDriverSeat(m_LocalTank);
+		if (!driverSeat)
+			return null;
+
+		return driverSeat.GetAttachedTurret();
+	}
+
+	//! Client: where the local gun points (world), zero if there's no gun
+	vector GetLocalGunDirection()
+	{
+		TurretControllerComponent turret = GetLocalTurret();
+		if (!turret || !turret.GetTurretComponent())
+			return vector.Zero;
+
+		return turret.GetTurretComponent().GetAimingDirectionWorld();
+	}
+
+	//! The point's centre entity (null if missing or not found yet)
+	IEntity GetPointEntity(int index)
+	{
+		if (!FindPoints() || !m_aPointEntities.IsIndexValid(index))
+			return null;
+
+		return m_aPointEntities[index];
+	}
+
+	float GetPointRadius(int index)
+	{
+		if (!m_aPoints || !m_aPoints.IsIndexValid(index))
+			return 0;
+
+		return m_aPoints[index].m_fRadius;
+	}
+
+	//! Every mode tank this machine has (clients: the ones streamed in), with its side
+	void GetTanks(notnull array<Vehicle> tanks, notnull array<int> sides)
+	{
+		foreach (int i, RplId tankId : m_aTankIds)
+		{
+			Vehicle tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(tankId));
+			if (!tank || IsWrecked(tank))
+				continue;
+
+			tanks.Insert(tank);
+			sides.Insert(m_aTankSides[i]);
+		}
+	}
+
+	//! Positions of both sides' tank spawns that are in the world
+	void GetSpawnPositions(notnull array<vector> positions)
+	{
+		BaseWorld world = GetGame().GetWorld();
+		if (!world || !m_aSides)
+			return;
+
+		foreach (CRF_TankBattleSide side : m_aSides)
+		{
+			if (!side.m_aSpawnEntities)
+				continue;
+
+			foreach (string entityName : side.m_aSpawnEntities)
+			{
+				IEntity spawn = world.FindEntityByName(entityName);
+				if (spawn)
+					positions.Insert(spawn.GetOrigin());
+			}
+		}
+	}
+
+	bool ShowMinimap()
+	{
+		return m_bShowMinimap;
+	}
+
+	bool ShowCrosshair()
+	{
+		return m_bShowCrosshair;
+	}
+
+	bool ShowMinimapSatellite()
+	{
+		return m_bMinimapSatellite;
+	}
+
+	//! The image under the minimap: Minimap Image, else the world map's "Satellite background image"
+	//! (vanilla's map entities set it, e.g. MapEntity_Cain.et: CainRasterized.edds). Empty: none.
+	ResourceName GetMinimapImage()
+	{
+		if (!m_bMinimapSatellite)
+			return ResourceName.Empty;
+
+		if (!m_sMinimapImage.IsEmpty())
+			return m_sMinimapImage;
+
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		if (!mapEntity || !mapEntity.GetPrefabData())
+			return ResourceName.Empty;
+
+		BaseContainer prefab = mapEntity.GetPrefabData().GetPrefab();
+		if (!prefab)
+			return ResourceName.Empty;
+
+		ResourceName image;
+		prefab.Get("Satellite background image", image);
+		return image;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla overrides (CharacterCamera3rdPersonTurret): third person distance multiplier for this
+	//! character's camera, 1 outside a mode tank
+	static float GetCameraDistanceScale(IEntity character)
+	{
+		if (!s_Instance || !s_Instance.IsInModeTank(character))
+			return 1;
+
+		return s_Instance.m_fCameraDistanceScale;
+	}
+
+	//! Vanilla overrides: degrees added to this character's third person field of view, 0 outside a mode tank
+	static float GetCameraExtraFov(IEntity character)
+	{
+		if (!s_Instance || !s_Instance.IsInModeTank(character))
+			return 0;
+
+		return s_Instance.m_fCameraExtraFov;
+	}
+
+	//! Vanilla overrides: this character's third person camera looks at the gun's aim point
+	static bool IsCameraLookAtAim(IEntity character)
+	{
+		return s_Instance && s_Instance.m_bCameraLookAtAim && s_Instance.IsInModeTank(character);
+	}
+
+	//! Vanilla overrides: metres this character's third person camera is raised, 0 outside a mode tank
+	static float GetCameraExtraHeight(IEntity character)
+	{
+		if (!s_Instance || !s_Instance.IsInModeTank(character))
+			return 0;
+
+		return s_Instance.m_fCameraExtraHeight;
+	}
+
+	//! Vanilla overrides: the local player's gun ray, for a camera that looks at the aim point. False
+	//! (camera stays vanilla) for anyone else, outside a mode tank, or with Camera Look At Aim off.
+	static bool GetCameraAimRay(IEntity character, out vector origin, out vector direction, out float distance)
+	{
+		if (!s_Instance || !s_Instance.m_bCameraLookAtAim || !character || character != SCR_PlayerController.GetLocalControlledEntity())
+			return false;
+
+		if (!s_Instance.IsInModeTank(character))
+			return false;
+
+		return s_Instance.GetLocalGunRay(origin, direction, distance);
+	}
+
+	//! Client: the local gun's ray - from the muzzle (or the turret) along the gun, to what it would hit
+	//! (or CROSSHAIR_RANGE). Traced once a frame; the camera and the crosshair share it.
+	bool GetLocalGunRay(out vector origin, out vector direction, out float distance)
+	{
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+			return false;
+
+		int now = world.GetWorldTime();
+		if (m_bGunRayCached && now == m_iGunRayAtMs)
+		{
+			origin = m_vGunRayOrigin;
+			direction = m_vGunRayDirection;
+			distance = m_fGunRayDistance;
+			return m_bGunRayValid;
+		}
+
+		m_bGunRayCached = true;
+		m_iGunRayAtMs = now;
+		m_bGunRayValid = TraceLocalGun(world);
+
+		origin = m_vGunRayOrigin;
+		direction = m_vGunRayDirection;
+		distance = m_fGunRayDistance;
+		return m_bGunRayValid;
+	}
+
+	protected bool TraceLocalGun(notnull BaseWorld world)
+	{
+		Vehicle tank = GetLocalTank();
+		TurretControllerComponent turret = GetLocalTurret();
+		if (!tank || !turret || !turret.GetTurretComponent())
+			return false;
+
+		vector direction = turret.GetTurretComponent().GetAimingDirectionWorld();
+		if (direction == vector.Zero)
+			return false;
+
+		// From the muzzle if the gun has one, else from the turret
+		vector origin = turret.GetOwner().GetOrigin() + Vector(0, 1, 0);
+		BaseWeaponManagerComponent weaponManager = turret.GetWeaponManager();
+		if (weaponManager)
+		{
+			vector muzzle[4];
+			if (weaponManager.GetCurrentMuzzleTransform(muzzle))
+				origin = muzzle[3];
+		}
+
+		if (!m_GunTrace)
+			m_GunTrace = new TraceParam();
+
+		m_GunTrace.Start = origin + direction * GUN_TRACE_START;
+		m_GunTrace.End = origin + direction * GUN_TRACE_RANGE;
+		m_GunTrace.Flags = TraceFlags.ENTS | TraceFlags.WORLD | TraceFlags.OCEAN;
+		m_GunTrace.Exclude = tank;
+		float fraction = world.TraceMove(m_GunTrace, null);
+
+		m_vGunRayOrigin = origin;
+		m_vGunRayDirection = direction;
+		m_fGunRayDistance = GUN_TRACE_START + (GUN_TRACE_RANGE - GUN_TRACE_START) * fraction;
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Pause menu mission info (CRF_MissionInfo hook), from replicated values
+	override void CRF_AppendMissionInfo(notnull array<string> lines)
+	{
+		if (SideCount() != 2)
+			return;
+
+		string name0 = CRF_SpecialsHelper.GetFactionName(m_aSides[0].m_sFactionKey);
+		string name1 = CRF_SpecialsHelper.GetFactionName(m_aSides[1].m_sFactionKey);
+
+		if (m_iState == CRF_ETankBattleState.WAITING)
+		{
+			lines.Insert(string.Format("Tank Battle: first to %1 wins. Points start when the round goes live.", m_iScoreLimit));
+			return;
+		}
+
+		lines.Insert(string.Format("Tank Battle: %1 %2, %3 %4 (first to %5)", name0, m_iScore0, name1, m_iScore1, m_iScoreLimit));
+		if (m_iState == CRF_ETankBattleState.ENDED && m_iWinnerSide >= 0)
+			lines.Insert(string.Format("Tank Battle: %1 won", CRF_SpecialsHelper.GetFactionName(m_aSides[m_iWinnerSide].m_sFactionKey)));
+	}
+}
