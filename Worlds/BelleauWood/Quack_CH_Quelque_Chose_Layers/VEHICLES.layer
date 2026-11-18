@@ -1,6 +1,6 @@
 $grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
  OPFOR_Truck_1 {
-  coords 4358.419 185.219 4800.938
+  coords 4357.147 185.219 4798.759
   angles 0 90 0
   m_rVehicle "{AEA2E1BD58418A47}Prefabs/Vehicles/Wheeled/Opil_Bletz/Variants/Opil_Bletz_transport.et"
  }
