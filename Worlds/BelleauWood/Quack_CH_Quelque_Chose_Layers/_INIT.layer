@@ -125,11 +125,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6AE367550F3974E0}" {
    m_sTitle "Administration"
-   m_sTextData "Please don't block building enterences. Players should be able to run into or out of building without jumping."\
+   m_sTextData "Radio-Telephone operators can set vehicle encryption with CTRL+HOME"\
    ""\
-   "Radio-Telephone operators can set vehicle encryption with CTRL+HOME"\
-   ""\
-   "Watch out for low branches when driving."
+   "Please don't block building enterences. Players should be able to run into or out of building without jumping."\
+   ""
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
