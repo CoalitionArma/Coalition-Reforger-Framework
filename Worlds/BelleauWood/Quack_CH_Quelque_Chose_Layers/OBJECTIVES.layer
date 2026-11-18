@@ -1,0 +1,16 @@
+$grp GameEntity {
+ cache1 {
+  coords 3218.46 205.277 2023.645
+  angles 0 90 0
+ }
+ cache2 {
+  coords 1997.604 205.006 3006.545
+  angles 0 90 0
+ }
+ cache3 {
+  coords 4653.184 179.951 3530.754
+ }
+}
+GenericEntity CacheHunt_HomeFlag : "{5CA9E48B71D3F2A0}Prefabs/Structures/CacheHunt/CRF_CacheHunt_FlagPole.et" {
+ coords 2831.196 204.594 1289.193
+}

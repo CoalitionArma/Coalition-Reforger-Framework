@@ -1,0 +1,200 @@
+SCR_DestructibleBuildingEntity : "{155217210D9F0CAD}Prefabs/Tents/Tent.et" {
+ coords 4653.495 179.996 3532.721
+ angles 0 21.055 0
+}
+$grp GenericEntity : "{6511EA5E7DD4C149}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_Dst_3_base.et" {
+ Defence_Crate_1 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{6AE345A5D1F29F80}" {
+    Attributes SCR_ItemAttributeCollection "{6AE36751E4D524AA}" {
+     ItemDisplayName UIInfo "{6AE36751FE873C48}" {
+      Name "Defence"
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{6AE36751F62C349C}" {
+     }
+     CustomAttributes {
+      PreviewRenderAttributes "{6AE3675181A78B7E}" {
+      }
+     }
+     m_SlotType SLOT_ANY
+     m_bRefundable 0
+    }
+    MultiSlots {
+     MultiSlotConfiguration "{6AE345A545AFD3E1}" {
+      SlotTemplate InventoryStorageSlot SandBags {
+       Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+      }
+      NumSlots 300
+     }
+     MultiSlotConfiguration "{6AE345A50F1E0DCF}" {
+      SlotTemplate InventoryStorageSlot Stake {
+       Prefab "{55F8A472A0533C7E}Prefabs/Items/Misc/BarbedTape/BarbedTape_Stake.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{6AE345A514D0D290}" {
+      SlotTemplate InventoryStorageSlot wire {
+       Prefab "{2997FA6F521B519C}Prefabs/Items/Misc/BarbedTape/Barbed_Tape.et"
+      }
+      NumSlots 15
+     }
+    }
+    m_aSlotsToShow {
+    }
+   }
+   ActionsManagerComponent "{6AE345A6B72215EF}" {
+    ActionContexts {
+     UserActionContext "{6AE345A6B6357858}" {
+      ContextName "Open"
+      Position PointInfo "{6AE345A643A2BF10}" {
+       Offset 0 0.7128 0.2927
+      }
+     }
+    }
+    additionalActions {
+     SCR_OpenStorageAction "{6AE345A65D5CD7CC}" {
+      ParentContextList {
+       "Open"
+      }
+      UIInfo SCR_ActionUIInfo "{6AE345A78693D982}" {
+       Name "Open"
+       m_sIconName "supplies"
+      }
+      ActionTitle "Open"
+     }
+    }
+   }
+  }
+  coords 3223.317 205.289 2027.493
+ }
+ Defence_Crate_2 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{6AE345A5D1F29F80}" {
+    Attributes SCR_ItemAttributeCollection "{6AE36751E4D524AA}" {
+     ItemDisplayName UIInfo "{6AE36751FE873C48}" {
+      Name "Defence"
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{6AE36751F62C349C}" {
+     }
+     CustomAttributes {
+      PreviewRenderAttributes "{6AE3675181A78B7E}" {
+      }
+     }
+     m_SlotType SLOT_ANY
+     m_bRefundable 0
+    }
+    MultiSlots {
+     MultiSlotConfiguration "{6AE345A545AFD3E1}" {
+      SlotTemplate InventoryStorageSlot SandBags {
+       Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+      }
+      NumSlots 300
+     }
+     MultiSlotConfiguration "{6AE345A50F1E0DCF}" {
+      SlotTemplate InventoryStorageSlot Stake {
+       Prefab "{55F8A472A0533C7E}Prefabs/Items/Misc/BarbedTape/BarbedTape_Stake.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{6AE345A514D0D290}" {
+      SlotTemplate InventoryStorageSlot wire {
+       Prefab "{2997FA6F521B519C}Prefabs/Items/Misc/BarbedTape/Barbed_Tape.et"
+      }
+      NumSlots 15
+     }
+    }
+    m_aSlotsToShow {
+    }
+   }
+   ActionsManagerComponent "{6AE345A6B72215EF}" {
+    ActionContexts {
+     UserActionContext "{6AE345A6B6357858}" {
+      ContextName "Open"
+      Position PointInfo "{6AE345A643A2BF10}" {
+       Offset 0 0.7128 0.2927
+      }
+     }
+    }
+    additionalActions {
+     SCR_OpenStorageAction "{6AE345A65D5CD7CC}" {
+      ParentContextList {
+       "Open"
+      }
+      UIInfo SCR_ActionUIInfo "{6AE345A78693D982}" {
+       Name "Open"
+       m_sIconName "supplies"
+      }
+      ActionTitle "Open"
+     }
+    }
+   }
+  }
+  coords 2000.963 204.969 2997.881
+  angles 0 -28.397 0
+ }
+ Defence_Crate_3 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{6AE345A5D1F29F80}" {
+    Attributes SCR_ItemAttributeCollection "{6AE36751E4D524AA}" {
+     ItemDisplayName UIInfo "{6AE36751FE873C48}" {
+      Name "Defence"
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{6AE36751F62C349C}" {
+     }
+     CustomAttributes {
+      PreviewRenderAttributes "{6AE3675181A78B7E}" {
+      }
+     }
+     m_SlotType SLOT_ANY
+     m_bRefundable 0
+    }
+    MultiSlots {
+     MultiSlotConfiguration "{6AE345A545AFD3E1}" {
+      SlotTemplate InventoryStorageSlot SandBags {
+       Prefab "{07BC23F8D9223863}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Burlap.et"
+      }
+      NumSlots 300
+     }
+     MultiSlotConfiguration "{6AE345A50F1E0DCF}" {
+      SlotTemplate InventoryStorageSlot Stake {
+       Prefab "{55F8A472A0533C7E}Prefabs/Items/Misc/BarbedTape/BarbedTape_Stake.et"
+      }
+      NumSlots 30
+     }
+     MultiSlotConfiguration "{6AE345A514D0D290}" {
+      SlotTemplate InventoryStorageSlot wire {
+       Prefab "{2997FA6F521B519C}Prefabs/Items/Misc/BarbedTape/Barbed_Tape.et"
+      }
+      NumSlots 15
+     }
+    }
+    m_aSlotsToShow {
+    }
+   }
+   ActionsManagerComponent "{6AE345A6B72215EF}" {
+    ActionContexts {
+     UserActionContext "{6AE345A6B6357858}" {
+      ContextName "Open"
+      Position PointInfo "{6AE345A643A2BF10}" {
+       Offset 0 0.7128 0.2927
+      }
+     }
+    }
+    additionalActions {
+     SCR_OpenStorageAction "{6AE345A65D5CD7CC}" {
+      ParentContextList {
+       "Open"
+      }
+      UIInfo SCR_ActionUIInfo "{6AE345A78693D982}" {
+       Name "Open"
+       m_sIconName "supplies"
+      }
+      ActionTitle "Open"
+     }
+    }
+   }
+  }
+  coords 4654.87 179.83 3525.073
+  angles 0 -78.017 0
+ }
+}
