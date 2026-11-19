@@ -28,10 +28,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  components {
   CRF_TankBattleGamemodeComponent "{6B1118C349A5F75F}" {
    m_fCaptureSeconds 20
-   m_iScoreLimit 1000
-   m_fScorePerPoint 2
-   m_fAllPointsBonus 4
-   m_iScorePerKill 10
+   m_iScoreLimit 3000
+   m_fScorePerPoint 1
+   m_fAllPointsBonus 2
+   m_iScorePerKill 3
    m_bEndMissionOnVictory 0
    m_fRespawnSeconds 10
    m_sMinimapImage "{096230E40A49DAC9}Worlds/MapData/ChernarusMinusMap.edds"
@@ -375,7 +375,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "A tank alone in a point captures it in 20 seconds; more tanks capture faster; tanks from both sides stop it. An enemy point is neutralised first, then captured."\
    ""\
    "WINNING"\
-   "Each point your side holds fills your bar by 2 a second, and all three add 4 more. Each kill is worth 10. The first side to 1000 wins."\
+   "Each point your side holds fills your bar by 1 a second, and all three add 2 more. Each kill is worth 3. The first side to 3000 wins: about 10 minutes holding all three points, 25 minutes holding two."\
    ""\
    "REPAIRS"\
    "A destroyed engine or gearbox leaves you stuck but not dead. The IFVs, APCs and the BRDM-2 (Kurganets-25, LAV-25, Kurganets-25 RWS, BTR-70, BRDM-2) can fix it: stop within 15 m of the stuck vehicle, both of you stopped, and it's repaired in 15 seconds. Stuck vehicles show amber on the minimap."\

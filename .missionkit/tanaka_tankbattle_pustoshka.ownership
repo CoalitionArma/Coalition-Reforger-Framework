@@ -10,7 +10,7 @@
   "Worlds/Chernarus/tanaka_tankbattle_pustoshka_Layers/OBJECTIVES.layer": "b546c05ede1b5b85ac517f857fcf22dfbc062703b97329fee7b1a91fb69e110a",
   "Worlds/Chernarus/tanaka_tankbattle_pustoshka_Layers/SPAWNPOINTS.layer": "25860b175a18ea21311c374a8237e09338beeb2656b115e0ccb6c57509eb799e",
   "Worlds/Chernarus/tanaka_tankbattle_pustoshka_Layers/SPAWNPOINTSGROUPS.layer": "2d3c486a37fac3f3fd7beb5b19c3b96f18479bf8a924bb03ecbcc29377c112d9",
-  "Worlds/Chernarus/tanaka_tankbattle_pustoshka_Layers/_INIT.layer": "29847c1def9571c099023370e2d0cebd03ab44a16144c36e5efa89db0d12bed1"
+  "Worlds/Chernarus/tanaka_tankbattle_pustoshka_Layers/_INIT.layer": "05fc3ced6280d01a72d84de5938669bf039caaaa1279a98b7e14fc1693a503ef"
  },
  "header": "Missions/Chernarus/tanaKa_1118_TANKBATTLE80_PustoshkaFields.conf",
  "note": "Files listed here are owned by a missionkit spec; see CRF-MissionKit README (Layer ownership).",
