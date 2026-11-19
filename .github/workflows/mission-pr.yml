@@ -59,6 +59,10 @@ jobs:
           path: pr
           fetch-depth: 0 # full history - needed to diff against release
           persist-credentials: false
+          # checkout refuses a fork's code under pull_request_target unless told it's intended. It is:
+          # these files are only parsed as text by release's scripts (see the note at the top); nothing
+          # in "pr" is executed, and no credentials are left in it.
+          allow-unsafe-pr-checkout: true
 
       - name: Checkout lobby
         uses: actions/checkout@v4
