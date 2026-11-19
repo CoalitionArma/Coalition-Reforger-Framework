@@ -7,7 +7,7 @@ $grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepo
     m_aVehicles {
      CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
       m_sVehicleName "T72B"
-      m_sVehiclePrefab "{F9137C80D7F169FF}Prefabs/Vehicles/Tracked/T90M2/T90M2_base.et"
+      m_sVehiclePrefab "{8A883ABED22B6E29}Prefabs/Vehicles/Tracked/T72B_Base.et"
       m_eCostType USES
       m_iCost 4
      }
@@ -31,7 +31,7 @@ $grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepo
     m_aVehicles {
      CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
       m_sVehicleName "M1A1"
-      m_sVehiclePrefab "{8439CC2A8142F952}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEPv2/M1A2_SEPv2_TUSK_Olive.et"
+      m_sVehiclePrefab "{0030653F4B71CEFC}Prefabs/Vehicles/Tracked/M1A1/M1A2/SEP/M1A2_SEP_TUSK_II_MERDC.et"
       m_eCostType USES
       m_iCost 4
      }
