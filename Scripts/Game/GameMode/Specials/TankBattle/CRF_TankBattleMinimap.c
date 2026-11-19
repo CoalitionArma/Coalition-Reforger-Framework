@@ -9,7 +9,16 @@
 // "Satellite background image", which covers the terrain: SCR_MapEntity Offset/Size).
 //
 // Client only, from what CRF_TankBattleGamemodeComponent already replicates (point state, the tank
-// list). Redrawn every frame.
+// list, the server's friendly positions).
+//
+// Cost: the draw commands are built once and then edited in place (the canvas keeps a pointer to
+// m_aCommands, so nothing is allocated per frame).
+//  - When the canvas changes size: the image and the zones' geometry.
+//  - Every REFRESH_MS: the zones' colours and the friendly dots (the only loops; the server's
+//    positions arrive once a second, and at this map's scale a tank moves about half a pixel in
+//    REFRESH_MS).
+//  - Every frame: the local tank's arrow and gun line, a fixed handful of vertices, and only when
+//    they have moved.
 //------------------------------------------------------------------------------------
 class CRF_TankBattleMinimap
 {
@@ -17,16 +26,59 @@ class CRF_TankBattleMinimap
 	protected static const float MIN_VIEW_SIZE = 300;	// m
 	protected static const float LAYOUT_SIZE = 242;		// MinimapCanvas's height in the layout; sizes below are at that size
 	protected static const float GUN_LINE_LENGTH = 22;	// px at layout size
+	protected static const float DOT_RADIUS = 4.5;		// px at layout size
+	protected static const int REFRESH_MS = 200;		// zones' colours and friendly dots
+	protected static const int ZONE_SEGMENTS = 32;
+	protected static const int DOT_SEGMENTS = 16;
+	protected static const float SELF_MOVE_PX = 0.25;	// the arrow is redrawn once it has moved this far...
+	protected static const float SELF_TURN = 0.01;		// ...or its hull or gun direction has changed this much (about half a degree)
 
 	protected CanvasWidget m_wCanvas;
-	protected float m_fCanvasW;
-	protected float m_fCanvasH;
-	protected ref array<ref CanvasWidgetCommand> m_aCommands = {};
+	protected ref array<ref CanvasWidgetCommand> m_aCommands = {};	//!< what the canvas draws: it keeps a pointer to this array
 
-	protected bool m_bBuilt;
+	// The view square, fitted once
+	protected bool m_bViewFitted;
 	protected float m_fViewMinX;
 	protected float m_fViewMinZ;
 	protected float m_fViewSize;
+
+	// World to canvas pixels, recomputed when the canvas changes size
+	protected bool m_bLayoutDirty = true;
+	protected float m_fCanvasW;
+	protected float m_fCanvasH;
+	protected float m_fPixelsPerMetre;
+	protected float m_fOffsetX;
+	protected float m_fOffsetY;
+	protected float m_fUi = 1;
+
+	// The commands, kept and edited in place
+	protected ref ImageDrawCommand m_ImageCommand;
+	protected ref array<int> m_aZonePoints = {};			//!< the point index of each zone below
+	protected ref array<ref PolygonDrawCommand> m_aZoneFills = {};
+	protected ref array<ref LineDrawCommand> m_aZoneRings = {};
+	protected ref array<ref TextDrawCommand> m_aZoneLabels = {};
+	protected ref array<ref PolygonDrawCommand> m_aDotOutlines = {};	//!< a pool: the first m_iDotsShown are drawn
+	protected ref array<ref PolygonDrawCommand> m_aDotFills = {};
+	protected int m_iDotsShown = -1;
+	protected ref LineDrawCommand m_GunLine;
+	protected ref LineDrawCommand m_ArrowOutline;
+	protected ref PolygonDrawCommand m_ArrowFill;			//!< shares m_ArrowOutline's vertices
+
+	// Timing and the arrow as last drawn
+	protected int m_iRefreshAtMs;
+	protected int m_iLastUpdateMs = -100000;
+	protected bool m_bSelfShown;
+	protected bool m_bGunShown;
+	protected float m_fSelfX;
+	protected float m_fSelfY;
+	protected float m_fSelfForwardX;
+	protected float m_fSelfForwardY;
+	protected float m_fGunX;
+	protected float m_fGunZ;
+
+	// Scratch for GetTankPositions, reused
+	protected ref array<vector> m_aTankPositions = {};
+	protected ref array<int> m_aTankSides = {};
 
 	protected int m_iOwnColor;
 	protected int m_iEnemyColor;
@@ -39,6 +91,7 @@ class CRF_TankBattleMinimap
 	protected int m_iOutlineColor;
 	protected int m_iLabelColor;
 	protected int m_iImageColor;
+	protected static const int HIDDEN_COLOR = 0;	// fully transparent
 
 	// The satellite image, cropped to the view
 	protected ref SharedItemRef m_Image;
@@ -63,6 +116,21 @@ class CRF_TankBattleMinimap
 		m_iOutlineColor   = Color.FromSRGBA(11, 12, 16, 255).PackToInt();
 		m_iLabelColor     = Color.FromSRGBA(240, 244, 250, 255).PackToInt();
 		m_iImageColor     = Color.FromSRGBA(185, 185, 185, 255).PackToInt();	// dimmed, so the zones and tanks stand out
+
+		// Fixed vertex arrays (zeroes), written in place by UpdateSelf
+		m_GunLine = new LineDrawCommand();
+		m_GunLine.m_Vertices = new array<float>();
+		m_GunLine.m_Vertices.Resize(4);
+
+		m_ArrowOutline = new LineDrawCommand();
+		m_ArrowOutline.m_bShouldEnclose = true;
+		m_ArrowOutline.m_Vertices = new array<float>();
+		m_ArrowOutline.m_Vertices.Resize(6);
+
+		m_ArrowFill = new PolygonDrawCommand();
+		m_ArrowFill.m_Vertices = m_ArrowOutline.m_Vertices;
+
+		HideSelf();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -72,16 +140,21 @@ class CRF_TankBattleMinimap
 		m_wCanvas = canvas;
 		m_fCanvasW = 0;
 		m_fCanvasH = 0;
+		m_bLayoutDirty = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Every frame while the HUD is up
+	//! Every frame while the minimap is up (see the header for what each step costs)
 	void Update(notnull CRF_TankBattleGamemodeComponent mode)
 	{
 		if (!m_wCanvas)
 			return;
 
-		if (!m_bBuilt && !FitView(mode))
+		if (!m_bViewFitted && !FitView(mode))
+			return;
+
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
 			return;
 
 		float w, h;
@@ -89,52 +162,97 @@ class CRF_TankBattleMinimap
 		if (w <= 0 || h <= 0)
 			return; // not laid out yet
 
-		m_fCanvasW = w;
-		m_fCanvasH = h;
-		float ui = m_fCanvasH / LAYOUT_SIZE;
+		if (w != m_fCanvasW || h != m_fCanvasH)
+		{
+			m_fCanvasW = w;
+			m_fCanvasH = h;
+			m_bLayoutDirty = true;
+		}
 
-		int localSide = mode.GetLocalSide();
-		int viewSide = localSide;
-		if (viewSide < 0)
-			viewSide = 0;
+		// Shown again after being hidden: refresh at once rather than show where the tanks were
+		int now = world.GetWorldTime();
+		if (now - m_iLastUpdateMs > REFRESH_MS * 2)
+			m_iRefreshAtMs = now;
 
-		m_aCommands.Clear();
-		DrawImage(mode);
-		DrawPoints(mode, viewSide, ui);
-		DrawTanks(mode, localSide, viewSide, ui);
-		m_wCanvas.SetDrawCommands(m_aCommands);
+		m_iLastUpdateMs = now;
+
+		bool rebuildList;
+		bool changed;
+		if (m_bLayoutDirty)
+		{
+			BuildLayout(mode);
+			m_iRefreshAtMs = now;
+			rebuildList = true;
+		}
+
+		if (now >= m_iRefreshAtMs)
+		{
+			m_iRefreshAtMs = now + REFRESH_MS;
+			if (Refresh(mode))
+				rebuildList = true;
+
+			changed = true;
+		}
+
+		if (UpdateSelf(mode, rebuildList))
+			changed = true;
+
+		if (rebuildList)
+			AssembleCommands();
+		else if (changed)
+			m_wCanvas.SetDrawCommands(m_aCommands);
 	}
 
 	//===================================================================================
-	// DRAWING
+	// BUILDING: when the canvas changes size
 	//===================================================================================
 
 	//------------------------------------------------------------------------------------------------
+	protected void BuildLayout(notnull CRF_TankBattleGamemodeComponent mode)
+	{
+		m_bLayoutDirty = false;
+		m_fPixelsPerMetre = Math.Min(m_fCanvasW, m_fCanvasH) / m_fViewSize;
+		m_fOffsetX = (m_fCanvasW - m_fViewSize * m_fPixelsPerMetre) * 0.5;
+		m_fOffsetY = (m_fCanvasH - m_fViewSize * m_fPixelsPerMetre) * 0.5;
+		m_fUi = m_fCanvasH / LAYOUT_SIZE;
+
+		BuildImage(mode);
+		BuildZones(mode);
+
+		m_GunLine.m_fWidth = 2 * m_fUi;
+		m_ArrowOutline.m_fWidth = 2.5 * m_fUi;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! The satellite image under the view square, cropped by UV
-	protected void DrawImage(notnull CRF_TankBattleGamemodeComponent mode)
+	protected void BuildImage(notnull CRF_TankBattleGamemodeComponent mode)
 	{
 		if (!m_bImageTried)
 			m_bImageTried = LoadImage(mode);
 
 		if (!m_Image)
+		{
+			m_ImageCommand = null;
 			return;
+		}
 
-		float side = m_fViewSize * PixelsPerMetre();
-		ImageDrawCommand image = new ImageDrawCommand();
-		image.m_pTexture = m_Image;
-		image.m_iColor = m_iImageColor;
-		image.m_Position = ToPixel(Vector(m_fViewMinX, 0, m_fViewMinZ + m_fViewSize));	// top left = north west
-		image.m_Size = Vector(side, side, 0);
-		image.m_fUV[0] = m_fImageU0;
-		image.m_fUV[1] = m_fImageV0;
-		image.m_fUV[2] = m_fImageU1;
-		image.m_fUV[3] = m_fImageV1;
-		m_aCommands.Insert(image);
+		if (!m_ImageCommand)
+			m_ImageCommand = new ImageDrawCommand();
+
+		float side = m_fViewSize * m_fPixelsPerMetre;
+		m_ImageCommand.m_pTexture = m_Image;
+		m_ImageCommand.m_iColor = m_iImageColor;
+		m_ImageCommand.m_Position = ToPixel(Vector(m_fViewMinX, 0, m_fViewMinZ + m_fViewSize));	// top left = north west
+		m_ImageCommand.m_Size = Vector(side, side, 0);
+		m_ImageCommand.m_fUV[0] = m_fImageU0;
+		m_ImageCommand.m_fUV[1] = m_fImageV0;
+		m_ImageCommand.m_fUV[2] = m_fImageU1;
+		m_ImageCommand.m_fUV[3] = m_fImageV1;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	//! The image and the part of it under the view. The image covers the map's area, north up (V 0 = north).
-	//! eturn false to try again next frame (the map entity isn't there yet)
+	//! returns false to try again later (the map entity isn't there yet)
 	protected bool LoadImage(notnull CRF_TankBattleGamemodeComponent mode)
 	{
 		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
@@ -171,9 +289,14 @@ class CRF_TankBattleMinimap
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void DrawPoints(notnull CRF_TankBattleGamemodeComponent mode, int viewSide, float ui)
+	//! Each zone's circle and letter; their colours are set by Refresh
+	protected void BuildZones(notnull CRF_TankBattleGamemodeComponent mode)
 	{
-		float pixelsPerMetre = PixelsPerMetre();
+		m_aZonePoints.Clear();
+		m_aZoneFills.Clear();
+		m_aZoneRings.Clear();
+		m_aZoneLabels.Clear();
+
 		for (int i = 0; i < mode.GetPointCount(); i++)
 		{
 			IEntity pointEntity = mode.GetPointEntity(i);
@@ -181,9 +304,100 @@ class CRF_TankBattleMinimap
 				continue;
 
 			vector centre = ToPixel(pointEntity.GetOrigin());
-			float radius = Math.Max(mode.GetPointRadius(i) * pixelsPerMetre, 6 * ui);
+			float radius = Math.Max(mode.GetPointRadius(i) * m_fPixelsPerMetre, 6 * m_fUi);
 
-			int owner = mode.GetPointOwner(i);
+			PolygonDrawCommand fill = new PolygonDrawCommand();
+			fill.m_Vertices = new array<float>();
+			m_wCanvas.TessellateCircle(centre, radius, ZONE_SEGMENTS, fill.m_Vertices);
+
+			LineDrawCommand ring = new LineDrawCommand();
+			ring.m_fWidth = 2 * m_fUi;
+			ring.m_bShouldEnclose = true;
+			ring.m_Vertices = fill.m_Vertices;
+
+			// The letter, centred on the zone (the text is placed by its top-left corner)
+			float size = 16 * m_fUi;
+			TextDrawCommand label = new TextDrawCommand();
+			label.m_iColor = m_iLabelColor;
+			label.m_sText = mode.GetPointName(i);
+			label.m_fSize = size;
+			label.m_Position = Vector(centre[0] - size * 0.3, centre[1] - size * 0.55, 0);
+
+			m_aZonePoints.Insert(i);
+			m_aZoneFills.Insert(fill);
+			m_aZoneRings.Insert(ring);
+			m_aZoneLabels.Insert(label);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! The canvas's list, grouped by command type so the canvas can batch them: image, zone fills, zone
+	//! rings, letters, dot outlines, dots, the gun line, the arrow
+	protected void AssembleCommands()
+	{
+		m_aCommands.Clear();
+		if (m_ImageCommand)
+			m_aCommands.Insert(m_ImageCommand);
+
+		foreach (PolygonDrawCommand fill : m_aZoneFills)
+		{
+			m_aCommands.Insert(fill);
+		}
+
+		foreach (LineDrawCommand ring : m_aZoneRings)
+		{
+			m_aCommands.Insert(ring);
+		}
+
+		foreach (TextDrawCommand label : m_aZoneLabels)
+		{
+			m_aCommands.Insert(label);
+		}
+
+		for (int i = 0; i < m_iDotsShown; i++)
+		{
+			m_aCommands.Insert(m_aDotOutlines[i]);
+		}
+
+		for (int i = 0; i < m_iDotsShown; i++)
+		{
+			m_aCommands.Insert(m_aDotFills[i]);
+		}
+
+		m_aCommands.Insert(m_GunLine);
+		m_aCommands.Insert(m_ArrowOutline);
+		m_aCommands.Insert(m_ArrowFill);
+		m_wCanvas.SetDrawCommands(m_aCommands);
+	}
+
+	//===================================================================================
+	// REFRESH: every REFRESH_MS
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! Zone colours and friendly dots, in place. returns true if the list needs reassembling (the
+	//! number of dots changed)
+	protected bool Refresh(notnull CRF_TankBattleGamemodeComponent mode)
+	{
+		// Pieces that weren't there at the last build (the map entity, a point not streamed in yet)
+		if (!m_bImageTried || m_aZonePoints.Count() < mode.GetPointCount())
+			m_bLayoutDirty = true;
+
+		int localSide = mode.GetLocalSide();
+		int viewSide = localSide;
+		if (viewSide < 0)
+			viewSide = 0;
+
+		RefreshZones(mode, viewSide);
+		return RefreshDots(mode, localSide, viewSide);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void RefreshZones(notnull CRF_TankBattleGamemodeComponent mode, int viewSide)
+	{
+		foreach (int z, int point : m_aZonePoints)
+		{
+			int owner = mode.GetPointOwner(point);
 			int fillColor = m_iNeutralFill;
 			int ringColor = m_iNeutralColor;
 			if (owner == viewSide)
@@ -198,7 +412,7 @@ class CRF_TankBattleMinimap
 			}
 
 			// The ring shows who is taking it
-			int capturing = mode.GetPointCapturing(i);
+			int capturing = mode.GetPointCapturing(point);
 			if (capturing == CRF_TankBattleGamemodeComponent.CONTESTED)
 				ringColor = m_iContestedColor;
 			else if (capturing == viewSide)
@@ -206,139 +420,156 @@ class CRF_TankBattleMinimap
 			else if (capturing >= 0)
 				ringColor = m_iEnemyColor;
 
-			PolygonDrawCommand fill = new PolygonDrawCommand();
-			fill.m_iColor = fillColor;
-			fill.m_Vertices = new array<float>();
-			m_wCanvas.TessellateCircle(centre, radius, 32, fill.m_Vertices);
-			m_aCommands.Insert(fill);
-
-			LineDrawCommand ring = new LineDrawCommand();
-			ring.m_iColor = ringColor;
-			ring.m_fWidth = 2 * ui;
-			ring.m_bShouldEnclose = true;
-			ring.m_Vertices = new array<float>();
-			m_wCanvas.TessellateCircle(centre, radius, 32, ring.m_Vertices);
-			m_aCommands.Insert(ring);
-
-			// The letter, centred on the zone (the text is placed by its top-left corner)
-			float size = 16 * ui;
-			TextDrawCommand label = new TextDrawCommand();
-			label.m_iColor = m_iLabelColor;
-			label.m_sText = mode.GetPointName(i);
-			label.m_fSize = size;
-			label.m_Position = Vector(centre[0] - size * 0.3, centre[1] - size * 0.55, 0);
-			m_aCommands.Insert(label);
+			m_aZoneFills[z].m_iColor = fillColor;
+			m_aZoneRings[z].m_iColor = ringColor;
 		}
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Friendly tanks as dots (spectators: every tank, in its side's colour), the local tank as an arrow
-	protected void DrawTanks(notnull CRF_TankBattleGamemodeComponent mode, int localSide, int viewSide, float ui)
+	//! Friendly tanks as dots (spectators: every tank, in its side's colour). Positions, not entities: a
+	//! tank outside this client's network view distance isn't streamed in, so its position is the
+	//! server's (GetTankPositions). returns true if the number of dots changed
+	protected bool RefreshDots(notnull CRF_TankBattleGamemodeComponent mode, int localSide, int viewSide)
 	{
-		Vehicle localTank = mode.GetLocalTank();
+		m_aTankPositions.Clear();
+		m_aTankSides.Clear();
+		mode.GetTankPositions(m_aTankPositions, m_aTankSides, mode.GetLocalTank());
 
-		array<Vehicle> tanks = {};
-		array<int> sides = {};
-		mode.GetTanks(tanks, sides);
-		foreach (int i, Vehicle tank : tanks)
+		float radius = DOT_RADIUS * m_fUi;
+		float outlineRadius = radius + 1.25 * m_fUi;
+		int shown;
+		foreach (int i, vector tankPosition : m_aTankPositions)
 		{
-			if (!tank || tank == localTank)
-				continue;
-
-			if (localSide >= 0 && sides[i] != localSide)
+			int side = m_aTankSides[i];
+			if (localSide >= 0 && side != localSide)
 				continue;
 
 			int color = m_iOwnColor;
-			if (sides[i] != viewSide)
+			if (side != viewSide)
 				color = m_iEnemyColor;
 
-			InsertDot(ClampToView(tank.GetOrigin()), 4.5 * ui, color, ui);
+			if (shown >= m_aDotFills.Count())
+			{
+				PolygonDrawCommand newOutline = new PolygonDrawCommand();
+				newOutline.m_iColor = m_iOutlineColor;
+				newOutline.m_Vertices = new array<float>();
+				m_aDotOutlines.Insert(newOutline);
+
+				PolygonDrawCommand newFill = new PolygonDrawCommand();
+				newFill.m_Vertices = new array<float>();
+				m_aDotFills.Insert(newFill);
+			}
+
+			vector centre = ToPixel(ClampToView(tankPosition));
+			PolygonDrawCommand outline = m_aDotOutlines[shown];
+			outline.m_Vertices.Clear();
+			m_wCanvas.TessellateCircle(centre, outlineRadius, DOT_SEGMENTS, outline.m_Vertices);
+
+			PolygonDrawCommand fill = m_aDotFills[shown];
+			fill.m_iColor = color;
+			fill.m_Vertices.Clear();
+			m_wCanvas.TessellateCircle(centre, radius, DOT_SEGMENTS, fill.m_Vertices);
+			shown++;
 		}
 
+		if (shown == m_iDotsShown)
+			return false;
+
+		m_iDotsShown = shown;
+		return true;
+	}
+
+	//===================================================================================
+	// THE LOCAL TANK: every frame, no loops
+	//===================================================================================
+
+	//------------------------------------------------------------------------------------------------
+	//! The arrow along the local tank's hull and the line along its gun, written into their fixed
+	//! vertices. returns true if anything changed (force: redraw even if it hasn't moved)
+	protected bool UpdateSelf(notnull CRF_TankBattleGamemodeComponent mode, bool force)
+	{
+		Vehicle localTank = mode.GetLocalTank();
 		if (!localTank)
-			return;
-
-		vector position = ClampToView(localTank.GetOrigin());
-		vector gunDirection = mode.GetLocalGunDirection();
-		if (gunDirection != vector.Zero)
 		{
-			vector centre = ToPixel(position);
-			float length = GUN_LINE_LENGTH * ui;
-			vector flat = Vector(gunDirection[0], 0, gunDirection[2]).Normalized();
+			if (!m_bSelfShown)
+				return false;
 
-			LineDrawCommand gun = new LineDrawCommand();
-			gun.m_iColor = m_iSelfColor;
-			gun.m_fWidth = 2 * ui;
-			gun.m_Vertices = new array<float>();
-			gun.m_Vertices.Insert(centre[0]);
-			gun.m_Vertices.Insert(centre[1]);
-			gun.m_Vertices.Insert(centre[0] + flat[0] * length);
-			gun.m_Vertices.Insert(centre[1] - flat[2] * length);
-			m_aCommands.Insert(gun);
+			HideSelf();
+			return true;
 		}
 
-		InsertArrow(position, localTank.GetAngles()[1], ui);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void InsertDot(vector world, float radius, int color, float ui)
-	{
-		vector centre = ToPixel(world);
-
-		PolygonDrawCommand outline = new PolygonDrawCommand();
-		outline.m_iColor = m_iOutlineColor;
-		outline.m_Vertices = new array<float>();
-		m_wCanvas.TessellateCircle(centre, radius + 1.25 * ui, 16, outline.m_Vertices);
-		m_aCommands.Insert(outline);
-
-		PolygonDrawCommand dot = new PolygonDrawCommand();
-		dot.m_iColor = color;
-		dot.m_Vertices = new array<float>();
-		m_wCanvas.TessellateCircle(centre, radius, 16, dot.m_Vertices);
-		m_aCommands.Insert(dot);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! An arrow-head triangle pointing along yaw (degrees, clockwise from north)
-	protected void InsertArrow(vector world, float yaw, float ui)
-	{
-		vector centre = ToPixel(world);
-		float rad = yaw * Math.DEG2RAD;
+		vector centre = ToPixel(ClampToView(localTank.GetOrigin()));
+		float rad = localTank.GetAngles()[1] * Math.DEG2RAD;
 
 		// Canvas y points south, so north (yaw 0) is up the screen
 		float forwardX = Math.Sin(rad);
 		float forwardY = -Math.Cos(rad);
+
+		vector gunDirection = mode.GetLocalGunDirection();
+		bool gunShown = gunDirection[0] != 0 || gunDirection[2] != 0;
+		float gunX;
+		float gunZ;
+		if (gunShown)
+		{
+			float flat = Math.Sqrt(gunDirection[0] * gunDirection[0] + gunDirection[2] * gunDirection[2]);
+			gunX = gunDirection[0] / flat;
+			gunZ = gunDirection[2] / flat;
+		}
+
+		if (!force && m_bSelfShown && gunShown == m_bGunShown
+			&& Math.AbsFloat(centre[0] - m_fSelfX) < SELF_MOVE_PX && Math.AbsFloat(centre[1] - m_fSelfY) < SELF_MOVE_PX
+			&& Math.AbsFloat(forwardX - m_fSelfForwardX) < SELF_TURN && Math.AbsFloat(forwardY - m_fSelfForwardY) < SELF_TURN
+			&& Math.AbsFloat(gunX - m_fGunX) < SELF_TURN && Math.AbsFloat(gunZ - m_fGunZ) < SELF_TURN)
+			return false;
+
+		m_bSelfShown = true;
+		m_bGunShown = gunShown;
+		m_fSelfX = centre[0];
+		m_fSelfY = centre[1];
+		m_fSelfForwardX = forwardX;
+		m_fSelfForwardY = forwardY;
+		m_fGunX = gunX;
+		m_fGunZ = gunZ;
+
+		// The gun line
+		array<float> gun = m_GunLine.m_Vertices;
+		float length = GUN_LINE_LENGTH * m_fUi;
+		gun[0] = centre[0];
+		gun[1] = centre[1];
+		gun[2] = centre[0] + gunX * length;
+		gun[3] = centre[1] - gunZ * length;
+		if (gunShown)
+			m_GunLine.m_iColor = m_iSelfColor;
+		else
+			m_GunLine.m_iColor = HIDDEN_COLOR;
+
+		// The arrow head: a triangle pointing along the hull
 		float rightX = -forwardY;
 		float rightY = forwardX;
+		float arrowLength = 10 * m_fUi;
+		float halfWidth = 7 * m_fUi;
+		float backX = centre[0] - forwardX * arrowLength * 0.6;
+		float backY = centre[1] - forwardY * arrowLength * 0.6;
 
-		float length = 10 * ui;
-		float halfWidth = 7 * ui;
+		array<float> arrow = m_ArrowOutline.m_Vertices;
+		arrow[0] = centre[0] + forwardX * arrowLength;
+		arrow[1] = centre[1] + forwardY * arrowLength;
+		arrow[2] = backX + rightX * halfWidth;
+		arrow[3] = backY + rightY * halfWidth;
+		arrow[4] = backX - rightX * halfWidth;
+		arrow[5] = backY - rightY * halfWidth;
+		m_ArrowOutline.m_iColor = m_iOutlineColor;
+		m_ArrowFill.m_iColor = m_iSelfColor;
+		return true;
+	}
 
-		float tipX = centre[0] + forwardX * length;
-		float tipY = centre[1] + forwardY * length;
-		float backX = centre[0] - forwardX * length * 0.6;
-		float backY = centre[1] - forwardY * length * 0.6;
-
-		array<float> vertices = new array<float>();
-		vertices.Insert(tipX);
-		vertices.Insert(tipY);
-		vertices.Insert(backX + rightX * halfWidth);
-		vertices.Insert(backY + rightY * halfWidth);
-		vertices.Insert(backX - rightX * halfWidth);
-		vertices.Insert(backY - rightY * halfWidth);
-
-		LineDrawCommand outline = new LineDrawCommand();
-		outline.m_iColor = m_iOutlineColor;
-		outline.m_fWidth = 2.5 * ui;
-		outline.m_bShouldEnclose = true;
-		outline.m_Vertices = new array<float>();
-		outline.m_Vertices.Copy(vertices);
-		m_aCommands.Insert(outline);
-
-		PolygonDrawCommand shape = new PolygonDrawCommand();
-		shape.m_iColor = m_iSelfColor;
-		shape.m_Vertices = vertices;
-		m_aCommands.Insert(shape);
+	//------------------------------------------------------------------------------------------------
+	protected void HideSelf()
+	{
+		m_bSelfShown = false;
+		m_GunLine.m_iColor = HIDDEN_COLOR;
+		m_ArrowOutline.m_iColor = HIDDEN_COLOR;
+		m_ArrowFill.m_iColor = HIDDEN_COLOR;
 	}
 
 	//===================================================================================
@@ -389,25 +620,15 @@ class CRF_TankBattleMinimap
 		m_fViewSize = size;
 		m_fViewMinX = (minX + maxX) * 0.5 - size * 0.5;
 		m_fViewMinZ = (minZ + maxZ) * 0.5 - size * 0.5;
-		m_bBuilt = true;
+		m_bViewFitted = true;
 		return true;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected float PixelsPerMetre()
-	{
-		return Math.Min(m_fCanvasW, m_fCanvasH) / m_fViewSize;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	//! World position to canvas pixels: the view square fitted and centred in the canvas, north up
 	protected vector ToPixel(vector world)
 	{
-		float pixelsPerMetre = PixelsPerMetre();
-		float offsetX = (m_fCanvasW - m_fViewSize * pixelsPerMetre) * 0.5;
-		float offsetY = (m_fCanvasH - m_fViewSize * pixelsPerMetre) * 0.5;
-
-		return Vector(offsetX + (world[0] - m_fViewMinX) * pixelsPerMetre, offsetY + (m_fViewMinZ + m_fViewSize - world[2]) * pixelsPerMetre, 0);
+		return Vector(m_fOffsetX + (world[0] - m_fViewMinX) * m_fPixelsPerMetre, m_fOffsetY + (m_fViewMinZ + m_fViewSize - world[2]) * m_fPixelsPerMetre, 0);
 	}
 
 	//------------------------------------------------------------------------------------------------

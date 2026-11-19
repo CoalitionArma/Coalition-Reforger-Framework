@@ -361,4 +361,24 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	{
 		CRF_ZeusPlayerList.SetTicketHolders(playerIds);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tank Battle, server every second: this player's own side's tanks and where they are (PackPosition),
+	//! for the minimap's dots past the streaming range. Unreliable: a lost one is replaced a second later.
+	void ReceiveTankBattlePositions(array<RplId> tankIds, array<int> positions)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveTankBattlePositions(tankIds, positions);
+		else
+			Rpc(RpcDo_ReceiveTankBattlePositions, tankIds, positions);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Unreliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveTankBattlePositions(array<RplId> tankIds, array<int> positions)
+	{
+		CRF_TankBattleGamemodeComponent mode = CRF_TankBattleGamemodeComponent.GetInstance();
+		if (mode)
+			mode.SetFriendlyTankPositions(tankIds, positions);
+	}
 };

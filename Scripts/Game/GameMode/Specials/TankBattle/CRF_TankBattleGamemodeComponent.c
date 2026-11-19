@@ -235,7 +235,6 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<int> m_aTankSides = {};
 	[RplProp()]
 	protected ref array<int> m_aTankOptions = {};
-
 	// Server
 	protected COA_Gamemode m_Gamemode;
 	protected COA_SafestartManager m_Safestart;
@@ -247,6 +246,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected float m_fScore1;
 	protected ref array<RplId> m_aWreckIds = {};
 	protected ref array<int> m_aWreckRemoveAtMs = {};
+	protected int m_iPositionTicks;
 
 	// Every machine
 	protected ref array<IEntity> m_aPointEntities = {};
@@ -260,6 +260,8 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected int m_iEngineStartAtMs;
 	protected int m_iMenuSnoozeUntilMs;
 	protected int m_iTurretCheckAtMs;
+	protected ref map<RplId, int> m_mFriendlyTankPositions = new map<RplId, int>();	//!< own side's tanks (PackPosition) from the server's last SendTankPositions
+	protected int m_iFriendlyPositionsAtMs = -100000;
 	protected ref TraceParam m_GunTrace;
 	protected bool m_bGunRayCached;
 	protected bool m_bGunRayValid;
@@ -277,6 +279,8 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 
 	protected static const int TICK_MS = 500;
 	protected static const float TICK_SECONDS = 0.5;
+	protected static const int POSITION_EVERY_TICKS = 2;	//!< SendTankPositions: every second
+	protected static const int POSITION_STALE_MS = 3500;	//!< client: drop the server's positions this long after the last arrived
 	protected static const int SEAT_MAX_TRIES = 5;
 	protected static const int SEAT_RETRY_MS = 1500;
 	protected static const int REQUEST_COOLDOWN_MS = 1500;
@@ -507,6 +511,13 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		ManagePlayers(now);
 		RemoveWrecks(now);
 
+		m_iPositionTicks++;
+		if (m_iPositionTicks >= POSITION_EVERY_TICKS)
+		{
+			m_iPositionTicks = 0;
+			SendTankPositions();
+		}
+
 		if (m_iState == CRF_ETankBattleState.LIVE && !m_bEndRequested)
 		{
 			UpdatePoints();
@@ -731,15 +742,11 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		if (!driverSeat)
 			return;
 
-		int option = -1;
-		int index = m_aTankIds.Find(GetRplId(tank));
-		if (index >= 0)
-			option = m_aTankOptions[index];
-
 		int seatIndex;
 		CRF_TankBattleTank tankOption;
-		if (index >= 0)
-			tankOption = GetTankOption(m_aTankSides[index], option);
+		int index = m_aTankIds.Find(GetRplId(tank));
+		if (index >= 0 && m_aTankOptions.IsIndexValid(index) && m_aTankSides.IsIndexValid(index))
+			tankOption = GetTankOption(m_aTankSides[index], m_aTankOptions[index]);
 		if (tankOption)
 			seatIndex = tankOption.m_iTurretSeat;
 
@@ -888,6 +895,93 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		m_bDirty = true;
+	}
+
+	//! Server, every second: each side's tank positions to that side's players only, for the minimap's
+	//! dots past the streaming range (the server's network view distance can be shorter than the
+	//! field). Not an RplProp: they're stale in a second, nobody joining needs the old ones, and an
+	//! RplProp reaches every client, so enemy positions would too. Unreliable: a lost one is replaced
+	//! by the next.
+	protected void SendTankPositions()
+	{
+		array<RplId> ids0 = {};
+		array<int> positions0 = {};
+		array<RplId> ids1 = {};
+		array<int> positions1 = {};
+
+		foreach (int i, RplId tankId : m_aTankIds)
+		{
+			if (!m_aTankSides.IsIndexValid(i))
+				break;
+
+			IEntity tank = COA_EntityHelper.GetEntityFromRplId(tankId);
+			if (!tank || IsWrecked(tank))
+				continue;
+
+			if (m_aTankSides[i] == 0)
+			{
+				ids0.Insert(tankId);
+				positions0.Insert(PackPosition(tank.GetOrigin()));
+			}
+			else if (m_aTankSides[i] == 1)
+			{
+				ids1.Insert(tankId);
+				positions1.Insert(PackPosition(tank.GetOrigin()));
+			}
+		}
+
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();	// a hosting player has every tank already
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		foreach (int playerId : playerIds)
+		{
+			if (playerId == localPlayerId)
+				continue;
+
+			int side = GetSideOfFaction(CRF_RadioTransmissionEvents.GetPlayerFactionKey(playerId));
+			if (side < 0)
+				continue;
+
+			COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(playerId);
+			if (!ownerManager)
+				continue;
+
+			if (side == 0)
+				ownerManager.ReceiveTankBattlePositions(ids0, positions0);
+			else
+				ownerManager.ReceiveTankBattlePositions(ids1, positions1);
+		}
+	}
+
+	//! Client, from SendTankPositions (via COA_PlayerRplToOwnerManager)
+	void SetFriendlyTankPositions(notnull array<RplId> tankIds, notnull array<int> positions)
+	{
+		m_mFriendlyTankPositions.Clear();
+		foreach (int i, RplId tankId : tankIds)
+		{
+			if (positions.IsIndexValid(i))
+				m_mFriendlyTankPositions.Set(tankId, positions[i]);
+		}
+
+		m_iFriendlyPositionsAtMs = GetGame().GetWorld().GetWorldTime();
+	}
+
+	//! x and z to the metre in one int (z in the high 16 bits): maps up to 65 km
+	static int PackPosition(vector position)
+	{
+		int x = (int)Math.Clamp(Math.Round(position[0]), 0, 65535);
+		int z = (int)Math.Clamp(Math.Round(position[2]), 0, 65535);
+		return (z << 16) | x;
+	}
+
+	static vector UnpackPosition(int packed)
+	{
+		// Unpacked as ints first: Vector() takes floats and won't take the bitwise expressions directly
+		int x = packed & 65535;
+		int z = (packed >> 16) & 65535;
+		float fx = x;
+		float fz = z;
+		return Vector(fx, 0, fz);
 	}
 
 	protected Vehicle GetStateTank(notnull CRF_TankBattlePlayer state)
@@ -1295,11 +1389,24 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	//! so clients do it as their copies of the tanks stream in)
 	protected void AttachMainTurrets()
 	{
+		// Deleted tanks leave nulls behind in the once-per-tank logs: a 40-minute round goes through hundreds
+		PruneNulls(m_aAttachLogged);
+		PruneNulls(m_aNoTurretWarned);
+
 		foreach (RplId tankId : m_aTankIds)
 		{
 			Vehicle tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(tankId));
 			if (tank && !IsWrecked(tank))
 				AttachMainTurret(tank);
+		}
+	}
+
+	protected static void PruneNulls(notnull array<IEntity> entities)
+	{
+		for (int i = entities.Count() - 1; i >= 0; i--)
+		{
+			if (!entities[i])
+				entities.Remove(i);
 		}
 	}
 
@@ -1600,7 +1707,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		int count;
 		foreach (int i, int tankSide : m_aTankSides)
 		{
-			if (tankSide == side && m_aTankOptions[i] == option)
+			if (tankSide == side && m_aTankOptions.IsIndexValid(i) && m_aTankOptions[i] == option)
 				count++;
 		}
 
@@ -1621,7 +1728,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 			return -1;
 
 		int index = m_aTankIds.Find(rpl.Id());
-		if (index < 0)
+		if (index < 0 || !m_aTankPlayers.IsIndexValid(index))
 			return -1;
 
 		return m_aTankPlayers[index];
@@ -1794,16 +1901,37 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		return m_aPoints[index].m_fRadius;
 	}
 
-	//! Every mode tank this machine has (clients: the ones streamed in), with its side
-	void GetTanks(notnull array<Vehicle> tanks, notnull array<int> sides)
+	//! Every mode tank in one piece except skip, with its side. Where this machine has the tank (a
+	//! client: streamed in) its live position, else, for its own side's tanks only, the server's from
+	//! SendTankPositions (about a second old).
+	void GetTankPositions(notnull array<vector> positions, notnull array<int> sides, IEntity skip = null)
 	{
+		BaseWorld world = GetGame().GetWorld();
+		bool haveServerPositions = world && world.GetWorldTime() - m_iFriendlyPositionsAtMs < POSITION_STALE_MS;
+		int packed;
+
 		foreach (int i, RplId tankId : m_aTankIds)
 		{
-			Vehicle tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(tankId));
-			if (!tank || IsWrecked(tank))
-				continue;
+			if (!m_aTankSides.IsIndexValid(i))
+				break;
 
-			tanks.Insert(tank);
+			IEntity tank = COA_EntityHelper.GetEntityFromRplId(tankId);
+			if (tank)
+			{
+				if (tank == skip || IsWrecked(tank))
+					continue;
+
+				positions.Insert(tank.GetOrigin());
+			}
+			else if (haveServerPositions && m_mFriendlyTankPositions.Find(tankId, packed))
+			{
+				positions.Insert(UnpackPosition(packed));
+			}
+			else
+			{
+				continue;
+			}
+
 			sides.Insert(m_aTankSides[i]);
 		}
 	}
