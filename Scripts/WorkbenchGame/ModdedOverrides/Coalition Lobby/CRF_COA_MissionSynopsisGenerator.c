@@ -41,6 +41,8 @@ modded class COA_MissionSynopsisGenerator
 			activeComponents.Insert("Patrol & Ambush");
 		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_EvacuationGamemodeComponent) >= 0)
 			activeComponents.Insert("Evacuation");
+		if (SCR_BaseContainerTools.FindComponentIndex(entitySource, CRF_TankBattleGamemodeComponent) >= 0)
+			activeComponents.Insert("Tank Battle");
 	}
 }
 #endif

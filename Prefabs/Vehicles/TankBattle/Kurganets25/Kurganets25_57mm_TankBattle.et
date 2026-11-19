@@ -1,0 +1,22 @@
+RHS_Tank : "{B73C7716E00B4BC3}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_57mm.et" {
+ ID "6961032308516CE0"
+ components {
+  SCR_BaseCompartmentManagerComponent "{69610322C1E0702E}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     MouseSteering 0
+     AutoConnectToTurret "tb_maingun"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{6960A59EDBB4C5FD}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F69}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_Turret_TankBattle.et"
+    }
+   }
+  }
+ }
+}

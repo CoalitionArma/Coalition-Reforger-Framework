@@ -1,0 +1,11 @@
+Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  SCR_TurretControllerComponent "{51ACD09C61C183E4}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

@@ -1,0 +1,11 @@
+Turret : "{70899C1C6ED89CF6}Prefabs/Vehicles/Tracked/T14/VehParts/Turret/T14_Turret.et" {
+ ID "51ACD0965653D003"
+ components {
+  RHS_StabilizedTurretControllerComponent "{51ACD09C61C183E4}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

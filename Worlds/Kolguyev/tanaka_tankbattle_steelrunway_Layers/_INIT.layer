@@ -1,0 +1,1181 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0001}" : "{FA1B76B175A8AE55}Configs/Navmesh/Navmesh_GM_Cain_Soldier.conf" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6B1CA0E0AC5E0002}" : "{0F41A96826AAE63B}Configs/Navmesh/Navmesh_GM_Cain_Vehicle.conf" {
+    }
+   }
+  }
+ }
+ coords 2022.696 350.795 7441.247
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_TankBattleGamemodeComponent "{6B1118B749A5F75F}" {
+   m_fCaptureSeconds 20
+   m_iScoreLimit 3000
+   m_fScorePerPoint 1
+   m_fAllPointsBonus 2
+   m_iScorePerKill 3
+   m_bEndMissionOnVictory 0
+   m_fRespawnSeconds 10
+   m_aPoints {
+    CRF_TankBattlePoint "{6B1118B7A3AEC99E}" {
+     m_sName "A"
+     m_sEntityName "steelrunway_point_a"
+     m_fRadius 60
+    }
+    CRF_TankBattlePoint "{6B1118B7C000BF20}" {
+     m_sName "B"
+     m_sEntityName "steelrunway_point_b"
+     m_fRadius 60
+    }
+    CRF_TankBattlePoint "{6B1118B77EAC4326}" {
+     m_sName "C"
+     m_sEntityName "steelrunway_point_c"
+     m_fRadius 60
+    }
+   }
+   m_aSides {
+    CRF_TankBattleSide "{6B1118B7C4A210A9}" {
+     m_sFactionKey "BLUFOR"
+     m_aSpawnEntities {
+      "steelrunway_blufor_tank_1"
+      "steelrunway_blufor_tank_2"
+      "steelrunway_blufor_tank_3"
+      "steelrunway_blufor_tank_4"
+      "steelrunway_blufor_tank_5"
+      "steelrunway_blufor_tank_6"
+      "steelrunway_blufor_tank_7"
+      "steelrunway_blufor_tank_8"
+      "steelrunway_blufor_tank_9"
+      "steelrunway_blufor_tank_10"
+      "steelrunway_blufor_tank_11"
+      "steelrunway_blufor_tank_12"
+      "steelrunway_blufor_tank_13"
+      "steelrunway_blufor_tank_14"
+      "steelrunway_blufor_tank_15"
+      "steelrunway_blufor_tank_16"
+      "steelrunway_blufor_tank_17"
+      "steelrunway_blufor_tank_18"
+      "steelrunway_blufor_tank_19"
+      "steelrunway_blufor_tank_20"
+      "steelrunway_blufor_tank_21"
+      "steelrunway_blufor_tank_22"
+      "steelrunway_blufor_tank_23"
+      "steelrunway_blufor_tank_24"
+      "steelrunway_blufor_tank_25"
+      "steelrunway_blufor_tank_26"
+      "steelrunway_blufor_tank_27"
+      "steelrunway_blufor_tank_28"
+      "steelrunway_blufor_tank_29"
+      "steelrunway_blufor_tank_30"
+      "steelrunway_blufor_tank_31"
+      "steelrunway_blufor_tank_32"
+      "steelrunway_blufor_tank_33"
+      "steelrunway_blufor_tank_34"
+      "steelrunway_blufor_tank_35"
+      "steelrunway_blufor_tank_36"
+      "steelrunway_blufor_tank_37"
+      "steelrunway_blufor_tank_38"
+      "steelrunway_blufor_tank_39"
+      "steelrunway_blufor_tank_40"
+     }
+     m_aTanks {
+      CRF_TankBattleTank "{6B1118B797C411F5}" {
+       m_sName "M1A1 Abrams"
+       m_sDescription "Main battle tank, 120 mm"
+       m_sPrefab "{7C2E5A91B3D04F64}Prefabs/Vehicles/Tracked/M1A1/TankBattle/M1A1_Woodland_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B73E563E27}" {
+       m_sName "T-14 Armata"
+       m_sDescription "Main battle tank, 125 mm, unmanned turret"
+       m_sPrefab "{7C2E5A91B3D04F68}Prefabs/Vehicles/TankBattle/T14/T14_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7946AC2DB}" {
+       m_sName "T-90M"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F78}Prefabs/Vehicles/TankBattle/T90M/T90M_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B77E3CE75C}" {
+       m_sName "T-72A"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F7A}Prefabs/Vehicles/TankBattle/T72/T72A_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7933F637F}" {
+       m_sName "T-72B"
+       m_sDescription "Main battle tank, 125 mm, Kontakt ERA"
+       m_sPrefab "{7C2E5A91B3D04F7C}Prefabs/Vehicles/TankBattle/T72/T72B_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B732CD3298}" {
+       m_sName "Stryker MGS"
+       m_sDescription "Wheeled assault gun, 105 mm"
+       m_sPrefab "{7C2E5A91B3D04F76}Prefabs/Vehicles/TankBattle/Stryker/Stryker_MGS_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B76C9B7183}" {
+       m_sName "Kurganets-25"
+       m_sDescription "Tracked IFV, 57 mm autocannon. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7B0F98C17}" {
+       m_sName "LAV-25"
+       m_sDescription "Wheeled IFV, 25 mm autocannon. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7ED691E23}" {
+       m_sName "Kurganets-25 RWS"
+       m_sDescription "Tracked APC, 12.7 mm Kord. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7EC590907}" {
+       m_sName "BTR-70"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B73432867E}" {
+       m_sName "BRDM-2"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7B91BB27D}" {
+       m_sName "2S1 Gvozdika"
+       m_sDescription "Self-propelled gun, 122 mm. Slow to reload"
+       m_sPrefab "{7C2E5A91B3D04F74}Prefabs/Vehicles/TankBattle/2S1/2S1_Green_TankBattle.et"
+       m_iLimit 1
+       m_iTurretSeat 0
+      }
+     }
+    }
+    CRF_TankBattleSide "{6B1118B7CC8FEA3B}" {
+     m_sFactionKey "OPFOR"
+     m_aSpawnEntities {
+      "steelrunway_opfor_tank_1"
+      "steelrunway_opfor_tank_2"
+      "steelrunway_opfor_tank_3"
+      "steelrunway_opfor_tank_4"
+      "steelrunway_opfor_tank_5"
+      "steelrunway_opfor_tank_6"
+      "steelrunway_opfor_tank_7"
+      "steelrunway_opfor_tank_8"
+      "steelrunway_opfor_tank_9"
+      "steelrunway_opfor_tank_10"
+      "steelrunway_opfor_tank_11"
+      "steelrunway_opfor_tank_12"
+      "steelrunway_opfor_tank_13"
+      "steelrunway_opfor_tank_14"
+      "steelrunway_opfor_tank_15"
+      "steelrunway_opfor_tank_16"
+      "steelrunway_opfor_tank_17"
+      "steelrunway_opfor_tank_18"
+      "steelrunway_opfor_tank_19"
+      "steelrunway_opfor_tank_20"
+      "steelrunway_opfor_tank_21"
+      "steelrunway_opfor_tank_22"
+      "steelrunway_opfor_tank_23"
+      "steelrunway_opfor_tank_24"
+      "steelrunway_opfor_tank_25"
+      "steelrunway_opfor_tank_26"
+      "steelrunway_opfor_tank_27"
+      "steelrunway_opfor_tank_28"
+      "steelrunway_opfor_tank_29"
+      "steelrunway_opfor_tank_30"
+      "steelrunway_opfor_tank_31"
+      "steelrunway_opfor_tank_32"
+      "steelrunway_opfor_tank_33"
+      "steelrunway_opfor_tank_34"
+      "steelrunway_opfor_tank_35"
+      "steelrunway_opfor_tank_36"
+      "steelrunway_opfor_tank_37"
+      "steelrunway_opfor_tank_38"
+      "steelrunway_opfor_tank_39"
+      "steelrunway_opfor_tank_40"
+     }
+     m_aTanks {
+      CRF_TankBattleTank "{6B1118B72073AA48}" {
+       m_sName "M1A1 Abrams"
+       m_sDescription "Main battle tank, 120 mm"
+       m_sPrefab "{7C2E5A91B3D04F66}Prefabs/Vehicles/Tracked/M1A1/TankBattle/M1A1_Desert_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B765519B99}" {
+       m_sName "T-14 Armata"
+       m_sDescription "Main battle tank, 125 mm, unmanned turret"
+       m_sPrefab "{7C2E5A91B3D04F68}Prefabs/Vehicles/TankBattle/T14/T14_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B77B72A701}" {
+       m_sName "T-90M"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F78}Prefabs/Vehicles/TankBattle/T90M/T90M_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B738583D25}" {
+       m_sName "T-72A"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F7A}Prefabs/Vehicles/TankBattle/T72/T72A_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7930CECC4}" {
+       m_sName "T-72B"
+       m_sDescription "Main battle tank, 125 mm, Kontakt ERA"
+       m_sPrefab "{7C2E5A91B3D04F7C}Prefabs/Vehicles/TankBattle/T72/T72B_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7E6748D20}" {
+       m_sName "Stryker MGS"
+       m_sDescription "Wheeled assault gun, 105 mm"
+       m_sPrefab "{7C2E5A91B3D04F76}Prefabs/Vehicles/TankBattle/Stryker/Stryker_MGS_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B74BE5AB7C}" {
+       m_sName "Kurganets-25"
+       m_sDescription "Tracked IFV, 57 mm autocannon. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7BD40279F}" {
+       m_sName "LAV-25"
+       m_sDescription "Wheeled IFV, 25 mm autocannon. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7A20E6BC0}" {
+       m_sName "Kurganets-25 RWS"
+       m_sDescription "Tracked APC, 12.7 mm Kord. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7660148B6}" {
+       m_sName "BTR-70"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B74381E057}" {
+       m_sName "BRDM-2"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour. Repairs friendly engines"
+       m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+       m_bCanRepair 1
+      }
+      CRF_TankBattleTank "{6B1118B7005EAB0E}" {
+       m_sName "2S1 Gvozdika"
+       m_sDescription "Self-propelled gun, 122 mm. Slow to reload"
+       m_sPrefab "{7C2E5A91B3D04F74}Prefabs/Vehicles/TankBattle/2S1/2S1_Green_TankBattle.et"
+       m_iLimit 1
+       m_iTurretSeat 0
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 10
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 40
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1118B79FC33601}" {
+   m_sTitle "Mission: Steel Runway"
+   m_sTextData "Kolguyev airfield, midday. Forty tanks a side."\
+   ""\
+   "You spawn on foot at your flag and a menu asks you to pick a vehicle. It appears at your base with you in the driver's seat, and the main gun answers to you too."\
+   ""\
+   "VEHICLES (both sides)"\
+   "Tanks: M1A1 Abrams (3 per side), T-14 Armata (2), T-90M (2), T-72A (3), T-72B (3), Stryker MGS 105 mm (2)."\
+   "IFVs: Kurganets-25 (57 mm), LAV-25 (25 mm)."\
+   "APCs and scouts: Kurganets-25 RWS (12.7 mm), BTR-70 (14.5 mm), BRDM-2 (14.5 mm)."\
+   "Artillery: 2S1 Gvozdika, 122 mm (1)."\
+   "A full type is greyed out in the menu until one of your side's is destroyed."\
+   ""\
+   "CONTROLS"\
+   "W / A / S / D: drive, as in any vehicle. The engine starts by itself when the round goes live."\
+   "Mouse: aim the main gun. Left click: fire. Right click: the gun sight."\
+   "The camera stays in third person, and you can't get out."\
+   ""\
+   "POINTS"\
+   "Three points run from the runway down the coast: A on the runway by the BLUFOR end, B at the runway's south-east end, C on the coastal plain by the OPFOR end (marked on the map and on the bar at the top of the screen)."\
+   "A tank alone in a point captures it in 20 seconds; more tanks capture faster; tanks from both sides stop it. An enemy point is neutralised first, then captured."\
+   ""\
+   "WINNING"\
+   "Each point your side holds fills your bar by 1 a second, and all three add 2 more. Each kill is worth 3. The first side to 3000 wins: about 10 minutes holding all three points, 25 minutes holding two."\
+   ""\
+   "REPAIRS"\
+   "A destroyed engine or gearbox leaves you stuck but not dead. The IFVs, APCs and the BRDM-2 (Kurganets-25, LAV-25, Kurganets-25 RWS, BTR-70, BRDM-2) can fix it: stop within 15 m of the stuck vehicle, both of you stopped, and it's repaired in 15 seconds. Stuck vehicles show amber on the minimap."\
+   ""\
+   "RESPAWN"\
+   "When your vehicle is destroyed, so are you. 10 seconds later you're back at your flag to pick another."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1118B70A6C267B}" {
+   m_sTitle "Administration"
+   m_sTextData "The mode respawns players itself (10 s); the mission's own respawn is off."\
+   "Tanks are held (engine off, handbrake on) until safe start ends."\
+   "The sides must be even (1:1). The mode warns everyone at round start if they aren't; use the slot balancer."\
+   "The first full bar wins: the winner is announced and the tanks are held, but the mission doesn't end by itself. Run the AAR when you're ready (or it ends at the 40-minute time limit)."\
+   ""\
+   "Mission by tanaKa-."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6B1118B7AC940245}" {
+   m_sCallsign "SABRE 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7CC0B317E}" {
+   m_sCallsign "SABRE 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7F331E3AE}" {
+   m_sCallsign "SABRE 3"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B743767F4C}" {
+   m_sCallsign "SABRE 4"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7ECA933ED}" {
+   m_sCallsign "SABRE 5"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B70E4713A2}" {
+   m_sCallsign "SABRE 6"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76D2E236D}" {
+   m_sCallsign "SABRE 7"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B795352883}" {
+   m_sCallsign "SABRE 8"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B790E3958F}" {
+   m_sCallsign "SABRE 9"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B77AB99012}" {
+   m_sCallsign "SABRE 10"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B75CDC3608}" {
+   m_sCallsign "SABRE 11"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76D2A46F1}" {
+   m_sCallsign "SABRE 12"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B757B69904}" {
+   m_sCallsign "SABRE 13"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76798747A}" {
+   m_sCallsign "SABRE 14"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B77119EEE0}" {
+   m_sCallsign "SABRE 15"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7D1BC49B6}" {
+   m_sCallsign "SABRE 16"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B79F183F6E}" {
+   m_sCallsign "SABRE 17"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B79386171E}" {
+   m_sCallsign "SABRE 18"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7D1E86A2E}" {
+   m_sCallsign "SABRE 19"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B70702FD76}" {
+   m_sCallsign "SABRE 20"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B72227F4C1}" {
+   m_sCallsign "SABRE 21"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B75BFBC4CE}" {
+   m_sCallsign "SABRE 22"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B74AA70FAD}" {
+   m_sCallsign "SABRE 23"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B776D58BDC}" {
+   m_sCallsign "SABRE 24"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7B5E42201}" {
+   m_sCallsign "SABRE 25"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7969F1C04}" {
+   m_sCallsign "SABRE 26"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B743B99BAA}" {
+   m_sCallsign "SABRE 27"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7C2823500}" {
+   m_sCallsign "SABRE 28"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7806F69A3}" {
+   m_sCallsign "SABRE 29"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7ACE4DCEE}" {
+   m_sCallsign "SABRE 30"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B750B1068E}" {
+   m_sCallsign "SABRE 31"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B735CDAB41}" {
+   m_sCallsign "SABRE 32"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B719F534C0}" {
+   m_sCallsign "SABRE 33"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7C49B5804}" {
+   m_sCallsign "SABRE 34"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B74D189D40}" {
+   m_sCallsign "SABRE 35"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B79D0E6590}" {
+   m_sCallsign "SABRE 36"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76F261DA8}" {
+   m_sCallsign "SABRE 37"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7725AB905}" {
+   m_sCallsign "SABRE 38"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7EB0D7D56}" {
+   m_sCallsign "SABRE 39"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B73438F518}" {
+   m_sCallsign "SABRE 40"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6B1118B700CF6105}" {
+   m_sCallsign "TITAN 1"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7DD70008B}" {
+   m_sCallsign "TITAN 2"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7A5958A18}" {
+   m_sCallsign "TITAN 3"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7DE08197B}" {
+   m_sCallsign "TITAN 4"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7DF5727E7}" {
+   m_sCallsign "TITAN 5"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7497FCF0F}" {
+   m_sCallsign "TITAN 6"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76496FC95}" {
+   m_sCallsign "TITAN 7"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7F4EE32E8}" {
+   m_sCallsign "TITAN 8"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7CCFACCDF}" {
+   m_sCallsign "TITAN 9"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B72A643FD1}" {
+   m_sCallsign "TITAN 10"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7E2EEB24F}" {
+   m_sCallsign "TITAN 11"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B79981DCCD}" {
+   m_sCallsign "TITAN 12"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B78DD4B501}" {
+   m_sCallsign "TITAN 13"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B749EDEF08}" {
+   m_sCallsign "TITAN 14"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B78840ADF5}" {
+   m_sCallsign "TITAN 15"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B71EBC0566}" {
+   m_sCallsign "TITAN 16"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7F2474046}" {
+   m_sCallsign "TITAN 17"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7EA01B3D0}" {
+   m_sCallsign "TITAN 18"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7A15AEF81}" {
+   m_sCallsign "TITAN 19"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B772E0F249}" {
+   m_sCallsign "TITAN 20"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7CB17112A}" {
+   m_sCallsign "TITAN 21"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B72C4E4A82}" {
+   m_sCallsign "TITAN 22"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7B1AA7082}" {
+   m_sCallsign "TITAN 23"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B78715B16C}" {
+   m_sCallsign "TITAN 24"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76A7F1EE9}" {
+   m_sCallsign "TITAN 25"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7EF55CD04}" {
+   m_sCallsign "TITAN 26"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B717B4164B}" {
+   m_sCallsign "TITAN 27"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B73F6BB0EC}" {
+   m_sCallsign "TITAN 28"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7A1995AF8}" {
+   m_sCallsign "TITAN 29"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B74EDB2FEC}" {
+   m_sCallsign "TITAN 30"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B76CFDA346}" {
+   m_sCallsign "TITAN 31"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7464D934A}" {
+   m_sCallsign "TITAN 32"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7B8263605}" {
+   m_sCallsign "TITAN 33"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7B2AF5C98}" {
+   m_sCallsign "TITAN 34"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B70A94846E}" {
+   m_sCallsign "TITAN 35"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7454610CB}" {
+   m_sCallsign "TITAN 36"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B718295D6A}" {
+   m_sCallsign "TITAN 37"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7EE699CDD}" {
+   m_sCallsign "TITAN 38"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B730DD9FB5}" {
+   m_sCallsign "TITAN 39"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1118B7837FB845}" {
+   m_sCallsign "TITAN 40"
+   m_FlagType ARMORED
+   m_aSlots {
+    VEHICLE_LEAD
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets -1
+ m_iOPFORTickets -1
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{F5B6D5570D78B8F5}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_USArmy_OCP.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{26A4494788601753}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_RussianGroundForces.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A283830C79B67D2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

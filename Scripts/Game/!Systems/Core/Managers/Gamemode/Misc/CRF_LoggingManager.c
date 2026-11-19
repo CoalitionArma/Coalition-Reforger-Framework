@@ -154,12 +154,21 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		//if (m_iPlayerCount < 9)
 			//return;
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
+		// No header when a world is started directly (Workbench's server tool with no Mission Header set)
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(m_Game.GetMissionHeader());
-		m_sAuthorName = header.m_sAuthor;
-		m_sMaxPlayers = header.m_iPlayerCount.ToString();
-		m_sMissionDetails = header.m_sDetails;
-		m_sGameMode = header.m_sGameMode;
-		m_sTerrain = header.m_sTerrainName;
+		if (header)
+		{
+			m_sAuthorName = header.m_sAuthor;
+			m_sMaxPlayers = header.m_iPlayerCount.ToString();
+			m_sMissionDetails = header.m_sDetails;
+			m_sGameMode = header.m_sGameMode;
+			m_sTerrain = header.m_sTerrainName;
+		}
+		else
+		{
+			m_sMaxPlayers = "?";
+			m_sTerrain = "no mission header";
+		}
 		m_sMissionName = m_sMissionName + " (" + m_sTerrain + ")"; // append terrain onto mission name due to constraints
 		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers; // same here
 		

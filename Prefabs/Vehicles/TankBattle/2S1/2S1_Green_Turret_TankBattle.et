@@ -1,0 +1,11 @@
+Turret : "{0FF2BE5E467FE57D}Prefabs/Vehicles/Tracked/2S1/VehParts/Turret/2S1_Turret_green2.et" {
+ ID "51ACD0965653D003"
+ components {
+  RHS_StabilizedTurretControllerComponent "{51ACD09C61C183E4}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}
