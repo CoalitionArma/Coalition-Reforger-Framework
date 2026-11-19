@@ -5,6 +5,7 @@ Vehicle : "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }

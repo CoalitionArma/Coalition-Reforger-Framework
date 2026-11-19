@@ -5,6 +5,7 @@ Vehicle : "{9AEDF323A812F9ED}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_AFRF.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }

@@ -5,6 +5,7 @@ Tank : "{2BBEDCA4AF118A09}Prefabs/Vehicles/Tracked/T72A/T72A_Green.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }

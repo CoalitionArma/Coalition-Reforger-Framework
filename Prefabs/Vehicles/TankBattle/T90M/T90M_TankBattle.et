@@ -5,6 +5,7 @@ RHS_Tank : "{F9137C80D7F169FF}Prefabs/Vehicles/Tracked/T90M2/T90M2_base.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }

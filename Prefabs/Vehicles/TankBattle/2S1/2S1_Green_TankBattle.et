@@ -5,6 +5,7 @@ RHS_Tank : "{52B13341B4A2F012}Prefabs/Vehicles/Tracked/2S1/Tank_2S1_Green.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }

@@ -5,6 +5,7 @@ Tank : "{D35303017B8CF6CB}Prefabs/Vehicles/Tracked/M1A1/M1A1_Woodland.et" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "mainturret"
      AutoConnectContextIndices 0x1e 0
     }

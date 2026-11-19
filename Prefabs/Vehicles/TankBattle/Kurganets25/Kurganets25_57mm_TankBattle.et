@@ -5,6 +5,7 @@ RHS_Tank : "{B73C7716E00B4BC3}Prefabs/Vehicles/Tracked/Kurganets25/Kurganets25_5
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
      ForcedFreeLook 0
+     MouseSteering 0
      AutoConnectToTurret "tb_maingun"
      AutoConnectContextIndices 0x1e 0
     }
