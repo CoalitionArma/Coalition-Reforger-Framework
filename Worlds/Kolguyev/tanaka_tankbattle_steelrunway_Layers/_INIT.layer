@@ -132,38 +132,43 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
       }
       CRF_TankBattleTank "{6B1118B76C9B7183}" {
        m_sName "Kurganets-25"
-       m_sDescription "Tracked IFV, 57 mm autocannon"
+       m_sDescription "Tracked IFV, 57 mm autocannon. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7B0F98C17}" {
        m_sName "LAV-25"
-       m_sDescription "Wheeled IFV, 25 mm autocannon"
+       m_sDescription "Wheeled IFV, 25 mm autocannon. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7ED691E23}" {
        m_sName "Kurganets-25 RWS"
-       m_sDescription "Tracked APC, 12.7 mm Kord"
+       m_sDescription "Tracked APC, 12.7 mm Kord. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7EC590907}" {
        m_sName "BTR-70"
-       m_sDescription "Wheeled APC, 14.5 mm KPVT"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B73432867E}" {
        m_sName "BRDM-2"
-       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7B91BB27D}" {
        m_sName "2S1 Gvozdika"
@@ -263,38 +268,43 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
       }
       CRF_TankBattleTank "{6B1118B74BE5AB7C}" {
        m_sName "Kurganets-25"
-       m_sDescription "Tracked IFV, 57 mm autocannon"
+       m_sDescription "Tracked IFV, 57 mm autocannon. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7BD40279F}" {
        m_sName "LAV-25"
-       m_sDescription "Wheeled IFV, 25 mm autocannon"
+       m_sDescription "Wheeled IFV, 25 mm autocannon. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7A20E6BC0}" {
        m_sName "Kurganets-25 RWS"
-       m_sDescription "Tracked APC, 12.7 mm Kord"
+       m_sDescription "Tracked APC, 12.7 mm Kord. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7660148B6}" {
        m_sName "BTR-70"
-       m_sDescription "Wheeled APC, 14.5 mm KPVT"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B74381E057}" {
        m_sName "BRDM-2"
-       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour. Repairs friendly engines"
        m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
        m_iLimit 0
        m_iTurretSeat 0
+       m_bCanRepair 1
       }
       CRF_TankBattleTank "{6B1118B7005EAB0E}" {
        m_sName "2S1 Gvozdika"
@@ -356,6 +366,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    ""\
    "WINNING"\
    "Each point your side holds fills your bar by 2 a second, and all three add 4 more. Each kill is worth 10. The first side to 1000 wins."\
+   ""\
+   "REPAIRS"\
+   "A destroyed engine or gearbox leaves you stuck but not dead. The IFVs, APCs and the BRDM-2 (Kurganets-25, LAV-25, Kurganets-25 RWS, BTR-70, BRDM-2) can fix it: stop within 15 m of the stuck vehicle, both of you stopped, and it's repaired in 15 seconds. Stuck vehicles show amber on the minimap."\
    ""\
    "RESPAWN"\
    "When your vehicle is destroyed, so are you. 10 seconds later you're back at your flag to pick another."

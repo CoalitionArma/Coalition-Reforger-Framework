@@ -15,7 +15,7 @@ One player, one tank, three capture points. A War Thunder style special.
 1. Add `CRF_TankBattleGamemodeComponent` to the `COA_Lobby` entity in your `_INIT` layer.
 2. Fill in **Sides** with exactly two entries:
    - **Faction Key**: `BLUFOR`, `OPFOR` and so on.
-   - **Tanks**: what the side can pick, in menu order. The menu only shows the vehicles the loaded mods can spawn, so a list can name vehicles from optional mods. The server log names each one left out. Each has a name, a one-line description, the prefab, an optional **Limit** (how many the side can have out at once, 0 = no limit) and a **Turret Seat**: which turret the driver controls, counting the tank's turret seats from 0. The main gun is normally 0. Try 1 if the mouse turns the commander's machine gun instead.
+   - **Tanks**: what the side can pick, in menu order. The menu only shows the vehicles the loaded mods can spawn, so a list can name vehicles from optional mods. The server log names each one left out. Each has a name, a one-line description, the prefab, an optional **Limit** (how many the side can have out at once, 0 = no limit) and a **Turret Seat**: which turret the driver controls, counting the tank's turret seats from 0. The main gun is normally 0. Try 1 if the mouse turns the commander's machine gun instead. Tick **Can Repair** on the light IFVs, APCs and scout cars: they can repair a friendly vehicle's destroyed engine or gearbox in the field (see `m_fRepairSeconds`).
    - **Spawn Entities**: names of entities where the side's tanks appear. Each tank faces the way its entity faces. A spawn with a tank parked on it is skipped while another is free. Every tank sits on its spawn until the round goes live, so give each side **one spawn per player**, about 15 m apart (rows across the field).
 3. Place an empty named entity at the centre of each capture point and list them in **Points** with a name (A, B, C) and a radius. Three is the classic layout; up to five fit on the HUD.
 4. Give each side one respawn flag. Players spawn there on foot, pick a tank, and come back there after dying. Keep it close to the tank spawns.
@@ -98,6 +98,9 @@ Turn up **Score Per Kill** if you want kills to count as well. 25 a kill makes a
 | `m_bForceThirdPerson` | on | Third person in the tank. The sights still work. |
 | `m_bHoldUntilLive` | on | Tanks are held (engine off, handbrake on) until the round goes live |
 | `m_fWreckSeconds` | 60 | Seconds a wreck, or a tank whose player is gone, stays before it's removed |
+| `m_fRepairSeconds` | 15 | Field repair: a vehicle with **Can Repair**, stopped next to a stopped friendly whose engine or gearbox is destroyed, repairs it in this many seconds. 0 = no field repair. |
+| `m_fRepairRange` | 15 | Metres between the two vehicles' centres for a repair |
+| `m_fRepairMaxSpeed` | 1.5 | Both vehicles have to be under this speed (m/s) |
 | `m_fCameraDistanceScale` | 1.6 | Third person camera distance in a tank, as a multiple of the tank's own (1 = vanilla) |
 | `m_fCameraExtraFov` | 10 | Degrees added to the third person field of view in a tank (0 = vanilla) |
 | `m_fCameraExtraHeight` | 2.5 | Metres the third person camera is raised in a tank |
@@ -124,5 +127,6 @@ Test with a dedicated server and two clients as well as in Workbench.
 - [ ] The camera key doesn't leave third person. If the server has `disableThirdPerson` set in its config, check that the camera still goes to third person. If it doesn't, this mode needs a server without that setting.
 - [ ] Get out, jump out and switch seat do nothing.
 - [ ] A destroyed tank kills its player, who is back at the flag after 10 s with the menu up.
+- [ ] Knock out a tank's engine (shoot the engine deck): its driver sees "ENGINE OUT", it shows amber on friendly minimaps, and a friendly IFV/APC stopped next to it repairs it in 15 s ("REPAIRING FRIENDLY 40%" / "BEING REPAIRED 40%"); the engine starts again by itself.
 - [ ] Points change colour on the map and HUD. The bar fills faster with more points.
 - [ ] The first full bar announces the winner and holds the tanks; the mission waits for an admin (with `m_bEndMissionOnVictory` on it goes to the AAR).

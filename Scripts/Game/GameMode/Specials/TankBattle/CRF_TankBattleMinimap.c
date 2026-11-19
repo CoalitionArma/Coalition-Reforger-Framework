@@ -79,6 +79,7 @@ class CRF_TankBattleMinimap
 	// Scratch for GetTankPositions, reused
 	protected ref array<vector> m_aTankPositions = {};
 	protected ref array<int> m_aTankSides = {};
+	protected ref array<bool> m_aTankBroken = {};
 
 	protected int m_iOwnColor;
 	protected int m_iEnemyColor;
@@ -433,7 +434,8 @@ class CRF_TankBattleMinimap
 	{
 		m_aTankPositions.Clear();
 		m_aTankSides.Clear();
-		mode.GetTankPositions(m_aTankPositions, m_aTankSides, mode.GetLocalTank());
+		m_aTankBroken.Clear();
+		mode.GetTankPositions(m_aTankPositions, m_aTankSides, m_aTankBroken, mode.GetLocalTank());
 
 		float radius = DOT_RADIUS * m_fUi;
 		float outlineRadius = radius + 1.25 * m_fUi;
@@ -444,9 +446,12 @@ class CRF_TankBattleMinimap
 			if (localSide >= 0 && side != localSide)
 				continue;
 
+			// Friendlies with a destroyed engine in amber, so repair vehicles can find them
 			int color = m_iOwnColor;
 			if (side != viewSide)
 				color = m_iEnemyColor;
+			else if (m_aTankBroken[i])
+				color = m_iContestedColor;
 
 			if (shown >= m_aDotFills.Count())
 			{

@@ -57,6 +57,7 @@ class CRF_TankBattleHUD
 	protected static const float MARKER_FADE_SPEED = 10;	//!< how quickly it fades (per second)
 
 	protected static const float CROSSHAIR_HALF = 18;		//!< half the Crosshair frame's size in the layout
+	protected static const float REPAIR_HINT_RANGE = 300;	//!< m: a repair vehicle is told about a broken friendly this close
 
 	//------------------------------------------------------------------------------------------------
 	void Update(CRF_TankBattleGamemodeComponent mode)
@@ -413,7 +414,11 @@ class CRF_TankBattleHUD
 		}
 		else
 		{
-			detail = GetPointDetail(mode, left);
+			// Field repair first: it's what the player has to act on
+			detail = GetRepairDetail(mode);
+			if (detail.IsEmpty())
+				detail = GetPointDetail(mode, left);
+
 			alert = true;
 		}
 
@@ -423,6 +428,48 @@ class CRF_TankBattleHUD
 			m_wDetail.SetColor(ALERT_COLOR);
 		else
 			m_wDetail.SetColor(DETAIL_COLOR);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Field repair, twice a second: the server's progress for this player, else what they can do
+	//! about it - their own engine is out, or (in a repair vehicle) a friendly one nearby is
+	protected string GetRepairDetail(notnull CRF_TankBattleGamemodeComponent mode)
+	{
+		Vehicle tank = mode.GetLocalTank();
+		if (!tank)
+			return "";
+
+		int percent;
+		int status = mode.GetRepairStatus(percent);
+		if (status == CRF_ETankBattleRepair.REPAIRING)
+			return "REPAIRING FRIENDLY " + percent.ToString() + "%";
+
+		if (status == CRF_ETankBattleRepair.BEING_REPAIRED)
+			return "BEING REPAIRED " + percent.ToString() + "%";
+
+		if (status == CRF_ETankBattleRepair.REPAIRED)
+			return "ENGINE REPAIRED";
+
+		if (status == CRF_ETankBattleRepair.REPAIR_DONE)
+			return "REPAIR COMPLETE";
+
+		if (mode.HasBrokenDrive(tank))
+			return "ENGINE OUT - WAIT FOR A FRIENDLY IFV/APC";
+
+		if (mode.CanLocalRepair())
+		{
+			float distance = mode.GetNearestBrokenFriendly(REPAIR_HINT_RANGE);
+			if (distance >= 0)
+			{
+				if (distance <= mode.GetRepairRange())
+					return "STOP TO REPAIR FRIENDLY";
+
+				int metres = distance;
+				return "FRIENDLY NEEDS REPAIR " + metres.ToString() + " M";
+			}
+		}
+
+		return "";
 	}
 
 	//------------------------------------------------------------------------------------------------

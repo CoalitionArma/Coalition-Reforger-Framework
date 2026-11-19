@@ -30,6 +30,16 @@ enum CRF_ETankBattleState
 	ENDED
 }
 
+//! What the local player's field repair is doing (server -> that player, CRF_TankBattleGamemodeComponent.UpdateRepairs)
+enum CRF_ETankBattleRepair
+{
+	NONE,
+	REPAIRING,		//!< this player's vehicle is repairing a friendly one
+	BEING_REPAIRED,	//!< a friendly repair vehicle is repairing this player's
+	REPAIRED,		//!< this player's vehicle was just repaired
+	REPAIR_DONE		//!< this player just finished repairing a friendly vehicle
+}
+
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleField("m_sName")]
 class CRF_TankBattleTank
@@ -48,6 +58,9 @@ class CRF_TankBattleTank
 
 	[Attribute("0", UIWidgets.EditBox, "Which turret the driver controls, counting the vehicle's turret seats from 0. The main gun is usually 0; try 1 if the mouse turns the commander's machine gun instead.", params: "0 8 1")]
 	int m_iTurretSeat;
+
+	[Attribute("0", UIWidgets.CheckBox, "Field repair: stopped next to a friendly vehicle whose engine or gearbox is destroyed, this one repairs it (the light IFVs, APCs and scout cars)")]
+	bool m_bCanRepair;
 
 	protected int m_iAvailable = -1;	//!< -1 not checked yet, 0 no, 1 yes
 
@@ -185,6 +198,15 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("60", UIWidgets.EditBox, "Seconds a wreck, or a tank whose player is gone, stays before it's removed", params: "0 600 1", category: "Tank Battle - Players")]
 	protected float m_fWreckSeconds;
 
+	[Attribute("15", UIWidgets.EditBox, "Seconds a repair vehicle (Can Repair on its tank option) needs, stopped next to a friendly vehicle with a destroyed engine or gearbox, to repair it (0 = no field repair)", params: "0 120 1", category: "Tank Battle - Repair")]
+	protected float m_fRepairSeconds;
+
+	[Attribute("15", UIWidgets.EditBox, "How close the repair vehicle has to be: metres between the two vehicles' centres", params: "5 50 1", category: "Tank Battle - Repair")]
+	protected float m_fRepairRange;
+
+	[Attribute("1.5", UIWidgets.EditBox, "Both vehicles have to be (nearly) stopped: metres per second", params: "0 10 0.1", category: "Tank Battle - Repair")]
+	protected float m_fRepairMaxSpeed;
+
 	[Attribute("1.6", UIWidgets.EditBox, "Third person camera distance in a tank, as a multiple of the tank's own (1 = vanilla)", params: "1 4 0.05", category: "Tank Battle - Camera")]
 	protected float m_fCameraDistanceScale;
 
@@ -247,6 +269,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected ref array<RplId> m_aWreckIds = {};
 	protected ref array<int> m_aWreckRemoveAtMs = {};
 	protected int m_iPositionTicks;
+	protected ref map<RplId, float> m_mRepairProgress = new map<RplId, float>();	//!< seconds of field repair each broken vehicle has had
 
 	// Every machine
 	protected ref array<IEntity> m_aPointEntities = {};
@@ -262,6 +285,9 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected int m_iTurretCheckAtMs;
 	protected ref map<RplId, int> m_mFriendlyTankPositions = new map<RplId, int>();	//!< own side's tanks (PackPosition) from the server's last SendTankPositions
 	protected int m_iFriendlyPositionsAtMs = -100000;
+	protected int m_iRepairStatus;				//!< CRF_ETankBattleRepair, from the server (SetRepairStatus)
+	protected int m_iRepairPercent;
+	protected int m_iRepairStatusAtMs = -100000;
 	protected ref TraceParam m_GunTrace;
 	protected bool m_bGunRayCached;
 	protected bool m_bGunRayValid;
@@ -522,6 +548,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		{
 			UpdatePoints();
 			UpdateScore();
+			UpdateRepairs();
 		}
 
 		if (m_bDirty)
@@ -964,6 +991,257 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		}
 
 		m_iFriendlyPositionsAtMs = GetGame().GetWorld().GetWorldTime();
+	}
+
+	//===================================================================================
+	// SERVER: FIELD REPAIR
+	//===================================================================================
+
+	//! Server, twice a second while live: a repair vehicle (its tank option has Can Repair) stopped
+	//! within m_fRepairRange of a stopped friendly mode vehicle whose engine or gearbox is destroyed
+	//! repairs it in m_fRepairSeconds. One repair at a time per repair vehicle, the nearest broken
+	//! one first; a repair vehicle can't repair itself. Progress drains while nobody is repairing.
+	protected void UpdateRepairs()
+	{
+		if (m_fRepairSeconds <= 0)
+			return;
+
+		array<Vehicle> repairers = {};
+		array<int> repairerIndices = {};
+		array<Vehicle> broken = {};
+		array<int> brokenIndices = {};
+		foreach (int i, RplId tankId : m_aTankIds)
+		{
+			if (!m_aTankSides.IsIndexValid(i) || !m_aTankOptions.IsIndexValid(i) || !m_aTankPlayers.IsIndexValid(i))
+				break;
+
+			Vehicle tank = Vehicle.Cast(COA_EntityHelper.GetEntityFromRplId(tankId));
+			if (!tank || IsWrecked(tank) || GetSpeed(tank) > m_fRepairMaxSpeed)
+				continue;
+
+			if (HasBrokenDrive(tank))
+			{
+				broken.Insert(tank);
+				brokenIndices.Insert(i);
+			}
+
+			CRF_TankBattleTank option = GetTankOption(m_aTankSides[i], m_aTankOptions[i]);
+			if (option && option.m_bCanRepair)
+			{
+				repairers.Insert(tank);
+				repairerIndices.Insert(i);
+			}
+		}
+
+		array<RplId> worked = {};
+		if (!repairers.IsEmpty())
+		{
+			array<int> busy = {};
+			float range = m_fRepairRange * m_fRepairRange;
+			foreach (int b, Vehicle target : broken)
+			{
+				int targetIndex = brokenIndices[b];
+				int best = -1;
+				float bestDistance = range;
+				foreach (int r, Vehicle repairer : repairers)
+				{
+					int repairerIndex = repairerIndices[r];
+					if (repairerIndex == targetIndex || busy.Contains(repairerIndex) || m_aTankSides[repairerIndex] != m_aTankSides[targetIndex])
+						continue;
+
+					float distance = vector.DistanceSq(target.GetOrigin(), repairer.GetOrigin());
+					if (distance <= bestDistance)
+					{
+						bestDistance = distance;
+						best = repairerIndex;
+					}
+				}
+
+				if (best < 0)
+					continue;
+
+				busy.Insert(best);
+				RplId targetId = m_aTankIds[targetIndex];
+				worked.Insert(targetId);
+
+				float progress;
+				m_mRepairProgress.Find(targetId, progress);
+				progress += TICK_SECONDS;
+				if (progress >= m_fRepairSeconds)
+				{
+					RepairDrive(target);
+					m_mRepairProgress.Remove(targetId);
+					SendRepairStatus(m_aTankPlayers[targetIndex], CRF_ETankBattleRepair.REPAIRED, 100);
+					SendRepairStatus(m_aTankPlayers[best], CRF_ETankBattleRepair.REPAIR_DONE, 100);
+					Print(string.Format("[CRF_TankBattle] Player %1 repaired player %2's vehicle", m_aTankPlayers[best], m_aTankPlayers[targetIndex]), LogLevel.NORMAL);
+					continue;
+				}
+
+				m_mRepairProgress.Set(targetId, progress);
+				int percent = progress * 100 / m_fRepairSeconds;
+				SendRepairStatus(m_aTankPlayers[targetIndex], CRF_ETankBattleRepair.BEING_REPAIRED, percent);
+				SendRepairStatus(m_aTankPlayers[best], CRF_ETankBattleRepair.REPAIRING, percent);
+			}
+		}
+
+		// Nobody working on it (it or the repair vehicle moved off, or left): the progress drains
+		array<RplId> idle = {};
+		foreach (RplId idleId, float idleProgress : m_mRepairProgress)
+		{
+			if (!worked.Contains(idleId))
+				idle.Insert(idleId);
+		}
+
+		foreach (RplId drainId : idle)
+		{
+			float drained = m_mRepairProgress.Get(drainId) - TICK_SECONDS;
+			if (drained <= 0 || !m_aTankIds.Contains(drainId))
+				m_mRepairProgress.Remove(drainId);
+			else
+				m_mRepairProgress.Set(drainId, drained);
+		}
+	}
+
+	//! Server: engine and gearbox back to full health (the damage manager turns them back on; the
+	//! driver's machine restarts the engine by itself, UpdateLocalTank)
+	protected void RepairDrive(notnull Vehicle vehicle)
+	{
+		SCR_VehicleDamageManagerComponent damageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+		if (!damageManager)
+			return;
+
+		array<HitZone> hitZones = {};
+		damageManager.GetAllHitZonesInHierarchy(hitZones);
+		foreach (HitZone hitZone : hitZones)
+		{
+			if (SCR_EngineHitZone.Cast(hitZone) || SCR_GearboxHitZone.Cast(hitZone))
+				hitZone.SetHealthScaled(1);
+		}
+	}
+
+	protected void SendRepairStatus(int playerId, CRF_ETankBattleRepair status, int percent)
+	{
+		if (playerId <= 0)
+			return;
+
+		// A hosting player: straight in
+		if (playerId == SCR_PlayerController.GetLocalPlayerId())
+		{
+			SetRepairStatus(status, percent);
+			return;
+		}
+
+		COA_PlayerRplToOwnerManager ownerManager = COA_PlayerRplToOwnerManager.GetForPlayer(playerId);
+		if (ownerManager)
+			ownerManager.ReceiveTankBattleRepair(status, percent);
+	}
+
+	//! Every machine: is this vehicle's engine or gearbox destroyed (it can't drive, but isn't a wreck)?
+	//! The damage manager keeps both flags up to date from its hit zones on every machine.
+	bool HasBrokenDrive(notnull IEntity vehicle)
+	{
+		SCR_VehicleDamageManagerComponent damageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+		return damageManager && (!damageManager.GetEngineFunctional() || !damageManager.GetGearboxFunctional());
+	}
+
+	protected static float GetSpeed(notnull IEntity vehicle)
+	{
+		Physics physics = vehicle.GetPhysics();
+		if (!physics)
+			return 0;
+
+		return physics.GetVelocity().Length();
+	}
+
+	//! Client, from SendRepairStatus (via COA_PlayerRplToOwnerManager)
+	void SetRepairStatus(int status, int percent)
+	{
+		m_iRepairStatus = status;
+		m_iRepairPercent = percent;
+		BaseWorld world = GetGame().GetWorld();
+		if (world)
+			m_iRepairStatusAtMs = world.GetWorldTime();
+	}
+
+	//! Client: what the local player's field repair is doing (CRF_ETankBattleRepair; NONE once the
+	//! server stops saying - progress comes twice a second, the "done" ones are shown for 4 s)
+	int GetRepairStatus(out int percent)
+	{
+		percent = m_iRepairPercent;
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+			return CRF_ETankBattleRepair.NONE;
+
+		int age = world.GetWorldTime() - m_iRepairStatusAtMs;
+		if (m_iRepairStatus == CRF_ETankBattleRepair.REPAIRED || m_iRepairStatus == CRF_ETankBattleRepair.REPAIR_DONE)
+		{
+			if (age < 4000)
+				return m_iRepairStatus;
+
+			return CRF_ETankBattleRepair.NONE;
+		}
+
+		if (age < 1500)
+			return m_iRepairStatus;
+
+		return CRF_ETankBattleRepair.NONE;
+	}
+
+	//! Client: can the local player's vehicle do field repairs?
+	bool CanLocalRepair()
+	{
+		if (!m_LocalTank || m_fRepairSeconds <= 0)
+			return false;
+
+		RplComponent rpl = RplComponent.Cast(m_LocalTank.FindComponent(RplComponent));
+		if (!rpl)
+			return false;
+
+		int index = m_aTankIds.Find(rpl.Id());
+		if (index < 0 || !m_aTankSides.IsIndexValid(index) || !m_aTankOptions.IsIndexValid(index))
+			return false;
+
+		CRF_TankBattleTank option = GetTankOption(m_aTankSides[index], m_aTankOptions[index]);
+		return option && option.m_bCanRepair;
+	}
+
+	//! Client: the nearest friendly vehicle with a destroyed engine or gearbox that this machine has
+	//! (streamed in), and how far; -1 if none within maxDistance
+	float GetNearestBrokenFriendly(float maxDistance)
+	{
+		if (!m_LocalTank)
+			return -1;
+
+		int localSide = GetLocalSide();
+		vector origin = m_LocalTank.GetOrigin();
+		float best = maxDistance * maxDistance;
+		bool found;
+		foreach (int i, RplId tankId : m_aTankIds)
+		{
+			if (!m_aTankSides.IsIndexValid(i) || m_aTankSides[i] != localSide)
+				continue;
+
+			IEntity tank = COA_EntityHelper.GetEntityFromRplId(tankId);
+			if (!tank || tank == m_LocalTank || IsWrecked(tank) || !HasBrokenDrive(tank))
+				continue;
+
+			float distance = vector.DistanceSq(origin, tank.GetOrigin());
+			if (distance < best)
+			{
+				best = distance;
+				found = true;
+			}
+		}
+
+		if (!found)
+			return -1;
+
+		return Math.Sqrt(best);
+	}
+
+	float GetRepairRange()
+	{
+		return m_fRepairRange;
 	}
 
 	//! x and z to the metre in one int (z in the high 16 bits): maps up to 65 km
@@ -1904,7 +2182,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	//! Every mode tank in one piece except skip, with its side. Where this machine has the tank (a
 	//! client: streamed in) its live position, else, for its own side's tanks only, the server's from
 	//! SendTankPositions (about a second old).
-	void GetTankPositions(notnull array<vector> positions, notnull array<int> sides, IEntity skip = null)
+	void GetTankPositions(notnull array<vector> positions, notnull array<int> sides, notnull array<bool> broken, IEntity skip = null)
 	{
 		BaseWorld world = GetGame().GetWorld();
 		bool haveServerPositions = world && world.GetWorldTime() - m_iFriendlyPositionsAtMs < POSITION_STALE_MS;
@@ -1922,10 +2200,12 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 					continue;
 
 				positions.Insert(tank.GetOrigin());
+				broken.Insert(HasBrokenDrive(tank));
 			}
 			else if (haveServerPositions && m_mFriendlyTankPositions.Find(tankId, packed))
 			{
 				positions.Insert(UnpackPosition(packed));
+				broken.Insert(false);	// only known for the vehicles this machine has
 			}
 			else
 			{
