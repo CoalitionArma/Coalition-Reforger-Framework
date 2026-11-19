@@ -2,3 +2,7 @@
 resourceDatabase.rdb
 resourceDatabase.rdb
 .missionkit/
+
+# MissionKit copy: local config (machine paths) and bytecode
+Tools/MissionKit/missionkit.toml
+Tools/MissionKit/**/__pycache__/
