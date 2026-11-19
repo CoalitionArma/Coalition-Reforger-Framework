@@ -81,11 +81,14 @@ jobs:
         if: success() || failure()
         working-directory: Coalition-Reforger-Framework
         run: |
-          if git fetch --depth=1 origin ci/asset-index 2>/dev/null; then
-            git show FETCH_HEAD:asset-index.json.gz > "$RUNNER_TEMP/asset-index.json.gz"
+          # Never fails the job: without the index the next step skips the reference checks
+          if git fetch --depth=1 origin ci/asset-index 2>/dev/null \
+             && git show FETCH_HEAD:asset-index.json.gz > "$RUNNER_TEMP/asset-index.tmp"; then
+            mv "$RUNNER_TEMP/asset-index.tmp" "$RUNNER_TEMP/asset-index.json.gz"
             echo "Asset index: $(git log -1 --format='%cs %s' FETCH_HEAD)"
           else
-            echo "No ci/asset-index branch: references into the game and mods won't be checked."
+            rm -f "$RUNNER_TEMP/asset-index.tmp"
+            echo "::notice::No asset index on the ci/asset-index branch: references into the game and mods won't be checked."
           fi
 
       - name: MissionKit checks

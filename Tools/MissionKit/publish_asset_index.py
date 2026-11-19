@@ -30,8 +30,11 @@ from missionkit.assets import AssetIndex  # noqa: E402
 from missionkit.config import load_config  # noqa: E402
 
 
-def git(*args, stdin: str | None = None) -> str:
-    return subprocess.run(["git", *args], cwd=CRF, check=True, capture_output=True, text=True, input=stdin).stdout.strip()
+def git(*args, stdin: bytes | None = None) -> str:
+    # bytes in and out: in text mode Windows turns the \n fed to mktree into \r\n, and the \r became part
+    # of the file name ("asset-index.json.gz\r"), so CI couldn't find the file
+    out = subprocess.run(["git", *args], cwd=CRF, check=True, capture_output=True, input=stdin).stdout
+    return out.decode("utf-8", "replace").strip()
 
 
 def main() -> int:
@@ -77,7 +80,11 @@ def main() -> int:
 
     # A parentless commit holding just the file, pushed over the branch: no history to grow
     blob = git("hash-object", "-w", out)
-    tree = git("mktree", stdin="100644 blob %s\t%s\n" % (blob, FILE))
+    tree = git("mktree", "-z", stdin=("100644 blob %s\t%s\0" % (blob, FILE)).encode("utf-8"))
+    listed = git("ls-tree", "--name-only", tree)
+    if listed != FILE:
+        print("error: the tree lists %r, not %r - not publishing" % (listed, FILE))
+        return 1
     commit = git("commit-tree", tree, "-m", "Asset index for the Mission QA check (%d addons, %d resources)"
                  % (st["addons"], st["resources"]))
     subprocess.run(["git", "push", "--force", args.remote, "%s:refs/heads/%s" % (commit, BRANCH)], cwd=CRF, check=True)

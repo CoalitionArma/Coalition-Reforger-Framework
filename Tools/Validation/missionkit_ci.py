@@ -156,7 +156,15 @@ def main() -> int:
     from missionkit.validate import ERROR, INFO, Context, validate_mission
 
     cfg = load_config(cfg_path)
-    idx = AssetIndex.load(cfg)
+    try:
+        idx = AssetIndex.load(cfg)
+    except Exception as e:  # noqa: BLE001 - a broken or truncated index: carry on without it
+        print("::warning::The asset index %s couldn't be read (%s): references into the game and mods aren't checked"
+              % (index, escape(str(e))))
+        index = os.path.join(tmp, "empty-index.json.gz")
+        empty_index(index)
+        os.environ["MISSIONKIT_ASSET_INDEX"] = index   # Config.asset_index reads this before the file
+        idx = AssetIndex.load(cfg)
     have_index = bool(idx.exported.get("created"))
     ctx = Context(cfg, idx)
 
