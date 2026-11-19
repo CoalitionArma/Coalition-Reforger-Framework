@@ -43,9 +43,9 @@ jobs:
   mission-qa:
     name: Mission QA checklist
     runs-on: ubuntu-latest
-    # Only mission/<name> branches - the world auto-detection below diffs against
-    # release specifically to find what that branch added/changed.
-    if: startsWith(github.head_ref || github.ref_name, 'mission/')
+    # Only mission/<name> or missions/<name> branches - the world auto-detection below
+    # diffs against release specifically to find what that branch added/changed.
+    if: startsWith(github.head_ref || github.ref_name, 'mission/') || startsWith(github.head_ref || github.ref_name, 'missions/')
     steps:
       - name: Checkout framework
         uses: actions/checkout@v4
