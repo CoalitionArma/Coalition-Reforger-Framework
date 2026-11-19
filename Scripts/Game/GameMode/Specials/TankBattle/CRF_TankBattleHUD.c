@@ -5,7 +5,10 @@
 // something to say. The minimap (bottom right, CRF_TankBattleMinimap) and a crosshair where the
 // gun points (third person) are drawn every frame (UpdateFrame), and so is a 3D marker over each
 // capture point: its letter in the owner's colour, a bar with the capture progress in the colour of
-// the side it's swinging to, and a line saying who is taking it (or the distance).
+// the side it's swinging to, and a line saying who is taking it (or the distance). A marker fades
+// almost out while the gun is aimed into its zone or near it on screen, so it doesn't hide targets
+// on the objective. Per frame the markers are only placed, faded and pulsed; what they say is set
+// twice a second with the rest of the panel.
 //
 // The local side is always on the left in blue, the enemy on the right in red (spectators: the first
 // side on the left). Styled like CRF_PayloadHUD. Client only, built from what
@@ -39,9 +42,19 @@ class CRF_TankBattleHUD
 	protected ref array<TextWidget> m_aMarkerTexts = {};
 	protected ref array<ProgressBarWidget> m_aMarkerBars = {};
 	protected ref array<TextWidget> m_aMarkerInfos = {};
+	protected ref array<ref Color> m_aMarkerColors = {};	//!< each box's colour (UpdateMarkerDetails)
+	protected ref array<bool> m_aMarkerPulsing = {};		//!< the point is being taken: the box pulses
+	protected ref array<float> m_aMarkerFade = {};			//!< each marker's opacity now
+	protected ref Color m_aMarkerPulseColor = new Color(1, 1, 1, 1);	//!< reused for the pulse, no per-frame allocation
+	protected int m_iMarkerFrameMs;
 
 	protected static const float MARKER_HALF_WIDTH = 48;	//!< half the MarkerN frame's width in the layout
+	protected static const float MARKER_HALF_HEIGHT = 33;	//!< half its height
 	protected static const float MARKER_HEIGHT = 10;		//!< m above the point's centre
+	protected static const float MARKER_FADE_NEAR = 30;		//!< px between the gun's aim and the marker's box: faded out within this...
+	protected static const float MARKER_FADE_FAR = 150;		//!< ...back to full opacity beyond this
+	protected static const float MARKER_FADE_MIN = 0.12;	//!< opacity while faded: still there, barely
+	protected static const float MARKER_FADE_SPEED = 10;	//!< how quickly it fades (per second)
 
 	protected static const float CROSSHAIR_HALF = 18;		//!< half the Crosshair frame's size in the layout
 
@@ -77,6 +90,7 @@ class CRF_TankBattleHUD
 
 		UpdatePoints(mode, left);
 		UpdateDetail(mode, left);
+		UpdateMarkerDetails(mode, left);
 
 		// Only once the player sits in the tank they picked: not on foot, in the tank menu, dead or spectating
 		if (m_wMinimapPanel)
@@ -98,7 +112,9 @@ class CRF_TankBattleHUD
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! A marker over every capture point in front of the camera
+	//! Every frame: each capture point's marker placed over it (it has to follow the camera), faded
+	//! while the gun is aimed at or near it so it doesn't hide targets on the objective, and its box
+	//! pulsing while the point is being taken. What it says is set twice a second (UpdateMarkerDetails).
 	protected void UpdateMarkers(notnull CRF_TankBattleGamemodeComponent mode)
 	{
 		BaseWorld world = GetGame().GetWorld();
@@ -106,20 +122,17 @@ class CRF_TankBattleHUD
 		if (!world || !workspace)
 			return;
 
-		int left = mode.GetLocalSide();
-		if (left < 0)
-			left = 0;
+		int now = world.GetWorldTime();
+		float step = Math.Clamp((now - m_iMarkerFrameMs) * 0.001 * MARKER_FADE_SPEED, 0, 1);
+		m_iMarkerFrameMs = now;
 
-		// From the camera when there is one, so the distance matches the view
-		vector eye;
-		CameraManager cameraManager = GetGame().GetCameraManager();
-		if (cameraManager && cameraManager.CurrentCamera())
-			eye = cameraManager.CurrentCamera().GetOrigin();
-		else if (SCR_PlayerController.GetLocalControlledEntity())
-			eye = SCR_PlayerController.GetLocalControlledEntity().GetOrigin();
+		// Where the gun is aimed: on screen, and on the ground (once a frame, shared with the crosshair)
+		vector aimScreen;
+		vector aimWorld;
+		bool aiming = GetGunAim(mode, workspace, world, aimScreen, aimWorld);
 
 		// The box pulses while the point is being taken
-		float pulse = 0.55 + 0.45 * Math.Sin(world.GetWorldTime() * 0.008);
+		float pulse = 0.55 + 0.45 * Math.Sin(now * 0.008);
 
 		int count = mode.GetPointCount();
 		foreach (int i, Widget marker : m_aMarkers)
@@ -134,7 +147,8 @@ class CRF_TankBattleHUD
 				continue;
 			}
 
-			vector screen = workspace.ProjWorldToScreen(pointEntity.GetOrigin() + Vector(0, MARKER_HEIGHT, 0), world);
+			vector origin = pointEntity.GetOrigin();
+			vector screen = workspace.ProjWorldToScreen(origin + Vector(0, MARKER_HEIGHT, 0), world);
 			if (screen[2] <= 0)
 			{
 				marker.SetVisible(false);
@@ -143,12 +157,81 @@ class CRF_TankBattleHUD
 
 			marker.SetVisible(true);
 			FrameSlot.SetPos(marker, screen[0] - MARKER_HALF_WIDTH, screen[1]);
-			UpdateMarker(mode, i, left, vector.Distance(eye, pointEntity.GetOrigin()), pulse);
+
+			// Faded while the aim is on the zone (on the ground) or close to the marker (on screen)
+			float target = 1;
+			if (aiming)
+			{
+				float dx = Math.Max(Math.AbsFloat(aimScreen[0] - screen[0]) - MARKER_HALF_WIDTH, 0);
+				float dy = Math.Max(Math.AbsFloat(aimScreen[1] - (screen[1] + MARKER_HALF_HEIGHT)) - MARKER_HALF_HEIGHT, 0);
+				float screenDistance = Math.Sqrt(dx * dx + dy * dy);
+				target = Math.Clamp((screenDistance - MARKER_FADE_NEAR) / (MARKER_FADE_FAR - MARKER_FADE_NEAR), 0, 1);
+
+				float groundX = aimWorld[0] - origin[0];
+				float groundZ = aimWorld[2] - origin[2];
+				float radius = mode.GetPointRadius(i);
+				if (groundX * groundX + groundZ * groundZ <= radius * radius)
+					target = 0;
+
+				target = MARKER_FADE_MIN + (1 - MARKER_FADE_MIN) * target;
+			}
+
+			float fade = m_aMarkerFade[i];
+			fade += (target - fade) * step;
+			m_aMarkerFade[i] = fade;
+			marker.SetOpacity(fade);
+
+			if (m_aMarkerPulsing[i])
+			{
+				Color back = m_aMarkerColors[i];
+				m_aMarkerPulseColor.SetR(back.R());
+				m_aMarkerPulseColor.SetG(back.G());
+				m_aMarkerPulseColor.SetB(back.B());
+				m_aMarkerPulseColor.SetA(back.A() * pulse);
+				m_aMarkerBacks[i].SetColor(m_aMarkerPulseColor);
+			}
 		}
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void UpdateMarker(notnull CRF_TankBattleGamemodeComponent mode, int i, int left, float distance, float pulse)
+	//! Where the local gun is aimed, on screen and in the world. Third person and through the sight.
+	protected bool GetGunAim(notnull CRF_TankBattleGamemodeComponent mode, notnull WorkspaceWidget workspace, notnull BaseWorld world, out vector screen, out vector hit)
+	{
+		vector origin;
+		vector direction;
+		float distance;
+		if (!mode.GetLocalTank() || !mode.GetLocalGunRay(origin, direction, distance))
+			return false;
+
+		hit = origin + direction * distance;
+		screen = workspace.ProjWorldToScreen(hit, world);
+		return screen[2] > 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Twice a second: what each marker says and its colours (the per-frame part only places, fades
+	//! and pulses it)
+	protected void UpdateMarkerDetails(notnull CRF_TankBattleGamemodeComponent mode, int left)
+	{
+		// From the camera when there is one, so the distance matches the view
+		vector eye;
+		CameraManager cameraManager = GetGame().GetCameraManager();
+		if (cameraManager && cameraManager.CurrentCamera())
+			eye = cameraManager.CurrentCamera().GetOrigin();
+		else if (SCR_PlayerController.GetLocalControlledEntity())
+			eye = SCR_PlayerController.GetLocalControlledEntity().GetOrigin();
+
+		int count = Math.Min(mode.GetPointCount(), m_aMarkers.Count());
+		for (int i = 0; i < count; i++)
+		{
+			IEntity pointEntity = mode.GetPointEntity(i);
+			if (pointEntity)
+				UpdateMarker(mode, i, left, vector.Distance(eye, pointEntity.GetOrigin()));
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateMarker(notnull CRF_TankBattleGamemodeComponent mode, int i, int left, float distance)
 	{
 		int owner = mode.GetPointOwner(i);
 		int capturing = mode.GetPointCapturing(i);
@@ -160,10 +243,11 @@ class CRF_TankBattleHUD
 
 		m_aMarkerTexts[i].SetText(mode.GetPointName(i));
 
+		// The box's colour; while the point is being taken UpdateMarkers pulses its alpha every frame
 		Color back = GetSideColor(owner, left);
 		bool taking = capturing >= 0 && capturing != CRF_TankBattleGamemodeComponent.CONTESTED && !(capturing == owner && Math.AbsInt(progress) >= 100);
-		if (taking || capturing == CRF_TankBattleGamemodeComponent.CONTESTED)
-			back = new Color(back.R(), back.G(), back.B(), back.A() * pulse);
+		m_aMarkerColors[i] = back;
+		m_aMarkerPulsing[i] = taking || capturing == CRF_TankBattleGamemodeComponent.CONTESTED;
 		m_aMarkerBacks[i].SetColor(back);
 
 		// The bar: how far the point has swung, in the colour of the side it's swinging to
@@ -260,6 +344,9 @@ class CRF_TankBattleHUD
 		m_aMarkerTexts.Clear();
 		m_aMarkerBars.Clear();
 		m_aMarkerInfos.Clear();
+		m_aMarkerColors.Clear();
+		m_aMarkerPulsing.Clear();
+		m_aMarkerFade.Clear();
 		if (m_Minimap)
 			m_Minimap.SetCanvas(null);
 
@@ -426,6 +513,9 @@ class CRF_TankBattleHUD
 			m_aMarkerTexts.Insert(markerText);
 			m_aMarkerBars.Insert(markerBar);
 			m_aMarkerInfos.Insert(markerInfo);
+			m_aMarkerColors.Insert(NEUTRAL_COLOR);
+			m_aMarkerPulsing.Insert(false);
+			m_aMarkerFade.Insert(1);
 		}
 
 		m_wMinimapPanel = m_wRoot.FindAnyWidget("MinimapPanel");
