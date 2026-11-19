@@ -64,9 +64,9 @@ Example mission: **COA TANKBATTLE80 Pustoshka Fields** (Chernarus, 40 v 40, the 
 
 ### Laying out a field
 
-Put the spawns at the two ends of the field and the points across the field between them, so every point is the same distance from both sides. Pustoshka Fields has the spawns 1.2 km apart and the points 380 m apart. The field must be open and wide: tanks can't get through forest. Kolguyev has nothing wider than its airfield, about 300 m.
+Put the spawns at the two ends of the field and the points across the field between them, so every point is the same distance from both sides. Pustoshka Fields has the spawns 2 km apart and the points 760 m apart, in a field about 2.9 × 2.5 km. The field must be open and wide: tanks can't get through forest. Kolguyev has nothing wider than its airfield, about 300 m, so Steel Runway runs long instead: from the runway down the coastal plain, spawns 1.55 km apart.
 
-Keep the two spawn areas out of each other's sight, or tanks shoot each other while the round is held. Both spawns are held still until the round goes live. Use the ground: put each side's spawn behind a rise or a tree line. Pustoshka Fields puts BLUFOR 120 m north of the axis and OPFOR 120 m south, so each one hides behind a rise. It mirrors them through B, so each side has the same distances to the points. On open ground, build cover. Steel Runway puts a wall of seven `BlastCover_E_01_18x5` aircraft revetments in front of each grid, side by side, closed side towards the enemy. Each revetment is about 4 m high and 22 m wide. Leave room at the ends of the wall for the tanks to drive out, and keep it clear of the capture zones.
+Keep the two spawn areas out of each other's sight, or tanks shoot each other while the round is held. Both spawns are held still until the round goes live. Use the ground: put each side's spawn behind a rise or a tree line. Pustoshka Fields puts BLUFOR 310 m north of the axis and OPFOR 310 m south, so each one hides behind a rise. It mirrors them through B, so each side has the same distances to the points. Steel Runway hides OPFOR behind the coastal woods past the runway's end. On open ground with nothing in between, build cover: a wall of `BlastCover_E_01_18x5` aircraft revetments in front of each grid, side by side, closed side towards the enemy (each about 4 m high and 22 m wide; Steel Runway used seven a side before it was lengthened). Leave room at the ends of the wall for the tanks to drive out, and keep it clear of the capture zones.
 
 ## Scoring
 
@@ -91,7 +91,7 @@ Turn up **Score Per Kill** if you want kills to count as well. 25 a kill makes a
 | `m_fScorePerPoint` | 2 | Score per second for each point held |
 | `m_fAllPointsBonus` | 4 | Extra score per second while holding every point |
 | `m_iScorePerKill` | 0 | Score for each enemy killed |
-| `m_bEndMissionOnVictory` | on | Advance to the AAR when a bar fills. Off: an admin ends the mission. |
+| `m_bEndMissionOnVictory` | off | On: advance to the AAR when a bar fills. Off (the default, Tank Battle is a special): the winner is announced, tanks are held, and an admin ends the mission. |
 | `m_fRespawnSeconds` | 10 | Seconds dead before a player is back at their flag |
 | `m_bRespawnPlayers` | on | The mode respawns players. Off: the mission's respawn settings decide. |
 | `m_bLockCrewIn` | on | No getting out or changing seats |
@@ -125,4 +125,4 @@ Test with a dedicated server and two clients as well as in Workbench.
 - [ ] Get out, jump out and switch seat do nothing.
 - [ ] A destroyed tank kills its player, who is back at the flag after 10 s with the menu up.
 - [ ] Points change colour on the map and HUD. The bar fills faster with more points.
-- [ ] The first full bar ends the round.
+- [ ] The first full bar announces the winner and holds the tanks; the mission waits for an admin (with `m_bEndMissionOnVictory` on it goes to the AAR).

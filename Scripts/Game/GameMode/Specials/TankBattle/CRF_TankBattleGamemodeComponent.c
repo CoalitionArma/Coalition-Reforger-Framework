@@ -164,7 +164,7 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.EditBox, "Score a side gets for each enemy it kills (0 = kills don't score)", params: "0 10000 1", category: "Tank Battle - Score")]
 	protected int m_iScorePerKill;
 
-	[Attribute("1", UIWidgets.CheckBox, "Record the winner and advance the gamemode to the AAR when a bar fills. Off: the result is announced and an admin ends the mission.", category: "Tank Battle - Score")]
+	[Attribute("0", UIWidgets.CheckBox, "Record the winner and advance the gamemode to the AAR when a bar fills. Off (default, it's a special): the result is announced, the tanks are held, and an admin ends the mission.", category: "Tank Battle - Score")]
 	protected bool m_bEndMissionOnVictory;
 
 	[Attribute("10", UIWidgets.EditBox, "Seconds after dying before a player is back at their flag to pick another tank", params: "0 300 1", category: "Tank Battle - Players")]

@@ -23,7 +23,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_fScorePerPoint 2
    m_fAllPointsBonus 4
    m_iScorePerKill 10
-   m_bEndMissionOnVictory 1
+   m_bEndMissionOnVictory 0
    m_fRespawnSeconds 10
    m_aPoints {
     CRF_TankBattlePoint "{6B1118B7A3AEC99E}" {
@@ -92,7 +92,84 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
        m_sName "M1A1 Abrams"
        m_sDescription "Main battle tank, 120 mm"
        m_sPrefab "{7C2E5A91B3D04F64}Prefabs/Vehicles/Tracked/M1A1/TankBattle/M1A1_Woodland_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B73E563E27}" {
+       m_sName "T-14 Armata"
+       m_sDescription "Main battle tank, 125 mm, unmanned turret"
+       m_sPrefab "{7C2E5A91B3D04F68}Prefabs/Vehicles/TankBattle/T14/T14_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7946AC2DB}" {
+       m_sName "T-90M"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F78}Prefabs/Vehicles/TankBattle/T90M/T90M_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B77E3CE75C}" {
+       m_sName "T-72A"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F7A}Prefabs/Vehicles/TankBattle/T72/T72A_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7933F637F}" {
+       m_sName "T-72B"
+       m_sDescription "Main battle tank, 125 mm, Kontakt ERA"
+       m_sPrefab "{7C2E5A91B3D04F7C}Prefabs/Vehicles/TankBattle/T72/T72B_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B732CD3298}" {
+       m_sName "Stryker MGS"
+       m_sDescription "Wheeled assault gun, 105 mm"
+       m_sPrefab "{7C2E5A91B3D04F76}Prefabs/Vehicles/TankBattle/Stryker/Stryker_MGS_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B76C9B7183}" {
+       m_sName "Kurganets-25"
+       m_sDescription "Tracked IFV, 57 mm autocannon"
+       m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
        m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7B0F98C17}" {
+       m_sName "LAV-25"
+       m_sDescription "Wheeled IFV, 25 mm autocannon"
+       m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7ED691E23}" {
+       m_sName "Kurganets-25 RWS"
+       m_sDescription "Tracked APC, 12.7 mm Kord"
+       m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7EC590907}" {
+       m_sName "BTR-70"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT"
+       m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B73432867E}" {
+       m_sName "BRDM-2"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour"
+       m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7B91BB27D}" {
+       m_sName "2S1 Gvozdika"
+       m_sDescription "Self-propelled gun, 122 mm. Slow to reload"
+       m_sPrefab "{7C2E5A91B3D04F74}Prefabs/Vehicles/TankBattle/2S1/2S1_Green_TankBattle.et"
+       m_iLimit 1
        m_iTurretSeat 0
       }
      }
@@ -146,7 +223,84 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
        m_sName "M1A1 Abrams"
        m_sDescription "Main battle tank, 120 mm"
        m_sPrefab "{7C2E5A91B3D04F66}Prefabs/Vehicles/Tracked/M1A1/TankBattle/M1A1_Desert_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B765519B99}" {
+       m_sName "T-14 Armata"
+       m_sDescription "Main battle tank, 125 mm, unmanned turret"
+       m_sPrefab "{7C2E5A91B3D04F68}Prefabs/Vehicles/TankBattle/T14/T14_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B77B72A701}" {
+       m_sName "T-90M"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F78}Prefabs/Vehicles/TankBattle/T90M/T90M_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B738583D25}" {
+       m_sName "T-72A"
+       m_sDescription "Main battle tank, 125 mm"
+       m_sPrefab "{7C2E5A91B3D04F7A}Prefabs/Vehicles/TankBattle/T72/T72A_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7930CECC4}" {
+       m_sName "T-72B"
+       m_sDescription "Main battle tank, 125 mm, Kontakt ERA"
+       m_sPrefab "{7C2E5A91B3D04F7C}Prefabs/Vehicles/TankBattle/T72/T72B_Green_TankBattle.et"
+       m_iLimit 3
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7E6748D20}" {
+       m_sName "Stryker MGS"
+       m_sDescription "Wheeled assault gun, 105 mm"
+       m_sPrefab "{7C2E5A91B3D04F76}Prefabs/Vehicles/TankBattle/Stryker/Stryker_MGS_TankBattle.et"
+       m_iLimit 2
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B74BE5AB7C}" {
+       m_sName "Kurganets-25"
+       m_sDescription "Tracked IFV, 57 mm autocannon"
+       m_sPrefab "{7C2E5A91B3D04F6A}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_57mm_TankBattle.et"
        m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7BD40279F}" {
+       m_sName "LAV-25"
+       m_sDescription "Wheeled IFV, 25 mm autocannon"
+       m_sPrefab "{7C2E5A91B3D04F72}Prefabs/Vehicles/TankBattle/LAV25/LAV25_RHS_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7A20E6BC0}" {
+       m_sName "Kurganets-25 RWS"
+       m_sDescription "Tracked APC, 12.7 mm Kord"
+       m_sPrefab "{7C2E5A91B3D04F6C}Prefabs/Vehicles/TankBattle/Kurganets25/Kurganets25_Kord_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7660148B6}" {
+       m_sName "BTR-70"
+       m_sDescription "Wheeled APC, 14.5 mm KPVT"
+       m_sPrefab "{7C2E5A91B3D04F6E}Prefabs/Vehicles/TankBattle/BTR70/BTR70_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B74381E057}" {
+       m_sName "BRDM-2"
+       m_sDescription "Scout car, 14.5 mm KPVT. Fast, light armour"
+       m_sPrefab "{7C2E5A91B3D04F70}Prefabs/Vehicles/TankBattle/BRDM2/BRDM2_AFRF_TankBattle.et"
+       m_iLimit 0
+       m_iTurretSeat 0
+      }
+      CRF_TankBattleTank "{6B1118B7005EAB0E}" {
+       m_sName "2S1 Gvozdika"
+       m_sDescription "Self-propelled gun, 122 mm. Slow to reload"
+       m_sPrefab "{7C2E5A91B3D04F74}Prefabs/Vehicles/TankBattle/2S1/2S1_Green_TankBattle.et"
+       m_iLimit 1
        m_iTurretSeat 0
       }
      }
@@ -182,7 +336,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Steel Runway"
    m_sTextData "Kolguyev airfield, midday. Forty tanks a side."\
    ""\
-   "You spawn on foot at your flag and a menu asks you to pick a tank. It appears on the runway with you in the driver's seat, and the main gun answers to you too."\
+   "You spawn on foot at your flag and a menu asks you to pick a vehicle. It appears at your base with you in the driver's seat, and the main gun answers to you too."\
+   ""\
+   "VEHICLES (both sides)"\
+   "Tanks: M1A1 Abrams (3 per side), T-14 Armata (2), T-90M (2), T-72A (3), T-72B (3), Stryker MGS 105 mm (2)."\
+   "IFVs: Kurganets-25 (57 mm), LAV-25 (25 mm)."\
+   "APCs and scouts: Kurganets-25 RWS (12.7 mm), BTR-70 (14.5 mm), BRDM-2 (14.5 mm)."\
+   "Artillery: 2S1 Gvozdika, 122 mm (1)."\
+   "A full type is greyed out in the menu until one of your side's is destroyed."\
    ""\
    "CONTROLS"\
    "W / A / S / D: drive, as in any vehicle. The engine starts by itself when the round goes live."\
@@ -190,14 +351,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "The camera stays in third person, and you can't get out."\
    ""\
    "POINTS"\
-   "Three points run down the runway: A by the BLUFOR end, B in the middle, C by the OPFOR end (marked on the map and on the bar at the top of the screen)."\
+   "Three points run from the runway down the coast: A on the runway by the BLUFOR end, B at the runway's south-east end, C on the coastal plain by the OPFOR end (marked on the map and on the bar at the top of the screen)."\
    "A tank alone in a point captures it in 20 seconds; more tanks capture faster; tanks from both sides stop it. An enemy point is neutralised first, then captured."\
    ""\
    "WINNING"\
    "Each point your side holds fills your bar by 2 a second, and all three add 4 more. Each kill is worth 10. The first side to 1000 wins."\
    ""\
    "RESPAWN"\
-   "When your tank is destroyed, so are you. 10 seconds later you're back at your flag to pick another."
+   "When your vehicle is destroyed, so are you. 10 seconds later you're back at your flag to pick another."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -207,7 +368,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "The mode respawns players itself (10 s); the mission's own respawn is off."\
    "Tanks are held (engine off, handbrake on) until safe start ends."\
    "The sides must be even (1:1). The mode warns everyone at round start if they aren't; use the slot balancer."\
-   "The round ends on the first full bar, or at the 40-minute time limit."\
+   "The first full bar wins: the winner is announced and the tanks are held, but the mission doesn't end by itself. Run the AAR when you're ready (or it ends at the 40-minute time limit)."\
    ""\
    "Mission by tanaKa-."
    m_aFactionKeys {

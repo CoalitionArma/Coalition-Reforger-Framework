@@ -32,7 +32,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_fScorePerPoint 2
    m_fAllPointsBonus 4
    m_iScorePerKill 10
-   m_bEndMissionOnVictory 1
+   m_bEndMissionOnVictory 0
    m_fRespawnSeconds 10
    m_sMinimapImage "{096230E40A49DAC9}Worlds/MapData/ChernarusMinusMap.edds"
    m_aPoints {
@@ -378,7 +378,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "The mode respawns players itself (10 s); the mission's own respawn is off."\
    "Vehicles are held (engine off, handbrake on) until safe start ends."\
    "The sides must be even (1:1). The mode warns everyone at round start if they aren't; use the slot balancer."\
-   "The round ends on the first full bar, or at the 40-minute time limit."\
+   "The first full bar wins: the winner is announced and the tanks are held, but the mission doesn't end by itself. Run the AAR when you're ready (or it ends at the 40-minute time limit)."\
    ""\
    "Mission by tanaKa-."
    m_aFactionKeys {

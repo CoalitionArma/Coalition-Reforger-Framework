@@ -1,331 +1,331 @@
 $grp GameEntity {
  steelrunway_blufor_tank_1 {
-  coords 2503.6 24.52 5441.9
-  angles 0 145.3 0
+  coords 2503.1 24.52 5442.4
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_2 {
-  coords 2492 24.74 5433.9
-  angles 0 145.3 0
+  coords 2492.5 24.74 5433.4
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_3 {
-  coords 2515.1 24.52 5449.8
-  angles 0 145.3 0
+  coords 2513.8 24.52 5451.5
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_4 {
-  coords 2480.5 24.59 5426
-  angles 0 145.3 0
+  coords 2481.8 24.58 5424.3
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_5 {
-  coords 2526.6 24.52 5457.8
-  angles 0 145.3 0
+  coords 2524.5 24.52 5460.6
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_6 {
-  coords 2473 24.52 5414
-  angles 0 145.3 0
+  coords 2471.1 24.52 5415.2
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_7 {
-  coords 2538.1 24.52 5465.8
-  angles 0 145.3 0
+  coords 2535.1 24.52 5469.7
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_8 {
-  coords 2457.5 24.52 5410
-  angles 0 145.3 0
+  coords 2460.5 24.52 5406.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_9 {
-  coords 2549.6 24.52 5473.7
-  angles 0 145.3 0
+  coords 2545.8 24.52 5478.7
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_10 {
-  coords 2446 24.52 5402.1
-  angles 0 145.3 0
+  coords 2449.8 24.52 5397.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_11 {
-  coords 2512.7 24.52 5428.7
-  angles 0 145.3 0
+  coords 2513.5 24.52 5430.3
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_12 {
-  coords 2501.1 24.73 5420.8
-  angles 0 145.3 0
+  coords 2502.8 24.69 5421.2
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_13 {
-  coords 2524.2 24.52 5436.7
-  angles 0 145.3 0
+  coords 2524.2 24.52 5439.3
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_14 {
-  coords 2489.6 24.59 5412.8
-  angles 0 145.3 0
+  coords 2492.2 24.59 5412.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_15 {
-  coords 2535.7 24.52 5444.7
-  angles 0 145.3 0
+  coords 2534.8 24.52 5448.4
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_16 {
-  coords 2478.1 24.52 5401.8
-  angles 0 145.3 0
+  coords 2481.5 24.52 5403
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_17 {
-  coords 2547.2 24.52 5452.6
-  angles 0 145.3 0
+  coords 2545.5 24.52 5457.5
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_18 {
-  coords 2463.6 24.52 5396.9
-  angles 0 145.3 0
+  coords 2470.8 24.52 5394
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_19 {
-  coords 2558.7 24.52 5460.6
-  angles 0 145.3 0
+  coords 2556.2 24.52 5466.5
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_20 {
-  coords 2452.1 24.52 5388.9
-  angles 0 145.3 0
+  coords 2460.2 24.52 5384.9
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_21 {
-  coords 2521.8 24.52 5415.6
-  angles 0 145.3 0
+  coords 2523.9 24.52 5418.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_22 {
-  coords 2510.2 24.77 5407.6
-  angles 0 145.3 0
+  coords 2513.2 24.7 5409
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_23 {
-  coords 2533.3 24.52 5423.5
-  angles 0 145.3 0
+  coords 2534.5 24.52 5427.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_24 {
-  coords 2498.7 24.56 5399.6
-  angles 0 145.3 0
+  coords 2502.5 24.6 5399.9
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_25 {
-  coords 2544.8 24.52 5431.5
-  angles 0 145.3 0
+  coords 2545.2 24.52 5436.2
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_26 {
-  coords 2487.2 24.52 5391.7
-  angles 0 145.3 0
+  coords 2491.9 24.52 5390.8
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_27 {
-  coords 2556.3 24.52 5439.5
-  angles 0 145.3 0
+  coords 2555.9 24.52 5445.3
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_28 {
-  coords 2475.7 24.52 5383.7
-  angles 0 145.3 0
+  coords 2481.2 24.52 5381.8
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_29 {
-  coords 2567.8 24.52 5447.4
-  angles 0 145.3 0
+  coords 2566.5 24.52 5454.4
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_30 {
-  coords 2464.2 24.52 5375.7
-  angles 0 145.3 0
+  coords 2470.6 24.52 5372.7
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_31 {
-  coords 2530.9 24.52 5402.4
-  angles 0 145.3 0
+  coords 2534.2 24.52 5405.9
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_32 {
-  coords 2519.4 24.94 5394.4
-  angles 0 145.3 0
+  coords 2523.6 24.75 5396.8
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_33 {
-  coords 2542.4 24.52 5410.4
-  angles 0 145.3 0
+  coords 2544.9 24.52 5415
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_34 {
-  coords 2507.8 24.58 5386.5
-  angles 0 145.3 0
+  coords 2512.9 24.68 5387.7
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_35 {
-  coords 2553.9 24.52 5418.3
-  angles 0 145.3 0
+  coords 2555.6 24.52 5424
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_36 {
-  coords 2496.3 24.52 5378.5
-  angles 0 145.3 0
+  coords 2502.2 24.52 5378.7
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_37 {
-  coords 2565.4 24.52 5426.3
-  angles 0 145.3 0
+  coords 2566.2 24.52 5433.1
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_38 {
-  coords 2484.8 24.52 5370.5
-  angles 0 145.3 0
+  coords 2491.6 24.52 5369.6
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_39 {
-  coords 2576.9 24.52 5434.3
-  angles 0 145.3 0
+  coords 2576.9 24.52 5442.2
+  angles 0 139.6 0
  }
  steelrunway_blufor_tank_40 {
-  coords 2473.3 24.52 5362.6
-  angles 0 145.3 0
+  coords 2480.9 24.52 5360.5
+  angles 0 139.6 0
  }
  steelrunway_opfor_tank_1 {
-  coords 2966.4 24.52 4748.1
-  angles 0 325.3 0
+  coords 3494.7 23.2 4255.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_2 {
-  coords 2978 24.74 4756.1
-  angles 0 325.3 0
+  coords 3505.3 24.77 4264.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_3 {
-  coords 2954.9 24.52 4740.2
-  angles 0 325.3 0
+  coords 3484 21.67 4246.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_4 {
-  coords 2989.5 24.92 4764
-  angles 0 325.3 0
+  coords 3516 26.39 4273.6
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_5 {
-  coords 2943.4 24.52 4732.2
-  angles 0 325.3 0
+  coords 3473.3 20.29 4237.3
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_6 {
-  coords 3001 24.52 4772
-  angles 0 325.3 0
+  coords 3529.7 28.13 4282.7
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_7 {
-  coords 2931.9 24.52 4724.2
-  angles 0 325.3 0
+  coords 3462.7 19.08 4228.2
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_8 {
-  coords 3012.5 24.52 4780
-  angles 0 325.3 0
+  coords 3540.3 28.14 4291.8
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_9 {
-  coords 2920.4 24.52 4716.3
-  angles 0 325.3 0
+  coords 3452 17.84 4219.2
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_10 {
-  coords 3024 24.52 4787.9
-  angles 0 325.3 0
+  coords 3484.3 23.3 4267.6
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_11 {
-  coords 2961.3 24.52 4765.3
-  angles 0 325.3 0
+  coords 3495 24.99 4276.7
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_12 {
-  coords 2972.9 25.17 4773.2
-  angles 0 325.3 0
+  coords 3473.6 21.81 4258.6
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_13 {
-  coords 2945.8 24.52 4753.3
-  angles 0 325.3 0
+  coords 3505.6 26.78 4285.8
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_14 {
-  coords 2984.4 24.7 4781.2
-  angles 0 325.3 0
+  coords 3463 20.52 4249.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_15 {
-  coords 2934.3 24.52 4745.3
-  angles 0 325.3 0
+  coords 3452.3 19.34 4240.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_16 {
-  coords 2995.9 24.52 4789.2
-  angles 0 325.3 0
+  coords 3527 28.21 4303.9
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_17 {
-  coords 3007.4 24.52 4797.1
-  angles 0 325.3 0
+  coords 3441.6 18.15 4231.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_18 {
-  coords 2908.3 24.52 4729.4
-  angles 0 325.3 0
+  coords 3459.3 21.95 4274.8
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_19 {
-  coords 3018.9 24.52 4805.1
-  angles 0 325.3 0
+  coords 3452.6 20.58 4258.7
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_20 {
-  coords 2948.2 24.52 4774.4
-  angles 0 325.3 0
+  coords 3505.9 28.53 4307.1
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_21 {
-  coords 2959.8 24.55 4782.4
-  angles 0 325.3 0
+  coords 3516.6 28.26 4316.1
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_22 {
-  coords 2936.7 24.52 4766.5
-  angles 0 325.3 0
+  coords 3459.6 23.22 4288
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_23 {
-  coords 2971.3 24.57 4790.4
-  angles 0 325.3 0
+  coords 3474.2 25.54 4301.1
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_24 {
-  coords 2925.2 24.52 4758.5
-  angles 0 325.3 0
+  coords 3484.9 27.3 4310.2
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_25 {
-  coords 2982.8 24.52 4798.3
-  angles 0 325.3 0
+  coords 3439.2 21.19 4273.9
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_26 {
-  coords 2913.7 24.52 4750.5
-  angles 0 325.3 0
+  coords 3499.6 28.26 4323.2
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_27 {
-  coords 2994.3 24.52 4806.3
-  angles 0 325.3 0
+  coords 3428.6 19.88 4264.8
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_28 {
-  coords 2902.2 24.52 4742.6
-  angles 0 325.3 0
+  coords 3453.2 24.17 4304.2
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_29 {
-  coords 3005.8 24.52 4814.3
-  angles 0 325.3 0
+  coords 3463.9 25.92 4313.3
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_30 {
-  coords 2939.1 24.52 4787.6
-  angles 0 325.3 0
+  coords 3442.5 22.98 4295.1
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_31 {
-  coords 2950.6 24.52 4795.6
-  angles 0 325.3 0
+  coords 3474.5 27.3 4322.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_32 {
-  coords 2927.6 24.52 4779.6
-  angles 0 325.3 0
+  coords 3431.9 21.8 4286.1
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_33 {
-  coords 2962.2 24.52 4803.5
-  angles 0 325.3 0
+  coords 3485.2 28.01 4331.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_34 {
-  coords 2916.1 24.52 4771.7
-  angles 0 325.3 0
+  coords 3421.2 20.35 4277
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_35 {
-  coords 2973.7 24.52 4811.5
-  angles 0 325.3 0
+  coords 3491.8 28.01 4344.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_36 {
-  coords 2904.6 24.52 4763.7
-  angles 0 325.3 0
+  coords 3407.5 18.14 4267.9
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_37 {
-  coords 2985.2 24.52 4819.5
-  angles 0 325.3 0
+  coords 3442.8 24.51 4316.4
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_38 {
-  coords 2893.1 24.52 4755.7
-  angles 0 325.3 0
+  coords 3453.5 26 4325.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_39 {
-  coords 2996.7 24.52 4827.4
-  angles 0 325.3 0
+  coords 3460.2 27.26 4338.5
+  angles 0 319.6 0
  }
  steelrunway_opfor_tank_40 {
-  coords 2930 24.52 4800.8
-  angles 0 325.3 0
+  coords 3424.5 21.84 4298.2
+  angles 0 319.6 0
  }
  steelrunway_point_a {
-  coords 2592.2 24.32 5293.8
+  coords 2704.5 24.32 5195
  }
  steelrunway_point_b {
-  coords 2735 24.22 5095
+  coords 2998.9 24.32 4848.9
  }
  steelrunway_point_c {
-  coords 2877.8 24.22 4896.2
+  coords 3293.3 26.4 4502.9
  }
 }

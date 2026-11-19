@@ -2,16 +2,16 @@
  "files": {
   "Missions/Kolguyev/tanaKa_1118_TANKBATTLE16_SteelRunway.conf": "12b02449d908f0f7a114d3d6c3f7b6e788bcdf659bc5cad76c06b8c980d44a12",
   "Missions/Kolguyev/tanaKa_1118_TANKBATTLE16_SteelRunway.conf.meta": "9fa408e793a2ba4d4ae3629fb147d1fdd2dc7bb6c2e8debdef565db673ff3a3d",
-  "Missions/Kolguyev/tanaKa_1118_TANKBATTLE80_SteelRunway.conf": "d3c93fcc05420ba9b6a7fe2c0e60249a18c156023eb24d610bb7ddf245b4e24b",
+  "Missions/Kolguyev/tanaKa_1118_TANKBATTLE80_SteelRunway.conf": "e4594e085b6967252b8f60956cd19414e7d113d257f17190ead58504e44ab7a2",
   "Missions/Kolguyev/tanaKa_1118_TANKBATTLE80_SteelRunway.conf.meta": "ea92be2fafb029bc5a8c3c9d14048dd91aaa1fe56595e0ca725e1fc3a94d5f5b",
   "Worlds/Kolguyev/tanaka_tankbattle_steelrunway.ent": "b37fe82114f7da0fbd06a5a79cb1e7c6f95fb56b4f3fd4cece09fe0325f2a32a",
   "Worlds/Kolguyev/tanaka_tankbattle_steelrunway.ent.meta": "10d7f501b876aaf97d12e9026fe94c57fa115ee0be806133a152de3601835e5d",
-  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/GameBorderS.layer": "901735524b47f9dac789c217ce447ddd48af7dffee71700899fc5b1213fe9fc3",
-  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/OBJECTIVES.layer": "a03a29818a5ac54fe17116ad1acbbf27cf3a5e2f469f522d72f22c761ac23e81",
+  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/GameBorderS.layer": "77d7f83128227869cc08d0cc453e3c705a3ba200424472e4192b04bfe3baee5f",
+  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/OBJECTIVES.layer": "f60892352487d744fa7550b92962635f9d2bed1c98bc71ef4b5aa87a9e40c4a4",
   "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/PROPS.layer": "818f158b63124cef69282c422150da6a16ddacd632ca72c014ae7510ea16dd28",
-  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/SPAWNPOINTS.layer": "d9fd3c5fb925fb41f1007dda65452f29fd1f60f4be030a15e27cbcdd0be675ae",
+  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/SPAWNPOINTS.layer": "a84713497a9e351bbfa2b61b3961d75af115996df1b2fd58a71d6e23ab9ba9be",
   "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/SPAWNPOINTSGROUPS.layer": "b29d56845fa7314293354864f809c905eee09f54dcded10484378ef1c6989614",
-  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/_INIT.layer": "b8bd411d7cc7fe1551461850c096978817a28cbe5787883115f3c98d73ad532c"
+  "Worlds/Kolguyev/tanaka_tankbattle_steelrunway_Layers/_INIT.layer": "bdfa9078ac91ded2792efb003dbbe44a188902a207ad224ffb2007bc25447acb"
  },
  "header": "Missions/Kolguyev/tanaKa_1118_TANKBATTLE80_SteelRunway.conf",
  "note": "Files listed here are owned by a missionkit spec; see CRF-MissionKit README (Layer ownership).",
