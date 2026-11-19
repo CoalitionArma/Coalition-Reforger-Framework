@@ -13,11 +13,17 @@ name: Mission PR
 # The mission maker only writes what can't be read from the files: factions/assets, objectives and
 # the briefing screenshot (see .github/PULL_REQUEST_TEMPLATE.md).
 #
+# Works for pull requests from forks too. pull_request_target runs this file as it is on release,
+# with a token that can edit the PR (a fork's pull_request run only gets a read-only one). So that
+# a fork can't use that token, nothing from the PR is ever run: the scripts come from the
+# release checkout ("trusted"), and the PR's commit is checked out next to it ("pr") only to be
+# read as data. Don't change this job to run anything from "pr".
+#
 # Edits made with the workflow's own token don't trigger workflows, so updating the PR here can't
 # loop through the 'edited' trigger.
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize, edited, ready_for_review]
     branches: [release]
 
@@ -33,19 +39,26 @@ jobs:
   update:
     name: Mission synopsis and checks
     runs-on: ubuntu-latest
-    # Pull requests from forks get a read-only token and can't be updated; mission branches live
-    # in this repository
-    if: github.event.pull_request.head.repo.full_name == github.repository
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
       PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
-      - name: Checkout framework
+      - name: Checkout framework scripts (release)
         uses: actions/checkout@v4
         with:
-          path: Coalition-Reforger-Framework
+          ref: release
+          path: trusted
+          persist-credentials: false
+
+      - name: Checkout the pull request (read as data only)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr
           fetch-depth: 0 # full history - needed to diff against release
+          persist-credentials: false
 
       - name: Checkout lobby
         uses: actions/checkout@v4
@@ -53,6 +66,7 @@ jobs:
           repository: CoalitionArma/COALITION-Lobby
           ref: release
           path: COALITION-Lobby
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -60,14 +74,14 @@ jobs:
           python-version: '3.11'
 
       - name: Build synopsis and checks
-        working-directory: Coalition-Reforger-Framework
         run: |
-          git fetch origin release
+          # This repository's release, for the diff (the PR checkout may be a fork's)
+          git -C pr fetch --no-tags "https://github.com/$GH_REPO.git" "+refs/heads/release:refs/remotes/base/release"
           # A fresh copy of the PR rather than the event payload: an earlier run, or the mission
           # maker, may have changed it since this event fired
           gh pr view "$PR_NUMBER" --json title,body,author > "$RUNNER_TEMP/pr.json"
-          python Tools/Validation/mission_synopsis.py --project ../COALITION-Lobby \
-            --base-ref origin/release --pr-json "$RUNNER_TEMP/pr.json" --out-dir "$RUNNER_TEMP/out"
+          python trusted/Tools/Validation/mission_synopsis.py --root pr --project COALITION-Lobby \
+            --base-ref base/release --pr-json "$RUNNER_TEMP/pr.json" --out-dir "$RUNNER_TEMP/out"
           if [ -f "$RUNNER_TEMP/out/summary.md" ]; then
             cat "$RUNNER_TEMP/out/summary.md" >> "$GITHUB_STEP_SUMMARY"
           fi

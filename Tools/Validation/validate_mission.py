@@ -4,7 +4,7 @@ Static mission QA checks for Coalition addon projects.
 
 A Python static re-implementation of most of the checks in
 `Scripts/WorkbenchGame/MissionPlugins/CRF_MissionQAChecklistPlugin.c` (the
-in-Workbench "CRF Mission QA Checklist" plugin), for `mission/<name>` branches
+in-Workbench "CRF Mission QA Checklist" plugin), for `mission/<name>` (or `missions/<name>`) branches
 where nobody may have run that plugin before opening the PR.
 
 This is NOT the plugin re-run headlessly - there is no headless Workbench.

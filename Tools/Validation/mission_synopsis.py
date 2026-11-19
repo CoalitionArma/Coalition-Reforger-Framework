@@ -687,9 +687,11 @@ def changed_worlds(repo_root: str, base_ref: str) -> list[tuple[str, str]]:
 
 
 def main() -> int:
-    default_root = os.path.abspath(os.path.join(_HERE, "..", ".."))
-
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--root", metavar="DIR",
+                        help="The CRF checkout to read the mission from (default: the one this script is in). "
+                             "CI runs release's copy of this script against a fork's checkout, so the fork's "
+                             "code never runs with the workflow's write token.")
     parser.add_argument("--project", action="append", default=[], metavar="DIR",
                         help="Additional project root (repeatable), e.g. ../COALITION-Lobby - needed for the "
                              "Lobby's COA_Lobby.et, scripts and global roles config.")
@@ -698,6 +700,7 @@ def main() -> int:
     parser.add_argument("--pr-json", metavar="FILE", help="JSON with the pull request's title, body and author.login (gh pr view --json title,body,author).")
     parser.add_argument("--out-dir", metavar="DIR", help="Write body.md / title.txt here when they need changing, plus summary.md.")
     args = parser.parse_args()
+    default_root = os.path.abspath(args.root or os.path.join(_HERE, "..", ".."))
 
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
