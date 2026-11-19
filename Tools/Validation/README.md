@@ -98,9 +98,43 @@ run time.
 python3 Tools/Validation/mission_synopsis.py --project ../COALITION-Lobby --world Worlds/Arland/Tanaka_TVT_ThePatrol.ent
 ```
 
+## Mission QA with MissionKit — `missionkit_ci.py`
+
+The Mission QA job (`mission/<name>` and `missions/<name>` branches) runs
+`validate_mission.py` and then `missionkit_ci.py`, which checks every mission the
+branch adds or changes (a header, its world, or one of its layers) with the copy
+of CRF-MissionKit in `Tools/MissionKit`:
+
+- header vs ORBAT (player count, name), `.meta` Names that don't match their file,
+  safestart zones, spawns, slots, weather vs start time, named-entity references;
+- every `{GUID}path` reference, including each side's gearscript items, against
+  the game and the mods CRF depends on.
+
+The runner has no game install, so the last check uses an asset index exported on
+a machine that has the game and the mods, published as the only commit of the
+`ci/asset-index` branch. Refresh it when CRF's dependencies change or the mods
+update (about 3 MB, the branch's history doesn't grow):
+
+```bash
+python Tools/MissionKit/publish_asset_index.py --game-addons "<Arma Reforger>/addons" --mod-addons "<mods>/addons"
+```
+
+Without the branch the reference checks are skipped with a notice and the rest
+still run. Errors fail the job; warnings show as annotations on the files and in
+the job summary. Run it locally against a branch, or on given missions:
+
+```bash
+python Tools/Validation/missionkit_ci.py --lobby ../COALITION-Lobby --base-ref origin/release --index asset-index.json.gz
+python Tools/Validation/missionkit_ci.py --lobby ../COALITION-Lobby --index asset-index.json.gz Missions/Arland/<header>.conf
+```
+
+`Tools/MissionKit/missionkit` is synced from CRF-MissionKit (`tools/sync_to_crf.py`
+there); don't edit the copy.
+
 ## CI wiring
 
-`.github/workflows/validate.yml` runs layer 1 only. `.github/workflows/mission-pr.yml`
+`.github/workflows/validate.yml` runs layer 1, and the Mission QA job above on
+mission branches. `.github/workflows/mission-pr.yml`
 updates mission pull requests (above). Layer 2 needs a runner with
 Arma Reforger installed; if you stand up a self-hosted runner, add a job that
 invokes `-autotest CRF_FrameworkTestSuite` and fails on a non-zero exit.

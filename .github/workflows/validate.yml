@@ -63,10 +63,34 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13' # Tools/MissionKit is developed on 3.13
 
       - name: Validate mission
         working-directory: Coalition-Reforger-Framework
         run: |
           git fetch origin release --depth=1
           python Tools/Validation/validate_mission.py --project ../COALITION-Lobby --base-ref origin/release
+
+      # MissionKit (Tools/MissionKit, a copy of CRF-MissionKit) checks the changed missions further: header
+      # vs ORBAT, .meta paths, safestart zones, weather, named-entity references, and every prefab and
+      # gearscript item reference into the game and the mods. Those last ones need the asset index on the
+      # ci/asset-index branch (Tools/MissionKit/publish_asset_index.py); without it they're skipped.
+      # Runs even if the step above failed, so the reviewer gets both reports. Errors fail the job,
+      # warnings show as annotations and in the job summary.
+      - name: Fetch asset index
+        if: success() || failure()
+        working-directory: Coalition-Reforger-Framework
+        run: |
+          if git fetch --depth=1 origin ci/asset-index 2>/dev/null; then
+            git show FETCH_HEAD:asset-index.json.gz > "$RUNNER_TEMP/asset-index.json.gz"
+            echo "Asset index: $(git log -1 --format='%cs %s' FETCH_HEAD)"
+          else
+            echo "No ci/asset-index branch: references into the game and mods won't be checked."
+          fi
+
+      - name: MissionKit checks
+        if: success() || failure()
+        working-directory: Coalition-Reforger-Framework
+        run: |
+          python Tools/Validation/missionkit_ci.py --lobby ../COALITION-Lobby --base-ref origin/release \
+            --index "$RUNNER_TEMP/asset-index.json.gz"

@@ -1,0 +1,2 @@
+This is a copy of the missionkit package from CRF-MissionKit, synced by its tools/sync_to_crf.py.
+Don't edit it here: change the kit and sync again. Last synced 2026-11-19.
