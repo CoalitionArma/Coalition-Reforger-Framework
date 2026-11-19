@@ -1,0 +1,11 @@
+Turret : "{EFF08C8B467C3380}Prefabs/Vehicles/Wheeled/LAV25/VehParts/Turret/LAV25_turret_rhs.et" {
+ ID "51ACD0965653D003"
+ components {
+  RHS_StabilizedTurretControllerComponent "{51ACD09C61C183E4}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

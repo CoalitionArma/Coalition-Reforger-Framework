@@ -1,0 +1,331 @@
+$grp GameEntity {
+ pustoshka_blufor_tank_1 {
+  coords 3078.5 292.7 8135.6
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_2 {
+  coords 3069.3 294.03 8123.7
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_3 {
+  coords 3087.7 291.57 8147.4
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_4 {
+  coords 3060.1 295.59 8111.9
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_5 {
+  coords 3097 290.59 8159.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_6 {
+  coords 3050.9 297.24 8100.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_7 {
+  coords 3106.2 289.68 8171.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_8 {
+  coords 3041.7 298.6 8088.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_9 {
+  coords 3089.7 293.56 8124.5
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_10 {
+  coords 3083.5 294.91 8112.7
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_11 {
+  coords 3101.9 292.37 8136.3
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_12 {
+  coords 3074.3 296.53 8100.8
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_13 {
+  coords 3111.2 291.35 8148.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_14 {
+  coords 3065.1 298.08 8089
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_15 {
+  coords 3120.4 290.39 8160
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_16 {
+  coords 3055.9 299.13 8077.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_17 {
+  coords 3102.9 294.96 8109.5
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_18 {
+  coords 3093.7 296.67 8097.6
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_19 {
+  coords 3120.2 293.02 8129.3
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_20 {
+  coords 3129.4 291.86 8141.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_21 {
+  coords 3138.6 290.74 8153
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_22 {
+  coords 3070.1 299.36 8066.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_23 {
+  coords 3121.1 296.35 8102.4
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_24 {
+  coords 3111.9 297.45 8090.6
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_25 {
+  coords 3130.4 294.56 8114.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_26 {
+  coords 3139.6 293.21 8126.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_27 {
+  coords 3148.8 291.83 8137.9
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_28 {
+  coords 3081.3 299.43 8055
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_29 {
+  coords 3144.6 296.12 8103.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_30 {
+  coords 3153.8 294.73 8115
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_31 {
+  coords 3160 293.26 8126.8
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_32 {
+  coords 3098.5 299.34 8044
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_33 {
+  coords 3151.5 298.97 8057.4
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_34 {
+  coords 3178 298.7 8058.2
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_35 {
+  coords 3168.7 299.31 8046.3
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_36 {
+  coords 3159.5 299.37 8034.5
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_37 {
+  coords 3179.9 299.39 8035.3
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_38 {
+  coords 3173.7 299.36 8023.4
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_39 {
+  coords 3203.4 299.2 8036.1
+  angles 0 127.9 0
+ }
+ pustoshka_blufor_tank_40 {
+  coords 3197.2 299.39 8024.2
+  angles 0 127.9 0
+ }
+ pustoshka_opfor_tank_1 {
+  coords 4661.5 278.44 6884.4
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_2 {
+  coords 4674.7 278.49 6892.3
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_3 {
+  coords 4695.3 284.51 6931.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_4 {
+  coords 4634.1 281.22 6887.7
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_5 {
+  coords 4628.8 281.01 6871.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_6 {
+  coords 4674.9 284.51 6931
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_7 {
+  coords 4619.6 281.45 6860
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_8 {
+  coords 4684.1 285.83 6942.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_9 {
+  coords 4630.1 283.64 6906.5
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_10 {
+  coords 4642.3 284.18 6918.4
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_11 {
+  coords 4651.5 285.25 6930.2
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_12 {
+  coords 4614.6 282.88 6882.9
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_13 {
+  coords 4660.7 286.25 6942.1
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_14 {
+  coords 4605.4 282.93 6871
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_15 {
+  coords 4669.9 287.2 6953.9
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_16 {
+  coords 4618.9 285.49 6917.6
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_17 {
+  coords 4628.1 286.12 6929.4
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_18 {
+  coords 4609.6 284.79 6905.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_19 {
+  coords 4637.3 286.92 6941.3
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_20 {
+  coords 4600.4 284.15 6890.9
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_21 {
+  coords 4646.5 287.76 6953.1
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_22 {
+  coords 4591.2 284.1 6879.1
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_23 {
+  coords 4655.7 288.6 6965
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_24 {
+  coords 4604.7 287.15 6928.7
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_25 {
+  coords 4613.9 287.66 6940.5
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_26 {
+  coords 4595.4 286.52 6916.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_27 {
+  coords 4623.1 288.29 6952.3
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_28 {
+  coords 4632.3 289.09 6964.2
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_29 {
+  coords 4574 285.63 6893.2
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_30 {
+  coords 4641.5 290.06 6976
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_31 {
+  coords 4590.5 288.75 6939.7
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_32 {
+  coords 4599.7 289.13 6951.6
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_33 {
+  coords 4581.2 288.11 6927.9
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_34 {
+  coords 4608.9 289.69 6963.4
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_35 {
+  coords 4572 286.8 6916
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_36 {
+  coords 4618.1 290.53 6975.2
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_37 {
+  coords 4562.8 286.66 6904.2
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_38 {
+  coords 4627.3 291.58 6987.1
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_39 {
+  coords 4576.2 290.32 6950.8
+  angles 0 307.9 0
+ }
+ pustoshka_opfor_tank_40 {
+  coords 4567 289.43 6938.9
+  angles 0 307.9 0
+ }
+ pustoshka_point_a {
+  coords 4130 307.15 8224.2
+ }
+ pustoshka_point_b {
+  coords 3870 299.25 7510
+ }
+ pustoshka_point_c {
+  coords 3610 341.15 6795.8
+ }
+}

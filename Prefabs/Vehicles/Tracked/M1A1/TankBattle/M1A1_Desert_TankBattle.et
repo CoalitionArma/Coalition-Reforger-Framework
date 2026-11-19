@@ -1,0 +1,22 @@
+Tank : "{3C3ADBCCDA1D877B}Prefabs/Vehicles/Tracked/M1A1/M1A1_Desert.et" {
+ ID "5D1880CD9E51D361"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     ForcedFreeLook 0
+     MouseSteering 0
+     AutoConnectToTurret "mainturret"
+     AutoConnectContextIndices 0x1e 0
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{7C2E5A91B3D04F65}Prefabs/Vehicles/Tracked/M1A1/TankBattle/M1A1_Turret_Desert_TankBattle.et"
+    }
+   }
+  }
+ }
+}

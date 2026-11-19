@@ -361,4 +361,55 @@ modded class COA_PlayerRplToOwnerManager : ScriptComponent
 	{
 		CRF_ZeusPlayerList.SetTicketHolders(playerIds);
 	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tank Battle, server every second: this player's own side's tanks and where they are (PackPosition),
+	//! for the minimap's dots past the streaming range. Unreliable: a lost one is replaced a second later.
+	void ReceiveTankBattlePositions(array<RplId> tankIds, array<int> positions)
+	{
+		if (IsLocallyOwned())
+			RpcDo_ReceiveTankBattlePositions(tankIds, positions);
+		else
+			Rpc(RpcDo_ReceiveTankBattlePositions, tankIds, positions);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Unreliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveTankBattlePositions(array<RplId> tankIds, array<int> positions)
+	{
+		CRF_TankBattleGamemodeComponent mode = CRF_TankBattleGamemodeComponent.GetInstance();
+		if (mode)
+			mode.SetFriendlyTankPositions(tankIds, positions);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Tank Battle field repair, server twice a second: what this player's repair is doing
+	//! (CRF_ETankBattleRepair) and how far along. Progress goes unreliable (the next one replaces a lost
+	//! one); "repaired" / "done" go reliable, they're only sent once.
+	void ReceiveTankBattleRepair(int status, int percent)
+	{
+		bool once = status == CRF_ETankBattleRepair.REPAIRED || status == CRF_ETankBattleRepair.REPAIR_DONE;
+		if (IsLocallyOwned())
+			RpcDo_ReceiveTankBattleRepair(status, percent);
+		else if (once)
+			Rpc(RpcDo_ReceiveTankBattleRepairOnce, status, percent);
+		else
+			Rpc(RpcDo_ReceiveTankBattleRepair, status, percent);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Unreliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveTankBattleRepair(int status, int percent)
+	{
+		CRF_TankBattleGamemodeComponent mode = CRF_TankBattleGamemodeComponent.GetInstance();
+		if (mode)
+			mode.SetRepairStatus(status, percent);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_ReceiveTankBattleRepairOnce(int status, int percent)
+	{
+		RpcDo_ReceiveTankBattleRepair(status, percent);
+	}
 };
