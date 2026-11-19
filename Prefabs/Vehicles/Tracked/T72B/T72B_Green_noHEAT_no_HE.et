@@ -1,0 +1,28 @@
+Tank : "{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T72B/T72B_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{16149668A5BFB82E}UI/Textures/EditorPreviews/Vehicles/Tracked/T72B/T72B.edds"
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5E38B925DD33F65F}" {
+   MultiSlots {
+    MultiSlotConfiguration "{720E3E341B24F5EB}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{134E5D059BA086EE}" {
+     NumSlots 0
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{E3F46F7A68328113}Prefabs/Vehicles/Tracked/T72B/VehParts/Turret/T72B_Turret_noHEAT_noHE.et"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}

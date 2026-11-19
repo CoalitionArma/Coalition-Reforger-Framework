@@ -1,0 +1,36 @@
+Turret : "{C06BC8C9F56F0AA1}Prefabs/Vehicles/Tracked/M1A1/VehParts/Turret/M1A1/M1A1_Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Materials {
+    MaterialAssignClass "{6AE6325F81B378C7}" {
+     SourceMaterial "m1a1_abrams"
+     AssignedMaterial "{45BE5806D6B7B969}Assets/Vehicles/Tracked/M1A1/Data/Woodland/M1A1_Woodland.emat"
+    }
+    MaterialAssignClass "{6AE6325F81B378D2}" {
+     SourceMaterial "m1a1_abrams_decals"
+     AssignedMaterial "{4B3E9F4386280E28}Assets/Vehicles/Tracked/M1A1/Data/Shared/Decals/M1A1_Queen_Decals.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   CompartmentSlots {
+    CargoCompartmentSlot Loader {
+    }
+   }
+  }
+  SlotManagerComponent "{5E182107FF135160}" {
+   Slots {
+    RegisteringComponentSlotInfo Commander {
+     Prefab "{27C08B6436FBF70C}Prefabs/Vehicles/Tracked/M1A1/VehParts/Turret/Commander/M1A1_Commander_Turret_Woodland.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate "{4E203F9412F00630}Prefabs/Weapons/Cannons/Cannon_M256/Cannon_M256_M1A1_Woodland.et"
+  }
+  WeaponSlotComponent "{64D61B2D43719196}" {
+   Enabled 0
+  }
+ }
+}

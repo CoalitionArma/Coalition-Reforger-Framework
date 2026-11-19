@@ -1,0 +1,196 @@
+Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  TurretComponent "{648607B051371287}" {
+   components {
+    SCR_2DSightsComponent "{648607B051371298}" {
+     SightsFOVInfo SCR_SightsZoomFOVInfo "{648607B05137129F}" {
+      m_fBaseZoom 8
+      m_fZoomMax 8
+      m_fStepZoomSize 2.5
+     }
+    }
+   }
+  }
+  WCS_Armament_DispenserManagerComponent "{65CF4DD2BD109E24}" {
+   Enabled 0
+  }
+  WCS_Armament_LoadoutComponent "{6AE6325C2B0DCF3C}" {
+   m_ArmamentGroups {
+    WCS_Armament_SlotGroup "{6AE6325C2B0DCF2E}" {
+    }
+    WCS_Armament_SlotGroup "{6AE6325C2B0DCF20}" {
+     slotIndex 1
+    }
+    WCS_Armament_SlotGroup "{6AE6325C2B0DCF22}" {
+     slotIndex 2
+    }
+    WCS_Armament_SlotGroup "{6AE6325C2B0C2012}" {
+     slotIndex 3
+    }
+    WCS_Armament_WeaponGroup "{6AE6325C2B0C2014}" {
+     prefab "{E3D30C195D12B608}Prefabs/Weapons/Launchers/9K119_Refleks/Pod_9M119_Refleks_T72B.et"
+     weaponsInfo {
+      WCS_Armament_WeaponInfo "{6AE6325C2B0C2015}" {
+       Position PointInfo "{6AE6325C2B0C2016}" {
+        PivotID "v_gun_01"
+       }
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{6AE6325C2B0C2017}" {
+       m_iFireIntervalMS 7500
+      }
+     }
+     slotIndex 4
+    }
+   }
+   m_sPilotCompartmentUniqueName "gunner"
+  }
+  WCS_Armament_VehicleWeaponStationComponent "{6AE6325C2B0C20EA}" {
+  }
+  SlotManagerComponent "{64863497471CD184}" {
+   Slots {
+    WCS_Armament_DispenserSlotInfo Smoke {
+     Enabled 0
+    }
+    EntitySlotInfo ToolBox_03 {
+     Enabled 1
+    }
+    EntitySlotInfo Tube {
+     Enabled 1
+    }
+    EntitySlotInfo Tube_02 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo ERA {
+     PivotID "v_turret_01"
+     MergePhysics 1
+     Prefab "{D294B0FA48167B51}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_01.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo ERA_02 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{BEC0841AF4D2F47F}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_02.et"
+    }
+    RegisteringComponentSlotInfo ERA_03 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{5B5CC8E3F8376314}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_03.et"
+    }
+    RegisteringComponentSlotInfo ERA_04 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{6668EDDB8D5BEA23}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_04.et"
+    }
+    RegisteringComponentSlotInfo ERA_05 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{83F4A12281BE7D48}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_05.et"
+    }
+    RegisteringComponentSlotInfo ERA_06 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{EFA095C23D7AF266}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_06.et"
+    }
+    RegisteringComponentSlotInfo ERA_07 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{0A3CD93B319F650D}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_07.et"
+    }
+    RegisteringComponentSlotInfo ERA_08 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{95C8DFB2D7A3E008}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_08.et"
+    }
+    RegisteringComponentSlotInfo ERA_09 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{7054934BDB467763}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_09.et"
+    }
+    RegisteringComponentSlotInfo ERA_10 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{4002948BB051034A}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_10.et"
+    }
+    RegisteringComponentSlotInfo ERA_11 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{A59ED872BCB49421}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_11.et"
+    }
+    RegisteringComponentSlotInfo ERA_12 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{C9CAEC9200701B0F}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_12.et"
+    }
+    RegisteringComponentSlotInfo ERA_13 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{2C56A06B0C958C64}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_13.et"
+    }
+    RegisteringComponentSlotInfo ERA_14 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{1162855379F90553}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_14.et"
+    }
+    RegisteringComponentSlotInfo ERA_15 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{F4FEC9AA751C9238}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_15.et"
+    }
+    RegisteringComponentSlotInfo ERA_16 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{98AAFD4AC9D81D16}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_16.et"
+    }
+    RegisteringComponentSlotInfo ERA_17 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{7D36B1B3C53D8A7D}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_17.et"
+    }
+    RegisteringComponentSlotInfo ERA_18 : "{14C3A92F184CFAE2}Prefabs/Vehicles/Tracked/T72B/Configs/ERA.conf" {
+     Prefab "{E2C2B73A23010F78}Prefabs/Vehicles/Tracked/T72B/VehParts/ERA/Turret/T72B_Kontakt_Turret_18.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponTemplate "{EDAA1D04E8C67352}Prefabs/Weapons/Cannons/Cannon_2A46/Cannon_2A46_T72B.et"
+  }
+  WeaponSlotComponent "{648607B05137124D}" {
+   Enabled 0
+   WeaponTemplate "{7A4ADD41F67279AD}Prefabs/Weapons/Cannons/Cannon_2A46/Cannon_2A46_T72B_HE.et"
+  }
+  WeaponSlotComponent "{648607B051371279}" {
+   Enabled 0
+   SharedShotSpanIndex 0
+   AttachType InventoryStorageSlot Cannon {
+    Offset 0 0 0
+    Angles 0 -0.04 0
+   }
+   WeaponTemplate "{1BD5190EA891FB8A}Prefabs/Weapons/Cannons/Cannon_2A46/Cannon_2A46_T72B_HEAT.et"
+  }
+  WeaponSlotComponent "{6AE6325C2B0C20E5}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{6AE6325C2B0C20E7}" {
+    signalsSuffix "Turret"
+   }
+   useAimingType MainTurret
+   WeaponType Autocannon
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot "{65E90564915AD79B}" {
+    PivotID "v_gun_01"
+    Offset 0.335 -0.159 -0.6385
+    Angles 0.9 0 0
+    MergePhysics 1
+   }
+   WeaponTemplate "{4FD1A5A6670E015A}Prefabs/Weapons/MachineGuns/PKM/MG_PKMT.et"
+   WeaponSlotIndex 3
+  }
+  WeaponSlotComponent "{6AE6325C2B0C20F9}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{6AE6325C2B0C20A7}" {
+    signalsSuffix "Turret"
+   }
+   useAimingType MainTurret
+   WeaponType Autocannon
+   SharedShotSpanIndex 0
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot "{65E905649C8D2524}" {
+    PivotID "v_gun_01"
+    Offset 0 0 0
+    MergePhysics 1
+   }
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 4
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{6AE6325C2B0C20BA}" {
+     ContextName "atgm_reload"
+     Position PointInfo "{6AE6325C2B0C20BB}" {
+      PivotID "v_gunner_idle"
+      Offset 0 0.6 0.45
+     }
+     Radius 0.15
+     Height 0
+    }
+   }
+   additionalActions {
+    WCS_Armament_ReloadWeaponFromVehicleAction "{2DF84A93F2EFF36F}" : "{0457BE16137BFA48}Prefabs/Weapons/Core/Configs/Actions/WCS_Armament_ReloadWeaponFromVehicleAction.conf" {
+     ParentContextList {
+      "atgm_reload"
+     }
+     m_eShownInVehicleState IN_VEHICLE_ANY
+     m_iWeaponGroupIndex 4
+    }
+   }
+  }
+ }
+}
