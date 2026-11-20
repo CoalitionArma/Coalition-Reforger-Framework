@@ -1,0 +1,14 @@
+$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ {
+  coords 6752 343.25 5622
+  angles 0 -20 0
+ }
+ {
+  coords 6744 344.03 5606
+  angles 0 -60 0
+ }
+ {
+  coords 6790 342.06 5618
+  angles 0 20 0
+ }
+}

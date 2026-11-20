@@ -1,0 +1,15 @@
+$grp GameEntity {
+ ridgeline_obj_village {
+  coords 6540 322.031 6100
+ }
+ ridgeline_obj_farm {
+  coords 6768 342.969 5589
+ }
+ ridgeline_obj_mogilevka {
+  coords 7525 214 5160
+ }
+ ridgeline_spawn_village {
+  coords 6568 339.66 6240
+  angles 0 160 0
+ }
+}
