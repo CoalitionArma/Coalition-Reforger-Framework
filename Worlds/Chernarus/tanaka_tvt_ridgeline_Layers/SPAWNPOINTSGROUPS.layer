@@ -1,0 +1,96 @@
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 6388.7 303.74 7266
+  angles 0 151 0
+  m_sCallsignOfGroupToSpawn "GRANIT 1-1"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6380.1 303.17 7278.6
+  angles 0 152 0
+  m_sCallsignOfGroupToSpawn "GRANIT 1-2"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6373.3 302.35 7290.7
+  angles 0 151 0
+  m_sCallsignOfGroupToSpawn "GRANIT 1-3"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6366.5 301.36 7302.9
+  angles 0 151 0
+  m_sCallsignOfGroupToSpawn "GRANIT 2-1"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6359.7 300.61 7315.1
+  angles 0 151 0
+  m_sCallsignOfGroupToSpawn "GRANIT 2-2"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6353.2 299.67 7327.8
+  angles 0 153 0
+  m_sCallsignOfGroupToSpawn "GRANIT 2-3"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6348.6 298.78 7342.2
+  angles 0 163 0
+  m_sCallsignOfGroupToSpawn "GRANIT 6"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6362 298.52 7346.4
+  angles 0 163 0
+  m_sCallsignOfGroupToSpawn "GRANIT SAPPER"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+ {
+  coords 6344.4 297.94 7355.6
+  angles 0 163 0
+  m_sCallsignOfGroupToSpawn "GRANIT MORTAR"
+  m_SpawnPointSettings COA_SpawnPointData "{68E15E4ED9EB427A}" {
+   m_iSpawnPointRadius 3
+  }
+ }
+}
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 6540 321.92 6085
+  m_sCallsignOfGroupToSpawn "RAIDER 6"
+ }
+ {
+  coords 6558 344.97 6285
+  m_sCallsignOfGroupToSpawn "RAIDER 1"
+ }
+ {
+  coords 6482 322 6168
+  m_sCallsignOfGroupToSpawn "RAIDER 2"
+ }
+ {
+  coords 6592 321.92 6035
+  m_sCallsignOfGroupToSpawn "RAIDER 3"
+ }
+ {
+  coords 6548 322.12 6150
+  m_sCallsignOfGroupToSpawn "RAIDER WPNS"
+ }
+}

@@ -1,0 +1,21 @@
+COA_StaticSpawnPoint OPFOR_Spawn : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 6357.9 301.31 7310.8
+ angles 0 151 0
+}
+COA_StaticSpawnPoint BLUFOR_Spawn : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 6553.2 322 6103
+}
+$grp GameEntity {
+ Zone2_Defender_Spawn {
+  coords 6864.3 306.62 5527.4
+  angles 0 -60 0
+ }
+ Zone3_Attacker_Spawn {
+  coords 6769.2 341.23 5667.8
+  angles 0 -110 0
+ }
+ Zone3_Defender_Spawn {
+  coords 7560 211 5031
+  angles 0 -15 0
+ }
+}

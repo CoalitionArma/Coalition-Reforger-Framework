@@ -1,0 +1,504 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 6550 400 6200
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_CasualtyCounterGamemodeComponent "{6B1120A1CA5C0A01}" {
+   m_sMonitoredFaction "OPFOR"
+   m_fCasualtyLimitPercent 250
+   m_sWinningFaction "BLUFOR"
+   m_fAnnounceEveryPercent 50
+  }
+  CRF_ObjectiveChainGamemodeComponent "{6B1120A1AEAF0007}" {
+   m_sAttackerFaction "OPFOR"
+   m_sDefenderFaction "BLUFOR"
+   m_aObjectives {
+    CRF_ObjectiveChainObjective "{6B1120A13FE40ED1}" {
+     m_sTitle "Breach the roadblock and take Vyshnoye"
+     m_sDescription "Blow a gap in the concrete roadblock north of Vyshnoye at one of the marked breach points: a sapper with a satchel charge or a TNT block sets the charge on the north side (10 s fuse). A blown section leaves a 4 m gap. Then hold the village - at least 3 of you, at most 2 Marines - for 60 seconds."
+     m_sDefenderTitle "Hold the roadblock and Vyshnoye"
+     m_sDefenderDescription "Keep the Russians out of the village. Once they blow a gap in the roadblock, they need 60 seconds with you down to 2 or fewer in the village."
+     m_sZoneEntityName "ridgeline_obj_village"
+     m_fRadius 115
+     m_fHoldSeconds 60
+     m_iMinAttackers 3
+     m_iMaxDefenders 2
+     m_aBreachPointNames {
+      "ridgeline_breach_1"
+      "ridgeline_breach_2"
+      "ridgeline_breach_3"
+      "ridgeline_breach_4"
+      "ridgeline_breach_5"
+      "ridgeline_breach_6"
+     }
+     m_iBreachesRequired 1
+     m_aRespawnMoves {
+      CRF_ObjectiveChainRespawnMove "{6B1120A125258F12}" {
+       m_sMarkerEntityName "ridgeline_spawn_village"
+       m_sFaction "OPFOR"
+      }
+      CRF_ObjectiveChainRespawnMove "{6B1120A125DDF2F8}" {
+       m_sMarkerEntityName "Zone2_Defender_Spawn"
+       m_sFaction "BLUFOR"
+      }
+     }
+    }
+    CRF_ObjectiveChainObjective "{6B1120A164F62576}" {
+     m_sTitle "Capture the farm below Zub"
+     m_sDescription "The walled farm at the foot of the castle hill covers the road out of Vyshnoye and the crossroads where it turns for Mogilevka. Take the yard: at least 2 of you, at most 1 Marine, for 45 seconds."
+     m_sDefenderTitle "Hold the farm below Zub"
+     m_sDefenderDescription "Hold the walled farm at the foot of the castle hill."
+     m_sZoneEntityName "ridgeline_obj_farm"
+     m_fRadius 50
+     m_fHoldSeconds 45
+     m_iMinAttackers 2
+     m_iMaxDefenders 1
+     m_aRespawnMoves {
+      CRF_ObjectiveChainRespawnMove "{6B1120A1C44A8B52}" {
+       m_sMarkerEntityName "Zone3_Attacker_Spawn"
+       m_sFaction "OPFOR"
+      }
+      CRF_ObjectiveChainRespawnMove "{6B1120A172AAF0D3}" {
+       m_sMarkerEntityName "Zone3_Defender_Spawn"
+       m_sFaction "BLUFOR"
+      }
+     }
+    }
+    CRF_ObjectiveChainObjective "{6B1120A168C906D9}" {
+     m_sTitle "Capture Mogilevka"
+     m_sDescription "The Marine platoon's command post is in Mogilevka, 850 m down the road south-east of the farm. Clear the village and hold it - at least 3 of you, at most 2 Marines, for 90 seconds."
+     m_sDefenderTitle "Hold Mogilevka"
+     m_sDefenderDescription "The last position. Hold the village and the command post in it."
+     m_sZoneEntityName "ridgeline_obj_mogilevka"
+     m_fRadius 120
+     m_fHoldSeconds 90
+     m_iMinAttackers 3
+     m_iMaxDefenders 2
+    }
+   }
+   m_iTimeLimitMinutes 70
+   m_bEndMissionOnVictory 0
+   m_fBreachFuseSeconds 10
+   m_aBreachChargeKeywords {
+    "Explosive_Satchels"
+    "DemoBlock_TSh400g"
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 7
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 75
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1120A1A503377C}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Central Chernarus, 0700. Overcast."\
+   ""\
+   "The road from Stary Sobor to Mogilevka drops off the plateau into Vyshnoye, a dozen houses in a narrow valley, and climbs out again past a walled farm to the crossroads below Zub, the ruined castle on the ridge south of the village. From the crossroads the road runs on south-east, down a long open valley, to Mogilevka. A US Marine platoon holds the road: a concrete roadblock at the north end of Vyshnoye, the farm, and its command post in Mogilevka."\
+   ""\
+   "A Russian motor-rifle company is formed up in column on the road 1 km north of the village, out of sight behind the plateau."\
+   ""\
+   "OPFOR: Russian motor-rifle company (-) in eight BTR-70s: callsign GRANIT - GRANIT 6 (HQ), six rifle squads (GRANIT 1-1 to 1-3, 2-1 to 2-3), a sapper squad (GRANIT SAPPER) and an 82 mm mortar crew (GRANIT MORTAR)."\
+   "BLUFOR: US Marine rifle platoon, callsign RAIDER - RAIDER 6 (command post), RAIDER 1 to 3 (rifle squads) and a machine-gun section of three M240 teams (RAIDER WPNS). No vehicles."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1120A199D38E4F}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Three objectives, one after another (the task list shows the open one and its progress):"\
+   "1. Breach the roadblock and take Vyshnoye."\
+   "2. Capture the farm below Zub."\
+   "3. Capture Mogilevka."\
+   ""\
+   "1. VYSHNOYE"\
+   "A wall of concrete sections blocks the road where it comes down off the plateau into the village, too high to climb and too solid to ram. Six sections are breach points (marked on your map): a sapper with a satchel charge or a TNT block uses \"Place breaching charge\" on the north side of one. The charge is used up and the section blows 10 seconds later - get clear. One breach is enough; a blown section leaves a 4 m gap, wide enough for a BTR. Infantry can get round the wall through the trees to the east or down the slope to the west, but the village does not count until a section is blown. Then hold the village: at least 3 of you, at most 2 Marines, for 60 seconds."\
+   "2. THE FARM"\
+   "The walled farm 550 m south-east of the village, at the foot of the castle hill. At least 2 of you, at most 1 Marine, for 45 seconds."\
+   "3. MOGILEVKA"\
+   "The Marine command post is in Mogilevka, 850 m down the road south-east of the farm. The road runs down an open valley with little cover and enters the village from the north; there are sandbag positions at that end. Hold the village: at least 3 of you, at most 2 Marines, for 90 seconds."\
+   "If nobody is there to hold a zone, its progress drains; contested, it holds."\
+   ""\
+   "EXECUTION"\
+   "The company starts in column on the road, each element next to its own BTR-70. A rifle squad fills one BTR - driver, gunner and seven in the back. The squad's driver and gunner stay with the vehicle and support with its 14.5 mm KPVT and PKT. GRANIT 6 and GRANIT SAPPER share the seventh BTR, GRANIT MORTAR has the eighth."\
+   "It is 1 km down the road to the roadblock: up over the plateau, then downhill to the wall. Every M240 and AT4 in the village is waiting for the first BTR over the crest. Get the sappers to the wall and keep the BTRs' guns on the houses."\
+   "The Marines have anti-tank mines (about twenty). Expect them on the road at the roadblock and on the way into Mogilevka; a mine on asphalt can be seen, so drivers watch the road."\
+   ""\
+   "GRANIT SAPPER: four combat engineers, each with three satchel charges, a 400 g TNT block and a blasting machine - every one of them can blow a breach point."\
+   "GRANIT MORTAR: an 82 mm 2B14 crew. Each man carries one part on his back: the crew chief the base plate (and the firing table), the gunner the tube and 5 HE rounds, the loader the bipod and 5 smoke rounds."\
+   ""\
+   "No timed respawns: when an objective falls, everyone dead comes back - after Vyshnoye at the north end of the village, after the farm on the track just north of it. A destroyed BTR is replaced at the start line when an objective falls."\
+   ""\
+   "CASUALTIES: the company can take two and a half times as many casualties as it has men when safe start ends. Every death counts, again after a respawn. Reach that and the Marines win (the pause menu shows the count)."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1120A1F61769E7}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Hold three positions, one after another: the roadblock and Vyshnoye, the farm below Zub, then Mogilevka and your command post in it."\
+   ""\
+   "EXECUTION"\
+   "You start in Vyshnoye. The road from the north comes down off the plateau into the village and is blocked by a concrete wall at the first house, with sandbag positions behind it. The Russians come in eight BTR-70s from 1 km up that road; they are over the crest, 100 m from the wall, about two minutes after the start."\
+   "Each BTR has a 14.5 mm KPVT that outranges your M240s and goes through sandbags and house walls: do not duel with them, and save the AT4s for a BTR that is close. The wall stops the vehicles on the road until it is breached; infantry can get round it through the trees to the east and down the slope to the west."\
+   "The Russians have to blow a gap in the wall first: you are warned when a breaching charge is set (10 s). After that they take the village if they hold it for 60 seconds with 2 or fewer of you in it."\
+   "When a position falls, everyone dead comes back at the next one: behind the farm for the farm, at the south end of Mogilevka for the village."\
+   "RAIDER WPNS has three M240 teams, a gunner and an assistant each. Every rifle squad has an M249, a grenadier and two AT4s. Your only corpsman is with RAIDER 6."\
+   "MINES: there is a crate of ten M15 anti-tank mines next to RAIDER 6 in Vyshnoye and another at the command post in Mogilevka. Anyone can take a mine, place it and arm it; one will stop a BTR. Lay them during safe start and tell your own side where they are."\
+   ""\
+   "YOU WIN if the Russians have not taken all three when the time limit (70 minutes) runs out, if they are wiped out, or if they reach their casualty limit (two and a half times the men they had when safe start ended; every death counts, again after a respawn; the pause menu shows the count)."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1120A10A6C267B}" {
+   m_sTitle "Administration"
+   m_sTextData "Objective chain, 3 objectives. Time limit 70 minutes after safe start (safe start max. 15 minutes)."\
+   ""\
+   "No timed respawns. When an objective falls, every dead player of both sides respawns at their side's new spawn."\
+   ""\
+   "Casualty limit: OPFOR, 250% of its players when safe start ends."\
+   ""\
+   "Mission by tanaKa-."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE8FBB1448814E2}" {
+   m_sTitle "Administration"
+   m_sTextData "N/A"
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6B1120A1C6C80B06}" {
+   m_sCallsign "RAIDER 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1E333C3AC}" {
+   m_sCallsign "RAIDER 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A191E12098}" {
+   m_sCallsign "RAIDER 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1DC517399}" {
+   m_sCallsign "RAIDER 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1D4B7ED11}" {
+   m_sCallsign "RAIDER WPNS"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6B1120A16245F116}" {
+   m_sCallsign "GRANIT 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A10A730DC9}" {
+   m_sCallsign "GRANIT 1-1"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1B8737422}" {
+   m_sCallsign "GRANIT 1-2"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1F7465B38}" {
+   m_sCallsign "GRANIT 1-3"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1C11557C8}" {
+   m_sCallsign "GRANIT 2-1"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1536A09E9}" {
+   m_sCallsign "GRANIT 2-2"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1E4CFAE0B}" {
+   m_sCallsign "GRANIT 2-3"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1BE316650}" {
+   m_sCallsign "GRANIT SAPPER"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    COMBAT_ENGINEER
+    COMBAT_ENGINEER
+    COMBAT_ENGINEER
+    COMBAT_ENGINEER
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1120A1CD15D378}" {
+   m_sCallsign "GRANIT MORTAR"
+   m_FlagType MORTAR
+   m_aSlots {
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets -1
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_bHideOtherSpectatorFactions 1
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/COA_GS_RHSUSMC.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{26A4494788601753}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_RussianGroundForces.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A283830C79B67D2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
