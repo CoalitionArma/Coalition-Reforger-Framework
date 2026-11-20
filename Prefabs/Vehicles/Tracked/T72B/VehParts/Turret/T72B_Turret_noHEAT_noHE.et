@@ -29,6 +29,7 @@ Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_T
      slotIndex 3
     }
     WCS_Armament_WeaponGroup "{6AE6325C2B0C2014}" {
+     isEnabled 0
      prefab "{E3D30C195D12B608}Prefabs/Weapons/Launchers/9K119_Refleks/Pod_9M119_Refleks_T72B.et"
      weaponsInfo {
       WCS_Armament_WeaponInfo "{6AE6325C2B0C2015}" {
@@ -155,6 +156,7 @@ Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_T
    WeaponSlotIndex 3
   }
   WeaponSlotComponent "{6AE6325C2B0C20F9}" {
+   Enabled 0
    SignalsSourceAccess SignalsSourceAccessClass "{6AE6325C2B0C20A7}" {
     signalsSuffix "Turret"
    }
