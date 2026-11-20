@@ -1,0 +1,58 @@
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ ridgeline_btr_1 {
+  coords 6392.775 303.932 7269.434
+  angles 0 150.5 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_2 {
+  coords 6386.25 303.16 7281.82
+  angles 0 152.2 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_3 {
+  coords 6379.457 302.311 7294.062
+  angles 0 151 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_4 {
+  coords 6372.637 301.463 7306.288
+  angles 0 150.8 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_5 {
+  coords 6365.847 300.678 7318.531
+  angles 0 151 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_6 {
+  coords 6359.478 299.884 7330.955
+  angles 0 152.9 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_7 {
+  coords 6355.3 299.008 7344.317
+  angles 0 162.6 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+ ridgeline_btr_8 {
+  coords 6351.122 298.056 7357.679
+  angles 0 162.6 0
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
+  m_iTicketsPerRespawn 0
+ }
+}

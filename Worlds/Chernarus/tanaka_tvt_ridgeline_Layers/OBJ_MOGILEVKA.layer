@@ -1,0 +1,23 @@
+GenericEntity ridgeline_cp_flag : "{1A8791C2BC2B8B75}Prefabs/Structures/Military/Flags/FlagPole_01/FlagPole_01_empty.et" {
+ coords 7567 214 5154.8
+}
+$grp StaticModelEntity : "{01AE5FD77A9A4C21}Prefabs/Structures/Military/Camps/TentSmallUS_01/TentSmallUS_01.et" {
+ {
+  coords 7576 214 5154.8
+  angles 0 90 0
+ }
+ {
+  coords 7558 214 5154.8
+  angles 0 90 0
+ }
+}
+$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ {
+  coords 7538 221.5 5270
+  angles 0 -30 0
+ }
+ {
+  coords 7566 220.25 5262
+  angles 0 -30 0
+ }
+}

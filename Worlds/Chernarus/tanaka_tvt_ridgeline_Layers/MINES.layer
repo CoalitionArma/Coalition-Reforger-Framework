@@ -1,0 +1,8 @@
+$grp GenericEntity : "{6B1120A1C4A7E001}Prefabs/Props/Military/AmmoBoxes/CRF_AmmoBox_M15_ATMines.et" {
+ ridgeline_mines_vyshnoye {
+  coords 6546 322 6090
+ }
+ ridgeline_mines_mogilevka {
+  coords 7567 214 5149.8
+ }
+}

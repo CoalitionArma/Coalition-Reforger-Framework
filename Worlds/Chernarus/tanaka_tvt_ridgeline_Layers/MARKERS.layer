@@ -1,0 +1,18 @@
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ ridgeline_roadblock {
+  coords 6541.15 351.471 6320.81
+  m_sDescription "ROADBLOCK"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+ ridgeline_startline {
+  coords 6365.847 300.378 7318.531
+  m_sDescription "Start line (BTRs)"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+  m_bShowForAnyFaction 0
+ }
+}

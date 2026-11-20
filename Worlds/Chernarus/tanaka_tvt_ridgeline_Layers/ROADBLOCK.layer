@@ -1,0 +1,86 @@
+SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ coords 6566.488 352.368 6326.638
+ angles 0 167 0
+}
+SCR_DestructibleBuildingEntity ridgeline_breach_1 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 6562.59 351.962 6325.742
+ angles 0 167 0
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 6558.692 351.474 6324.845
+  angles 0 167 0
+ }
+ {
+  coords 6554.794 351.004 6323.948
+  angles 0 167 0
+ }
+}
+SCR_DestructibleBuildingEntity ridgeline_breach_2 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 6550.896 350.611 6323.052
+ angles 0 167 0
+}
+SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ coords 6546.997 350.541 6322.155
+ angles 0 167 0
+}
+$grp SCR_DestructibleBuildingEntity : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ ridgeline_breach_3 {
+  coords 6543.099 350.468 6321.258
+  angles 0 167 0
+ }
+ ridgeline_breach_4 {
+  coords 6539.201 350.472 6320.362
+  angles 0 167 0
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ {
+  coords 6535.303 350.462 6319.465
+  angles 0 167 0
+ }
+ {
+  coords 6531.404 350.134 6318.568
+  angles 0 167 0
+ }
+}
+SCR_DestructibleBuildingEntity ridgeline_breach_5 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 6527.506 349.364 6317.672
+ angles 0 167 0
+}
+SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ coords 6523.608 347.945 6316.775
+ angles 0 167 0
+}
+SCR_DestructibleBuildingEntity ridgeline_breach_6 : "{C6E57643BA8C4CB4}Prefabs/Systems/Objectives/CRF_BreachWall_4m.et" {
+ coords 6519.71 346.5 6315.878
+ angles 0 167 0
+}
+SCR_DestructibleBuildingEntity : "{1C87C72319097FC1}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m.et" {
+ coords 6515.812 345.047 6314.982
+ angles 0 167 0
+}
+$grp StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+ {
+  coords 6540.039 354.267 6339.024
+  angles 0 15 0
+ }
+ {
+  coords 6537.115 354.259 6338.352
+  angles 0 50 0
+ }
+ {
+  coords 6534.191 354.266 6337.679
+  angles 0 80 0
+ }
+}
+$grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
+ {
+  coords 6552.6 349.59 6311.1
+  angles 0 347 0
+ }
+ {
+  coords 6535.1 349.04 6307.1
+  angles 0 347 0
+ }
+}
