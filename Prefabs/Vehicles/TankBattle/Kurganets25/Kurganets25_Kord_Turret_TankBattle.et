@@ -1,0 +1,11 @@
+Turret : "{5477713058F68E1B}Prefabs/Vehicles/Tracked/Kurganets25/VehParts/Turret/Turret_RWCS_Kord.et.et" {
+ ID "6962FD9C4212C4BE"
+ components {
+  RHS_StabilizedTurretControllerComponent "{6962FD9CCEC04461}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

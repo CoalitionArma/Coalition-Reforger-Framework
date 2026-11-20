@@ -1,0 +1,1393 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{7C2E5A91B3D05149}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 0
+  OffsetRight 0
+  SizeY 0
+  OffsetBottom 0
+ }
+ "Ignore Cursor" 1
+ "Z Order" 99
+ {
+  OverlayWidgetClass "{7C2E5A91B3D0514A}" {
+   Name "Panel"
+   Slot FrameWidgetSlot "{7C2E5A91B3D0514B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 16
+    OffsetTop 16
+    SizeX 572
+    OffsetRight -572
+    SizeY 120
+    OffsetBottom -136
+    Alignment 0.5 0
+    SizeToContent 1
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D0514C}" {
+     Name "Background"
+     Slot OverlayWidgetSlot "{7C2E5A91B3D0514D}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     "Ignore Cursor" 1
+     Color 0.0075 0.0086 0.0123 0.92
+    }
+    ImageWidgetClass "{7C2E5A91B3D0514E}" {
+     Name "AccentEdge"
+     Slot OverlayWidgetSlot "{7C2E5A91B3D0514F}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+     "Ignore Cursor" 1
+     Color 0.5841 0.0369 0.0369 1
+     Size 1 3
+    }
+    SizeLayoutWidgetClass "{7C2E5A91B3D05150}" {
+     Name "Sizer"
+     Slot OverlayWidgetSlot "{7C2E5A91B3D05151}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 14 10 14 8
+     }
+     "Ignore Cursor" 1
+     AllowWidthOverride 1
+     WidthOverride 544
+     {
+      VerticalLayoutWidgetClass "{7C2E5A91B3D05152}" {
+       Name "Content"
+       Slot AlignableSlot "{7C2E5A91B3D05153}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Ignore Cursor" 1
+       {
+        HorizontalLayoutWidgetClass "{7C2E5A91B3D05145}" {
+         Name "ScoreRow"
+         Slot LayoutSlot "{7C2E5A91B3D05146}" {
+          HorizontalAlign 1
+          Padding 0 0 0 8
+         }
+         "Ignore Cursor" 1
+         {
+         SizeLayoutWidgetClass "{7C2E5A91B3D05104}" {
+          Name "Side0Sizer"
+          Slot LayoutSlot "{7C2E5A91B3D05105}" {
+           VerticalAlign 1
+           Padding 0 0 10 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 104
+          {
+          TextWidgetClass "{7C2E5A91B3D05101}" {
+           Name "Side0"
+           Slot AlignableSlot "{7C2E5A91B3D05102}" {
+            HorizontalAlign 3
+            VerticalAlign 1
+           }
+           "Ignore Cursor" 1
+           Color 0.8632 0.8879 0.9301 1
+           Text "BLUFOR 0"
+           "Font Size" 18
+           "Min Font Size" 9
+           "Horizontal Alignment" Right
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{7C2E5A91B3D05103}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D05108}" {
+          Name "Bar0Sizer"
+          Slot LayoutSlot "{7C2E5A91B3D05109}" {
+           VerticalAlign 1
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 150
+          AllowHeightOverride 1
+          HeightOverride 10
+          {
+          ProgressBarWidgetClass "{7C2E5A91B3D05106}" {
+           Name "Bar0"
+           Slot AlignableSlot "{7C2E5A91B3D05107}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           "Ignore Cursor" 1
+           Color 0.807 0.402 0.065 1
+           Maximum 1
+           Current 0
+          }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D0510A}" {
+          Name "BarGap"
+          Slot LayoutSlot "{7C2E5A91B3D0510B}" {
+           VerticalAlign 1
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 16
+          AllowHeightOverride 1
+          HeightOverride 10
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D0510E}" {
+          Name "Bar1Sizer"
+          Slot LayoutSlot "{7C2E5A91B3D0510F}" {
+           VerticalAlign 1
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 150
+          AllowHeightOverride 1
+          HeightOverride 10
+          {
+          ProgressBarWidgetClass "{7C2E5A91B3D0510C}" {
+           Name "Bar1"
+           Slot AlignableSlot "{7C2E5A91B3D0510D}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           "Ignore Cursor" 1
+           Color 0.807 0.402 0.065 1
+           Maximum 1
+           Current 0
+          }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D05113}" {
+          Name "Side1Sizer"
+          Slot LayoutSlot "{7C2E5A91B3D05114}" {
+           VerticalAlign 1
+           Padding 10 0 0 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 104
+          {
+          TextWidgetClass "{7C2E5A91B3D05110}" {
+           Name "Side1"
+           Slot AlignableSlot "{7C2E5A91B3D05111}" {
+            HorizontalAlign 3
+            VerticalAlign 1
+           }
+           "Ignore Cursor" 1
+           Color 0.8632 0.8879 0.9301 1
+           Text "OPFOR 0"
+           "Font Size" 18
+           "Min Font Size" 9
+           "Horizontal Alignment" Left
+           "Vertical Alignment" Center
+           FontProperties FontProperties "{7C2E5A91B3D05112}" {
+            Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+           }
+          }
+          }
+         }
+         }
+        }
+        HorizontalLayoutWidgetClass "{7C2E5A91B3D05147}" {
+         Name "PointRow"
+         Slot LayoutSlot "{7C2E5A91B3D05148}" {
+          HorizontalAlign 1
+         }
+         "Ignore Cursor" 1
+         {
+         SizeLayoutWidgetClass "{7C2E5A91B3D0511C}" {
+          Name "Point0"
+          Slot LayoutSlot "{7C2E5A91B3D0511D}" {
+           VerticalAlign 1
+           Padding 4 0 4 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 42
+          AllowHeightOverride 1
+          HeightOverride 32
+          {
+           OverlayWidgetClass "{7C2E5A91B3D05115}" {
+            Name "Point0Box"
+            Slot AlignableSlot "{7C2E5A91B3D05116}" {
+             HorizontalAlign 3
+             VerticalAlign 3
+            }
+            "Ignore Cursor" 1
+            {
+             ImageWidgetClass "{7C2E5A91B3D05117}" {
+              Name "Point0Back"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D05118}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 0.2 0.2 0.2 0.85
+             }
+             TextWidgetClass "{7C2E5A91B3D05119}" {
+              Name "Point0Text"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D0511A}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 1 1 1 1
+              Text "A"
+              "Font Size" 20
+              "Min Font Size" 10
+              "Horizontal Alignment" Center
+              "Vertical Alignment" Center
+              FontProperties FontProperties "{7C2E5A91B3D0511B}" {
+               Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               OutlineSize 1
+              }
+             }
+            }
+           }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D05125}" {
+          Name "Point1"
+          Slot LayoutSlot "{7C2E5A91B3D05126}" {
+           VerticalAlign 1
+           Padding 4 0 4 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 42
+          AllowHeightOverride 1
+          HeightOverride 32
+          {
+           OverlayWidgetClass "{7C2E5A91B3D0511E}" {
+            Name "Point1Box"
+            Slot AlignableSlot "{7C2E5A91B3D0511F}" {
+             HorizontalAlign 3
+             VerticalAlign 3
+            }
+            "Ignore Cursor" 1
+            {
+             ImageWidgetClass "{7C2E5A91B3D05120}" {
+              Name "Point1Back"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D05121}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 0.2 0.2 0.2 0.85
+             }
+             TextWidgetClass "{7C2E5A91B3D05122}" {
+              Name "Point1Text"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D05123}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 1 1 1 1
+              Text "B"
+              "Font Size" 20
+              "Min Font Size" 10
+              "Horizontal Alignment" Center
+              "Vertical Alignment" Center
+              FontProperties FontProperties "{7C2E5A91B3D05124}" {
+               Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               OutlineSize 1
+              }
+             }
+            }
+           }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D0512E}" {
+          Name "Point2"
+          Slot LayoutSlot "{7C2E5A91B3D0512F}" {
+           VerticalAlign 1
+           Padding 4 0 4 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 42
+          AllowHeightOverride 1
+          HeightOverride 32
+          {
+           OverlayWidgetClass "{7C2E5A91B3D05127}" {
+            Name "Point2Box"
+            Slot AlignableSlot "{7C2E5A91B3D05128}" {
+             HorizontalAlign 3
+             VerticalAlign 3
+            }
+            "Ignore Cursor" 1
+            {
+             ImageWidgetClass "{7C2E5A91B3D05129}" {
+              Name "Point2Back"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D0512A}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 0.2 0.2 0.2 0.85
+             }
+             TextWidgetClass "{7C2E5A91B3D0512B}" {
+              Name "Point2Text"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D0512C}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 1 1 1 1
+              Text "C"
+              "Font Size" 20
+              "Min Font Size" 10
+              "Horizontal Alignment" Center
+              "Vertical Alignment" Center
+              FontProperties FontProperties "{7C2E5A91B3D0512D}" {
+               Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               OutlineSize 1
+              }
+             }
+            }
+           }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D05137}" {
+          Name "Point3"
+          Slot LayoutSlot "{7C2E5A91B3D05138}" {
+           VerticalAlign 1
+           Padding 4 0 4 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 42
+          AllowHeightOverride 1
+          HeightOverride 32
+          {
+           OverlayWidgetClass "{7C2E5A91B3D05130}" {
+            Name "Point3Box"
+            Slot AlignableSlot "{7C2E5A91B3D05131}" {
+             HorizontalAlign 3
+             VerticalAlign 3
+            }
+            "Ignore Cursor" 1
+            {
+             ImageWidgetClass "{7C2E5A91B3D05132}" {
+              Name "Point3Back"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D05133}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 0.2 0.2 0.2 0.85
+             }
+             TextWidgetClass "{7C2E5A91B3D05134}" {
+              Name "Point3Text"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D05135}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 1 1 1 1
+              Text "D"
+              "Font Size" 20
+              "Min Font Size" 10
+              "Horizontal Alignment" Center
+              "Vertical Alignment" Center
+              FontProperties FontProperties "{7C2E5A91B3D05136}" {
+               Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               OutlineSize 1
+              }
+             }
+            }
+           }
+          }
+         }
+         SizeLayoutWidgetClass "{7C2E5A91B3D05140}" {
+          Name "Point4"
+          Slot LayoutSlot "{7C2E5A91B3D05141}" {
+           VerticalAlign 1
+           Padding 4 0 4 0
+          }
+          "Ignore Cursor" 1
+          AllowWidthOverride 1
+          WidthOverride 42
+          AllowHeightOverride 1
+          HeightOverride 32
+          {
+           OverlayWidgetClass "{7C2E5A91B3D05139}" {
+            Name "Point4Box"
+            Slot AlignableSlot "{7C2E5A91B3D0513A}" {
+             HorizontalAlign 3
+             VerticalAlign 3
+            }
+            "Ignore Cursor" 1
+            {
+             ImageWidgetClass "{7C2E5A91B3D0513B}" {
+              Name "Point4Back"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D0513C}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 0.2 0.2 0.2 0.85
+             }
+             TextWidgetClass "{7C2E5A91B3D0513D}" {
+              Name "Point4Text"
+              Slot OverlayWidgetSlot "{7C2E5A91B3D0513E}" {
+               HorizontalAlign 3
+               VerticalAlign 3
+              }
+              "Ignore Cursor" 1
+              Color 1 1 1 1
+              Text "E"
+              "Font Size" 20
+              "Min Font Size" 10
+              "Horizontal Alignment" Center
+              "Vertical Alignment" Center
+              FontProperties FontProperties "{7C2E5A91B3D0513F}" {
+               Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+               OutlineSize 1
+              }
+             }
+            }
+           }
+          }
+         }
+         }
+        }
+        TextWidgetClass "{7C2E5A91B3D05142}" {
+         Name "Detail"
+         Slot LayoutSlot "{7C2E5A91B3D05143}" {
+          HorizontalAlign 3
+          VerticalAlign 1
+         }
+         "Ignore Cursor" 1
+         Color 0.6038 0.6584 0.7454 1
+         Text ""
+         "Font Size" 15
+         "Min Font Size" 9
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{7C2E5A91B3D05144}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D05162}" {
+   Name "Marker0"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05163}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -96
+    SizeY 66
+    OffsetBottom -66
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D05154}" {
+     Name "Marker0Shadow"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05155}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY -1
+      OffsetTop -1
+      SizeX 34
+      OffsetRight -65
+      SizeY 34
+      OffsetBottom -33
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.55
+    }
+    ImageWidgetClass "{7C2E5A91B3D05156}" {
+     Name "Marker0Back"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05157}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 0.2 0.2 0.2 0.85
+    }
+    TextWidgetClass "{7C2E5A91B3D05159}" {
+     Name "Marker0Text"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0515A}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 1 1 1 1
+     Text "A"
+     "Font Size" 20
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D05158}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+    ImageWidgetClass "{7C2E5A91B3D0515B}" {
+     Name "Marker0BarBack"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0515C}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY 34
+      OffsetTop 34
+      SizeX 34
+      OffsetRight -65
+      SizeY 6
+      OffsetBottom -40
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ProgressBarWidgetClass "{7C2E5A91B3D0515D}" {
+     Name "Marker0Bar"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0515E}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 35
+      OffsetTop 35
+      SizeX 32
+      OffsetRight -64
+      SizeY 4
+      OffsetBottom -39
+     }
+     "Ignore Cursor" 1
+     Color 0.807 0.402 0.065 1
+     Maximum 1
+     Current 0
+    }
+    TextWidgetClass "{7C2E5A91B3D05160}" {
+     Name "Marker0Info"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05161}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 42
+      OffsetTop 42
+      SizeX 96
+      OffsetRight -96
+      SizeY 20
+      OffsetBottom -62
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.92 0.96 1
+     Text ""
+     "Font Size" 13
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D0515F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D05172}" {
+   Name "Marker1"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05173}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -96
+    SizeY 66
+    OffsetBottom -66
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D05164}" {
+     Name "Marker1Shadow"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05165}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY -1
+      OffsetTop -1
+      SizeX 34
+      OffsetRight -65
+      SizeY 34
+      OffsetBottom -33
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.55
+    }
+    ImageWidgetClass "{7C2E5A91B3D05166}" {
+     Name "Marker1Back"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05167}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 0.2 0.2 0.2 0.85
+    }
+    TextWidgetClass "{7C2E5A91B3D05169}" {
+     Name "Marker1Text"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0516A}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 1 1 1 1
+     Text "B"
+     "Font Size" 20
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D05168}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+    ImageWidgetClass "{7C2E5A91B3D0516B}" {
+     Name "Marker1BarBack"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0516C}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY 34
+      OffsetTop 34
+      SizeX 34
+      OffsetRight -65
+      SizeY 6
+      OffsetBottom -40
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ProgressBarWidgetClass "{7C2E5A91B3D0516D}" {
+     Name "Marker1Bar"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0516E}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 35
+      OffsetTop 35
+      SizeX 32
+      OffsetRight -64
+      SizeY 4
+      OffsetBottom -39
+     }
+     "Ignore Cursor" 1
+     Color 0.807 0.402 0.065 1
+     Maximum 1
+     Current 0
+    }
+    TextWidgetClass "{7C2E5A91B3D05170}" {
+     Name "Marker1Info"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05171}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 42
+      OffsetTop 42
+      SizeX 96
+      OffsetRight -96
+      SizeY 20
+      OffsetBottom -62
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.92 0.96 1
+     Text ""
+     "Font Size" 13
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D0516F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D05182}" {
+   Name "Marker2"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05183}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -96
+    SizeY 66
+    OffsetBottom -66
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D05174}" {
+     Name "Marker2Shadow"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05175}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY -1
+      OffsetTop -1
+      SizeX 34
+      OffsetRight -65
+      SizeY 34
+      OffsetBottom -33
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.55
+    }
+    ImageWidgetClass "{7C2E5A91B3D05176}" {
+     Name "Marker2Back"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05177}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 0.2 0.2 0.2 0.85
+    }
+    TextWidgetClass "{7C2E5A91B3D05179}" {
+     Name "Marker2Text"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0517A}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 1 1 1 1
+     Text "C"
+     "Font Size" 20
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D05178}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+    ImageWidgetClass "{7C2E5A91B3D0517B}" {
+     Name "Marker2BarBack"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0517C}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY 34
+      OffsetTop 34
+      SizeX 34
+      OffsetRight -65
+      SizeY 6
+      OffsetBottom -40
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ProgressBarWidgetClass "{7C2E5A91B3D0517D}" {
+     Name "Marker2Bar"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0517E}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 35
+      OffsetTop 35
+      SizeX 32
+      OffsetRight -64
+      SizeY 4
+      OffsetBottom -39
+     }
+     "Ignore Cursor" 1
+     Color 0.807 0.402 0.065 1
+     Maximum 1
+     Current 0
+    }
+    TextWidgetClass "{7C2E5A91B3D05180}" {
+     Name "Marker2Info"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05181}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 42
+      OffsetTop 42
+      SizeX 96
+      OffsetRight -96
+      SizeY 20
+      OffsetBottom -62
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.92 0.96 1
+     Text ""
+     "Font Size" 13
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D0517F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D05192}" {
+   Name "Marker3"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05193}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -96
+    SizeY 66
+    OffsetBottom -66
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D05184}" {
+     Name "Marker3Shadow"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05185}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY -1
+      OffsetTop -1
+      SizeX 34
+      OffsetRight -65
+      SizeY 34
+      OffsetBottom -33
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.55
+    }
+    ImageWidgetClass "{7C2E5A91B3D05186}" {
+     Name "Marker3Back"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05187}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 0.2 0.2 0.2 0.85
+    }
+    TextWidgetClass "{7C2E5A91B3D05189}" {
+     Name "Marker3Text"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0518A}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 1 1 1 1
+     Text "D"
+     "Font Size" 20
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D05188}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+    ImageWidgetClass "{7C2E5A91B3D0518B}" {
+     Name "Marker3BarBack"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0518C}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY 34
+      OffsetTop 34
+      SizeX 34
+      OffsetRight -65
+      SizeY 6
+      OffsetBottom -40
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ProgressBarWidgetClass "{7C2E5A91B3D0518D}" {
+     Name "Marker3Bar"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0518E}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 35
+      OffsetTop 35
+      SizeX 32
+      OffsetRight -64
+      SizeY 4
+      OffsetBottom -39
+     }
+     "Ignore Cursor" 1
+     Color 0.807 0.402 0.065 1
+     Maximum 1
+     Current 0
+    }
+    TextWidgetClass "{7C2E5A91B3D05190}" {
+     Name "Marker3Info"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05191}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 42
+      OffsetTop 42
+      SizeX 96
+      OffsetRight -96
+      SizeY 20
+      OffsetBottom -62
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.92 0.96 1
+     Text ""
+     "Font Size" 13
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D0518F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D051A2}" {
+   Name "Marker4"
+   Slot FrameWidgetSlot "{7C2E5A91B3D051A3}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96
+    OffsetRight -96
+    SizeY 66
+    OffsetBottom -66
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D05194}" {
+     Name "Marker4Shadow"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05195}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY -1
+      OffsetTop -1
+      SizeX 34
+      OffsetRight -65
+      SizeY 34
+      OffsetBottom -33
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.55
+    }
+    ImageWidgetClass "{7C2E5A91B3D05196}" {
+     Name "Marker4Back"
+     Slot FrameWidgetSlot "{7C2E5A91B3D05197}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 0.2 0.2 0.2 0.85
+    }
+    TextWidgetClass "{7C2E5A91B3D05199}" {
+     Name "Marker4Text"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0519A}" {
+      Anchor 0 0 0 0
+      PositionX 33
+      OffsetLeft 33
+      PositionY 1
+      OffsetTop 1
+      SizeX 30
+      OffsetRight -63
+      SizeY 30
+      OffsetBottom -31
+     }
+     "Ignore Cursor" 1
+     Color 1 1 1 1
+     Text "E"
+     "Font Size" 20
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D05198}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+    ImageWidgetClass "{7C2E5A91B3D0519B}" {
+     Name "Marker4BarBack"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0519C}" {
+      Anchor 0 0 0 0
+      PositionX 31
+      OffsetLeft 31
+      PositionY 34
+      OffsetTop 34
+      SizeX 34
+      OffsetRight -65
+      SizeY 6
+      OffsetBottom -40
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ProgressBarWidgetClass "{7C2E5A91B3D0519D}" {
+     Name "Marker4Bar"
+     Slot FrameWidgetSlot "{7C2E5A91B3D0519E}" {
+      Anchor 0 0 0 0
+      PositionX 32
+      OffsetLeft 32
+      PositionY 35
+      OffsetTop 35
+      SizeX 32
+      OffsetRight -64
+      SizeY 4
+      OffsetBottom -39
+     }
+     "Ignore Cursor" 1
+     Color 0.807 0.402 0.065 1
+     Maximum 1
+     Current 0
+    }
+    TextWidgetClass "{7C2E5A91B3D051A0}" {
+     Name "Marker4Info"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051A1}" {
+      Anchor 0 0 0 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 42
+      OffsetTop 42
+      SizeX 96
+      OffsetRight -96
+      SizeY 20
+      OffsetBottom -62
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.92 0.96 1
+     Text ""
+     "Font Size" 13
+     "Min Font Size" 8
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{7C2E5A91B3D0519F}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 1
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D051AA}" {
+   Name "MinimapPanel"
+   Slot FrameWidgetSlot "{7C2E5A91B3D051AB}" {
+    Anchor 1 1 1 1
+    PositionX -276
+    OffsetLeft -276
+    PositionY -386
+    OffsetTop -386
+    SizeX 260
+    OffsetRight 16
+    SizeY 260
+    OffsetBottom 126
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D051A4}" {
+     Name "MinimapBackground"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051A5}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     "Ignore Cursor" 1
+     Color 0.0075 0.0086 0.0123 0.85
+    }
+    ImageWidgetClass "{7C2E5A91B3D051A6}" {
+     Name "MinimapAccent"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051A7}" {
+      Anchor 0 0 1 0
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 3
+      OffsetBottom -3
+     }
+     "Ignore Cursor" 1
+     Color 0.5841 0.0369 0.0369 1
+    }
+    CanvasWidgetClass "{7C2E5A91B3D051A8}" {
+     Name "MinimapCanvas"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051A9}" {
+      Anchor 0 0 1 1
+      PositionX 8
+      OffsetLeft 8
+      PositionY 10
+      OffsetTop 10
+      SizeX -16
+      OffsetRight 8
+      SizeY -18
+      OffsetBottom 8
+     }
+     "Ignore Cursor" 1
+    }
+   }
+  }
+  FrameWidgetClass "{7C2E5A91B3D051C0}" {
+   Name "Crosshair"
+   Slot FrameWidgetSlot "{7C2E5A91B3D051C1}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 36
+    OffsetRight -36
+    SizeY 36
+    OffsetBottom -36
+   }
+   "Ignore Cursor" 1
+   {
+    ImageWidgetClass "{7C2E5A91B3D051AC}" {
+     Name "TickTop"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051AD}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 1
+      OffsetTop 1
+      SizeX 4
+      OffsetRight -20
+      SizeY 12
+      OffsetBottom -13
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ImageWidgetClass "{7C2E5A91B3D051AE}" {
+     Name "TickBottom"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051AF}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 23
+      OffsetTop 23
+      SizeX 4
+      OffsetRight -20
+      SizeY 12
+      OffsetBottom -35
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ImageWidgetClass "{7C2E5A91B3D051B0}" {
+     Name "TickLeft"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051B1}" {
+      Anchor 0 0 0 0
+      PositionX 1
+      OffsetLeft 1
+      PositionY 16
+      OffsetTop 16
+      SizeX 12
+      OffsetRight -13
+      SizeY 4
+      OffsetBottom -20
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ImageWidgetClass "{7C2E5A91B3D051B2}" {
+     Name "TickRight"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051B3}" {
+      Anchor 0 0 0 0
+      PositionX 23
+      OffsetLeft 23
+      PositionY 16
+      OffsetTop 16
+      SizeX 12
+      OffsetRight -35
+      SizeY 4
+      OffsetBottom -20
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ImageWidgetClass "{7C2E5A91B3D051B4}" {
+     Name "Dot"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051B5}" {
+      Anchor 0 0 0 0
+      PositionX 16
+      OffsetLeft 16
+      PositionY 16
+      OffsetTop 16
+      SizeX 4
+      OffsetRight -20
+      SizeY 4
+      OffsetBottom -20
+     }
+     "Ignore Cursor" 1
+     Color 0 0 0 0.6
+    }
+    ImageWidgetClass "{7C2E5A91B3D051B6}" {
+     Name "TickTop"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051B7}" {
+      Anchor 0 0 0 0
+      PositionX 17
+      OffsetLeft 17
+      PositionY 2
+      OffsetTop 2
+      SizeX 2
+      OffsetRight -19
+      SizeY 10
+      OffsetBottom -12
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.95 1 0.95
+    }
+    ImageWidgetClass "{7C2E5A91B3D051B8}" {
+     Name "TickBottom"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051B9}" {
+      Anchor 0 0 0 0
+      PositionX 17
+      OffsetLeft 17
+      PositionY 24
+      OffsetTop 24
+      SizeX 2
+      OffsetRight -19
+      SizeY 10
+      OffsetBottom -34
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.95 1 0.95
+    }
+    ImageWidgetClass "{7C2E5A91B3D051BA}" {
+     Name "TickLeft"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051BB}" {
+      Anchor 0 0 0 0
+      PositionX 2
+      OffsetLeft 2
+      PositionY 17
+      OffsetTop 17
+      SizeX 10
+      OffsetRight -12
+      SizeY 2
+      OffsetBottom -19
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.95 1 0.95
+    }
+    ImageWidgetClass "{7C2E5A91B3D051BC}" {
+     Name "TickRight"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051BD}" {
+      Anchor 0 0 0 0
+      PositionX 24
+      OffsetLeft 24
+      PositionY 17
+      OffsetTop 17
+      SizeX 10
+      OffsetRight -34
+      SizeY 2
+      OffsetBottom -19
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.95 1 0.95
+    }
+    ImageWidgetClass "{7C2E5A91B3D051BE}" {
+     Name "Dot"
+     Slot FrameWidgetSlot "{7C2E5A91B3D051BF}" {
+      Anchor 0 0 0 0
+      PositionX 17
+      OffsetLeft 17
+      PositionY 17
+      OffsetTop 17
+      SizeX 2
+      OffsetRight -19
+      SizeY 2
+      OffsetBottom -19
+     }
+     "Ignore Cursor" 1
+     Color 0.9 0.95 1 0.95
+    }
+   }
+  }
+ }
+}

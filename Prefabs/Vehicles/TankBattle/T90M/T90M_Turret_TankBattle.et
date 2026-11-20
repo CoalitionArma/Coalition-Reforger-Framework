@@ -1,0 +1,11 @@
+Turret : "{AA0A38572414DC30}Prefabs/Vehicles/Tracked/T90M2/VehParts/Turret/T90M2_Turret.et" {
+ ID "6A0A967B25203289"
+ components {
+  RHS_StabilizedTurretControllerComponent "{6A0A9671F1EDB677}" {
+   GetUpdateEventsWhenEmpty 1
+   CanBeOverridden 1
+   CanAimOnlyInADS 0
+   UniqueTurretName "tb_maingun"
+  }
+ }
+}

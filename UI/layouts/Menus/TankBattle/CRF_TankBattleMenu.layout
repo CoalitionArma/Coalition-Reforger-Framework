@@ -1,0 +1,181 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{7C2E5A91B3D05201}" {
+   Name "PanelBorder"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05202}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -422
+    OffsetLeft -422
+    PositionY -302
+    OffsetTop -302
+    SizeX 384
+    OffsetRight 38
+    SizeY 604
+    OffsetBottom -302
+   }
+   Color 0.75 0.35 0 1
+  }
+  ImageWidgetClass "{7C2E5A91B3D05203}" {
+   Name "PanelBg"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05204}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 600
+    OffsetBottom -300
+   }
+   Color 0.05 0.06 0.09 0.95
+  }
+  ImageWidgetClass "{7C2E5A91B3D05205}" {
+   Name "TitleBar"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05206}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 46
+    OffsetBottom 254
+   }
+   Color 0.75 0.35 0 1
+  }
+  TextWidgetClass "{7C2E5A91B3D05207}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05208}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -420
+    OffsetLeft -420
+    PositionY -300
+    OffsetTop -300
+    SizeX 380
+    OffsetRight 40
+    SizeY 46
+    OffsetBottom 254
+   }
+   Color 1 1 1 1
+   Text "PICK YOUR TANK"
+   "Font Size" 22
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7C2E5A91B3D05209}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    Bold 1
+    OutlineSize 2
+    ShadowSize 2
+    ShadowOffset 1 1
+   }
+  }
+  TextWidgetClass "{7C2E5A91B3D0520A}" {
+   Name "SubTitle"
+   Slot FrameWidgetSlot "{7C2E5A91B3D0520B}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -408
+    OffsetLeft -408
+    PositionY -250
+    OffsetTop -250
+    SizeX 356
+    OffsetRight 52
+    SizeY 40
+    OffsetBottom 210
+   }
+   Color 0.72 0.77 0.87 1
+   Text "Pick your tank."
+   "Font Size" 13
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{7C2E5A91B3D0520C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{7C2E5A91B3D0520D}" {
+   Name "Divider1"
+   Slot FrameWidgetSlot "{7C2E5A91B3D0520E}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -400
+    OffsetLeft -400
+    PositionY -206
+    OffsetTop -206
+    SizeX 340
+    OffsetRight 60
+    SizeY 2
+    OffsetBottom 204
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  ScrollLayoutWidgetClass "{7C2E5A91B3D0520F}" {
+   Name "TankListScroll"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05210}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -408
+    OffsetLeft -408
+    PositionY -198
+    OffsetTop -198
+    SizeX 356
+    OffsetRight 52
+    SizeY 440
+    OffsetBottom -242
+   }
+   {
+    VerticalLayoutWidgetClass "{7C2E5A91B3D05211}" {
+     Name "TankList"
+     Slot AlignableSlot "{7C2E5A91B3D05212}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{7C2E5A91B3D05213}" {
+   Name "Divider2"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05214}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -400
+    OffsetLeft -400
+    PositionY 248
+    OffsetTop 248
+    SizeX 340
+    OffsetRight 60
+    SizeY 2
+    OffsetBottom -250
+   }
+   Color 0.75 0.35 0 0.5
+  }
+  TextWidgetClass "{7C2E5A91B3D05215}" {
+   Name "HintText"
+   Slot FrameWidgetSlot "{7C2E5A91B3D05216}" {
+    Anchor 1 0.5 1 0.5
+    PositionX -408
+    OffsetLeft -408
+    PositionY 256
+    OffsetTop 256
+    SizeX 356
+    OffsetRight 52
+    SizeY 38
+    OffsetBottom -294
+   }
+   Color 0.72 0.77 0.87 1
+   Text "Esc closes it for a few seconds."
+   "Font Size" 13
+   "Min Font Size" 9
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{7C2E5A91B3D05217}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+ }
+}
