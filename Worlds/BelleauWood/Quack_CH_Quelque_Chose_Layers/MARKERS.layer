@@ -1,0 +1,105 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ OPFORHQ {
+  coords 4451.875 184.946 4701.476
+  angles 0 0 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR HQ"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon2 {
+  coords 4100.729 138.954 11.336
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon1 {
+  coords 6138.509 141.75 3839.647
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon5 {
+  coords 2705.762 201.092 5112.967
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon3 {
+  coords 14.951 313.845 202.417
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon4 {
+  coords 13.818 328.508 2241.26
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ cordon6 {
+  coords 6539.003 179.994 1639.505
+  angles 0 0 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_sQuadName "recon"
+  m_sDescription "cordon"
+  m_aVisibleForFactions {
+   "OPFOR"
+   "BLUFOR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
+COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ coords 4361.879 185.219 4831.946
+ m_MarkerColor 0.494 0.11 0.875 1
+ m_sQuadName "mark-exclamation"
+ m_sDescription "Vehicles"
+}
