@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{AC663AED2E6A734A}UI/Images/Flags/Misc/French Resistance Flag.edds"
+ Name "{9FA299A5E920CE28}UI/Images/Flags/Misc/French_Resistance_Flag.edds"
  Configurations {
   JPGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

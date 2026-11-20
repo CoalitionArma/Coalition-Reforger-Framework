@@ -31,15 +31,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iTimeToRespawn 60
  m_iRespawnCutoffMinutes 0
  m_eRespawnMode 0
- m_iTimeLimitMinutes 45
+ m_iTimeLimitMinutes 90
  m_bLockUnusedSlots 1
- m_bUseSafestartTimeLimit 0
- m_iSafestartTimeLimit 0
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
  m_bUseCVON 1
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6AE345A354776EE9}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "German forces attempt to disrupt French Resistance logistics in the Belleu Wood region"\
+   m_sTextData "German forces attempt to disrupt French Resistance logistics in the Belleu region"\
    ""\
    "BLUFOR Composition: Light Infantry"\
    "BLUFOR Assets: MMGx1, Pioneer kits."\
@@ -57,7 +57,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6AE345A354777191}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "SITUATION"\
-   "Friendly civilians have reported the deployment of a special Germen unit tasked with eliminating our supplies in the area. We should expect more than just MP40s and pistols. Perhaps mortars or maybe MG-32s? Furthermore, the routes in and out of the area have been cordoned off. Normally we would just destroy our own supplies and make our escape, but we've had trouble moving the items out of the region. "\
+   "Friendly civilians have reported the deployment of a special Germen unit tasked with eliminating our supplies in the area. We should expect more than just MP40s and pistols. Perhaps mortars or maybe machine guns? Furthermore, the routes in and out of the area have been cordoned off. Normally we would just destroy our own supplies and make our escape, but we've had trouble moving the items out of the region. "\
    ""\
    "We have too many supplies and will not be able to destroy the evidence in time. We'll have to fight it out this time."\
    ""\
@@ -79,9 +79,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Commander's Notes"
    m_sTextData "• The Special German unit left the area North of Lucy-Le-Bocage early this morning. With that much time outside our surveillance they can be expected to come from any direction."\
    ""\
-   "• We managed to accumulate a lot of sandbags and constantan wire. These should be useful to defend our supply caches. But we should use discretion when deploying it, as it could betray our location."\
+   "• We managed to accumulate a lot of sandbags and concertina wire. These should be useful to defend our supply caches. But we should use discretion when deploying it, as it could betray our location."\
    ""\
-   "• While we may know where the enemy HQ and cordening efforts are located, we should avoid those areas for now. We don't have enough man power to simultaneously assault and defend."\
+   "• While we may know where the enemy HQ and cordoning efforts are located, we should avoid those areas for now. We don't have enough man power to simultaneously assault and defend."\
    ""\
    "• We only have one radio backpack. Fortunately the vehicles come with their own radios, but they need to be filled in by the radio operator first."
    m_aFactionKeys {
@@ -94,9 +94,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "SITUATION"\
    "Your unit has been tasked with destroying French partisan fighting capability. "\
    ""\
-   "Intellegence has determined that the organization has been moving stolen supplies, guns, and ammo through the region, and have marked likely storage locations on your map. "\
+   "Intelligence has determined that the organization has been moving stolen supplies, guns, and ammo through the region, and have marked likely storage locations on your map. "\
    ""\
-   "There have been a lot of successful raids on other German units in the area by partisan forces. Expect enemy fighters to use similer firearms to our own."\
+   "There have been a lot of successful raids on other German units in the area by partisan forces. Expect enemy fighters to use similar firearms to our own."\
    ""\
    "MISSION"\
    "Find and destroy French supply cache within the area."\
@@ -113,7 +113,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6AE367550F3977F1}" {
    m_sTitle "Commander's Notes"
-   m_sTextData "• We're currently deployed at Outpost Bravo."\
+   m_sTextData "• We're currently deployed at Outpost Bravo (North of Lucy-Le-Bocage)."\
    ""\
    "• There are cordon teams that have established checkpoints to prevent the enemy from escaping with their supplies in tow."\
    ""\
@@ -392,6 +392,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_iOPFORTickets 0
  m_iINDFORTickets 0
  m_iCIVTickets 0
+ m_bHideOtherSpectatorFactions 1
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{FD8E1AABA8F47464}Configs/Gearscripts/Custom/Quack/COA_GS_Quack_French_Resistance.conf"
@@ -442,6 +443,32 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
      }
     }
    }
+  }
+ }
+}
+COA_ForwardDeployBorder : "{19D5747507E8906B}PrefabsMissionMaking/GameBorders/ForwardDeploy/BLUFOR_ForardDeployZone.et" {
+ coords 2850.527 204.665 1277.46
+ Points {
+  ShapePoint "{6AE816CEDC7F2EB3}" {
+   Position -1217.17 0 -554.994
+  }
+  ShapePoint "{6AE816CED0B164D6}" {
+   Position -1908.072 0 791.9
+  }
+  ShapePoint "{6AE816CED7493C98}" {
+   Position -1808.871 0 1907.196
+  }
+  ShapePoint "{6AE816CEE8083C92}" {
+   Position -1138.71 0 3015.791
+  }
+  ShapePoint "{6AE816CEE3083146}" {
+   Position 1961.198 0 2507.448
+  }
+  ShapePoint "{6AE816CEE4AF2B9E}" {
+   Position 2238.638 0 1694.705
+  }
+  ShapePoint "{6AE816CEF003C68B}" {
+   Position 2174.351 0 250.735
   }
  }
 }
