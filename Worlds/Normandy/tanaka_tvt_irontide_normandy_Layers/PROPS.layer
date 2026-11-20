@@ -1,0 +1,28 @@
+$grp GenericEntity : "{2C9758BF5D1E3430}Prefabs/Structures/Bunkers/ConcreteMG_Nest.et" {
+ irontide_tobruk_1 {
+  coords 3566 40.312 4668
+  angles 0 -170 0
+ }
+ irontide_tobruk_2 {
+  coords 3622 38.375 4643
+  angles 0 -170 0
+ }
+ irontide_tobruk_3 {
+  coords 3742 42.484 4607
+  angles 0 -170 0
+ }
+ irontide_tobruk_4 {
+  coords 3822 44.109 4581
+  angles 0 -170 0
+ }
+}
+$grp GenericEntity : "{8B0FA9CC680E4E4C}Prefabs/Structures/Bunkers/mgnest.et" {
+ irontide_mgnest_east {
+  coords 3882 43.25 4564
+  angles 0 -35 0
+ }
+ irontide_mgnest_draw {
+  coords 3551.6 29.35 4693.1
+  angles 0 90 0
+ }
+}

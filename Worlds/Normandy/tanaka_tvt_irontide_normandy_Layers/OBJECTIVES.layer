@@ -1,0 +1,15 @@
+$grp GameEntity {
+ irontide_obj_beach {
+  coords 3690 3.922 4745
+ }
+ irontide_obj_hubert {
+  coords 3704 45.69 4400
+ }
+ irontide_obj_garrison {
+  coords 4255 41.508 4195
+ }
+ irontide_spawn_beachhead {
+  coords 3725 6.97 4720
+  angles 0 -90 0
+ }
+}

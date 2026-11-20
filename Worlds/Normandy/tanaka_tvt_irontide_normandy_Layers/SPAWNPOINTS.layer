@@ -1,0 +1,23 @@
+COA_StaticSpawnPoint BLUFOR_Staging_Spawn : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 3200 3.9 4833.2
+ m_SpawnPointSettings COA_SpawnPointData "{68E15E4C4DE26D17}" {
+  m_iSpawnPointRadius 3
+ }
+}
+COA_StaticSpawnPoint OPFOR_Spawn : "{0B3312C6940005B9}PrefabsMissionMaking/SpawnPoints/SpawnPoints/OPFOR_Spawn.et" {
+ coords 3640 38.219 4610
+ angles 0 10 0
+}
+$grp GameEntity {
+ Zone2_OPFOR_Spawn {
+  coords 3702 46.41 4290
+ }
+ Zone3_BLUFOR_Spawn {
+  coords 3793.8 42.31 4434
+  angles 0 90 0
+ }
+ Zone3_OPFOR_Spawn {
+  coords 4320 42.56 4100
+  angles 0 -35 0
+ }
+}
