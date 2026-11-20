@@ -142,7 +142,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6AE56E40F6DC6A35}" {
+  COA_SlottingGroup "{6AE821DA1EE72DCA}" {
    m_sCallsign "Cell Lead"
    m_FlagType INFANTRY
    m_aSlots {
@@ -153,7 +153,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC687C}" {
+  COA_SlottingGroup "{6AE821DA1EE72B1F}" {
    m_sCallsign "Cell 1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -167,7 +167,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC6937}" {
+  COA_SlottingGroup "{6AE821DA1EE728D2}" {
    m_sCallsign "Cell 2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -181,7 +181,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC6603}" {
+  COA_SlottingGroup "{6AE821DA1EE729C1}" {
    m_sCallsign "Cell 3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -195,7 +195,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC67EB}" {
+  COA_SlottingGroup "{6AE821DA1EE726A7}" {
    m_sCallsign "Cell 4"
    m_FlagType INFANTRY
    m_aSlots {
@@ -209,24 +209,24 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC64CF}" {
+  COA_SlottingGroup "{6AE821DA1EE7279C}" {
    m_sCallsign "MMG"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
     MEDIC
     MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_MACHINEGUN
     TEAM_LEAD
     MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_ANTITANK
+    ASSISTANT_MEDIUM_MACHINEGUN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
  }
  m_OPFORSlots {
-  COA_SlottingGroup "{6AE56E40F6DC6311}" {
+  COA_SlottingGroup "{6AE821DA1EE72208}" {
    m_sCallsign "COY"
    m_FlagType SIGNAL
    m_aSlots {
@@ -237,7 +237,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC60F4}" {
+  COA_SlottingGroup "{6AE821DA1EE723F8}" {
    m_sCallsign "Medical Detachment"
    m_FlagType MEDICAL
    m_aSlots {
@@ -250,7 +250,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC61B6}" {
+  COA_SlottingGroup "{6AE821DA1EE720E6}" {
    m_sCallsign "1PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -261,7 +261,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7EA2}" {
+  COA_SlottingGroup "{6AE821DA1EE721FC}" {
    m_sCallsign "1-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -271,14 +271,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7C7B}" {
+  COA_SlottingGroup "{6AE821DA1EE73EC6}" {
    m_sCallsign "1-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -288,14 +288,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7D36}" {
+  COA_SlottingGroup "{6AE821DA1EE73FA4}" {
    m_sCallsign "1-3"
    m_FlagType INFANTRY
    m_aSlots {
@@ -305,14 +305,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7A0C}" {
+  COA_SlottingGroup "{6AE821DA1EE73C9E}" {
    m_sCallsign "2PLT"
    m_FlagType SIGNAL
    m_aSlots {
@@ -323,7 +323,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7BF8}" {
+  COA_SlottingGroup "{6AE821DA1EE73A60}" {
    m_sCallsign "2-1"
    m_FlagType INFANTRY
    m_aSlots {
@@ -333,14 +333,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC78B3}" {
+  COA_SlottingGroup "{6AE821DA1EE73B32}" {
    m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
@@ -350,15 +350,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7670}" {
-   m_sCallsign "2-3"
+  COA_SlottingGroup "{6AE821DA1EE73814}" {
+   m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -367,14 +367,14 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
     GRENADIER
+    GRENADIER
+    RIFLEMAN
    }
    m_eRespawnPoolType PER_SLOT
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AE56E40F6DC7741}" {
+  COA_SlottingGroup "{6AE821DA1EE7390F}" {
    m_sCallsign "MMG"
    m_FlagType MACHINEGUN
    m_aSlots {
