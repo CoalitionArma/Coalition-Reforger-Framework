@@ -2,10 +2,10 @@ GameEntity {
  components {
   CRF_AreaTimerComponent "{6AE41828C85FC88A}" {
    m_sZoneLabel "Bonzievka Petrovka"
-   m_fCaptureRadius 500
+   m_fCaptureRadius 300
    m_iCountdownSeconds 300
    m_iMinPlayersToCapture 3
   }
  }
- coords 3449.874 181.243 13028.992
+ coords 3449.874 178.581 13028.992
 }

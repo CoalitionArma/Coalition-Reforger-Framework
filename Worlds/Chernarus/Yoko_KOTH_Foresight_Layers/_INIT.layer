@@ -35,8 +35,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "BLUFOR Composition: Armored Infantry Platoon"\
    "BLUFOR Assets: 2x M1A2 and Squad intergrated MAT"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "OPFOR Assets: 2X T-72B and Squad integrated MAT"\
+   "OPFOR Composition: Armored Infantry Platoon"\
+   "OPFOR Assets: 2X T-72B and Squad intergrated MAT"\
    ""\
    "Time: 12:00"\
    ""\
@@ -51,7 +51,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Capture the Town of Bonzievka Petrovka"\
    ""\
    "INTENT"\
-   "Use tanks to cover your advance into the town, both sides are given ample amount of space to allow flanking maneuvers."\
+   "Use tanks to cover your advance into the town, both sides are given an ample amount of space to allow flanking maneuvers."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -66,7 +66,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Capture the Town of Bonzievka Petrovka"\
    ""\
    "INTENT"\
-   "Use tanks to cover your advance into the town, both sides are given ample amount of space to allow flanking maneuvers."\
+   "Use tanks to cover your advance into the town, both sides are given an ample amount of space to allow flanking maneuvers."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -387,7 +387,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6AE8187B5F557A90" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {

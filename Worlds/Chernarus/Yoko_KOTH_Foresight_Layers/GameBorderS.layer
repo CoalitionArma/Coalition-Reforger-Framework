@@ -14,10 +14,10 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position 194.648 0 -519.689
   }
   ShapePoint "{6AE6169202197B72}" {
-   Position -214.134 0 -559.794
+   Position -207.384 0 -567.227
   }
   ShapePoint "{6AE61692095806F5}" {
-   Position -683.542 0 -837.918
+   Position -615.002 0 -923.82
   }
   ShapePoint "{6AE616920CF7EFD4}" {
    Position -1619.719 0 -1598.525
@@ -26,7 +26,7 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position -1883.509 0 -1876.469
   }
   ShapePoint "{6AE61692304EA0A5}" {
-   Position -2387.859 -0 -1262.516
+   Position -2387.859 0 -1262.516
   }
   ShapePoint "{6AE616923227EA9A}" {
    Position -2160.252 0 -841.929
@@ -56,7 +56,7 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
    Position 2025.309 0 953.311
   }
   ShapePoint "{6AE61693CB9293DA}" {
-   Position 2608.151 -0 620.115
+   Position 2608.151 0 620.115
   }
   ShapePoint "{6AE61693CC40A390}" {
    Position 3122.202 0 289.729
