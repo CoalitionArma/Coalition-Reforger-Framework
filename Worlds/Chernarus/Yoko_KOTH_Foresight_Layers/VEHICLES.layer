@@ -1,0 +1,50 @@
+$grp GenericEntity : "{BBDCB264A0AE9B2E}PrefabsMissionMaking/Systems/VehicleDepot/VehicleDepot.et" {
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_fVehicleFacingOffset -180
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "T72B"
+      m_sVehiclePrefab "{A59D6217249262A9}Prefabs/Vehicles/Tracked/T72B/T72B_Green_noHEAT_no_HE.et"
+      m_eCostType USES
+      m_iCost 4
+     }
+     CRF_VehicleDepotVehicle "{6AE4182820A4A5CC}" {
+      m_sVehicleName "URAL"
+      m_sVehiclePrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+      m_eCostType USES
+      m_iCost 15
+     }
+    }
+   }
+  }
+  coords 1438.085 287.231 11897.402
+  angles 0 -127.859 0
+ }
+ {
+  components {
+   CRF_VehicleDepot "{664C7C2465880153}" {
+    m_fVehicleFacingOffset -180
+    m_bEnableSpawnVisuals 1
+    m_aVehicles {
+     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+      m_sVehicleName "M1A1"
+      m_sVehiclePrefab "{4330AE9AF8CFA48B}Prefabs/Vehicles/Tracked/M1A1/M1A1_TUSK_Woodland_noHEAT_noHE.et"
+      m_eCostType USES
+      m_iCost 4
+     }
+     CRF_VehicleDepotVehicle "{6AE41829D7916163}" {
+      m_sVehicleName "Transport Truck"
+      m_sVehiclePrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+      m_eCostType USES
+      m_iCost 15
+     }
+    }
+   }
+  }
+  coords 5781.023 188.652 12983.208
+  angles 0 86.35 0
+ }
+}
