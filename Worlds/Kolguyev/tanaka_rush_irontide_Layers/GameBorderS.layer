@@ -33,7 +33,7 @@ COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.
   }
  }
 }
-COA_SafestartBorder irontide_safestart_opfor : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+COA_SafestartBorder irontide_safestart_defenders : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
  coords 8600 20 7130
  Points {
   ShapePoint "{6B1109E1B05AE677}" {

@@ -1,50 +1,50 @@
-$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
- irontide_lcvp_1 {
+$grp COA_VehicleSpawner : "{8A85A4193BD323FD}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/OPFOR_VehicleSpawner.et" {
+ irontide_btr_1 {
   coords 9638.6 0.5 7106
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_2 {
+ irontide_btr_2 {
   coords 9638.6 0.5 7120
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_3 {
+ irontide_btr_3 {
   coords 9638.6 0.5 7134
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_4 {
+ irontide_btr_4 {
   coords 9638.6 0.5 7148
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_5 {
+ irontide_btr_5 {
   coords 9638.6 0.5 7162
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_6 {
+ irontide_btr_6 {
   coords 9638.6 0.5 7176
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_7 {
+ irontide_btr_7 {
   coords 9638.6 0.5 7190
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
- irontide_lcvp_spare {
+ irontide_btr_8 {
   coords 9638.6 0.5 7204
-  m_rVehicle "{69BACDC7B0A7CAFE}Prefabs/Vehicles/LCVP.et"
-  m_sFactionKey "BLUFOR"
+  m_rVehicle "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+  m_sFactionKey "OPFOR"
   m_iTicketsPerRespawn 0
  }
 }

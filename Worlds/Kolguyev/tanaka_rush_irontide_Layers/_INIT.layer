@@ -18,20 +18,20 @@ SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
  components {
   CRF_CasualtyCounterGamemodeComponent "{6B1109E1CA5C0A01}" {
-   m_sMonitoredFaction "BLUFOR"
+   m_sMonitoredFaction "OPFOR"
    m_fCasualtyLimitPercent 250
-   m_sWinningFaction "OPFOR"
+   m_sWinningFaction "BLUFOR"
    m_fAnnounceEveryPercent 50
   }
   CRF_ObjectiveChainGamemodeComponent "{6B1109E1AEAF0007}" {
-   m_sAttackerFaction "BLUFOR"
-   m_sDefenderFaction "OPFOR"
+   m_sAttackerFaction "OPFOR"
+   m_sDefenderFaction "BLUFOR"
    m_aObjectives {
     CRF_ObjectiveChainObjective "{6B1109E13FE40ED1}" {
      m_sTitle "Breach the sea wall and control Red Beach"
-     m_sDescription "Blow a gap in the sea wall at one of the marked breach points: an engineer with a satchel, an M112 block or a Bangalore sets the charge (10 s fuse). Then hold Red Beach - at least 3 of you on the beach and the slope above it, at most 2 Germans - for 60 seconds."
+     m_sDescription "Blow a gap in the sea wall at one of the marked breach points: a sapper with a satchel charge or a TNT block sets the charge (10 s fuse). A blown section leaves a 4 m gap. Then hold Red Beach - at least 3 of you on the beach and the slope above it, at most 2 Marines - for 60 seconds."
      m_sDefenderTitle "Hold the sea wall and Red Beach"
-     m_sDefenderDescription "Keep the Americans off the beach. Once they blow a gap in the wall, they need 60 seconds with you down to 2 or fewer on the beach and the slope."
+     m_sDefenderDescription "Keep the Russians off the beach. Once they blow a gap in the wall, they need 60 seconds with you down to 2 or fewer on the beach and the slope."
      m_sZoneEntityName "irontide_obj_beach"
      m_fRadius 120
      m_fHoldSeconds 60
@@ -49,18 +49,18 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
      m_aRespawnMoves {
       CRF_ObjectiveChainRespawnMove "{6B1109E125258F12}" {
        m_sMarkerEntityName "irontide_spawn_beachhead"
-       m_sFaction "BLUFOR"
+       m_sFaction "OPFOR"
       }
       CRF_ObjectiveChainRespawnMove "{6B1109E125DDF2F8}" {
-       m_sMarkerEntityName "Zone2_OPFOR_Spawn"
-       m_sFaction "OPFOR"
+       m_sMarkerEntityName "Zone2_Defender_Spawn"
+       m_sFaction "BLUFOR"
       }
      }
     }
     CRF_ObjectiveChainObjective "{6B1109E164F62576}" {
-     m_sTitle "Capture the spotting position at the coal silo"
-     m_sDescription "The artillery spotters on the silo pad see the whole beach. Take the tower and the observation post next to it: at least 2 of you, at most 1 German, for 45 seconds."
-     m_sDefenderTitle "Hold the spotting position at the coal silo"
+     m_sTitle "Capture the observation post at the coal silo"
+     m_sDescription "The Marines' forward observers on the silo pad see the whole beach. Take the tower and the observation post next to it: at least 2 of you, at most 1 Marine, for 45 seconds."
+     m_sDefenderTitle "Hold the observation post at the coal silo"
      m_sDefenderDescription "Hold the tower and the observation post at the coal silo."
      m_sZoneEntityName "irontide_obj_silo"
      m_fRadius 45
@@ -69,19 +69,19 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
      m_iMaxDefenders 1
      m_aRespawnMoves {
       CRF_ObjectiveChainRespawnMove "{6B1109E1C44A8B52}" {
-       m_sMarkerEntityName "Zone3_BLUFOR_Spawn"
-       m_sFaction "BLUFOR"
+       m_sMarkerEntityName "Zone3_Attacker_Spawn"
+       m_sFaction "OPFOR"
       }
       CRF_ObjectiveChainRespawnMove "{6B1109E172AAF0D3}" {
-       m_sMarkerEntityName "Zone3_OPFOR_Spawn"
-       m_sFaction "OPFOR"
+       m_sMarkerEntityName "Zone3_Defender_Spawn"
+       m_sFaction "BLUFOR"
       }
      }
     }
     CRF_ObjectiveChainObjective "{6B1109E168C906D9}" {
-     m_sTitle "Capture the garrison (Nadezhda mine)"
-     m_sDescription "The German garrison holds the mine yard on the ridge: three huts, the tents and the flag. Clear it and hold it - at least 3 of you, at most 1 German, for 90 seconds."
-     m_sDefenderTitle "Hold the garrison (Nadezhda mine)"
+     m_sTitle "Capture the command post (Nadezhda mine)"
+     m_sDescription "The Marine platoon's command post is in the mine yard on the ridge: three huts, the tents and the flag. Clear it and hold it - at least 3 of you, at most 1 Marine, for 90 seconds."
+     m_sDefenderTitle "Hold the command post (Nadezhda mine)"
      m_sDefenderDescription "The last position. Hold the mine yard."
      m_sZoneEntityName "irontide_obj_garrison"
      m_fRadius 65
@@ -95,8 +95,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_fBreachFuseSeconds 10
    m_aBreachChargeKeywords {
     "Explosive_Satchels"
-    "DemoBlock_M112"
-    "Bangalore"
+    "DemoBlock_TSh400g"
    }
   }
   CRF_VehicleGearscriptManager "{69F92C24F37D31F8}" {
@@ -131,61 +130,62 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "Mission: Situation"
    m_sTextData "Kolguyev, east coast, 0700. Overcast, calm sea."\
    ""\
-   "The beach between Gorshkovo and the naval harbour is the only stretch of open shore on this coast. The Germans have turned it into a strongpoint: a belt of hedgehogs in the shallows and more on the sand, two belts of wire up the slope, a line of Tobruk MG pits, two casemates and two hill bunkers above them, and MG nests covering the south draw and the harbour road. Behind the beach the ground climbs past the mining village of Gorshkovo and its coal silo to the Nadezhda coal mine on the ridge, 1.2 km inland and 200 m up."\
+   "The beach between Gorshkovo and the naval harbour is the only stretch of open shore on this coast. A US Marine platoon holds it from the old coastal defences: a concrete sea wall along the top of the sand, hedgehogs and dragon's teeth on the beach, Tobruk MG pits, two casemates and hill bunkers above them, and MG nests covering the south draw and the harbour road. Behind the beach the ground climbs past the mining village of Gorshkovo and its coal silo to the Nadezhda coal mine on the ridge, 1.2 km inland and 200 m up."\
    ""\
-   "US infantry are loading into LCVPs at a staging pontoon 850 m offshore."\
+   "A Russian motor-rifle company is launching its BTR-70s from a pontoon 850 m offshore."\
    ""\
-   "BLUFOR: US Army rifle platoon (1PLT, 1-1 to 1-4, WPNS); the weapons squad has the platoon's engineers. A 105 mm M2A1 howitzer section (ARTY) fires from its own pontoon south of the staging pontoon. Eight LCVPs."\
-   "OPFOR: German infantry platoon, 1944 (ZUG, GRUPPE 1-3, MG-TRUPP). Dug in, no vehicles."
+   "OPFOR: Russian motor-rifle company (-) in eight BTR-70s: HQ, six rifle squads (1-1 to 1-3, 2-1 to 2-3), a sapper squad (SAPPER) and an 82 mm mortar crew (MORTAR)."\
+   "BLUFOR: US Marine rifle platoon (CP, SQUAD 1-3) with a machine-gun section of three M240 teams (GUNS). Dug in, no vehicles."
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
   }
   COA_MissionDescriptor "{6B1109E1F61769E7}" {
-   m_sTitle "BLUFOR Briefing"
+   m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Three objectives, one after another (the task list shows the open one and its progress):"\
    "1. Breach the sea wall and control Red Beach."\
-   "2. Capture the spotting position at the coal silo."\
-   "3. Capture the garrison (Nadezhda mine)."\
+   "2. Capture the observation post at the coal silo."\
+   "3. Capture the command post (Nadezhda mine)."\
    ""\
    "1. RED BEACH"\
-   "A concrete sea wall runs along the top of the sand, too high to climb. Six sections of it are breach points (marked on your map): an engineer with a satchel, an M112 block or a Bangalore uses \"Place breaching charge\" on the seaward side of one. The charge is used up and the section blows 10 seconds later - get clear. One breach is enough. Then hold Red Beach (the beach and the slope up to the casemates): at least 3 of you, at most 2 Germans, for 60 seconds."\
+   "A concrete sea wall runs along the top of the sand, too high to climb and too solid to ram. Six sections of it are breach points (marked on your map): a sapper with a satchel charge or a TNT block uses \"Place breaching charge\" on the seaward side of one. The charge is used up and the section blows 10 seconds later - get clear. One breach is enough; a blown section leaves a 4 m gap. Then hold Red Beach (the beach and the slope up to the casemates): at least 3 of you, at most 2 Marines, for 60 seconds."\
    "2. COAL SILO"\
-   "The German artillery spotters sit in the tower and the observation post on the silo pad above Gorshkovo. At least 2 of you, at most 1 German, for 45 seconds."\
+   "The Marines' observation post is the tower and the camouflaged post on the silo pad above Gorshkovo. At least 2 of you, at most 1 Marine, for 45 seconds."\
    "3. NADEZHDA MINE"\
-   "The garrison holds the mine yard on the ridge, 1.2 km inland and 200 m up: three huts, tents and the flag. At least 3 of you, at most 1 German, for 90 seconds."\
+   "The Marine command post is in the mine yard on the ridge, 1.2 km inland and 200 m up: three huts, tents and the flag. At least 3 of you, at most 1 Marine, for 90 seconds."\
    "If nobody is there to hold a zone, its progress drains; contested, it holds."\
    ""\
    "EXECUTION"\
-   "Each element spawns on the pontoon next to its own LCVP: step down into the boat, the squad lead or a volunteer drives. A belt of hedgehogs lies in the shallows off BEACH RED: come in through one of the three cleared lanes (LANE 1-3 on the map) or the boat hangs up short of the beach. A breach point sits at the head of every lane and between the lanes. The lower wire belt behind the wall has gaps straight up from each lane, the upper belt has gaps between them. Two spare LCVPs wait at the north end of the dock."\
-   "After safe start the run in takes about two minutes. Mind the rock awash 130 m off the middle of the beach."\
+   "Each element spawns on the pontoon next to its own BTR-70, which floats alongside the dock: board it from the deck. A rifle squad fills one BTR - driver, gunner and seven in the back. The squad's driver and gunner stay with the vehicle and support with its 14.5 mm KPVT and PKT. HQ and SAPPER share the seventh BTR, MORTAR has the eighth."\
+   "The BTRs swim. The run in is slow, about five minutes, and every M240 and AT4 on the bluff is waiting for you. Hedgehogs and dragon's teeth cover the sand, and the sea wall stops the vehicles until it is breached: get the sappers to the wall, keep the BTRs' guns on the bunkers."\
    ""\
-   "ENGINEERS (WPNS): four combat engineers, each with a Bangalore torpedo, three satchel charges, an M112 block and a blasting machine - every one of them can blow a breach point. Spare charges go under the wire: lay a Bangalore and \"Push Bangalore\" to add the next engineer's section."\
-   "HOWITZER (ARTY): a 105 mm M2A1 on its own pontoon (HOWITZER on the map), 75 m south of the staging pontoon, laid towards the beach. Two crates next to the gun hold 60 HE (M1) and 100 white phosphorus smoke (M60) rounds - that is all there is. Take a shell from a crate, set its charge, load it into the gun. The section chief and the gunner carry the firing table. The beach is about 1 km away, the silo 1.4 km, the mine 2 km. A dead gun crew respawns with everyone else, at BLUFOR's current spawn."\
+   "SAPPERS: four combat engineers, each with three satchel charges, a 400 g TNT block and a blasting machine - every one of them can blow a breach point."\
+   "MORTAR: an 82 mm 2B14 crew. The gunner and the loader carry the tube, bipod and base plate and ten rounds (5 HE, 5 smoke); the crew chief has the firing table. Set up once you are ashore."\
    ""\
-   "No timed respawns: when an objective falls, everyone dead comes back - after the beach at the beachhead behind the wall, after the silo on the road below it."\
+   "No timed respawns: when an objective falls, everyone dead comes back - after the beach at the beachhead behind the wall, after the silo on the road below it. A destroyed BTR is replaced at the pontoon when an objective falls."\
    ""\
-   "CASUALTIES: the platoon can take as many casualties as it has men when safe start ends. Every death counts, again after a respawn. Reach that and the Germans win (the pause menu shows the count)."
+   "CASUALTIES: the company can take two and a half times as many casualties as it has men when safe start ends. Every death counts, again after a respawn. Reach that and the Marines win (the pause menu shows the count)."
    m_aFactionKeys {
-    "BLUFOR"
+    "OPFOR"
    }
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6B1109E199D38E4F}" {
-   m_sTitle "OPFOR Briefing"
+   m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Hold three positions, one after another: the sea wall and Red Beach, the artillery spotting position at the coal silo, the garrison at the Nadezhda mine."\
+   "Hold three positions, one after another: the sea wall and Red Beach, the observation post at the coal silo, the command post at the Nadezhda mine."\
    ""\
    "EXECUTION"\
-   "You start on the slope above the beach. Beach Red is fortified: the sea wall along the top of the sand, sandbag bunkers on the beach, four Tobruk MG pits behind the upper wire, two casemates (ladder to the roof) and two hill bunkers above them, MG nests at the south draw and on the harbour road. The boats can only get through three lanes in the hedgehog belt."\
-   "The Americans have to blow a gap in the wall first: you are warned when a breaching charge is set (10 s). After that they take the beach if they hold it for 60 seconds with 2 or fewer of you on it."\
-   "When a position falls, everyone dead comes back at the next one: the hill west of Gorshkovo for the silo, the road behind the mine for the garrison."\
-   "You have no vehicles. Each Gruppe has an MG34 and a Panzerfaust (one shot: save it for a boat), and its grenadier has rifle grenades. The MG-Trupp has two MG42s. Your only medic is the Zug's Sanitäter."\
+   "You start on the slope above the beach. Beach Red is fortified with the old coastal defences: the sea wall along the top of the sand, sandbag bunkers on the beach, Tobruk MG pits, two casemates (ladder to the roof) and hill bunkers above them, MG nests at the south draw and on the harbour road."\
+   "The Russians come in eight BTR-70s that swim in from a pontoon 850 m out; the crossing takes them about five minutes. Each BTR has a 14.5 mm KPVT that outranges your M240s and goes through sandbags: fight from the concrete, and save the AT4s for a BTR that is close. The sea wall, the hedgehogs and the dragon's teeth keep the vehicles on the sand until the wall is breached."\
+   "The Russians have to blow a gap in the wall first: you are warned when a breaching charge is set (10 s). After that they take the beach if they hold it for 60 seconds with 2 or fewer of you on it."\
+   "When a position falls, everyone dead comes back at the next one: the hill west of Gorshkovo for the silo, the road behind the mine for the command post."\
+   "GUNS has three M240 teams, a gunner and an assistant each. Every rifle squad has an M249, a grenadier and two AT4s. Your only corpsman is with the CP."\
    ""\
-   "YOU WIN if the Americans have not taken all three when the time limit (60 minutes) runs out, if they are wiped out, or if they take as many casualties as they had men when safe start ended (every death counts, again after a respawn; the pause menu shows the count)."
+   "YOU WIN if the Russians have not taken all three when the time limit (60 minutes) runs out, if they are wiped out, or if they reach their casualty limit (two and a half times the men they had when safe start ended; every death counts, again after a respawn; the pause menu shows the count)."
    m_aFactionKeys {
-    "OPFOR"
+    "BLUFOR"
    }
    m_bShowForAnyFaction 0
   }
@@ -195,7 +195,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    ""\
    "No timed respawns. When an objective falls, every dead player of both sides respawns at their side's new spawn. Each spawn also updates after each objective."\
    ""\
-   "Casualty limit: BLUFOR, 250% of its players when safe start ends. This means there can be three respawn waves (300%), but if the 3rd respawn wave receives over 50% casualties, it's a mission fail for BLU."\
+   "Casualty limit: OPFOR, 250% of its players when safe start ends. This means there can be three respawn waves (300%), but if the 3rd respawn wave receives over 50% casualties, it's a mission fail for OPFOR."\
    ""\
    "Mission by tanaKa-."
    m_aFactionKeys {
@@ -220,8 +220,83 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORSlots {
-  COA_SlottingGroup "{6AD971E2D948426D}" {
-   m_sCallsign "1PLT"
+  COA_SlottingGroup "{6B1119B2A1434952}" {
+   m_sCallsign "CP"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B21B1FBBE9}" {
+   m_sCallsign "SQUAD 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B24E2E51FB}" {
+   m_sCallsign "SQUAD 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B20F957F67}" {
+   m_sCallsign "SQUAD 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B2A05A7302}" {
+   m_sCallsign "GUNS"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6B1119B2E01FCC93}" {
+   m_sCallsign "HQ"
    m_FlagType SIGNAL
    m_aSlots {
     PLATOON_LEADER
@@ -232,97 +307,113 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D94845FF}" {
+  COA_SlottingGroup "{6B1119B2F19674A0}" {
    m_sCallsign "1-1"
-   m_FlagType INFANTRY
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
     RIFLEMAN
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D9484421}" {
+  COA_SlottingGroup "{6B1119B2F7A760E6}" {
    m_sCallsign "1-2"
-   m_FlagType INFANTRY
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
     RIFLEMAN
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D948448D}" {
+  COA_SlottingGroup "{6B1119B281BF2DE6}" {
    m_sCallsign "1-3"
-   m_FlagType INFANTRY
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
     RIFLEMAN
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D94847F5}" {
-   m_sCallsign "1-4"
-   m_FlagType INFANTRY
+  COA_SlottingGroup "{6B1119B2F24640E8}" {
+   m_sCallsign "2-1"
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
-    TEAM_LEAD
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     GRENADIER
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    RIFLEMAN_DEMO
+    RIFLEMAN_ANTITANK
     RIFLEMAN
    }
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D9484666}" {
-   m_sCallsign "WPNS"
-   m_FlagType MACHINEGUN
+  COA_SlottingGroup "{6B1119B268D805C8}" {
+   m_sCallsign "2-2"
+   m_FlagType MOTORIZED_INFANTRY
    m_aSlots {
     SQUAD_LEAD
-    RADIO_TELEPHONE_OPERATOR
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
     MEDIC
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B29F50F332}" {
+   m_sCallsign "2-3"
+   m_FlagType MOTORIZED_INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    VEHICLE_DRIVER
+    VEHICLE_GUNNER
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    GRENADIER
+    RIFLEMAN_ANTITANK
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1119B20E399BAE}" {
+   m_sCallsign "SAPPER"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
     COMBAT_ENGINEER
     COMBAT_ENGINEER
     COMBAT_ENGINEER
@@ -331,9 +422,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_eRespawnPoolType PER_GROUP
    m_iGroupRespawns -1
   }
-  COA_SlottingGroup "{6AD971E2D94846DD}" {
-   m_sCallsign "ARTY"
-   m_FlagType ARTILLERY
+  COA_SlottingGroup "{6B1119B26A5B8072}" {
+   m_sCallsign "MORTAR"
+   m_FlagType MORTAR
    m_aSlots {
     INDIRECT_LEAD
     INDIRECT_GUNNER
@@ -343,98 +434,23 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
  }
- m_OPFORSlots {
-  COA_SlottingGroup "{6AD971E2D94879EB}" {
-   m_sCallsign "ZUG"
-   m_FlagType SIGNAL
-   m_aSlots {
-    PLATOON_LEADER
-    MEDIC
-   }
-   m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AD971E2D9487859}" {
-   m_sCallsign "GRUPPE 1"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
-    RIFLEMAN_ANTITANK
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-   }
-   m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AD971E2D94878CD}" {
-   m_sCallsign "GRUPPE 2"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
-    RIFLEMAN_ANTITANK
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-   }
-   m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AD971E2D9487B32}" {
-   m_sCallsign "GRUPPE 3"
-   m_FlagType INFANTRY
-   m_aSlots {
-    SQUAD_LEAD
-    TEAM_LEAD
-    AUTOMATIC_RIFLEMAN
-    ASSISTANT_AUTOMATIC_RIFLEMAN
-    GRENADIER
-    RIFLEMAN_ANTITANK
-    RIFLEMAN
-    RIFLEMAN
-    RIFLEMAN
-   }
-   m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns -1
-  }
-  COA_SlottingGroup "{6AD971E2D9487BA2}" {
-   m_sCallsign "MG-TRUPP"
-   m_FlagType MACHINEGUN
-   m_aSlots {
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-    MEDIUM_MACHINEGUN
-    ASSISTANT_MEDIUM_MACHINEGUN
-   }
-   m_eRespawnPoolType PER_GROUP
-   m_iGroupRespawns -1
-  }
- }
- m_iBLUFORTickets -1
- m_iOPFORTickets 0
+ m_iBLUFORTickets 0
+ m_iOPFORTickets -1
  m_iINDFORTickets 0
  m_iCIVTickets 0
  m_bHideOtherSpectatorFactions 1
  m_fMissionTimeScale 1
  m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{43E679F244EC7CB8}Configs/Gearscripts/Standard/40s/COA_GS_US_1944.conf"
-  m_bEnableBFT 0
-  m_bEnableLeadershipRadios 0
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/COA_GS_RHSUSMC.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
  m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{1F7DC7055017749E}Configs/Gearscripts/Standard/40s/COA_GS_Germany_1944.conf"
-  m_bEnableBFT 0
-  m_bEnableLeadershipRadios 0
+  m_rGearScript "{26A4494788601753}Configs/Gearscripts/Standard/Modern/COA_GS_Modern_RussianGroundForces.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 0
   m_bEnableRTORadios 1
  }
