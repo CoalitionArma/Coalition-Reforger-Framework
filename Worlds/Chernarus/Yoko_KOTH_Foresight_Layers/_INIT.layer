@@ -33,10 +33,10 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTextData "US and RUS forces are fighting over the town of Bonzievka Petrovka."\
    ""\
    "BLUFOR Composition: Armored Infantry Platoon"\
-   "BLUFOR Assets: 2x M1A2 and Squad intergrated MAT"\
+   "BLUFOR Assets: 4x M1A1 TUSK (Demon 1-4) and squad-integrated MAT"\
    ""\
    "OPFOR Composition: Armored Infantry Platoon"\
-   "OPFOR Assets: 2X T-72B and Squad intergrated MAT"\
+   "OPFOR Assets: 4x T-72B (Proryv 1-4) and squad-integrated MAT"\
    ""\
    "Time: 12:00"\
    ""\
@@ -48,13 +48,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6AE61696AA56571A}" {
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
-   "Capture the Town of Bonzievka Petrovka"\
+   "Capture the town of Bonzievka Petrovka"\
    ""\
    "INTENT"\
-   "Use tanks to cover your advance into the town, both sides are given an ample amount of space to allow flanking maneuvers."\
+   "Use your tanks to cover the advance into the town. Both sides have ample space for flanking maneuvers."\
    ""\
    "EXECUTION"\
-   "Commanders discretion"
+   "Commander's discretion"
    m_aFactionKeys {
     "BLUFOR"
    }
@@ -63,13 +63,13 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   COA_MissionDescriptor "{6AE61696AA565786}" {
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
-   "Capture the Town of Bonzievka Petrovka"\
+   "Capture the town of Bonzievka Petrovka"\
    ""\
    "INTENT"\
-   "Use tanks to cover your advance into the town, both sides are given an ample amount of space to allow flanking maneuvers."\
+   "Use your tanks to cover the advance into the town. Both sides have ample space for flanking maneuvers."\
    ""\
    "EXECUTION"\
-   "Commanders discretion"
+   "Commander's discretion"
    m_aFactionKeys {
     "OPFOR"
    }
@@ -92,7 +92,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   }
   COA_MissionDescriptor "{6AE61696AA56289B}" {
    m_sTitle "Administration"
-   m_sTextData "Place any meta or technical information that players should know here. Otherwise, leave empty."
+   m_sTextData "King of the Hill: the capture zone is the marked 300 m circle around Bonzievka Petrovka."\n   ""\n   "The side with the most players in the zone, and at least 3 of them, runs a 5 minute countdown. Hold the majority until it ends to win. Lose the majority and the countdown resets."\n   ""\n   "Each side can draw 4 tanks and 15 transport trucks from its vehicle depot. The tanks carry no HE or HEAT rounds and the T-72B has no gun-launched missiles."\n   ""\n   "No respawns. Time limit 65 minutes, safe start max. 15 minutes."
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"

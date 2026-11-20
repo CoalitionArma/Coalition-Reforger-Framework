@@ -8,6 +8,9 @@ Tank : "{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T72B/T72B_Base.et" {
   }
   SCR_UniversalInventoryStorageComponent "{5E38B925DD33F65F}" {
    MultiSlots {
+    MultiSlotConfiguration "{89F9D482776B92D7}" {
+     NumSlots 0
+    }
     MultiSlotConfiguration "{720E3E341B24F5EB}" {
      NumSlots 0
     }

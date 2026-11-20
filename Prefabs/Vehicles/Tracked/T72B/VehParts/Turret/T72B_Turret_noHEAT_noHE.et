@@ -12,9 +12,6 @@ Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_T
     }
    }
   }
-  WCS_Armament_DispenserManagerComponent "{65CF4DD2BD109E24}" {
-   Enabled 0
-  }
   WCS_Armament_LoadoutComponent "{6AE6325C2B0DCF3C}" {
    m_ArmamentGroups {
     WCS_Armament_SlotGroup "{6AE6325C2B0DCF2E}" {
@@ -52,9 +49,6 @@ Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_T
   }
   SlotManagerComponent "{64863497471CD184}" {
    Slots {
-    WCS_Armament_DispenserSlotInfo Smoke {
-     Enabled 0
-    }
     EntitySlotInfo ToolBox_03 {
      Enabled 1
     }
@@ -171,28 +165,6 @@ Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T72A/VehParts/Turret/T72A_T
    }
    WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
    WeaponSlotIndex 4
-  }
-  ActionsManagerComponent "{51ACD09C7181BA0B}" {
-   ActionContexts {
-    UserActionContext "{6AE6325C2B0C20BA}" {
-     ContextName "atgm_reload"
-     Position PointInfo "{6AE6325C2B0C20BB}" {
-      PivotID "v_gunner_idle"
-      Offset 0 0.6 0.45
-     }
-     Radius 0.15
-     Height 0
-    }
-   }
-   additionalActions {
-    WCS_Armament_ReloadWeaponFromVehicleAction "{2DF84A93F2EFF36F}" : "{0457BE16137BFA48}Prefabs/Weapons/Core/Configs/Actions/WCS_Armament_ReloadWeaponFromVehicleAction.conf" {
-     ParentContextList {
-      "atgm_reload"
-     }
-     m_eShownInVehicleState IN_VEHICLE_ANY
-     m_iWeaponGroupIndex 4
-    }
-   }
   }
  }
 }
