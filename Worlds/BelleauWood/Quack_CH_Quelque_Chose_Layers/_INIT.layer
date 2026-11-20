@@ -1,0 +1,474 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 0 0 0
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_CacheHuntGamemodeManager "{6AD637CB4D07D1D0}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_aCacheSpawnPointNames {
+    "cache1"
+    "cache2"
+    "cache3"
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 11
+     m_iStartingMinutes 25
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 90
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AE345A354776EE9}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "German forces attempt to disrupt French Resistance logistics in the Belleu region"\
+   ""\
+   "BLUFOR Composition: Light Infantry"\
+   "BLUFOR Assets: MMGx1, Pioneer kits."\
+   ""\
+   "OPFOR Composition: Motorized Infantry"\
+   "OPFOR Assets: MMGx1"\
+   ""\
+   "Time: Midday"\
+   ""\
+   "Weather: Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AE345A354777191}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "SITUATION"\
+   "Friendly civilians have reported the deployment of a special Germen unit tasked with eliminating our supplies in the area. We should expect more than just MP40s and pistols. Perhaps mortars or maybe machine guns? Furthermore, the routes in and out of the area have been cordoned off. Normally we would just destroy our own supplies and make our escape, but we've had trouble moving the items out of the region. "\
+   ""\
+   "We have too many supplies and will not be able to destroy the evidence in time. We'll have to fight it out this time."\
+   ""\
+   "MISSION"\
+   "• Protect the supply caches marked on the map."\
+   "• Destroy the special German unit"\
+   ""\
+   "INTENT"\
+   "We'll need to eliminate the special German unit before we can tackle the cordons preventing our escape (at a later time)."\
+   ""\
+   "EXECUTION"\
+   "There are plenty of sandbags and wire we can use to build our defenses. These can be found near the supply Caches"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE345A35477705A}" {
+   m_sTitle "Commander's Notes"
+   m_sTextData "• The Special German unit left the area North of Lucy-Le-Bocage early this morning. With that much time outside our surveillance they can be expected to come from any direction."\
+   ""\
+   "• We managed to accumulate a lot of sandbags and concertina wire. These should be useful to defend our supply caches. But we should use discretion when deploying it, as it could betray our location."\
+   ""\
+   "• While we may know where the enemy HQ and cordoning efforts are located, we should avoid those areas for now. We don't have enough man power to simultaneously assault and defend."\
+   ""\
+   "• We only have one radio backpack. Fortunately the vehicles come with their own radios, but they need to be filled in by the radio operator first."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE345A354777753}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "SITUATION"\
+   "Your unit has been tasked with destroying French partisan fighting capability. "\
+   ""\
+   "Intelligence has determined that the organization has been moving stolen supplies, guns, and ammo through the region, and have marked likely storage locations on your map. "\
+   ""\
+   "There have been a lot of successful raids on other German units in the area by partisan forces. Expect enemy fighters to use similar firearms to our own."\
+   ""\
+   "MISSION"\
+   "Find and destroy French supply cache within the area."\
+   ""\
+   "INTENT"\
+   "Eliminate the fighting capability of French resistance fighters."\
+   ""\
+   "EXECUTION"\
+   "You have the initiative here. You may forward deploy your forces within the highlighted area. You also have access to the vehicles marked on the map. "
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE367550F3977F1}" {
+   m_sTitle "Commander's Notes"
+   m_sTextData "• We're currently deployed at Outpost Bravo (North of Lucy-Le-Bocage)."\
+   ""\
+   "• There are cordon teams that have established checkpoints to prevent the enemy from escaping with their supplies in tow."\
+   ""\
+   "• HQ have reserves ready for us. However, they can only be deployed from Outpost Bravo after the start of the operation."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE367550F3974E0}" {
+   m_sTitle "Administration"
+   m_sTextData "Radio-Telephone operators can set vehicle encryption with CTRL+HOME"\
+   ""\
+   "Please don't block building enterences. Players should be able to run into or out of building without jumping."\
+   ""
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 1
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "BLU"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6AE821DBA625020E}" {
+   m_sCallsign "Cell Lead"
+   m_FlagType INFANTRY
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6250031}" {
+   m_sCallsign "Cell 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6250113}" {
+   m_sCallsign "Cell 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251E06}" {
+   m_sCallsign "Cell 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251F01}" {
+   m_sCallsign "Cell 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    RIFLEMAN
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251C05}" {
+   m_sCallsign "MMG"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    TEAM_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6AE821DBA6251A9F}" {
+   m_sCallsign "COY"
+   m_FlagType SIGNAL
+   m_aSlots {
+    COMPANY_COMMANDER
+    FIRST_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251B91}" {
+   m_sCallsign "Medical Detachment"
+   m_FlagType MEDICAL
+   m_aSlots {
+    MEDICAL_OFFICER
+    MEDIC
+    MEDIC
+    MEDIC
+    MEDIC
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA625189E}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251981}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251767}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251467}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251565}" {
+   m_sCallsign "2PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251276}" {
+   m_sCallsign "2-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA6251372}" {
+   m_sCallsign "2-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA625107A}" {
+   m_sCallsign "2-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    GRENADIER
+    GRENADIER
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE821DBA625116C}" {
+   m_sCallsign "MMG"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_bHideOtherSpectatorFactions 1
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{FD8E1AABA8F47464}Configs/Gearscripts/Custom/Quack/COA_GS_Quack_French_Resistance.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{658FB2B8E3ED1BA4}Configs/Gearscripts/Standard/40s/COA_GS_Germany_Late_War.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{FD8E1AABA8F47464}Configs/Gearscripts/Custom/Quack/COA_GS_Quack_French_Resistance.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ {
+  SCR_FactionManager "6AD637CAFF284958" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+COA_ForwardDeployBorder : "{19D5747507E8906B}PrefabsMissionMaking/GameBorders/ForwardDeploy/BLUFOR_ForardDeployZone.et" {
+ coords 2850.527 204.665 1277.46
+ Points {
+  ShapePoint "{6AE816CEDC7F2EB3}" {
+   Position -1217.17 0 -554.994
+  }
+  ShapePoint "{6AE816CED0B164D6}" {
+   Position -1908.072 0 791.9
+  }
+  ShapePoint "{6AE816CED7493C98}" {
+   Position -1808.871 0 1907.196
+  }
+  ShapePoint "{6AE816CEE8083C92}" {
+   Position -1138.71 0 3015.791
+  }
+  ShapePoint "{6AE816CEE3083146}" {
+   Position 1961.198 0 2507.448
+  }
+  ShapePoint "{6AE816CEE4AF2B9E}" {
+   Position 2238.638 0 1694.705
+  }
+  ShapePoint "{6AE816CEF003C68B}" {
+   Position 2174.351 0 250.735
+  }
+ }
+}
