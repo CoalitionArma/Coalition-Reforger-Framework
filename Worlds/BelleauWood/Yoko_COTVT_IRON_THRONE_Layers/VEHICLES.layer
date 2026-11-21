@@ -1,0 +1,22 @@
+GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLUFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F0F94232BA}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F0F94232A9}" {
+     m_sVehicleName "M1A1 TUSK"
+     m_sVehiclePrefab "{9DC6EC24266A12B1}Prefabs/Vehicles/Tracked/M1A1/M1A1_TUSK_Woodland.et"
+     m_eCostType USES
+     m_iCost 10
+    }
+    CRF_VehicleDepotVehicle "{6AEB6D6D0F28B7B4}" {
+     m_sVehicleName "Bradley"
+     m_eCostType USES
+    }
+   }
+  }
+ }
+ coords 2363.254 208.543 3226.75
+ angles 0 -172.214 0
+}
