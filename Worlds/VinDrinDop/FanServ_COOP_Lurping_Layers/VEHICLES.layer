@@ -1,0 +1,147 @@
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords 736.924 2.925 2818.021
+  angles 0 49.666 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EA309"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       }
+      }
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 763.07 3.065 2840.268
+  angles 0 49.799 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 801.262 2.742 2839.998
+  angles 0 139.903 0
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6A9384DDD03956"
+    components {
+     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E64C0FB916EAF90"
+    components {
+     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+}
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ lurping_kingbee_1 {
+  coords 736.924 3.225 2818.021
+  angles 0 49.666 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ lurping_kingbee_2 {
+  coords 763.07 3.365 2840.268
+  angles 0 49.799 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ lurping_kingbee_3 {
+  coords 801.262 3.042 2839.998
+  angles 0 139.903 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

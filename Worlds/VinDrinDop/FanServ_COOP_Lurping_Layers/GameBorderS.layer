@@ -1,0 +1,34 @@
+$grp COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ {
+  coords 445.749 2.42 2811.122
+  Points {
+   ShapePoint "{6AE632A51B42EC8B}" {
+    Position -391.223 69.075 34.66
+   }
+   ShapePoint "{6AE632A51D6BA0CF}" {
+    Position -436.617 304.689 1791.372
+   }
+   ShapePoint "{6AE632A710D02E1C}" {
+    Position 360.491 191.445 1810.068
+   }
+   ShapePoint "{6AE632A71EF8EA38}" {
+    Position 1028.806 93.314 1788.411
+   }
+   ShapePoint "{6AE632A52274B586}" {
+    Position 1118.264 26.131 1288.307
+   }
+   ShapePoint "{6AE632A52B009516}" {
+    Position 1012.263 14.916 405.885
+   }
+   ShapePoint "{6B1122A5C0DE0001}" {
+    Position 514.251 0 -21.122
+   }
+   ShapePoint "{6B1122A5C0DE0002}" {
+    Position 344.251 0 -131.122
+   }
+   ShapePoint "{6B1122A5C0DE0003}" {
+    Position 154.251 0 28.878
+   }
+  }
+ }
+}

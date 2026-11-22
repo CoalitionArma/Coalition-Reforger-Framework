@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4D4A46FF9D84028C}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_US_MACV_SOG.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

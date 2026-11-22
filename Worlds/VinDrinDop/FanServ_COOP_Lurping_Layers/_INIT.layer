@@ -1,0 +1,347 @@
+SCR_AIWorld : "{A6D677263435B871}Prefabs/AI/VDD_AIWorld.et" {
+ coords 934.488 2.163 3483.876
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_CacheHuntGamemodeManager "{6AE632A4B0A425D7}" {
+   m_aCacheSpawnPointNames {
+    "cache1"
+    "cache2"
+    "cache3"
+    "cache4"
+    "cache5"
+   }
+   m_fDestroyFuseSeconds 10
+   m_bEnableSearchMarkers 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 14
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_aDisabledResourceTypes {
+  SUPPLIES
+ }
+ m_bRespawnEnabled 1
+ m_bHideOtherSpectatorFactions 1
+ m_bWaveRespawn 1
+ m_bRallyPointsEnabled 1
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 120
+ m_bLockUnusedSlots 0
+ m_bUseSafestartTimeLimit 0
+ m_iSafestartTimeLimit 0
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AE632A8C66DCF83}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Admit it. You're lost. Worse, you're behind enemy lines, separated from the other Spike Teams, looking for hidden caches. And your only intel is poorly translated descriptions from interrogated POWs and an amateur map. Okay, time to go back to basics: Field Manual 21-26, Map Reading."\
+   ""\
+   "BLUFOR Composition: MACV-SOG Spike Teams with helicopters"\
+   "BLUFOR Assets: 3x UH-1H helicopters"\
+   ""\
+   "OPFOR Composition: Vietcong infantry"\
+   "OPFOR Assets: None"\
+   ""\
+   "Time: 1400"\
+   ""\
+   "Weather: Rain"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AE632A8C66DCC5E}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Multiple MACV-SOG Spike Teams have been inserted into hostile territory. Their mission is to locate enemy caches, identified by some prisoners after lengthy interrogation. The prisoners couldn't mark the positions on a map, but they could describe them verbally."\
+   "A. A large round-roofed hut in the fields."\
+   "B. An abandoned train car by a bridge."\
+   "C. A secret temple on the river. There is a radio tower."\
+   "D. A mansion at the base of the mountains."\
+   "E. A hidden compound at the end of a river. There is a different temple nearby."\
+   ""\
+   "INTENT"\
+   "Use the map, landmarks, audio, and verbal descriptions to locate other friendly elements and enemy cache locations."\
+   ""\
+   "EXECUTION"\
+   "Find out where you are. Communicate with the other Spike Teams. Find or deduce where the caches are. Destroy the caches. Extract."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE632A8C66DC32B}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Protect the caches. These are the descriptions that BLUFOR has for the objectives:"\
+   "A. A large round-roofed hut in the fields."\
+   "B. An abandoned train car by a bridge."\
+   "C. A secret temple on the river. There is a radio tower."\
+   "D. A mansion at the base of the mountains."\
+   "E. A hidden compound at the end of a river. There is a different temple nearby."\
+   ""\
+   "INTENT"\
+   "I think BLUFOR is at a disadvantage because they're split up to start with. Don't ruin their day, but make it fun for them."\
+   ""\
+   "EXECUTION"\
+   "Perform sneaky ambushes or hold down the objective areas."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AE632A8C66DC35C}" {
+   m_sTitle "Administration"
+   m_sTextData "Please, for the sake of the mission, avoid cheesing the land nav with map markers. Use them where logical and reasonable, but don't use them to telepathically communicate every detail."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 0
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6AE8258516AA454C}" {
+   m_sCallsign "ST ALASKA 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    RADIO_TELEPHONE_OPERATOR
+    PLATOON_SERGEANT
+    UNARMED
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5BFC}" {
+   m_sCallsign "ST DELAWARE 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5B57}" {
+   m_sCallsign "ST FLORIDA 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5A25}" {
+   m_sCallsign "ST GEORGIA 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA59BF}" {
+   m_sCallsign "ST IDAHO 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5901}" {
+   m_sCallsign "ST MICHIGAN 5"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_DEMO
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5892}" {
+   m_sCallsign "KINGBEE 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5865}" {
+   m_sCallsign "KINGBEE 2"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5FE2}" {
+   m_sCallsign "KINGBEE 3"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+    VEHICLE_GUNNER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5F73}" {
+   m_sCallsign "ZEUS"
+   m_FlagType SIGNAL
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6AE8258516AA5E0D}" {
+   m_sCallsign "ZEUS"
+   m_FlagType SIGNAL
+   m_aSlots {
+    ZEUS
+    ZEUS
+    ZEUS
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5D9F}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    PLATOON_SERGEANT
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AE8258516AA5D1A}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets -1
+ m_iOPFORTickets -1
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4D4A46FF9D84028C}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_US_MACV_SOG.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{3B8AE53D6F452A7A}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_VC.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9A81CE33F7348F82}Configs/Gearscripts/Standard/Vietnam/COA_GS_Vietnam_PAVN.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6AE632A5DE4EBDCE" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
