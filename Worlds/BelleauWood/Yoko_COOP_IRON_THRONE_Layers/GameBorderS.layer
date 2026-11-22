@@ -18,26 +18,3 @@ COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safest
   }
  }
 }
-COA_ForwardDeployBorder : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
- coords 2395.569 80.664 7499.895
- Points {
-  ShapePoint "{6AEB77C5883B917F}" {
-   Position 1109.456 -0 70.237
-  }
-  ShapePoint "{6AEB77C58ADD4FA6}" {
-   Position -100.807 -0 177.625
-  }
-  ShapePoint "{6AEB77C58C3BC101}" {
-   Position -1590.067 -0 -118.984
-  }
-  ShapePoint "{6AEB77C5B1F5C06F}" {
-   Position -1298.599 -0 -1010.382
-  }
-  ShapePoint "{6AEB77C5B2B2FACF}" {
-   Position 664.907 -0 -879.131
-  }
-  ShapePoint "{6AEB77C5B4611775}" {
-   Position 1017.939 -0 -644.295
-  }
- }
-}
