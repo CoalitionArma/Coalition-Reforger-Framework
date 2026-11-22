@@ -1,0 +1,56 @@
+$grp COA_ManualMarker : "{2C55310F9082A86D}PrefabsMissionMaking/Markers/ObjectiveMarkers/GLOBAL_ObjectiveMarker_et.et" {
+ {
+  coords 1828.197 178.06 5040.02
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "BLUFOR FOB XRAY"
+ }
+ {
+  coords 3051.058 119.157 6986.633
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sDescription "OPFOR FOB FOXTROT"
+ }
+ {
+  coords 2945.611 167.259 4710.182
+  angles 0 0 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "BLUFOR FOB DELTA"
+ }
+ {
+  coords 1278.571 127.031 6931.399
+  angles 0 0 0
+  m_MarkerColor 1 0 0.024 1
+  m_sDescription "OPFOR FOB ALPHA"
+ }
+}
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ {
+  coords 2233.41 161.118 6106.985
+  angles 0 115.916 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large"
+  m_sDescription ""
+ }
+ {
+  coords 2846.849 124.866 5973.279
+  angles 0 95.491 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large"
+  m_sDescription ""
+ }
+ {
+  coords 1245.076 115.507 6083.832
+  angles 0 82.437 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large"
+  m_sDescription ""
+ }
+ {
+  coords 3485.027 135.059 5815.241
+  angles 0 104.604 0
+  m_MarkerColor 1 0 0.024 1
+  m_sQuadName "arrow-large"
+  m_sDescription ""
+ }
+}

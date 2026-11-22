@@ -1,0 +1,7 @@
+COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ coords 2946.95 168.101 4718.494
+ m_sCallsignOfGroupToSpawn "Thunder"
+}
+COA_StaticSpawnPoint BLUFOR_Spawn1 : "{62865C82AB534D91}PrefabsMissionMaking/SpawnPoints/SpawnPoints/BLUFOR_Spawn.et" {
+ coords 2392.175 209.028 3208.094
+}
