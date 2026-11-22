@@ -1,6 +1,0 @@
-SCR_AIWorld : "{CFDC9C151CAB3F8D}Prefabs/AI/SCR_AIWorld_BelleauWood.et" {
- coords 2882.726 122.53 6310.082
-}
-COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
- coords 0 0 0
-}

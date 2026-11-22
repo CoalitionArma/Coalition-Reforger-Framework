@@ -1,0 +1,50 @@
+GenericEntity : "{971302B9970AA871}PrefabsMissionMaking/Systems/VehicleDepot/OPFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F111246FC7}" {
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F111246FCE}" {
+     m_sVehicleName "T72B"
+     m_sVehiclePrefab "{F9DFB7DD3BDE0A5B}Prefabs/Vehicles/Tracked/T72B/T72B_Green.et"
+     m_eCostType USES
+     m_iCost 10
+    }
+    CRF_VehicleDepotVehicle "{6AEB77C2D61189D6}" {
+     m_sVehicleName "UAZ"
+     m_sVehiclePrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+     m_eCostType USES
+    }
+   }
+  }
+ }
+ coords 2378.679 81.025 7503.723
+ angles 0 -27.772 0
+}
+GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLUFORVehicleDepot.et" {
+ components {
+  CRF_VehicleDepot "{6A3144F0F94232BA}" {
+   m_fVehicleFacingOffset -180
+   m_bEnableSpawnVisuals 1
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{6A3144F0F94232A9}" {
+     m_sVehicleName "M1A1 TUSK"
+     m_sVehiclePrefab "{9DC6EC24266A12B1}Prefabs/Vehicles/Tracked/M1A1/M1A1_TUSK_Woodland.et"
+     m_eCostType USES
+     m_iCost 10
+    }
+    CRF_VehicleDepotVehicle "{6AEB6D6D0F28B7B4}" {
+     m_sVehicleName "Stryker"
+     m_sVehiclePrefab "{D5BECC338A58208D}Prefabs/Vehicles/Wheeled/Stryker/M1296/Stryker_Dragoon_MERDC.et"
+     m_eCostType USES
+    }
+    CRF_VehicleDepotVehicle "{6AEB77C384082E7D}" {
+     m_sVehicleName "Transport Truck"
+     m_sVehiclePrefab "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
+     m_eCostType USES
+     m_iCost 15
+    }
+   }
+  }
+ }
+ coords 2363.254 208.543 3226.75
+ angles 0 -172.214 0
+}
