@@ -14,6 +14,7 @@ GenericEntity : "{A1B39EC24892B0D8}PrefabsMissionMaking/Systems/VehicleDepot/BLU
      m_sVehicleName "Stryker"
      m_sVehiclePrefab "{D5BECC338A58208D}Prefabs/Vehicles/Wheeled/Stryker/M1296/Stryker_Dragoon_MERDC.et"
      m_eCostType USES
+     m_iCost 15
     }
     CRF_VehicleDepotVehicle "{6AEB77C384082E7D}" {
      m_sVehicleName "Transport Truck"
