@@ -288,6 +288,11 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected bool m_bMouseSteeringHeld;		//!< HoldMouseSteeringOff has the player's mouse steering off
 	protected bool m_bSavedMouseControlVehicle;
 	protected float m_fSavedMouseSteeringSensitivity = 1;
+	protected Vehicle m_RecoverTank;			//!< RecoverLocalTurret: the tank its tries are counted for
+	protected int m_iRecoverTries;
+	protected bool m_bRecoverSeated;			//!< ...and whether the current seating has been timed yet
+	protected int m_iRecoverSeatedAtMs;
+	protected int m_iRecoverCheckAtMs;
 	protected int m_iRepairStatus;				//!< CRF_ETankBattleRepair, from the server (SetRepairStatus)
 	protected int m_iRepairPercent;
 	protected int m_iRepairStatusAtMs = -100000;
@@ -315,6 +320,9 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 	protected static const int REQUEST_COOLDOWN_MS = 1500;
 	protected static const int ENGINE_RETRY_MS = 2000;
 	protected static const int TURRET_CHECK_MS = 250;
+	protected static const int RECOVER_CHECK_MS = 500;	//!< how often a seated driver's missing gun connection is looked at
+	protected static const int RECOVER_WAIT_MS = 1500;	//!< seated this long without the gun before being re-seated
+	protected static const int RECOVER_MAX_TRIES = 3;
 	protected static const int MENU_SNOOZE_MS = 5000;
 	protected static const float SPAWN_CLEAR_RADIUS = 9;	//!< a tank spawn with a tank this close is taken
 	protected static const string LOG = "[CRF_TankBattle]";
@@ -802,17 +810,25 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 			return;
 		}
 
-		// Never to an empty seat, and never again once it is attached. The Tank Battle prefabs connect the gun
-		// natively as the driver gets in (AutoConnectToTurret), and only that connection is wired to the
-		// driver's input: after a scripted AttachTurret (to the empty seat as the tank streamed in, or a
-		// detach + attach with the driver seated) the seat still reports the gun attached, but the mouse
-		// steers the hull. So this is only the fallback for a prefab without AutoConnectToTurret; the turret
-		// must allow it (CanBeOverridden), or nothing happens.
+		// Never to an empty seat
 		if (!driverSeat.GetOccupant())
 			return;
 
-		if (driverSeat.GetAttachedTurret() != turret)
+		// A Tank Battle prefab's seat connects the gun natively as the driver gets in (AutoConnectToTurret), and
+		// only that connection is wired to the driver's input. It lands a moment after the seat reports its
+		// occupant (vanilla allows for the same gap in SCR_CompartmentAccessComponent.ToggleTurretFireModeControlls).
+		// A scripted AttachTurret in that gap - or any other time - leaves the seat reporting the gun attached
+		// with the mouse steering the hull instead, which is what happened "sometimes" on spawning. So such a
+		// seat is never attached from script: if the native connection is missing, the driver's own machine
+		// re-seats them (RecoverLocalTurret). Scripted attaching is only for a prefab without AutoConnectToTurret,
+		// whose turret must allow it (CanBeOverridden) or nothing happens.
+		bool connectsNatively = !autoConnect.IsEmpty();
+		if (!connectsNatively && driverSeat.GetAttachedTurret() != turret)
 			driverSeat.AttachTurret(turret, GetAttachContexts());
+
+		// Not connected yet: nothing to report until it is
+		if (connectsNatively && !driverSeat.GetAttachedTurret())
+			return;
 
 		// Once per tank, with the driver in: whether it worked
 		if (m_aAttachLogged.Contains(tank))
@@ -1706,11 +1722,17 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		if (!m_LocalTank)
 		{
 			m_bLocalHeld = false;
+			m_bRecoverSeated = false;
 			RestoreMouseSteering();
 			return;
 		}
 
-		HoldMouseSteeringOff();
+		// The mouse is the gun's or nobody's, never the hull's
+		BaseCompartmentSlot driverSeat = GetDriverSeat(m_LocalTank);
+		bool gunConnected = driverSeat && driverSeat.GetAttachedTurret();
+		HoldMouseSteeringOff(gunConnected);
+		if (!gunConnected && driverSeat)
+			RecoverLocalTurret(driverSeat, now);
 
 		if (m_bForceThirdPerson)
 			HoldThirdPerson();
@@ -1755,16 +1777,67 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 		return (1 << ETurretContextID.TURRET_MOVEMENTCONTEXT) | (1 << ETurretContextID.TURRET_OPSCONTEXT) | (1 << ETurretContextID.TURRET_WEAPONCONTEXT) | (1 << ETurretContextID.TURRET_WEAPONAIMCONTEXT);
 	}
 
-	//! Client, every frame in a mode vehicle: the mouse aims the gun only, W/A/S/D drive. Two global player
-	//! options decide what the mouse does in a driver's seat (not per seat):
-	//! - "mouse steering in vehicles" (SetMouseControlVehicle). OFF means the engine forces mouse free look
-	//!   while driving, and the free look context takes the mouse before the turret's does: the gun then
-	//!   can't be aimed at all. So it is held ON here...
-	//! - ...and its sensitivity held at 0, so the mouse doesn't steer the hull (CarSteering has mouse:x_rel
-	//!   bindings).
+	//! Client, on the driver's own machine: the gun isn't connected to the seat. The native connection
+	//! (AutoConnectToTurret) is made as the driver gets in and is the only one wired to their input, so if
+	//! it didn't happen - the turret is its own replicated entity and can stream in after the hull the
+	//! driver was seated in - the driver is put out once the turret is here, and the server seats them
+	//! again on its next tick (ManageTank), which connects it. Checked every RECOVER_CHECK_MS, a few tries
+	//! per tank.
+	protected void RecoverLocalTurret(notnull BaseCompartmentSlot driverSeat, int now)
+	{
+		if (now < m_iRecoverCheckAtMs)
+			return;
+
+		m_iRecoverCheckAtMs = now + RECOVER_CHECK_MS;
+
+		if (!m_bRecoverSeated)
+		{
+			m_bRecoverSeated = true;
+			m_iRecoverSeatedAtMs = now;
+			if (m_LocalTank != m_RecoverTank)
+			{
+				m_RecoverTank = m_LocalTank;
+				m_iRecoverTries = 0;
+			}
+
+			return;
+		}
+
+		string turretName = driverSeat.GetAutoConnectTurret();
+		if (turretName.IsEmpty() || m_iRecoverTries >= RECOVER_MAX_TRIES || now - m_iRecoverSeatedAtMs < RECOVER_WAIT_MS)
+			return;
+
+		TurretControllerComponent turret = FindTurretByName(m_LocalTank, turretName);
+		if (!turret || !turret.GetTurretComponent())
+			return;		// the turret hasn't streamed in yet: keep waiting
+
+		ChimeraCharacter character = ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity());
+		if (!character)
+			return;
+
+		CompartmentAccessComponent access = character.GetCompartmentAccessComponent();
+		if (!access || access.IsGettingIn() || access.IsGettingOut())
+			return;
+
+		m_iRecoverTries++;
+		m_bRecoverSeated = false;
+		Print(string.Format("%1 %2: the main gun isn't connected to the local driver's seat; re-seating them (try %3 of %4).", LOG, m_LocalTank, m_iRecoverTries, RECOVER_MAX_TRIES), LogLevel.WARNING);
+		access.GetOutVehicle(EGetOutType.TELEPORT, -1, ECloseDoorAfterActions.INVALID, false);
+	}
+
+	//! Client, every frame in a mode vehicle: the mouse aims the gun or does nothing; W/A/S/D drive. What the
+	//! mouse does in a driver's seat is decided by two global player options (not per seat):
+	//! - "mouse steering in vehicles" (SetMouseControlVehicle). OFF is vanilla's default: the engine forces
+	//!   mouse free look while driving, so the mouse looks around and can't steer - but the free look
+	//!   context also takes the mouse before the turret's does, so a connected gun couldn't be aimed. ON
+	//!   lets the turret have it, and the hull if there is no turret taking it.
+	//!   So it is ON only while the gun is connected to the seat, and OFF otherwise: with no gun the mouse
+	//!   free-looks instead of steering.
+	//! - its sensitivity, held at 0 as well.
 	//! Re-applied if a settings change puts them back (two engine calls, no loop); the player's own values
 	//! are put back on leaving.
-	protected void HoldMouseSteeringOff()
+	//! \param[in] gunConnected the main gun is connected to the local driver's seat
+	protected void HoldMouseSteeringOff(bool gunConnected)
 	{
 		if (!m_bMouseSteeringHeld)
 		{
@@ -1773,8 +1846,8 @@ class CRF_TankBattleGamemodeComponent : SCR_BaseGameModeComponent
 			m_fSavedMouseSteeringSensitivity = CharacterControllerComponent.GetMouseSteeringSensitivity();
 		}
 
-		if (!CharacterControllerComponent.GetMouseControlVehicle())
-			CharacterControllerComponent.SetMouseControlVehicle(true);
+		if (CharacterControllerComponent.GetMouseControlVehicle() != gunConnected)
+			CharacterControllerComponent.SetMouseControlVehicle(gunConnected);
 
 		if (CharacterControllerComponent.GetMouseSteeringSensitivity() != 0)
 			CharacterControllerComponent.SetMouseSteeringSensitivity(0);
