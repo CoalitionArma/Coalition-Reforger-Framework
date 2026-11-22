@@ -18,3 +18,20 @@ COA_SafestartBorder : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safest
   }
  }
 }
+COA_GameBorder IronThrone_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 900 150 2700
+ Points {
+  ShapePoint "{6B1122B0C0DE0001}" {
+   Position 0 0 0
+  }
+  ShapePoint "{6B1122B0C0DE0002}" {
+   Position 5 0 4650
+  }
+  ShapePoint "{6B1122B0C0DE0003}" {
+   Position 2955 0 4650
+  }
+  ShapePoint "{6B1122B0C0DE0004}" {
+   Position 2950 0 0
+  }
+ }
+}

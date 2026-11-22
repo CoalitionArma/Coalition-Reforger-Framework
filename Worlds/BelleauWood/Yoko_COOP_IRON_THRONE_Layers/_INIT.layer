@@ -17,6 +17,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  }
  coords 0 0 0
  m_bRespawnEnabled 1
+ m_bHideOtherSpectatorFactions 1
  m_bWaveRespawn 1
  m_bRallyPointsEnabled 1
  m_iTimeToRespawn 30
@@ -30,7 +31,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_aMissionDescriptors {
   COA_MissionDescriptor "{6AEB77C668CC8389}" {
    m_sTitle "Mission: Situation"
-   m_sTextData "US marine raiders are tasked with the capturing of two OPFOR FOBs while defend their own FOBs from counterattacks from OPFOR."\
+   m_sTextData "US marine raiders are tasked with the capturing of two OPFOR FOBs while defending their own FOBs from counterattacks from OPFOR."\
    ""\
    "BLUFOR Composition: Armored Infantry Company"\
    "BLUFOR Assets: M1A1 Tusk, Stryker Dragoon, AH6-M, MTRs, MMG and MAT"\
@@ -52,7 +53,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Protect both BLUFOR FOBs"\
    ""\
    "INTENT"\
-   "Combined Arms combat with multiple assests in use to attack and defend locations."\
+   "Combined Arms combat with multiple assets in use to attack and defend locations."\
    ""\
    "EXECUTION"\
    "Commanders discretion"
@@ -74,21 +75,6 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "Commanders discretion"
    m_aFactionKeys {
     "OPFOR"
-   }
-   m_bShowForAnyFaction 0
-  }
-  COA_MissionDescriptor "{6AEB77C668CC8D99}" {
-   m_sTitle "INDFOR Briefing"
-   m_sTextData "MISSION"\
-   "Insert the bulleted or short-form list of objectives here"\
-   ""\
-   "INTENT"\
-   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
-   ""\
-   "EXECUTION"\
-   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
-   m_aFactionKeys {
-    "INDFOR"
    }
    m_bShowForAnyFaction 0
   }
@@ -205,7 +191,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
   COA_SlottingGroup "{6AEB77D875134AA8}" {
-   m_sCallsign "2-1"
+   m_sCallsign "2-2"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
@@ -221,7 +207,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_iGroupRespawns -1
   }
   COA_SlottingGroup "{6AEB77D875134917}" {
-   m_sCallsign "2-1"
+   m_sCallsign "2-3"
    m_FlagType INFANTRY
    m_aSlots {
     SQUAD_LEAD
