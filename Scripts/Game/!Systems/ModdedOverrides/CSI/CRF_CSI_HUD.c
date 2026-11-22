@@ -1,28 +1,21 @@
 modded class CSI_HUD
 {
 	//------------------------------------------------------------------------------------------------
-	//! Updates the compass visibility based on player state.
+	//! Hides the CSI HUD while spectating and skips its update meanwhile.
+	//! Hidden through Show(), not the root widget, so CSI shows it again once spectating ends: CSI only
+	//! calls Show() when its shown state (m_bShown) differs from what it wants.
 	//! \param[in] owner The entity that owns this component
 	//! \param[in] timeSlice Time elapsed since last update
 	protected override void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		// Call the parent class implementation first
-		super.DisplayUpdate(owner, timeSlice);
-		
-		// Early exit if no local player entity exists
-		if (!SCR_PlayerController.GetLocalMainEntity())
-			return;
-		
-		// Get references
-		bool isSpectator = COA_EntityHelper.IsSpectator();
-		bool isWidgetVisible = m_wRoot.IsVisible();
-		
-		// Handle visibility based on player state:
-		// - Hide compass when in spectator mode
-		// - Show compass when in normal player mode
-		if (isSpectator && isWidgetVisible)
+		if (SCR_PlayerController.GetLocalMainEntity() && COA_EntityHelper.IsSpectator())
 		{
-			m_wRoot.SetVisible(false);
+			if (m_bShown)
+				Show(false);
+
+			return;
 		}
+
+		super.DisplayUpdate(owner, timeSlice);
 	}
 }

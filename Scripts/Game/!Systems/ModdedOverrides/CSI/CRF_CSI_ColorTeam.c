@@ -115,8 +115,8 @@ modded class COA_GamemodeManager
 	}
 
 	//! Applies this slot's CSI fireteam color to its listbox row icon. Called after the row widget
-	//! exists (from COA_ListboxComponent.AddItemSpecSlot/AddItemSlot - see the modded override in
-	//! CRF_CSI_SlotIconColor.c), since SetRoleColor needs the actual widget, not just the slot data.
+	//! exists (from COA_SlottingMenu after AddItemSlot - see CRF_COA_SlottingMenu.c), since
+	//! SetRoleIconColor needs the actual widget, not just the slot data.
 	static void ApplySlotIconColor(COA_ListboxComponent listbox, int index, int slotId)
 	{
 		COA_SlotData slotData = COA_SlottingManager.GetInstance().GetSlotData(slotId);

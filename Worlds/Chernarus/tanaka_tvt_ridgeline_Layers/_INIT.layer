@@ -170,7 +170,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "GRANIT SAPPER: four combat engineers, each with three satchel charges, a 400 g TNT block and a blasting machine - every one of them can blow a breach point."\
    "GRANIT MORTAR: an 82 mm 2B14 crew. Each man carries one part on his back: the crew chief the base plate (and the firing table), the gunner the tube and 5 HE rounds, the loader the bipod and 5 smoke rounds."\
    ""\
-   "No timed respawns: when an objective falls, everyone dead comes back - after Vyshnoye at the north end of the village, after the farm on the track just north of it. A destroyed BTR is replaced at the start line when an objective falls."\
+   "No timed respawns: when an objective falls, everyone dead comes back - after Vyshnoye at the north end of the village, after the farm on the track just north of it. A destroyed BTR is not replaced."\
    ""\
    "CASUALTIES: the company can take two and a half times as many casualties as it has men when safe start ends. Every death counts, again after a respawn. Reach that and the Marines win (the pause menu shows the count)."
    m_aFactionKeys {
