@@ -1,0 +1,26 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 1255.132 2 3310.282
+  m_sCallsignOfGroupToSpawn "ST DELAWARE 1"
+ }
+ {
+  coords 1026.956 2.94 3732.62
+  m_sCallsignOfGroupToSpawn "ST FLORIDA 2"
+ }
+ {
+  coords 726.658 7.113 3628.944
+  m_sCallsignOfGroupToSpawn "ST ALASKA 6"
+ }
+ {
+  coords 456.35 27.187 3531.814
+  m_sCallsignOfGroupToSpawn "ST GEORGIA 3"
+ }
+ {
+  coords 197.285 60.02 3059.882
+  m_sCallsignOfGroupToSpawn "ST IDAHO 4"
+ }
+ {
+  coords 525.133 30.283 3949.594
+  m_sCallsignOfGroupToSpawn "ST MICHIGAN 5"
+ }
+}
