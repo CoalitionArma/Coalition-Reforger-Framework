@@ -125,3 +125,23 @@ $grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLar
   }
  }
 }
+$grp COA_VehicleSpawner : "{EBAE2FB05F6A0E06}PrefabsMissionMaking/SpawnPoints/VehicleSpawner/BLUFOR_VehicleSpawner.et" {
+ lurping_kingbee_1 {
+  coords 736.924 3.225 2818.021
+  angles 0 49.666 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ lurping_kingbee_2 {
+  coords 763.07 3.365 2840.268
+  angles 0 49.799 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+ lurping_kingbee_3 {
+  coords 801.262 3.042 2839.998
+  angles 0 139.903 0
+  m_rVehicle "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  m_sFactionKey "BLUFOR"
+ }
+}

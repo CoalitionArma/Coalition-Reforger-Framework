@@ -31,6 +31,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   SUPPLIES
  }
  m_bRespawnEnabled 1
+ m_bHideOtherSpectatorFactions 1
  m_bWaveRespawn 1
  m_bRallyPointsEnabled 1
  m_iTimeToRespawn 60
@@ -50,11 +51,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    "BLUFOR Assets: 3x UH-1H helicopters"\
    ""\
    "OPFOR Composition: Vietcong infantry"\
-   "OPFOR Assets:"\
+   "OPFOR Assets: None"\
    ""\
-   "Time: 0800"\
+   "Time: 1400"\
    ""\
-   "Weather: Clear"
+   "Weather: Rain"
    m_aFactionKeys {
    }
    m_bShowForAnyFaction 1
@@ -63,11 +64,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "BLUFOR Briefing"
    m_sTextData "MISSION"\
    "Multiple MACV-SOG Spike Teams have been inserted into hostile territory. Their mission is to locate enemy caches, identified by some prisoners after lengthy interrogation. The prisoners couldn't mark the positions on a map, but they could describe them verbally."\
-   "1. A large round-roofed hut in the fields."\
-   "2. An abandoned train car by a bridge."\
-   "3. A secret temple on the river. There is a radio tower."\
-   "4. A mansion at the base of the mountains."\
-   "5. A hidden compound at the end of a river. There is a different temple nearby."\
+   "A. A large round-roofed hut in the fields."\
+   "B. An abandoned train car by a bridge."\
+   "C. A secret temple on the river. There is a radio tower."\
+   "D. A mansion at the base of the mountains."\
+   "E. A hidden compound at the end of a river. There is a different temple nearby."\
    ""\
    "INTENT"\
    "Use the map, landmarks, audio, and verbal descriptions to locate other friendly elements and enemy cache locations."\
@@ -83,11 +84,11 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_sTitle "OPFOR Briefing"
    m_sTextData "MISSION"\
    "Protect the caches. These are the descriptions that BLUFOR has for the objectives:"\
-   "1. A large round-roofed hut in the fields."\
-   "2. An abandoned train car by a bridge."\
-   "3. A secret temple on the river. There is a radio tower."\
-   "4. A mansion at the base of the mountains."\
-   "5. A hidden compound at the end of a river. There is a different temple nearby."\
+   "A. A large round-roofed hut in the fields."\
+   "B. An abandoned train car by a bridge."\
+   "C. A secret temple on the river. There is a radio tower."\
+   "D. A mansion at the base of the mountains."\
+   "E. A hidden compound at the end of a river. There is a different temple nearby."\
    ""\
    "INTENT"\
    "I think BLUFOR is at a disadvantage because they're split up to start with. Don't ruin their day, but make it fun for them."\
@@ -100,16 +101,6 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6AE632A8C66DC35C}" {
-   m_sTitle "Administration"
-   m_sTextData "Please, for the sake of the mission, avoid cheesing the land nav with map markers. Use them where logical and reasonable, but don't use them to telepathically communicate every detail."
-   m_aFactionKeys {
-    "BLUFOR"
-    "OPFOR"
-    "INDFOR"
-   }
-   m_bShowForAnyFaction 0
-  }
-  COA_MissionDescriptor "{6AE632A8C66DC2C0}" {
    m_sTitle "Administration"
    m_sTextData "Please, for the sake of the mission, avoid cheesing the land nav with map markers. Use them where logical and reasonable, but don't use them to telepathically communicate every detail."
    m_aFactionKeys {
@@ -286,8 +277,8 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
     AUTOMATIC_RIFLEMAN
     ASSISTANT_AUTOMATIC_RIFLEMAN
     TEAM_LEAD
-    RIFLEMAN_ANTITANK
-    RIFLEMAN_ANTITANK
+    MEDIUM_ANTITANK
+    MEDIUM_ANTITANK
     GRENADIER
    }
    m_eRespawnPoolType PER_SLOT
