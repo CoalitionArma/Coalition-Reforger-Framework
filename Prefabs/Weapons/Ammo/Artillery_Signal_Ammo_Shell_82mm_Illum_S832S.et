@@ -1,0 +1,116 @@
+Projectile : "{EEF8495A9A6787A6}Prefabs/Weapons/Core/Ammo_MortarShell_Base.et" {
+ ID "5098E3DEA78F878B"
+ components {
+  TimerTriggerComponent "{60AC9441243E3504}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{66448E9CBD7626AB}" {
+     Enabled 0
+    }
+    SubmunitionEffect "{6AEF599348251618}" {
+     Prefab "{237086D0C4AC2B3D}Prefabs/Weapons/Ammo/FlareEffect_82mm_S832S_Red.et"
+     Dispersion 0
+     InitSpeedCoef 0
+     SoundEvent "SOUND_DEPLOY"
+    }
+    SpawnPrefabEffect "{6AEF599638A5349F}" {
+     EffectPrefab "{CAFBEE2819D1A1AB}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_ArtilleryBarrage_Large.et"
+    }
+   }
+   TIMER 19
+  }
+  MagazineComponent "{51A2B9D6DA866EF0}" {
+   MagazineWell MagazineWellMortar82mm "{60AC9440C3F831DF}" {
+   }
+   UIInfo MagazineUIInfo "{60AC9440C81EC976}" {
+    Name "#AR-Magazine_S832S_Name"
+    Description "#AR-Magazine_S832S_Description"
+    m_sAmmoCaliber "#AR-AmmunitionID_82mm"
+    m_sAmmoType "#AR-AmmoType_S832S"
+    m_eAmmoTypeFlags ILLUMINATION
+   }
+  }
+  MeshObject "{5098E3DEA78F87BE}" {
+   Object "{1E565D37FC257F46}Assets/Weapons/Ammo/Shells/82mm_Mortar_2B14/Shell_82mm_Illum_S832S.xob"
+  }
+  RigidBody "{60AC9440016FD3D4}" {
+   Mass 3.51
+  }
+  SCR_MortarShellGadgetComponent "{60AC94402A1A228B}" {
+   m_bIsUsingTimeFuze 1
+   m_fMinFuzeTime 10
+   m_fMaxFuzeTime 40
+   m_aChargeRingConfig {
+    1 0.698 0 2 1.111 0 3 1.512 0 4 2.154 1
+   }
+  }
+  SCR_VisibleInventoryItemComponent "{52627A115A9FDADB}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1159C64CDD}" {
+    ItemDisplayName UIInfo "{6AEF599348251635}" {
+     Name "#AR-Magazine_S832S_Name"
+     Description "#AR-Magazine_S832S_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{60AC94417B58CB7F}" {
+     Weight 3.51
+     ItemDimensions 8 8 16
+     ItemVolume 1600
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{61267CEBCD285422}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{5D2AE4CEE3FC959E}" {
+       AnimGraph "{34B1492B691D59D1}Assets/Weapons/Ammo/Shells/workspaces/Shell_Mortar_82mm_USSR.agr"
+       AnimInstance "{CE3E2D0E117FC2F5}Assets/Weapons/Ammo/Shells/workspaces/Shell_Mortar_82mm_USSR_player.asi"
+      }
+     }
+     AllowInspection 1
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{60AC9440A0FA2A65}" {
+     }
+    }
+   }
+  }
+  ShellMoveComponent "{5098E3DEA78F87A3}" {
+   InitSpeed 127
+   Mass 3.51
+   BallisticTableConfig "{86E1596833C1569C}Configs/Weapons/Ammo/S832S_Shell_82mm_Illumination.conf"
+   BallisticTableGenerationConfig "{D6FA2FADBD31A07E}Configs/Weapons/Ammo/MortarBallisticTableGeneratorConfig_S832S.conf"
+   ProjectileWindTableConfig "{F74EFC9B5E7EA9ED}Configs/Weapons/Ammo/WindData/WindData_Shell_82mm_Illum_S832S.conf"
+   AirDrag 0.001836
+   Diameter 82
+   Length 350
+  }
+  SlotManagerComponent "{629C6AA0D8D852AB}" {
+   Slots {
+    EntitySlotInfo chargeRing0 {
+     Offset 0 0 -0.1782
+     Prefab "{0D0EF81F5F5DCC67}Prefabs/Weapons/Ammo/Shell_82mm_Charge_Ring.et"
+    }
+    EntitySlotInfo chargeRing1 {
+     Offset 0 0 -0.1724
+     Angles 2.3407 0 0
+     Prefab "{0D0EF81F5F5DCC67}Prefabs/Weapons/Ammo/Shell_82mm_Charge_Ring.et"
+    }
+    EntitySlotInfo chargeRing2 {
+     Offset 0 0 -0.1655
+     Angles 0 -0.5356 0
+     Prefab "{0D0EF81F5F5DCC67}Prefabs/Weapons/Ammo/Shell_82mm_Charge_Ring.et"
+    }
+    EntitySlotInfo chargeRing3 {
+     Offset 0 0 -0.1604
+     Angles 1.4118 1.7667 -38.0915
+     Prefab "{0D0EF81F5F5DCC67}Prefabs/Weapons/Ammo/Shell_82mm_Charge_Ring.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{51A2B9D50D603C79}" {
+   additionalActions {
+    SCR_AdjustShellChargeRingsAction "{629C6AB1194F002B}" {
+    }
+    SCR_AdjustShellTimeFuzeAction "{621CB093C3C493E0}" : "{A3C2F960E1DB330E}Prefabs/Characters/Core/Actions/ShellAdjustFuzeTimeAction.conf" {
+    }
+   }
+  }
+ }
+ ProjectileModel "{1E565D37FC257F46}Assets/Weapons/Ammo/Shells/82mm_Mortar_2B14/Shell_82mm_Illum_S832S.xob"
+ CartridgeModel "{1E565D37FC257F46}Assets/Weapons/Ammo/Shells/82mm_Mortar_2B14/Shell_82mm_Illum_S832S.xob"
+}
