@@ -4,7 +4,8 @@ Projectile : "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
   CollisionTriggerComponent "{60AC9441243E3504}" {
    PROJECTILE_EFFECTS {
     ExplosionEffect "{66448E9CBD7626AB}" {
-     EffectPrefab "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
+     EffectPrefab "{8C21D3E413928586}Prefabs/Systems/Explosions/BombWarhead_Large_Artillery.et"
+     ParticleEffect "{307C1D79A37A0681}Prefabs/Systems/Explosions/Explosion_Large.ptc"
     }
    }
    TRIGGER_ALIVE 1

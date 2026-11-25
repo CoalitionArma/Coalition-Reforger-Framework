@@ -1,0 +1,31 @@
+$grp COA_ManualMarker : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ vehicle_depotm {
+  coords 1651.192 217.212 147.73
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A vehicle depot has been destroyed.\", 10);"\
+  "	"
+  m_sDescription "Vehicle Depot"
+ }
+ fuelm {
+  coords 1901.433 266.652 2170.617
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"A fuel depot has been destroyed.\", 10);"\
+  "	"
+  m_sDescription "Fuel Station"
+ }
+ artillerym {
+  coords 583.509 220.031 430.607
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"An artillery battery has been destroyed.\", 10);"\
+  "	"
+  m_sDescription "Artillery Battery"
+ }
+ aam {
+  coords 1360.048 280.41 1016.105
+  m_sDescription "90mm AA"
+ }
+ aam2 {
+  coords 553.175 389.849 1765.709
+  m_sDescription "AA Tower"
+ }
+}

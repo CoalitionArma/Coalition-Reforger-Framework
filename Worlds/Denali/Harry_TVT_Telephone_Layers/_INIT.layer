@@ -1,3 +1,409 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 3663.388 276.119 2196.675
+ "Map Geometry Data" "{6E432560EA8341B4}worlds/Denali/denali_world.topo"
+ "Satellite background image" "{DE9ACD4254453FC4}worlds/Denali/map_bg.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2445.835 261.893 -22.36
+}
 COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_RadioDFGamemodeComponent "{6AF0F43F2F0BE0E7}" {
+   m_iTransmissionGoalSeconds 60000
+   m_iTimeLimitMinutes 70
+   m_bHuntersWinWhenTransmittersDead 0
+   m_bEndMissionOnVictory 0
+   m_eDFEquipment ANY_RADIO
+   m_fNotifyIncrementPercent 150
+  }
+  CRF_RaidGamemodeComponent "{6AF0F430EAD0A917}" {
+   m_fWinThresholdPercent 100
+   m_sAttackingSide "INDFOR"
+   m_sDefendingSide "BLUFOR"
+   m_bEnableMapMarkers 0
+  }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_aSharedFrequencies {
+    CVON_SharedFrequencyObject "{6AF0F43B69FB8955}" {
+     m_aFactionIds {
+      "OPFOR"
+      "INDFOR"
+     }
+     m_sSharedFrequency "FIRES"
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+     m_iStartingMinutes 0
+    }
+   }
+   m_bRandomWeatherChanges 0
+   m_bDateOverride 1
+   m_iDay 11
+   m_iMonth 5
+  }
+ }
  coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 70
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 20
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AF0F438B36C9695}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Russian recon, and signal units have infiltrated into US territory. They are working to hunt for priority targets, and then signal to observers their location for artillery bombardment. US are trying to triangulate the radio transmissions, and responding to mortar reports. "\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Recon Huey"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: Mortars w/ Artillery Signalling"\
+   ""\
+   "INDFOR Composition: Recon"\
+   "INFOR Assets: N/A"\
+   ""\
+   "Time: 70 min"\
+   "Weather:  Night Clear"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AF0F438B36C9A1D}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Find and destroy either the mortar teams, or the recon that's infiltrated."\
+   ""\
+   "INTENT"\
+   "Use a combination of the helicopter, and the radio transmission indicator to locate the enemy. The helicopter has a flood light attached to the bottom of it. "\
+   ""\
+   "EXECUTION"\
+   "It's unlikely, but if the enemy decides to target you with a red illumination mortar round, you have 30 seconds to displace. "
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF0F438B36C9B59}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Coordinate with the Indfor recon element to find, and destroy the raid objectives. Use the artillery signal mortar to call in a large offshore bombardment."\
+   ""\
+   "INTENT"\
+   "Fire and displace, or risk a direct confrontation with a larger enemy element. Be mindful your radio communications are being tracked. "\
+   ""\
+   "EXECUTION"\
+   "Do not fire danger close on yourself. There is a marked limit of advance, as well as a minimum limit of fire for the artillery shells. Be mindful of hitting friendly recon, the bombardment is very large. "
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF0F438B36C9BF0}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Read the intelligence you've been given to find each of the raid objectives, then communicate their location to the friendly OPFOR who will fire a red signal mortar to call in an offshore bombardment. "\
+   ""\
+   "INTENT"\
+   "You should avoid direct conflict. You are operating in a recon capacity. Be mindful your radio transmissions are being monitored. "\
+   ""\
+   "EXECUTION"\
+   "Be mindful of the wind, or where the artillery signal might drift. The bombardment is very large. "
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF0F438B36C9818}" {
+   m_sTitle "AA Intel"
+   m_sTextData "Intel says there are two AA positions guarding the entrance to this valley. One is on Thistleback Hill, and one was referenced off of Clearwater Falls. "
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF1457977CC1F2D}" {
+   m_sTitle "Fuel Depot Inteal"
+   m_sTextData "There is a re-fuel point somewhere on the road NW of the river between the crossings at Butler Point and Bradley Point."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF145782A82C4F0}" {
+   m_sTitle "Artillery Intel"
+   m_sTextData "We've received counterbattery from somewhere in the SW of the AO, across the river from your starting position. "
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF14578531B66AD}" {
+   m_sTitle "Vehicle Depot Intel"
+   m_sTextData "We believe that there is a vehicle depot somewhere near or in Moose Meadow. Between Whispering lake, and the souther edge of the AO. If you hit the eastern creek, you've gone too far."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF1457F25C8D00B}" {
+   m_sTitle "Administration"
+   m_sTextData "OPFOR and INDFOR share the FIRES frequency."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 3
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "BLU"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6AF1457D1B15FB61}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    RADIO_TELEPHONE_OPERATOR
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15F988}" {
+   m_sCallsign "HELI 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    CREW_CHIEF
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15F8DD}" {
+   m_sCallsign "1-1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15FFC8}" {
+   m_sCallsign "1-2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15FF33}" {
+   m_sCallsign "1-3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15FE1E}" {
+   m_sCallsign "1-4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    TEAM_LEAD
+    RIFLEMAN_ANTITANK
+    RIFLEMAN_ANTITANK
+    GRENADIER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6AF1457D1B15FCE6}" {
+   m_sCallsign "1PLT"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    RADIO_TELEPHONE_OPERATOR
+    MEDICAL_OFFICER
+    PLATOON_SERGEANT
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15FC3F}" {
+   m_sCallsign "1-1"
+   m_FlagType MORTAR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15F31E}" {
+   m_sCallsign "1-2"
+   m_FlagType MORTAR
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    INDIRECT_LEAD
+    INDIRECT_GUNNER
+    INDIRECT_LOADER
+    TEAM_LEAD
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_INDFORSlots {
+  COA_SlottingGroup "{6AF1457D1B15F1C9}" {
+   m_sCallsign "Razvedka 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    SPOTTER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6AF1457D1B15F11D}" {
+   m_sCallsign "Razvedka 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    RADIO_TELEPHONE_OPERATOR
+    MEDIC
+    SPOTTER
+   }
+   m_eRespawnPoolType PER_SLOT
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{8556DB883D9F6F96}Configs/Gearscripts/Custom/Harry/50s/COA_GS_US50s.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{01328C240CBA3EB1}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USSR_50s.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{01328C240CBA3EB1}Configs/Gearscripts/Custom/Harry/50s/COA_GS_USSR_50s.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/COA_GS_CIV.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6AF0F43018DC8B5B" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "OPFOR"
+     }
+    }
+   }
+  }
+ }
 }
