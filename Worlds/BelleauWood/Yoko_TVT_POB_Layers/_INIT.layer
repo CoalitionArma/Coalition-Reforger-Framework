@@ -29,6 +29,80 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
  m_bUseSafestartTimeLimit 1
  m_iSafestartTimeLimit 15
  m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6AF35ED1B5F54101}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: None"\
+   ""\
+   "OPFOR Composition: Infantry Platoon"\
+   "OPFOR Assets: 1x MMG"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Overcast"
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6AF35ED1B5F54561}" {
+   m_sTitle "BLUFOR Briefing"
+   m_sTextData "MISSION"\
+   "Destroy both Bombsites, only one bombsite can be armed at a time"\
+   ""\
+   "INTENT"\
+   "A simple S&D with a smaller AO."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF35ED1B5F545ED}" {
+   m_sTitle "OPFOR Briefing"
+   m_sTextData "MISSION"\
+   "Defend both Bombsites, only one bombsite can be armed at a time."\
+   ""\
+   "INTENT"\
+   "A simple S&D with a smaller AO."\
+   ""\
+   "EXECUTION"\
+   "Commanders discretion"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF35ED1B5F54644}" {
+   m_sTitle "INDFOR Briefing"
+   m_sTextData "MISSION"\
+   "Insert the bulleted or short-form list of objectives here"\
+   ""\
+   "INTENT"\
+   "Insert your intent as the mission maker for this side. This should be what you expect them to do."\
+   ""\
+   "EXECUTION"\
+   "Explain how you think the execution should unfold. Leave it as \"commanders discretion\" if you want them to plan it."
+   m_aFactionKeys {
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF35ED1B5F546D4}" {
+   m_sTitle "Administration"
+   m_sTextData ""
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "INDFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
  m_iFactionOneRatio 3
  m_iFactionTwoRatio 0
  m_sFactionOneKey "BLU"
@@ -205,7 +279,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6AF35ED1C59CD7D8" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
