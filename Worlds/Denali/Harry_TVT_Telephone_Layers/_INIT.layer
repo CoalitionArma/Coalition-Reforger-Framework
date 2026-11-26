@@ -29,7 +29,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
       "OPFOR"
       "INDFOR"
      }
-     m_sSharedFrequency "FIRES"
+     m_sSharedFrequency "57000"
     }
    }
   }
@@ -126,6 +126,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    m_bShowForAnyFaction 0
   }
   COA_MissionDescriptor "{6AF0F438B36C9818}" {
+   m_sTitle "SHARED FREQUENCY"
+   m_sTextData "Your shared  frequency is 57000. You may need to program your radios on a spare channel to that frequency to hear each other. "
+   m_aFactionKeys {
+    "INDFOR"
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6AF1457977CC1F2D}" {
    m_sTitle "AA Intel"
    m_sTextData "Intel says there are two AA positions guarding the entrance to this valley. One is on Thistleback Hill, and one was referenced off of Clearwater Falls. "
    m_aFactionKeys {
@@ -133,15 +142,15 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6AF1457977CC1F2D}" {
-   m_sTitle "Fuel Depot Inteal"
+  COA_MissionDescriptor "{6AF145782A82C4F0}" {
+   m_sTitle "Fuel Depot Intel"
    m_sTextData "There is a re-fuel point somewhere on the road NW of the river between the crossings at Butler Point and Bradley Point."
    m_aFactionKeys {
     "INDFOR"
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6AF145782A82C4F0}" {
+  COA_MissionDescriptor "{6AF14578531B66AD}" {
    m_sTitle "Artillery Intel"
    m_sTextData "We've received counterbattery from somewhere in the SW of the AO, across the river from your starting position. "
    m_aFactionKeys {
@@ -149,7 +158,7 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6AF14578531B66AD}" {
+  COA_MissionDescriptor "{6AF1457F25C8D00B}" {
    m_sTitle "Vehicle Depot Intel"
    m_sTextData "We believe that there is a vehicle depot somewhere near or in Moose Meadow. Between Whispering lake, and the souther edge of the AO. If you hit the eastern creek, you've gone too far."
    m_aFactionKeys {
@@ -157,9 +166,9 @@ COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition L
    }
    m_bShowForAnyFaction 0
   }
-  COA_MissionDescriptor "{6AF1457F25C8D00B}" {
+  COA_MissionDescriptor "{6AF443A69862ABD3}" {
    m_sTitle "Administration"
-   m_sTextData "OPFOR and INDFOR share the FIRES frequency."
+   m_sTextData "N/A"
    m_aFactionKeys {
     "BLUFOR"
     "OPFOR"
