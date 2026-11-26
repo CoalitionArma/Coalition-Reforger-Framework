@@ -1,3 +1,17 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 594.974 220.331 411.038
+  angles 0 -120.68 0
+  m_rnPrefab "{3BD6ADF7ED80F156}Prefabs/Weapons/Artillery/Howitzer/M2A1/Howitzer_M2A1.et"
+  respawnDelay 10000
+ }
+ {
+  coords 587.08 220.331 438.526
+  angles 0 -89.789 0
+  m_rnPrefab "{3BD6ADF7ED80F156}Prefabs/Weapons/Artillery/Howitzer/M2A1/Howitzer_M2A1.et"
+  respawnDelay 10000
+ }
+}
 $grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUS_01.et" {
  {
   coords 1356.791 280.68 1023.149
@@ -6,26 +20,6 @@ $grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Founda
  {
   coords 548.162 390.987 1766.048
   angles 0 -135.222 0
- }
-}
-$grp Turret : "{3BD6ADF7ED80F156}Prefabs/Weapons/Artillery/Howitzer/M2A1/Howitzer_M2A1.et" {
- {
-  components {
-   ActionsManagerComponent "{51ACD09C7181BA0B}" {
-    Enabled 0
-   }
-  }
-  coords 586.604 220.031 415.569
-  angles 0 95.893 0
- }
- {
-  components {
-   ActionsManagerComponent "{51ACD09C7181BA0B}" {
-    Enabled 0
-   }
-  }
-  coords 588.537 220.331 440.228
-  angles 0 95.893 0
  }
 }
 GenericEntity : "{D3DDB76548C16BDB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_Helipad_L_Conflict_US_01.et" {
