@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{6B1126B17C211433}Worlds/Normandy/tanaka_tvt_lastbridge.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}

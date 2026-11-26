@@ -1,0 +1,11 @@
+$grp GameEntity {
+ evac_site {
+  coords 3683 8.6 1605
+ }
+ evac_load {
+  coords 3730 8.05 1558
+ }
+ evac_extract {
+  coords 3473.65 45.58 2807.92
+ }
+}
