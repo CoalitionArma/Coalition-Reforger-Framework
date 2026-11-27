@@ -1,0 +1,69 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 12150 148.78 12605
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "SABER 6"
+ }
+ {
+  coords 12125 148.78 12600
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "SABER 1"
+ }
+ {
+  coords 12175 148.78 12600
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "SABER 2"
+ }
+ {
+  coords 12110 148.78 12620
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "REAPER"
+ }
+ {
+  coords 12040 148.78 12700
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "DAGGER 1"
+ }
+ {
+  coords 12035 148.78 12760
+  angles 0 270 0
+  m_sCallsignOfGroupToSpawn "DAGGER 2"
+ }
+}
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 8650 125.75 13140
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "AKULA"
+ }
+ {
+  coords 8620 125.19 13110
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "VOLK 1"
+ }
+ {
+  coords 8690 125.91 13110
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "VOLK 2"
+ }
+ {
+  coords 8700 125.81 13160
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "VOLK 3"
+ }
+ {
+  coords 8665 124.85 13175
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "VOLK 4"
+ }
+ {
+  coords 8620 125.22 13165
+  angles 0 90 0
+  m_sCallsignOfGroupToSpawn "VOLK PK"
+ }
+}
+COA_GroupSpawnPoint : "{07BFDAFBB354438A}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/CIVILIAN_InitalGroupSpawn.et" {
+ coords 8635 125.75 13145
+ angles 0 90 0
+ m_sCallsignOfGroupToSpawn "HOSTAGES"
+}
