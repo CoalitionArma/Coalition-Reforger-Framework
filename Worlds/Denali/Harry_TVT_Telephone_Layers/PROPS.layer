@@ -1,0 +1,49 @@
+$grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUS_01.et" {
+ {
+  coords 1356.791 280.68 1023.149
+  angles 0 49.778 0
+ }
+ {
+  coords 548.162 390.987 1766.048
+  angles 0 -135.222 0
+ }
+}
+$grp GenericEntity : "{B8BADFA9530C38F4}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_US.et" {
+ {
+  coords 573.173 220.331 427.547
+  angles 0 -88.599 0
+ }
+ {
+  coords 585.525 220.331 412.916
+  angles 0 -88.599 0
+ }
+ {
+  coords 587.289 220.331 445.915
+  angles 0 -88.599 0
+ }
+ {
+  coords 601.694 220.331 427.344
+  angles 0 -88.599 0
+ }
+}
+GenericEntity : "{D3DDB76548C16BDB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_Helipad_L_Conflict_US_01.et" {
+ coords 2700.811 227.386 523.751
+}
+GenericEntity : "{DF39938D32E1CE70}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Empty_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6AF0F43D9DA6490C}" {
+     SlotTemplate InventoryStorageSlot artillery {
+      Prefab "{F99A9468D1204C77}Prefabs/Weapons/Ammo/Artillery_Signal_Ammo_Shell_82mm_Illum_S832S.et"
+     }
+     NumSlots 30
+    }
+   }
+  }
+ }
+ coords 3651.15 275.001 2216.153
+}
+GenericEntity : "{FB18EFE9C1A81E2A}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_Conflict_US_01.et" {
+ coords 1642.717 216.972 140.784
+}

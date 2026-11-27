@@ -1,0 +1,47 @@
+GenericEntity : "{63611FABA52B31BA}PrefabsEditable/EffectsModules/BaseEffectModule_Zoned.et" {
+ ID "5CA2D832A4C193FA"
+ components {
+  SCR_EditableEffectsModuleComponent "{5CA2D83089A8F56E}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5CA90815AF19C85A}" {
+    Name "test"
+    Icon "{DC42B98359B9016D}UI/Imagesets/EffectModule/EffectTextures/64px/mortar-barrage-64.edds"
+    m_Image "{5A1D892F60E529E8}UI/Imagesets/EffectModule/EffectTextures/128px/mortar-barrage-128.edds"
+    m_aAuthoredLabels + {
+     TRAIT_EXPLOSIVE
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{6AEF599523894E28}" {
+      m_BudgetType SYSTEMS
+      m_Value 10
+     }
+    }
+   }
+  }
+  SCR_EffectsModuleComponent "{5CA2DE492D8BBCF5}" {
+   m_EffectConfig SCR_BarrageEffectsModule "{5CAAAC876B00D6FB}" : "{7340B83B4938C83D}Configs/EffectModules/Mortar/MortarBarrage_Large_EffectModule.conf" {
+    m_sModuleEntityPrefab "{9B378F4FCACB81A4}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821_EffectModule_Artillery.et"
+    m_ModuleZoneData SCR_EffectsModulePositionData_Radius "{5CACDA1438FA62C7}" {
+     m_fCenterRadiusPercentage 0.3
+     m_fCenterBias 0.5
+    }
+    m_fStartDelay 30
+    m_iMinProjectilesEachBarrage 45
+    m_iMaxProjectilesEachBarrage 60
+    m_fMinBarrageDelay 20
+    m_fMaxBarrageDelay 60
+   }
+  }
+ }
+ coords 167.453 1.001 62.648
+ {
+  GenericEntity {
+   ID "616C96D8967A1736"
+   components {
+    SCR_EffectsModuleAreaMeshComponent "{616C96D8B05B3D1F}" {
+     m_fWidth 70
+     m_fLenght 70
+    }
+   }
+  }
+ }
+}

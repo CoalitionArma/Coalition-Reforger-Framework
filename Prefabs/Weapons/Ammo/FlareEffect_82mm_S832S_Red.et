@@ -1,0 +1,30 @@
+Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
+ ID "5A52CD9231D8AB66"
+ components {
+  SoundComponent "{60C8D458549023EE}" {
+   Filenames {
+    "{D7385B9FC1EE07CF}Sounds/Ammo/Flares/Ammo_Flares_ProjectileTravelling_Mortar_Deployed.acp"
+   }
+  }
+  TimerTriggerComponent "{60F2D6E8520B1C8B}" {
+   TIMER 60
+  }
+  FlareMoveComponent "{5A52CD9231D8AB6E}" {
+   ParentSpeedMultiplier 0.6
+   TimeToLive 60
+   AirDrag 0.999
+   Diameter 81
+   SmokeParticle "{E00390170CD75DBC}Particles/Weapon/Flare_Parachute_82mm.ptc"
+  }
+  SCR_FlareEffectComponent "{611868B460E2F003}" {
+   m_aLightData {
+    SCR_BaseLightData "{611868B4754ECDDD}" {
+     m_vLightColor 1 0 0
+     m_fRadius 100
+    }
+   }
+   m_fDistanceAttenuation 0.8
+   m_iLightLifetime 80
+  }
+ }
+}

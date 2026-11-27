@@ -1,0 +1,36 @@
+Projectile : "{C8A906FB198D1A33}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_Illum_S832S.et" {
+ ID "5098E3DEA78F878B"
+ components {
+  TimerTriggerComponent "{60AC9441243E3504}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{6694DB695DB4D572}" {
+     Prefab "{237086D0C4AC2B3D}Prefabs/Weapons/Ammo/FlareEffect_82mm_S832S_Red.et"
+    }
+    SpawnPrefabEffect "{6AF1457041B1BE6A}" {
+     EffectPrefab "{CAFBEE2819D1A1AB}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_ArtilleryBarrage_Large.et"
+    }
+   }
+  }
+  SCR_MortarShellGadgetComponent "{60AC94402A1A228B}" {
+   m_fMaxFuzeTime 60
+   m_fDetonationAltitude 75
+   m_aChargeRingConfig +{
+   }
+  }
+  SCR_VisibleInventoryItemComponent "{52627A115A9FDADB}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1159C64CDD}" {
+    ItemDisplayName UIInfo "{52C6F8E212710D7A}" {
+     Name "Artillery Signal- Red"
+     Description "Don't fuck up"
+    }
+   }
+  }
+  ShellMoveComponent "{5098E3DEA78F87A3}" {
+   InitSpeedVariation 1.26
+   DispersionMultiplier 1.27
+   BallisticTableConfig "{B9EAB4A7CD0E9CD0}Configs/Weapons/Ammo/AM_M_S832S_Shell_82mm_Illumination.conf"
+   BallisticTableGenerationConfig "{7C636F4C92CF9831}Configs/Weapons/Ammo/AM_M_MortarBallisticTableGeneratorConfig_S832S.conf"
+   ProjectileWindTableConfig "{665616B2BE23AA0E}Configs/Weapons/Ammo/WindData/AM_WindData_Shell_82mm_Illum_S832S.conf"
+  }
+ }
+}

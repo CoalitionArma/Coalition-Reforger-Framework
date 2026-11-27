@@ -1,0 +1,47 @@
+GenericEntity : "{8C3C62C58D2DBEDA}Prefabs/Weapons/Warheads/Warhead_HEAT.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  SoundComponent "{D092A75ECEFAE456}" {
+   Filenames {
+    "{87E0968F67279DFE}Sounds/Weapons/Explosives/_SharedData/Weapons_Explosives_ATMine_Generic.acp"
+   }
+   DistanceManagement 1
+  }
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{567CBC1D0F5B4AEA}" {
+     ExplosionEffects {
+      BaseExplosionDamage "{61DAF5E24D9CA168}" {
+       DamageValue 20
+       DamageDistance 9
+      }
+      ExplosionImpulseEffect "{5E6D1CEE09A33086}" {
+       DamageValue 6500
+       DamageDistance 50
+       DamageFalloffCurve {
+        0 1 0.397 0.957 0.578 0.079 1 0
+       }
+       ExplosionDamagePower 1
+       ExplosionImpulseMultiplier 10
+      }
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" {
+       DamageValue 5
+       DamageDistance 25
+       GurneyConstant 2830
+       CaseWeight 1280
+      }
+     }
+     ChargeWeight 400
+     TntEquivalent 1.6
+    }
+    SubmunitionEffect "{5D692C94EC533259}" {
+     Count 31
+     Dispersion 180
+    }
+   }
+   "Trigger Offset" 0 0 -0.2
+  }
+  SCR_InstantTriggerComponent "{6AF21BA20F664E67}" {
+  }
+ }
+}
