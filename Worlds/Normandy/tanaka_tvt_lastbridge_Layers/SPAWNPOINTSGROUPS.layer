@@ -1,0 +1,53 @@
+$grp COA_GroupSpawnPoint : "{29BC39B29CEBFDC6}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/BLUFOR_InitalGroupSpawn.et" {
+ {
+  coords 3682.8 8.79 887.8
+  m_sCallsignOfGroupToSpawn "BAKER 6"
+ }
+ {
+  coords 3640 8.8 905
+  m_sCallsignOfGroupToSpawn "BAKER 1"
+ }
+ {
+  coords 3660 8.82 895
+  m_sCallsignOfGroupToSpawn "BAKER 2"
+ }
+ {
+  coords 3702.8 8.75 892.8
+  m_sCallsignOfGroupToSpawn "BAKER 3"
+ }
+ {
+  coords 3722 8.43 880
+  m_sCallsignOfGroupToSpawn "BAKER 4"
+ }
+ {
+  coords 3690 8.21 865
+  m_sCallsignOfGroupToSpawn "BAKER WPNS"
+ }
+}
+$grp COA_GroupSpawnPoint : "{8918864B69446F6E}PrefabsMissionMaking/SpawnPoints/SpawnPoints/Groups/OPFOR_InitalGroupSpawn.et" {
+ {
+  coords 3705 9.62 1539
+  angles 0 180 0
+  m_sCallsignOfGroupToSpawn "ZUG"
+ }
+ {
+  coords 3756.6 8.8 1453.8
+  angles 0 180 0
+  m_sCallsignOfGroupToSpawn "GRUPPE 1"
+ }
+ {
+  coords 3650 8.77 1520
+  angles 0 180 0
+  m_sCallsignOfGroupToSpawn "GRUPPE 2"
+ }
+ {
+  coords 3684.3 9.43 1560.7
+  angles 0 180 0
+  m_sCallsignOfGroupToSpawn "MG-TRUPP"
+ }
+ {
+  coords 3742.8 9.29 1542.2
+  angles 0 180 0
+  m_sCallsignOfGroupToSpawn "TROSS"
+ }
+}

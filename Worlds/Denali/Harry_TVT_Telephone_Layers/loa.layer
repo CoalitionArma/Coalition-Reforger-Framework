@@ -1,0 +1,167 @@
+$grp COA_ManualMarker : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ {
+  coords 2717.318 634.91 32.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2717.318 633.683 132.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2817.318 613.556 232.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2817.318 613.062 332.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2817.318 623.281 432.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2817.318 623.07 532.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 2917.318 645.16 632.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 637.218 732.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 630.799 832.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3117.318 633.268 932.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3117.318 634.446 1032.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3117.318 631.4 1132.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3117.318 637.378 1232.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3117.318 647.292 1332.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 664.888 1432.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 690.252 1532.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 683.047 1632.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 1932.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2032.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2132.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2232.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2332.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2432.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2532.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2632.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2732.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2832.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 2932.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 3032.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 3132.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 686.031 3232.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 683.047 1732.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+ {
+  coords 3017.318 683.047 1832.03
+  m_sQuadName "dot"
+  m_sDescription "OPFOR LOA & Limit of Fire"
+ }
+}
