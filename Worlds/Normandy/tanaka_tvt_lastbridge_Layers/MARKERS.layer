@@ -1,0 +1,13 @@
+COA_ManualMarker lastbridge_truckpark : "{BA688A2E51546A69}PrefabsMissionMaking/Markers/ObjectiveMarkers/OPFOR_ObjectiveMarker.et" {
+ coords 3752 8.8 1525
+ m_sDescription "Truck park (3 Opel Blitz)"
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+ m_bShowForAnyFaction 0
+}
+COA_ManualMarker lastbridge_westbridge : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 3503 10.2 1412
+ m_sDescription "West bridge"
+ m_bShowForAnyFaction 1
+}
