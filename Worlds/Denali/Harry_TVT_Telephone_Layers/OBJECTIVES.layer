@@ -1,0 +1,61 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 1357.636 280.667 1023.183
+  angles 0 -34.363 0
+  m_rnPrefab "{4F6064980FF0D0ED}Prefabs/Weapons/Artillery/AntiAir/90mm_M1/AntiAir_90mm_M1_Target.et"
+  respawnDelay 10000
+ }
+ {
+  coords 547.627 390.957 1764.633
+  angles 0 123.557 0
+  m_rnPrefab "{4F6064980FF0D0ED}Prefabs/Weapons/Artillery/AntiAir/90mm_M1/AntiAir_90mm_M1_Target.et"
+  respawnDelay 10000
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ artillery {
+  components {
+   CRF_RaidItemComponent "{6AF0F43FEB5B84AB}" {
+    m_sItemName "Artillery"
+   }
+  }
+  coords 586.678 220.331 427.446
+ }
+ vehicle_depot {
+  components {
+   CRF_RaidItemComponent "{6AF0F43FEB5B84AB}" {
+    m_sItemName "Vehicle Depot"
+   }
+  }
+  coords 1644.482 217.142 143.845
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{D44E66C875C41446}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_01/FuelTank_01_green.et" {
+ fuel {
+  components {
+   CRF_RaidItemComponent "{6AF0F43F58FAD227}" {
+    m_sItemName "Fuel Depot"
+   }
+   SCR_DestructibleBuildingComponent "{5DA867F4F045AA84}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      MaxHealth 1000
+     }
+    }
+   }
+  }
+  coords 1909.243 0.3 2168.905
+ }
+ fuel2 {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867F4F045AA84}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      MaxHealth 1000
+     }
+    }
+   }
+  }
+  coords 1909.253 0.298 2178.225
+ }
+}

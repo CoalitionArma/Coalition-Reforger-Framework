@@ -1,0 +1,54 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 2700.069 227.954 523.214
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+ }
+ {
+  coords 2628.145 227.429 541.172
+  angles 0 82.112 0
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 2629.334 227.302 534.185
+  angles 0 82.112 0
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 2610.27 226.749 537.122
+  angles 0 82.112 0
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 2612.894 226.712 527.804
+  angles 0 82.112 0
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 2602.384 226.167 507.947
+  angles 0 82.112 0
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+ }
+}
+$grp Tree : "{20C4A23B039DFCF3}PrefabLibrary/DefaultLibrary/Vegetation/Trees/t_picea_abies_3s.et" {
+ {
+  coords 479.016 0.333 1659.124
+  angles 0.842 -115.766 0.74
+  scale 0.827
+ }
+ {
+  coords 485.576 0 1651.734
+  angles 0.842 -115.766 0.74
+  scale 0.827
+ }
+ {
+  coords 475.228 0.001 1649.772
+  angles 0.842 -115.766 0.74
+  scale 0.827
+ }
+}

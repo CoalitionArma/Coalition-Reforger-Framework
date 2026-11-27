@@ -1,0 +1,29 @@
+Vehicle : "{561E175AE5C138C7}Prefabs/Weapons/Artillery/AntiAir/90mm_M1/AntiAir_90mm_M1_base.et" {
+ ID "52D30EFBEBC74642"
+ components {
+  CRF_RaidItemComponent "{6AF221A912D51300}" {
+   m_sItemName "90mm AA"
+  }
+  SCR_BaseCompartmentManagerComponent "{6AACF6A94E97D6F5}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{6AACF6A66828652C}" {
+     GetInTeleport 1
+     GetOutTeleport 1
+    }
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{6AACF6AF0D9820B0}" {
+   m_fBaseHealth 750
+  }
+  SlotManagerComponent "{6A637AB373A65947}" {
+   Slots {
+    RegisteringComponentSlotInfo GunMount {
+     Prefab "{B31D3750B64A9398}Prefabs/Weapons/Artillery/AntiAir/90mm_M1/GunMount/90mm_M1_GunMount_dummy.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{6AACF6A94E97D677}" {
+   Enabled 0
+  }
+ }
+}

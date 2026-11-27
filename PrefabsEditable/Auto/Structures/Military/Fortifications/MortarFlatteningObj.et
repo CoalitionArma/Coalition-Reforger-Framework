@@ -2,10 +2,18 @@ GenericEntity : "{3B9D178DEB635AFD}PrefabsEditable/Auto/Structures/Military/Fort
  ID "60ED25685B736E4E"
  components {
   MeshObject "{60ED256B7FE9D171}" {
-   Object "{CF43168EBAC92EFE}Assets/ME_Misc/carpet2.xob"
+   Object "{EE2AD3E016C2C4F9}Assets/Structures/Infrastructure/Pavements/AsphaltPavement_01/AsphaltPavement_01_Wide_4m.xob"
    Materials {
-    MaterialAssignClass "{690D6926B3178104}" {
-     SourceMaterial "misc_int_02"
+    MaterialAssignClass "{6AF221ACCBB88781}" {
+     SourceMaterial "Asphalt_Pavement_01"
+     AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+    }
+    MaterialAssignClass "{6AF221ACCBB88791}" {
+     SourceMaterial "Asphalt_Pavement_01_decal"
+     AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
+    }
+    MaterialAssignClass "{6AF221ACCBB8879C}" {
+     SourceMaterial "Foundation_ShelterStorage"
      AssignedMaterial "{30369C94C941BE87}Common/Materials/ACE_Trenches_MatTerrainObj.emat"
     }
    }
@@ -19,9 +27,10 @@ GenericEntity : "{3B9D178DEB635AFD}PrefabsEditable/Auto/Structures/Military/Fort
   SCR_PreviewEntityComponent "{60ED256B76DEE153}" {
    m_aEntries {
     SCR_BasePreviewEntry "{60ED2568E4572001}" {
-     m_Mesh "{CF43168EBAC92EFE}Assets/ME_Misc/carpet2.xob"
+     m_Mesh "{EE2AD3E016C2C4F9}Assets/Structures/Infrastructure/Pavements/AsphaltPavement_01/AsphaltPavement_01_Wide_4m.xob"
     }
    }
   }
  }
+ scale 0.25
 }
