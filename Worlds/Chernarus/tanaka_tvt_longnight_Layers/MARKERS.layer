@@ -1,0 +1,49 @@
+COA_BorderBase longnight_search_area : "{FE33610F66DBCB07}PrefabsMissionMaking/PolyZone/Special/DrawLinePrefab.et" {
+ coords 8200 0 14150
+ Points {
+  ShapePoint "{6B1127A1AA5688AE}" {
+   Position 0 0 0
+  }
+  ShapePoint "{6B1127A195FAF0EA}" {
+   Position 1700 0 0
+  }
+  ShapePoint "{6B1127A17801EC47}" {
+   Position 1700 0.5 -1750
+  }
+  ShapePoint "{6B1127A1275CDA27}" {
+   Position 1200 0 -2600
+  }
+  ShapePoint "{6B1127A1D7FBE757}" {
+   Position 50 0 -2600
+  }
+  ShapePoint "{6B1127A10FB96257}" {
+   Position 50 0.5 -1800
+  }
+  ShapePoint "{6B1127A1D9073E17}" {
+   Position 250 0 -1800
+  }
+  ShapePoint "{6B1127A1BDCE1778}" {
+   Position 250 0.5 -1200
+  }
+  ShapePoint "{6B1127A1E01C57C9}" {
+   Position 0 0 -1200
+  }
+  ShapePoint "{6B1127A15BBA5A20}" {
+   Position 0 0.5 0
+  }
+ }
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+ m_fPolygonBorderWidth 6
+ m_bLineMode 1
+}
+COA_ManualMarker longnight_extract : "{C3939B6C408F27CA}PrefabsMissionMaking/Markers/ObjectiveMarkers/BLUFOR_ObjectiveMarker.et" {
+ coords 12040 148.78 12720
+ m_sDescription "Extraction (airfield)"
+ m_aVisibleForFactions {
+  "BLUFOR"
+  "CIV"
+ }
+ m_bShowForAnyFaction 0
+}

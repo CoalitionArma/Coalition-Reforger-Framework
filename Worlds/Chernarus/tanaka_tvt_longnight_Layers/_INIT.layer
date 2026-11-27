@@ -1,0 +1,426 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A28383B60276145}" {
+     NavmeshFile "{A73C56FB3B82C174}Worlds/Navmesh/soliders.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}Worlds/Navmesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}Worlds/Navmesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 10300 300 12800
+}
+COA_Gamemode COA_Lobby : "{6A996BBFCEB37E78}Prefabs/Modded Overrides/Coalition Lobby/COA_Lobby.et" {
+ components {
+  CRF_HostageRescueGamemodeComponent "{6B1127A1D6EFD9E4}" {
+   m_sAttackingFaction "BLUFOR"
+   m_sDefendingFaction "OPFOR"
+   m_sHostageFaction "CIV"
+   m_aKeeperCallsigns {
+    "AKULA"
+   }
+   m_bRestrainAtRoundLive 1
+   m_eExecutionOutcome BOTH_LOSE
+   m_sExtractionName "hostage_extract"
+   m_fExtractionRadius 80
+   m_fRescueShare 0.6
+   m_iTimeLimitMinutes 60
+   m_bWipeLoses 1
+   m_iIntelFirstMinutes 10
+   m_iIntelIntervalMinutes 15
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bRandomStartingWeather 0
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66EE8AEC3605B974}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 1
+     m_iStartingMinutes 30
+    }
+   }
+   m_bRandomWeatherChanges 0
+  }
+ }
+ coords 0 0 0
+ m_bRespawnEnabled 0
+ m_bWaveRespawn 0
+ m_bRallyPointsEnabled 0
+ m_iTimeToRespawn 60
+ m_iRespawnCutoffMinutes 0
+ m_eRespawnMode 0
+ m_iTimeLimitMinutes 80
+ m_bLockUnusedSlots 1
+ m_bUseSafestartTimeLimit 1
+ m_iSafestartTimeLimit 15
+ m_bUseCVON 1
+ m_aMissionDescriptors {
+  COA_MissionDescriptor "{6B1127A1A503377C}" {
+   m_sTitle "Mission: Situation"
+   m_sTextData "Northern Chernarus. 0130, clear."\
+   ""\
+   "A ChDKz cell holds five hostages in the hills between Gvozdno and Svergovka. A US special operations troop at the Northeast Airfield, 3 km east, launches a night rescue by Black Hawk."\
+   ""\
+   "BLUFOR: US special operations troop (20), two UH-60. OPFOR: ChDKz cell (40). CIV: hostages (5)."
+   m_aFactionKeys {
+   }
+   m_bShowForAnyFaction 1
+  }
+  COA_MissionDescriptor "{6B1127A16616C65F}" {
+   m_sTitle "BLUFOR OPORD"
+   m_sTextData "1. SITUATION"\
+   "a. Enemy: ChDKz cell (40). AK, PK, RPG. No night vision. Holds 5 hostages at an unknown site inside the marked search area (Gvozdno, Zara Quarry, Arsenov, Svergovka). The cell is dispersed across the area."\
+   "b. Friendly: SABER troop (20) at the Northeast Airfield, PVS-31 night vision."\
+   "- SABER 6: troop commander, MO"\
+   "- SABER 1-2: assault teams (6). Team leader, medic, AR, breacher"\
+   "- REAPER: sniper, spotter"\
+   "- DAGGER 1-2: UH-60 crews (2 pilots each). 11 cabin seats and 2 door M134s per aircraft."\
+   ""\
+   "2. MISSION"\
+   "SABER rescues the hostages and returns them to the airfield NLT 60 min after the round goes live."\
+   ""\
+   "3. EXECUTION"\
+   "a. Intent: find the site, assault it, free the hostages and fly them out. Commander's discretion."\
+   "b. Victory: 60% of the hostages rescued (3 of 5). A living hostage inside the extraction point (80 m, airfield apron) is rescued."\
+   "c. Defeat (any one): the 60 min clock expires; 3 hostages die; the troop is wiped out."\
+   "d. Mutual failure: if the enemy executes a hostage, both sides lose."\
+   "e. The first result is final and announced. Play continues until an admin ends the mission."\
+   "f. Coordinating instructions:"\
+   "- Hostage events (freed, down, rescued, killed) and intel appear as hints."\
+   "- Hostages are tied up. Free them with the ACE release action, or escort them."\
+   "- A hostage you kill is lost."\
+   "- Intel: the hostages' 1 km grid square at +10 min, then every 15 min."\
+   ""\
+   "4. SERVICE SUPPORT"\
+   "No respawns. 2x UH-60 (armed) at the airfield, no respawn."\
+   ""\
+   "5. COMMAND AND SIGNAL"\
+   "Radios for every man. BFT on."
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1127A1FC834033}" {
+   m_sTitle "OPFOR OPORD"
+   m_sTextData "1. SITUATION"\
+   "a. Enemy: US special operations troop (20), night vision, two UH-60 with door guns. Based at the Northeast Airfield, 3 km east."\
+   "b. Friendly: ChDKz cell (40), in the Zara quarry yard with the hostages."\
+   "- AKULA: commander, medic, 2 guards. Holds the hostages."\
+   "- VOLK 1-4: rifle squads (8). PK, RPG, rifle grenadier"\
+   "- VOLK PK: 2x PK team (4)"\
+   "c. Hostages: 5 player civilians, tied up when the round goes live."\
+   ""\
+   "2. MISSION"\
+   "Hold the hostages for 60 minutes."\
+   ""\
+   "3. EXECUTION"\
+   "a. Intent: hide the hostages, defend the site and screen the approaches. The enemy will come by air."\
+   "b. Site selection (safe start): leaders open the map, right-click inside the red zone, Forward Deploy Element. The AKULA leader's deploy takes the hostages along. Each VOLK squad deploys on its own."\
+   "c. Victory (any one): the 60 min clock expires; 3 hostages die by enemy fire; the troop is wiped out."\
+   "d. Defeat: 60% of the hostages (3 of 5) reach the airfield."\
+   "e. Mutual failure: if you execute a hostage, both sides lose."\
+   "f. The first result is final and announced. Play continues until an admin ends the mission."\
+   "g. Coordinating instructions:"\
+   "- Hostage events (moved, restrained, recaptured, down, rescued, killed) appear as hints."\
+   "- You may re-tie and move hostages (ACE Captives)."\
+   ""\
+   "4. SERVICE SUPPORT"\
+   "No respawns. No vehicles."\
+   ""\
+   "5. COMMAND AND SIGNAL"\
+   "Radios: leaders."
+   m_aFactionKeys {
+    "OPFOR"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1127A15D4DF09A}" {
+   m_sTitle "HOSTAGE BRIEFING"
+   m_sTextData "1. SITUATION"\
+   "You are one of 5 hostages held by a ChDKz cell. A US rescue force is coming by helicopter."\
+   ""\
+   "2. MISSION"\
+   "Survive and get out."\
+   ""\
+   "3. EXECUTION"\
+   "- Your captors choose where you are held: during safe start you move with them."\
+   "- You are tied up when the round goes live. You cannot free yourself."\
+   "- Once freed, follow the rescuers. You are rescued when you reach the airfield extraction point (marked)."\
+   "- Do not pick up weapons. Do not run before you are freed."\
+   "- You may talk to anyone in direct speech. You have no radio."\
+   ""\
+   "4. SERVICE SUPPORT"\
+   "No respawns. Rescued hostages leave the round alive."
+   m_aFactionKeys {
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+  COA_MissionDescriptor "{6B1127A10A6C267B}" {
+   m_sTitle "Administration"
+   m_sTextData "No respawns. Safe start up to 15 min. The 60 min clock starts when the round goes live. The mode never ends the round: the first result is announced and logged to admins, and an admin ends the mission. Hostage events show as hints."\
+   ""\
+   "Hostage ROE (admin enforced): hostages stay unarmed and don't run before they are freed."\
+   ""\
+   "Mission by tanaKa-."
+   m_aFactionKeys {
+    "BLUFOR"
+    "OPFOR"
+    "CIV"
+   }
+   m_bShowForAnyFaction 0
+  }
+ }
+ m_iFactionOneRatio 1
+ m_iFactionTwoRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORSlots {
+  COA_SlottingGroup "{6B1127A1DC9C4EF6}" {
+   m_sCallsign "SABER 6"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDICAL_OFFICER
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A1341B5CC2}" {
+   m_sCallsign "SABER 1"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A158186613}" {
+   m_sCallsign "SABER 2"
+   m_FlagType RECON
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    RIFLEMAN_DEMO
+    TEAM_LEAD
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A1653469BF}" {
+   m_sCallsign "REAPER"
+   m_FlagType SNIPER
+   m_aSlots {
+    SNIPER
+    SPOTTER
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A16229EF8B}" {
+   m_sCallsign "DAGGER 1"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    PILOT
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A16866336C}" {
+   m_sCallsign "DAGGER 2"
+   m_FlagType HELICOPER
+   m_aSlots {
+    PILOT
+    PILOT
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_OPFORSlots {
+  COA_SlottingGroup "{6B1127A17EB83B42}" {
+   m_sCallsign "AKULA"
+   m_FlagType SIGNAL
+   m_aSlots {
+    PLATOON_LEADER
+    MEDIC
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A15EFE9DC2}" {
+   m_sCallsign "VOLK 1"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A153F02C51}" {
+   m_sCallsign "VOLK 2"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A1E3387110}" {
+   m_sCallsign "VOLK 3"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A1EB7B247F}" {
+   m_sCallsign "VOLK 4"
+   m_FlagType INFANTRY
+   m_aSlots {
+    SQUAD_LEAD
+    MEDIC
+    AUTOMATIC_RIFLEMAN
+    ASSISTANT_AUTOMATIC_RIFLEMAN
+    RIFLEMAN_ANTITANK
+    GRENADIER
+    RIFLEMAN
+    RIFLEMAN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+  COA_SlottingGroup "{6B1127A12A2C5595}" {
+   m_sCallsign "VOLK PK"
+   m_FlagType MACHINEGUN
+   m_aSlots {
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+    MEDIUM_MACHINEGUN
+    ASSISTANT_MEDIUM_MACHINEGUN
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_CIVSlots {
+  COA_SlottingGroup "{6B1127A18480DC1C}" {
+   m_sCallsign "HOSTAGES"
+   m_FlagType UNDEFINED
+   m_aSlots {
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+    UNARMED
+   }
+   m_eRespawnPoolType PER_GROUP
+   m_iGroupRespawns -1
+  }
+ }
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
+ m_iINDFORTickets 0
+ m_iCIVTickets 0
+ m_fMissionTimeScale 1
+ m_BLUFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{08608B7EAF4CD6DF}Configs/Gearscripts/Standard/Modern/COA_GS_USSpecOps.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings COA_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/COA_GS_CHDKz.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings COA_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/COA_GS_FIA.conf"
+  m_bEnableBFT 1
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 1
+ }
+ m_CIVILIANGearScriptSettings COA_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{4755A67284804FD4}Configs/Gearscripts/Standard/80s/COA_GS_CIV.conf"
+  m_bEnableBFT 0
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6A283830C79B67D2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+      "OPFOR"
+      "INDFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}

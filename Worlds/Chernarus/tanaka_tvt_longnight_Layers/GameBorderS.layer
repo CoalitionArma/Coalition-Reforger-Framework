@@ -1,0 +1,140 @@
+COA_GameBorder : "{318DDE6633C34CF1}PrefabsMissionMaking/GameBorders/GameBorder.et" {
+ coords 10325 0 12825
+ Points {
+  ShapePoint "{6B1127A170E0F242}" {
+   Position -2425 0 1625
+  }
+  ShapePoint "{6B1127A1E1DF4273}" {
+   Position 2425 0 1625
+  }
+  ShapePoint "{6B1127A18D377FDD}" {
+   Position 2425 0.5 -1625
+  }
+  ShapePoint "{6B1127A13CF95F79}" {
+   Position -2425 0 -1625
+  }
+ }
+}
+COA_SafestartBorder longnight_safestart_saber : "{8AE1D02BC25C93C5}PrefabsMissionMaking/GameBorders/Safestart/BLUFOR_SafestartZone.et" {
+ coords 12090 148.78 12660
+ Points {
+  ShapePoint "{6B1127A1FBE0C64B}" {
+   Position -120.208 0 120.208
+  }
+  ShapePoint "{6B1127A1B2DC54E9}" {
+   Position 0 0 170
+  }
+  ShapePoint "{6B1127A1C43529CC}" {
+   Position 120.208 0 120.208
+  }
+  ShapePoint "{6B1127A1F2C44DE1}" {
+   Position 170 0 0
+  }
+  ShapePoint "{6B1127A1DB7161D9}" {
+   Position 120.208 0 -120.208
+  }
+  ShapePoint "{6B1127A1AECA8CF3}" {
+   Position 0 0 -170
+  }
+  ShapePoint "{6B1127A1CB2F07D6}" {
+   Position -120.208 0 -120.208
+  }
+  ShapePoint "{6B1127A10F13CEF2}" {
+   Position -170 0 0
+  }
+ }
+}
+COA_SafestartBorder longnight_safestart_chdkz : "{D8E7812AC12E29EB}PrefabsMissionMaking/GameBorders/Safestart/OPFOR_SafestartZone.et" {
+ coords 8660 125.75 13140
+ Points {
+  ShapePoint "{6B1127A136D33AB8}" {
+   Position -84.853 0 84.853
+  }
+  ShapePoint "{6B1127A1F2FDAEE7}" {
+   Position 0 0 120
+  }
+  ShapePoint "{6B1127A106BA4422}" {
+   Position 84.853 0 84.853
+  }
+  ShapePoint "{6B1127A1A1073367}" {
+   Position 120 0 0
+  }
+  ShapePoint "{6B1127A18A7C4875}" {
+   Position 84.853 0 -84.853
+  }
+  ShapePoint "{6B1127A15C4D3FD2}" {
+   Position 0 0 -120
+  }
+  ShapePoint "{6B1127A18197ED6B}" {
+   Position -84.853 0 -84.853
+  }
+  ShapePoint "{6B1127A1BA730FD8}" {
+   Position -120 0 0
+  }
+ }
+}
+COA_SafestartBorder longnight_safestart_hostages : "{2150339CD6D25BF2}PrefabsMissionMaking/GameBorders/Safestart/CIVILIAN_SafestartZone.et" {
+ coords 8660 125.75 13140
+ Points {
+  ShapePoint "{6B1127A17D01AAEE}" {
+   Position -84.853 0 84.853
+  }
+  ShapePoint "{6B1127A1D1F63C3D}" {
+   Position 0 0 120
+  }
+  ShapePoint "{6B1127A1460ABC3C}" {
+   Position 84.853 0 84.853
+  }
+  ShapePoint "{6B1127A17342EA28}" {
+   Position 120 0 0
+  }
+  ShapePoint "{6B1127A1EB8C8EF7}" {
+   Position 84.853 0 -84.853
+  }
+  ShapePoint "{6B1127A1DF5D4702}" {
+   Position 0 0 -120
+  }
+  ShapePoint "{6B1127A15E2AD508}" {
+   Position -84.853 0 -84.853
+  }
+  ShapePoint "{6B1127A13EE194D3}" {
+   Position -120 0 0
+  }
+ }
+}
+COA_ForwardDeployBorder longnight_hostage_area : "{99F0DBB2C9FEC7D9}PrefabsMissionMaking/GameBorders/ForwardDeploy/OPFOR_ForardDeployZone.et" {
+ coords 9050 0 12850
+ Points {
+  ShapePoint "{6B1127A1B3ED1344}" {
+   Position -850 0 1300
+  }
+  ShapePoint "{6B1127A1B5F5E734}" {
+   Position 850 0 1300
+  }
+  ShapePoint "{6B1127A19A938727}" {
+   Position 850 0.5 -450
+  }
+  ShapePoint "{6B1127A14F91B6C3}" {
+   Position 350 0 -1300
+  }
+  ShapePoint "{6B1127A1FDEBDF0F}" {
+   Position -800 0 -1300
+  }
+  ShapePoint "{6B1127A10D8AD318}" {
+   Position -800 0.5 -500
+  }
+  ShapePoint "{6B1127A1DC566B39}" {
+   Position -600 0 -500
+  }
+  ShapePoint "{6B1127A1D69AB29A}" {
+   Position -600 0.5 100
+  }
+  ShapePoint "{6B1127A16660C5C6}" {
+   Position -850 0 100
+  }
+ }
+ m_aVisibleForFactions {
+  "OPFOR"
+  "CIV"
+ }
+}
